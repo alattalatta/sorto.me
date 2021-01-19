@@ -5,17 +5,13 @@ import util from 'util'
 import matter from 'gray-matter'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
-import Link from 'next/link'
 
+import IndexBody, { PostDatum } from 'components/IndexBody'
 import { getLayout } from 'components/Layout'
 import { POSTS_PATH, POST_FILES } from 'utils/post'
 import { Page } from 'utils/types'
 
 type StaticProps = { posts: readonly PostDatum[] }
-type PostDatum = {
-  data: Record<string, string>
-  slug: string
-}
 
 const Index: Page<StaticProps> = ({ posts }) => {
   return (
@@ -23,13 +19,7 @@ const Index: Page<StaticProps> = ({ posts }) => {
       <Head>
         <title key="title">Home</title>
       </Head>
-      {posts.map((post) => (
-        <Link href={`/post/${post.slug}`}>
-          <a>
-            <p>{post.data.title}</p>
-          </a>
-        </Link>
-      ))}
+      <IndexBody posts={posts} />
     </div>
   )
 }

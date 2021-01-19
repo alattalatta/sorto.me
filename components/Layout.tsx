@@ -1,25 +1,47 @@
+import Link from 'next/link'
+
 import { styled } from 'utils/styler'
+
+const HEADER_HEIGHT = '5rem'
 
 const Header = styled('nav', {
   alignItems: 'center',
-  background: '#ededee',
+  borderBottom: '1px solid #e8ebed',
   color: '#0b0d0e',
   display: 'flex',
-  height: '5rem',
+  height: HEADER_HEIGHT,
+  paddingLeft: '1.5rem',
+  position: 'fixed',
+  top: 0,
+  width: '100%',
 })
 
-const Brand = styled('span', {
+const Brand = styled('a', {
+  '&:active': {
+    backgroundColor: 'red',
+  },
+  backgroundColor: '#0b0d0e',
+  color: 'white',
+  fontSize: '1.25rem',
   fontWeight: 700,
-  letterSpacing: '0.2em',
+  letterSpacing: '0.15em',
+  padding: '0.25rem',
+  textDecoration: 'none',
+})
+
+const Body = styled('main', {
+  paddingTop: HEADER_HEIGHT,
 })
 
 const Layout: React.FC = ({ children }) => {
   return (
     <div>
       <Header>
-        <Brand>Sorto.me</Brand>
+        <Link href="/">
+          <Brand href="/">Sorto.me</Brand>
+        </Link>
       </Header>
-      {children}
+      <Body>{children}</Body>
     </div>
   )
 }

@@ -6,7 +6,7 @@
     "export": "next build && next export"
   },
   "dependencies": {
-    "@stitches/react": "^0.0.2",
+    "@stitches/react": "^0.0.3-canary.4",
     "gray-matter": "^4.0.2",
     "next": "^10.0.5",
     "next-mdx-remote": "^2.1.1",

@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 
+import rehypePrism from '@mapbox/rehype-prism'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import hydrate from 'next-mdx-remote/hydrate'
 import renderToString from 'next-mdx-remote/render-to-string'
@@ -46,7 +47,8 @@ export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({
 
   const { content, meta } = parsePost(params.slug, source)
 
-  const body = await renderToString(content, { components, scope: meta })
+  const mdxOptions = { rehypePlugins: [rehypePrism] }
+  const body = await renderToString(content, { components, mdxOptions, scope: meta })
 
   return {
     props: {

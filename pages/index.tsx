@@ -2,13 +2,12 @@ import fs from 'fs'
 import path from 'path'
 import util from 'util'
 
-import matter from 'gray-matter'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 
 import IndexBody, { PostDatum } from 'components/IndexBody'
 import { getLayout } from 'components/Layout'
-import { POSTS_PATH, POST_FILES } from 'utils/post'
+import { parsePost, POSTS_PATH, POST_FILES } from 'utils/post'
 import { Page } from 'utils/types'
 
 type StaticProps = { posts: readonly PostDatum[] }
@@ -31,10 +30,10 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
     POST_FILES.map((fileName) => [fileName, path.join(POSTS_PATH, fileName)]).map(async ([fileName, filePath]) => {
       const source = await util.promisify(fs.readFile)(filePath)
 
-      const { data } = matter(source)
+      const { meta } = parsePost(fileName, source)
 
       return {
-        data,
+        meta,
         slug: fileName.replace('.mdx', ''),
       }
     }),

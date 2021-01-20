@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
+import { PostMetadata } from 'utils/post'
 import { styled } from 'utils/styler'
 
 type Props = {
@@ -8,12 +9,31 @@ type Props = {
 }
 
 export type PostDatum = {
-  data: Record<string, string>
+  meta: PostMetadata
   slug: string
 }
 
 const List = styled('ul', {
   listStyle: 'none',
+  marginTop: '2rem',
+})
+
+const Post = styled('a', {
+  '&:active': {
+    color: 'red',
+  },
+  '&:visited': {
+    opacity: 0.8,
+  },
+  color: '#0b0d0e',
+  display: 'flex',
+  flexDirection: 'column',
+  textDecoration: 'none',
+})
+
+const Title = styled('span', {
+  fontSize: '1.25rem',
+  fontWeight: 700,
 })
 
 const IndexBody: React.VFC<Props> = ({ posts }) => {
@@ -22,7 +42,10 @@ const IndexBody: React.VFC<Props> = ({ posts }) => {
       {posts.map((post) => (
         <li key={post.slug}>
           <Link href={`/post/${post.slug}`}>
-            <a>{post.data.title}</a>
+            <Post href={`/post/${post.slug}`}>
+              <Title>{post.meta.title}</Title>
+              <time dateTime={post.meta.created}>{post.meta.created}</time>
+            </Post>
           </Link>
         </li>
       ))}

@@ -1,18 +1,17 @@
 import fs from 'fs'
 import path from 'path'
 
-import matter from 'gray-matter'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import hydrate from 'next-mdx-remote/hydrate'
 import renderToString from 'next-mdx-remote/render-to-string'
 import Head from 'next/head'
 
 import { getLayout } from 'components/Layout'
-import { POSTS_PATH, POST_FILES } from 'utils/post'
+import { parsePost, PostMetadata, POSTS_PATH, POST_FILES } from 'utils/post'
 import { Page } from 'utils/types'
 
 type StaticParam = { slug: string }
-type StaticProps = { body: string; meta: Record<string, string> }
+type StaticProps = { body: string; meta: PostMetadata }
 
 const Post: Page<StaticProps> = ({ body, meta }) => {
   const content = hydrate(body)
@@ -30,18 +29,21 @@ Post.getLayout = getLayout
 export default Post
 
 export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({ params }) => {
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const filePath = path.join(POSTS_PATH, `${params!.slug}.mdx`)
+  if (!params?.slug) {
+    throw new Error('Slug must exist')
+  }
+
+  const filePath = path.join(POSTS_PATH, `${params.slug}.mdx`)
   const source = fs.readFileSync(filePath)
 
-  const { content, data } = matter(source)
+  const { content, meta } = parsePost(params.slug, source)
 
-  const body = await renderToString(content, { scope: data })
+  const body = await renderToString(content, { scope: meta })
 
   return {
     props: {
       body,
-      meta: data,
+      meta,
     },
   }
 }

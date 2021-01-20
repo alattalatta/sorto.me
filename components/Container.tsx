@@ -8,4 +8,5 @@ export const Container = styled('div', {
   maxWidth: 1240,
   paddingLeft: CONTAINER_PADDING,
   paddingRight: CONTAINER_PADDING,
+  width: '100%',
 })

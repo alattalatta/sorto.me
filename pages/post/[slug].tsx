@@ -29,7 +29,7 @@ const Post: Page<StaticProps> = ({ body, meta }) => {
       <Head>
         <title key="title">{meta.title}</title>
       </Head>
-      <PostHero>{meta.title}</PostHero>
+      <PostHero created={meta.created} excerpt={meta.excerpt} title={meta.title} />
       <PostBody>{content}</PostBody>
     </article>
   )

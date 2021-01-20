@@ -23,13 +23,14 @@ const List = styled('ul', {
 
 const Post = styled('a', {
   '&:active': {
-    color: 'red',
+    backgroundColor: '#0ff',
+    color: '#fff',
   },
-  '&:visited': {
-    opacity: 0.8,
+  '&:hover': {
+    color: '#f00',
   },
   color: '#0b0d0e',
-  display: 'flex',
+  display: 'inline-flex',
   flexDirection: 'column',
   textDecoration: 'none',
 })

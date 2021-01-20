@@ -18,7 +18,10 @@ const Header = styled('nav', {
 
 const Brand = styled('a', {
   '&:active': {
-    backgroundColor: 'red',
+    backgroundColor: '#0ff',
+  },
+  '&:hover': {
+    backgroundColor: '#f00',
   },
   backgroundColor: '#0b0d0e',
   color: 'white',

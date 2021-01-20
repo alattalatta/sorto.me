@@ -2,6 +2,11 @@
   box-sizing: border-box;
 }
 
+*::selection {
+  background: red;
+  color: white;
+}
+
 html {
   font-family: 'Nanum Gothic Coding', monospace;
 }

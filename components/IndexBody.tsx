@@ -5,6 +5,7 @@ import { PostMetadata } from 'utils/post'
 import { styled } from 'utils/styler'
 
 import { Container } from './Container'
+import { Anchor } from './basics'
 
 type Props = {
   posts: readonly PostDatum[]
@@ -21,15 +22,7 @@ const List = styled('ul', {
   paddingLeft: 0,
 })
 
-const Post = styled('a', {
-  '&:active': {
-    backgroundColor: '#0ff',
-    color: '#fff',
-  },
-  '&:hover': {
-    color: '#f00',
-  },
-  color: '#0b0d0e',
+const Post = styled(Anchor, {
   display: 'inline-flex',
   flexDirection: 'column',
   textDecoration: 'none',

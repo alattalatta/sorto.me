@@ -3,34 +3,28 @@ import path from 'path'
 
 import rehypePrism from '@mapbox/rehype-prism'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import hydrate from 'next-mdx-remote/hydrate'
 import renderToString from 'next-mdx-remote/render-to-string'
+import { MdxRemote } from 'next-mdx-remote/types'
 import Head from 'next/head'
 import React from 'react'
 
 import { getLayout } from 'components/Layout'
-import PostBody from 'components/PostBody'
+import PostBody, { mdxComponents } from 'components/PostBody'
 import PostHero from 'components/PostHero'
 import { parsePost, PostMetadata, POSTS_PATH, POST_FILES } from 'utils/post'
 import { Page } from 'utils/types'
 
 type StaticParam = { slug: string }
-type StaticProps = { body: string; meta: PostMetadata }
-
-const components = {
-  // h1: PostHero,
-}
+type StaticProps = { body: MdxRemote.Source; meta: PostMetadata }
 
 const Post: Page<StaticProps> = ({ body, meta }) => {
-  const content = hydrate(body, { components })
-
   return (
     <article>
       <Head>
         <title key="title">{meta.title}</title>
       </Head>
       <PostHero created={meta.created} excerpt={meta.excerpt} title={meta.title} />
-      <PostBody>{content}</PostBody>
+      <PostBody>{body}</PostBody>
     </article>
   )
 }
@@ -48,7 +42,7 @@ export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({
   const { content, meta } = parsePost(params.slug, source)
 
   const mdxOptions = { rehypePlugins: [rehypePrism] }
-  const body = await renderToString(content, { components, mdxOptions, scope: meta })
+  const body = await renderToString(content, { components: mdxComponents, mdxOptions, scope: meta })
 
   return {
     props: {

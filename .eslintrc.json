@@ -10,7 +10,6 @@
   ],
   "rules": {
     "eqeqeq": ["error", "always"],
-    "sort-keys": "warn",
     "import/order": [
       "warn",
       {

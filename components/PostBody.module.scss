@@ -4,10 +4,15 @@
  * @author Ahmad Awais <https://twitter.com/MrAhmadAwais/>
  * @support Follow/tweet at https://twitter.com/MrAhmadAwais/
  */
-.postBody {
+.prismStyler {
   :global {
+    code[class*='language-'] {
+      font-family: 'Nanum Gothic Coding', monospace;
+    }
+
     code[class*='language-'],
     pre[class*='language-'] {
+      border-radius: 4px;
       color: #9efeff;
       direction: ltr;
       text-align: left;
@@ -15,19 +20,13 @@
       word-spacing: normal;
       word-break: normal;
     
-      -moz-tab-size: 4;
-      -o-tab-size: 4;
-      tab-size: 4;
+      tab-size: 2;
     
-      -webkit-hyphens: none;
-      -moz-hyphens: none;
-      -ms-hyphens: none;
       hyphens: none;
     
-      font-family: 'Operator Mono', 'Fira Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
       font-weight: 400;
-      line-height: 25px;
-      letter-spacing: 0.5px;
+      line-height: 1.5;
+      letter-spacing: 0.075em;
       text-shadow: 0 1px #222245;
     }
     
@@ -45,7 +44,7 @@
     
     /* Code blocks. */
     pre[class*='language-'] {
-      padding: 2em;
+      padding: 2rem;
       margin: 1em 0;
       overflow: auto;
     }

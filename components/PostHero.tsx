@@ -4,7 +4,7 @@ import { styled } from 'utils/styler'
 
 import { Container, CONTAINER_PADDING } from './Container'
 
-const HeroContainer = styled('div', {
+const HeroContainer = styled('header', {
   alignItems: 'center',
   background: 'black',
   color: 'white',

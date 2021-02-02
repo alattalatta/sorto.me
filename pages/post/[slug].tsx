@@ -21,7 +21,11 @@ const Post: Page<StaticProps> = ({ body, meta }) => {
   return (
     <article>
       <Head>
-        <title key="title">{meta.title}</title>
+        <title key="title">Sorto.me - {meta.title}</title>
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={`${meta.title} - Sorto.me`} />
+        <meta property="og:description" content={meta.excerpt} />
+        <meta property="article:published_time" content={meta.created} />
       </Head>
       <PostHero created={meta.created} excerpt={meta.excerpt} title={meta.title} />
       <PostBody>{body}</PostBody>

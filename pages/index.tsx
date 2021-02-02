@@ -29,16 +29,19 @@ export default Index
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   const postData = await Promise.all(
-    POST_FILES.map((fileName) => [fileName, path.join(POSTS_PATH, fileName)]).map(async ([fileName, filePath]) => {
-      const source = await util.promisify(fs.readFile)(filePath)
+    [...POST_FILES]
+      .reverse()
+      .map((fileName) => [fileName, path.join(POSTS_PATH, fileName)])
+      .map(async ([fileName, filePath]) => {
+        const source = await util.promisify(fs.readFile)(filePath)
 
-      const { meta } = parsePost(fileName, source)
+        const { meta } = parsePost(fileName, source)
 
-      return {
-        meta,
-        slug: fileName.replace('.mdx', ''),
-      }
-    }),
+        return {
+          meta,
+          slug: fileName.replace('.mdx', ''),
+        }
+      }),
   )
 
   return {

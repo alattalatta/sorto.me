@@ -22,6 +22,12 @@ const List = styled('ul', {
   paddingLeft: 0,
 })
 
+const Item = styled('li', {
+  '& + &': {
+    marginTop: '2em',
+  },
+})
+
 const Post = styled(Anchor, {
   display: 'inline-flex',
   flexDirection: 'column',
@@ -38,14 +44,14 @@ const IndexBody: React.VFC<Props> = ({ posts }) => {
     <Container>
       <List>
         {posts.map((post) => (
-          <li key={post.slug}>
+          <Item key={post.slug}>
             <Link href={`/post/${post.slug}`}>
               <Post href={`/post/${post.slug}`}>
                 <Title>{post.meta.title}</Title>
                 <time dateTime={post.meta.created}>{post.meta.created}</time>
               </Post>
             </Link>
-          </li>
+          </Item>
         ))}
       </List>
     </Container>

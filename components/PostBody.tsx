@@ -77,7 +77,7 @@ const Heading3 = styled(Heading, {
   fontSize: '1.5em',
 })
 
-const headingOf = (level: 2 | 3 | 4, Component: typeof Heading = Heading): React.FC => {
+const headingOf = (level: 2 | 3 | 4 | 5, Component: typeof Heading = Heading): React.FC => {
   let count = 0
 
   return ({ children }) => {
@@ -122,6 +122,7 @@ export const mdxComponents: MdxRemote.Components = Object.freeze({
   h1: headingOf(2, Heading2),
   h2: headingOf(3, Heading3),
   h3: headingOf(4),
+  h4: headingOf(5),
   inlineCode: styled('code', {
     backgroundColor: 'rgba(0, 0, 0, .05)',
     borderRadius: '4px',
@@ -129,6 +130,10 @@ export const mdxComponents: MdxRemote.Components = Object.freeze({
     fontFamily: `'Nanum Gothic Coding', monospace`,
     paddingRight: '.4em',
     paddingLeft: '.4em',
+  }),
+  img: styled('img', {
+    display: 'block',
+    maxWidth: '100%',
   }),
   Callout,
 })

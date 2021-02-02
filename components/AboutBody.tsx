@@ -1,6 +1,7 @@
 import { styled } from 'utils/styler'
 
 import { Container } from './Container'
+import { Anchor } from './basics'
 
 const AlignLeft = styled('div', {
   textAlign: 'left',
@@ -14,10 +15,10 @@ const AboutBody: React.VFC = () => {
         <p>Web front-end developer</p>
         <ul>
           <li>
-            <a href="https://github.com/alattalatta">GitHub</a>
+            <Anchor href="https://github.com/alattalatta">GitHub</Anchor>
           </li>
           <li>
-            <a href="https://www.linkedin.com/in/%EC%A2%85%EB%A5%A0-%EC%96%91-9a740b14b/">LinkedIn</a>
+            <Anchor href="https://www.linkedin.com/in/%EC%A2%85%EB%A5%A0-%EC%96%91-9a740b14b/">LinkedIn</Anchor>
           </li>
         </ul>
       </AlignLeft>

@@ -1,0 +1,441 @@
+---
+title: 전역 상태 관리는 그만, SWR을 써보자
+excerpt: 전역 상태 "게 섯거라"... Vercel의 SWR, 쉽고 간편하게 서버 데이터를 가져오다
+---
+
+# 먼 곳에서 가져오기
+
+기술 스택에 AJAX를 적어 내던 시대도 있었으나, 이제 웹 어플리케이션에서 외부 데이터를 서버에서 가져오는 것은 숨 쉬듯 자연스러운 과정이 됐다. 자연스럽게 그 수단 역시 `XMLHttpRequest`부터 `$.ajax`, `axios`, `fetch`까지 점차 변화하고 있다.
+
+그러면 React에서는 데이터를 어떻게 관리하고 사용해야 할까?
+
+## 일상적인 흐름
+
+소규모 프로젝트에서는 간단한 커스텀 훅과 `useEffect()`로도 데이터를 가져올 수 있겠다.
+
+```ts
+function useFetch<T>(initialValue: T): [T, (url: string) => Promise<void>] {
+  const [response, setResponse] = useState(initialValue)
+  const fetch = async (url: string): Promise<void> => {
+    setResponse(await globalThis.fetch(url).then(p => p.json()))
+  }
+
+  return [response, fetch]
+}
+
+// ... 
+
+const [response, fetch] = useFetch<Foo>(null)
+useEffect(() => fetch(url), [])
+```
+
+하지만 다양한 곳에서 다양한 원격 데이터를 사용해야 할 필요가 생기게 되면 금새 한계에 도달한다. 최상위 컴포넌트에서만 데이터를 가져오면 앱의 규모가 커짐에 따라 프롭 드릴링이 빈번해져서 컴포넌트끼리 마구 엉키게 되고, 그렇다고 각지의 컴포넌트가 각자 가져오면 데이터에 변화를 줘야 할 때 서로 싱크를 맞추는게 거의 불가능에 가까워진다. 그러므로 React와 분리된, Redux나 MobX처럼 별도의 "상태 스토어"를 사용해, 원격 데이터를 **전역적**으로 관리하곤 한다. 그러니 자연스럽게 데이터의 형태 역시 **전역 상태**가 된다.
+
+```ts
+class TodoStore {
+  constructor(public notes: Note[], public todo: Todo | null) {}
+
+  async fetchNotes(): Promise<void> {
+    this.notes = await fetch(notesURL).then(p => p.json())
+  }
+
+  async fetchTodo(id: number): Promise<void> {
+    this.todo = await fetch(todoURL(id)).then(p => p.json())
+  }
+}
+
+// ...
+
+useEffect(() => {
+  store.fetchNotes()
+  store.fetchTodo(id)
+}, [])
+```
+
+데이터를 가져오기만 하면 끝이 아니다. 더 부드러운 UX를 위해서는 사용자가 로딩과 오류 상태도 인지할 수 있어야 하므로 각각에 대응하는 상태 역시 추가해야 한다. 따라서 데이터 종류가 늘어나면 보일러 플레이트 코드와 나의 부담은 더 불어나게 된다. 중복 코드를 적당히 묶어서 빼내게 되더라도, 데이터가 다양해짐에 따라 이도 저도 아니게 되는 스토어의 목적과, 어쩔 수 없이 커지는 덩치때문에 유지보수를 하다보면 어질어질한 경우가 많았다.
+
+게다가, 다양한 상황과 액션에 따라 데이터를 업데이트 해야 하면 하나하나 대응해서 명령을 내려줘야 한다는 점도 있다.
+
+```ts
+// 1.
+useEffect(() => {
+  store.fetchNotes()
+}, [])
+
+// 2.
+const handleSubmit = (): void => { store.fetchNotes() }
+
+// 3, 4, 5...
+```
+
+## 전역 상태가 상태일까
+
+사실 원격 데이터, 더 나아가 **전역** 상태 스토어가 정말 필요한지 의문을 가진 내용의 글은 이전부터 종종 보이곤 했다. 또한 (그의 모든 말이 무조건 맞다는 것은 아니지만) Dan Abramov는 일반적인 만물 Redux화 사용법에 대해 부정적인 입장을 보여주는데, [전역 상태에 관한 얘기를 함께 꺼낸 것은](https://twitter.com/derpoho/status/1241768580150169602) 그 입장의 연장선이라고 봐도 될 것 같다.
+
+> ([@Kent C. Dodds](https://twitter.com/kentcdodds/status/1228727040238473216?s=20))
+> 우리가 "애플리케이션 상태"라고 부르는 것 중 많은 부분은 사실상 서버 상태의 클라이언트측 캐시에 불과합니다. 그리고 여느 캐시와 같이, 무효화는 어려운 일입니다. (중략)
+>
+> 제가 마주쳤거나 만든 앱은 대부분 데이터를 업데이트하기 위한 요청을 보낸 후, 성공 응답이 내려오면 관련 상태 (클라이언트측 캐시) 또한 업데이트합니다. 낙관적 UI*의 경우 순서가 거꾸로일 수도 있습니다.
+>
+> 그러나 그 순서에 상관 없이, 방금 업데이트한 데이터를 제외하면 [클라이언트측] 캐시의 나머지 데이터가 최신 상태라는 것은 어떻게 알 수 있나요? 어쩌면 다른 사용자가 다른 개체의 데이터(더 나아가면 같은 개체의 다른 속성)를 바꿨을 수도 있는데요. (중략)
+>
+> 일관성과 유효성 vs. 자원 관리의 균형이겠지만, 많은 수의 앱이 주의를 유효성으로 기울이면 구조도 더 간단해지면서 사용자 경험도 향상될 것이라고 생각합니다.
+
+> ([@Sebastian Markbåge](https://twitter.com/sebmarkbage/status/1228758860644544514?s=20))
+> 최상위 DOM 노드가 저장하는 상태는 `window.location`과 `window.scrollTop` 정도를 빼면 거의 말이 되지 않습니다. `window.businessLogic`은 이상해요. 마치 하나의 탭에서만 동작하던 Outlook for Web 같죠. 다른 탭에서 쓰고 싶지 않을 이유가 뭐가 있나요?
+
+*Optimistic UI. 데이터 업데이트 요청을 보낸 후, 응답이 오기 전에 성공을 가정하고 UI를 업데이트함. 
+
+이런 흐름이 있다는 것을 처음 알았을 때도 그랬지만, 요즘은 좀 더 분명한 생각이 든다. 서버의 응답을 그대로 스토어에 넣은 다음에 이걸 "앱의 전역 상태"라고 부르는 것은... 애초에 이상한 일이었던 것은 아닐까? 데이터를 가져오는 과정과, 데이터를 관리하는 스토어가 복잡해지는건 사실 내가 캐시를 관리하고 있어서 나타나는 현상일지. 그러나 처음 이 주제를 봤을 땐 현재 상황을 어떻게 타개해야 할지 몰라서, 머리에 담아만 두고 행동은 할 수 없었다.
+
+# [여기에 [SWR](https://swr.vercel.app/) 입력]
+
+Vercel은 React 대표 서버사이드 렌더링 프레임워크인 Next.js의 개발사로, 지금 말하려는 라이브러리인 SWR을 만든 곳이기도 하다. 글 작성 시점에는 SWR의 버전이 아직 1.0.0에 도달하지 못했지만, 의외로 역사는 오래 되어 최초 배포가 2019년 10월 30일에 있었다.
+
+<Callout color="warn" icon="💡" label="참고">
+  공식 문서가 Next.js와의 사용법을 포함하긴 하지만, 꼭 Next.js와 함께 사용할 필요는 없습니다.
+</Callout>
+
+npm의 라이브러리 이름이 [수도 없이 많은 어휘를 소진](https://hackernoon.com/what-will-happen-when-we-run-out-of-names-for-javascript-frameworks-6d91c6005d40)한 것은 이젠 [JavaScript 삼위일체](https://www.reddit.com/r/ProgrammerHumor/comments/6tifn2/the_holy_trinity_and_javascript/) 다음 갈 정도로 대표적인 밈 수준으로, 심지어는 [아직 npm에 없는 영단어를 알아내는 패키지](https://github.com/words/english-words-that-are-not-yet-npm-packages)도 존재한다. 그런데 이름공간도 없이 달랑 세 글자를 당당하게 차지한 SWR은 대체 무슨 뜻일까?
+
+> The name “SWR” is derived from stale-while-revalidate, a HTTP cache invalidation strategy popularized by [HTTP RFC 5861](https://tools.ietf.org/html/rfc5861). SWR is a strategy to first return the data from cache (stale), then send the fetch request (revalidate), and finally come with the up-to-date data.
+
+HTTP `Cache-Control` 응답 헤더의 `stale-while-revalidate`는 캐시 전략 중 하나로, 캐시가 유효하다면 먼저 캐시 데이터를 반환(stale, while...)하고, 요청은 별도로 진행(revalidate)한 후, 응답이 오면 최신 데이터로 캐시를 업데이트한다. 라이브러리로서의 SWR이라는 이름이 바로 이 `stale-while-revalidate`의 두문자어라는 것을 알면, 곧바로 캐시를 사용하는 라이브러리임을 추측할 수 있다.
+
+## 구문
+
+```tsx
+const fetcher = url => fetch(url).then(p => p.json())
+
+const Component: React.VFC<Props> = ({ id }) => {
+  const { data, error } = useSWR(`/user/${id}`, fetcher)
+
+  if (!data) {
+    return <p>Loading...</p>
+  }
+  
+  if (!error) {
+    return <p>{error.message}</p>
+  }
+
+  return (
+    <div>
+      <p>{user.name}</p>
+    </div>
+  )
+}
+```
+
+`useEffect()`를 따로 쓰지 않아도 된다는 점에서, 사용법은 맨 처음 정의했던 `useFetch()` 보다도 단순하다.
+
+SWR은 `useSWR()` 훅을 사용해 데이터를 가져오며, `data?`와 `error?`를 포함한 객체를 반환한다. 각각의 분명한 이름대로, `data`는 응답 데이터, `error`는 (발생했다면) 오류를 담고 있게 된다. 호출 시그니쳐는 다음과 같다.
+
+```ts
+useSWR(key, fetcher[, options])
+```
+
+- `key`: API의 고유 키. 메서드 다수를 허용하지 않으면 API의 URL 경로 역시 고유하므로 그걸로 지정해도 된다.
+- `fetcher`: 데이터를 가져오는 비동기 함수. API를 실제로 요청하는 방법을 정의할 수 있다. 즉, `useSWR()`은 `Promise`를 반환하기만 하면 그것이 `window.fetch`, `axios`, `ky`, 아니면 GraphQL인지 전혀 상관하지 않는다. 위 예제 코드의 `fetcher`를 보면 알 수 있듯 스스로도 하나의 매개변수를 받을 수 있다.
+  - `key`: `useSWR()`에 지정한 `key`를 그대로 받는다. 예제에서도 키로 API의 URL을 지정했기 때문에 `useSWR(key, fetcher)`처럼 사용할 수 있었다.
+
+## 전역 상태와의 비교
+
+전통적인 방법에서라면 최상위 컴포넌트에서 스토어에 접근해 데이터를 가져오고, 프롭 또는 컴포넌트 조합을 통해 데이터를 가져온다.
+
+```tsx
+const Page = () => {
+  const { state, fetchState } = useRemoteState()
+
+  // useEffect()...
+
+  return (
+    <div>
+      <Foo state={state} />
+      <Bar />
+      <Baz state={state} />
+    </div>
+  )
+}
+```
+
+이렇게 원격 데이터가 하나뿐일 땐 체감하기 힘들지만, 온갖 데이터가 다 필요해지면 `<Foo>`와 `<Baz>` 컴포넌트를 부모에서 떼어내기 힘들어진다. 분리하기 힘들어진다는 것은 테스트에 불리한 코드가 되어 나중에 곤란해질 수 있다는 뜻이기도 한다. 프롭 드릴링은 덤. 또한 원격 데이터를 사용하는 곳은 `<Foo>`와 `<Baz>`인데, 그걸 가져오는 건 `state`를 직접 사용하지도 않는 최상위 컴포넌트라는 것도 주목할만 하다.
+
+SWR을 사용하면 원격 데이터로 인한 컴포넌트 의존성을 많이 걷어낼 수 있으면서도, 데이터와 실제 사용처 컴포넌트의 사이에는 명확한 관계를 설정할 수 있다.
+
+우선 데이터가 필요한 컴포넌트가 두 개 이상이므로, 훅의 재사용성을 살리기 위해 전용 훅을 생성하는 것부터 시작한다.
+
+```ts
+const useRemomteState = (id) => {
+  const { data, error } = useSWR('/state', fetcher)
+
+  return {
+    error,
+    state: data,
+  }
+}
+```
+
+그 후, `<Foo>`와 `<Baz>` 각각의 안에서 `useRemoteState()` 훅을 사용하면 된다.
+
+```ts
+const Foo = () => {
+  const { error, state } = useRemoteState()
+  // ...
+}
+
+const Baz = () => {
+  const { error, state } = useRemoteState()
+}
+```
+
+이로써 원격 데이터가 사용처와 더 뚜렷한 관계를 나타내게 되고, 반대로 상위 컴포넌트와의 결합은 걷어내는 결과를 얻을 수 있다.
+
+"`useEffect()` 썼을 때처럼, API를 `<Foo>`에서 한 번, `<Baz>`에서 한 번, 두 번을 호출하게 되지 않을까? 아무리 '일관성/유효성 vs. 자원 관리'라지만 실제 서비스에서 쓰기엔 힘들지 않을까?" 라는 궁금증이 생길 수 있다. SWR은 일정 시간 내에 같은 키를 가진 다수의 요청이 발생해도 최초 한 번만 전송하며, 후속 요청은 캐시의 값을 사용하므로 많은 곳에서 데이터를 가져와도 걱정하지 않을 수 있다.
+
+## 캐시, 캐시
+
+중복 요청 제거는 내가 생각하는 캐시의 큰 장점 중 하나로, SWR을 부담 없이 사용해서 컴포넌트 경계를 더 잘 확보할 수 있는 원동력이다. 게다가 개발자가 캐시 관리를 신경쓰지 않아도 되기에 쉽게 구현할 수 있는 UI 베스트 패턴도 있다. 현재 API 상태를 나타내는 대시보드를 상상해볼 때...
+
+```tsx
+const Component: React.VFC<Props> = () => {
+  // 주기적으로 호출해서 업데이트 한다고 가정
+  const { data, error } = useSWR(`/status`, fetcher)
+
+  if (!data) {
+    return <LoadingSplash>불러오는 중...</LoadingSplash>
+  }
+  
+  if (!error) {
+    return <Message>상태를 가져오지 못했습니다. 잠시 후 다시 시도합니다.</Message>
+  }
+
+  return (
+    <div>
+      <HealthIndicator status={data.health} />
+      <p>{data.health.label}</p>
+    </div>
+  )
+}
+```
+
+1. 데이터가 없으면 (= 아직 가져오는 중이면) 로딩 중임을 나타낸다.
+2. 오류가 발생했으면 오류를 표시한다.
+3. 정상적으로 데이터를 가져왔으면 화면에 그린다.
+
+그러나 이 방법은 최적의 사용자 경험을 제공하지는 않는데, 이전에 API 상태를 가져온 적이 있더라도 다음에 불러오는 중엔 화면에 아무것도 보여주지 않기 때문이다. `/status`가 가벼운 API라고 해도 화면의 깜빡임으로 인해 좋지 않은데, 무거운 API라면 더더욱 stale한 데이터라도 보여주고, 대신 최신 상태가 아니라고 알려주는 편이 나을 것이다. 오류기 빌셍헸을 때도 마찬가지로, 이전 데이터가 존재한다면 영양가 없는 오류 경고만 보여주지 말고 받아온 적 있는걸 보여주는 편이 더 부드러운 UX를 제공하지 않을까?
+
+<Callout color="warn" icon="💡" label="참고">
+  무조건 이 방식이 최선인 것은 아닙니다.
+</Callout>
+
+그렇기에 SWR은 `data`와 `error` 값을 함께 내려줄 수도 있고, 둘 다 존재하지 않을 수도 있다. 따라서 올바른 사용법은 다음과 같다.
+
+```tsx
+const Component: React.VFC<Props> = () => {
+  // 주기적으로 호출해서 업데이트 한다고 가정
+  const { data, error } = useSWR('/status', fetcher)
+
+  return (
+    <div>
+      {!data && !error && (<LoadingSplash>불러오는 중...</LoadingSplash>)}
+      {data && (
+        <HealthIndicator status={data.health} />
+        <p>{data.health.label}</p>
+      )}
+      {error && <Message>상태를 가져오지 못했습니다. 잠시 후 다시 시도합니다.</Message>}
+    </div>
+  )
+}
+```
+
+1. 데이터도, 오류도 존재하지 않으면 전체화면 오버레이로 표시한다.
+2. 받아온 데이터가 있으면 데이터를 그린다. 또한 오류가 발생했으면 오류를 표시한다.
+
+그런데 데이터가 존재하는 상황에서도 업데이트를 할 때 알려주고 싶으면 어떻게 할까? 캐시에 데이터가 존재하는 한 `!data`로는 알아낼 수 없을텐데.
+
+`useSWR()`이 반환하는 객체를 조사해보면 `isValidating`이라는 속성이 존재함을 알 수 있는데, 이 값을 통해 현재 SWR이 해당 데이터를 업데이트(로딩)하는 중인지 알 수 있다. 즉, 완전한 구현은 `data`, `error`, `isValidating`을 조합해서 할 수 있다.
+
+```tsx
+const { data, error, isValidating } = useSWR('/status', fetcher)
+
+return (
+  <div>
+      {!data && !error && (<LoadingSplash>불러오는 중...</LoadingSplash>)}
+      {data && isValidating && <LoadingSpinner />}
+      {data && (
+        <HealthIndicator status={data.health} />
+        <p>{data.health.label}</p>
+      )}
+      {error && <Message>상태를 가져오지 못했습니다. 잠시 후 다시 시도합니다.</Message>}
+  </div>
+)
+```
+
+## 컴포넌트 바운드 페이지네이션
+
+캐시가 중요한 개념을 차지하고 있는 만큼 그에 관한 글이 길어졌으나, SWR을 쓰면서 가장 인상적이었던 부분은 컴포넌트와 원격 데이터의 결합이다. 정적인 상황에서는 쓰기 쉽구나- 하고 끝날 수도 있지만, 페이지네이션처럼 동적인 상황에서는 꽤 재밌었다.
+
+"더 불러오기" 버튼을 누르면 차트 데이터를 추가로 불러오는 상황을 가정해보면, 일반 스토어 아래에서는 다음과 같이 개발할 수 있겠다.
+
+```tsx
+class DataStore {
+  dataSets: DataSet[]
+  page: number = 1
+
+  async fetch() {
+    const data = await ky.get(`/data/${this.page}`, LIMIT).json()
+    this.data = this.data.concat(data)
+    this.page += 1
+  }
+}
+
+const ChartContainer = () => {
+  declare const store: DataStore
+
+  return (
+    <div>
+      <Chart>
+        {store.dataSets.map((dataSet) => <LineGraph key={dataSet.key} data={dataSet} />)}
+      </Chart>
+      <button type="button" onClick={store.fetch}>더 불러오기</button>
+    </div>
+  )
+}
+```
+
+하지만 SWR은 개발자 입장에서는 매번 API를 새롭게 호출하는 것과 다르지 않으므로, API의 응답을 하나의 값에 모아놓고 쌓아가며 그리는 방식은 곤란하다. 그러면 단순히 API 호출을 `page`만큼 반복할 수 있을까?
+
+```tsx
+const ChartContainer = () => {
+  const [page] = useState(1)
+
+  for (let i = 0; i < page; i++) {
+    ?? = useSWR(`/data/${i}`)
+  }
+  // ??
+}
+```
+
+이 상태로는 `useSWR()`의 반환 값을 사용할 방법도 없지만, 무엇보다 React 훅은 반복문 내에 배치할 수 없다는 점을 기억해야 한다. 훅을 반복해서 사용하려면 컴포넌트를 반복해야 한다. `useSWR()`을 한 번 호출하는 컴포넌트를 선언해서 사용하자.
+
+```tsx
+const ChartDataRenderer = ({ page }) => {
+  const { data } = useSWR(`/data/${i}`)
+
+  return <LineGraph data={data} />
+}
+
+const ChartContainer = () => {
+  const [page, setPage] = useState(1)
+
+  return (
+    <div>
+      <Chart>
+        {repeat(page, i => <ChartDataRenderer page={i} />)}
+      </Chart>
+      <button type="button" onClick={() => setPage(page + 1)}>더 불러오기</button>
+    </div>
+  )
+}
+```
+
+`<ChartContainer>`는 이전과 거의 비슷한 형태로, `<LineGraph>`를 그대로 쓰는 대신 `<ChartDataRenderer>`를 사용하는 정도이다. 하지만 잘 살펴보면, 하나의 거대한 모놀리딕 데이터(`dataSets: DataSet[]`)를 관리할 필요가 없다는 점이 크게 다가온다. 따라서 다양한 데이터를 조합할 때 최소한의 추가 코드만으로 구현할 수 있다.
+
+```tsx
+const ChartContainer = () => {
+  const [page, setPage] = useState(1)
+
+  const repeatPage= repeat(page)
+
+  return (
+    <div>
+      <Chart>
+        {repeatPage(i => <TemperatureRenderer page={i} />)}
+        {repeatPage(i => <PopulationRenderer page={i} />)}
+        {/* 필요한 만큼 추가하기 */}
+      </Chart>
+      <button type="button" onClick={() => setPage(page + 1)}>더 불러오기</button>
+    </div>
+  )
+}
+```
+
+## 데이터 재검증
+
+서버의 상태가 바뀔 것을 기대하는 경우 직접 기존 캐시를 무효화하여, 다음 요청 시 변경사항이 반영된 최신 응답을 사용해야 한다. SWR은 캐시의 키를 사용해 무효화를 할 수 있다.
+
+```tsx
+import useSWR, { mutate } from 'swr'
+
+const PostComments = ({ id }) => {
+  const { data } = useSWR(`/post/${id}/comments`)
+
+  declare const newComment // POST할 댓글 정보
+
+  const postComment = async () => {
+    const path = `/post/${id}/comments`
+    await ky.post(path, newComment)
+
+    // 모든 캐시 제거
+    // mutate()
+
+    // 주어진 키에 해당하는 캐시만 제거
+    mutate(path)
+  }
+
+  return (
+    <div>
+      <Comments data={data} />
+      <CommentForm onSubmit={postComment} />
+    </div>
+  )
+}
+```
+
+그러나 `useSWR()`에 이미 지정한 키를 여기저기 각자 쓰게 되면 나중에 바꿀 때 골치가 꽤 아플테니, `useSWR()`은 키를 이미 지정한 `mutate()` 함수를 반환해준다.
+
+```ts
+const path = `/post/${id}/comments`
+
+const { data, mutate } = useSWR(path)
+
+const postComment = async () => {
+  await ky.post(path, newComment)
+
+  mutate() // 이미 키가 `/post/${id}/comments`로 지정된 상태
+}
+```
+
+또한 POST 요청이 끝나기 전에 캐시부터 로컬 데이터로 업데이트하고 이후에 재검증하는 패턴도 간편하게 만들 수 있어서, 적합한 곳에만 선택적으로 낙관적 UI를 구현하기도 쉽다.
+
+```ts
+const postComment = async () => {
+  mutate([...comments, newComment], false) // 로컬 업데이트
+
+  await ky.post(path, newComment)
+
+  mutate() // 재검증
+}
+```
+
+### 자동 재검증
+
+SWR은 특정 상황에 자동으로 데이터 재검증을 수행하도록 설정할 수도 있다. 기본값에서는 최소화됐던 브라우저를 다시 열거나, 절전 상태였던 컴퓨터가 다시 켜지는 등 마지막 데이터를 가져온 뒤 시간이 꽤 지났을법한 상황에서도 최신 데이터가 준비되는 즉시 확인할 수 있도록, 사용자가 브라우저 포커스를 재획득하는 경우 자동으로 재검증을 한다. 마찬가지로 인터넷 연결이 끊어졌다가 다시 회복됐을 때에도 재검증을 수행한다.
+
+또한 특정 시간 간격마다 재검증을 시도할 수도 있으므로 시간에 따른 데이터 유효성이 중요한 경우에도 깨끗한 DX/UX를 제공한다.
+
+# 정리하기
+
+SWR은 개발자의 큰 개입 없이도 캐시를 사용한 끊김 없는 UI와, 자동/수동 재검증을 통해 원격 데이터의 유효성을 항상 유지할 수 있는 방법을 제공한다. 또한 데이터를 가져오는 건 웹 앱에서 가장 복잡한 부분 중 하나이므로 상당한 코드를 절감할 수 있는데, SWR 스스로의 사용법은 훅을 써본 적이 있다면 누구나 사용할 수 있을 정도로 간단하며 라이브러리의 크기 역시 무겁지 않다.
+
+웹 앱에서 전역 상태를 사용하는 이유 중 작지 않은 부분이 원격 데이터라고 생각하는데, SWR과 로컬 상태만으로도 충분히 가능한 규모라면 정말 이 상태가 전역이어야 하는 것인지 고려해봐야 하지 않을까. 한국에서 가장 많은 점유율을 차지하는 Redux를 단독으로 쓴다는 곳은 보지 못했다.
+
+시간에 따른 상태의 변화를 기록해야 할 때 처럼 [Redux가 **필요**할 수도](https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367) 있다. 아니면 버그 리포트에 앱의 상태를 통째로 덤핑해야 해서 MobX가 필요할 수도 있다. SWR은 "상태"를 관리하지 않으므로 Redux와 함께 쓰지 않을 법도 없으나, 굳이 추가해야 할 필요도 없다. 라이브러리가 아무리 좋아보여도 자신에게 맞는지는 충분히 생각해볼 여지가 있다.
+
+전역적인 모달 관리가 필요하거나 앱의 전역 사이드바를 열고 닫아야 하는 등, 뷰 레이어만을 위한 전역 상태가 필요한 상황도 충분히 가능하다. 그래도, 복잡한 원격 데이터 관리를 SWR에 위임하면 나머지 뷰 상태 관리는 [jotai](https://github.com/pmndrs/jotai)처럼 훨씬 단순한 API로 이전하는 선택지도 생긴다.
+
+SWR은 캐시를 사용하므로, API 엔드포인트는 클라이언트의 명시적인 행동 없이는 멱등성을 유지해야 한다는 점을 주의해야 한다. 다른 클라이언트의 행동으로 인해 API 응답이 달라지는 것은 어쩔 수 없고, 그런 상황에서 데이터를 최대한 유효한 상태로 유지하기 위해 SWR이 다양한 재검증 방법을 제공하는 것이지만, 같은 클라이언트가 같은 요청을 5번 보낼 때 매번 다른 응답이 내려오는 상황이라면 캐시로 인해 후속 요청은 전송하지 않으므로 변화가 모두 유실된다. 명세를 준수하는 API라면 다행히 GET 메서드는 멱등적이어야 하므로 아무 문제가 없다. 그러나 항상 모든 것이 올바른 이상적인 경우는 없으니 주변 상황에 따라 도입 여부를 결정해야겠다.
+
+# 같이 보기
+
+- [SWR 공식 문서](https://swr.vercel.app/)

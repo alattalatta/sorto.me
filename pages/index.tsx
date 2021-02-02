@@ -16,7 +16,9 @@ const Index: Page<StaticProps> = ({ posts }) => {
   return (
     <div>
       <Head>
-        <title key="title">Home</title>
+        <title key="title">Sorto.me</title>
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Sorto.me" />
       </Head>
       <IndexBody posts={posts} />
     </div>

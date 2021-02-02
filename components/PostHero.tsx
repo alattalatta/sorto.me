@@ -2,18 +2,13 @@ import React from 'react'
 
 import { styled } from 'utils/styler'
 
-import { Container, CONTAINER_PADDING } from './Container'
+import { Container } from './Container'
 
 const HeroContainer = styled('header', {
-  alignItems: 'center',
   background: 'black',
   color: 'white',
-  display: 'flex',
   fontFamily: 'sans-serif',
-  justifyContent: 'center',
   marginBottom: 40,
-  marginLeft: -CONTAINER_PADDING,
-  marginRight: -CONTAINER_PADDING,
   padding: '88px 0',
 })
 

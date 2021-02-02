@@ -22,12 +22,12 @@ const CalloutContainer = styled('div', {
   borderLeft: '8px solid rgba(0, 0, 0, 0.2)',
   borderRadius: '4px',
   margin: '0.5em 0',
-  padding: '2rem',
+  padding: '1.5rem 2rem',
   p: {
     margin: 0,
   },
   '& p + p': {
-    marginTop: '1em',
+    marginTop: '.6em',
   },
   variants: {
     color: {
@@ -43,9 +43,56 @@ const CalloutBody = styled('div', {
   flex: 1,
 })
 
-const CalloutTitle = styled('p', {
+const CalloutTitle = styled('span', {
+  display: 'block',
   fontWeight: '700',
+  marginBottom: '.2em',
 })
+
+const HeadingAnchor = styled(Anchor, {
+  color: '#ddd',
+  opacity: 0,
+  paddingLeft: '.5ch',
+  paddingRight: '.5ch',
+  position: 'absolute',
+  top: 0,
+  right: '100%',
+  textDecoration: 'none',
+})
+
+const Heading = styled('h2', {
+  position: 'relative',
+  [`&:hover ${HeadingAnchor}`]: {
+    opacity: 1,
+  },
+})
+
+const Heading2 = styled(Heading, {
+  borderBottom: '1px solid #e8ebed',
+  fontSize: '1.75em',
+  paddingBottom: '0.25em',
+})
+
+const Heading3 = styled(Heading, {
+  fontSize: '1.5em',
+})
+
+const headingOf = (level: 2 | 3 | 4, Component: typeof Heading = Heading): React.FC => {
+  let count = 0
+
+  return ({ children }) => {
+    const cc = count++
+    const id = `s${level}.${cc}`
+    const el = `h${level}` as 'h1' | 'h2' | 'h3' | 'h4'
+
+    return (
+      <Component as={el} id={id}>
+        <HeadingAnchor href={`#${id}`}>#</HeadingAnchor>
+        {children}
+      </Component>
+    )
+  }
+}
 
 const Callout: React.FC<{ as?: React.ElementType; color?: 'warn'; icon?: string; label?: string }> = ({
   as = 'section',
@@ -72,15 +119,16 @@ export const mdxComponents: MdxRemote.Components = Object.freeze({
   blockquote: ({ children }: { children: React.ReactNode }) => (
     <CalloutContainer as="blockquote">{children}</CalloutContainer>
   ),
-  h1: 'h2',
-  h2: 'h3',
-  h3: 'h4',
+  h1: headingOf(2, Heading2),
+  h2: headingOf(3, Heading3),
+  h3: headingOf(4),
   inlineCode: styled('code', {
-    backgroundColor: 'rgba(0, 0, 0, 0.05)',
+    backgroundColor: 'rgba(0, 0, 0, .05)',
     borderRadius: '4px',
     display: 'inline-block',
     fontFamily: `'Nanum Gothic Coding', monospace`,
-    padding: '.2em .4em',
+    paddingRight: '.4em',
+    paddingLeft: '.4em',
   }),
   Callout,
 })

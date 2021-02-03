@@ -1,7 +1,7 @@
 import { styled } from 'utils/styler'
 
 export const Anchor = styled('a', {
-  color: '#0b0d0e',
+  color: '#0b0d0e', // [todo] move to theme
   display: 'inline-block',
   '&:hover': {
     color: '#f00',

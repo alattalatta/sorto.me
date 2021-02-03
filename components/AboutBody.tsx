@@ -12,7 +12,11 @@ const AboutBody: React.VFC = () => {
     <Container>
       <AlignLeft>
         <h1>alattalatta</h1>
-        <p>Web front-end developer</p>
+        <p>
+          Web front-end developer
+          <br />
+          <Anchor href="mailto:urty5656@gmail.com">urty5656@gmail.com</Anchor>
+        </p>
         <ul>
           <li>
             <Anchor href="https://github.com/alattalatta">GitHub</Anchor>

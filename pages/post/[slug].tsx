@@ -10,7 +10,6 @@ import React from 'react'
 
 import { getLayout } from 'components/Layout'
 import PostBody, { mdxComponents } from 'components/PostBody'
-import PostHero from 'components/PostHero'
 import { parsePost, PostMetadata, POSTS_PATH, POST_FILES } from 'utils/post'
 import { Page } from 'utils/types'
 
@@ -27,8 +26,7 @@ const Post: Page<StaticProps> = ({ body, meta }) => {
         <meta property="og:description" content={meta.excerpt} />
         <meta property="article:published_time" content={meta.created} />
       </Head>
-      <PostHero created={meta.created} excerpt={meta.excerpt} title={meta.title} />
-      <PostBody>{body}</PostBody>
+      <PostBody meta={meta}>{body}</PostBody>
     </article>
   )
 }

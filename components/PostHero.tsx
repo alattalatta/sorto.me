@@ -9,7 +9,8 @@ const HeroContainer = styled('header', {
   color: 'white',
   fontFamily: 'sans-serif',
   marginBottom: 40,
-  padding: '88px 0',
+  paddingTop: '88px',
+  paddingBottom: '88px',
 })
 
 const Title = styled('h1', {

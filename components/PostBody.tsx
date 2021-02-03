@@ -2,14 +2,18 @@ import hydrate from 'next-mdx-remote/hydrate'
 import { MdxRemote } from 'next-mdx-remote/types'
 import React from 'react'
 
+import { PostMetadata } from 'utils/post'
 import { styled } from 'utils/styler'
 
 import { Container } from './Container'
 import styles from './PostBody.module.scss'
+import PostFooter from './PostFooter'
+import PostHero from './PostHero'
 import { Anchor } from './basics'
 
 type Props = {
   children: MdxRemote.Source
+  meta: PostMetadata
 }
 
 const PostContent = styled('div', {
@@ -138,13 +142,17 @@ export const mdxComponents: MdxRemote.Components = Object.freeze({
   Callout,
 })
 
-const PostBody: React.VFC<Props> = ({ children }) => {
+const PostBody: React.VFC<Props> = ({ children, meta }) => {
   const content = hydrate(children, { components: mdxComponents })
 
   return (
-    <Container>
-      <PostContent className={styles.prismStyler}>{content}</PostContent>
-    </Container>
+    <>
+      <PostHero created={meta.created} excerpt={meta.excerpt} title={meta.title} />
+      <Container>
+        <PostContent className={styles.prismStyler}>{content}</PostContent>
+      </Container>
+      <PostFooter />
+    </>
   )
 }
 

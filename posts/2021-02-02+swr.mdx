@@ -131,10 +131,10 @@ const Component: React.VFC<Props> = ({ id }) => {
 SWR은 `useSWR()` 훅을 사용해 데이터를 가져오며, `data?`와 `error?`를 포함한 객체를 반환한다. 각각의 분명한 이름대로, `data`는 응답 데이터, `error`는 (발생했다면) 오류를 담고 있게 된다. 호출 시그니쳐는 다음과 같다.
 
 ```ts
-useSWR(key, fetcher[, options])
+useSWR(key, fetcher, options?)
 ```
 
-- `key`: API의 고유 키. 메서드 다수를 허용하지 않으면 API의 URL 경로 역시 고유하므로 그걸로 지정해도 된다.
+- `key`: API의 고유 키. 하나의 엔드포인트에서 다수의 HTTP 메서드를 허용하지 않으면 API의 URL 경로가 고유하므로 API의 키로 사용할 수 있다.
 - `fetcher`: 데이터를 가져오는 비동기 함수. API를 실제로 요청하는 방법을 정의할 수 있다. 즉, `useSWR()`은 `Promise`를 반환하기만 하면 그것이 `window.fetch`, `axios`, `ky`, 아니면 GraphQL인지 전혀 상관하지 않는다. 위 예제 코드의 `fetcher`를 보면 알 수 있듯 스스로도 하나의 매개변수를 받을 수 있다.
   - `key`: `useSWR()`에 지정한 `key`를 그대로 받는다. 예제에서도 키로 API의 URL을 지정했기 때문에 `useSWR(key, fetcher)`처럼 사용할 수 있었다.
 

@@ -12,6 +12,15 @@ type Props = {
   children: MdxRemote.Source
 }
 
+const inlineCodeStyle = {
+  backgroundColor: 'rgba(0, 0, 0, .05)',
+  borderRadius: '4px',
+  display: 'inline-block',
+  fontFamily: `'Nanum Gothic Coding', monospace`,
+  paddingRight: '.4em',
+  paddingLeft: '.4em',
+}
+
 const PostContent = styled('div', {
   fontFamily: 'sans-serif',
   lineHeight: 1.4,
@@ -23,7 +32,8 @@ const CalloutContainer = styled('div', {
   borderRadius: '4px',
   margin: '0.5em 0',
   padding: '1.5rem 2rem',
-  p: {
+  '& code': inlineCodeStyle,
+  '& p': {
     margin: 0,
   },
   '& p + p': {
@@ -122,14 +132,10 @@ export const mdxComponents: MdxRemote.Components = Object.freeze({
   h1: headingOf(2, Heading2),
   h2: headingOf(3, Heading3),
   h3: headingOf(4),
-  inlineCode: styled('code', {
-    backgroundColor: 'rgba(0, 0, 0, .05)',
-    borderRadius: '4px',
-    display: 'inline-block',
-    fontFamily: `'Nanum Gothic Coding', monospace`,
-    paddingRight: '.4em',
-    paddingLeft: '.4em',
+  img: styled('img', {
+    maxWidth: '100%',
   }),
+  inlineCode: styled('code', inlineCodeStyle),
   Callout,
 })
 

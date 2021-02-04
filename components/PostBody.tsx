@@ -142,6 +142,7 @@ export const mdxComponents: MdxRemote.Components = Object.freeze({
     maxWidth: '100%',
   }),
   inlineCode: styled('code', inlineCodeStyle),
+  Anchor,
   Callout,
 })
 

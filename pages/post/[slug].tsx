@@ -10,7 +10,7 @@ import React from 'react'
 
 import { getLayout } from 'components/Layout'
 import PostBody, { mdxComponents } from 'components/PostBody'
-import { parsePost, PostMetadata, POSTS_PATH, POST_FILES_PENDING } from 'utils/post'
+import { parsePost, PostMetadata, POSTS_PATH, POST_FILES_PENDING } from 'utils/posts'
 import { Page } from 'utils/types'
 
 type StaticParam = { slug: string }

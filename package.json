@@ -3,7 +3,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "next",
-    "export": "next build && next export"
+    "build": "next build",
+    "export": "next export",
+    "test": "jest"
   },
   "dependencies": {
     "@mapbox/rehype-prism": "^0.5.0",

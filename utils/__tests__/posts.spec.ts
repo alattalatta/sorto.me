@@ -7,7 +7,7 @@ describe('Post utilities', () => {
   describe('parsePost', () => {
     it('can parse all necessary data', async () => {
       const fileName = '2020-02-02+post.mdx'
-      const file = await fs.readFile(path.resolve(__dirname, 'mocks', fileName))
+      const file = await fs.readFile(path.resolve(__dirname, 'mocks/posts', fileName))
 
       const parsed = parsePost(fileName, file)
 

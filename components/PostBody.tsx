@@ -2,7 +2,7 @@ import hydrate from 'next-mdx-remote/hydrate'
 import { MdxRemote } from 'next-mdx-remote/types'
 import React from 'react'
 
-import { PostMetadata } from 'utils/post'
+import { PostMetadata } from 'utils/posts'
 import { styled } from 'utils/styler'
 
 import { Container } from './Container'

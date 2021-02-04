@@ -7,7 +7,7 @@ import Head from 'next/head'
 
 import IndexBody, { PostDatum } from 'components/IndexBody'
 import { getLayout } from 'components/Layout'
-import { parsePost, POSTS_PATH, POST_FILES_PENDING } from 'utils/post'
+import { parsePost, POSTS_PATH, POST_FILES_PENDING } from 'utils/posts'
 import { Page } from 'utils/types'
 
 type StaticProps = { posts: readonly PostDatum[] }

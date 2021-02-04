@@ -1,11 +1,11 @@
 import { promises as fs } from 'fs'
 import path from 'path'
 
-import { parsePost, PostMetadata } from '../post'
+import { parsePost, PostMetadata } from '../posts'
 
 describe('Post utilities', () => {
   describe('parsePost', () => {
-    test('can parse all necessary data', async () => {
+    it('can parse all necessary data', async () => {
       const fileName = '2020-02-02+post.mdx'
       const file = await fs.readFile(path.resolve(__dirname, 'mocks', fileName))
 

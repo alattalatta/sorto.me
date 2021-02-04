@@ -4,11 +4,21 @@ import path from 'path'
 import matter from 'gray-matter'
 
 export type PostMetadata = {
+  /**
+   * String representing a date which the post is published. (`yyyy-MM-dd`)
+   * @format date
+   */
   created: string
   excerpt?: string
   title: string
 }
 
+/**
+ * Parses a MDX post file. Creation date uses the file's name, while excerpt and title are parsed from front matter.
+ *
+ * @param fileName File's name.
+ * @param source File's content as `Buffer`.
+ */
 export function parsePost(fileName: string, source: Buffer): { content: string; meta: PostMetadata } {
   const { content, data } = matter(source)
 

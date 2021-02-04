@@ -9,7 +9,8 @@ import Head from 'next/head'
 import React from 'react'
 
 import { getLayout } from 'components/Layout'
-import PostBody, { mdxComponents } from 'components/PostBody'
+import PostBody from 'components/PostBody'
+import { mdxComponents } from 'components/mdxCommons'
 import { parsePost, PostMetadata, POSTS_PATH, POST_FILES_PENDING } from 'utils/posts'
 import { Page } from 'utils/types'
 
@@ -18,7 +19,7 @@ type StaticProps = { body: MdxRemote.Source; meta: PostMetadata }
 
 const Post: Page<StaticProps> = ({ body, meta }) => {
   return (
-    <article>
+    <>
       <Head>
         <title key="title">Sorto.me - {meta.title}</title>
         <meta property="og:type" content="article" />
@@ -27,7 +28,7 @@ const Post: Page<StaticProps> = ({ body, meta }) => {
         <meta property="article:published_time" content={meta.created} />
       </Head>
       <PostBody meta={meta}>{body}</PostBody>
-    </article>
+    </>
   )
 }
 Post.getLayout = getLayout

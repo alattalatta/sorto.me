@@ -2,31 +2,32 @@ import hydrate from 'next-mdx-remote/hydrate'
 import { MdxRemote } from 'next-mdx-remote/types'
 import React from 'react'
 
-import { PostMetadata } from 'utils/posts'
+import { DocMetadata } from 'utils/docs'
 
 import { Container } from './Container'
+import DocFooter from './DocFooter'
+import DocTitle from './DocTitle'
 import styles from './PostBody.module.scss'
-import PostFooter from './PostFooter'
-import PostHero from './PostHero'
 import { mdxComponents, MDXWrap } from './mdxCommons'
 
 type Props = {
   children: MdxRemote.Source
-  meta: PostMetadata
+  meta: DocMetadata
+  slugs: string[]
 }
 
-const PostBody: React.VFC<Props> = ({ children, meta }) => {
+const DocBody: React.VFC<Props> = ({ children, meta, slugs }) => {
   const content = hydrate(children, { components: mdxComponents })
 
   return (
     <article>
-      <PostHero created={meta.created} excerpt={meta.excerpt} title={meta.title} />
+      <DocTitle>{meta.title}</DocTitle>
       <Container>
         <MDXWrap className={styles.prismStyler}>{content}</MDXWrap>
       </Container>
-      <PostFooter />
+      <DocFooter slug={slugs.join('/')} />
     </article>
   )
 }
 
-export default PostBody
+export default DocBody

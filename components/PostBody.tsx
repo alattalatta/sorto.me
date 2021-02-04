@@ -101,7 +101,9 @@ const headingOf = (level: 2 | 3 | 4 | 5, Component: typeof Heading = Heading): R
 
     return (
       <Component as={el} id={id}>
-        <HeadingAnchor href={`#${id}`}>#</HeadingAnchor>
+        <HeadingAnchor href={`#${id}`} aria-hidden>
+          #
+        </HeadingAnchor>
         {children}
       </Component>
     )

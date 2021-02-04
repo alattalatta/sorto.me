@@ -7,7 +7,7 @@ import Head from 'next/head'
 
 import IndexBody, { PostDatum } from 'components/IndexBody'
 import { getLayout } from 'components/Layout'
-import { parsePost, POSTS_PATH, POST_FILES } from 'utils/post'
+import { parsePost, POSTS_PATH, POST_FILES_PENDING } from 'utils/post'
 import { Page } from 'utils/types'
 
 type StaticProps = { posts: readonly PostDatum[] }
@@ -29,7 +29,7 @@ export default Index
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   const postData = await Promise.all(
-    [...POST_FILES]
+    [...(await POST_FILES_PENDING)]
       .reverse()
       .map((fileName) => [fileName, path.join(POSTS_PATH, fileName)])
       .map(async ([fileName, filePath]) => {

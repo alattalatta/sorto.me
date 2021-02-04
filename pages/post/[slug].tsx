@@ -10,7 +10,7 @@ import React from 'react'
 
 import { getLayout } from 'components/Layout'
 import PostBody, { mdxComponents } from 'components/PostBody'
-import { parsePost, PostMetadata, POSTS_PATH, POST_FILES } from 'utils/post'
+import { parsePost, PostMetadata, POSTS_PATH, POST_FILES_PENDING } from 'utils/post'
 import { Page } from 'utils/types'
 
 type StaticParam = { slug: string }
@@ -54,11 +54,13 @@ export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({
   }
 }
 
-export const getStaticPaths: GetStaticPaths<StaticParam> = () => {
-  return Promise.resolve({
+export const getStaticPaths: GetStaticPaths<StaticParam> = async () => {
+  return {
     fallback: false,
-    paths: POST_FILES.map((path) => path.replace('.mdx', '')).map((slug) => ({
-      params: { slug },
-    })),
-  })
+    paths: (await POST_FILES_PENDING)
+      .map((path) => path.replace('.mdx', ''))
+      .map((slug) => ({
+        params: { slug },
+      })),
+  }
 }

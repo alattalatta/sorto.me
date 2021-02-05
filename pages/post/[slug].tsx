@@ -9,8 +9,7 @@ import Head from 'next/head'
 import React from 'react'
 
 import { getLayout } from 'components/Layout'
-import PostBody from 'components/PostBody'
-import { mdxComponents } from 'components/mdxCommons'
+import PostBody, { POST_MDX_COMPONENTS } from 'components/PostBody'
 import { parsePost, PostMetadata, POSTS_PATH, POST_FILES_PENDING } from 'utils/posts'
 import { Page } from 'utils/types'
 
@@ -45,7 +44,7 @@ export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({
   const { content, meta } = parsePost(params.slug, source)
 
   const mdxOptions = { rehypePlugins: [rehypePrism] }
-  const body = await renderToString(content, { components: mdxComponents, mdxOptions, scope: meta })
+  const body = await renderToString(content, { components: POST_MDX_COMPONENTS, mdxOptions, scope: meta })
 
   return {
     props: {

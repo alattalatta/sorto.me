@@ -1,3 +1,4 @@
+import { promises as fs } from 'fs'
 import path from 'path'
 
 import matter from 'gray-matter'
@@ -5,9 +6,10 @@ import matter from 'gray-matter'
 import { onlyMDXFiles, readFilesRec } from './system'
 
 export type DocMetadata = {
+  excerpt?: string
   title: string
   /**
-   * String representing a date which the doc is updated. (`yyyy-MM-dd`)
+   * String representing a date which the doc file is last modified. (`yyyy-MM-dd`)
    * @format date
    */
   updated: string
@@ -37,14 +39,18 @@ export const getDocFiles = async (): Promise<string[]> => {
 /**
  * Parses a MDX post file. Creation date uses the file's name, while excerpt and title are parsed from front matter.
  *
- * @param fileName File's name.
+ * @param fileName File's path.
  * @param source File's content as `Buffer`.
  */
-export function parseDoc(source: Buffer): { content: string; meta: DocMetadata } {
+export async function parseDoc(filePath: string, source: Buffer): Promise<{ content: string; meta: DocMetadata }> {
   const { content, data } = matter(source)
+  const updated = (await fs.stat(filePath)).mtime.toISOString().slice(0, 10)
 
   return {
     content,
-    meta: data as DocMetadata,
+    meta: {
+      ...data,
+      updated,
+    } as DocMetadata,
   }
 }

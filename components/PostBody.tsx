@@ -8,15 +8,25 @@ import { Container } from './Container'
 import styles from './PostBody.module.scss'
 import PostFooter from './PostFooter'
 import PostHero from './PostHero'
-import { mdxComponents, MDXWrap } from './mdxCommons'
+import { Anchor } from './basics'
+import { MDX_COMPONENTS, MDXWrap } from './mdxCommons'
 
 type Props = {
   children: MdxRemote.Source
   meta: PostMetadata
 }
 
+export const POST_MDX_COMPONENTS: MdxRemote.Components = Object.freeze({
+  ...MDX_COMPONENTS,
+  a: ({ children, href }: JSX.IntrinsicElements['a']) => (
+    <Anchor href={href} rel="noreferrer noopener" target="_blank">
+      {children}
+    </Anchor>
+  ),
+})
+
 const PostBody: React.VFC<Props> = ({ children, meta }) => {
-  const content = hydrate(children, { components: mdxComponents })
+  const content = hydrate(children, { components: POST_MDX_COMPONENTS })
 
   return (
     <article>

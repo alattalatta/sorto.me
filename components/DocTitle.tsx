@@ -15,6 +15,7 @@ const TitleContainer = styled('header', {
 
 const Title = styled('h1', {
   fontSize: '2rem',
+  fontWeight: 400,
   margin: 0,
 })
 

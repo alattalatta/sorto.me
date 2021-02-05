@@ -8,7 +8,7 @@ import { Container } from './Container'
 import DocFooter from './DocFooter'
 import DocTitle from './DocTitle'
 import styles from './PostBody.module.scss'
-import { mdxComponents, MDXWrap } from './mdxCommons'
+import { MDX_COMPONENTS, MDXWrap } from './mdxCommons'
 
 type Props = {
   children: MdxRemote.Source
@@ -17,7 +17,7 @@ type Props = {
 }
 
 const DocBody: React.VFC<Props> = ({ children, meta, slugs }) => {
-  const content = hydrate(children, { components: mdxComponents })
+  const content = hydrate(children, { components: MDX_COMPONENTS })
 
   return (
     <article>
@@ -25,7 +25,7 @@ const DocBody: React.VFC<Props> = ({ children, meta, slugs }) => {
       <Container>
         <MDXWrap className={styles.prismStyler}>{content}</MDXWrap>
       </Container>
-      <DocFooter slug={slugs.join('/')} />
+      <DocFooter slug={slugs.join('/')} updated={meta.updated} />
     </article>
   )
 }

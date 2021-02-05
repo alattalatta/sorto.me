@@ -10,7 +10,7 @@ import React from 'react'
 
 import DocBody from 'components/DocBody'
 import { getLayout } from 'components/Layout'
-import { mdxComponents } from 'components/mdxCommons'
+import { MDX_COMPONENTS } from 'components/mdxCommons'
 import { DocMetadata, DOCS_PATH, getDocFiles, parseDoc } from 'utils/docs'
 import { Page } from 'utils/types'
 
@@ -24,6 +24,7 @@ const Doc: Page<StaticProps> = ({ body, meta, slugs }) => {
         <title key="title">{meta.title} - Sorto.me Docs</title>
         <meta property="og:type" content="article" />
         <meta property="og:title" content={`${meta.title} - Sorto.me Docs`} />
+        {meta.excerpt && <meta property="og:description" content={meta.excerpt} />}
       </Head>
       <DocBody meta={meta} slugs={slugs}>
         {body}
@@ -43,10 +44,10 @@ export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({
   const filePath = path.join(DOCS_PATH, `${params.slugs.join('/')}.mdx`)
   const source = await fs.readFile(filePath)
 
-  const { content, meta } = parseDoc(source)
+  const { content, meta } = await parseDoc(filePath, source)
 
   const mdxOptions = { rehypePlugins: [rehypePrism] }
-  const body = await renderToString(content, { components: mdxComponents, mdxOptions, scope: meta })
+  const body = await renderToString(content, { components: MDX_COMPONENTS, mdxOptions, scope: meta })
 
   return {
     props: {

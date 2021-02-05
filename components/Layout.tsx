@@ -1,26 +1,29 @@
 import { motion, useTransform, useViewportScroll } from 'framer-motion'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { styled } from 'utils/styler'
 
+import { Container as BaseContainer } from './Container'
 import { Anchor } from './basics'
 
 const HEADER_HEIGHT = '5rem'
 
 const Header = styled(motion.nav, {
-  alignItems: 'center',
   background: '#fff',
   borderBottom: '1px solid #e8ebed',
   color: '#000',
-  display: 'flex',
   height: HEADER_HEIGHT,
-  paddingLeft: '1.5rem',
-  paddingRight: '1.5rem',
   position: 'fixed',
   top: 0,
   width: '100%',
   zIndex: 1,
+})
+
+const Container = styled(BaseContainer, {
+  alignItems: 'center',
+  display: 'flex',
+  height: '100%',
 })
 
 const Brand = styled(motion.a, {
@@ -40,11 +43,16 @@ const Brand = styled(motion.a, {
   transformOrigin: 'left center',
 })
 
+const PageLinkGroup = styled('nav', {
+  display: 'flex',
+  marginLeft: 24,
+})
+
 const PageLink = styled(Anchor, {
   color: '#000',
   display: 'block',
   fontSize: '1.1em',
-  marginLeft: 'auto',
+  marginLeft: 24,
   textDecoration: 'none',
 })
 
@@ -69,16 +77,30 @@ const Layout: React.FC = ({ children }) => {
   return (
     <div>
       <Header style={{ height: headerScale }}>
-        <Link href="/">
-          <Brand style={{ scale: brandScale }} href="/" title="홈으로 이동">
-            Sorto.me
-          </Brand>
-        </Link>
-        <Link href="/about">
-          <PageLink as={motion.a} href="/about" style={{ opacity: linkOpacity }}>
-            About
-          </PageLink>
-        </Link>
+        <Container>
+          <Link href="/">
+            <Brand style={{ scale: brandScale }} href="/" title="홈으로 이동">
+              Sorto.me
+            </Brand>
+          </Link>
+          <PageLinkGroup>
+            <Link href="/post">
+              <PageLink as={motion.a} href="/post" style={{ opacity: linkOpacity }}>
+                Blog
+              </PageLink>
+            </Link>
+            <Link href="/docs/Web">
+              <PageLink as={motion.a} href="/docs/Web" style={{ opacity: linkOpacity }}>
+                Docs
+              </PageLink>
+            </Link>
+            <Link href="/about">
+              <PageLink as={motion.a} href="/about" style={{ opacity: linkOpacity }}>
+                About
+              </PageLink>
+            </Link>
+          </PageLinkGroup>
+        </Container>
       </Header>
       <Body>{children}</Body>
     </div>

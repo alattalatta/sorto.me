@@ -12,7 +12,7 @@ import { Page } from 'utils/types'
 
 type StaticProps = { posts: readonly PostDatum[] }
 
-const Index: Page<StaticProps> = ({ posts }) => {
+const Post: Page<StaticProps> = ({ posts }) => {
   return (
     <div>
       <Head>
@@ -24,8 +24,8 @@ const Index: Page<StaticProps> = ({ posts }) => {
     </div>
   )
 }
-Index.getLayout = getLayout
-export default Index
+Post.getLayout = getLayout
+export default Post
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   const postData = await Promise.all(

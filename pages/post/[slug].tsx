@@ -9,8 +9,8 @@ import Head from 'next/head'
 import React from 'react'
 
 import { getLayout } from 'components/Layout'
-import PostBody, { mdxComponents } from 'components/PostBody'
-import { parsePost, PostMetadata, POSTS_PATH, POST_FILES } from 'utils/post'
+import PostBody, { POST_MDX_COMPONENTS } from 'components/PostBody'
+import { parsePost, PostMetadata, POSTS_PATH, POST_FILES_PENDING } from 'utils/posts'
 import { Page } from 'utils/types'
 
 type StaticParam = { slug: string }
@@ -18,7 +18,7 @@ type StaticProps = { body: MdxRemote.Source; meta: PostMetadata }
 
 const Post: Page<StaticProps> = ({ body, meta }) => {
   return (
-    <article>
+    <>
       <Head>
         <title key="title">Sorto.me - {meta.title}</title>
         <meta property="og:type" content="article" />
@@ -27,7 +27,7 @@ const Post: Page<StaticProps> = ({ body, meta }) => {
         <meta property="article:published_time" content={meta.created} />
       </Head>
       <PostBody meta={meta}>{body}</PostBody>
-    </article>
+    </>
   )
 }
 Post.getLayout = getLayout
@@ -44,7 +44,7 @@ export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({
   const { content, meta } = parsePost(params.slug, source)
 
   const mdxOptions = { rehypePlugins: [rehypePrism] }
-  const body = await renderToString(content, { components: mdxComponents, mdxOptions, scope: meta })
+  const body = await renderToString(content, { components: POST_MDX_COMPONENTS, mdxOptions, scope: meta })
 
   return {
     props: {
@@ -54,11 +54,13 @@ export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({
   }
 }
 
-export const getStaticPaths: GetStaticPaths<StaticParam> = () => {
-  return Promise.resolve({
+export const getStaticPaths: GetStaticPaths<StaticParam> = async () => {
+  return {
     fallback: false,
-    paths: POST_FILES.map((path) => path.replace('.mdx', '')).map((slug) => ({
-      params: { slug },
-    })),
-  })
+    paths: (await POST_FILES_PENDING)
+      .map((path) => path.replace('.mdx', ''))
+      .map((slug) => ({
+        params: { slug },
+      })),
+  }
 }

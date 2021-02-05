@@ -1,7 +1,9 @@
-import fs from 'fs'
+import { promises as fs } from 'fs'
 import path from 'path'
 
 import matter from 'gray-matter'
+
+import { onlyMDXFiles } from './system'
 
 export type PostMetadata = {
   /**
@@ -32,4 +34,4 @@ export function parsePost(fileName: string, source: Buffer): { content: string; 
 }
 
 export const POSTS_PATH = path.join(process.cwd(), 'posts')
-export const POST_FILES: readonly string[] = fs.readdirSync(POSTS_PATH).filter((path) => /\.mdx$/.test(path))
+export const POST_FILES_PENDING: Promise<string[]> = fs.readdir(POSTS_PATH).then(onlyMDXFiles)

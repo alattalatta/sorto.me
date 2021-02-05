@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-import { PostMetadata } from 'utils/post'
+import { PostMetadata } from 'utils/posts'
 import { styled } from 'utils/styler'
 
 import { Container } from './Container'

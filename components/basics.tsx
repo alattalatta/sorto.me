@@ -1,36 +1,56 @@
-import { styled } from 'utils/styler'
+import { ACCENT_B, ACCENT_R, BASE100, css, styled } from 'utils/styler'
+import { PropOf } from 'utils/types'
 
-const CONTAINER_WIDTH = 1240
-const CONTAINER_PADDING = 40
+export const CONTAINER_BORDER_BOX_WIDTH = 1240
+export const CONTAINER_PADDING = 40
+export const CONTAINER_CONTENT_BOX_WIDTH = CONTAINER_BORDER_BOX_WIDTH - CONTAINER_PADDING * 2
+
+const ANCHOR_HL_ANIMATION = css.keyframes({
+  '0%': {
+    opacity: 0.5,
+    transform: 'scaleX(0.3)',
+  },
+  '30%': {
+    opacity: 1,
+  },
+  '100%': {
+    transform: 'scaleX(1)',
+  },
+})
 
 export const Anchor = styled('a', {
-  color: '#0C2640', // [todo] move to theme
+  color: 'inherit',
   display: 'inline-block',
   position: 'relative',
-  '&::before': {
+  '&:hover::before': {
+    animation: `${ANCHOR_HL_ANIMATION} 300ms cubic-bezier(0.22, 1, 0.36, 1)`,
+    animationFillMode: 'forwards',
+    backgroundColor: ACCENT_B,
     content: "''",
     position: 'absolute',
     top: -4,
     right: -2,
     bottom: -4,
     left: -2,
+    transformOrigin: 'left',
     zIndex: -1,
   },
-  '&:hover::before': {
-    backgroundColor: '#6FDBFC',
-  },
   '&:active': {
-    color: '#fff',
+    color: BASE100,
     '&::before': {
-      backgroundColor: '#FF5252',
+      backgroundColor: ACCENT_R,
     },
   },
 })
 
+export const AnchorExternal: React.VFC<PropOf<typeof Anchor>> = (props) => (
+  <Anchor {...props} target="_blank" rel="noreferrer noopener" />
+)
+
 export const Container = styled('div', {
   marginLeft: 'auto',
   marginRight: 'auto',
-  maxWidth: CONTAINER_WIDTH,
+  maxWidth: CONTAINER_BORDER_BOX_WIDTH,
   paddingLeft: CONTAINER_PADDING,
   paddingRight: CONTAINER_PADDING,
   width: '100%',

@@ -3,7 +3,7 @@ import React from 'react'
 
 import { styled } from 'utils/styler'
 
-import { Anchor } from './basics'
+import { Anchor, AnchorExternal } from './basics'
 
 export const MDXWrap = styled('div', {
   fontFamily: 'sans-serif',
@@ -123,11 +123,12 @@ const Callout: React.FC<{ as?: React.ElementType; color?: 'warn'; icon?: string;
 )
 
 export const MDX_COMPONENTS: MdxRemote.Components = Object.freeze({
-  a: ({ children, href }: JSX.IntrinsicElements['a']) => (
-    <Anchor href={href} rel="noreferrer noopener">
-      {children}
-    </Anchor>
-  ),
+  a: ({ children, href = '' }: JSX.IntrinsicElements['a']) =>
+    /^\.|\//.test(href) ? (
+      <Anchor href={href}>{children}</Anchor>
+    ) : (
+      <AnchorExternal href={href}>{children}</AnchorExternal>
+    ),
   blockquote: ({ children }: { children: React.ReactNode }) => (
     <CalloutContainer as="blockquote">{children}</CalloutContainer>
   ),

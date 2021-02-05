@@ -1,89 +1,106 @@
-import { motion, useTransform, useViewportScroll } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-import { styled } from 'utils/styler'
+import { BASE20, BASE100, CORNER_RADIUS, styled, ACCENT_Y, ACCENT_R, ACCENT_B } from 'utils/styler'
 
-import { Anchor, Container as BaseContainer } from './basics'
+import { Anchor, CONTAINER_CONTENT_BOX_WIDTH } from './basics'
 
 export const HEADER_HEIGHT = 80
+const BRAND_HEIGHT = 52
 
-const Header = styled(motion.nav, {
-  background: '#fff',
-  borderBottom: '1px solid #ddd',
-  color: '#000',
+const Header = styled(motion.header, {
+  width: CONTAINER_CONTENT_BOX_WIDTH,
   height: HEADER_HEIGHT,
+  background: BASE20,
+  borderRadius: CORNER_RADIUS,
+  color: BASE100,
+  display: 'flex',
+  alignItems: 'center',
+  marginRight: 'auto',
+  marginLeft: 'auto',
+  paddingRight: 24,
+  paddingLeft: 24,
   position: 'fixed',
   top: 0,
-  width: '100%',
+  right: 0,
+  left: 0,
   zIndex: 1,
 })
 
-const Container = styled(BaseContainer, {
-  alignItems: 'center',
-  display: 'flex',
-  height: '100%',
-})
-
 const Brand = styled(motion.a, {
+  width: 148,
+  height: BRAND_HEIGHT,
+  backgroundColor: ACCENT_Y,
+  borderRadius: CORNER_RADIUS,
+  boxShadow: `0px 2px 12px ${ACCENT_Y}`,
+  color: BASE20,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'flex-end',
+  fontSize: 20,
+  padding: 16,
+  textDecoration: 'none',
   '&:active': {
-    backgroundColor: '#0ff',
+    backgroundColor: ACCENT_R,
+    boxShadow: `0px 2px 12px ${ACCENT_R}`,
   },
   '&:hover': {
-    backgroundColor: '#f00',
+    backgroundColor: ACCENT_B,
+    boxShadow: `0px 2px 12px ${ACCENT_B}`,
   },
-  backgroundColor: '#000',
-  color: '#fff',
-  fontSize: '1.25rem',
-  fontWeight: 700,
-  letterSpacing: '0.15em',
-  padding: '0.25rem',
-  textDecoration: 'none',
-  transformOrigin: 'left center',
 })
 
 const PageLinkGroup = styled('nav', {
   display: 'flex',
-  marginLeft: 24,
 })
 
 const PageLink = styled(Anchor, {
-  color: '#000',
-  display: 'block',
-  fontSize: '1.1em',
-  marginLeft: 24,
+  color: BASE100,
+  fontSize: 18,
+  marginLeft: 48,
   textDecoration: 'none',
 })
 
 const PageHeader: React.VFC = () => {
-  const { scrollY } = useViewportScroll()
+  const [scrolledOverThreshold, setScrolledOverThreshold] = useState(false)
 
-  const scrollPoints = [0, HEADER_HEIGHT * 2]
+  useEffect(() => {
+    const handler = () => {
+      setScrolledOverThreshold(window.pageYOffset > HEADER_HEIGHT * 2)
+    }
 
-  const headerScale = useTransform(scrollY, scrollPoints, ['5rem', '2.5rem'])
-  const brandScale = useTransform(scrollY, scrollPoints, [1, 0.75])
-  // const linkOpacity = useTransform(scrollY, scrollPoints, [1, 0])
+    window.addEventListener('scroll', handler)
+
+    return () => window.removeEventListener('scroll', handler)
+  }, [])
+
+  const borderRadius = scrolledOverThreshold ? '0' : '8px'
+  const headerAnimationTarget = {
+    height: scrolledOverThreshold ? 64 : HEADER_HEIGHT,
+    borderTopRightRadius: borderRadius,
+    borderTopLeftRadius: borderRadius,
+    y: scrolledOverThreshold ? 0 : 16,
+  }
 
   return (
-    <Header style={{ height: headerScale }}>
-      <Container>
-        <Link href="/">
-          <Brand style={{ scale: brandScale }} href="/" title="홈으로 이동">
-            Sorto.me
-          </Brand>
+    <Header animate={headerAnimationTarget}>
+      <Link href="/">
+        <Brand href="/" title="홈으로 이동" style={{ height: scrolledOverThreshold ? 40 : BRAND_HEIGHT }}>
+          Sorto.me
+        </Brand>
+      </Link>
+      <PageLinkGroup>
+        <Link href="/post">
+          <PageLink href="/post">Blog</PageLink>
         </Link>
-        <PageLinkGroup>
-          <Link href="/post">
-            <PageLink href="/post">Blog</PageLink>
-          </Link>
-          <Link href="/docs/Web">
-            <PageLink href="/docs/Web">Docs</PageLink>
-          </Link>
-          <Link href="/about">
-            <PageLink href="/about">About</PageLink>
-          </Link>
-        </PageLinkGroup>
-      </Container>
+        <Link href="/docs/Web">
+          <PageLink href="/docs/Web">Docs</PageLink>
+        </Link>
+        <Link href="/about">
+          <PageLink href="/about">About</PageLink>
+        </Link>
+      </PageLinkGroup>
     </Header>
   )
 }

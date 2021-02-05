@@ -14,6 +14,7 @@ describe('Post utilities', () => {
       expect(parsed.content).toBe('aaa')
       expect(parsed.meta).toEqual<PostMetadata>({
         created: '2020-02-02',
+        slug: 'post',
         title: 'front matter title',
         excerpt: 'front matter excerpt',
       })

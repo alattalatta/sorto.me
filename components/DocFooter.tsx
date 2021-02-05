@@ -1,9 +1,9 @@
 import React from 'react'
 
+import { GITHUB_MAIN_URL } from 'utils/external'
 import { styled } from 'utils/styler'
 
-import { Container } from './Container'
-import { Anchor } from './basics'
+import { AnchorExternal, Container } from './basics'
 
 type Props = {
   slug: string
@@ -24,31 +24,17 @@ const DocFooter: React.VFC<Props> = ({ slug, updated }) => {
       <Container>
         <p>
           최종 업데이트: {updated}{' '}
-          <Anchor
-            href={`https://github.com/alattalatta/sorto.me/blob/main/docs/${slug}.mdx`}
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            (GitHub에서 보기)
-          </Anchor>
+          <AnchorExternal href={`${GITHUB_MAIN_URL}/docs/${slug}.mdx`}>(GitHub에서 보기)</AnchorExternal>
         </p>
         <p>
-          본 문서는{' '}
-          <Anchor href="https://developer.mozilla.org/ko/" target="_blank" rel="noreferrer noopener">
-            한국어 MDN
-          </Anchor>{' '}
-          문서에 기반을 두고 있습니다.{' '}
-          <Anchor href={mdnHref} target="_blank" rel="noreferrer noopener">
-            (원본 문서)
-          </Anchor>{' '}
-          <Anchor href={`${mdnHref}/contributors.txt`} target="_blank" rel="noreferrer noopener">
-            (기여자)
-          </Anchor>
+          본 문서는 <AnchorExternal href="https://developer.mozilla.org/ko/">한국어 MDN</AnchorExternal> 문서에 기반을
+          두고 있습니다. <AnchorExternal href={mdnHref}>(원본 문서)</AnchorExternal>{' '}
+          <AnchorExternal href={`${mdnHref}/contributors.txt`}>(기여자)</AnchorExternal>
           <br />
           <small>
-            <Anchor href="https://creativecommons.org/licenses/by-sa/2.5/" target="_blank" rel="noreferrer noopener">
+            <AnchorExternal href="https://creativecommons.org/licenses/by-sa/2.5/">
               Licensed under CC-BY-SA 2.5
-            </Anchor>
+            </AnchorExternal>
             .
           </small>
         </p>

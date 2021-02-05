@@ -4,10 +4,10 @@ import React from 'react'
 
 import { DocMetadata } from 'utils/docs'
 
-import { Container } from './Container'
 import DocFooter from './DocFooter'
-import DocTitle from './DocTitle'
+import DocHero from './DocHero'
 import styles from './PostBody.module.scss'
+import { Container } from './basics'
 import { MDX_COMPONENTS, MDXWrap } from './mdxCommons'
 
 type Props = {
@@ -21,7 +21,7 @@ const DocBody: React.VFC<Props> = ({ children, meta, slugs }) => {
 
   return (
     <article>
-      <DocTitle>{meta.title}</DocTitle>
+      <DocHero>{meta.title}</DocHero>
       <Container>
         <MDXWrap className={styles.prismStyler}>{content}</MDXWrap>
       </Container>

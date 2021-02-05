@@ -1,13 +1,12 @@
 import React from 'react'
 
-import { styled } from 'utils/styler'
+import { BASE10, BASE100, styled } from 'utils/styler'
 
-import { Container } from './Container'
+import { Container } from './basics'
 
 const TitleContainer = styled('header', {
-  background: 'black',
-  color: 'white',
-  fontFamily: 'sans-serif',
+  background: BASE10,
+  color: BASE100,
   marginBottom: 40,
   paddingTop: '24px',
   paddingBottom: '24px',
@@ -19,7 +18,7 @@ const Title = styled('h1', {
   margin: 0,
 })
 
-const PostHero: React.VFC<{ children: string }> = ({ children }) => {
+const DocHero: React.VFC<{ children: string }> = ({ children }) => {
   return (
     <TitleContainer>
       <Container>
@@ -29,4 +28,4 @@ const PostHero: React.VFC<{ children: string }> = ({ children }) => {
   )
 }
 
-export default PostHero
+export default DocHero

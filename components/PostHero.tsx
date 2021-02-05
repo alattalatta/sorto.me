@@ -1,35 +1,42 @@
 import React from 'react'
 
-import { styled } from 'utils/styler'
+import { PostMetadata } from 'utils/posts'
+import { BASE10, BASE100, BASE70, styled } from 'utils/styler'
 
 import { Container } from './basics'
 
 const HeroContainer = styled('header', {
-  background: 'black',
-  color: 'white',
-  fontFamily: 'sans-serif',
-  marginBottom: 40,
-  paddingTop: '88px',
-  paddingBottom: '88px',
+  background: BASE10,
+  color: BASE100,
+  paddingTop: 210,
+  paddingBottom: 160,
 })
 
 const Title = styled('h1', {
-  fontSize: '2rem',
-  fontWeight: 400,
-  margin: 0,
+  color: BASE70,
+  fontSize: 32,
+  marginTop: 0,
+  marginBottom: 0,
 })
 
 const Excerpt = styled('p', {
+  fontFamily: 'sans-serif',
+  marginTop: 16,
   marginBottom: 0,
-  marginTop: '1em',
 })
 
 const Created = styled('time', {
-  fontSize: '0.8rem',
-  opacity: 0.8,
+  fontFamily: 'sans-serif',
+  fontSize: 12,
 })
 
-const PostHero: React.VFC<{ created?: string; excerpt?: string; title: string }> = ({ created, excerpt, title }) => {
+type Props = {
+  meta: PostMetadata
+}
+
+const PostHero: React.VFC<Props> = ({ meta }) => {
+  const { created, excerpt, title } = meta
+
   return (
     <HeroContainer>
       <Container>

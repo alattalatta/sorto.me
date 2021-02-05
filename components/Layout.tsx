@@ -1,18 +1,12 @@
 import React from 'react'
 
-import { styled } from 'utils/styler'
-
-import PageHeader, { HEADER_HEIGHT } from './PageHeader'
-
-const Body = styled('main', {
-  paddingTop: HEADER_HEIGHT,
-})
+import PageHeader from './PageHeader'
 
 const Layout: React.FC = ({ children }) => {
   return (
     <div>
       <PageHeader />
-      <Body>{children}</Body>
+      <main>{children}</main>
     </div>
   )
 }

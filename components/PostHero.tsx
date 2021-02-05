@@ -2,7 +2,7 @@ import React from 'react'
 
 import { styled } from 'utils/styler'
 
-import { Container } from './Container'
+import { Container } from './basics'
 
 const HeroContainer = styled('header', {
   background: 'black',

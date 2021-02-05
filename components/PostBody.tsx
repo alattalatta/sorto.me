@@ -4,11 +4,10 @@ import React from 'react'
 
 import { PostMetadata } from 'utils/posts'
 
-import { Container } from './Container'
 import styles from './PostBody.module.scss'
 import PostFooter from './PostFooter'
 import PostHero from './PostHero'
-import { Anchor } from './basics'
+import { Anchor, Container } from './basics'
 import { MDX_COMPONENTS, MDXWrap } from './mdxCommons'
 
 type Props = {

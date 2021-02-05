@@ -4,8 +4,7 @@ import React from 'react'
 import { PostMetadata } from 'utils/posts'
 import { styled } from 'utils/styler'
 
-import { Container } from './Container'
-import { Anchor } from './basics'
+import { Anchor, Container } from './basics'
 
 type Props = {
   posts: readonly PostDatum[]

@@ -4,8 +4,7 @@ import React from 'react'
 
 import { styled } from 'utils/styler'
 
-import { Container as BaseContainer } from './Container'
-import { Anchor } from './basics'
+import { Anchor, Container as BaseContainer } from './basics'
 
 export const HEADER_HEIGHT = 80
 

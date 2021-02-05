@@ -1,7 +1,6 @@
 import { styled } from 'utils/styler'
 
-import { Container } from './Container'
-import { Anchor } from './basics'
+import { Anchor, Container } from './basics'
 
 const AlignLeft = styled('div', {
   textAlign: 'left',

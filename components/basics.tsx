@@ -1,15 +1,39 @@
 import { styled } from 'utils/styler'
 
+const CONTAINER_WIDTH = 1240
+const CONTAINER_PADDING = 40
+
 export const Anchor = styled('a', {
-  color: '#0b0d0e', // [todo] move to theme
+  color: '#0C2640', // [todo] move to theme
   display: 'inline-block',
-  '&:hover': {
-    color: '#f00',
+  position: 'relative',
+  '&::before': {
+    content: "''",
+    position: 'absolute',
+    top: -4,
+    right: -2,
+    bottom: -4,
+    left: -2,
+    zIndex: -1,
+  },
+  '&:hover::before': {
+    backgroundColor: '#6FDBFC',
   },
   '&:active': {
-    backgroundColor: '#0ff',
     color: '#fff',
+    '&::before': {
+      backgroundColor: '#FF5252',
+    },
   },
+})
+
+export const Container = styled('div', {
+  marginLeft: 'auto',
+  marginRight: 'auto',
+  maxWidth: CONTAINER_WIDTH,
+  paddingLeft: CONTAINER_PADDING,
+  paddingRight: CONTAINER_PADDING,
+  width: '100%',
 })
 
 export const NoScreen = styled('span', {

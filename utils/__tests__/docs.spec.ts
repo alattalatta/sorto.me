@@ -8,14 +8,17 @@ import { DocMetadata, getDocFiles, parseDoc } from '../docs'
 describe('Docs utilities', () => {
   describe('parseDoc', () => {
     it('can parse all necessary data', async () => {
-      const file = await fs.readFile(path.resolve(__dirname, 'mocks/docs', 'foo.mdx'))
+      const mockFilePath = path.resolve(__dirname, 'mocks/docs/foo.mdx')
+      const fileAsync = fs.readFile(mockFilePath)
+      const statAsync = fs.stat(mockFilePath)
 
-      const parsed = parseDoc(file)
+      const parsed = await parseDoc(mockFilePath, await fileAsync)
 
       expect(parsed.content).toBe('zzz')
       expect(parsed.meta).toEqual<DocMetadata>({
-        updated: '2021-02-04',
+        excerpt: 'aaa',
         title: 'foobar',
+        updated: (await statAsync).mtime.toISOString().slice(0, 10),
       })
     })
   })

@@ -17,6 +17,7 @@ const INLINE_CODE_STYLES = Object.freeze({
   fontFamily: `'Nanum Gothic Coding', monospace`,
   paddingRight: '.4em',
   paddingLeft: '.4em',
+  textDecorationLine: 'inherit',
 })
 
 const CalloutContainer = styled('div', {
@@ -121,9 +122,9 @@ const Callout: React.FC<{ as?: React.ElementType; color?: 'warn'; icon?: string;
   </CalloutContainer>
 )
 
-export const mdxComponents: MdxRemote.Components = Object.freeze({
+export const MDX_COMPONENTS: MdxRemote.Components = Object.freeze({
   a: ({ children, href }: JSX.IntrinsicElements['a']) => (
-    <Anchor href={href} rel="noreferrer noopener" target="_blank">
+    <Anchor href={href} rel="noreferrer noopener">
       {children}
     </Anchor>
   ),
@@ -139,6 +140,11 @@ export const mdxComponents: MdxRemote.Components = Object.freeze({
     maxWidth: '100%',
   }),
   inlineCode: styled('code', INLINE_CODE_STYLES),
+  li: styled('li', {
+    '& + &': {
+      marginTop: 4,
+    },
+  }),
   Anchor,
   Callout,
 })

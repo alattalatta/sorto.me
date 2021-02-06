@@ -10,7 +10,7 @@ export const HEADER_HEIGHT = 80
 const BRAND_HEIGHT = 52
 
 const Header = styled(motion.header, {
-  width: CONTAINER_CONTENT_BOX_WIDTH,
+  maxWidth: CONTAINER_CONTENT_BOX_WIDTH,
   height: HEADER_HEIGHT,
   background: BASE20,
   borderRadius: CORNER_RADIUS,
@@ -76,7 +76,7 @@ const PageHeader: React.VFC = () => {
     return () => window.removeEventListener('scroll', handler)
   }, [])
 
-  const borderRadius = scrolledOverThreshold ? '0' : '8px'
+  const borderRadius = scrolledOverThreshold ? '0px' : '8px'
   const headerAnimationTarget = {
     height: scrolledOverThreshold ? 64 : HEADER_HEIGHT,
     borderTopRightRadius: borderRadius,

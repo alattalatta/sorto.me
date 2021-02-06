@@ -1,3 +1,5 @@
+import { forwardRef } from 'react'
+
 import { ACCENT_R, BASE100, styled } from 'utils/styler'
 import { PropOf } from 'utils/types'
 
@@ -28,11 +30,11 @@ const AnchorWrap = styled('a', {
   },
 })
 
-export const Anchor: React.VFC<PropOf<typeof AnchorWrap>> = ({ children, ...props }) => (
-  <AnchorWrap {...props}>
+export const Anchor = forwardRef<HTMLAnchorElement, PropOf<typeof AnchorWrap>>(({ children, ...props }, ref) => (
+  <AnchorWrap ref={ref} {...props}>
     <span>{children}</span>
   </AnchorWrap>
-)
+))
 
 export const AnchorExternal: React.VFC<PropOf<typeof AnchorWrap>> = (props) => (
   <Anchor {...props} target="_blank" rel="noreferrer noopener" />

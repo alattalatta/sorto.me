@@ -4,11 +4,11 @@ import React from 'react'
 
 import { PostMetadata } from 'utils/posts'
 
+import { MDX_COMPONENTS, MDXWrap } from './MDX'
 import styles from './PostBody.module.scss'
 import PostFooter from './PostFooter'
 import PostHero from './PostHero'
 import { Container } from './basics'
-import { MDX_COMPONENTS, MDXWrap } from './mdxCommons'
 
 type Props = {
   children: MdxRemote.Source

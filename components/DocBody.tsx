@@ -6,9 +6,9 @@ import { DocMetadata } from 'utils/docs'
 
 import DocFooter from './DocFooter'
 import DocHero from './DocHero'
+import { MDX_COMPONENTS, MDXWrap } from './MDX'
 import styles from './PostBody.module.scss'
 import { Container } from './basics'
-import { MDX_COMPONENTS, MDXWrap } from './mdxCommons'
 
 type Props = {
   children: MdxRemote.Source

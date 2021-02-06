@@ -1,9 +1,11 @@
 import { MdxRemote } from 'next-mdx-remote/types'
 import React from 'react'
 
-import { ACCENT_B, ACCENT_R, ACCENT_Y, BASE100, BASE40, CORNER_RADIUS, styled } from 'utils/styler'
+import { ACCENT_B, BASE40, styled } from 'utils/styler'
 
-import { Anchor, AnchorExternal } from './basics'
+import { Anchor, AnchorExternal } from '../basics'
+import Callout, { CalloutCite } from './Callout'
+import { INLINE_CODE_STYLES } from './shared'
 
 export const MDXWrap = styled('div', {
   fontFamily: "'Nanum Gothic', sans-serif",
@@ -11,72 +13,6 @@ export const MDXWrap = styled('div', {
     lineHeight: 1.65,
     marginTop: 24,
     marginBottom: 24,
-  },
-})
-
-const INLINE_CODE_STYLES = Object.freeze({
-  backgroundColor: 'rgba(0, 0, 0, .05)',
-  borderRadius: '4px',
-  display: 'inline-block',
-  fontFamily: `'Nanum Gothic Coding', monospace`,
-  paddingRight: 4,
-  paddingLeft: 4,
-  textDecorationLine: 'inherit',
-})
-
-const CalloutContainer = styled('figure', {
-  backgroundColor: BASE100,
-  borderRadius: CORNER_RADIUS,
-  margin: '32px 0',
-  overflow: 'hidden',
-  '& code': INLINE_CODE_STYLES,
-  variants: {
-    color: {
-      warn: {
-        backgroundColor: '#FFFCE8',
-      },
-      alert: {
-        backgroundColor: '#FFEDED',
-      },
-    },
-  },
-})
-
-const CalloutCaption = styled('figcaption', {
-  borderLeft: `8px solid ${ACCENT_B}`,
-  color: BASE40,
-  fontWeight: 700,
-  padding: '12px 24px 12px 16px',
-  variants: {
-    color: {
-      warn: {
-        borderLeftColor: ACCENT_Y,
-      },
-      alert: {
-        backgroundColor: ACCENT_R,
-        color: ACCENT_R,
-      },
-    },
-  },
-})
-
-const CalloutCite: React.VFC<{ children: string; href: string }> = ({ children, href }) => {
-  return (
-    <cite>
-      <AnchorExternal href={href}>{children}</AnchorExternal>
-    </cite>
-  )
-}
-
-const CalloutBody = styled('div', {
-  lineHeight: 1.65,
-  margin: 0,
-  padding: '12px 24px 24px',
-  '& > p': {
-    margin: 0,
-  },
-  '& > p + p': {
-    marginTop: 16,
   },
 })
 
@@ -137,18 +73,6 @@ const headingOf = (level: 2 | 3 | 4, Component: typeof Heading = Heading): React
     )
   }
 }
-
-const Callout: React.FC<{ childAs?: React.ElementType; color?: 'warn' | 'alert'; label: React.ReactNode }> = ({
-  childAs = 'p',
-  children,
-  color,
-  label,
-}) => (
-  <CalloutContainer color={color}>
-    <CalloutCaption color={color}>{label}</CalloutCaption>
-    <CalloutBody as={childAs}>{children}</CalloutBody>
-  </CalloutContainer>
-)
 
 export const MDX_COMPONENTS: MdxRemote.Components = Object.freeze({
   a: ({ children, href = '' }: JSX.IntrinsicElements['a']) =>

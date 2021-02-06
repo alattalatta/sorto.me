@@ -9,8 +9,8 @@ import Head from 'next/head'
 import React from 'react'
 
 import { getLayout } from 'components/Layout'
+import { MDX_COMPONENTS } from 'components/MDX'
 import PostBody from 'components/PostBody'
-import { MDX_COMPONENTS } from 'components/mdxCommons'
 import { parsePost, PostMetadata, POSTS_PATH, POST_FILES_PENDING } from 'utils/posts'
 import { Page } from 'utils/types'
 

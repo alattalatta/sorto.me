@@ -1,15 +1,50 @@
-import { styled } from 'utils/styler'
+import { ACCENT_R, BASE100, styled } from 'utils/styler'
+import { PropOf } from 'utils/types'
 
-export const Anchor = styled('a', {
-  color: '#0b0d0e', // [todo] move to theme
+export const CONTAINER_BORDER_BOX_WIDTH = 1240
+export const CONTAINER_PADDING = 40
+export const CONTAINER_CONTENT_BOX_WIDTH = CONTAINER_BORDER_BOX_WIDTH - CONTAINER_PADDING * 2
+
+const AnchorWrap = styled('a', {
+  color: 'inherit',
   display: 'inline-block',
-  '&:hover': {
-    color: '#f00',
-  },
+  position: 'relative',
   '&:active': {
-    backgroundColor: '#0ff',
-    color: '#fff',
+    color: BASE100,
+    '&::before': {
+      backgroundColor: ACCENT_R,
+      content: "''",
+      position: 'absolute',
+      top: -4,
+      right: -2,
+      bottom: -4,
+      left: -2,
+    },
   },
+  '& span': {
+    position: 'relative',
+    textDecorationLine: 'inherit',
+    zIndex: 1,
+  },
+})
+
+export const Anchor: React.VFC<PropOf<typeof AnchorWrap>> = ({ children, ...props }) => (
+  <AnchorWrap {...props}>
+    <span>{children}</span>
+  </AnchorWrap>
+)
+
+export const AnchorExternal: React.VFC<PropOf<typeof AnchorWrap>> = (props) => (
+  <Anchor {...props} target="_blank" rel="noreferrer noopener" />
+)
+
+export const Container = styled('div', {
+  marginLeft: 'auto',
+  marginRight: 'auto',
+  maxWidth: CONTAINER_BORDER_BOX_WIDTH,
+  paddingLeft: CONTAINER_PADDING,
+  paddingRight: CONTAINER_PADDING,
+  width: '100%',
 })
 
 export const NoScreen = styled('span', {

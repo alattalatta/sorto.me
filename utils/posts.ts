@@ -12,6 +12,7 @@ export type PostMetadata = {
    */
   created: string
   excerpt?: string
+  slug: string
   title: string
 }
 
@@ -23,12 +24,14 @@ export type PostMetadata = {
  */
 export function parsePost(fileName: string, source: Buffer): { content: string; meta: PostMetadata } {
   const { content, data } = matter(source)
+  const [created, slug] = fileName.split('+')
 
   return {
     content,
     meta: {
       ...data,
-      created: fileName.split('+')[0],
+      created,
+      slug: slug.replace('.mdx', ''),
     } as PostMetadata,
   }
 }

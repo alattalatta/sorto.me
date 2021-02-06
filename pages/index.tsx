@@ -5,7 +5,7 @@ import util from 'util'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 
-import IndexBody, { PostDatum } from 'components/IndexBody'
+import BlogBody, { PostDatum } from 'components/BlogBody'
 import { getLayout } from 'components/Layout'
 import { parsePost, POSTS_PATH, POST_FILES_PENDING } from 'utils/posts'
 import { Page } from 'utils/types'
@@ -20,7 +20,7 @@ const Index: Page<StaticProps> = ({ posts }) => {
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Sorto.me" />
       </Head>
-      <IndexBody posts={posts} />
+      <BlogBody posts={posts} />
     </div>
   )
 }

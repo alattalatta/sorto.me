@@ -9,3 +9,15 @@ html {
 body {
   margin: 0
 }
+
+h1,
+h2,
+h3,
+h4,
+p,
+blockquote,
+figure,
+ul,
+ol {
+  margin: 0
+}

@@ -4,11 +4,11 @@ import React from 'react'
 
 import { DocMetadata } from 'utils/docs'
 
-import { Container } from './Container'
 import DocFooter from './DocFooter'
-import DocTitle from './DocTitle'
+import DocHero from './DocHero'
+import { MDX_COMPONENTS, MDXWrap } from './MDX'
 import styles from './PostBody.module.scss'
-import { MDX_COMPONENTS, MDXWrap } from './mdxCommons'
+import { Container } from './basics'
 
 type Props = {
   children: MdxRemote.Source
@@ -21,11 +21,11 @@ const DocBody: React.VFC<Props> = ({ children, meta, slugs }) => {
 
   return (
     <article>
-      <DocTitle>{meta.title}</DocTitle>
+      <DocHero slugs={slugs}>{meta.title}</DocHero>
       <Container>
         <MDXWrap className={styles.prismStyler}>{content}</MDXWrap>
       </Container>
-      <DocFooter slug={slugs.join('/')} updated={meta.updated} />
+      <DocFooter meta={meta} slugs={slugs} />
     </article>
   )
 }

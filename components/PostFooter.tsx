@@ -1,22 +1,28 @@
 import React from 'react'
 
-import { styled } from 'utils/styler'
+import { GITHUB_MAIN_URL } from 'utils/external'
+import { PostMetadata } from 'utils/posts'
 
-import { Container } from './Container'
+import PageFooter, { FooterColumn } from './PageFooter'
+import { AnchorExternal } from './basics'
 
-const FooterContainer = styled('footer', {
-  background: '#000',
-  color: '#fff',
-  marginTop: '120px',
-  paddingTop: '50px',
-  paddingBottom: '50px',
-})
+type Props = {
+  meta: PostMetadata
+}
 
-const PostFooter: React.VFC = () => {
+const PostFooter: React.VFC<Props> = ({ meta }) => {
+  const { created, slug } = meta
+
   return (
-    <FooterContainer>
-      <Container>{/* [todo] */}</Container>
-    </FooterContainer>
+    <PageFooter>
+      <FooterColumn>
+        <AnchorExternal href={`${GITHUB_MAIN_URL}/posts/${created}+${slug}.mdx`}>GitHub에서 보기</AnchorExternal>
+      </FooterColumn>
+      <FooterColumn as="small">
+        <AnchorExternal href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</AnchorExternal> 아래에서
+        자유롭게 이용할 수 있습니다.
+      </FooterColumn>
+    </PageFooter>
   )
 }
 

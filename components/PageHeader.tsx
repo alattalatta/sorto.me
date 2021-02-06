@@ -25,7 +25,7 @@ const Header = styled(motion.header, {
   top: 0,
   right: 0,
   left: 0,
-  zIndex: 1,
+  zIndex: 9,
 })
 
 const Brand = styled(motion.a, {
@@ -42,6 +42,7 @@ const Brand = styled(motion.a, {
   padding: 16,
   textDecoration: 'none',
   '&:active': {
+    color: BASE100,
     backgroundColor: ACCENT_R,
     boxShadow: `0px 2px 12px ${ACCENT_R}`,
   },

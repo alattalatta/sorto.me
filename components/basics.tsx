@@ -18,7 +18,7 @@ const ANCHOR_HL_ANIMATION = css.keyframes({
   },
 })
 
-export const Anchor = styled('a', {
+const AnchorWrap = styled('a', {
   color: 'inherit',
   display: 'inline-block',
   position: 'relative',
@@ -33,7 +33,6 @@ export const Anchor = styled('a', {
     bottom: -4,
     left: -2,
     transformOrigin: 'left',
-    zIndex: -1,
   },
   '&:active': {
     color: BASE100,
@@ -41,9 +40,19 @@ export const Anchor = styled('a', {
       backgroundColor: ACCENT_R,
     },
   },
+  '& span': {
+    position: 'relative',
+    zIndex: 1,
+  },
 })
 
-export const AnchorExternal: React.VFC<PropOf<typeof Anchor>> = (props) => (
+export const Anchor: React.VFC<PropOf<typeof AnchorWrap>> = ({ children, ...props }) => (
+  <AnchorWrap {...props}>
+    <span>{children}</span>
+  </AnchorWrap>
+)
+
+export const AnchorExternal: React.VFC<PropOf<typeof AnchorWrap>> = (props) => (
   <Anchor {...props} target="_blank" rel="noreferrer noopener" />
 )
 

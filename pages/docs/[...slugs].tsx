@@ -10,7 +10,7 @@ import React from 'react'
 
 import DocBody from 'components/DocBody'
 import { getLayout } from 'components/Layout'
-import { MDX_COMPONENTS } from 'components/mdxCommons'
+import { MDX_COMPONENTS } from 'components/MDX'
 import { DocMetadata, DOCS_PATH, getDocFiles, parseDoc } from 'utils/docs'
 import { Page } from 'utils/types'
 

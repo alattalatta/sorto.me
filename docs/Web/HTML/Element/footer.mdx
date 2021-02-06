@@ -1,0 +1,31 @@
+---
+title: HTML <footer> 요소
+excerpt: HTML <footer> 요소는 가장 가까운 구획 콘텐츠나 구획 루트의 푸터(꼬리말 영역)를 나타냅니다.
+---
+
+**HTML `<footer>` 요소**는 가장 가까운 [구획 콘텐츠](https://html.spec.whatwg.org/multipage/dom.html#sectioning-content-2)나 [구획 루트](https://html.spec.whatwg.org/multipage/sections.html#sectioning-root)의 푸터(꼬리말 영역)를 나타냅니다. 푸터는 보통 구획의 작성자, 저작권 정보, 관련 문서 등의 내용을 담습니다.
+
+```html
+<article>
+  <h1>Sorto.me</h1>
+  <p>봉골레 파스타 만드는 법</p>
+  <ol><!-- ... --></ol>
+  <footer>
+    <p>라이선스: CC BY-SA 4.0</p>
+  </footer>
+</article>
+```
+
+# 특성
+
+[전역 특성](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes)만 포함합니다.
+
+# 접근성 고려사항
+
+Safari 13 미만 버전에서는 [VoiceOver](https://support.apple.com/ko-kr/guide/voiceover/welcome/10)가 `<footer>`가 `contentinfo` [랜드마크 역할](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/WAI-ARIA_basics#signpostslandmarks)을 제대로 표현하지 않습니다. 구형 Safari 브라우저를 지원해야 하면 직접 `role="contentinfo"` 특성을 추가해서 랜드마크 역할이 제대로 표현되도록 해주세요.
+
+- 관련 링크: [WebKit Bugzilla: 146930](https://bugs.webkit.org/show_bug.cgi?id=146930)
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/#the-footer-element)

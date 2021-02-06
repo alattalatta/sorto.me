@@ -21,3 +21,7 @@ ul,
 ol {
   margin: 0
 }
+
+code {
+  font-family: 'Nanum Gothic Coding', monospace
+}

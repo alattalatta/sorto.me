@@ -35,7 +35,7 @@ const CalloutCaption = styled('figcaption', {
         borderLeftColor: ACCENT_Y,
       },
       alert: {
-        backgroundColor: ACCENT_R,
+        borderLeftColor: ACCENT_R,
         color: ACCENT_R,
       },
     },

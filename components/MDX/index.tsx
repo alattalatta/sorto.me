@@ -1,7 +1,7 @@
 import { MdxRemote } from 'next-mdx-remote/types'
 import React from 'react'
 
-import { ACCENT_B, BASE40, styled } from 'utils/styler'
+import { ACCENT_B, CORNER_RADIUS, BASE100, BASE40, styled } from 'utils/styler'
 
 import { Anchor, AnchorExternal } from '../basics'
 import Callout, { CalloutCite } from './Callout'
@@ -13,6 +13,36 @@ export const MDXWrap = styled('div', {
     lineHeight: 1.65,
     marginTop: 24,
     marginBottom: 24,
+  },
+})
+
+const CodeBlockBad = styled('span', {
+  position: 'absolute',
+  visibility: 'hidden',
+})
+
+const CodeBlockGood = styled(CodeBlockBad, {})
+
+const CodeBlock = styled('pre', {
+  backgroundColor: BASE100,
+  borderRadius: CORNER_RADIUS,
+  colors: BASE40,
+  direction: 'ltr',
+  fontSize: 14,
+  hyphens: 'none',
+  lineHeight: 1.375,
+  marginTop: 24,
+  marginBottom: 24,
+  padding: 16,
+  tabSize: 2,
+  whiteSpace: 'pre',
+  wordBreak: 'normal',
+  wordSpacing: 'normal',
+  [`${CodeBlockBad} + &`]: {
+    backgroundColor: '#FFEDED',
+  },
+  [`${CodeBlockGood} + &`]: {
+    backgroundColor: '#F2FFED',
   },
 })
 
@@ -81,6 +111,7 @@ export const MDX_COMPONENTS: MdxRemote.Components = Object.freeze({
     ) : (
       <AnchorExternal href={href}>{children}</AnchorExternal>
     ),
+  pre: CodeBlock,
   h1: headingOf(2, Heading2),
   h2: headingOf(3, Heading3),
   h3: headingOf(4, Heading4),
@@ -98,4 +129,6 @@ export const MDX_COMPONENTS: MdxRemote.Components = Object.freeze({
   AnchorExternal,
   Callout,
   CalloutCite,
+  CodeBlockBad,
+  CodeBlockGood,
 })

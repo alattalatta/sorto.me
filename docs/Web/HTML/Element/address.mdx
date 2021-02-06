@@ -1,0 +1,39 @@
+---
+title: HTML <address> 요소
+excerpt: HTML <address> 요소는 가장 가까운 <article> 또는 <body> 요소의 연락처 정보를 나타냅니다.
+---
+
+**HTML `<address>`** 요소는 가장 가까운 [`<article>`](./article) 또는 `<body>` 요소의 연락처 정보를 나타냅니다.
+
+```tsx
+<p>연락처</p>
+<address>
+  <a href="mailto:example@example.org">example@example.org</a>
+  <a href="tel:+821012341234">010-1234-1234</a>
+</address>
+```
+
+`<address>` 요소가 제공하는 연락처 정보는 현재 맥락에 적절한 형태라면 무엇이든 가질 수 있으며, 물리적 주소, URL, 이메일 주소, 전화번호, SNS ID, 좌표 등 어떠한 정보도 포함할 수 있습니다.
+
+`<address>`를 페이지 헤더나 푸터에 배치해서 현재 페이지(`<body>`)가 나타내는 대상의 연락처를 표현할 수도 있고, [`<article>`](./article) 내부에 배치해서 해당 글의 작성자만을 나타낼 수도 있습니다.
+
+# 특성
+
+[전역 특성](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes)만 포함합니다.
+
+# 사용 일람
+
+- `<address>` 요소는 연락처 정보만 담아야 합니다. 글을 발행한 날짜(`<time>`) 등 다른 정보는 포함해서는 안됩니다.
+
+# 예제
+
+```html
+<address>
+  버그 관련 문의는 <a href="https://github.com/alattalatta/sorto.me">GitHub</a> 이슈로 남겨주세요. <br /><br />
+  서울특별시 종로구 세종로 세종대로 172
+</address>
+```
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/sections.html#the-address-element)

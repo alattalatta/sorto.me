@@ -91,7 +91,7 @@ export const MDX_COMPONENTS: MdxRemote.Components = Object.freeze({
   inlineCode: styled('code', INLINE_CODE_STYLES),
   li: styled('li', {
     '& + &': {
-      marginTop: 4,
+      marginTop: 8,
     },
   }),
   Anchor,

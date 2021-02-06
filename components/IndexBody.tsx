@@ -4,6 +4,7 @@ import React from 'react'
 import { PostMetadata } from 'utils/posts'
 import { styled } from 'utils/styler'
 
+import PageHeaderOffset from './PageHeaderOffset'
 import { Anchor, Container } from './basics'
 
 type Props = {
@@ -40,20 +41,22 @@ const Title = styled('span', {
 
 const IndexBody: React.VFC<Props> = ({ posts }) => {
   return (
-    <Container>
-      <List>
-        {posts.map((post) => (
-          <Item key={post.slug}>
-            <Link href={`/post/${post.slug}`}>
-              <Post href={`/post/${post.slug}`}>
-                <Title>{post.meta.title}</Title>
-                <time dateTime={post.meta.created}>{post.meta.created}</time>
-              </Post>
-            </Link>
-          </Item>
-        ))}
-      </List>
-    </Container>
+    <PageHeaderOffset as="main">
+      <Container>
+        <List>
+          {posts.map((post) => (
+            <Item key={post.slug}>
+              <Link href={`/post/${post.slug}`}>
+                <Post href={`/post/${post.slug}`}>
+                  <Title>{post.meta.title}</Title>
+                  <time dateTime={post.meta.created}>{post.meta.created}</time>
+                </Post>
+              </Link>
+            </Item>
+          ))}
+        </List>
+      </Container>
+    </PageHeaderOffset>
   )
 }
 

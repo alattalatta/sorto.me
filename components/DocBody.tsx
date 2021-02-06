@@ -21,11 +21,11 @@ const DocBody: React.VFC<Props> = ({ children, meta, slugs }) => {
 
   return (
     <article>
-      <DocHero>{meta.title}</DocHero>
+      <DocHero slugs={slugs}>{meta.title}</DocHero>
       <Container>
         <MDXWrap className={styles.prismStyler}>{content}</MDXWrap>
       </Container>
-      <DocFooter slug={slugs.join('/')} updated={meta.updated} />
+      <DocFooter slugs={slugs} updated={meta.updated} />
     </article>
   )
 }

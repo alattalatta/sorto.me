@@ -8,6 +8,7 @@ import { Container } from './basics'
 const HeroContainer = styled('header', {
   background: BASE10,
   color: BASE100,
+  marginBottom: 36,
   paddingTop: 210,
   paddingBottom: 160,
 })

@@ -1,13 +1,19 @@
 import { MdxRemote } from 'next-mdx-remote/types'
 import React from 'react'
 
-import { styled } from 'utils/styler'
+import { ACCENT_B, BASE40, styled } from 'utils/styler'
 
 import { Anchor, AnchorExternal } from './basics'
 
 export const MDXWrap = styled('div', {
-  fontFamily: 'sans-serif',
-  lineHeight: 1.4,
+  fontFamily: "'Nanum Gothic', sans-serif",
+  '& p': {
+    lineHeight: 1.65,
+  },
+  '& > p': {
+    marginTop: 24,
+    marginBottom: 24,
+  },
 })
 
 const INLINE_CODE_STYLES = Object.freeze({
@@ -15,8 +21,8 @@ const INLINE_CODE_STYLES = Object.freeze({
   borderRadius: '4px',
   display: 'inline-block',
   fontFamily: `'Nanum Gothic Coding', monospace`,
-  paddingRight: '.4em',
-  paddingLeft: '.4em',
+  paddingRight: 4,
+  paddingLeft: 4,
   textDecorationLine: 'inherit',
 })
 
@@ -28,10 +34,11 @@ const CalloutContainer = styled('div', {
   padding: '1.5rem 2rem 1.5rem 1.2rem',
   '& code': INLINE_CODE_STYLES,
   '& p': {
-    margin: 0,
+    marginTop: 0,
+    marginBottom: 0,
   },
   '& p + p': {
-    marginTop: '.6em',
+    marginTop: 24,
   },
   variants: {
     border: {
@@ -59,35 +66,46 @@ const CalloutTitle = styled('span', {
   marginBottom: '.2em',
 })
 
-const HeadingAnchor = styled(Anchor, {
-  color: '#ddd',
+const HeadingAnchor = styled('a', {
+  color: ACCENT_B,
   opacity: 0,
-  paddingLeft: '.5ch',
-  paddingRight: '.5ch',
-  position: 'absolute',
-  top: 0,
-  right: '100%',
+  display: 'inline-block',
+  paddingRight: 6,
+  paddingLeft: 6,
   textDecoration: 'none',
+  '&:hover': {
+    textDecoration: 'underline',
+  },
 })
 
 const Heading = styled('h2', {
-  position: 'relative',
+  color: BASE40,
   [`&:hover ${HeadingAnchor}`]: {
     opacity: 1,
   },
 })
 
 const Heading2 = styled(Heading, {
-  borderBottom: '1px solid #e8ebed',
-  fontSize: '1.75em',
-  paddingBottom: '.25em',
+  borderBottom: `1px solid ${BASE40}`,
+  fontSize: 28,
+  marginTop: 36,
+  marginBottom: 28,
+  paddingBottom: 8,
 })
 
 const Heading3 = styled(Heading, {
-  fontSize: '1.5em',
+  fontSize: 24,
+  marginTop: 28,
+  marginBottom: 24,
 })
 
-const headingOf = (level: 2 | 3 | 4 | 5, Component: typeof Heading = Heading): React.FC => {
+const Heading4 = styled(Heading, {
+  fontSize: 22,
+  marginTop: 24,
+  marginBottom: 24,
+})
+
+const headingOf = (level: 2 | 3 | 4, Component: typeof Heading = Heading): React.FC => {
   let count = 0
 
   return ({ children }) => {
@@ -97,10 +115,10 @@ const headingOf = (level: 2 | 3 | 4 | 5, Component: typeof Heading = Heading): R
 
     return (
       <Component as={el} id={id}>
+        {children}
         <HeadingAnchor href={`#${id}`} aria-hidden>
           #
         </HeadingAnchor>
-        {children}
       </Component>
     )
   }
@@ -134,8 +152,7 @@ export const MDX_COMPONENTS: MdxRemote.Components = Object.freeze({
   ),
   h1: headingOf(2, Heading2),
   h2: headingOf(3, Heading3),
-  h3: headingOf(4),
-  h4: headingOf(5),
+  h3: headingOf(4, Heading4),
   img: styled('img', {
     display: 'block',
     maxWidth: '100%',

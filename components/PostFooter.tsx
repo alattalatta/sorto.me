@@ -16,6 +16,7 @@ const FooterContainer = styled('footer', {
 
 const Container = styled(BaseContainer, {
   display: 'flex',
+  opacity: 0.67,
 })
 
 const Column = styled('div', {
@@ -37,8 +38,8 @@ const PostFooter: React.VFC<Props> = ({ meta }) => {
           <AnchorExternal href={`${GITHUB_MAIN_URL}/posts/${created}+${slug}.mdx`}>GitHub에서 보기</AnchorExternal>
         </Column>
         <Column as="small">
-          <AnchorExternal href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</AnchorExternal>
-          아래에서 자유롭게 이용할 수 있습니다.
+          <AnchorExternal href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</AnchorExternal> 아래에서
+          자유롭게 이용할 수 있습니다.
         </Column>
       </Container>
     </FooterContainer>

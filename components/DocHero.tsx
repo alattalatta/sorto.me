@@ -80,7 +80,7 @@ const DocHero: React.VFC<Props> = ({ children, slugs }) => {
         <Title>{children}</Title>
         <SubContainer>
           <Breadcrumbs>{breadcrumbs}</Breadcrumbs>
-          <MDNLink href={`https://developer.mozilla.org/ko/${slugs.join('/')}`}>MDN에서 보기</MDNLink>
+          <MDNLink href={`https://developer.mozilla.org/ko/docs/${slugs.join('/')}`}>MDN에서 보기</MDNLink>
         </SubContainer>
       </Container>
     </HeroContainer>

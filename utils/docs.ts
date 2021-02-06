@@ -7,6 +7,7 @@ import { onlyMDXFiles, readFilesRec } from './system'
 
 export type DocMetadata = {
   excerpt?: string
+  originalTitle?: string
   title: string
   /**
    * String representing a date which the doc file is last modified. (`yyyy-MM-dd`)

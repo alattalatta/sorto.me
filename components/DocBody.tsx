@@ -25,7 +25,7 @@ const DocBody: React.VFC<Props> = ({ children, meta, slugs }) => {
       <Container>
         <MDXWrap className={styles.prismStyler}>{content}</MDXWrap>
       </Container>
-      <DocFooter slugs={slugs} updated={meta.updated} />
+      <DocFooter meta={meta} slugs={slugs} />
     </article>
   )
 }

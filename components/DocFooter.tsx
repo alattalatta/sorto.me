@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { DocMetadata } from 'utils/docs'
 import { GITHUB_MAIN_URL } from 'utils/external'
 import { styled } from 'utils/styler'
 
@@ -19,19 +20,21 @@ const SeparatedBlock = styled('div', {
 })
 
 type Props = {
+  meta: DocMetadata
   slugs: string[]
-  updated: string
 }
 
-const PostFooter: React.VFC<Props> = ({ slugs, updated }) => {
+const PostFooter: React.VFC<Props> = ({ meta, slugs }) => {
   const path = slugs.join('/')
-  const [y, m, d] = updated.split('-').map(Number)
+  const [y, m, d] = meta.updated.split('-').map(Number)
+
+  const attributionTitle = meta.originalTitle || meta.title
 
   return (
     <PageFooter>
       <FooterColumn>
         <Block>마지막 업데이트</Block>
-        <Block as="time" dateTime={updated}>
+        <Block as="time" dateTime={meta.updated}>
           {y}년 {m}월 {d}일
         </Block>
         <SeparatedBlock>
@@ -49,7 +52,7 @@ const PostFooter: React.VFC<Props> = ({ slugs, updated }) => {
         </Block>
         <SeparatedBlock css={{ fontSize: 10 }}>
           <Block>
-            "title" from MDN contributors is licensed under{' '}
+            "{attributionTitle}" from MDN contributors is licensed under{' '}
             <AnchorExternal href="https://creativecommons.org/licenses/by-sa/2.5/">CC BY-SA 2.5</AnchorExternal>.
           </Block>
           <Block>

@@ -1,16 +1,14 @@
 import { MdxRemote } from 'next-mdx-remote/types'
 import React from 'react'
 
-import { ACCENT_B, BASE40, styled } from 'utils/styler'
+import { ACCENT_B, ACCENT_R, ACCENT_Y, BASE100, BASE40, CORNER_RADIUS, styled } from 'utils/styler'
 
 import { Anchor, AnchorExternal } from './basics'
 
 export const MDXWrap = styled('div', {
   fontFamily: "'Nanum Gothic', sans-serif",
-  '& p': {
-    lineHeight: 1.65,
-  },
   '& > p': {
+    lineHeight: 1.65,
     marginTop: 24,
     marginBottom: 24,
   },
@@ -26,44 +24,60 @@ const INLINE_CODE_STYLES = Object.freeze({
   textDecorationLine: 'inherit',
 })
 
-const CalloutContainer = styled('div', {
-  backgroundColor: 'rgba(0, 0, 0, .05)',
-  borderLeft: '8px solid rgba(0, 0, 0, .2)',
-  borderRadius: '4px',
-  margin: '0.5em 0',
-  padding: '1.5rem 2rem 1.5rem 1.2rem',
+const CalloutContainer = styled('figure', {
+  backgroundColor: BASE100,
+  borderRadius: CORNER_RADIUS,
+  margin: '32px 0',
+  overflow: 'hidden',
   '& code': INLINE_CODE_STYLES,
-  '& p': {
-    marginTop: 0,
-    marginBottom: 0,
-  },
-  '& p + p': {
-    marginTop: 24,
-  },
   variants: {
-    border: {
-      none: {
-        borderLeft: 0,
-        padding: '1.5rem 2rem',
-      },
-    },
     color: {
       warn: {
-        backgroundColor: 'rgba(255, 244, 193, .5)',
-        borderLeftColor: 'rgba(255, 244, 193, .75)',
+        backgroundColor: '#FFFCE8',
+      },
+      alert: {
+        backgroundColor: '#FFEDED',
       },
     },
   },
 })
 
-const CalloutBody = styled('div', {
-  flex: 1,
+const CalloutCaption = styled('figcaption', {
+  borderLeft: `8px solid ${ACCENT_B}`,
+  color: BASE40,
+  fontWeight: 700,
+  padding: '12px 24px 12px 16px',
+  variants: {
+    color: {
+      warn: {
+        borderLeftColor: ACCENT_Y,
+      },
+      alert: {
+        backgroundColor: ACCENT_R,
+        color: ACCENT_R,
+      },
+    },
+  },
 })
 
-const CalloutTitle = styled('span', {
-  display: 'block',
-  fontWeight: '700',
-  marginBottom: '.2em',
+const CalloutCite: React.VFC<{ children: string; href: string }> = ({ children, href }) => {
+  return (
+    <cite>
+      <AnchorExternal href={href}>{children}</AnchorExternal>
+    </cite>
+  )
+}
+
+const CalloutBody = styled('div', {
+  lineHeight: 1.65,
+  margin: 0,
+  padding: '12px 24px 24px',
+  '& > p': {
+    margin: 0,
+  },
+  '& > p + p': {
+    marginTop: 16,
+  },
 })
 
 const HeadingAnchor = styled('a', {
@@ -124,19 +138,15 @@ const headingOf = (level: 2 | 3 | 4, Component: typeof Heading = Heading): React
   }
 }
 
-const Callout: React.FC<{ as?: React.ElementType; color?: 'warn'; icon?: string; label?: string }> = ({
-  as = 'section',
+const Callout: React.FC<{ childAs?: React.ElementType; color?: 'warn' | 'alert'; label: React.ReactNode }> = ({
+  childAs = 'p',
   children,
   color,
-  icon,
   label,
 }) => (
-  <CalloutContainer as={as} css={{ display: 'flex' }} color={color}>
-    {icon && <span>{icon}</span>}
-    <CalloutBody>
-      {label && <CalloutTitle>{label}</CalloutTitle>}
-      <p>{children}</p>
-    </CalloutBody>
+  <CalloutContainer color={color}>
+    <CalloutCaption color={color}>{label}</CalloutCaption>
+    <CalloutBody as={childAs}>{children}</CalloutBody>
   </CalloutContainer>
 )
 
@@ -147,9 +157,6 @@ export const MDX_COMPONENTS: MdxRemote.Components = Object.freeze({
     ) : (
       <AnchorExternal href={href}>{children}</AnchorExternal>
     ),
-  blockquote: ({ children }: { children: React.ReactNode }) => (
-    <CalloutContainer as="blockquote">{children}</CalloutContainer>
-  ),
   h1: headingOf(2, Heading2),
   h2: headingOf(3, Heading3),
   h3: headingOf(4, Heading4),
@@ -164,5 +171,7 @@ export const MDX_COMPONENTS: MdxRemote.Components = Object.freeze({
     },
   }),
   Anchor,
+  AnchorExternal,
   Callout,
+  CalloutCite,
 })

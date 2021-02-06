@@ -2,7 +2,7 @@ import React from 'react'
 
 import { BASE10, BASE100, BASE70, styled } from 'utils/styler'
 
-import { Anchor, AnchorExternal, Container } from './basics'
+import { Anchor, Container } from './basics'
 
 const HeroContainer = styled('header', {
   background: BASE10,
@@ -40,7 +40,7 @@ const BreadcrumbSeparator = styled('span', {
   marginLeft: 5,
 })
 
-const MDNLink = styled(AnchorExternal, {
+const MDNLink = styled(Anchor, {
   fontSize: 12,
   marginLeft: 12,
 })

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { styled, BASE100, CORNER_RADIUS, ACCENT_B, BASE40, ACCENT_Y, ACCENT_R } from 'utils/styler'
 
-import { AnchorExternal } from '../basics'
+import { Anchor } from '../basics'
 import { INLINE_CODE_STYLES } from './shared'
 
 const CalloutContainer = styled('figure', {
@@ -57,7 +57,7 @@ const CalloutCiteWrap = styled('cite', {
 export const CalloutCite: React.VFC<{ children: string; href: string }> = ({ children, href }) => {
   return (
     <CalloutCiteWrap>
-      <AnchorExternal href={href}>{children}</AnchorExternal>
+      <Anchor href={href}>{children}</Anchor>
     </CalloutCiteWrap>
   )
 }

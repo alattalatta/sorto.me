@@ -1,4 +1,5 @@
-import { forwardRef } from 'react'
+import Link from 'next/link'
+import React, { forwardRef } from 'react'
 
 import { ACCENT_R, BASE100, styled } from 'utils/styler'
 import { PropOf } from 'utils/types'
@@ -30,15 +31,38 @@ const AnchorWrap = styled('a', {
   },
 })
 
-export const Anchor = forwardRef<HTMLAnchorElement, PropOf<typeof AnchorWrap>>(({ children, ...props }, ref) => (
+const AnchorInternal = forwardRef<HTMLAnchorElement, PropOf<typeof AnchorWrap>>(({ children, ...props }, ref) => (
   <AnchorWrap ref={ref} {...props}>
     <span>{children}</span>
   </AnchorWrap>
 ))
 
-export const AnchorExternal: React.VFC<PropOf<typeof AnchorWrap>> = (props) => (
-  <Anchor {...props} target="_blank" rel="noreferrer noopener" />
+const AnchorExternal: React.VFC<PropOf<typeof AnchorWrap>> = (props) => (
+  <AnchorInternal {...props} target="_blank" rel="noreferrer noopener" />
 )
+
+/**
+ * Automatic anchor. Applies client routing when given an internal link (relative href). Otherwise, uses simple `<a>` tag.
+ */
+export const Anchor = forwardRef<HTMLAnchorElement, PropOf<typeof AnchorWrap>>(({ href = '', ...props }, ref) => {
+  const internal = /^\.|\//.test(href)
+
+  if (internal && !process.browser) {
+    // can't get absolute url to resolve against
+    return <AnchorInternal ref={ref} href={href} {...props} />
+  }
+
+  if (internal) {
+    const resolvedURL = new URL(href, location.href)
+    return (
+      <Link href={resolvedURL}>
+        <AnchorInternal ref={ref} href={href} {...props} />
+      </Link>
+    )
+  }
+
+  return <AnchorExternal ref={ref} href={href} {...props} />
+})
 
 export const Container = styled('div', {
   marginLeft: 'auto',

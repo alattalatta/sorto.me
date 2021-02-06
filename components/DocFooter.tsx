@@ -5,7 +5,7 @@ import { GITHUB_MAIN_URL } from 'utils/external'
 import { styled } from 'utils/styler'
 
 import PageFooter, { FooterColumn } from './PageFooter'
-import { AnchorExternal } from './basics'
+import { Anchor } from './basics'
 
 const Block = styled('div', {
   display: 'block',
@@ -38,33 +38,30 @@ const PostFooter: React.VFC<Props> = ({ meta, slugs }) => {
           {y}년 {m}월 {d}일
         </Block>
         <SeparatedBlock>
-          <AnchorExternal href={`${GITHUB_MAIN_URL}/docs/${path}.mdx`}>GitHub에서 보기</AnchorExternal>
+          <Anchor href={`${GITHUB_MAIN_URL}/docs/${path}.mdx`}>GitHub에서 보기</Anchor>
         </SeparatedBlock>
       </FooterColumn>
       <FooterColumn as="small">
         <Block>
-          본 문서는 <AnchorExternal href="https://developer.mozilla.org/">MDN</AnchorExternal> (en-US 및 ko) 문서에
-          기반을 두고 있습니다.
+          본 문서는 <Anchor href="https://developer.mozilla.org/">MDN</Anchor> (en-US 및 ko) 문서에 기반을 두고
+          있습니다.
         </Block>
         <Block>
-          <AnchorExternal href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</AnchorExternal> 아래에서
-          자유롭게 이용할 수 있습니다.
+          <Anchor href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</Anchor> 아래에서 자유롭게 이용할
+          수 있습니다.
         </Block>
         <SeparatedBlock css={{ fontSize: 10 }}>
           <Block>
             "{attributionTitle}" from MDN contributors is licensed under{' '}
-            <AnchorExternal href="https://creativecommons.org/licenses/by-sa/2.5/">CC BY-SA 2.5</AnchorExternal>.
+            <Anchor href="https://creativecommons.org/licenses/by-sa/2.5/">CC BY-SA 2.5</Anchor>.
           </Block>
           <Block>
-            <AnchorExternal href={`https://developer.mozilla.org/en-US/docs/${path}/contributors.txt`}>
+            <Anchor href={`https://developer.mozilla.org/en-US/docs/${path}/contributors.txt`}>
               List of the contributors
-            </AnchorExternal>
-            <AnchorExternal
-              css={{ marginLeft: 6 }}
-              href={`https://developer.mozilla.org/ko/docs/${path}/contributors.txt`}
-            >
+            </Anchor>
+            <Anchor css={{ marginLeft: 6 }} href={`https://developer.mozilla.org/ko/docs/${path}/contributors.txt`}>
               한국어 문서 기여자
-            </AnchorExternal>
+            </Anchor>
           </Block>
         </SeparatedBlock>
       </FooterColumn>

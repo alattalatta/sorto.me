@@ -1,9 +1,9 @@
 import { MdxRemote } from 'next-mdx-remote/types'
 import React from 'react'
 
-import { ACCENT_B, CORNER_RADIUS, BASE100, BASE40, styled } from 'utils/styler'
+import { ACCENT_B, BASE100, BASE40, CORNER_RADIUS, styled } from 'utils/styler'
 
-import { Anchor, AnchorExternal } from '../basics'
+import { Anchor } from '../basics'
 import Callout, { CalloutCite } from './Callout'
 import { INLINE_CODE_STYLES } from './shared'
 
@@ -17,11 +17,16 @@ export const MDXWrap = styled('div', {
 })
 
 const CodeBlockBad = styled('span', {
+  backgroundColor: '#FFEDED',
   position: 'absolute',
   visibility: 'hidden',
 })
 
-const CodeBlockGood = styled(CodeBlockBad, {})
+const CodeBlockGood = styled('span', {
+  backgroundColor: '#F2FFED',
+  position: 'absolute',
+  visibility: 'hidden',
+})
 
 const CodeBlock = styled('pre', {
   backgroundColor: BASE100,
@@ -80,7 +85,7 @@ const Heading3 = styled(Heading, {
 })
 
 const Heading4 = styled(Heading, {
-  fontSize: 22,
+  fontSize: 20,
   marginTop: 24,
   marginBottom: 24,
 })
@@ -105,12 +110,7 @@ const headingOf = (level: 2 | 3 | 4, Component: typeof Heading = Heading): React
 }
 
 export const MDX_COMPONENTS: MdxRemote.Components = Object.freeze({
-  a: ({ children, href = '' }: JSX.IntrinsicElements['a']) =>
-    /^\.|\//.test(href) ? (
-      <Anchor href={href}>{children}</Anchor>
-    ) : (
-      <AnchorExternal href={href}>{children}</AnchorExternal>
-    ),
+  a: Anchor,
   pre: CodeBlock,
   h1: headingOf(2, Heading2),
   h2: headingOf(3, Heading3),
@@ -126,7 +126,6 @@ export const MDX_COMPONENTS: MdxRemote.Components = Object.freeze({
     },
   }),
   Anchor,
-  AnchorExternal,
   Callout,
   CalloutCite,
   CodeBlockBad,

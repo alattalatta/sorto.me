@@ -77,6 +77,12 @@ const PageHeader: React.VFC = () => {
   }, [])
 
   const borderRadius = scrolledOverThreshold ? '0px' : '8px'
+  const headerInitial = {
+    height: HEADER_HEIGHT,
+    borderTopRightRadius: borderRadius,
+    borderTopLeftRadius: borderRadius,
+    y: 16,
+  }
   const headerAnimationTarget = {
     height: scrolledOverThreshold ? 64 : HEADER_HEIGHT,
     borderTopRightRadius: borderRadius,
@@ -85,7 +91,7 @@ const PageHeader: React.VFC = () => {
   }
 
   return (
-    <Header animate={headerAnimationTarget}>
+    <Header animate={headerAnimationTarget} initial={headerInitial}>
       <Link href="/">
         <Brand href="/" title="홈으로 이동" style={{ height: scrolledOverThreshold ? 40 : BRAND_HEIGHT }}>
           Sorto.me

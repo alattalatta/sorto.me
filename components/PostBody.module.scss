@@ -7,66 +7,6 @@ Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/b
 */
 .prismStyler {
   :global {
-    code[class*='language-'] {
-      font-family: 'Nanum Gothic Coding', monospace;
-    }
-
-    code[class*='language-'],
-    pre[class*='language-'] {
-      font-family: Consolas, Menlo, Monaco, 'Andale Mono WT', 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter',
-        'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L', 'Courier New', Courier,
-        monospace;
-      font-size: 14px;
-      line-height: 1.375;
-      direction: ltr;
-      text-align: left;
-      white-space: pre;
-      word-spacing: normal;
-      word-break: normal;
-      -moz-tab-size: 4;
-      -o-tab-size: 4;
-      tab-size: 4;
-      -webkit-hyphens: none;
-      -moz-hyphens: none;
-      -ms-hyphens: none;
-      hyphens: none;
-      background: #f5f7ff;
-      color: #5e6687;
-    }
-
-    pre > code[class*='language-'] {
-      font-size: 1em;
-    }
-
-    pre[class*='language-']::-moz-selection,
-    pre[class*='language-'] ::-moz-selection,
-    code[class*='language-']::-moz-selection,
-    code[class*='language-'] ::-moz-selection {
-      text-shadow: none;
-      background: #dfe2f1;
-    }
-
-    pre[class*='language-']::selection,
-    pre[class*='language-'] ::selection,
-    code[class*='language-']::selection,
-    code[class*='language-'] ::selection {
-      text-shadow: none;
-      background: #dfe2f1;
-    }
-
-    /* Code blocks */
-    pre[class*='language-'] {
-      padding: 1em;
-      margin: 0.5em 0;
-      overflow: auto;
-    }
-
-    /* Inline code */
-    :not(pre) > code[class*='language-'] {
-      padding: 0.1em;
-      border-radius: 0.3em;
-    }
-
     .token.comment,
     .token.prolog,
     .token.doctype,
@@ -74,6 +14,7 @@ Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/b
       color: #898ea4;
     }
 
+    .token.operator,
     .token.punctuation {
       color: #5e6687;
     }
@@ -82,7 +23,6 @@ Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/b
       opacity: 0.7;
     }
 
-    .token.operator,
     .token.boolean,
     .token.number {
       color: #c76b29;
@@ -92,8 +32,14 @@ Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/b
       color: #c08b30;
     }
 
+    .token.constant,
+    .token.keyword,
     .token.tag {
       color: #3d8fd1;
+    }
+
+    .token.function {
+      color: #32a224;
     }
 
     .token.string {
@@ -116,7 +62,6 @@ Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/b
     }
 
     .token.attr-value,
-    .token.keyword,
     .token.control,
     .token.directive,
     .token.unit {

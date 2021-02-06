@@ -8,7 +8,8 @@ import { INLINE_CODE_STYLES } from './shared'
 const CalloutContainer = styled('figure', {
   backgroundColor: BASE100,
   borderRadius: CORNER_RADIUS,
-  margin: '32px 0',
+  marginTop: 0,
+  marginBottom: 0,
   overflow: 'hidden',
   '& code': INLINE_CODE_STYLES,
   variants: {
@@ -43,11 +44,7 @@ const CalloutCaption = styled('figcaption', {
 
 const CalloutBody = styled('div', {
   lineHeight: 1.65,
-  margin: 0,
   padding: '12px 24px 24px',
-  '& > p': {
-    margin: 0,
-  },
   '& > p + p': {
     marginTop: 16,
   },

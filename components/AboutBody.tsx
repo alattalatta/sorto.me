@@ -1,36 +1,36 @@
 import React from 'react'
 
-import { styled } from 'utils/styler'
+import { BASE40, styled } from 'utils/styler'
 
-import PageHeaderOffset from './PageHeaderOffset'
+import AboutHero from './AboutHero'
 import { Anchor, Container } from './basics'
 
-const AlignLeft = styled('div', {
-  textAlign: 'left',
+const Heading = styled('h2', {
+  color: BASE40,
+  marginTop: 32,
+  marginBottom: 24,
 })
 
 const AboutBody: React.VFC = () => {
   return (
-    <PageHeaderOffset as="article">
+    <article>
+      <AboutHero />
       <Container>
-        <AlignLeft>
-          <h1>alattalatta</h1>
-          <p>
-            Web front-end developer
-            <br />
-            <Anchor href="mailto:urty5656@gmail.com">urty5656@gmail.com</Anchor>
-          </p>
-          <ul>
-            <li>
-              <Anchor href="https://github.com/alattalatta">GitHub</Anchor>
-            </li>
-            <li>
-              <Anchor href="https://www.linkedin.com/in/%EC%A2%85%EB%A5%A0-%EC%96%91-9a740b14b/">LinkedIn</Anchor>
-            </li>
-          </ul>
-        </AlignLeft>
+        <Heading>Email</Heading>
+        <p>
+          <Anchor href="mailto:urty5656@gmail.com">urty5656@gmail.com</Anchor>
+        </p>
+        <Heading>Other links</Heading>
+        <ul>
+          <li>
+            <Anchor href="https://github.com/alattalatta">GitHub</Anchor>
+          </li>
+          <li>
+            <Anchor href="https://www.linkedin.com/in/%EC%A2%85%EB%A5%A0-%EC%96%91-9a740b14b/">LinkedIn</Anchor>
+          </li>
+        </ul>
       </Container>
-    </PageHeaderOffset>
+    </article>
   )
 }
 

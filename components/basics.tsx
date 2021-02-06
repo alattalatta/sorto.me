@@ -23,7 +23,7 @@ const AnchorWrap = styled('a', {
   },
   '& span': {
     position: 'relative',
-    textDecoration: 'underline',
+    textDecorationLine: 'inherit',
     zIndex: 1,
   },
 })

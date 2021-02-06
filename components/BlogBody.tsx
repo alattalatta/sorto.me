@@ -18,7 +18,7 @@ const Item = styled('article', {
   },
 })
 
-const Post = styled(Anchor, {
+const BlogPost = styled(Anchor, {
   display: 'inline-flex',
   flexDirection: 'column',
   textDecoration: 'none',
@@ -33,7 +33,7 @@ type Props = {
   posts: readonly PostDatum[]
 }
 
-const IndexBody: React.VFC<Props> = ({ posts }) => {
+const BlogBody: React.VFC<Props> = ({ posts }) => {
   return (
     <PageHeaderOffset as="main">
       <NoScreen as="h1">블로그 포스트 목록</NoScreen>
@@ -41,10 +41,10 @@ const IndexBody: React.VFC<Props> = ({ posts }) => {
         {posts.map((post) => (
           <Item key={post.slug}>
             <Link href={`/post/${post.slug}`}>
-              <Post href={`/post/${post.slug}`}>
+              <BlogPost href={`/post/${post.slug}`}>
                 <Title>{post.meta.title}</Title>
                 <time dateTime={post.meta.created}>{post.meta.created}</time>
-              </Post>
+              </BlogPost>
             </Link>
           </Item>
         ))}
@@ -53,4 +53,4 @@ const IndexBody: React.VFC<Props> = ({ posts }) => {
   )
 }
 
-export default IndexBody
+export default BlogBody

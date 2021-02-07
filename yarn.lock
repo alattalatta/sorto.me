@@ -1276,6 +1276,13 @@
     refractor "^3.0.0"
     unist-util-visit "^2.0.2"
 
+"@mdn/browser-compat-data@^3.0.6":
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/@mdn/browser-compat-data/-/browser-compat-data-3.0.6.tgz#e7536ee8c59ee5e8d68a95a3281cfd318fb4d223"
+  integrity sha512-uYr1gZ5WArnTCN4rSUWdlXMcS0yP9bwVQoUNB5ZVkYAVeqTTFr7j+pFMPgjG0Q/SLjiQwhCq46k7OCCYuJNC7g==
+  dependencies:
+    extend "3.0.2"
+
 "@mdx-js/mdx@^1.6.22":
   version "1.6.22"
   resolved "https://registry.yarnpkg.com/@mdx-js/mdx/-/mdx-1.6.22.tgz#8a723157bf90e78f17dc0f27995398e6c731f1ba"
@@ -3404,7 +3411,7 @@ extend-shallow@^3.0.0, extend-shallow@^3.0.2:
     assign-symbols "^1.0.0"
     is-extendable "^1.0.1"
 
-extend@^3.0.0, extend@~3.0.2:
+extend@3.0.2, extend@^3.0.0, extend@~3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/extend/-/extend-3.0.2.tgz#f8b1136b4071fbd8eb140aff858b1019ec2915fa"
   integrity sha512-fjquC59cD7CyW6urNXK0FBufkZcoiGG80wTuPujX590cB5Ttln20E2UB4S/WARVqhXffZl2LNgS+gQdPIIim/g==

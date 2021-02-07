@@ -3,12 +3,12 @@ import path from 'path'
 
 import mock from 'mock-fs'
 
-import { DocMetadata, getDocFiles, parseDoc } from '../docs'
+import { DocMetadata, getDocFiles, parseDoc } from '..'
 
 describe('Docs utilities', () => {
   describe('parseDoc', () => {
     it('can parse all necessary data', async () => {
-      const mockFilePath = path.resolve(__dirname, 'mocks/docs/foo.mdx')
+      const mockFilePath = path.join(__dirname, 'mocks/foo.mdx')
       const fileAsync = fs.readFile(mockFilePath)
       const statAsync = fs.stat(mockFilePath)
 

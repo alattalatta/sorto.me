@@ -30,6 +30,7 @@
       "warn",
       { "default": { "order": "alphabetically" } }
     ],
+    "@typescript-eslint/no-extra-semi": "off",
     "@typescript-eslint/no-unused-vars": [
       "warn",
       { "argsIgnorePattern": "^_+", "ignoreRestSiblings": true }

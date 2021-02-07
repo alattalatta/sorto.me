@@ -1,9 +1,8 @@
-import { promises as fs } from 'fs'
 import path from 'path'
 
 import matter from 'gray-matter'
 
-import { onlyMDXFiles, readFilesRec } from './system'
+import { onlyMDXFiles, readFilesRec, readLastModified } from './system'
 
 export type DocMetadata = {
   excerpt?: string
@@ -45,7 +44,7 @@ export const getDocFiles = async (): Promise<string[]> => {
  */
 export async function parseDoc(filePath: string, source: Buffer): Promise<{ content: string; meta: DocMetadata }> {
   const { content, data } = matter(source)
-  const updated = (await fs.stat(filePath)).mtime.toISOString().slice(0, 10)
+  const updated = await readLastModified(filePath)
 
   return {
     content,

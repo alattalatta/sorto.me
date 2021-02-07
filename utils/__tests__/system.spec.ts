@@ -2,7 +2,7 @@ import path from 'path'
 
 import mock from 'mock-fs'
 
-import { onlyMDXFiles, readFilesRec } from '../system'
+import { onlyMDXFiles, readFilesRec, readLastModified } from '../system'
 
 describe('System utilities', () => {
   describe('onlyMDXFiles', () => {
@@ -47,6 +47,24 @@ describe('System utilities', () => {
 
         return path.relative(process.cwd(), value)
       }
+    })
+
+    afterAll(() => mock.restore())
+  })
+
+  describe('readLastModified', () => {
+    beforeAll(() => {
+      mock({
+        src: {
+          virtual: mock.file({
+            mtime: new Date('2020-12-28T00:00:00Z'),
+          }),
+        },
+      })
+    })
+
+    it("can read a file's last modified date", async () => {
+      expect(await readLastModified('src/virtual')).toBe('2020-12-28')
     })
 
     afterAll(() => mock.restore())

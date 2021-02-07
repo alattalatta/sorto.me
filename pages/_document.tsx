@@ -32,7 +32,7 @@ export default class Document extends NextDocument {
 
   render(): JSX.Element {
     return (
-      <Html>
+      <Html lang="ko">
         <Head>
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link

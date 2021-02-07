@@ -104,9 +104,6 @@ const PageHeader: React.VFC = () => {
         <Link href="/docs/Web">
           <PageLink href="/docs/Web">Docs</PageLink>
         </Link>
-        <Link href="/about">
-          <PageLink href="/about">About</PageLink>
-        </Link>
       </PageLinkGroup>
     </Header>
   )

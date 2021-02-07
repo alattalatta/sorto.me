@@ -3,7 +3,6 @@ import path from 'path'
 import util from 'util'
 
 import { GetStaticProps } from 'next'
-import Head from 'next/head'
 
 import BlogBody, { PostDatum } from 'components/BlogBody'
 import { getLayout } from 'components/Layout'
@@ -15,11 +14,6 @@ type StaticProps = { posts: readonly PostDatum[] }
 const Index: Page<StaticProps> = ({ posts }) => {
   return (
     <div>
-      <Head>
-        <title key="title">Sorto.me</title>
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Sorto.me" />
-      </Head>
       <BlogBody posts={posts} />
     </div>
   )

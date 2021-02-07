@@ -31,3 +31,12 @@ export async function* readFilesRec(dir: string): AsyncGenerator<string, void> {
     }
   }
 }
+
+/**
+ * Returns a file's last modified date as a `yyyy-MM-dd` string.
+ *
+ * @param filePath The file's path.
+ */
+export async function readLastModified(filePath: string): Promise<string> {
+  return (await fs.stat(filePath)).mtime.toISOString().slice(0, 10)
+}

@@ -38,7 +38,7 @@ async function buildEntry(p: string): Promise<string> {
   const lastModified = await readLastModified(path.resolve(__dirname, '..', p))
 
   return `<url>
-  <loc>${SITE_URL}/${p}</loc>
+  <loc>${SITE_URL}/${p.replace('.mdx', '')}</loc>
   <lastmod>${lastModified}</lastmod>
 </url>`
 }

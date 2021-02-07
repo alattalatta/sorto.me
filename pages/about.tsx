@@ -8,9 +8,10 @@ const About: Page = () => {
   return (
     <div>
       <Head>
-        <title key="title">Sorto.me - About</title>
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Sorto.me" />
+        <title key="title">About - Sorto.me</title>
+        <meta key="description" content="alattalatta" />
+        <meta key="og:title" property="og:title" content="Sorto.me - About" />
+        <meta key="og:description" property="og:description" content="alattalatta" />
       </Head>
       <AboutBody />
     </div>

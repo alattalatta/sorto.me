@@ -16,9 +16,10 @@ const Post: Page<StaticProps> = ({ posts }) => {
   return (
     <div>
       <Head>
-        <title key="title">Sorto.me</title>
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Sorto.me" />
+        <title key="title">Blog - Sorto.me</title>
+        <meta key="description" content="이것저것 블로그" />
+        <meta key="og:title" property="og:title" content="Sorto.me - Blog" />
+        <meta key="og:description" property="og:description" content="이것저것 블로그" />
       </Head>
       <BlogBody posts={posts} />
     </div>

@@ -3,6 +3,7 @@ import { createStyled } from '@stitches/react'
 export const BASE10 = '$base10'
 export const BASE20 = '$base20'
 export const BASE40 = '$base40'
+export const BASE60 = '$base60'
 export const BASE70 = '$base70'
 export const BASE90 = '$base90'
 export const BASE100 = '$base100'
@@ -19,6 +20,7 @@ export const { styled, css } = createStyled({
       [BASE10]: '#020D19',
       [BASE20]: '#0C2640',
       [BASE40]: '#224569',
+      [BASE60]: '#6D95BD',
       [BASE70]: '#B6D5F5',
       [BASE90]: '#E2EFFD',
       [BASE100]: '#F4FBFF',

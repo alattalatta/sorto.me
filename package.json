@@ -11,10 +11,12 @@
   "dependencies": {
     "@mapbox/rehype-prism": "^0.5.0",
     "@mdn/browser-compat-data": "^3.0.6",
+    "@mdn/dinocons": "^0.3.0",
     "@stitches/react": "^0.0.3-canary.4",
     "framer-motion": "^3.3.0",
     "gray-matter": "^4.0.2",
     "next": "^10.0.6",
+    "next-images": "^1.7.0",
     "next-mdx-remote": "^2.1.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

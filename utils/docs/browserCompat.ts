@@ -26,3 +26,14 @@ export async function getCompatData(keys: string[]): Promise<Identifier | null> 
 
   return res
 }
+
+// [fixme] Test
+/**
+ * Get a browser compatibility data's child identifier keys.
+ *
+ * @param data The parent compatibility data's `Identifier` object.
+ * @returns All keys of `data` except `__compat`.
+ */
+export function getSubIdentifierKeys(data: Identifier): string[] {
+  return Object.keys(data).filter((key) => key !== '__compat')
+}

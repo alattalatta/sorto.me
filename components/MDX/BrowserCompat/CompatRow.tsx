@@ -1,14 +1,13 @@
-import { BrowserNames, Identifier, StatusBlock, SupportStatement } from '@mdn/browser-compat-data/types'
-import deprecatedIcon from '@mdn/dinocons/emojis/thumbs-down.svg'
-import experimentalIcon from '@mdn/dinocons/general/flask.svg'
-import nonStandardIcon from '@mdn/dinocons/notifications/exclamation-triangle.svg'
+import { BrowserNames, Identifier, SupportStatement } from '@mdn/browser-compat-data/types'
 import React, { useState } from 'react'
 
+import { mapOver } from 'utils/array'
 import { getSubIdentifierKeys } from 'utils/docs/browserCompat'
-import { BASE70, styled } from 'utils/styler'
+import { styled } from 'utils/styler'
 
 import CompatCell from './CompatCell'
-import { HeaderCell, Icon } from './shared'
+import SpecStatusIcons from './SpecStatusIcons'
+import { Cell, DOUBLE_BORDER } from './shared'
 
 const BROWSER_KEYS: BrowserNames[] = [
   'ie',
@@ -22,53 +21,35 @@ const BROWSER_KEYS: BrowserNames[] = [
   'firefox_android',
 ]
 
-const NameWrap = styled('div', {
+const Row = styled('tr', {
+  '& td:nth-child(6)': {
+    borderRight: DOUBLE_BORDER,
+  },
+})
+
+const RowHeaderCell = styled(Cell, {
+  width: 180,
+  height: 45,
+  padding: 8,
+})
+
+const RowNameWrap = styled('div', {
   display: 'flex',
   alignItems: 'center',
   textAlign: 'left',
 })
 
-const StatusIconWrap = styled('div', {
-  minWidth: 1,
-  minHeight: 1,
+const SupportDetail = styled('div', {
+  maxWidth: 720,
   display: 'flex',
-  flexWrap: 'nowrap',
+  alignItems: 'center',
+  marginRight: 'auto',
   marginLeft: 'auto',
 })
 
-const IconHelper = styled('abbr', {
-  cursor: 'help',
-  padding: 2,
-  '&:hover': {
-    background: BASE70,
-  },
+const SupportDetailDescriptions = styled('dd', {
+  marginLeft: 16,
 })
-
-const StatusIcons: React.VFC<{ status: StatusBlock | undefined }> = ({ status }) => {
-  if (!status) {
-    return <StatusIconWrap />
-  }
-
-  return (
-    <StatusIconWrap>
-      {!status.standard_track && (
-        <IconHelper title="표준 기능이 아님. 크로스 브라우저 지원이 미흡할 수 있습니다.">
-          <Icon src={nonStandardIcon} alt="비표준" />
-        </IconHelper>
-      )}
-      {status.deprecated && (
-        <IconHelper title="표준 명세에서 폐기. 더 이상 사용하지 않는 것이 좋습니다.">
-          <Icon src={deprecatedIcon} alt="폐기" />
-        </IconHelper>
-      )}
-      {status.experimental && (
-        <IconHelper title="실험적 기능. 동작이 바뀔 수 있습니다.">
-          <Icon src={experimentalIcon} alt="실험적" />
-        </IconHelper>
-      )}
-    </StatusIconWrap>
-  )
-}
 
 type Props = {
   data: Identifier
@@ -85,31 +66,49 @@ const CompatRow: React.VFC<Props> = ({ data, name, recurse }) => {
     return null
   }
 
-  const toggleSupportDetail = (_: SupportStatement): void => {
-    // setSupportDetail(supportDetail === data ? null : data)
-    setSupportDetail(null)
+  const toggleSupportDetail = (value: SupportStatement): void => {
+    setSupportDetail(supportDetail === value ? null : value)
   }
 
   const base = (
     <>
-      <tr>
-        <HeaderCell as="th" border="doubleRight" scope="row">
-          <NameWrap>
+      <Row>
+        <RowHeaderCell as="th" border="doubleRight" scope="row">
+          <RowNameWrap>
             {compat.description ? (
               <span dangerouslySetInnerHTML={{ __html: compat.description }} />
             ) : (
               <code>{name}</code>
             )}
-            <StatusIcons status={compat.status} />
-          </NameWrap>
-        </HeaderCell>
+            <SpecStatusIcons status={compat.status} />
+          </RowNameWrap>
+        </RowHeaderCell>
         {BROWSER_KEYS.map((key) => (
-          <CompatCell key={key} data={compat.support[key]} onClick={toggleSupportDetail} />
+          <CompatCell
+            key={key}
+            as="td"
+            data={compat.support[key]}
+            opened={compat.support[key] === supportDetail}
+            onClick={toggleSupportDetail}
+          />
         ))}
-      </tr>
+      </Row>
       {supportDetail && (
         <tr>
-          <td colSpan={10}>[TODO]</td>
+          <td colSpan={10}>
+            <dl>
+              {mapOver(supportDetail, (support, index) => (
+                <SupportDetail key={index}>
+                  <CompatCell as="dt" type="standalone" data={support} />
+                  <SupportDetailDescriptions>
+                    {mapOver(support.notes, (note, index) => (
+                      <p key={index} dangerouslySetInnerHTML={{ __html: note || '특이사항 없음' }} />
+                    ))}
+                  </SupportDetailDescriptions>
+                </SupportDetail>
+              ))}
+            </dl>
+          </td>
         </tr>
       )}
     </>

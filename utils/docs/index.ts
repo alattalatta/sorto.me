@@ -2,7 +2,7 @@ import path from 'path'
 
 import matter from 'gray-matter'
 
-import { onlyMDXFiles, readFilesRec, readLastModified } from './system'
+import { onlyMDXFiles, readFilesRec, readLastModified } from '../system'
 
 export type DocMetadata = {
   excerpt?: string

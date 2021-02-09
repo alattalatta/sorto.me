@@ -17,24 +17,28 @@
           "order": "asc"
         },
         "newlines-between": "always",
-        "groups": [
-          "builtin",
-          "external",
-          "internal",
-          ["sibling", "parent", "index"]
-        ]
+        "groups": ["builtin", "external", "internal", ["sibling", "parent", "index"]]
       }
     ],
     "prettier/prettier": "warn",
     "@typescript-eslint/member-ordering": [
       "warn",
-      { "default": { "order": "alphabetically" } }
+      {
+        "default": {
+          "memberTypes": [
+            "public-field",
+            "protected-field",
+            "private-field",
+            "public-method",
+            "protected-method",
+            "private-method"
+          ],
+          "order": "alphabetically"
+        }
+      }
     ],
     "@typescript-eslint/no-extra-semi": "off",
-    "@typescript-eslint/no-unused-vars": [
-      "warn",
-      { "argsIgnorePattern": "^_+", "ignoreRestSiblings": true }
-    ]
+    "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_+", "ignoreRestSiblings": true }]
   },
   "settings": {
     "import/resolver": {

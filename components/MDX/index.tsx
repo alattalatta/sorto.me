@@ -1,10 +1,10 @@
 import { MdxRemote } from 'next-mdx-remote/types'
+import dynamic from 'next/dynamic'
 import React from 'react'
 
 import { ACCENT_B, BASE100, BASE40, CORNER_RADIUS, styled } from 'utils/styler'
 
 import { Anchor } from '../basics'
-import BrowserCompat from './BrowserCompat'
 import Callout, { CalloutCite } from './Callout'
 import { INLINE_CODE_STYLES } from './shared'
 
@@ -127,7 +127,7 @@ export const MDX_COMPONENTS: MdxRemote.Components = Object.freeze({
     },
   }),
   Anchor,
-  BrowserCompat,
+  BrowserCompat: dynamic(() => import('./BrowserCompat'), { ssr: false }),
   Callout,
   CalloutCite,
   CodeBlockBad,

@@ -12,8 +12,9 @@ import { getCompatData, getSubIdentifierKeys } from 'utils/docs/browserCompat'
 import { BASE100, BASE40, CORNER_RADIUS, styled } from 'utils/styler'
 
 import Callout from '../Callout'
+import { INLINE_CODE_STYLES } from '../shared'
 import CompatRow from './CompatRow'
-import { HeaderCell, Icon } from './shared'
+import { Cell, Icon } from './shared'
 
 const Table = styled('table', {
   width: '100%',
@@ -24,9 +25,15 @@ const Table = styled('table', {
   fontSize: 14,
   overflow: 'hidden',
   textAlign: 'center',
+  '& code': INLINE_CODE_STYLES,
 })
 
-const HeaderLabel = styled('span', {
+const ColumnHeaderCell = styled(Cell, {
+  padding: 16,
+  verticalAlign: 'bottom',
+})
+
+const VertText = styled('span', {
   display: 'block',
   writingMode: 'vertical-rl',
   marginLeft: 'auto',
@@ -76,51 +83,51 @@ const BrowserCompat: React.VFC<{ children: string }> = ({ children }) => {
       <Table>
         <thead>
           <tr>
-            <HeaderCell border="doubleRight" rowSpan={2} />
-            <HeaderCell as="th" border="doubleRight" colSpan={5}>
+            <ColumnHeaderCell border="doubleRight" rowSpan={2} />
+            <ColumnHeaderCell as="th" border="doubleRight" colSpan={5}>
               데스크톱
-            </HeaderCell>
-            <HeaderCell as="th" colSpan={4}>
+            </ColumnHeaderCell>
+            <ColumnHeaderCell as="th" colSpan={4}>
               모바일
-            </HeaderCell>
+            </ColumnHeaderCell>
           </tr>
           <tr>
-            <HeaderCell as="th">
-              <HeaderLabel>Internet Explorer</HeaderLabel>
+            <ColumnHeaderCell as="th">
+              <VertText>Internet Explorer</VertText>
               <BrowserIcon src={ieIcon} alt="" />
-            </HeaderCell>
-            <HeaderCell as="th">
-              <HeaderLabel>Safari</HeaderLabel>
+            </ColumnHeaderCell>
+            <ColumnHeaderCell as="th">
+              <VertText>Safari</VertText>
               <BrowserIcon src={safariIcon} alt="" />
-            </HeaderCell>
-            <HeaderCell as="th">
-              <HeaderLabel>Google Chrome</HeaderLabel>
+            </ColumnHeaderCell>
+            <ColumnHeaderCell as="th">
+              <VertText>Google Chrome</VertText>
               <BrowserIcon src={chromeIcon} alt="" />
-            </HeaderCell>
-            <HeaderCell as="th">
-              <HeaderLabel>Edge</HeaderLabel>
+            </ColumnHeaderCell>
+            <ColumnHeaderCell as="th">
+              <VertText>Edge</VertText>
               <BrowserIcon src={edgeIcon} alt="" />
-            </HeaderCell>
-            <HeaderCell as="th" border="doubleRight">
-              <HeaderLabel>Firefox</HeaderLabel>
+            </ColumnHeaderCell>
+            <ColumnHeaderCell as="th" border="doubleRight">
+              <VertText>Firefox</VertText>
               <BrowserIcon src={firefoxIcon} alt="" />
-            </HeaderCell>
-            <HeaderCell as="th">
-              <HeaderLabel>iOS Safari</HeaderLabel>
+            </ColumnHeaderCell>
+            <ColumnHeaderCell as="th">
+              <VertText>iOS Safari</VertText>
               <BrowserIcon src={safariIcon} alt="" />
-            </HeaderCell>
-            <HeaderCell as="th">
-              <HeaderLabel>Android WebView</HeaderLabel>
+            </ColumnHeaderCell>
+            <ColumnHeaderCell as="th">
+              <VertText>Android WebView</VertText>
               <BrowserIcon src={androidIcon} alt="" />
-            </HeaderCell>
-            <HeaderCell as="th">
-              <HeaderLabel>Chrome</HeaderLabel>
+            </ColumnHeaderCell>
+            <ColumnHeaderCell as="th">
+              <VertText>Chrome</VertText>
               <BrowserIcon src={chromeIcon} alt="" />
-            </HeaderCell>
-            <HeaderCell as="th">
-              <HeaderLabel>Firefox</HeaderLabel>
+            </ColumnHeaderCell>
+            <ColumnHeaderCell as="th">
+              <VertText>Firefox</VertText>
               <BrowserIcon src={firefoxIcon} alt="" />
-            </HeaderCell>
+            </ColumnHeaderCell>
           </tr>
         </thead>
         <tbody>

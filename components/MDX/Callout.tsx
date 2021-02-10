@@ -12,6 +12,9 @@ const CalloutContainer = styled('figure', {
   marginBottom: 24,
   overflow: 'hidden',
   '& code': INLINE_CODE_STYLES,
+  '& ul, & ol': {
+    marginTop: 16,
+  },
   variants: {
     color: {
       warn: {

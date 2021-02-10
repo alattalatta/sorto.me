@@ -1,0 +1,41 @@
+---
+title: HTML <section> 요소
+excerpt: HTML <section> 요소는 문서의 독립적인 구획을 나타내며, 더 적합한 의미를 가진 요소가 없을 때 사용합니다.
+---
+
+**HTML `<section>` 요소**는 문서의 독립적인 구획을 나타내며, 더 적합한 의미를 가진 요소가 없을 때 사용합니다. `<section>`은 보통 헤딩을 포함합니다.
+
+```html
+<section>
+  <h1>HTML 구획 콘텐츠</h1>
+  <p>구획 콘텐츠란?</p>
+</section>
+```
+
+<Callout childAs="div" label="참고">
+  <p>더 적합한 의미를 가진 요소가 없을 때는 다음과 같습니다.</p>
+  <ul>
+    <li>탐색 메뉴는 <Anchor href="./nav"><code>&lt;nav&gt;</code></Anchor> 요소로 묶을 수 있습니다.</li>
+    <li>블로그 글이나 댓글은 <Anchor href="./article"><code>&lt;article&gt;</code></Anchor> 요소로 묶을 수 있습니다.</li>
+    <li>그러나 검색 결과를 나타낼 수 있는 <code>&lt;result&gt;</code> 등의 요소는 없습니다.</li>
+  </ul>
+</Callout>
+
+# 특성
+
+[전역 특성](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes)만 포함합니다.
+
+# 사용 일람
+
+- 각각의 `<section>`을 구분할 수단이 필요합니다. 주로 헤딩([`<h1> ~ <h6>`](./Heading_Element)) 요소를 `<section>`의 자식으로 포함하는 방법을 사용합니다.
+<!-- [todo] internal link -->
+- `<section>`을 범용 컨테이너로 사용하지 마세요. 특히 스타일링을 위한 구획 분할이라면 [`<div>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/div) 요소를 사용해야 합니다.
+- 묶으려는 콘텐츠를 외부와 분리해서 독립적으로 사용했을 때도 말이 된다면 [`<article>`](./article) 요소를 대신 쓰는 편이 좋습니다.
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/sections.html#the-section-element)
+
+# 브라우저 호환성
+
+<BrowserCompat>html.elements.section</BrowserCompat>

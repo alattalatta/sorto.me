@@ -2,6 +2,7 @@ import { MdxRemote } from 'next-mdx-remote/types'
 import dynamic from 'next/dynamic'
 import React from 'react'
 
+import { childrenToText } from 'utils/element'
 import { ACCENT_B, BASE100, BASE40, CORNER_RADIUS, styled } from 'utils/styler'
 
 import { Anchor } from '../basics'
@@ -92,12 +93,18 @@ const Heading4 = styled(Heading, {
 })
 
 const headingOf = (level: 2 | 3 | 4, Component: typeof Heading = Heading): React.FC => {
-  let count = 0
+  // prevent duplicate id
+  const idMap = new Map<string, number>()
+  const el = `h${level}` as 'h1' | 'h2' | 'h3' | 'h4'
 
   return ({ children }) => {
-    const cc = count++
-    const id = `s${level}.${cc}`
-    const el = `h${level}` as 'h1' | 'h2' | 'h3' | 'h4'
+    const textContent = childrenToText(children)
+      .replace(/\s/g, '-')
+      .replace(/[!@#$%^&*()=+~`'"/\\?.,<>[\]|{}]/g, '')
+
+    const count = idMap.get(textContent) || 0
+    const id = count ? `${textContent}-${count}` : textContent
+    idMap.set(textContent, count + 1)
 
     return (
       <Component as={el} id={id}>

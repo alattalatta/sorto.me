@@ -1,36 +1,29 @@
-import { createStyled } from '@stitches/react'
+import createStyled, { StitchesCss } from '@stitches/react'
 
-export const BASE10 = '$base10'
-export const BASE20 = '$base20'
-export const BASE40 = '$base40'
-export const BASE60 = '$base60'
-export const BASE70 = '$base70'
-export const BASE90 = '$base90'
-export const BASE100 = '$base100'
-export const ACCENT_R = '$accentR'
-export const ACCENT_Y = '$accentY'
-export const ACCENT_B = '$accentB'
-export const ACCENT_BA = '$accentBa'
-
-export const CORNER_RADIUS = '$cornerRadius'
-
-export const { styled, css } = createStyled({
-  tokens: {
+const stitchesConfig = createStyled({
+  theme: {
     colors: {
-      [BASE10]: '#020D19',
-      [BASE20]: '#0C2640',
-      [BASE40]: '#224569',
-      [BASE60]: '#6D95BD',
-      [BASE70]: '#B6D5F5',
-      [BASE90]: '#E2EFFD',
-      [BASE100]: '#F4FBFF',
-      [ACCENT_R]: '#FF5252',
-      [ACCENT_Y]: '#FCEC6F',
-      [ACCENT_B]: '#57D8FF',
-      [ACCENT_BA]: '#6FDBFC',
+      base10: '#020D19',
+      base20: '#0C2640',
+      base40: '#224569',
+      base60: '#6D95BD',
+      base70: '#B6D5F5',
+      base90: '#E2EFFD',
+      base100: '#F4FBFF',
+      accentR: '#FF5252',
+      accentY: '#FCEC6F',
+      accentB: '#57D8FF',
+      linkblueDark: '#0066CF',
+      linkblueDarkHeavy: '#0041A1',
+      linkblueLight: '#2B8DF2',
+      linkblueLightHeavy: '#13AAFF',
     },
     radii: {
-      [CORNER_RADIUS]: '8px',
+      cornerRadius: '8px',
     },
   },
 })
+
+export const { css, getCssString, styled } = stitchesConfig
+
+export type StyleSheet = StitchesCss<typeof stitchesConfig>

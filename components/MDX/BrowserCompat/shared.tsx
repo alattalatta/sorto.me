@@ -1,14 +1,16 @@
-import { styled, BASE70, BASE60 } from 'utils/styler'
+import { styled, StyleSheet } from 'utils/styler'
 
-export const DOUBLE_BORDER = `3px double ${BASE60}`
+export const DOUBLE_BORDER: StyleSheet = {
+  borderRight: '3px double',
+  borderRightColor: '$base60',
+}
 
 export const Cell = styled('td', {
-  border: `1px solid ${BASE70}`,
+  border: `1px solid`,
+  borderColor: '$base70',
   variants: {
     border: {
-      doubleRight: {
-        borderRight: DOUBLE_BORDER,
-      },
+      doubleRight: DOUBLE_BORDER,
     },
   },
 })

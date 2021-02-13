@@ -1,20 +1,20 @@
 import React from 'react'
 
 import { PostMetadata } from 'utils/posts'
-import { BASE10, BASE100, BASE70, styled } from 'utils/styler'
+import { styled } from 'utils/styler'
 
 import { Container } from './basics'
 
 const HeroContainer = styled('header', {
-  background: BASE10,
-  color: BASE100,
+  background: '$base10',
+  color: '$base100',
   marginBottom: 36,
   paddingTop: 210,
   paddingBottom: 160,
 })
 
 const Title = styled('h1', {
-  color: BASE70,
+  color: '$base70',
   fontSize: 32,
   marginTop: 0,
   marginBottom: 0,

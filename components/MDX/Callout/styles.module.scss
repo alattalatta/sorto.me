@@ -1,0 +1,45 @@
+.container {
+  background-color: var(--colors-base100);
+  border: 1px solid #B6D5F5;
+  border-radius: var(--radii-cornerRadius);
+  margin-top: 24;
+  margin-bottom: 24;
+  overflow: hidden;
+}
+.variantWarn.container {
+  background-color: #fffce8;
+  border-color: #E5DB97;
+}
+.variantAlert.container {
+  background-color: #ffeded;
+  border-color: #E1B9B9;
+}
+
+.caption {
+  border-left: 8px solid var(--colors-accentB);
+  color: var(--colors-base40);
+  font-size: 12;
+  font-weight: 700;
+  line-height: 36px;
+  padding-right: 16px;
+  padding-left: 16px;
+}
+.variantWarn .caption {
+  border-left-color: var(--colors-accentY);
+}
+.variantAlert .caption {
+  border-left-color: var(--colors-accentR);
+  color: var(--colors-accentR);
+}
+
+.body {
+  line-height: 1.75;
+  padding: 12px 24px 24px;
+  & > * + * {
+    margin-top: 16px;
+  }
+}
+
+.cite {
+  font-style: normal;
+}

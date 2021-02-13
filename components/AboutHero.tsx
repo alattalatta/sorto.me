@@ -1,19 +1,19 @@
 import React from 'react'
 
-import { BASE10, BASE100, BASE70, styled } from 'utils/styler'
+import { styled } from 'utils/styler'
 
 import { Container } from './basics'
 
 const HeroContainer = styled('header', {
-  background: BASE10,
-  color: BASE100,
+  background: '$base10',
+  color: '$base100',
   marginBottom: 40,
   paddingTop: 132,
   paddingBottom: 88,
 })
 
 const Title = styled('h1', {
-  color: BASE70,
+  color: '$base70',
   fontSize: 32,
   fontWeight: 700,
   marginTop: 0,
@@ -21,7 +21,7 @@ const Title = styled('h1', {
 })
 
 const SubContainer = styled('div', {
-  color: BASE100,
+  color: '$base100',
   display: 'flex',
   alignItems: 'center',
   marginTop: 16,

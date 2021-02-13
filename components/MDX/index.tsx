@@ -1,101 +1,48 @@
+import clsx from 'clsx'
+import hydrate from 'next-mdx-remote/hydrate'
 import { MdxRemote } from 'next-mdx-remote/types'
 import dynamic from 'next/dynamic'
 import React from 'react'
 
 import { childrenToText } from 'utils/element'
-import { ACCENT_B, BASE100, BASE40, CORNER_RADIUS, styled } from 'utils/styler'
 
 import { Anchor } from '../basics'
 import Callout, { CalloutCite } from './Callout'
-import { INLINE_CODE_STYLES } from './shared'
+import { CodeBlock, CodeBlockBad, CodeBlockGood } from './CodeBlock'
+import styles from './styles.module.scss'
 
-export const MDXWrap = styled('div', {
-  fontFamily: "'Nanum Gothic', sans-serif",
-  '& > p': {
-    lineHeight: 1.65,
-    marginTop: 24,
-    marginBottom: 24,
-  },
-})
+/** Non-hydrated MDX contents wrapper. */
+const MDXStatic: React.VFC<{ children: string; className?: string }> = ({ children, className }) => (
+  <div className={clsx(styles.wrap, className)} dangerouslySetInnerHTML={{ __html: children }} />
+)
 
-const CodeBlockBad = styled('span', {
-  backgroundColor: '#FFEDED',
-  position: 'absolute',
-  visibility: 'hidden',
-})
+/** Hydrated MDX contents wrapper. */
+const MDXHydrated: React.FC<{ className?: string }> = ({ children, className }) => (
+  <div className={clsx(styles.wrap, className)}>{children}</div>
+)
 
-const CodeBlockGood = styled('span', {
-  backgroundColor: '#F2FFED',
-  position: 'absolute',
-  visibility: 'hidden',
-})
+type Props = {
+  children: MdxRemote.Source
+  className?: string
+  components: MdxRemote.Components
+}
+export const MDXWrap: React.VFC<Props> = ({ children, className, components }) => {
+  const content = hydrate(children, { components }) as React.ReactElement
 
-const CodeBlock = styled('pre', {
-  backgroundColor: BASE100,
-  borderRadius: CORNER_RADIUS,
-  colors: BASE40,
-  direction: 'ltr',
-  fontSize: 14,
-  hyphens: 'none',
-  lineHeight: 1.375,
-  marginTop: 24,
-  marginBottom: 24,
-  padding: 16,
-  tabSize: 2,
-  whiteSpace: 'pre',
-  wordBreak: 'normal',
-  wordSpacing: 'normal',
-  [`${CodeBlockBad} + &`]: {
-    backgroundColor: '#FFEDED',
-  },
-  [`${CodeBlockGood} + &`]: {
-    backgroundColor: '#F2FFED',
-  },
-})
+  // pretty lame but uh
+  // should properly handle when https://github.com/hashicorp/next-mdx-remote/issues/88 gets resolved
+  return content.type === 'div' ? (
+    <MDXStatic className={className}>{children.renderedOutput}</MDXStatic>
+  ) : (
+    <MDXHydrated className={className}>{content}</MDXHydrated>
+  )
+}
 
-const HeadingAnchor = styled('a', {
-  color: ACCENT_B,
-  opacity: 0,
-  display: 'inline-block',
-  paddingRight: 6,
-  paddingLeft: 6,
-  textDecoration: 'none',
-  '&:hover': {
-    textDecoration: 'underline',
-  },
-})
-
-const Heading = styled('h2', {
-  color: BASE40,
-  [`&:hover ${HeadingAnchor}`]: {
-    opacity: 1,
-  },
-})
-
-const Heading2 = styled(Heading, {
-  borderBottom: `1px solid ${BASE40}`,
-  fontSize: 28,
-  marginTop: 36,
-  marginBottom: 28,
-  paddingBottom: 8,
-})
-
-const Heading3 = styled(Heading, {
-  fontSize: 24,
-  marginTop: 28,
-  marginBottom: 24,
-})
-
-const Heading4 = styled(Heading, {
-  fontSize: 20,
-  marginTop: 24,
-  marginBottom: 24,
-})
-
-const headingOf = (level: 2 | 3 | 4, Component: typeof Heading = Heading): React.FC => {
+const headingOf = (level: 2 | 3 | 4): React.FC => {
   // prevent duplicate id
   const idMap = new Map<string, number>()
-  const el = `h${level}` as 'h1' | 'h2' | 'h3' | 'h4'
+  const H = `h${level}` as const
+  const className = styles[`heading${level}`]
 
   return ({ children }) => {
     const textContent = childrenToText(children)
@@ -107,12 +54,12 @@ const headingOf = (level: 2 | 3 | 4, Component: typeof Heading = Heading): React
     idMap.set(textContent, count + 1)
 
     return (
-      <Component as={el} id={id}>
+      <H className={className} id={id}>
         {children}
-        <HeadingAnchor href={`#${id}`} aria-hidden>
+        <a className={styles.headingAnchor} href={`#${id}`} aria-hidden>
           #
-        </HeadingAnchor>
-      </Component>
+        </a>
+      </H>
     )
   }
 }
@@ -120,19 +67,9 @@ const headingOf = (level: 2 | 3 | 4, Component: typeof Heading = Heading): React
 export const MDX_COMPONENTS: MdxRemote.Components = Object.freeze({
   a: Anchor,
   pre: CodeBlock,
-  h1: headingOf(2, Heading2),
-  h2: headingOf(3, Heading3),
-  h3: headingOf(4, Heading4),
-  img: styled('img', {
-    display: 'block',
-    maxWidth: '100%',
-  }),
-  inlineCode: styled('code', INLINE_CODE_STYLES),
-  li: styled('li', {
-    '& + &': {
-      marginTop: 8,
-    },
-  }),
+  h1: headingOf(2),
+  h2: headingOf(3),
+  h3: headingOf(4),
   Anchor,
   BrowserCompat: dynamic(() => import('./BrowserCompat'), { ssr: false }),
   Callout,

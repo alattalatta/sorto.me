@@ -1,4 +1,3 @@
-import hydrate from 'next-mdx-remote/hydrate'
 import { MdxRemote } from 'next-mdx-remote/types'
 import React from 'react'
 
@@ -15,13 +14,11 @@ type Props = {
 }
 
 const PostBody: React.VFC<Props> = ({ children, meta }) => {
-  const content = hydrate(children, { components: MDX_COMPONENTS })
-
   return (
     <article>
       <PostHero meta={meta} />
       <Container>
-        <MDXWrap>{content}</MDXWrap>
+        <MDXWrap components={MDX_COMPONENTS}>{children}</MDXWrap>
       </Container>
       <PostFooter meta={meta} />
     </article>

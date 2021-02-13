@@ -1,0 +1,33 @@
+.codeBlockBad,
+.codeBlockGood {
+  display: none;
+  position: absolute;
+  visibility: hidden;
+}
+
+.codeBlock {
+  background: var(--colors-base100);
+  border: 1px solid #b6d5f5;
+  border-radius: var(--radii-cornerRadius);
+  color: var(--colors-base40);
+  direction: ltr;
+  font-size: 14px;
+  hyphens: none;
+  line-height: 19px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  padding: 24px;
+  tab-size: 2;
+  white-space: pre;
+  word-break: normal;
+  word-spacing: normal;
+
+  .codeBlockBad + & {
+    background: #ffeded;
+    border-color: #e1b9b9;
+  }
+  .codeBlockGood + & {
+    background: #f2ffed;
+    border-color: #c1dcb7;
+  }
+}

@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { BASE40, styled } from 'utils/styler'
+import { styled } from 'utils/styler'
 
 import AboutHero from './AboutHero'
 import { Anchor, Container } from './basics'
 
 const Heading = styled('h2', {
-  color: BASE40,
+  color: '$base40',
   marginTop: 32,
   marginBottom: 24,
 })

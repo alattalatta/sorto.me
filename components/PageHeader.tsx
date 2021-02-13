@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
-import { BASE20, BASE100, CORNER_RADIUS, styled, ACCENT_Y, ACCENT_R, ACCENT_B } from 'utils/styler'
+import { styled } from 'utils/styler'
 
 import { Anchor, CONTAINER_CONTENT_BOX_WIDTH } from './basics'
 
@@ -12,9 +12,9 @@ const BRAND_HEIGHT = 52
 const Header = styled(motion.header, {
   maxWidth: CONTAINER_CONTENT_BOX_WIDTH,
   height: HEADER_HEIGHT,
-  background: BASE20,
-  borderRadius: CORNER_RADIUS,
-  color: BASE100,
+  background: '$base20',
+  borderRadius: '$cornerRadius',
+  color: '$base100',
   display: 'flex',
   alignItems: 'center',
   marginRight: 'auto',
@@ -31,10 +31,10 @@ const Header = styled(motion.header, {
 const Brand = styled(motion.a, {
   width: 148,
   height: BRAND_HEIGHT,
-  backgroundColor: ACCENT_Y,
-  borderRadius: CORNER_RADIUS,
-  boxShadow: `0px 2px 12px ${ACCENT_Y}`,
-  color: BASE20,
+  backgroundColor: '$accentY',
+  borderRadius: '$cornerRadius',
+  boxShadow: '0px 2px 12px $accentY',
+  color: '$base20',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'flex-end',
@@ -42,13 +42,13 @@ const Brand = styled(motion.a, {
   padding: 16,
   textDecoration: 'none',
   '&:active': {
-    color: BASE100,
-    backgroundColor: ACCENT_R,
-    boxShadow: `0px 2px 12px ${ACCENT_R}`,
+    color: '$base100',
+    backgroundColor: '$accentR',
+    boxShadow: '0px 2px 12px $accentR',
   },
   '&:hover': {
-    backgroundColor: ACCENT_B,
-    boxShadow: `0px 2px 12px ${ACCENT_B}`,
+    backgroundColor: '$accentB',
+    boxShadow: '0px 2px 12px $accentB',
   },
 })
 
@@ -57,7 +57,7 @@ const PageLinkGroup = styled('nav', {
 })
 
 const PageLink = styled(Anchor, {
-  color: BASE100,
+  color: '$base100',
   fontSize: 18,
   marginLeft: 48,
   textDecoration: 'none',

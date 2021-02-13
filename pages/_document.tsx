@@ -1,30 +1,19 @@
 import NextDocument, { DocumentContext, DocumentInitialProps, Head, Html, Main, NextScript } from 'next/document'
 import React from 'react'
 
-import { css } from 'utils/styler'
+import { getCssString } from 'utils/styler'
 
 export default class Document extends NextDocument {
   static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
-    const originalRenderPage = ctx.renderPage
-
-    let extractedStyles: string[] = []
-
-    ctx.renderPage = () => {
-      const { styles, result } = css.getStyles(originalRenderPage)
-      extractedStyles = styles
-      return result
-    }
-
+    const styles = getCssString()
     const initialProps = await NextDocument.getInitialProps(ctx)
 
     return {
       ...initialProps,
       styles: (
         <>
+          <style dangerouslySetInnerHTML={{ __html: styles }} />
           {initialProps.styles}
-          {extractedStyles.map((content, index) => (
-            <style key={index} dangerouslySetInnerHTML={{ __html: content }} />
-          ))}
         </>
       ),
     }

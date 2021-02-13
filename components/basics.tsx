@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React, { forwardRef } from 'react'
 
-import { ACCENT_R, BASE100, styled } from 'utils/styler'
+import { styled } from 'utils/styler'
 import { PropOf } from 'utils/types'
 
 export const CONTAINER_BORDER_BOX_WIDTH = 1240
@@ -13,9 +13,9 @@ const AnchorWrap = styled('a', {
   display: 'inline-block',
   position: 'relative',
   '&:active': {
-    color: BASE100,
+    color: '$base100',
     '&::before': {
-      backgroundColor: ACCENT_R,
+      backgroundColor: '$accentR',
       content: "''",
       position: 'absolute',
       top: -4,

@@ -9,7 +9,7 @@ import React, { useEffect, useState } from 'react'
 
 import { Anchor } from 'components/basics'
 import { getCompatData, getSubIdentifierKeys } from 'utils/docs/browserCompat'
-import { BASE100, BASE40, CORNER_RADIUS, styled } from 'utils/styler'
+import { styled } from 'utils/styler'
 
 import Callout from '../Callout'
 import { INLINE_CODE_STYLES } from '../shared'
@@ -18,10 +18,10 @@ import { Cell, Icon } from './shared'
 
 const Table = styled('table', {
   width: '100%',
-  background: BASE100,
+  background: '$base100',
   border: '1px solid',
   borderCollapse: 'collapse',
-  borderRadius: CORNER_RADIUS,
+  borderRadius: '$cornerRadius',
   fontSize: 14,
   overflow: 'hidden',
   textAlign: 'center',
@@ -49,7 +49,7 @@ const BrowserIcon = styled(Icon, {
 })
 
 const Caption = styled('figcaption', {
-  color: BASE40,
+  color: '$base40',
   fontSize: 12,
   marginTop: 16,
   textAlign: 'right',

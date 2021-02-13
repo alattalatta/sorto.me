@@ -12,7 +12,6 @@ import { getCompatData, getSubIdentifierKeys } from 'utils/docs/browserCompat'
 import { styled } from 'utils/styler'
 
 import Callout from '../Callout'
-import { INLINE_CODE_STYLES } from '../shared'
 import CompatRow from './CompatRow'
 import { Cell, Icon } from './shared'
 
@@ -25,7 +24,6 @@ const Table = styled('table', {
   fontSize: 14,
   overflow: 'hidden',
   textAlign: 'center',
-  '& code': INLINE_CODE_STYLES,
 })
 
 const ColumnHeaderCell = styled(Cell, {

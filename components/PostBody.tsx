@@ -5,7 +5,6 @@ import React from 'react'
 import { PostMetadata } from 'utils/posts'
 
 import { MDX_COMPONENTS, MDXWrap } from './MDX'
-import styles from './PostBody.module.scss'
 import PostFooter from './PostFooter'
 import PostHero from './PostHero'
 import { Container } from './basics'
@@ -22,7 +21,7 @@ const PostBody: React.VFC<Props> = ({ children, meta }) => {
     <article>
       <PostHero meta={meta} />
       <Container>
-        <MDXWrap className={styles.prismStyler}>{content}</MDXWrap>
+        <MDXWrap>{content}</MDXWrap>
       </Container>
       <PostFooter meta={meta} />
     </article>

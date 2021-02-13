@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import hydrate from 'next-mdx-remote/hydrate'
 import { MdxRemote } from 'next-mdx-remote/types'
 import dynamic from 'next/dynamic'
 import React from 'react'
@@ -7,17 +8,35 @@ import { childrenToText } from 'utils/element'
 
 import { Anchor } from '../basics'
 import Callout, { CalloutCite } from './Callout'
-import prism from './prism.module.scss'
+import { CodeBlock, CodeBlockBad, CodeBlockGood } from './CodeBlock'
 import styles from './styles.module.scss'
 
-export const MDXWrap: React.FC<{ className?: string }> = ({ children, className }) => (
+/** Non-hydrated MDX contents wrapper. */
+const MDXStatic: React.VFC<{ children: string; className?: string }> = ({ children, className }) => (
+  <div className={clsx(styles.wrap, className)} dangerouslySetInnerHTML={{ __html: children }} />
+)
+
+/** Hydrated MDX contents wrapper. */
+const MDXHydrated: React.FC<{ className?: string }> = ({ children, className }) => (
   <div className={clsx(styles.wrap, className)}>{children}</div>
 )
 
-const CodeBlockBad: React.VFC = () => <span className={styles.codeBlockBad} />
-const CodeBlockGood: React.VFC = () => <span className={styles.codeBlockGood} />
+type Props = {
+  children: MdxRemote.Source
+  className?: string
+  components: MdxRemote.Components
+}
+export const MDXWrap: React.VFC<Props> = ({ children, className, components }) => {
+  const content = hydrate(children, { components }) as React.ReactElement
 
-const CodeBlock: React.FC = ({ children }) => <pre className={clsx(styles.codeBlock, prism.prism)}>{children}</pre>
+  // pretty lame but uh
+  // should properly handle when https://github.com/hashicorp/next-mdx-remote/issues/88 gets resolved
+  return content.type === 'div' ? (
+    <MDXStatic className={className}>{children.renderedOutput}</MDXStatic>
+  ) : (
+    <MDXHydrated className={className}>{content}</MDXHydrated>
+  )
+}
 
 const headingOf = (level: 2 | 3 | 4): React.FC => {
   // prevent duplicate id

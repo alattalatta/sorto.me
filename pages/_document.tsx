@@ -5,15 +5,14 @@ import { getCssString } from 'utils/styler'
 
 export default class Document extends NextDocument {
   static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
-    const styles = getCssString()
     const initialProps = await NextDocument.getInitialProps(ctx)
 
     return {
       ...initialProps,
       styles: (
         <>
-          <style dangerouslySetInnerHTML={{ __html: styles }} />
           {initialProps.styles}
+          <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssString() }} />
         </>
       ),
     }

@@ -2,67 +2,39 @@ import Link from 'next/link'
 import React, { forwardRef } from 'react'
 
 import { styled } from 'utils/styler'
-import { PropOf } from 'utils/types'
 
 export const CONTAINER_BORDER_BOX_WIDTH = 1240
 export const CONTAINER_PADDING = 40
 export const CONTAINER_CONTENT_BOX_WIDTH = CONTAINER_BORDER_BOX_WIDTH - CONTAINER_PADDING * 2
 
-const AnchorWrap = styled('a', {
-  color: 'inherit',
-  display: 'inline-block',
-  position: 'relative',
-  '&:active': {
-    color: '$base100',
-    '&::before': {
-      backgroundColor: '$accentR',
-      content: "''",
-      position: 'absolute',
-      top: -4,
-      right: -2,
-      bottom: -4,
-      left: -2,
-    },
-  },
-  '& span': {
-    position: 'relative',
-    textDecorationLine: 'inherit',
-    zIndex: 1,
-  },
-})
-
-const AnchorWrapped = forwardRef<HTMLAnchorElement, PropOf<typeof AnchorWrap>>(({ children, ...props }, ref) => (
-  <AnchorWrap ref={ref} {...props}>
-    <span>{children}</span>
-  </AnchorWrap>
-))
-
-const AnchorExternal = forwardRef<HTMLAnchorElement, PropOf<typeof Anchor>>((props, ref) => (
-  <AnchorWrapped ref={ref} {...props} target="_blank" rel="noreferrer noopener" />
+const AnchorExternal = forwardRef<HTMLAnchorElement, Omit<JSX.IntrinsicElements['a'], 'ref'>>((props, ref) => (
+  <a ref={ref} {...props} target="_blank" rel="noreferrer noopener" />
 ))
 
 /**
  * Automatic anchor. Applies client routing when given an internal link (relative href). Otherwise, uses simple `<a>` tag.
  */
-export const Anchor = forwardRef<HTMLAnchorElement, PropOf<typeof AnchorWrap>>(({ href = '', ...props }, ref) => {
-  const internal = /^[./]/.test(href)
+export const Anchor = forwardRef<HTMLAnchorElement, Omit<JSX.IntrinsicElements['a'], 'ref'>>(
+  ({ href = '', ...props }, ref: React.Ref<HTMLAnchorElement>) => {
+    const internal = /^[./]/.test(href)
 
-  if (internal && !process.browser) {
-    // can't get absolute url to resolve against
-    return <AnchorWrapped ref={ref} href={href} {...props} />
-  }
+    if (internal && !process.browser) {
+      // can't get absolute url to resolve against
+      return <a ref={ref} href={href} {...props} />
+    }
 
-  if (internal) {
-    const resolvedURL = new URL(href, location.href)
-    return (
-      <Link href={resolvedURL}>
-        <AnchorWrapped ref={ref} href={href} {...props} />
-      </Link>
-    )
-  }
+    if (internal) {
+      const resolvedURL = new URL(href, location.href)
+      return (
+        <Link href={resolvedURL}>
+          <a ref={ref} href={href} {...props} />
+        </Link>
+      )
+    }
 
-  return <AnchorExternal ref={ref} href={href} {...props} />
-})
+    return <AnchorExternal ref={ref} href={href} {...props} />
+  },
+)
 
 export const Container = styled('div', {
   marginLeft: 'auto',

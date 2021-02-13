@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  text-underline-position: under;
 }
 
 html {
@@ -8,6 +9,10 @@ html {
 
 body {
   margin: 0
+}
+
+a {
+  color: inherit;
 }
 
 h1,

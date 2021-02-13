@@ -59,9 +59,7 @@ const PostFooter: React.VFC<Props> = ({ meta, slugs }) => {
             <Anchor href={`https://developer.mozilla.org/en-US/docs/${path}/contributors.txt`}>
               List of the contributors
             </Anchor>
-            <Anchor css={{ marginLeft: 6 }} href={`https://developer.mozilla.org/ko/docs/${path}/contributors.txt`}>
-              한국어 문서 기여자
-            </Anchor>
+            <Anchor href={`https://developer.mozilla.org/ko/docs/${path}/contributors.txt`}>한국어 문서 기여자</Anchor>
           </Block>
         </SeparatedBlock>
       </FooterColumn>

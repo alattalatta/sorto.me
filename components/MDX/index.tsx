@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic'
 import React from 'react'
 
 import { childrenToText } from 'utils/element'
-import { ACCENT_B, BASE100, BASE40, CORNER_RADIUS, styled } from 'utils/styler'
+import { styled } from 'utils/styler'
 
 import { Anchor } from '../basics'
 import Callout, { CalloutCite } from './Callout'
@@ -31,9 +31,9 @@ const CodeBlockGood = styled('span', {
 })
 
 const CodeBlock = styled('pre', {
-  backgroundColor: BASE100,
-  borderRadius: CORNER_RADIUS,
-  colors: BASE40,
+  backgroundColor: '$base100',
+  borderRadius: '$cornerRadius',
+  colors: '$base40',
   direction: 'ltr',
   fontSize: 14,
   hyphens: 'none',
@@ -54,7 +54,7 @@ const CodeBlock = styled('pre', {
 })
 
 const HeadingAnchor = styled('a', {
-  color: ACCENT_B,
+  color: '$accentB',
   opacity: 0,
   display: 'inline-block',
   paddingRight: 6,
@@ -66,14 +66,14 @@ const HeadingAnchor = styled('a', {
 })
 
 const Heading = styled('h2', {
-  color: BASE40,
+  color: '$base40',
   [`&:hover ${HeadingAnchor}`]: {
     opacity: 1,
   },
 })
 
 const Heading2 = styled(Heading, {
-  borderBottom: `1px solid ${BASE40}`,
+  borderBottom: '1px solid $base40',
   fontSize: 28,
   marginTop: 36,
   marginBottom: 28,

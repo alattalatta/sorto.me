@@ -22,9 +22,7 @@ const BROWSER_KEYS: BrowserNames[] = [
 ]
 
 const Row = styled('tr', {
-  '& td:nth-child(6)': {
-    borderRight: DOUBLE_BORDER,
-  },
+  '& td:nthChild(6)': DOUBLE_BORDER,
 })
 
 const RowHeaderCell = styled(Cell, {

@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { BASE10, BASE100, styled } from 'utils/styler'
+import { styled } from 'utils/styler'
 
 import { Container as BaseContainer } from './basics'
 
 const FooterContainer = styled('footer', {
-  background: BASE10,
-  color: BASE100,
+  background: '$base10',
+  color: '$base100',
   marginTop: 72,
   paddingTop: 84,
   paddingBottom: 84,

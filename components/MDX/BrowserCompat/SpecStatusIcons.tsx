@@ -4,7 +4,7 @@ import experimentalIcon from '@mdn/dinocons/general/flask.svg'
 import nonStandardIcon from '@mdn/dinocons/notifications/exclamation-triangle.svg'
 import React from 'react'
 
-import { styled, BASE70 } from 'utils/styler'
+import { styled } from 'utils/styler'
 
 import { Icon } from './shared'
 
@@ -20,7 +20,7 @@ const IconTooltip = styled('abbr', {
   cursor: 'help',
   padding: 2,
   '&:hover': {
-    background: BASE70,
+    background: '$base70',
   },
 })
 

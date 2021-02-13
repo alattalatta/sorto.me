@@ -3,13 +3,14 @@ import React from 'react'
 
 import { NoScreen } from 'components/basics'
 import { determineStatus, supportLabel } from 'utils/docs/browserCompat'
-import { BASE100, BASE70, styled } from 'utils/styler'
+import { styled } from 'utils/styler'
 import { PropOf } from 'utils/types'
 
 const CompatCellBody = styled('div', {
   width: 90,
   height: 45,
-  border: `1px solid ${BASE70}`,
+  border: `1px solid`,
+  borderColor: '$base70',
   flexShrink: 0,
   position: 'relative',
   variants: {
@@ -18,7 +19,8 @@ const CompatCellBody = styled('div', {
         '&::before': {
           content: "''",
           borderRight: '13px solid transparent',
-          borderBottom: `9px solid ${BASE70}`,
+          borderBottom: '9px solid',
+          borderBottomColor: '$base70',
           borderLeft: '13px solid transparent',
           marginRight: 'auto',
           marginLeft: 'auto',
@@ -29,7 +31,8 @@ const CompatCellBody = styled('div', {
         '&::after': {
           content: "''",
           borderRight: '12px solid transparent',
-          borderBottom: `8px solid ${BASE100}`,
+          borderBottom: '8px solid',
+          borderBottomColor: '$base100',
           borderLeft: '12px solid transparent',
           marginRight: 'auto',
           marginLeft: 'auto',

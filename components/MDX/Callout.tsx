@@ -1,13 +1,13 @@
 import React from 'react'
 
-import { styled, BASE100, CORNER_RADIUS, ACCENT_B, BASE40, ACCENT_Y, ACCENT_R } from 'utils/styler'
+import { styled } from 'utils/styler'
 
 import { Anchor } from '../basics'
 import { INLINE_CODE_STYLES } from './shared'
 
 const CalloutContainer = styled('figure', {
-  backgroundColor: BASE100,
-  borderRadius: CORNER_RADIUS,
+  backgroundColor: '$base100',
+  borderRadius: '$cornerRadius',
   marginTop: 24,
   marginBottom: 24,
   overflow: 'hidden',
@@ -28,18 +28,18 @@ const CalloutContainer = styled('figure', {
 })
 
 const CalloutCaption = styled('figcaption', {
-  borderLeft: `8px solid ${ACCENT_B}`,
-  color: BASE40,
+  borderLeft: '8px solid $accentB',
+  color: '$base40',
   fontWeight: 700,
   padding: '12px 24px 12px 16px',
   variants: {
     color: {
       warn: {
-        borderLeftColor: ACCENT_Y,
+        borderLeftColor: '$accentY',
       },
       alert: {
-        borderLeftColor: ACCENT_R,
-        color: ACCENT_R,
+        borderLeftColor: '$accentR',
+        color: '$accentR',
       },
     },
   },

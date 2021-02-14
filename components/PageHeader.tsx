@@ -98,8 +98,8 @@ const PageHeader: React.VFC = () => {
         </Brand>
       </Link>
       <PageLinkGroup>
-        <Link href="/post">
-          <PageLink href="/post">Blog</PageLink>
+        <Link href="/posts">
+          <PageLink href="/posts">Blog</PageLink>
         </Link>
         <Link href="/docs/Web">
           <PageLink href="/docs/Web">Docs</PageLink>

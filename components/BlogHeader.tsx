@@ -2,7 +2,7 @@ import React from 'react'
 
 import { styled } from 'utils/styler'
 
-import BaseHeader, { HeaderNavItem, HeaderNavMenu, HeaderVariants } from './BaseHeader'
+import BaseHeader, { HeaderNavMenuItem, HeaderNavMenu, HeaderVariants } from './BaseHeader'
 import SearchField from './SearchField'
 import { Anchor, Container } from './basics'
 
@@ -19,7 +19,7 @@ const Brand = styled(Anchor, {
   },
 })
 
-const HeaderIntraNavItem = styled(HeaderNavItem, {
+const HeaderIntraNavItem = styled(HeaderNavMenuItem, {
   '&[class]::after': {
     content: '">"',
     display: 'inline-block',
@@ -37,10 +37,10 @@ const BlogHeader: React.VFC<HeaderVariants> = ({ brightness }) => {
             <SearchField placeholder="블로그 검색..." targetUrl="/posts/search" />
             <HeaderNavMenu css={{ marginTop: 48 }} aria-label="블로그 링크">
               <li>
-                <HeaderNavItem href="/posts">Blog</HeaderNavItem>
+                <HeaderNavMenuItem href="/posts">Blog</HeaderNavMenuItem>
               </li>
               <li>
-                <HeaderNavItem href="/about">About</HeaderNavItem>
+                <HeaderNavMenuItem href="/about">About</HeaderNavMenuItem>
               </li>
             </HeaderNavMenu>
             <HeaderNavMenu css={{ marginTop: 72 }} aria-label="다른 곳으로 이동">

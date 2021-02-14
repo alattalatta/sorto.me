@@ -2,7 +2,7 @@ import React from 'react'
 
 import { styled } from 'utils/styler'
 
-import BaseHeader, { HeaderNavItem, HeaderNavMenu } from './BaseHeader'
+import BaseHeader, { HeaderNavMenuItem, HeaderNavMenu } from './BaseHeader'
 import SearchField from './SearchField'
 import { Anchor, Container } from './basics'
 
@@ -16,7 +16,7 @@ const Brand = styled(Anchor, {
   },
 })
 
-const HeaderIntraNavItem = styled(HeaderNavItem, {
+const HeaderIntraNavItem = styled(HeaderNavMenuItem, {
   '&::before': {
     content: '"<"',
     display: 'inline-block',
@@ -34,13 +34,17 @@ const DocHeader: React.VFC = () => {
             <SearchField placeholder="Docs 검색..." targetUrl="/docs/search" />
             <HeaderNavMenu css={{ marginTop: 48 }} role="group" aria-label="문서 링크">
               <li role="menuitem">
-                <HeaderNavItem href="/docs/Web/HTML">HTML</HeaderNavItem>
+                <HeaderNavMenuItem href="/docs/Web/HTML">HTML</HeaderNavMenuItem>
               </li>
               <li role="menuitem">
-                <HeaderNavItem href="/docs/Web/CSS">CSS</HeaderNavItem>
+                <HeaderNavMenuItem disabled={true} href="/docs/Web/CSS" title="공사 중">
+                  CSS
+                </HeaderNavMenuItem>
               </li>
               <li role="menuitem">
-                <HeaderNavItem href="/docs/Web/JavaScript">JavaScript</HeaderNavItem>
+                <HeaderNavMenuItem disabled={true} href="/docs/Web/JavaScript" title="공사 중">
+                  JavaScript
+                </HeaderNavMenuItem>
               </li>
             </HeaderNavMenu>
             <HeaderNavMenu css={{ marginTop: 72 }} role="group" aria-label="다른 곳으로 이동">

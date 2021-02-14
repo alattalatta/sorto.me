@@ -35,7 +35,7 @@ type Props = {
   meta: PostMetadata
 }
 
-const PostHero: React.VFC<Props> = ({ meta }) => {
+const BlogHero: React.VFC<Props> = ({ meta }) => {
   const { created, excerpt, title } = meta
 
   return (
@@ -49,4 +49,4 @@ const PostHero: React.VFC<Props> = ({ meta }) => {
   )
 }
 
-export default PostHero
+export default BlogHero

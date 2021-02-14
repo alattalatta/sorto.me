@@ -38,9 +38,9 @@ export const MDXWrap: React.VFC<Props> = ({ children, className, components }) =
   )
 }
 
+// prevent duplicate id
+const HEADING_ID_MAP = new Map<string, number>()
 const headingOf = (level: 2 | 3 | 4): React.FC => {
-  // prevent duplicate id
-  const idMap = new Map<string, number>()
   const H = `h${level}` as const
   const className = styles[`heading${level}`]
 
@@ -49,9 +49,9 @@ const headingOf = (level: 2 | 3 | 4): React.FC => {
       .replace(/\s/g, '-')
       .replace(/[!@#$%^&*()=+~`'"/\\?.,<>[\]|{}]/g, '')
 
-    const count = idMap.get(textContent) || 0
+    const count = HEADING_ID_MAP.get(textContent) || 0
     const id = count ? `${textContent}-${count}` : textContent
-    idMap.set(textContent, count + 1)
+    HEADING_ID_MAP.set(textContent, count + 1)
 
     return (
       <H className={className} id={id}>

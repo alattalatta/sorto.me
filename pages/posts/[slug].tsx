@@ -8,10 +8,10 @@ import { MdxRemote } from 'next-mdx-remote/types'
 import Head from 'next/head'
 import React from 'react'
 
+import BlogBody from 'components/BlogBody'
 import BlogHeader from 'components/BlogHeader'
 import { getLayout } from 'components/Layout'
 import { MDX_COMPONENTS } from 'components/MDX'
-import PostBody from 'components/PostBody'
 import { parsePost, PostMetadata, POSTS_PATH, POST_FILES_PENDING } from 'utils/posts'
 import { Page } from 'utils/types'
 
@@ -29,7 +29,7 @@ const Post: Page<StaticProps> = ({ body, meta }) => {
         <meta key="og:description" property="og:description" content={meta.excerpt} />
         <meta key="article:published_time" property="article:published_time" content={meta.created} />
       </Head>
-      <PostBody meta={meta}>{body}</PostBody>
+      <BlogBody meta={meta}>{body}</BlogBody>
     </>
   )
 }

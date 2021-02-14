@@ -1,52 +1,26 @@
-import Link from 'next/link'
+import { MdxRemote } from 'next-mdx-remote/types'
 import React from 'react'
 
 import { PostMetadata } from 'utils/posts'
-import { styled } from 'utils/styler'
 
-import { Anchor, Container, NoScreen } from './basics'
-
-export type PostDatum = {
-  meta: PostMetadata
-  slug: string
-}
-
-const Item = styled('article', {
-  '& + &': {
-    marginTop: '2em',
-  },
-})
-
-const BlogPost = styled(Anchor, {
-  display: 'inline-flex',
-  flexDirection: 'column',
-  textDecoration: 'none',
-})
-
-const Title = styled('h2', {
-  fontSize: '1.25rem',
-  fontWeight: 700,
-})
+import BlogFooter from './BlogFooter'
+import BlogHero from './BlogHero'
+import { MDX_COMPONENTS, MDXWrap } from './MDX'
+import { Container } from './basics'
 
 type Props = {
-  posts: readonly PostDatum[]
+  children: MdxRemote.Source
+  meta: PostMetadata
 }
-
-const BlogBody: React.VFC<Props> = ({ posts }) => {
+const BlogBody: React.VFC<Props> = ({ children, meta }) => {
   return (
-    <Container>
-      <NoScreen as="h1">블로그 포스트 목록</NoScreen>
-      {posts.map((post) => (
-        <Item key={post.slug}>
-          <Link href={`/posts/${post.slug}`}>
-            <BlogPost href={`/posts/${post.slug}`}>
-              <Title>{post.meta.title}</Title>
-              <time dateTime={post.meta.created}>{post.meta.created}</time>
-            </BlogPost>
-          </Link>
-        </Item>
-      ))}
-    </Container>
+    <article>
+      <BlogHero meta={meta} />
+      <Container>
+        <MDXWrap components={MDX_COMPONENTS}>{children}</MDXWrap>
+      </Container>
+      <BlogFooter meta={meta} />
+    </article>
   )
 }
 

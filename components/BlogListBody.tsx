@@ -13,12 +13,32 @@ export type PostDatum = {
 const Post = styled('article', {
   paddingTop: 24,
   paddingBottom: 24,
+  position: 'relative',
+  '&::before': {
+    content: '""',
+    background: '$base90',
+    opacity: 0,
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    transform: 'scaleX(0.6)',
+    transformOrigin: 'left center',
+    transition: 'ease 300ms',
+  },
+  '&:hover::before': {
+    opacity: 1,
+    transform: 'scaleX(1)',
+  },
 })
 
 const Wrap = styled(Anchor, {
   color: 'inherit',
   display: 'flex',
+  position: 'relative',
   textDecoration: 'none',
+  zIndex: 1,
   '&:hover': {
     color: 'inherit',
   },

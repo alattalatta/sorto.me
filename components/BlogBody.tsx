@@ -1,3 +1,4 @@
+import { motion as m } from 'framer-motion'
 import { MdxRemote } from 'next-mdx-remote/types'
 import React from 'react'
 
@@ -16,7 +17,7 @@ const BlogBody: React.VFC<Props> = ({ children, meta }) => {
   return (
     <article>
       <BlogHero meta={meta} />
-      <Container>
+      <Container as={m.div} initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}>
         <MDXWrap components={MDX_COMPONENTS}>{children}</MDXWrap>
       </Container>
       <BlogFooter meta={meta} />

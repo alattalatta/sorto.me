@@ -10,6 +10,9 @@ html {
 body {
   margin: 0
 }
+body.o {
+  overflow: hidden
+}
 
 h1,
 h2,
@@ -24,7 +27,10 @@ ol {
 }
 
 a {
-  color: inherit;
+  color: var(--colors-linkblueLight);
+}
+a:hover {
+  color: var(--colors-accentB);
 }
 
 button {

@@ -20,9 +20,8 @@ const stitchesConfig = createStyled({
       accentY: '#FCEC6F',
       accentB: '#57D8FF',
       linkblueDark: '#0066CF',
-      linkblueDarkHeavy: '#0041A1',
       linkblueLight: '#2B8DF2',
-      linkblueLightHeavy: '#13AAFF',
+      linkblueLighter: '#13AAFF',
     },
     radii: {
       cornerRadius: '8px',

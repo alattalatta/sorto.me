@@ -9,6 +9,7 @@ import { Anchor, Container as ContainerBase } from './basics'
 const HEADER_HEIGHT = 84
 
 const Root = styled('header', {
+  width: '100%',
   variants: {
     brightness: {
       dark: {
@@ -18,6 +19,14 @@ const Root = styled('header', {
       light: {
         color: '$base20',
       },
+    },
+    position: {
+      fixed: {
+        position: 'fixed',
+        top: 0,
+        left: 0,
+      },
+      normal: {},
     },
   },
   defaultVariants: {
@@ -94,9 +103,19 @@ const BaseHeader: React.VFC<Props> = ({ brightness, children: { brand, menu } })
     return () => router.events.off('routeChangeComplete', closeWhenRouteChanges)
   }, [])
 
+  useEffect(() => {
+    if (menuOpened) {
+      document.body.classList.add('o')
+    } else {
+      document.body.classList.remove('o')
+    }
+
+    return () => document.body.classList.remove('o')
+  }, [menuOpened])
+
   return (
     <>
-      <Root brightness={brightness}>
+      <Root brightness={brightness} position={menuOpened ? 'fixed' : 'normal'}>
         <Container>
           <HamburgerContainer
             title="메뉴 열기"

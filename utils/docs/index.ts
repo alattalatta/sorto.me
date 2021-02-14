@@ -9,7 +9,7 @@ export type DocMetadata = {
   originalTitle?: string
   title: string
   /**
-   * String representing a date which the doc file is last modified. (`yyyy-MM-dd`)
+   * String representing a date which the doc file was last modified. (`yyyy-MM-dd`)
    * @format date
    */
   updated: string
@@ -39,7 +39,7 @@ export const getDocFiles = async (): Promise<string[]> => {
 /**
  * Parses a MDX post file. Creation date uses the file's name, while excerpt and title are parsed from front matter.
  *
- * @param fileName File's path.
+ * @param filePath File's path.
  * @param source File's content as `Buffer`.
  */
 export async function parseDoc(filePath: string, source: Buffer): Promise<{ content: string; meta: DocMetadata }> {

@@ -1,4 +1,4 @@
-import fs from 'fs'
+import { promises as fs } from 'fs'
 import path from 'path'
 import util from 'util'
 
@@ -35,9 +35,9 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
       .reverse()
       .map((fileName) => [fileName, path.join(POSTS_PATH, fileName)])
       .map(async ([fileName, filePath]) => {
-        const source = await util.promisify(fs.readFile)(filePath)
+        const source = await fs.readFile(filePath)
 
-        const { meta } = parsePost(fileName, source)
+        const { meta } = await parsePost(filePath, source)
 
         return {
           meta,

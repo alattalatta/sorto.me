@@ -18,7 +18,7 @@ import { Page } from 'utils/types'
 type StaticParam = { slug: string }
 type StaticProps = { body: MdxRemote.Source; meta: PostMetadata }
 
-const Post: Page<StaticProps> = ({ body, meta }) => {
+const BlogPost: Page<StaticProps> = ({ body, meta }) => {
   return (
     <>
       <Head>
@@ -34,8 +34,8 @@ const Post: Page<StaticProps> = ({ body, meta }) => {
     </>
   )
 }
-Post.getLayout = getLayout(<BlogHeader brightness="dark" />)
-export default Post
+BlogPost.getLayout = getLayout(<BlogHeader brightness="dark" />)
+export default BlogPost
 
 export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({ params }) => {
   if (!params?.slug) {

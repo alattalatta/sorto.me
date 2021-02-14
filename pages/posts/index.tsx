@@ -1,6 +1,5 @@
 import { promises as fs } from 'fs'
 import path from 'path'
-import util from 'util'
 
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
@@ -13,7 +12,7 @@ import { Page } from 'utils/types'
 
 type StaticProps = { posts: readonly PostDatum[] }
 
-const Post: Page<StaticProps> = ({ posts }) => {
+const Blog: Page<StaticProps> = ({ posts }) => {
   return (
     <div>
       <Head>
@@ -26,8 +25,8 @@ const Post: Page<StaticProps> = ({ posts }) => {
     </div>
   )
 }
-Post.getLayout = getLayout(<BlogHeader />)
-export default Post
+Blog.getLayout = getLayout(<BlogHeader />)
+export default Blog
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   const postData = await Promise.all(

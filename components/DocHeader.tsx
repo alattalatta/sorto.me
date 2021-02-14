@@ -31,7 +31,7 @@ const DocHeader: React.VFC = () => {
         brand: <Brand href="/docs/Web">Docs</Brand>,
         menu: (
           <Container>
-            <SearchField placeholder="Docs 검색..." />
+            <SearchField placeholder="Docs 검색..." targetUrl="/docs/search" />
             <HeaderNavMenu css={{ marginTop: 48 }} role="group" aria-label="문서 링크">
               <li role="menuitem">
                 <HeaderNavItem href="/docs/Web/HTML">HTML</HeaderNavItem>

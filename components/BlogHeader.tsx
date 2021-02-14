@@ -34,7 +34,7 @@ const BlogHeader: React.VFC<HeaderVariants> = ({ brightness }) => {
         brand: <Brand href="/">Sorto.me</Brand>,
         menu: (
           <Container>
-            <SearchField placeholder="블로그 검색..." />
+            <SearchField placeholder="블로그 검색..." targetUrl="/posts/search" />
             <HeaderNavMenu css={{ marginTop: 48 }} aria-label="블로그 링크">
               <li>
                 <HeaderNavItem href="/posts">Blog</HeaderNavItem>

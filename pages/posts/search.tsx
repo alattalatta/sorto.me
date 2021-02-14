@@ -17,7 +17,7 @@ const Container = styled(BaseContainer, {
 const BlogSearch: Page = () => {
   const searchQuery = useSearchQuery()
 
-  const title = searchQuery ? '검색 결과 - Sorto.me' : `${searchQuery} 검색 결과 - Sorto.me`
+  const title = searchQuery ? `${searchQuery} 검색 결과 - Sorto.me` : '검색 결과 - Sorto.me'
 
   return (
     <>

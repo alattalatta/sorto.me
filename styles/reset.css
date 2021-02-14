@@ -11,10 +11,6 @@ body {
   margin: 0
 }
 
-a {
-  color: inherit;
-}
-
 h1,
 h2,
 h3,
@@ -25,6 +21,14 @@ figure,
 ul,
 ol {
   margin: 0
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
 }
 
 code {

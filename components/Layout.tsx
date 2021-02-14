@@ -1,15 +1,22 @@
 import React from 'react'
 
-import PageHeader from './PageHeader'
+type Props = {
+  children: {
+    body: React.ReactNode
+    header: React.ReactNode
+  }
+}
 
-const Layout: React.FC = ({ children }) => {
+const Layout: React.FC<Props> = ({ children: { body, header } }) => {
   return (
     <div>
-      <PageHeader />
-      <main>{children}</main>
+      {header}
+      <main>{body}</main>
     </div>
   )
 }
 export default Layout
 
-export const getLayout = (page: JSX.Element): JSX.Element => <Layout>{page}</Layout>
+export const getLayout = (header: React.ReactNode) => (page: JSX.Element): JSX.Element => (
+  <Layout>{{ body: page, header }}</Layout>
+)

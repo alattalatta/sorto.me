@@ -9,6 +9,7 @@ import Head from 'next/head'
 import React from 'react'
 
 import DocBody from 'components/DocBody'
+import DocHeader from 'components/DocHeader'
 import { getLayout } from 'components/Layout'
 import { MDX_COMPONENTS } from 'components/MDX'
 import { DocMetadata, DOCS_PATH, getDocFiles, parseDoc } from 'utils/docs'
@@ -33,7 +34,7 @@ const Doc: Page<StaticProps> = ({ body, meta, slugs }) => {
     </>
   )
 }
-Doc.getLayout = getLayout
+Doc.getLayout = getLayout(<DocHeader />)
 
 export default Doc
 

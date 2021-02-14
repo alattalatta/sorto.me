@@ -17,7 +17,7 @@ const Container = styled(BaseContainer, {
 const DocSearch: Page = () => {
   const searchQuery = useSearchQuery()
 
-  const title = searchQuery ? '검색 결과 - Sorto.me Docs' : `${searchQuery} 검색 결과 - Sorto.me Docs`
+  const title = searchQuery ? `${searchQuery} 검색 결과 - Sorto.me Docs` : '검색 결과 - Sorto.me Docs'
 
   return (
     <>

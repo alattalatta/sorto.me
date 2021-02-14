@@ -50,7 +50,11 @@ const Anchor = forwardRef<HTMLAnchorElement, Props>(
       )
     }
 
-    return <AnchorExternal ref={ref} href={href} {...props} />
+    return (
+      <AnchorExternal ref={ref} href={href} {...props}>
+        {children}
+      </AnchorExternal>
+    )
   },
 )
 

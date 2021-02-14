@@ -4,7 +4,6 @@ import React from 'react'
 import { PostMetadata } from 'utils/posts'
 import { styled } from 'utils/styler'
 
-import PageHeaderOffset from './PageHeaderOffset'
 import { Anchor, Container, NoScreen } from './basics'
 
 export type PostDatum = {
@@ -35,21 +34,19 @@ type Props = {
 
 const BlogBody: React.VFC<Props> = ({ posts }) => {
   return (
-    <PageHeaderOffset as="main">
+    <Container>
       <NoScreen as="h1">블로그 포스트 목록</NoScreen>
-      <Container>
-        {posts.map((post) => (
-          <Item key={post.slug}>
-            <Link href={`/posts/${post.slug}`}>
-              <BlogPost href={`/posts/${post.slug}`}>
-                <Title>{post.meta.title}</Title>
-                <time dateTime={post.meta.created}>{post.meta.created}</time>
-              </BlogPost>
-            </Link>
-          </Item>
-        ))}
-      </Container>
-    </PageHeaderOffset>
+      {posts.map((post) => (
+        <Item key={post.slug}>
+          <Link href={`/posts/${post.slug}`}>
+            <BlogPost href={`/posts/${post.slug}`}>
+              <Title>{post.meta.title}</Title>
+              <time dateTime={post.meta.created}>{post.meta.created}</time>
+            </BlogPost>
+          </Link>
+        </Item>
+      ))}
+    </Container>
   )
 }
 

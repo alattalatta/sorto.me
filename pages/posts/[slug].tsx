@@ -8,6 +8,7 @@ import { MdxRemote } from 'next-mdx-remote/types'
 import Head from 'next/head'
 import React from 'react'
 
+import BlogHeader from 'components/BlogHeader'
 import { getLayout } from 'components/Layout'
 import { MDX_COMPONENTS } from 'components/MDX'
 import PostBody from 'components/PostBody'
@@ -32,7 +33,7 @@ const Post: Page<StaticProps> = ({ body, meta }) => {
     </>
   )
 }
-Post.getLayout = getLayout
+Post.getLayout = getLayout(<BlogHeader brightness="dark" />)
 export default Post
 
 export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({ params }) => {

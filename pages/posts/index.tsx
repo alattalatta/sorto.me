@@ -6,6 +6,7 @@ import { GetStaticProps } from 'next'
 import Head from 'next/head'
 
 import BlogBody, { PostDatum } from 'components/BlogBody'
+import BlogHeader from 'components/BlogHeader'
 import { getLayout } from 'components/Layout'
 import { parsePost, POSTS_PATH, POST_FILES_PENDING } from 'utils/posts'
 import { Page } from 'utils/types'
@@ -25,7 +26,7 @@ const Post: Page<StaticProps> = ({ posts }) => {
     </div>
   )
 }
-Post.getLayout = getLayout
+Post.getLayout = getLayout(<BlogHeader />)
 export default Post
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {

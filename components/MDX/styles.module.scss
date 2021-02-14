@@ -16,7 +16,8 @@
     line-height: 1.75;
   }
 
-  #{child("img")} {
+  #{child("img")},
+  #{child("p")} > img {
     max-width: 100%;
     display: 'block';
   }

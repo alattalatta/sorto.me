@@ -27,6 +27,7 @@ const Doc: Page<StaticProps> = ({ body, meta, slugs }) => {
         <meta key="og:type" property="og:type" content="article" />
         <meta key="og:title" property="og:title" content={`${meta.title} - Sorto.me Docs`} />
         <meta key="og:description" name="og:description" content={meta.excerpt} />
+        <meta key="article:modified_time" property="article:modified_time" content={meta.updated} />
       </Head>
       <DocBody meta={meta} slugs={slugs}>
         {body}

@@ -7,7 +7,6 @@ import { Anchor, Container } from './basics'
 const HeroContainer = styled('header', {
   background: '$base10',
   color: '$base100',
-  marginBottom: 40,
   paddingTop: 80,
   paddingBottom: 120,
 })

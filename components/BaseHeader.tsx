@@ -74,6 +74,7 @@ const HeaderMenu = styled('nav', {
   top: HEADER_HEIGHT,
   bottom: 0,
   left: 0,
+  zIndex: 9,
   '& a': {
     color: 'inherit',
   },
@@ -84,11 +85,14 @@ export const HeaderNavMenu = styled('ul', {
   paddingLeft: 0,
 })
 
-export const HeaderNavItem = styled(Anchor, {
+export const HeaderNavMenuItem = styled(Anchor, {
   display: 'block',
   fontSize: 36,
   marginTop: 36,
   textDecoration: 'none',
+  '&:hover:not([aria-disabled])': {
+    textDecoration: 'underline',
+  },
 })
 
 export type HeaderVariants = StitchesVariants<typeof Root>

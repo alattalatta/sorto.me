@@ -6,13 +6,16 @@ import { parsePost, PostMetadata } from '../posts'
 describe('Post utilities', () => {
   describe('parsePost', () => {
     it('can parse all necessary data', async () => {
-      const fileName = '2020-02-02+post.mdx'
-      const file = await fs.readFile(path.resolve(__dirname, 'mocks/posts', fileName))
+      const filePath = path.resolve(__dirname, 'mocks/posts/2020-02-02+post.mdx')
+      const file = await fs.readFile(filePath)
 
-      const parsed = parsePost(fileName, file)
+      const {
+        content,
+        meta: { updated, ...meta },
+      } = await parsePost(filePath, file)
 
-      expect(parsed.content).toBe('aaa')
-      expect(parsed.meta).toEqual<PostMetadata>({
+      expect(content).toBe('aaa')
+      expect(meta).toEqual<Omit<PostMetadata, 'updated'>>({
         created: '2020-02-02',
         slug: 'post',
         title: 'front matter title',

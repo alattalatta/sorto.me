@@ -3,8 +3,8 @@ import React from 'react'
 
 import { PostMetadata } from 'utils/posts'
 
+import BlogFooter from './BlogFooter'
 import { MDX_COMPONENTS, MDXWrap } from './MDX'
-import PostFooter from './PostFooter'
 import PostHero from './PostHero'
 import { Container } from './basics'
 
@@ -20,7 +20,7 @@ const PostBody: React.VFC<Props> = ({ children, meta }) => {
       <Container>
         <MDXWrap components={MDX_COMPONENTS}>{children}</MDXWrap>
       </Container>
-      <PostFooter meta={meta} />
+      <BlogFooter meta={meta} />
     </article>
   )
 }

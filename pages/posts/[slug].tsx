@@ -44,7 +44,7 @@ export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({
   const filePath = path.join(POSTS_PATH, `${params.slug}.mdx`)
   const source = fs.readFileSync(filePath)
 
-  const { content, meta } = parsePost(params.slug, source)
+  const { content, meta } = await parsePost(filePath, source)
 
   const mdxOptions = { rehypePlugins: [rehypePrism] }
   const body = await renderToString(content, { components: MDX_COMPONENTS, mdxOptions, scope: meta })

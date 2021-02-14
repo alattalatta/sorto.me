@@ -5,7 +5,7 @@
 
 html {
   color: var(--colors-base10);
-  font-family: 'Nanum Gothic Coding', monospace;
+  font-family: 'Nanum Gothic Coding', '나눔고딕코딩', monospace;
 }
 
 body {

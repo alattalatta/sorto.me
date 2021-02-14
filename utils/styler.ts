@@ -3,7 +3,7 @@ import createStyled, { StitchesCss } from '@stitches/react'
 const stitchesConfig = createStyled({
   conditions: {
     wide: '@media (max-width: 1720px)',
-    medium: '@media (max-width: 1280px)',
+    medium: '@media (max-width: 1024px)',
     narrow: '@media (max-width: 768px)',
     tiny: '@media (max-width: 480px)',
   },

@@ -12,6 +12,7 @@ export type PostMetadata = {
    */
   created: string
   excerpt?: string
+  image: string
   slug: string
   title: string
   /**
@@ -40,6 +41,7 @@ export async function parsePost(filePath: string, source: Buffer): Promise<{ con
     meta: {
       ...data,
       created,
+      image: data.image || '/images/default.jpg',
       slug: slug.replace('.mdx', ''),
       updated,
     } as PostMetadata,

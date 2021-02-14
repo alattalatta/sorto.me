@@ -27,6 +27,7 @@ const Post: Page<StaticProps> = ({ body, meta }) => {
         <meta key="og:type" property="og:type" content="article" />
         <meta key="og:title" property="og:title" content={`${meta.title} - Sorto.me`} />
         <meta key="og:description" property="og:description" content={meta.excerpt} />
+        {meta.image && <meta key="og:image" property="og:image" content={meta.image} />}
         <meta key="article:published_time" property="article:published_time" content={meta.created} />
       </Head>
       <BlogBody meta={meta}>{body}</BlogBody>

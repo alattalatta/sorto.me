@@ -4,6 +4,7 @@
 }
 
 html {
+  color: var(--colors-base10);
   font-family: 'Nanum Gothic Coding', monospace;
 }
 

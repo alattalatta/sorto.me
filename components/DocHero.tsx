@@ -8,41 +8,29 @@ const HeroContainer = styled('header', {
   background: '$base10',
   color: '$base100',
   marginBottom: 40,
-  paddingTop: 132,
-  paddingBottom: 88,
+  paddingTop: 80,
+  paddingBottom: 120,
 })
 
 const Title = styled('h1', {
   color: '$base70',
-  fontSize: 32,
+  fontSize: 36,
   fontWeight: 700,
-  marginTop: 0,
-  marginBottom: 0,
 })
 
-const SubContainer = styled('div', {
+const Breadcrumbs = styled('div', {
   color: '$base100',
   display: 'flex',
   alignItems: 'center',
+  flexWrap: 'wrap',
+  lineHeight: 1.45,
   marginTop: 16,
-})
-
-const Breadcrumbs = styled('nav', {
-  display: 'flex',
-  fontFamily: "'Nanum Gothic', sans-serif",
-  marginTop: 0,
-  marginBottom: 0,
   userSelect: 'none',
 })
 
 const BreadcrumbSeparator = styled('span', {
-  marginRight: 5,
-  marginLeft: 5,
-})
-
-const MDNLink = styled(Anchor, {
-  fontSize: 12,
-  marginLeft: 12,
+  marginRight: '1ch',
+  marginLeft: '1ch',
 })
 
 type Props = {
@@ -66,7 +54,13 @@ const DocHero: React.VFC<Props> = ({ children, slugs }) => {
       // insert '>' when appropriate
       const components =
         index > 0
-          ? [...prevComps, <BreadcrumbSeparator key={index}>&gt;</BreadcrumbSeparator>, component]
+          ? [
+              ...prevComps,
+              <BreadcrumbSeparator key={index} aria-hidden="true">
+                &gt;
+              </BreadcrumbSeparator>,
+              component,
+            ]
           : [...prevComps, component]
 
       return [href, components]
@@ -78,10 +72,7 @@ const DocHero: React.VFC<Props> = ({ children, slugs }) => {
     <HeroContainer>
       <Container>
         <Title>{children}</Title>
-        <SubContainer>
-          <Breadcrumbs>{breadcrumbs}</Breadcrumbs>
-          <MDNLink href={`https://developer.mozilla.org/ko/docs/${slugs.join('/')}`}>MDN에서 보기</MDNLink>
-        </SubContainer>
+        <Breadcrumbs>{breadcrumbs}</Breadcrumbs>
       </Container>
     </HeroContainer>
   )

@@ -14,6 +14,9 @@ const Brand = styled(Anchor, {
   fontSize: 20,
   padding: '16px 16px 16px 52px',
   textDecoration: 'none',
+  '&:hover': {
+    color: '$base40',
+  },
 })
 
 const HeaderIntraNavItem = styled(HeaderNavItem, {
@@ -31,8 +34,8 @@ const BlogHeader: React.VFC<HeaderVariants> = ({ brightness }) => {
         brand: <Brand href="/">Sorto.me</Brand>,
         menu: (
           <Container>
-            <SearchField />
-            <HeaderNavMenu css={{ marginTop: 48 }}>
+            <SearchField placeholder="블로그 검색..." />
+            <HeaderNavMenu css={{ marginTop: 48 }} aria-label="블로그 링크">
               <li>
                 <HeaderNavItem href="/posts">Blog</HeaderNavItem>
               </li>
@@ -40,7 +43,7 @@ const BlogHeader: React.VFC<HeaderVariants> = ({ brightness }) => {
                 <HeaderNavItem href="/about">About</HeaderNavItem>
               </li>
             </HeaderNavMenu>
-            <HeaderNavMenu css={{ marginTop: 72 }}>
+            <HeaderNavMenu css={{ marginTop: 72 }} aria-label="다른 곳으로 이동">
               <li>
                 <HeaderIntraNavItem href="/docs/Web">Docs</HeaderIntraNavItem>
               </li>

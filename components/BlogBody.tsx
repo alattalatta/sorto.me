@@ -40,8 +40,8 @@ const BlogBody: React.VFC<Props> = ({ posts }) => {
       <Container>
         {posts.map((post) => (
           <Item key={post.slug}>
-            <Link href={`/post/${post.slug}`}>
-              <BlogPost href={`/post/${post.slug}`}>
+            <Link href={`/posts/${post.slug}`}>
+              <BlogPost href={`/posts/${post.slug}`}>
                 <Title>{post.meta.title}</Title>
                 <time dateTime={post.meta.created}>{post.meta.created}</time>
               </BlogPost>

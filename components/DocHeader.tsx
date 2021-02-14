@@ -7,13 +7,13 @@ import SearchField from './SearchField'
 import { Anchor, Container } from './basics'
 
 const Brand = styled(Anchor, {
-  background: '$accentY',
-  boxShadow: '0 2px 12px rgba(252, 236, 111, 0.6), 0 1px 8px rgba(255, 199, 0, 0.25)',
-  color: '$base40',
-  display: 'block',
-  fontSize: 20,
-  padding: '16px 16px 16px 52px',
+  color: '$base100',
+  fontSize: 32,
+  fontWeight: 700,
   textDecoration: 'none',
+  '&:hover': {
+    color: '$base100',
+  },
 })
 
 const HeaderIntraNavItem = styled(HeaderNavItem, {
@@ -24,30 +24,30 @@ const HeaderIntraNavItem = styled(HeaderNavItem, {
   },
 })
 
-const BlogHeader: React.VFC = () => {
+const DocHeader: React.VFC = () => {
   return (
     <BaseHeader brightness="dark">
       {{
-        brand: <Brand href="/">Sorto.me</Brand>,
+        brand: <Brand href="/docs/Web">Docs</Brand>,
         menu: (
           <Container>
-            <SearchField />
-            <HeaderNavMenu css={{ marginTop: 48 }}>
-              <li>
+            <SearchField placeholder="Docs 검색..." />
+            <HeaderNavMenu css={{ marginTop: 48 }} role="group" aria-label="문서 링크">
+              <li role="menuitem">
                 <HeaderNavItem href="/docs/Web/HTML">HTML</HeaderNavItem>
               </li>
-              <li>
+              <li role="menuitem">
                 <HeaderNavItem href="/docs/Web/CSS">CSS</HeaderNavItem>
               </li>
-              <li>
+              <li role="menuitem">
                 <HeaderNavItem href="/docs/Web/JavaScript">JavaScript</HeaderNavItem>
               </li>
             </HeaderNavMenu>
-            <HeaderNavMenu css={{ marginTop: 72 }}>
-              <li>
+            <HeaderNavMenu css={{ marginTop: 72 }} role="group" aria-label="다른 곳으로 이동">
+              <li role="menuitem">
                 <HeaderIntraNavItem href="/">Main Site</HeaderIntraNavItem>
               </li>
-              <li>
+              <li role="menuitem">
                 <HeaderIntraNavItem href="/post">Blog</HeaderIntraNavItem>
               </li>
             </HeaderNavMenu>
@@ -58,4 +58,4 @@ const BlogHeader: React.VFC = () => {
   )
 }
 
-export default BlogHeader
+export default DocHeader

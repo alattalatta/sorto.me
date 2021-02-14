@@ -7,11 +7,14 @@ const TextField = styled('input', {
   background: '$base100',
   border: '1px solid $base70',
   borderRadius: '$cornerRadius',
-  color: '$base60',
+  color: '$base40',
   flex: 1,
   fontSize: 20,
   fontFamily: '"Nanum Gothic Coding", monospace',
   padding: '16px 24px',
+  '&::placeholder': {
+    color: '$base60',
+  },
 })
 
 const SubmitButton = styled('button', {

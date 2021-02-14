@@ -1,10 +1,11 @@
 import { StitchesVariants } from '@stitches/react'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { styled } from 'utils/styler'
 
-import { Anchor, Container as ContainerBase } from './basics'
+import { Anchor, Container as ContainerBase } from '../basics'
+import Hamburger from './Hamburger'
 
 const HEADER_HEIGHT = 84
 
@@ -45,24 +46,6 @@ const Container = styled(ContainerBase, {
   alignItems: 'center',
   paddingTop: 16,
   paddingBottom: 16,
-})
-
-const HamburgerLine = styled('div', {
-  height: 4,
-  backgroundColor: 'currentColor',
-  '&:not(:first-child)': {
-    marginTop: 6,
-  },
-})
-
-const HamburgerContainer = styled('button', {
-  width: 52,
-  background: 'none',
-  border: 0,
-  color: 'inherit',
-  cursor: 'pointer',
-  marginRight: 'auto',
-  padding: '14px 10px',
 })
 
 const HeaderMenu = styled('nav', {
@@ -135,17 +118,7 @@ const BaseHeader: React.VFC<Props> = ({ brightness, children: { brand, menu } })
     <>
       <Root brightness={brightness} position={menuOpened ? 'fixed' : 'normal'} role="navigation">
         <Container>
-          <HamburgerContainer
-            title="메뉴 열기"
-            aria-controls="header-menu"
-            aria-haspopup="menu"
-            aria-expanded={menuOpened}
-            onClick={() => setMenuOpened(!menuOpened)}
-          >
-            <HamburgerLine />
-            <HamburgerLine />
-            <HamburgerLine />
-          </HamburgerContainer>
+          <Hamburger opened={menuOpened} onClick={() => setMenuOpened(!menuOpened)} />
           {brand}
         </Container>
       </Root>

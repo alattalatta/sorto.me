@@ -32,7 +32,11 @@ const Anchor = forwardRef<HTMLAnchorElement, Props>(
 
     if (internal && !process.browser) {
       // can't get absolute url to resolve against
-      return <a ref={ref} href={href} {...props} />
+      return (
+        <a ref={ref} href={href} {...props}>
+          {children}
+        </a>
+      )
     }
 
     if (internal) {

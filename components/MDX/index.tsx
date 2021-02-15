@@ -2,30 +2,16 @@ import clsx from 'clsx'
 import hydrate from 'next-mdx-remote/hydrate'
 import { MdxRemote } from 'next-mdx-remote/types'
 import dynamic from 'next/dynamic'
-import { useRouter } from 'next/router'
-import React, { createContext, useContext, useEffect, useRef } from 'react'
+import React from 'react'
 
-import { childrenToText, sanitizeID } from 'utils/element'
+import { useUniqueID } from 'hooks/MDX/useUniqueID'
+import { childrenToText } from 'utils/element'
 
 import { Anchor } from '../basics'
 import Callout, { CalloutCite } from './Callout'
 import { CodeBlock, CodeBlockBad, CodeBlockGood } from './CodeBlock'
+import { UniqueIDProvider } from './UniqueIDContext'
 import styles from './styles.module.scss'
-
-const HeadingIDContext = createContext<Map<string, number> | null>(null)
-export const HeadingContext: React.FC = ({ children }) => {
-  const map = useRef(new Map<string, number>()).current
-  const router = useRouter()
-
-  useEffect(() => {
-    const clearMapWhenRouteChanges = () => map.clear()
-    router.events.on('routeChangeStart', clearMapWhenRouteChanges)
-
-    return () => router.events.off('routeChangeStart', clearMapWhenRouteChanges)
-  }, [])
-
-  return <HeadingIDContext.Provider value={map}>{children}</HeadingIDContext.Provider>
-}
 
 /** Non-hydrated MDX contents wrapper. */
 const MDXStatic: React.VFC<{ children: string; className?: string }> = ({ children, className }) => (
@@ -45,7 +31,7 @@ type Props = {
 export const MDXWrap: React.VFC<Props> = ({ children, className, components }) => {
   const content = hydrate(children, {
     components,
-    provider: { component: HeadingContext, props: {} },
+    provider: { component: UniqueIDProvider, props: {} },
   }) as React.ReactElement
 
   // pretty lame but uh
@@ -65,13 +51,7 @@ const headingOf = (level: 2 | 3 | 4): React.FC => {
   const className = styles[`heading${level}`]
 
   return ({ children }) => {
-    const headingIDContext = useContext(HeadingIDContext)
-
-    const textContent = sanitizeID(childrenToText(children))
-
-    const count = headingIDContext?.get(textContent) || 0
-    const id = count ? `${textContent}-${count}` : textContent
-    headingIDContext?.set(textContent, count + 1)
+    const id = useUniqueID(childrenToText(children))
 
     return (
       <H className={className} id={id}>
@@ -82,6 +62,26 @@ const headingOf = (level: 2 | 3 | 4): React.FC => {
       </H>
     )
   }
+}
+
+const Term: React.FC<{ monospaced?: boolean }> = ({ children, monospaced = true }) => {
+  const id = useUniqueID(`term-${childrenToText(children)}`)
+
+  const content = monospaced ? <code>{children}</code> : children
+
+  return <dt id={id}>{content}</dt>
+}
+
+const TermLink: React.VFC<{ children: string; monospaced?: boolean; target?: string }> = ({
+  children,
+  monospaced = true,
+  target = children,
+}) => {
+  const fragment = `#term-${target}`
+
+  const content = monospaced ? <code>{children}</code> : children
+
+  return <Anchor href={fragment}>{content}</Anchor>
 }
 
 export const MDX_COMPONENTS: MdxRemote.Components = Object.freeze({
@@ -96,4 +96,6 @@ export const MDX_COMPONENTS: MdxRemote.Components = Object.freeze({
   CalloutCite,
   CodeBlockBad,
   CodeBlockGood,
+  Term,
+  TermLink,
 })

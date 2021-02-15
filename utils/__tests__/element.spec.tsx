@@ -1,4 +1,4 @@
-import { childrenToText } from '../element'
+import { childrenToText, sanitizeID } from '../element'
 
 describe('Element utilities', () => {
   describe('childrenToText', () => {
@@ -58,6 +58,24 @@ describe('Element utilities', () => {
 
     it('can return an empty string, given an empty node', () => {
       expect(childrenToText(null)).toBe('')
+    })
+  })
+
+  describe('sanitizeID', () => {
+    it('can sanitize whitespaces', () => {
+      expect(sanitizeID('a b')).toBe('a-b')
+      expect(sanitizeID('a      b')).toBe('a-b')
+      expect(sanitizeID('   a ')).toBe('a')
+      expect(sanitizeID('\na\n \n\tb\n')).toBe('a-b')
+    })
+
+    it('can sanitize special chars', () => {
+      expect(sanitizeID('</ab>')).toBe('ab')
+      expect(sanitizeID('mama~')).toBe('mama')
+      expect(sanitizeID('!important')).toBe('important')
+      expect(sanitizeID('12한중일34')).toBe('12한중일34')
+      expect(sanitizeID('#🥥')).toBe('🥥')
+      expect(sanitizeID('37%0x88')).toBe('370x88')
     })
   })
 })

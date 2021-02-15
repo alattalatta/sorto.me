@@ -31,3 +31,13 @@ export function childrenToText(node: React.ReactNode): string {
     // remove from coverage as Children.toArray() filters invalid things
   }, '')
 }
+
+/**
+ * Sanitize a string to be used with `id` attribute.
+ */
+export function sanitizeID(text: string): string {
+  return text
+    .trim()
+    .replace(/[\s\n]+/g, '-')
+    .replace(/[!@#$%^&*()=+~`'"/\\?.,<>[\]|{}]/g, '')
+}

@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import React, { createContext, useContext, useEffect, useRef } from 'react'
 
-import { childrenToText } from 'utils/element'
+import { childrenToText, sanitizeID } from 'utils/element'
 
 import { Anchor } from '../basics'
 import Callout, { CalloutCite } from './Callout'
@@ -67,9 +67,7 @@ const headingOf = (level: 2 | 3 | 4): React.FC => {
   return ({ children }) => {
     const headingIDContext = useContext(HeadingIDContext)
 
-    const textContent = childrenToText(children)
-      .replace(/\s/g, '-')
-      .replace(/[!@#$%^&*()=+~`'"/\\?.,<>[\]|{}]/g, '')
+    const textContent = sanitizeID(childrenToText(children))
 
     const count = headingIDContext?.get(textContent) || 0
     const id = count ? `${textContent}-${count}` : textContent

@@ -18,7 +18,6 @@ type Props = {
 
 const DocBody: React.VFC<Props> = ({ children, meta, slugs }) => {
   const router = useRouter()
-  console.log(router)
 
   return (
     <article>

@@ -50,7 +50,10 @@ export const MDXWrap: React.VFC<Props> = ({ children, className, components }) =
 
   // pretty lame but uh
   // should properly handle when https://github.com/hashicorp/next-mdx-remote/issues/88 gets resolved
-  return content.type === 'div' ? (
+  // not "content.type", because it'll be wrapped in HeadingContext
+  const childrenType = content.props.children?.type || 'div'
+
+  return childrenType === 'div' ? (
     <MDXStatic className={className}>{children.renderedOutput}</MDXStatic>
   ) : (
     <MDXHydrated className={className}>{content}</MDXHydrated>

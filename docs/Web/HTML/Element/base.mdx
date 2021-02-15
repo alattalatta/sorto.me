@@ -22,13 +22,9 @@ excerpt: HTML <base> 요소는 문서 안의 모든 상대 URL이 사용할 기�
 </Callout>
 
 <dl>
-  <dt>
-    <code>href</code>
-  </dt>
+  <Term>href</Term>
   <dd>문서 내의 상대 URL이 사용할 기준 URL입니다. 절대 및 상대 URL을 사용할 수 있습니다.</dd>
-  <dt>
-    <code>target</code>
-  </dt>
+  <Term>target</Term>
   <dd>
     <p>
       <code>target</code> 특성을 명시하지 않은 &lt;a&gt;, &lt;area&gt;, &lt;form&gt; 요소가 탐색을 유발했을 때, 그
@@ -55,6 +51,7 @@ excerpt: HTML <base> 요소는 문서 안의 모든 상대 URL이 사용할 기�
 </dl>
 
 # 사용 일람
+
 ## 다수의 `<base>` 요소
 
 `<base>` 요소가 여럿 존재하는 경우, 맨 처음 `target`과 맨 처음 `href` 특성을 제외한 나머지는 모두 무시합니다.
@@ -74,14 +71,13 @@ excerpt: HTML <base> 요소는 문서 안의 모든 상대 URL이 사용할 기�
 <CodeBlockBad />
 
 ```html
-<base href="https://example.com/" />
-<meta property="og:image" content="/thumbnail.jpg">
+<base href="https://example.com/" /> <meta property="og:image" content="/thumbnail.jpg" />
 ```
 
 <CodeBlockGood />
 
 ```html
-<meta property="og:image" content="https://example.com/thumbnail.jpg">
+<meta property="og:image" content="https://example.com/thumbnail.jpg" />
 ```
 
 # 명세

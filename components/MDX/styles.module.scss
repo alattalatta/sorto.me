@@ -16,12 +16,6 @@
     line-height: 1.75;
   }
 
-  #{child("img")},
-  #{child("p")} > img {
-    max-width: 100%;
-    display: 'block';
-  }
-
   & code:not(pre > code) {
     background-color: rgba(#000, 0.05);
     border-radius: 4px;
@@ -29,6 +23,20 @@
     padding-right: 4px;
     padding-left: 4px;
     text-decoration-line: inherit;
+  }
+
+  dt {
+    font-weight: 700;
+  }
+
+  dd {
+    margin-top: 8px;
+    margin-left: 24px;
+  }
+
+  img {
+    max-width: 100%;
+    display: 'block';
   }
 
   & li + li {

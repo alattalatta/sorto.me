@@ -18,17 +18,31 @@
   margin-bottom: 24px;
   overflow-x: auto;
   padding: 24px;
+  position: relative;
   tab-size: 2;
   white-space: pre;
   word-break: normal;
   word-spacing: normal;
 
+  &::before {
+    opacity: 0.6;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+  }
+
   .codeBlockBad + & {
     background: #ffeded;
     border-color: #e1b9b9;
+    &::before {
+      content: '좋지 않음';
+    }
   }
   .codeBlockGood + & {
     background: #f2ffed;
     border-color: #c1dcb7;
+    &::before {
+      content: '좋음';
+    }
   }
 }

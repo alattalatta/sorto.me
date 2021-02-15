@@ -40,13 +40,16 @@ const RowNameWrap = styled('div', {
 const SupportDetail = styled('div', {
   maxWidth: 720,
   display: 'flex',
-  alignItems: 'center',
+  alignItems: 'top',
   marginRight: 'auto',
   marginLeft: 'auto',
 })
 
 const SupportDetailDescriptions = styled('dd', {
   marginLeft: 16,
+  '&[class]': {
+    marginTop: 0,
+  },
 })
 
 type Props = {

@@ -6,20 +6,16 @@
 
 .wrap {
   font-family: 'Nanum Gothic', sans-serif;
+  line-height: 1.75;
 
   #{child("* + *")} {
     margin-top: 24px;
     margin-bottom: 24px;
   }
 
-  #{child("p")} {
-    line-height: 1.75;
-  }
-
-  #{child("img")},
-  #{child("p")} > img {
-    max-width: 100%;
-    display: 'block';
+  #{child("dt")} {
+    font-weight: 700;
+    margin-top: 20px;
   }
 
   & code:not(pre > code) {
@@ -31,7 +27,29 @@
     text-decoration-line: inherit;
   }
 
-  & li + li {
+  dd {
+    margin-left: 24px;
+
+    & p,
+    & ul {
+      margin-bottom: 8px;
+    }
+  }
+
+  dt + dd {
+    margin-top: 8px;
+  }
+
+  dd + dt {
+    margin-top: 16px;
+  }
+
+  img {
+    max-width: 100%;
+    display: 'block';
+  }
+
+  li + li {
     margin-top: 8px;
   }
 }

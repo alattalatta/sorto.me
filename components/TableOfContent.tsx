@@ -54,11 +54,14 @@ const TableOfContent: React.VFC = () => {
   const [headings, setHeadings] = useState<(readonly [number, string, string])[]>([])
 
   useEffect(() => {
-    const hs = Array.from(
-      document.querySelector('main')?.querySelectorAll('h1[id], h2[id]:not([id=toc]), h3[id], h4[id]') || [],
-    ).map((el) => [Number(el.tagName.slice(1)), (el.textContent || '').slice(0, -1), el.id] as const)
-    setHeadings(hs)
-  }, [])
+    if (opened) {
+      const hs = Array.from(
+        document.querySelector('main')?.querySelectorAll('h1[id], h2[id]:not([id="toc-heading"]), h3[id], h4[id]') ||
+          [],
+      ).map((el) => [Number(el.tagName.slice(1)), (el.textContent || '').slice(0, -1), el.id] as const)
+      setHeadings(hs)
+    }
+  }, [opened])
 
   return (
     <Root>

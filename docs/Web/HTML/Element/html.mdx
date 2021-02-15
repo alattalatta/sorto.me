@@ -1,0 +1,42 @@
+---
+title: HTML <html> 요소
+excerpt: HTML <html> 요소는 HTML 문서의 루트(최상위 요소)를 나타냅니다. "루트 요소"라고 부르기도 합니다.
+---
+
+**HTML `<html>` 요소**는 HTML 문서의 루트(최상위 요소)를 나타냅니다. "루트 요소"라고 부르기도 합니다. 다른 모든 요소는 `<html>`의 자손으로 들어가야 합니다.
+
+```html
+<!DOCTYPE html>
+<html lang="ko">
+  <head></head>
+  <body></body>
+</html>
+```
+
+# 특성
+
+[전역 특성](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes)을 포함합니다.
+
+<dl>
+  <dt>
+    <code>xmlns</code>
+  </dt>
+  <dd>
+    문서의 XML 이름공간을 지정합니다. 기본값은 "http://www.w3.org/1999/xhtml"입니다. XML 파서가 분석하는 문서에서는 필수
+    특성이고, <code>text/html</code> 문서에서는 선택 사항입니다.
+  </dd>
+</dl>
+
+# 접근성 고려사항
+
+유효한 [IETF 언어 식별 태그](https://www.ietf.org/rfc/bcp/bcp47.txt)를 `<html>` 요소의 `lang` 특성에 지정하면 스크린 리더가 음성 표현에 사용할 언어를 결정할 때 도움이 됩니다. 언어 식별 태그로는 페이지에서 주로 사용하는 언어를 지정해야 합니다. 아무것도 지정하지 않으면 보통 운영 체제의 현재 언어를 사용하는데, 그러면 잘못된 발음이 나타날 수 있습니다.
+
+올바른 `lang` 특성을 지정해야 `<title>`과 같은 `<head>` 내의 중요한 메타데이터도 올바르게 표현할 수 있습니다.
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/semantics.html#the-html-element)
+
+# 브라우저 호환성
+
+<BrowserCompat>html.elements.html</BrowserCompat>

@@ -8,16 +8,17 @@ import { MdxRemote } from 'next-mdx-remote/types'
 import Head from 'next/head'
 import React from 'react'
 
+import BlogBody from 'components/BlogBody'
+import BlogHeader from 'components/BlogHeader'
 import { getLayout } from 'components/Layout'
 import { MDX_COMPONENTS } from 'components/MDX'
-import PostBody from 'components/PostBody'
 import { parsePost, PostMetadata, POSTS_PATH, POST_FILES_PENDING } from 'utils/posts'
 import { Page } from 'utils/types'
 
 type StaticParam = { slug: string }
 type StaticProps = { body: MdxRemote.Source; meta: PostMetadata }
 
-const Post: Page<StaticProps> = ({ body, meta }) => {
+const BlogPost: Page<StaticProps> = ({ body, meta }) => {
   return (
     <>
       <Head>
@@ -26,14 +27,16 @@ const Post: Page<StaticProps> = ({ body, meta }) => {
         <meta key="og:type" property="og:type" content="article" />
         <meta key="og:title" property="og:title" content={`${meta.title} - Sorto.me`} />
         <meta key="og:description" property="og:description" content={meta.excerpt} />
+        {meta.image && <meta key="og:image" property="og:image" content={meta.image} />}
         <meta key="article:published_time" property="article:published_time" content={meta.created} />
+        <meta key="article:modified_time" property="article:modified_time" content={meta.updated} />
       </Head>
-      <PostBody meta={meta}>{body}</PostBody>
+      <BlogBody meta={meta}>{body}</BlogBody>
     </>
   )
 }
-Post.getLayout = getLayout
-export default Post
+BlogPost.getLayout = getLayout(<BlogHeader brightness="dark" />)
+export default BlogPost
 
 export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({ params }) => {
   if (!params?.slug) {
@@ -43,7 +46,7 @@ export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({
   const filePath = path.join(POSTS_PATH, `${params.slug}.mdx`)
   const source = fs.readFileSync(filePath)
 
-  const { content, meta } = parsePost(params.slug, source)
+  const { content, meta } = await parsePost(filePath, source)
 
   const mdxOptions = { rehypePlugins: [rehypePrism] }
   const body = await renderToString(content, { components: MDX_COMPONENTS, mdxOptions, scope: meta })

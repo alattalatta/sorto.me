@@ -1,3 +1,4 @@
+import BlogHeader from 'components/BlogHeader'
 import IndexBody from 'components/IndexBody'
 import { getLayout } from 'components/Layout'
 import { Page } from 'utils/types'
@@ -5,5 +6,5 @@ import { Page } from 'utils/types'
 const Index: Page = () => {
   return <IndexBody />
 }
-Index.getLayout = getLayout
+Index.getLayout = getLayout(<BlogHeader />)
 export default Index

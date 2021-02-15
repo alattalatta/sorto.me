@@ -1,18 +1,18 @@
-import fs from 'fs'
+import { promises as fs } from 'fs'
 import path from 'path'
-import util from 'util'
 
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 
-import BlogBody, { PostDatum } from 'components/BlogBody'
+import BlogHeader from 'components/BlogHeader'
+import BlogListBody, { PostDatum } from 'components/BlogListBody'
 import { getLayout } from 'components/Layout'
 import { parsePost, POSTS_PATH, POST_FILES_PENDING } from 'utils/posts'
 import { Page } from 'utils/types'
 
 type StaticProps = { posts: readonly PostDatum[] }
 
-const Post: Page<StaticProps> = ({ posts }) => {
+const Blog: Page<StaticProps> = ({ posts }) => {
   return (
     <div>
       <Head>
@@ -21,12 +21,12 @@ const Post: Page<StaticProps> = ({ posts }) => {
         <meta key="og:title" property="og:title" content="Sorto.me - Blog" />
         <meta key="og:description" property="og:description" content="이것저것 블로그" />
       </Head>
-      <BlogBody posts={posts} />
+      <BlogListBody posts={posts} />
     </div>
   )
 }
-Post.getLayout = getLayout
-export default Post
+Blog.getLayout = getLayout(<BlogHeader />)
+export default Blog
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   const postData = await Promise.all(
@@ -34,9 +34,9 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
       .reverse()
       .map((fileName) => [fileName, path.join(POSTS_PATH, fileName)])
       .map(async ([fileName, filePath]) => {
-        const source = await util.promisify(fs.readFile)(filePath)
+        const source = await fs.readFile(filePath)
 
-        const { meta } = parsePost(fileName, source)
+        const { meta } = await parsePost(filePath, source)
 
         return {
           meta,

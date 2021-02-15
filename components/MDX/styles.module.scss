@@ -16,17 +16,10 @@
     line-height: 1.75;
   }
 
-  #{child("img")} {
+  #{child("img")},
+  #{child("p")} > img {
     max-width: 100%;
     display: 'block';
-  }
-
-  & a {
-    color: var(--colors-linkblueDark);
-
-    &:hover {
-      color: var(--colors-accentB);
-    }
   }
 
   & code:not(pre > code) {

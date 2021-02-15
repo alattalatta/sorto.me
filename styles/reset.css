@@ -4,15 +4,15 @@
 }
 
 html {
-  font-family: 'Nanum Gothic Coding', monospace;
+  color: var(--colors-base10);
+  font-family: 'Nanum Gothic Coding', '나눔고딕코딩', monospace;
 }
 
 body {
   margin: 0
 }
-
-a {
-  color: inherit;
+body.o {
+  overflow: hidden
 }
 
 h1,
@@ -25,6 +25,17 @@ figure,
 ul,
 ol {
   margin: 0
+}
+
+a {
+  color: var(--colors-linkblueLight);
+}
+a:hover {
+  color: var(--colors-accentB);
+}
+
+button {
+  font-family: inherit;
 }
 
 code {

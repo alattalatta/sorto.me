@@ -1,15 +1,30 @@
 import React from 'react'
 
-import PageHeaderOffset from './PageHeaderOffset'
-import { Container, Anchor } from './basics'
+import { styled } from 'utils/styler'
+
+import { Anchor, Container } from './basics'
+
+const Heading = styled('h1', {
+  marginTop: 48,
+})
 
 const IndexBody: React.VFC = () => {
   return (
-    <PageHeaderOffset as="main">
-      <Container>
-        <Anchor href="/about">About me</Anchor>
-      </Container>
-    </PageHeaderOffset>
+    <Container>
+      <p>⬆️ Open the menu, or</p>
+      <ul role="navigation">
+        <li>
+          <Anchor href="/posts">Blog</Anchor>
+        </li>
+        <li>
+          <Anchor href="/about">About</Anchor>
+        </li>
+        <li>
+          <Anchor href="/docs/Web">Web docs</Anchor>
+        </li>
+      </ul>
+      <Heading>Under construction</Heading>
+    </Container>
   )
 }
 

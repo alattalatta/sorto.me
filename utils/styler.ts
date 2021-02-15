@@ -1,6 +1,12 @@
 import createStyled, { StitchesCss } from '@stitches/react'
 
 const stitchesConfig = createStyled({
+  conditions: {
+    wide: '@media (max-width: 1720px)',
+    medium: '@media (max-width: 1024px)',
+    narrow: '@media (max-width: 768px)',
+    tiny: '@media (max-width: 480px)',
+  },
   theme: {
     colors: {
       base10: '#020D19',
@@ -14,9 +20,8 @@ const stitchesConfig = createStyled({
       accentY: '#FCEC6F',
       accentB: '#57D8FF',
       linkblueDark: '#0066CF',
-      linkblueDarkHeavy: '#0041A1',
       linkblueLight: '#2B8DF2',
-      linkblueLightHeavy: '#13AAFF',
+      linkblueLighter: '#13AAFF',
     },
     radii: {
       cornerRadius: '8px',

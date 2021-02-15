@@ -9,6 +9,7 @@ import Head from 'next/head'
 import React from 'react'
 
 import DocBody from 'components/DocBody'
+import DocHeader from 'components/DocHeader'
 import { getLayout } from 'components/Layout'
 import { MDX_COMPONENTS } from 'components/MDX'
 import { DocMetadata, DOCS_PATH, getDocFiles, parseDoc } from 'utils/docs'
@@ -26,6 +27,7 @@ const Doc: Page<StaticProps> = ({ body, meta, slugs }) => {
         <meta key="og:type" property="og:type" content="article" />
         <meta key="og:title" property="og:title" content={`${meta.title} - Sorto.me Docs`} />
         <meta key="og:description" name="og:description" content={meta.excerpt} />
+        <meta key="article:modified_time" property="article:modified_time" content={meta.updated} />
       </Head>
       <DocBody meta={meta} slugs={slugs}>
         {body}
@@ -33,7 +35,7 @@ const Doc: Page<StaticProps> = ({ body, meta, slugs }) => {
     </>
   )
 }
-Doc.getLayout = getLayout
+Doc.getLayout = getLayout(<DocHeader />)
 
 export default Doc
 

@@ -28,8 +28,16 @@ const Anchor = forwardRef<HTMLAnchorElement, Props>(
       )
     }
 
-    const internal = /^[./]/.test(href)
+    const fragment = href.startsWith('#')
+    if (fragment) {
+      return (
+        <a ref={ref} href={href} {...props}>
+          {children}
+        </a>
+      )
+    }
 
+    const internal = /^[./]/.test(href)
     if (internal && !process.browser) {
       // can't get absolute url to resolve against
       return (

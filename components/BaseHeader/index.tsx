@@ -1,4 +1,5 @@
 import { StitchesVariants } from '@stitches/react'
+import { motion as m, Variants } from 'framer-motion'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 
@@ -8,6 +9,31 @@ import { Anchor, Container as ContainerBase } from '../basics'
 import Hamburger from './Hamburger'
 
 const HEADER_HEIGHT = 84
+
+const HEADER_MENU_VARIANTS: Variants = {
+  opened: {
+    background: [null, '#fff'],
+    clipPath: 'inset(0% 0% 0% 0%)',
+    opacity: 1,
+    visibility: 'visible',
+    transition: {
+      type: 'tween',
+      ease: 'anticipate',
+    },
+  },
+  closed: {
+    background: '#224569',
+    clipPath: 'inset(0% 100% 0% 0%)',
+    opacity: 0.6,
+    transition: {
+      type: 'tween',
+      ease: 'anticipate',
+    },
+    transitionEnd: {
+      visibility: 'hidden',
+    },
+  },
+}
 
 const Root = styled('nav', {
   width: '100%',
@@ -48,7 +74,7 @@ const Container = styled(ContainerBase, {
   paddingBottom: 16,
 })
 
-const HeaderMenu = styled('nav', {
+const HeaderMenu = styled(m.nav, {
   width: '100%',
   background: '#fff',
   paddingTop: 26,
@@ -122,7 +148,14 @@ const BaseHeader: React.VFC<Props> = ({ brightness, children: { brand, menu } })
           {brand}
         </Container>
       </Root>
-      <HeaderMenu id="header-menu" hidden={!menuOpened} role="menu">
+      <HeaderMenu
+        id="header-menu"
+        aria-hidden={!menuOpened}
+        role="menu"
+        variants={HEADER_MENU_VARIANTS}
+        initial="closed"
+        animate={menuOpened ? 'opened' : 'closed'}
+      >
         {menu}
       </HeaderMenu>
       {menuOpened && <RootFill />}

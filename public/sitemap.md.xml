@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/Heading_Elements</loc>
-  <lastmod>2021-02-10</lastmod>
+  <lastmod>2021-02-15</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/address</loc>
@@ -17,8 +17,16 @@
   <lastmod>2021-02-10</lastmod>
 </url>
 <url>
+  <loc>https://sorto.me/docs/Web/HTML/Element/base</loc>
+  <lastmod>2021-02-15</lastmod>
+</url>
+<url>
   <loc>https://sorto.me/docs/Web/HTML/Element/footer</loc>
   <lastmod>2021-02-10</lastmod>
+</url>
+<url>
+  <loc>https://sorto.me/docs/Web/HTML/Element/head</loc>
+  <lastmod>2021-02-15</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/header</loc>
@@ -29,8 +37,16 @@
   <lastmod>2021-02-10</lastmod>
 </url>
 <url>
+  <loc>https://sorto.me/docs/Web/HTML/Element/html</loc>
+  <lastmod>2021-02-15</lastmod>
+</url>
+<url>
   <loc>https://sorto.me/docs/Web/HTML/Element/main</loc>
   <lastmod>2021-02-10</lastmod>
+</url>
+<url>
+  <loc>https://sorto.me/docs/Web/HTML/Element/meta</loc>
+  <lastmod>2021-02-15</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/nav</loc>
@@ -38,11 +54,19 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/section</loc>
-  <lastmod>2021-02-10</lastmod>
+  <lastmod>2021-02-15</lastmod>
+</url>
+<url>
+  <loc>https://sorto.me/docs/Web/HTML/Element/style</loc>
+  <lastmod>2021-02-15</lastmod>
+</url>
+<url>
+  <loc>https://sorto.me/docs/Web/HTML/Element/title</loc>
+  <lastmod>2021-02-15</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element</loc>
-  <lastmod>2021-02-09</lastmod>
+  <lastmod>2021-02-15</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML</loc>
@@ -54,10 +78,10 @@
 </url>
 <url>
   <loc>https://sorto.me/posts/2021-02-02+swr</loc>
-  <lastmod>2021-02-06</lastmod>
+  <lastmod>2021-02-15</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/posts/2021-02-04+accessibility</loc>
-  <lastmod>2021-02-07</lastmod>
+  <lastmod>2021-02-15</lastmod>
 </url>
 </urlset>

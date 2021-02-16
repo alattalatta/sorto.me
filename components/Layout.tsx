@@ -1,22 +1,30 @@
 import React from 'react'
 
+import BaseHeader from './BaseHeader'
+
 type Props = {
   children: {
-    body: React.ReactNode
-    header: React.ReactNode
+    brand?: React.ReactNode
+    menu: React.ReactNode
+    page: React.ReactNode
   }
 }
 
-const Layout: React.FC<Props> = ({ children: { body, header } }) => {
+const Layout: React.FC<Props> = ({ children: { brand, menu, page } }) => {
   return (
     <div>
-      {header}
-      <main>{body}</main>
+      <BaseHeader>
+        {{
+          brand,
+          menu,
+        }}
+      </BaseHeader>
+      <main>{page}</main>
     </div>
   )
 }
 export default Layout
 
-export const getLayout = (header: React.ReactNode) => (page: JSX.Element): JSX.Element => (
-  <Layout>{{ body: page, header }}</Layout>
+export const getLayout = (menu: React.ReactNode, brand?: React.ReactNode) => (page: JSX.Element): JSX.Element => (
+  <Layout>{{ brand, menu, page }}</Layout>
 )

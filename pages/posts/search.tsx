@@ -1,7 +1,8 @@
 import Head from 'next/head'
 import React from 'react'
 
-import BlogHeader from 'components/BlogHeader'
+import BlogMenu from 'components/BlogMenu'
+import Brand from 'components/Brand'
 import { getLayout } from 'components/Layout'
 import { Container as BaseContainer } from 'components/basics'
 import { useSearchQuery } from 'hooks/useSearchQuery'
@@ -30,6 +31,6 @@ const BlogSearch: Page = () => {
     </>
   )
 }
-BlogSearch.getLayout = getLayout(<BlogHeader />)
+BlogSearch.getLayout = getLayout(<BlogMenu />, <Brand />)
 
 export default BlogSearch

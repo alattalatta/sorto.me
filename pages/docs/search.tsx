@@ -1,7 +1,8 @@
 import Head from 'next/head'
 import React from 'react'
 
-import DocHeader from 'components/DocHeader'
+import Brand from 'components/Brand'
+import DocMenu from 'components/DocMenu'
 import { getLayout } from 'components/Layout'
 import { Container as BaseContainer } from 'components/basics'
 import { useSearchQuery } from 'hooks/useSearchQuery'
@@ -30,6 +31,6 @@ const DocSearch: Page = () => {
     </>
   )
 }
-DocSearch.getLayout = getLayout(<DocHeader />)
+DocSearch.getLayout = getLayout(<DocMenu />, <Brand />)
 
 export default DocSearch

@@ -1,4 +1,3 @@
-import { StitchesVariants } from '@stitches/react'
 import { AnimatePresence, motion as m, Variants } from 'framer-motion'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
@@ -88,16 +87,15 @@ const HeaderMenu = styled(m.nav, {
   },
 })
 
-export type HeaderVariants = StitchesVariants<typeof Root>
-
 type Props = {
+  brightness?: 'dark' | 'light'
   children: {
     brand?: React.ReactNode
     menu: React.ReactNode
   }
-} & HeaderVariants
+}
 
-const BaseHeader: React.VFC<Props> = ({ brightness, children: { brand, menu } }) => {
+const BaseHeader: React.VFC<Props> = ({ brightness = 'light', children: { brand, menu } }) => {
   const router = useRouter()
   const [menuOpened, setMenuOpened] = useState(false)
 
@@ -124,11 +122,13 @@ const BaseHeader: React.VFC<Props> = ({ brightness, children: { brand, menu } })
     }
   }, [menuOpened])
 
+  const reversedBrightness = brightness === 'light' ? 'dark' : 'light'
+
   return (
     <>
       <Root brightness={brightness} position={menuOpened ? 'fixed' : 'normal'} role="navigation">
         <Container>
-          <Hamburger opened={menuOpened} onClick={() => setMenuOpened(!menuOpened)} />
+          <Hamburger brightness={reversedBrightness} opened={menuOpened} onClick={() => setMenuOpened(!menuOpened)} />
           <AnimatePresence>{brand}</AnimatePresence>
         </Container>
       </Root>

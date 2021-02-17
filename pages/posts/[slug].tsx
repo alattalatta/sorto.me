@@ -36,7 +36,7 @@ const BlogPost: Page<StaticProps> = ({ body, meta }) => {
     </>
   )
 }
-BlogPost.getLayout = getLayout(<BlogMenu />, <Brand />)
+BlogPost.getLayout = getLayout(<BlogMenu />, <Brand brightness="light" />, { brightness: 'dark' })
 export default BlogPost
 
 export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({ params }) => {

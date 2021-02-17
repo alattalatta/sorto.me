@@ -1,21 +1,47 @@
 import { motion as m, Variants } from 'framer-motion'
 
-import { ACCENT_B, ACCENT_R, BASE_10, styled } from 'utils/styler'
+import { ACCENT_B, ACCENT_R, BASE_10, BASE_100, styled } from 'utils/styler'
+
+const ROOT_VARIANTS: Variants = {
+  // colors
+  dark: {
+    stroke: BASE_10,
+  },
+  light: {
+    stroke: BASE_100,
+  },
+  // states
+  hover: {
+    stroke: ACCENT_R,
+  },
+}
 
 const CONTAINER_VARIANTS: Variants = {
   closed: {
-    stroke: BASE_10,
     transform: 'translateX(0px)',
   },
   hover: {
-    stroke: ACCENT_R,
     transform: 'translateX(-3px)',
   },
 }
 
 const SHADOW_VARIANTS: Variants = {
-  closed: { stroke: BASE_10, opacity: 0 },
-  hover: { stroke: ACCENT_B, opacity: 1, transform: 'translateX(3px)' },
+  // colors
+  dark: {
+    stroke: BASE_10,
+  },
+  light: {
+    stroke: BASE_100,
+  },
+  // states
+  closed: {
+    opacity: 0,
+  },
+  hover: {
+    stroke: ACCENT_B,
+    opacity: 1,
+    transform: 'translateX(3px)',
+  },
 }
 
 const HAMBURGER_LINE_VARIANTS_A: Variants = {
@@ -63,11 +89,54 @@ const Root = styled(m.button, {
   marginRight: 16,
   padding: '14px 10px',
   position: 'relative',
+  zIndex: 1, // need this for mixin-blend-mode
+  variants: {
+    brightness: {
+      dark: {
+        stroke: '$base10',
+      },
+      light: {
+        stroke: '$base100',
+      },
+    },
+  },
+  defaultVariants: {
+    brightness: 'dark',
+  },
 })
 
 const Container = styled(m.svg, {
   position: 'relative',
+  stroke: 'inherit',
   zIndex: 1,
+  variants: {
+    brightness: {
+      dark: {},
+      light: {},
+    },
+    shadow: {
+      false: {
+        position: 'relative',
+        zIndex: 1,
+      },
+    },
+  },
+  compoundVariants: [
+    {
+      brightness: 'dark',
+      shadow: 'false',
+      css: {
+        mixBlendMode: 'multiply',
+      },
+    },
+    {
+      brightness: 'light',
+      shadow: 'false',
+      css: {
+        mixBlendMode: 'color-dodge',
+      },
+    },
+  ],
 })
 
 const Line = styled(m.line, {
@@ -81,18 +150,22 @@ const Shadow = styled(m.div, {
   position: 'absolute',
   top: 14,
   left: 10,
+  stroke: 'inherit',
 })
 
 type Props = {
+  brightness: 'dark' | 'light'
   opened: boolean
   onClick: React.MouseEventHandler
 }
-const Hamburger: React.VFC<Props> = ({ opened, onClick }) => {
+const Hamburger: React.VFC<Props> = ({ brightness, opened, onClick }) => {
   return (
     <Root
+      brightness={brightness}
       title="메뉴 열기"
-      animate={opened ? 'opened' : 'closed'}
-      initial="closed"
+      variants={ROOT_VARIANTS}
+      animate={[brightness, opened ? 'opened' : 'closed']}
+      initial={[brightness, 'closed']}
       whileHover="hover"
       whileTap="tap"
       onClick={onClick}
@@ -100,7 +173,7 @@ const Hamburger: React.VFC<Props> = ({ opened, onClick }) => {
       aria-haspopup="menu"
       aria-expanded={opened}
     >
-      <Container css={{ mixBlendMode: 'multiply' }} viewBox="0 0 32 24" variants={CONTAINER_VARIANTS}>
+      <Container brightness={brightness} shadow="false" viewBox="0 0 32 24" variants={CONTAINER_VARIANTS}>
         <Line as={m.path} d="M0 1.5 h16 h16" variants={HAMBURGER_LINE_VARIANTS_A} />
         <Line x1="0" y1="12" x2="32" y2="12" variants={HAMBURGER_LINE_VARIANTS_B} />
         <Line as={m.path} d="M0 22.5 h16 h16" variants={HAMBURGER_LINE_VARIANTS_C} />

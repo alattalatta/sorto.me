@@ -8,12 +8,13 @@ type Props = {
     menu: React.ReactNode
     page: React.ReactNode
   }
+  variants?: { brightness: 'dark' | 'light' }
 }
 
-const Layout: React.FC<Props> = ({ children: { brand, menu, page } }) => {
+const Layout: React.FC<Props> = ({ children: { brand, menu, page }, variants }) => {
   return (
     <div>
-      <BaseHeader>
+      <BaseHeader {...variants}>
         {{
           brand,
           menu,
@@ -25,6 +26,8 @@ const Layout: React.FC<Props> = ({ children: { brand, menu, page } }) => {
 }
 export default Layout
 
-export const getLayout = (menu: React.ReactNode, brand?: React.ReactNode) => (page: JSX.Element): JSX.Element => (
-  <Layout>{{ brand, menu, page }}</Layout>
-)
+export const getLayout = (
+  menu: React.ReactNode,
+  brand?: React.ReactNode,
+  variants?: { brightness: 'dark' | 'light' },
+) => (page: JSX.Element): JSX.Element => <Layout variants={variants}>{{ brand, menu, page }}</Layout>

@@ -1,48 +1,105 @@
 import { motion as m, Variants } from 'framer-motion'
 import React from 'react'
 
-import { ACCENT_B, ACCENT_R, BASE_10, styled } from 'utils/styler'
+import { ACCENT_B, ACCENT_R, BASE_10, BASE_100, styled } from 'utils/styler'
 import { PropOf } from 'utils/types'
 
 import { Anchor } from './basics'
 
 const ROOT_VARIANTS: Variants = {
+  // colors
+  dark: {
+    fill: BASE_10,
+  },
+  light: {
+    fill: BASE_100,
+  },
+  // states
   initial: {
     clipPath: 'inset(0% 100% 0% 0%)',
     opacity: 0.6,
   },
   present: {
     clipPath: 'inset(0% 0% 0% 0%)',
-    fill: BASE_10,
     opacity: 1,
   },
   hover: {
     fill: ACCENT_R,
   },
-  tap: {
-    fill: BASE_10,
-    transition: {
-      type: false,
-    },
-  },
 }
 
 const SHADOW_VARIANTS: Variants = {
-  initial: { fill: BASE_10, opacity: 0 },
-  hover: { fill: ACCENT_B, opacity: 1, transform: 'translateX(8px)' },
+  // colors
+  dark: {
+    fill: BASE_10,
+  },
+  light: {
+    fill: BASE_100,
+  },
+  // states
+  initial: {
+    opacity: 0,
+  },
+  hover: {
+    fill: ACCENT_B,
+    opacity: 1,
+    transform: 'translateX(8px)',
+  },
 }
 
 const Root = styled(m.div, {
   paddingRight: 16,
   position: 'relative',
+  variants: {
+    brightness: {
+      dark: {
+        fill: '$base10',
+      },
+      light: {
+        fill: '$base100',
+      },
+    },
+  },
+  defaultVariants: {
+    brightness: 'dark',
+  },
 })
 
 const SVGRoot = styled(m.svg, {
   height: 24,
   fill: 'inherit',
+  variants: {
+    brightness: {
+      dark: {},
+      light: {},
+    },
+    shadow: {
+      false: {
+        position: 'relative',
+        zIndex: 1,
+      },
+    },
+  },
+  compoundVariants: [
+    {
+      brightness: 'dark',
+      shadow: 'false',
+      css: {
+        mixBlendMode: 'multiply',
+      },
+    },
+    {
+      brightness: 'light',
+      shadow: 'false',
+      css: {
+        mixBlendMode: 'color-dodge',
+      },
+    },
+  ],
 })
 
 const Shadow = styled(m.div, {
+  fill: 'inherit',
   position: 'absolute',
   top: 0,
   left: 0,
@@ -57,11 +114,21 @@ const Body: React.VFC<PropOf<typeof SVGRoot>> = (props) => {
   )
 }
 
-const Brand: React.VFC = () => {
+type Props = {
+  brightness?: 'dark' | 'light'
+}
+const Brand: React.VFC<Props> = ({ brightness = 'dark' }) => {
   return (
-    <Root variants={ROOT_VARIANTS} initial="initial" animate="present" exit="initial" whileHover="hover" whileTap="tap">
+    <Root
+      brightness={brightness}
+      variants={ROOT_VARIANTS}
+      initial={[brightness, 'initial']}
+      animate={[brightness, 'present']}
+      exit={[brightness, 'initial']}
+      whileHover="hover"
+    >
       <Anchor href="/" title="홈으로 이동" aria-label="홈으로 이동">
-        <Body css={{ mixBlendMode: 'multiply', position: 'relative', zIndex: 1 }} />
+        <Body brightness={brightness} shadow="false" />
         <Shadow variants={SHADOW_VARIANTS}>
           <Body />
         </Shadow>

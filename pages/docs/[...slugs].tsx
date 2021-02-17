@@ -36,7 +36,7 @@ const Doc: Page<StaticProps> = ({ body, meta, slugs }) => {
     </>
   )
 }
-Doc.getLayout = getLayout(<DocMenu />, <Brand />)
+Doc.getLayout = getLayout(<DocMenu />, <Brand brightness="light" />, { brightness: 'dark' })
 
 export default Doc
 

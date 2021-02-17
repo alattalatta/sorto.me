@@ -1,6 +1,7 @@
 import createStyled, { StitchesCss } from '@stitches/react'
 
 export const BASE_10 = '#020D19'
+export const BASE_100 = '#F4FBFF'
 export const ACCENT_R = '#FF5252'
 export const ACCENT_Y = '#FCEC6F'
 export const ACCENT_B = '#57D8FF'

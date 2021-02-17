@@ -29,10 +29,16 @@ const BODY_VARIANTS: Variants = {
 
 const Root = styled('aside', {
   width: 282,
-  ['float']: 'right',
+  float: 'right',
   fontFamily: '$sans',
   marginLeft: 8,
   position: 'relative',
+  when: {
+    narrow: {
+      float: 'none',
+      marginLeft: 'auto',
+    },
+  },
 })
 
 const Opener = styled('button', {

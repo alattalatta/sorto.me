@@ -60,7 +60,7 @@ const Body: React.VFC<PropOf<typeof SVGRoot>> = (props) => {
 const Brand: React.VFC = () => {
   return (
     <Root variants={ROOT_VARIANTS} initial="initial" animate="present" exit="initial" whileHover="hover" whileTap="tap">
-      <Anchor href="/" aria-label="홈으로 이동">
+      <Anchor href="/" title="홈으로 이동" aria-label="홈으로 이동">
         <Body css={{ mixBlendMode: 'multiply', position: 'relative', zIndex: 1 }} />
         <Shadow variants={SHADOW_VARIANTS}>
           <Body />

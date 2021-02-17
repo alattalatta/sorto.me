@@ -7,23 +7,6 @@ const Post = styled('article', {
   paddingTop: 24,
   paddingBottom: 24,
   position: 'relative',
-  '&::before': {
-    content: '""',
-    background: '$base90',
-    opacity: 0,
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-    transform: 'scaleX(0.6)',
-    transformOrigin: 'left center',
-    transition: 'ease 300ms',
-  },
-  '&:hover::before': {
-    opacity: 1,
-    transform: 'none',
-  },
   when: {
     tiny: {
       '&::before': {
@@ -70,7 +53,7 @@ const TextBlock = styled(Block, {
 })
 
 const Image = styled('img', {
-  width: 450,
+  width: 420,
   display: 'block',
   when: {
     narrow: {
@@ -85,7 +68,7 @@ const Title = styled('h2', {
 })
 
 const Excerpt = styled('p', {
-  fontFamily: '"Nanum Gothic", sans-serif',
+  fontFamily: '$sans',
   marginTop: 12,
 })
 
@@ -99,7 +82,7 @@ export type PostDatum = {
   slug: string
 }
 
-const BlogPostEntry: React.VFC<{ post: PostDatum }> = ({ post }) => {
+const BlogPostEntry: React.VFC<{ hoverable?: true; post: PostDatum }> = ({ post }) => {
   return (
     <Post aria-labelledby={post.slug}>
       <Wrap href={`/posts/${post.slug}`}>

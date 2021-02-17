@@ -30,7 +30,7 @@ const BODY_VARIANTS: Variants = {
 const Root = styled('aside', {
   width: 282,
   ['float']: 'right',
-  fontFamily: '"Nanum Gothic", sans-serif',
+  fontFamily: '$sans',
   marginLeft: 8,
   position: 'relative',
 })

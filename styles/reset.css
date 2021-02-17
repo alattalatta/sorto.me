@@ -5,7 +5,7 @@
 
 html {
   color: var(--colors-base10);
-  font-family: 'Nanum Gothic Coding', '나눔고딕코딩', monospace;
+  font-family: var(--fonts-mono)
 }
 
 body {
@@ -39,7 +39,7 @@ button {
 }
 
 code {
-  font-family: 'Nanum Gothic Coding', monospace;
+  font-family: var(--fonts-mono);
 }
 
 ul,

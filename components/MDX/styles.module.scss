@@ -5,7 +5,7 @@
 }
 
 .wrap {
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: var(--fonts-sans);
   line-height: 1.75;
 
   #{child("* + *")} {

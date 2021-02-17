@@ -8,8 +8,9 @@ import { MdxRemote } from 'next-mdx-remote/types'
 import Head from 'next/head'
 import React from 'react'
 
+import Brand from 'components/Brand'
 import DocBody from 'components/DocBody'
-import DocHeader from 'components/DocHeader'
+import DocMenu from 'components/DocMenu'
 import { getLayout } from 'components/Layout'
 import { MDX_COMPONENTS } from 'components/MDX'
 import { DocMetadata, DOCS_PATH, getDocFiles, parseDoc } from 'utils/docs'
@@ -35,7 +36,7 @@ const Doc: Page<StaticProps> = ({ body, meta, slugs }) => {
     </>
   )
 }
-Doc.getLayout = getLayout(<DocHeader />)
+Doc.getLayout = getLayout(<DocMenu />, <Brand brightness="light" />, { brightness: 'dark' })
 
 export default Doc
 

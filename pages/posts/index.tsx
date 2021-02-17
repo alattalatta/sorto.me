@@ -3,9 +3,12 @@ import path from 'path'
 
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
+import React from 'react'
 
-import BlogHeader from 'components/BlogHeader'
-import BlogListBody, { PostDatum } from 'components/BlogListBody'
+import BlogListBody from 'components/BlogListBody'
+import BlogMenu from 'components/BlogMenu'
+import { PostDatum } from 'components/BlogPostEntry'
+import Brand from 'components/Brand'
 import { getLayout } from 'components/Layout'
 import { parsePost, POSTS_PATH, POST_FILES_PENDING } from 'utils/posts'
 import { Page } from 'utils/types'
@@ -25,7 +28,7 @@ const Blog: Page<StaticProps> = ({ posts }) => {
     </div>
   )
 }
-Blog.getLayout = getLayout(<BlogHeader />)
+Blog.getLayout = getLayout(<BlogMenu />, <Brand />)
 export default Blog
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {

@@ -1,18 +1,17 @@
-import { StitchesVariants } from '@stitches/react'
-import { motion as m, Variants } from 'framer-motion'
+import { AnimatePresence, motion as m, Variants } from 'framer-motion'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 
 import { styled } from 'utils/styler'
 
-import { Anchor, Container as ContainerBase } from '../basics'
+import { Container as ContainerBase } from '../basics'
 import Hamburger from './Hamburger'
 
-const HEADER_HEIGHT = 84
+export const HEADER_HEIGHT = 84
 
 const HEADER_MENU_VARIANTS: Variants = {
   opened: {
-    background: [null, '#fff'],
+    backgroundColor: '#fff',
     clipPath: 'inset(0% 0% 0% 0%)',
     opacity: 1,
     visibility: 'visible',
@@ -22,14 +21,13 @@ const HEADER_MENU_VARIANTS: Variants = {
     },
   },
   closed: {
-    background: '#224569',
-    clipPath: 'inset(0% 100% 0% 0%)',
-    opacity: 0.6,
+    backgroundColor: '#B6D5F5',
+    opacity: 0,
     transition: {
-      type: 'tween',
-      ease: 'anticipate',
+      type: false,
     },
     transitionEnd: {
+      clipPath: 'inset(0% 100% 0% 0%)',
       visibility: 'hidden',
     },
   },
@@ -89,31 +87,15 @@ const HeaderMenu = styled(m.nav, {
   },
 })
 
-export const HeaderNavMenu = styled('ul', {
-  listStyle: 'none',
-  paddingLeft: 0,
-})
-
-export const HeaderNavMenuItem = styled(Anchor, {
-  display: 'block',
-  fontSize: 36,
-  marginTop: 36,
-  textDecoration: 'none',
-  '&:hover:not([aria-disabled])': {
-    textDecoration: 'underline',
-  },
-})
-
-export type HeaderVariants = StitchesVariants<typeof Root>
-
 type Props = {
+  brightness?: 'dark' | 'light'
   children: {
-    brand: React.ReactNode
+    brand?: React.ReactNode
     menu: React.ReactNode
   }
-} & HeaderVariants
+}
 
-const BaseHeader: React.VFC<Props> = ({ brightness, children: { brand, menu } }) => {
+const BaseHeader: React.VFC<Props> = ({ brightness = 'light', children: { brand, menu } }) => {
   const router = useRouter()
   const [menuOpened, setMenuOpened] = useState(false)
 
@@ -140,12 +122,14 @@ const BaseHeader: React.VFC<Props> = ({ brightness, children: { brand, menu } })
     }
   }, [menuOpened])
 
+  const reversedBrightness = brightness === 'light' ? 'dark' : 'light'
+
   return (
     <>
       <Root brightness={brightness} position={menuOpened ? 'fixed' : 'normal'} role="navigation">
         <Container>
-          <Hamburger opened={menuOpened} onClick={() => setMenuOpened(!menuOpened)} />
-          {brand}
+          <Hamburger brightness={reversedBrightness} opened={menuOpened} onClick={() => setMenuOpened(!menuOpened)} />
+          <AnimatePresence>{brand}</AnimatePresence>
         </Container>
       </Root>
       <HeaderMenu

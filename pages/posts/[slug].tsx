@@ -9,7 +9,8 @@ import Head from 'next/head'
 import React from 'react'
 
 import BlogBody from 'components/BlogBody'
-import BlogHeader from 'components/BlogHeader'
+import BlogMenu from 'components/BlogMenu'
+import Brand from 'components/Brand'
 import { getLayout } from 'components/Layout'
 import { MDX_COMPONENTS } from 'components/MDX'
 import { parsePost, PostMetadata, POSTS_PATH, POST_FILES_PENDING } from 'utils/posts'
@@ -35,7 +36,7 @@ const BlogPost: Page<StaticProps> = ({ body, meta }) => {
     </>
   )
 }
-BlogPost.getLayout = getLayout(<BlogHeader brightness="dark" />)
+BlogPost.getLayout = getLayout(<BlogMenu />, <Brand brightness="light" />, { brightness: 'dark' })
 export default BlogPost
 
 export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({ params }) => {

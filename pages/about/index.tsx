@@ -2,7 +2,8 @@ import Head from 'next/head'
 import React from 'react'
 
 import AboutBody from 'components/AboutBody'
-import BlogHeader from 'components/BlogHeader'
+import BlogMenu from 'components/BlogMenu'
+import Brand from 'components/Brand'
 import { getLayout } from 'components/Layout'
 import { Page } from 'utils/types'
 
@@ -19,5 +20,5 @@ const About: Page = () => {
     </div>
   )
 }
-About.getLayout = getLayout(<BlogHeader brightness="dark" />)
+About.getLayout = getLayout(<BlogMenu />, <Brand />)
 export default About

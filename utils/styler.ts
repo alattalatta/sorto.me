@@ -1,5 +1,11 @@
 import createStyled, { StitchesCss } from '@stitches/react'
 
+export const BASE_10 = '#020D19'
+export const BASE_100 = '#F4FBFF'
+export const ACCENT_R = '#FF5252'
+export const ACCENT_Y = '#FCEC6F'
+export const ACCENT_B = '#57D8FF'
+
 const stitchesConfig = createStyled({
   conditions: {
     wide: '@media (max-width: 1720px)',
@@ -22,6 +28,10 @@ const stitchesConfig = createStyled({
       linkblueDark: '#0066CF',
       linkblueLight: '#2B8DF2',
       linkblueLighter: '#13AAFF',
+    },
+    fonts: {
+      mono: '"Nanum Gothic Coding", "나눔고딕코딩", monospace',
+      sans: '"Nanum Gothic", sans-serif',
     },
     radii: {
       cornerRadius: '8px',

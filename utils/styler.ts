@@ -28,6 +28,10 @@ const stitchesConfig = createStyled({
       linkblueLight: '#2B8DF2',
       linkblueLighter: '#13AAFF',
     },
+    fonts: {
+      mono: '"Nanum Gothic Coding", "나눔고딕코딩", monospace',
+      sans: '"Nanum Gothic", sans-serif',
+    },
     radii: {
       cornerRadius: '8px',
     },

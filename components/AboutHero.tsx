@@ -29,7 +29,7 @@ const SubContainer = styled('div', {
 
 const Job = styled('nav', {
   display: 'flex',
-  fontFamily: "'Nanum Gothic', sans-serif",
+  fontFamily: '$sans',
   marginTop: 0,
   marginBottom: 0,
   userSelect: 'none',

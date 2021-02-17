@@ -10,7 +10,7 @@ const TextField = styled('input', {
   color: '$base40',
   flex: 1,
   fontSize: 20,
-  fontFamily: '"Nanum Gothic Coding", monospace',
+  fontFamily: '$mono',
   padding: '16px 24px',
   '&::placeholder': {
     color: '$base60',

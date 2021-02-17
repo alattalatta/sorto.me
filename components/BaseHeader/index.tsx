@@ -8,7 +8,7 @@ import { styled } from 'utils/styler'
 import { Container as ContainerBase } from '../basics'
 import Hamburger from './Hamburger'
 
-const HEADER_HEIGHT = 84
+export const HEADER_HEIGHT = 84
 
 const HEADER_MENU_VARIANTS: Variants = {
   opened: {

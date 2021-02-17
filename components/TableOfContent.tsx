@@ -1,9 +1,31 @@
+import { motion as m, Variants } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
 import { useToggleState } from 'hooks/useToggleState'
 import { styled } from 'utils/styler'
 
 import { Anchor, NoScreen } from './basics'
+
+const BODY_VARIANTS: Variants = {
+  closed: {
+    clipPath: 'inset(0% 0% 100% 0%)',
+    transition: {
+      type: 'tween',
+      ease: 'anticipate',
+    },
+    transitionEnd: {
+      visibility: 'hidden',
+    },
+  },
+  opened: {
+    clipPath: 'inset(0% 0% 0% 0%)',
+    visibility: 'visible',
+    transition: {
+      type: 'tween',
+      ease: 'anticipate',
+    },
+  },
+}
 
 const Root = styled('aside', {
   width: 282,
@@ -22,7 +44,7 @@ const Opener = styled('button', {
   padding: '8px 16px',
 })
 
-const Body = styled('nav', {
+const Body = styled(m.nav, {
   width: '100%',
   background: '#fff',
   border: '4px solid $base70',
@@ -32,6 +54,7 @@ const Body = styled('nav', {
   top: '100%',
   left: 0,
   transform: 'translateY(8px)',
+  zIndex: 8,
 })
 
 const NavList = styled('ul', {
@@ -68,22 +91,26 @@ const TableOfContent: React.VFC = () => {
       <Opener onClick={toggleOpened} aria-controls="toc" aria-haspopup="menu" aria-expanded={opened}>
         목차 {opened ? '닫기' : '열기'}
       </Opener>
-      {opened && (
-        <Body id="toc" aria-labelledby="toc-heading">
-          <NoScreen as="h2" id="toc-heading">
-            목차
-          </NoScreen>
-          <NavList>
-            {headings.map(([level, text, id]) => (
-              <li key={id}>
-                <Heading css={{ paddingLeft: `${(level - 2) * 16}px` }} href={`#${id}`} onClick={toggleOpened}>
-                  {text}
-                </Heading>
-              </li>
-            ))}
-          </NavList>
-        </Body>
-      )}
+      <Body
+        id="toc"
+        variants={BODY_VARIANTS}
+        initial="closed"
+        animate={opened ? 'opened' : 'closed'}
+        aria-labelledby="toc-heading"
+      >
+        <NoScreen as="h2" id="toc-heading">
+          목차
+        </NoScreen>
+        <NavList>
+          {headings.map(([level, text, id]) => (
+            <li key={id}>
+              <Heading css={{ paddingLeft: `${(level - 2) * 16}px` }} href={`#${id}`} onClick={toggleOpened}>
+                {text}
+              </Heading>
+            </li>
+          ))}
+        </NavList>
+      </Body>
     </Root>
   )
 }

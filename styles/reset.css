@@ -28,7 +28,7 @@ ol {
 }
 
 a {
-  color: var(--colors-linkblueLight);
+  color: var(--colors-linkblueDark);
 }
 a:hover {
   color: var(--colors-accentB);

@@ -1,48 +1,52 @@
-.codeBlockBad,
-.codeBlockGood {
-  display: none;
-  position: absolute;
-  visibility: hidden;
-}
-
-.codeBlock {
-  background: var(--colors-base100);
+pre > .code {
+  background: #f6f6f6;
   border: 1px solid #b6d5f5;
   border-radius: var(--radii-cornerRadius);
   color: var(--colors-base40);
-  direction: ltr;
-  font-size: 14px;
-  hyphens: none;
-  line-height: 19px;
+  display: block;
   margin-top: 24px;
   margin-bottom: 24px;
   overflow-x: auto;
-  padding: 24px;
   position: relative;
+
+  &.bad,
+  &.good {
+    border-left-style: solid;
+    border-left-width: 4px;
+  }
+  &.bad {
+    border-left-color: #f36868;
+  }
+  &.good {
+    border-left-color: #74c162;
+  }
+}
+
+pre .codeBody {
+  direction: ltr;
+  display: inline-block;
+  font-size: 14px;
+  hyphens: none;
+  line-height: 19px;
+  padding: 24px;
   tab-size: 2;
   white-space: pre;
   word-break: normal;
   word-spacing: normal;
 
-  &::before {
-    opacity: 0.6;
-    position: absolute;
-    top: 24px;
-    right: 24px;
-  }
-
-  .codeBlockBad + & {
-    background: #ffeded;
-    border-color: #e1b9b9;
-    &::before {
-      content: '좋지 않음';
-    }
-  }
-  .codeBlockGood + & {
-    background: #f2ffed;
-    border-color: #c1dcb7;
-    &::before {
-      content: '좋음';
-    }
+  .bad > &,
+  .good > & {
+    padding-left: 21px;
   }
 }
+
+// &::before {
+//   font-size: 12px;
+//   opacity: 0.6;
+//   position: absolute;
+//   bottom: 8px;
+//   right: 8px;
+//   white-space: nowrap;
+//   color: #f36868;
+//   content: '좋지 않음';
+// }

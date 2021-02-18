@@ -9,7 +9,7 @@ import { childrenToText } from 'utils/element'
 
 import { Anchor } from '../basics'
 import Callout, { CalloutCite } from './Callout'
-import { CodeBlock, CodeBlockBad, CodeBlockGood } from './CodeBlock'
+import { Code, CodeBlock } from './CodeBlock'
 import { UniqueIDProvider } from './UniqueIDContext'
 import styles from './styles.module.scss'
 
@@ -92,6 +92,7 @@ const TermLink: React.VFC<{ children: string; monospaced?: boolean; target?: str
 
 export const MDX_COMPONENTS: MdxRemote.Components = Object.freeze({
   a: Anchor,
+  code: Code,
   pre: CodeBlock,
   h1: headingOf(2),
   h2: headingOf(3),
@@ -101,8 +102,6 @@ export const MDX_COMPONENTS: MdxRemote.Components = Object.freeze({
   BrowserCompat: dynamic(() => import('./BrowserCompat'), { ssr: false }),
   Callout,
   CalloutCite,
-  CodeBlockBad,
-  CodeBlockGood,
   Term,
   TermLink,
 })

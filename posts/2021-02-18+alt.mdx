@@ -57,9 +57,7 @@ HTML Living Standard는 이미지 대체 텍스트 가이드라인에 별도 섹
 
 # 예제
 
-<CodeBlockBad />
-
-```html
+```html variant=bad
 <!-- 아이콘 버튼 -->
 <img src="/icons/share-chain.svg" alt="체인 아이콘" />
 
@@ -81,17 +79,14 @@ HTML Living Standard는 이미지 대체 텍스트 가이드라인에 별도 섹
 
 가이드라인은 "모든 이미지를 `alt`의 값으로 바꿔도 그 의미가 바뀌지 않아야 한다"라고 했다. 직접 바꿔보면 QA에서 버그로 잡을 법한 결과가 나온다.
 
-<CodeBlockBad />
 
-```jsx
+```jsx variant=bad
 <button onClick={copyURLToClipboard}>체인 아이콘</button>
 ```
 
 버튼의 경우 시각적 사용자가 받아들이는 의미와 동일하게, 이미지의 대체 텍스트는 그 동작을 설명해야 한다.
 
-<CodeBlockGood />
-
-```jsx
+```jsx variant=good
 <button onClick={copyURLToClipboard}>
   URL 복사하기
 </button>
@@ -107,9 +102,7 @@ HTML Living Standard는 이미지 대체 텍스트 가이드라인에 별도 섹
 
 블로그 포스트 글의 마크업이 크게 다르지는 않으니, 대략 다음과 같은 예제를 생각할 수 있다.
 
-<CodeBlockBad />
-
-```html
+```html variant=bad
 <article>
   <img alt="post-thumbnail" />
   <h1>올바른 대체 텍스트</h1>
@@ -118,9 +111,7 @@ HTML Living Standard는 이미지 대체 텍스트 가이드라인에 별도 섹
 
 체인 아이콘과 마찬가지로 이미지의 자리에 텍스트를 대신 넣어보자.
 
-<CodeBlockBad />
-
-```html
+```html variant=bad
 <article>
   <span>post-thumbnail</span>
   </h1>올바른 대체 텍스트</h1>
@@ -131,9 +122,7 @@ HTML Living Standard는 이미지 대체 텍스트 가이드라인에 별도 섹
 
 애초에, 제목이 별도로 존재하는 상황에서는 썸네일 이미지는 의미를 별도로 가질 수 없는 장식적인 존재다. 그리고 의미 없는 이미지에 사용하는 `alt`는 빈 문자열이다.
 
-<CodeBlockGood />
-
-```html
+```html variant=good
 <article>
   </h1>올바른 대체 텍스트</h1>
 </article>
@@ -148,9 +137,7 @@ HTML Living Standard는 이미지 대체 텍스트 가이드라인에 별도 섹
 
 썸네일의 `alt`에 식별자가 아니고 포스트 제목을 넣는 경우도 많다. 앞선 두 개의 예제보다는 용도에 맞게 사용한 것이나, 텍스트로 대체해보면 이상한 것은 마찬가지다.
 
-<CodeBlockBad />
-
-```html
+```html variant=bad
 <article>
   <span>2021년 광교 맛집 랭킹</span>
   <h1>2021년 광교 맛집 랭킹</h1>
@@ -178,7 +165,7 @@ HTML Living Standard는 이미지 대체 텍스트 가이드라인에 별도 섹
 
 사용자가 이미지를 추가할 때 적합한 설명을 제공하지 않은 경우 클라이언트는 아무런 설명도 제공할 수 없다. 생략 가능한지, 불가능한지조차 알 수 없다. 이럴 때 한정적으로 `alt`를 아예 생략할 수 있다. 단, HTML Living Standard에서는 적어도 이해에 지장은 없도록 `<figure>` 요소나 `title` 특성으로 설명을 추가하도록 요구한다.
 
-```html
+```html variant=good
 <img title="CAPTCHA" />
 <a>이미지를 사용하실 수 없나요? 여기를 클릭해서 음성으로 인증하세요.</a>
 

@@ -9,8 +9,8 @@
   line-height: 1.75;
 
   #{child("* + *")} {
-    margin-top: 24px;
-    margin-bottom: 24px;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 
   #{child("dt")} {
@@ -44,6 +44,14 @@
     margin-top: 16px;
   }
 
+  hr {
+    max-width: 300px;
+    border: none;
+    border-top: 1px dashed var(--colors-base60);
+    margin: 36px 0;
+    opacity: 0.6;
+  }
+
   img {
     max-width: 100%;
     display: 'block';
@@ -70,21 +78,18 @@
 }
 .heading2 {
   @extend %heading;
-  border-bottom: 1px solid var(--colors-base40);
+  border-bottom: 1px solid var(--colors-base60);
   font-size: 28px;
-  margin-top: 36px;
-  margin-bottom: 28px;
+  margin-top: 40px;
   padding-bottom: 9px;
 }
 .heading3 {
   @extend %heading;
   font-size: 24px;
-  margin-top: 28px;
-  margin-bottom: 24px;
+  margin-top: 32px;
 }
 .heading4 {
   @extend %heading;
-  font-size: 20px;
-  margin-top: 24px;
-  margin-bottom: 24px;
+  font-size: 18px;
+  margin-top: 28px;
 }

@@ -70,6 +70,8 @@ const Image: React.VFC<JSX.IntrinsicElements['img']> = ({ alt = '', ...props }) 
   return <img alt={a} style={{ width, height }} {...props} />
 }
 
+const Table: React.FC = (props) => <table className={styles.table} {...props} />
+
 const Term: React.FC<{ monospaced?: boolean }> = ({ children, monospaced = true }) => {
   const id = useUniqueID(`term-${childrenToText(children)}`)
 
@@ -98,6 +100,7 @@ export const MDX_COMPONENTS: MdxRemote.Components = Object.freeze({
   h2: headingOf(3),
   h3: headingOf(4),
   img: Image,
+  table: Table,
   Anchor,
   BrowserCompat: dynamic(() => import('./BrowserCompat'), { ssr: false }),
   Callout,

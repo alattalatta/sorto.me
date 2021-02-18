@@ -17,13 +17,18 @@ import { Cell, Icon } from './shared'
 
 const Table = styled('table', {
   width: '100%',
-  background: '$base100',
   border: '1px solid',
   borderCollapse: 'collapse',
   borderRadius: '$cornerRadius',
   fontSize: 14,
   overflow: 'hidden',
   textAlign: 'center',
+  '& thead': {
+    borderBottom: '3px double $base60',
+  },
+  '& th': {
+    background: '$base90',
+  },
 })
 
 const ColumnHeaderCell = styled(Cell, {

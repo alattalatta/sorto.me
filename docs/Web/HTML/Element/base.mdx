@@ -68,15 +68,11 @@ excerpt: HTML <base> 요소는 문서 안의 모든 상대 URL이 사용할 기�
 
 [Open Graph](https://ogp.me/) 태그는 `<base>`를 인식하지 않으므로, 항상 온전한 형태의 절대 URL을 지정해야 합니다.
 
-<CodeBlockBad />
-
-```html
+```html variant=bad
 <base href="https://example.com/" /> <meta property="og:image" content="/thumbnail.jpg" />
 ```
 
-<CodeBlockGood />
-
-```html
+```html variant=good
 <meta property="og:image" content="https://example.com/thumbnail.jpg" />
 ```
 

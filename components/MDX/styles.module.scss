@@ -39,7 +39,7 @@
   dt {
     font-weight: 700;
   }
-  
+
   dt + dd {
     margin-top: 8px;
   }
@@ -96,4 +96,31 @@
   @extend %heading;
   font-size: 18px;
   margin-top: 28px;
+}
+
+.table {
+  border: 1px solid;
+  border-collapse: collapse;
+  border-radius: var(--radii-cornerRadius);
+  overflow: hidden;
+
+  thead {
+    border-bottom: 3px double var(--colors-base70);
+  }
+
+  th {
+    background: var(--colors-base90);
+    font-weight: 700;
+    text-align: left;
+  }
+
+  th,
+  td {
+    border: 1px solid var(--colors-base70);
+    padding: 8px 16px;
+  }
+
+  td {
+    background: var(--colors-base100);
+  }
 }

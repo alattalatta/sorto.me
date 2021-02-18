@@ -64,6 +64,12 @@ const headingOf = (level: 2 | 3 | 4): React.FC => {
   }
 }
 
+const Image: React.VFC<JSX.IntrinsicElements['img']> = ({ alt = '', ...props }) => {
+  const [a, width, height] = alt.split(';')
+
+  return <img alt={a} style={{ width, height }} {...props} />
+}
+
 const Term: React.FC<{ monospaced?: boolean }> = ({ children, monospaced = true }) => {
   const id = useUniqueID(`term-${childrenToText(children)}`)
 
@@ -90,6 +96,7 @@ export const MDX_COMPONENTS: MdxRemote.Components = Object.freeze({
   h1: headingOf(2),
   h2: headingOf(3),
   h3: headingOf(4),
+  img: Image,
   Anchor,
   BrowserCompat: dynamic(() => import('./BrowserCompat'), { ssr: false }),
   Callout,

@@ -24,7 +24,7 @@ const BlogPost: Page<StaticProps> = ({ body, meta }) => {
     <>
       <Head>
         <title key="title">{meta.title} - Sorto.me</title>
-        <meta key="description" name="description" content={meta.excerpt} />
+        <meta key="description" name="description" content={meta.description} />
         <meta key="og:type" property="og:type" content="article" />
         <meta key="og:title" property="og:title" content={`${meta.title} - Sorto.me`} />
         <meta key="og:description" property="og:description" content={meta.excerpt} />

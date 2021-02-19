@@ -14,8 +14,3 @@ export const Cell = styled('td', {
     },
   },
 })
-
-export const Icon = styled('img', {
-  width: 16,
-  display: 'block',
-})

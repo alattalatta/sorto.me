@@ -1,0 +1,26 @@
+.iconTooltip {
+  cursor: help;
+  padding: 2px;
+  &:hover {
+    background: var(--colors-base70);
+  }
+}
+
+.svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  vertical-align: middle;
+}
+
+.deprecated {
+  color: var(--colors-accentR);
+}
+
+.experimental {
+  color: #0066CF;
+}
+
+.nonStandard {
+  color: #333;
+}

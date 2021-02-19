@@ -6,7 +6,8 @@
     "build": "next build",
     "export": "next export",
     "test": "jest",
-    "script": "ts-node -r tsconfig-paths/register --project ./tsconfig.script.json"
+    "script": "ts-node -r tsconfig-paths/register --project ./tsconfig.script.json",
+    "script:feed": "yarn script scripts/feed"
   },
   "dependencies": {
     "@mapbox/rehype-prism": "^0.5.0",

@@ -5,12 +5,14 @@ import { getDocFiles } from 'utils/docs'
 import { POST_FILES_PENDING } from 'utils/posts'
 import { readLastModified } from 'utils/system'
 
+const PROJECT_ROOT = path.resolve(__dirname, '../..')
+
 const SITE_URL = 'https://sorto.me'
-const SITEMAP_PATH = path.resolve(__dirname, '../public/sitemap.md.xml')
+const SITEMAP_PATH = path.join(PROJECT_ROOT, 'public/sitemap.md.xml')
 
 const prepend = (b: string) => (a: string): string => b + a
 
-async function main(): Promise<void> {
+export async function main(): Promise<void> {
   const docSlugs = await getDocFiles()
   const postSlugs = await POST_FILES_PENDING
 
@@ -35,12 +37,10 @@ ${(await Promise.all(postEntriesAsync)).join('\n')}
 }
 
 async function buildEntry(p: string): Promise<string> {
-  const lastModified = await readLastModified(path.resolve(__dirname, '..', p))
+  const lastModified = await readLastModified(path.join(PROJECT_ROOT, p))
 
   return `<url>
   <loc>${SITE_URL}/${p.replace('.mdx', '')}</loc>
   <lastmod>${lastModified}</lastmod>
 </url>`
 }
-
-main()

@@ -21,6 +21,10 @@
   <lastmod>2021-02-18</lastmod>
 </url>
 <url>
+  <loc>https://sorto.me/docs/Web/HTML/Element/body</loc>
+  <lastmod>2021-02-19</lastmod>
+</url>
+<url>
   <loc>https://sorto.me/docs/Web/HTML/Element/footer</loc>
   <lastmod>2021-02-10</lastmod>
 </url>
@@ -38,7 +42,11 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/html</loc>
-  <lastmod>2021-02-17</lastmod>
+  <lastmod>2021-02-19</lastmod>
+</url>
+<url>
+  <loc>https://sorto.me/docs/Web/HTML/Element/link</loc>
+  <lastmod>2021-02-19</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/main</loc>
@@ -66,7 +74,7 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element</loc>
-  <lastmod>2021-02-18</lastmod>
+  <lastmod>2021-02-19</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML</loc>
@@ -86,6 +94,6 @@
 </url>
 <url>
   <loc>https://sorto.me/posts/2021-02-18+alt</loc>
-  <lastmod>2021-02-18</lastmod>
+  <lastmod>2021-02-19</lastmod>
 </url>
 </urlset>

@@ -71,8 +71,8 @@ excerpt: HTML <meta> 요소는 현재 문서와 외부 리소스의 관계를 �
     <table>
       <thead>
         <tr>
-          <td>값</td>
-          <td>적용 대상</td>
+          <th>값</th>
+          <th>적용 대상</th>
         </tr>
       </thead>
       <tbody>
@@ -266,17 +266,138 @@ excerpt: HTML <meta> 요소는 현재 문서와 외부 리소스의 관계를 �
   </dd>
   <Term>media</Term>
   <dd>
-    가져온 리소스를 적용할 매체를 지정합니다. 매체 유형이나 <Anchor href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries">미디어 쿼리</Anchor>를 지정할 수 있습니다. 매체에 따라 스타일 시트를 선택해서 적용할 때 유용합니다.
+    가져온 리소스를 적용할 매체를 지정합니다. 매체 유형이나{' '}
+    <Anchor href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries">미디어 쿼리</Anchor>를 지정할 수
+    있습니다. 매체에 따라 스타일 시트를 선택해서 적용할 때 유용합니다.
   </dd>
   <Term>prefetch</Term>
   <dd>
-    다음 탐색 발생 시에 필요할 수도 있는 있음을 나타내서 사용자 에이전트가 자원을 미리 불러오도록 지정합니다. 이후에 자원이 실제로 필요한 상황에서 사용자 에이전트가 더 빠르게 응답할 수 있습니다.
+    다음 탐색 발생 시에 필요할 수도 있는 있음을 나타내서 사용자 에이전트가 자원을 미리 불러오도록 지정합니다. 이후에
+    자원이 실제로 필요한 상황에서 사용자 에이전트가 더 빠르게 응답할 수 있습니다.
+  </dd>
+  <Term>referrerpolicy</Term>
+  <dd>
+    <p>리소스를 가져올 때 사용할 리퍼러(referrer)를 지정합니다.</p>
+    <ul>
+      <li>
+        <code>no-referrer</code>:{' '}
+        <Anchor href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer">
+          <code>Referer</code>
+        </Anchor>{' '}
+        헤더를 전송하지 않습니다.
+      </li>
+      <li>
+        <code>no-referrer-when-downgrade</code>: TLS(HTTPS) 지원을 하지 않는 출처에 대해서는 <code>Referer</code>
+        헤더를 전송하지 않습니다. <code>referrerpolicy</code> 특성을 따로 지정하지 않은 경우 기본 정책으로 사용합니다.
+      </li>
+      <li>
+        <code>origin</code>: <code>Referer</code> 헤더가 요청의 출처, 즉 스킴, 호스트, 포트를 포함합니다.
+      </li>
+      <li>
+        <code>origin-when-cross-origin</code>: 다른 출처로 요청할 땐 리퍼러 데이터를 스킴, 호스트, 포트로 제한합니다.
+        동일 출처로 요청할 땐 전체 경로와 쿼리 문자열까지 포함합니다.
+      </li>
+      <li>
+        <code>unsafe-url</code>: 리퍼러가 항상 출처, 경로, 쿼리 문자열을 포함합니다. 하지만 프래그먼트, 비밀번호, 사용자
+        이름은 포함하지 않습니다. TLS로 보호받는 리소스에서 그렇지 않은 출처로 정보를 누출할 수 있으므로 안전하지
+        않습니다.
+      </li>
+    </ul>
+  </dd>
+  <Term>rel</Term>
+  <dd>
+    연결한 리소스와 현재 문서 사이의 관계를 명시합니다. 공백으로 구분한{' '}
+    <Anchor href="https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types">링크 유형 값</Anchor>의 목록이어야
+    합니다.
+  </dd>
+  <Term>sizes</Term>
+  <dd>
+    <p>
+      리소스가 담고 있는 아이콘의 크기를 지정합니다. <TermLink>rel</TermLink>의 값이 <code>icon</code>이거나, Apple의 <code>apple-touch-icon</code>과 같은 관련 비표준 값일 때만 존재해야 합니다. 다음과 같을 사용할 수 있습니다.
+    </p>
+    <ul>
+      <li><code>any</code>: <code>image/svg+xml</code> 등 벡터 형식 아이콘이라서 어떠한 크기라도 될 수 있음을 나타냅니다.</li>
+      <li>
+        <code>{'<너비 픽셀>x<높이 픽셀>'}</code> 또는 <code>{'<너비 픽셀>X<높이 픽셀>'}</code>의 형식으료 나타내는 크기 값을 공백으로 구분한 리스트. 해당 리소스는 각각의 크기를 모두 가지고 있어야 합니다.
+        <Callout color="warn" label="참고">
+          대부분의 아이콘 파일 형식은 하나의 아이콘만 저장할 수 있으므로 대부분의 <code>sizes</code> 역시 하나의 크기 값만 가지게 됩니다.
+        </Callout>
+      </li>
+    </ul>
+  </dd>
+  <Term>title</Term>
+  <dd>
+    <code>{'<link>'}</code> 요소의 <code>title</code>은 다른 요소와는 다른 의미를 가집니다. <code>{'<link rel="stylesheet">'}</code>와 함께 사용하면 <Anchor href="https://developer.mozilla.org/en-US/docs/Web/CSS/Alternative_style_sheets">선호 스타일 시트와 대체 스타일 시트</Anchor>를 지정할 수 있습니다.
+  </dd>
+  <Term>type</Term>
+  <dd>
+    연결한 리소스의 유형을 지정합니다. 값으로는 <code>text/html</code>, <code>text/css</code> 등 유효한 MIME 유형을 사용해야 합니다. 일반적인 사용법은 <code>text/css</code>를 지정해서 스타일 시트임을 나타내는 것이지만, CSS가 웹에서 사용하는 유일한 스타일 시트 언어이므로 생략할 수 있을 뿐만 아니라, 이젠 생략하는 것이 좋은 방법으로 받아들여집니다. <code>rel="preload"</code> 링크 유형과 함께 사용해서 브라우저가 지원하는 파일만 다운로드하도록 만들 수도 있습니다.
   </dd>
 </dl>
 
+# 예제
+
+## 스타일 시트 연결
+
+```html
+<link href="style.css" rel="stylesheet">
+```
+
+## 다양한 맥락에서 사용할 아이콘 제공하기
+
+같은 페이지에 아이콘을 다른 아이콘을 여럿 연결하면 브라우저는 <Term>rel</Term>과 <Term>sizes</Term> 값을 참고해서 최적의 아이콘을 사용합니다.
+
+```html
+<!-- third-generation iPad with high-resolution Retina display: -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="favicon144.png">
+<!-- iPhone with high-resolution Retina display: -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="favicon114.png">
+<!-- first- and second-generation iPad: -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="favicon72.png">
+<!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+<link rel="apple-touch-icon-precomposed" href="favicon57.png">
+<!-- basic favicon -->
+<link rel="icon" href="favicon32.png">
+```
+
+## 미디어 쿼리에 맞는 스타일 시트만 불러오기
+
+요소의 <Term>media</Term> 특성에 매체 유형이나 미디어 쿼리를 지정하면 현재 매체가 조건을 만족할 때만 리소스를 가져오게 됩니다.
+
+```html
+<link href="print.css" rel="stylesheet" media="print">
+<link href="mobile.css" rel="stylesheet" media="all">
+<link href="desktop.css" rel="stylesheet" media="screen and (min-width: 600px)">
+<link href="highres.css" rel="stylesheet" media="screen and (min-resolution: 300dpi)">
+```
+
+## 스타일 시트 `load` 이벤트
+
+스타일 시트를 다 불러온 시점은 `<link>` 요소에서 발생하는 `load` 이벤트를 통해 알아낼 수 있습니다. 마찬가지로, `error` 이벤트를 수신하면 스타일 시트를 불러오다가 오류가 발생하면 잡아낼 수 있습니다.
+
+```html
+<script>
+const stylesheet = document.querySelector('#stylesheet');
+
+myStylesheet.onload = function() {
+  console.log('스타일 시트를 불러왔습니다.')
+}
+
+myStylesheet.onerror = function() {
+  console.error('스타일 시트를 불러오지 못했습니다!');
+}
+</script>
+
+<link rel="stylesheet" href="stylesheet.css" id="stylesheet">
+```
+
+<Callout color="warn" label="참고">
+  <code>load</code> 이벤트는 정확히 해당 스타일 시트 본문과 그 스타일 시트에서 가져오는 다른 콘텐츠까지 모두 불러와서 분석을 마친 후, 콘텐츠에 적용하기 직전에 발생합니다.
+</Callout>
+
 # 명세
 
-[HTML Living Standard](https://html.spec.whatwg.org/multipage/semantics.html#the-meta-element)
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/semantics.html#the-link-element)
 
 # 브라우저 호환성
 

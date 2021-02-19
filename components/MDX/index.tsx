@@ -10,6 +10,7 @@ import { childrenToText } from 'utils/element'
 import { Anchor } from '../basics'
 import Callout, { CalloutCite } from './Callout'
 import { Code, CodeBlock } from './CodeBlock'
+import { Term, TermLink } from './Term'
 import { UniqueIDProvider } from './UniqueIDContext'
 import styles from './styles.module.scss'
 
@@ -71,26 +72,6 @@ const Image: React.VFC<JSX.IntrinsicElements['img']> = ({ alt = '', ...props }) 
 }
 
 const Table: React.FC = (props) => <table className={styles.table} {...props} />
-
-const Term: React.FC<{ monospaced?: boolean }> = ({ children, monospaced = true }) => {
-  const id = useUniqueID(`term-${childrenToText(children)}`)
-
-  const content = monospaced ? <code>{children}</code> : children
-
-  return <dt id={id}>{content}</dt>
-}
-
-const TermLink: React.VFC<{ children: string; monospaced?: boolean; target?: string }> = ({
-  children,
-  monospaced = true,
-  target = children,
-}) => {
-  const fragment = `#term-${target}`
-
-  const content = monospaced ? <code>{children}</code> : children
-
-  return <Anchor href={fragment}>{content}</Anchor>
-}
 
 export const MDX_COMPONENTS: MdxRemote.Components = Object.freeze({
   a: Anchor,

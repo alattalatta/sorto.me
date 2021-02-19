@@ -13,17 +13,22 @@ import { styled } from 'utils/styler'
 
 import Callout from '../Callout'
 import CompatRow from './CompatRow'
-import { Cell, Icon } from './shared'
+import { Cell } from './shared'
 
 const Table = styled('table', {
   width: '100%',
-  background: '$base100',
   border: '1px solid',
   borderCollapse: 'collapse',
   borderRadius: '$cornerRadius',
   fontSize: 14,
   overflow: 'hidden',
   textAlign: 'center',
+  '& thead': {
+    borderBottom: '3px double $base60',
+  },
+  '& th': {
+    background: '$base90',
+  },
 })
 
 const ColumnHeaderCell = styled(Cell, {
@@ -41,7 +46,9 @@ const VertText = styled('span', {
   whiteSpace: 'nowrap',
 })
 
-const BrowserIcon = styled(Icon, {
+const BrowserIcon = styled('img', {
+  width: 16,
+  display: 'block',
   marginLeft: 'auto',
   marginRight: 'auto',
 })

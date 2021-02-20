@@ -4,7 +4,6 @@ import React from 'react'
 import { NoScreen } from 'components/basics'
 import { determineStatus, supportLabel } from 'utils/docs/browserCompat'
 import { styled } from 'utils/styler'
-import { PropOf } from 'utils/types'
 
 const CompatCellBody = styled('div', {
   width: 90,
@@ -65,13 +64,9 @@ type Props = {
   onClick?: (data: SupportStatement) => void
 }
 
-const CompatCell: React.VFC<Props & Pick<PropOf<typeof CompatCellBody>, 'support' | 'type'>> = ({
-  as = 'div',
-  data,
-  opened,
-  onClick,
-  ...props
-}) => {
+const CompatCell: React.VFC<
+  Props & Pick<React.ComponentPropsWithoutRef<typeof CompatCellBody>, 'support' | 'type'>
+> = ({ as = 'div', data, opened, onClick, ...props }) => {
   const clickable = data && (Array.isArray(data) || data.notes) && onClick
   const label = `${supportLabel(data)}${clickable ? '*' : ''}`
 
@@ -88,7 +83,8 @@ const CompatCell: React.VFC<Props & Pick<PropOf<typeof CompatCellBody>, 'support
   return (
     <CompatCellBody
       {...props}
-      as={as}
+      // can't infer properly
+      as={as as keyof JSX.IntrinsicElements}
       css={{ cursor: clickable ? 'pointer' : 'normal' }}
       opened={opened ? 'yes' : undefined}
       support={variantOf(head)}

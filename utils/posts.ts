@@ -15,11 +15,11 @@ export type PostMetadata = {
   /**
    * A text to feed meta description tag. Defaults to `excerpt`.
    */
-  description?: string
+  description: string | null
   /**
    * A short text to use as a single line description in the post list, and to feed Open Graph description.
    */
-  excerpt?: string
+  excerpt: string | null
   image: string
   slug: string
   title: string
@@ -41,7 +41,7 @@ export async function parsePost(filePath: string, source: Buffer): Promise<{ con
     content,
     data: { description, excerpt: excerptRaw, ...data },
   } = matter(source)
-  const excerpt = escapeUTF8(excerptRaw)
+  const excerpt = excerptRaw ? escapeUTF8(excerptRaw) : null
 
   const fileName = path.basename(filePath)
   const [created, slug] = fileName.split('+')

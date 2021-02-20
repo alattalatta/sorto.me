@@ -6,8 +6,8 @@ import matter from 'gray-matter'
 import { onlyMDXFiles, readFilesRec, readLastModified } from '../system'
 
 export type DocMetadata = {
-  excerpt?: string
-  originalTitle?: string
+  excerpt: string | null
+  originalTitle: string
   title: string
   /**
    * String representing a date which the doc file was last modified. (`yyyy-MM-dd`)
@@ -46,7 +46,7 @@ export const getDocFiles = async (): Promise<string[]> => {
 export async function parseDoc(filePath: string, source: Buffer): Promise<{ content: string; meta: DocMetadata }> {
   const {
     content,
-    data: { excerpt, ...data },
+    data: { excerpt, originalTitle, title, ...data },
   } = matter(source)
   const updated = await readLastModified(filePath)
 
@@ -54,7 +54,9 @@ export async function parseDoc(filePath: string, source: Buffer): Promise<{ cont
     content,
     meta: {
       ...data,
-      excerpt: escapeUTF8(excerpt),
+      excerpt: excerpt ? escapeUTF8(excerpt) : null,
+      originalTitle: originalTitle || title,
+      title,
       updated,
     } as DocMetadata,
   }

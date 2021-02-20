@@ -5,7 +5,7 @@ import { parsePost, PostMetadata } from '../posts'
 
 describe('Post utilities', () => {
   describe('parsePost', () => {
-    it('can parse post without description and image', async () => {
+    it('can parse post with implicit description and image', async () => {
       const filePath = path.resolve(__dirname, 'mocks/posts/2020-02-02+post.mdx')
       const file = await fs.readFile(filePath)
 
@@ -42,6 +42,26 @@ describe('Post utilities', () => {
         image: '/images/1999-01-01/image.jpg',
         slug: 'with-everything',
         title: 'front matter title',
+      })
+    })
+
+    it('can parse post with minimal data', async () => {
+      const filePath = path.resolve(__dirname, 'mocks/posts/2020-02-04+minimal-data.mdx')
+      const file = await fs.readFile(filePath)
+
+      const {
+        content,
+        meta: { updated, ...meta },
+      } = await parsePost(filePath, file)
+
+      expect(content).toBe('')
+      expect(meta).toEqual<Omit<PostMetadata, 'updated'>>({
+        created: '2020-02-04',
+        description: null,
+        excerpt: null,
+        image: '/images/default.jpg',
+        slug: 'minimal-data',
+        title: 'title',
       })
     })
   })

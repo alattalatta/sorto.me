@@ -16,7 +16,7 @@ describe('Docs utilities', () => {
 
       expect(parsed.content).toBe('zzz')
       expect(parsed.meta).toEqual<DocMetadata>({
-        excerpt: 'aaa',
+        excerpt: 'aaa&#x26;bbb',
         title: 'foobar',
         updated: (await statAsync).mtime.toISOString().slice(0, 10),
       })

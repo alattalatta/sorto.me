@@ -15,6 +15,7 @@
     "@mdn/dinocons": "^0.3.0",
     "@stitches/react": "^0.1.0-canary.1",
     "clsx": "^1.1.1",
+    "entities": "^2.2.0",
     "framer-motion": "3.3",
     "gray-matter": "^4.0.2",
     "next": "^10.0.6",

@@ -1,6 +1,7 @@
 import { promises as fs } from 'fs'
 import path from 'path'
 
+import { escapeUTF8 } from 'entities'
 import matter from 'gray-matter'
 
 import { onlyMDXFiles, readLastModified } from './system'
@@ -38,8 +39,9 @@ export type PostMetadata = {
 export async function parsePost(filePath: string, source: Buffer): Promise<{ content: string; meta: PostMetadata }> {
   const {
     content,
-    data: { description, excerpt, ...data },
+    data: { description, excerpt: excerptRaw, ...data },
   } = matter(source)
+  const excerpt = escapeUTF8(excerptRaw)
 
   const fileName = path.basename(filePath)
   const [created, slug] = fileName.split('+')
@@ -51,7 +53,7 @@ export async function parsePost(filePath: string, source: Buffer): Promise<{ con
     meta: {
       ...data,
       created,
-      description: description || excerpt,
+      description: description ? escapeUTF8(description) : excerpt,
       excerpt,
       image: data.image || '/images/default.jpg',
       slug: slug.replace('.mdx', ''),

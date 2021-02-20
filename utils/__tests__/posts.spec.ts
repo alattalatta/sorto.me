@@ -18,10 +18,10 @@ describe('Post utilities', () => {
       expect(meta).toEqual<Omit<PostMetadata, 'updated'>>({
         created: '2020-02-02',
         description: 'front matter excerpt',
+        excerpt: 'front matter excerpt',
         image: '/images/default.jpg',
         slug: 'post',
         title: 'front matter title',
-        excerpt: 'front matter excerpt',
       })
     })
 
@@ -37,11 +37,11 @@ describe('Post utilities', () => {
       expect(content).toBe('ccc')
       expect(meta).toEqual<Omit<PostMetadata, 'updated'>>({
         created: '2020-02-03',
-        description: 'front matter description',
+        description: 'front matter description &#x26;',
+        excerpt: 'front matter excerpt ;',
         image: '/images/1999-01-01/image.jpg',
         slug: 'with-everything',
         title: 'front matter title',
-        excerpt: 'front matter excerpt',
       })
     })
   })

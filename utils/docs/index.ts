@@ -1,5 +1,6 @@
 import path from 'path'
 
+import { escapeUTF8 } from 'entities'
 import matter from 'gray-matter'
 
 import { onlyMDXFiles, readFilesRec, readLastModified } from '../system'
@@ -43,13 +44,17 @@ export const getDocFiles = async (): Promise<string[]> => {
  * @param source File's content as `Buffer`.
  */
 export async function parseDoc(filePath: string, source: Buffer): Promise<{ content: string; meta: DocMetadata }> {
-  const { content, data } = matter(source)
+  const {
+    content,
+    data: { excerpt, ...data },
+  } = matter(source)
   const updated = await readLastModified(filePath)
 
   return {
     content,
     meta: {
       ...data,
+      excerpt: escapeUTF8(excerpt),
       updated,
     } as DocMetadata,
   }

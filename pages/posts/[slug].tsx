@@ -24,10 +24,10 @@ const BlogPost: Page<StaticProps> = ({ body, meta }) => {
     <>
       <Head>
         <title key="title">{meta.title} - Sorto.me</title>
-        <meta key="description" name="description" content={meta.description} />
+        {meta.description && <meta key="description" name="description" content={meta.description} />}
         <meta key="og:type" property="og:type" content="article" />
         <meta key="og:title" property="og:title" content={`${meta.title} - Sorto.me`} />
-        <meta key="og:description" property="og:description" content={meta.excerpt} />
+        {meta.excerpt && <meta key="og:description" property="og:description" content={meta.excerpt} />}
         {meta.image && <meta key="og:image" property="og:image" content={meta.image} />}
         <meta key="article:published_time" property="article:published_time" content={meta.created} />
         <meta key="article:modified_time" property="article:modified_time" content={meta.updated} />

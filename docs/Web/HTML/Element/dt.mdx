@@ -1,0 +1,36 @@
+---
+title: HTML <dt> 요소
+excerpt: HTML <dt> 요소는 설명 목록 내에서의 용어를 나타냅니다.
+---
+
+**HTML `<dt>` 요소**는 설명 목록([`<dl>`](./dl)) 내에서의 용어를 나타냅니다. 보통 설명을 포함하는 [`<dd>`](./dd) 요소가 바로 뒤에 위치하지만, 다수의 `<dt>`를 연속으로 배치한 뒤에 이후의 `<dd>` 요소 하나로 한꺼번에 서술할 수도 있습니다.
+
+```tsx
+<p>Dwarf Fortress의 종족</p>
+<dl>
+  <dt>드워프</dt>
+  <dd>드워프는 알코올 의존적인 인간형 생명체로 포트리스 모드의 종족이며, 어드벤처 모드에서도 플레이할 수 있습니다.</dd>
+
+  <dt>엘프</dt>
+  <dd>엘프는 자신들만의 자연 보호를 강요하는 인간형 생명체입니다.</dd>
+
+  <dt>고블린</dt>
+  <dd>고블린은 어두운 웅덩이에 거주하는 사악하고 공격적인 인간형 생명체로, 포트리스 모드의 주요한 적입니다.</dd>
+</dl>
+```
+
+# 특성
+
+[전역 특성](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes)만 포함합니다.
+
+# 예제
+
+[`<dl>` 요소의 예제](./dl#예제)를 참고하세요.
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/semantics.html#the-dt-element)
+
+# 브라우저 호환성
+
+<BrowserCompat>html.elements.dt</BrowserCompat>

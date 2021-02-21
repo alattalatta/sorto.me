@@ -2,15 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/Heading_Elements</loc>
-  <lastmod>2021-02-18</lastmod>
+  <lastmod>2021-02-21</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/address</loc>
-  <lastmod>2021-02-10</lastmod>
+  <lastmod>2021-02-21</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/article</loc>
-  <lastmod>2021-02-10</lastmod>
+  <lastmod>2021-02-21</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/aside</loc>
@@ -18,11 +18,31 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/base</loc>
-  <lastmod>2021-02-18</lastmod>
+  <lastmod>2021-02-21</lastmod>
+</url>
+<url>
+  <loc>https://sorto.me/docs/Web/HTML/Element/blockquote</loc>
+  <lastmod>2021-02-21</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/body</loc>
   <lastmod>2021-02-19</lastmod>
+</url>
+<url>
+  <loc>https://sorto.me/docs/Web/HTML/Element/dd</loc>
+  <lastmod>2021-02-21</lastmod>
+</url>
+<url>
+  <loc>https://sorto.me/docs/Web/HTML/Element/div</loc>
+  <lastmod>2021-02-21</lastmod>
+</url>
+<url>
+  <loc>https://sorto.me/docs/Web/HTML/Element/dl</loc>
+  <lastmod>2021-02-21</lastmod>
+</url>
+<url>
+  <loc>https://sorto.me/docs/Web/HTML/Element/dt</loc>
+  <lastmod>2021-02-21</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/footer</loc>
@@ -34,7 +54,7 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/header</loc>
-  <lastmod>2021-02-10</lastmod>
+  <lastmod>2021-02-21</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/hgroup</loc>
@@ -42,11 +62,11 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/html</loc>
-  <lastmod>2021-02-19</lastmod>
+  <lastmod>2021-02-21</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/link</loc>
-  <lastmod>2021-02-19</lastmod>
+  <lastmod>2021-02-21</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/main</loc>
@@ -54,7 +74,7 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/meta</loc>
-  <lastmod>2021-02-17</lastmod>
+  <lastmod>2021-02-21</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/nav</loc>
@@ -62,7 +82,7 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/section</loc>
-  <lastmod>2021-02-15</lastmod>
+  <lastmod>2021-02-21</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/style</loc>
@@ -70,11 +90,11 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/title</loc>
-  <lastmod>2021-02-17</lastmod>
+  <lastmod>2021-02-21</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element</loc>
-  <lastmod>2021-02-19</lastmod>
+  <lastmod>2021-02-21</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML</loc>

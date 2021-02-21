@@ -24,7 +24,7 @@ const Doc: Page<StaticProps> = ({ body, meta, slugs }) => {
     <>
       <Head>
         <title key="title">{meta.title} - Sorto.me Docs</title>
-        {meta.excerpt && <meta key="description" name="description" content={meta.excerpt} />}
+        {meta.description && <meta key="description" name="description" content={meta.description} />}
         <meta key="og:type" property="og:type" content="article" />
         <meta key="og:title" property="og:title" content={`${meta.title} - Sorto.me Docs`} />
         {meta.excerpt && <meta key="og:description" name="og:description" content={meta.excerpt} />}

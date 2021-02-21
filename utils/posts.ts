@@ -39,10 +39,8 @@ export type PostMetadata = {
 export async function parsePost(filePath: string, source: Buffer): Promise<{ content: string; meta: PostMetadata }> {
   const {
     content,
-    data: { description, excerpt: excerptRaw, ...data },
+    data: { description, excerpt, ...data },
   } = matter(source)
-  const excerpt = excerptRaw ? escapeUTF8(excerptRaw) : null
-
   const fileName = path.basename(filePath)
   const [created, slug] = fileName.split('+')
 
@@ -53,8 +51,8 @@ export async function parsePost(filePath: string, source: Buffer): Promise<{ con
     meta: {
       ...data,
       created,
-      description: description ? escapeUTF8(description) : excerpt,
-      excerpt,
+      description: description ? escapeUTF8(description) : excerpt ? escapeUTF8(excerpt) : null,
+      excerpt: excerpt || null,
       image: data.image || '/images/default.jpg',
       slug: slug.replace('.mdx', ''),
       updated,

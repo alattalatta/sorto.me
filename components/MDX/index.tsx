@@ -10,6 +10,7 @@ import { childrenToText } from 'utils/element'
 import { Anchor } from '../basics'
 import Callout, { CalloutCite } from './Callout'
 import { Code, CodeBlock } from './CodeBlock'
+import { FloatClear, Floater } from './Floater'
 import { Term, TermLink } from './Term'
 import { UniqueIDProvider } from './UniqueIDContext'
 import styles from './styles.module.scss'
@@ -86,6 +87,8 @@ export const MDX_COMPONENTS: MdxRemote.Components = Object.freeze({
   BrowserCompat: dynamic(() => import('./BrowserCompat'), { ssr: false }),
   Callout,
   CalloutCite,
+  FloatClear,
+  Floater,
   Term,
   TermLink,
 })

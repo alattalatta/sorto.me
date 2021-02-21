@@ -1,0 +1,35 @@
+%base {
+  max-width: 400px;
+  border: 1px solid var(--colors-base70);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.left[class] {
+  @extend %base;
+  float: left;
+  margin-right: 16px;
+}
+
+.right[class] {
+  @extend %base;
+  float: right;
+  margin-left: 16px;
+}
+
+.clear {
+  clear: both;
+}
+
+@media (max-width: 768px) {
+  %base {
+    max-width: 100%;
+    float: none;
+  }
+  .left[class] {
+    margin-right: 0;
+  }
+  .right[class] {
+    margin-left: 0;
+  }
+}

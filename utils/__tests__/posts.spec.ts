@@ -17,8 +17,8 @@ describe('Post utilities', () => {
       expect(content).toBe('aaa')
       expect(meta).toEqual<Omit<PostMetadata, 'updated'>>({
         created: '2020-02-02',
-        description: 'front matter excerpt',
-        excerpt: 'front matter excerpt',
+        description: 'front matter excerpt &#x26;',
+        excerpt: 'front matter excerpt &',
         image: '/images/default.jpg',
         slug: 'post',
         title: 'front matter title',

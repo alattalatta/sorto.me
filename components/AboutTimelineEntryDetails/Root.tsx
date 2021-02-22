@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react'
 import AboutTimelineHeader from 'components/AboutTimelineHeader'
 import { Container as ContainerBase, NoScreen } from 'components/basics'
 import { TimelineData } from 'data/about'
-import { styled } from 'utils/styler'
+import { easeStandard, styled } from 'utils/styler'
 
 const Overlay = styled(m.div, {
   width: '100%',
@@ -23,6 +23,9 @@ const Container = styled(ContainerBase, {
   background: '#fff',
   borderRadius: '$cornerRadius',
   padding: '48px 40px',
+  '&:focus': {
+    outline: 'none',
+  },
 })
 
 const HeaderWrap = styled('div', {
@@ -66,7 +69,14 @@ const Root: React.FC<Props> = ({ children, data, onShrinkRequest }) => {
       aria-dialog="true"
       role="dialog"
     >
-      <Container ref={containerRef} as={m.article} tabIndex={-1} layoutId={data.id} aria-labelledby={`${data.id}-id`}>
+      <Container
+        ref={containerRef}
+        as={m.article}
+        tabIndex={-1}
+        layoutId={data.id}
+        transition={easeStandard(0.4)}
+        aria-labelledby={`${data.id}-id`}
+      >
         <HeaderWrap>
           <AboutTimelineHeader asHeaderElement data={data} />
         </HeaderWrap>
@@ -75,12 +85,8 @@ const Root: React.FC<Props> = ({ children, data, onShrinkRequest }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{
             delay: 0.35,
-            opacity: { type: 'tween', ease: [0.4, 0, 0.2, 1], duration: 0.25 },
-            y: {
-              type: 'tween',
-              ease: [0.4, 0, 0.2, 1],
-              duration: 0.5,
-            },
+            opacity: easeStandard(0.25),
+            y: easeStandard(0.5),
           }}
         >
           {children}

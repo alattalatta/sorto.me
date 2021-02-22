@@ -1,9 +1,26 @@
+import { motion as m, Variants } from 'framer-motion'
+
 import { PostMetadata } from 'utils/posts'
-import { styled } from 'utils/styler'
+import { easeStandard, styled } from 'utils/styler'
 
 import Anchor from './basics/Anchor'
 
-const Post = styled('article', {
+const ROOT_VARIANTS: Variants = {
+  initial: {
+    opacity: 0,
+    y: 5,
+  },
+  present: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      opacity: easeStandard(0.2),
+      y: easeStandard(0.45),
+    },
+  },
+}
+
+const Root = styled(m.article, {
   paddingTop: 24,
   paddingBottom: 24,
   position: 'relative',
@@ -84,7 +101,7 @@ export type PostDatum = {
 
 const BlogPostEntry: React.VFC<{ hoverable?: true; post: PostDatum }> = ({ post }) => {
   return (
-    <Post aria-labelledby={post.slug}>
+    <Root variants={ROOT_VARIANTS} aria-labelledby={post.slug}>
       <Wrap href={`/posts/${post.slug}`}>
         <Block>
           <Image src={post.meta.image} alt="" width="450" />
@@ -95,7 +112,7 @@ const BlogPostEntry: React.VFC<{ hoverable?: true; post: PostDatum }> = ({ post 
           <Time dateTime={post.meta.created}>{post.meta.created}</Time>
         </TextBlock>
       </Wrap>
-    </Post>
+    </Root>
   )
 }
 

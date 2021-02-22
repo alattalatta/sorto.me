@@ -2,7 +2,7 @@ import { motion as m } from 'framer-motion'
 import React from 'react'
 
 import { TimelineData } from 'data/about'
-import { styled } from 'utils/styler'
+import { easeStandard, styled } from 'utils/styler'
 
 import Period from './Period'
 
@@ -25,7 +25,7 @@ type Props = {
 
 const AboutTimelineHeader: React.VFC<Props> = ({ asHeaderElement, data }) => {
   return (
-    <Header as={asHeaderElement ? m.header : m.div} layoutId={`${data.id}-header`}>
+    <Header as={asHeaderElement ? m.header : m.div} layoutId={`${data.id}-header`} transition={easeStandard(0.4)}>
       <Name id={`${data.id}-id`}>{data.name}</Name>
       <Period from={data.from} to={data.to} />
       <Body>

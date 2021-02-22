@@ -1,4 +1,6 @@
 import createStyled, { StitchesCss } from '@stitches/react'
+import { Tween } from 'framer-motion'
+import { Easing } from 'framer-motion/types/types'
 
 export const BASE_10 = '#020D19'
 export const BASE_100 = '#F4FBFF'
@@ -48,3 +50,14 @@ export const {
 } = stitchesConfig
 
 export type StyleSheet = StitchesCss<typeof stitchesConfig>
+
+export const STANDARD_EASE: Easing = [0.4, 0, 0.2, 1]
+
+/** Returns a standard easing definition object. */
+export function easeStandard(duration: number): Tween {
+  return {
+    type: 'tween',
+    ease: STANDARD_EASE,
+    duration,
+  }
+}

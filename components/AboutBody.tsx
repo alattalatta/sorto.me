@@ -1,4 +1,4 @@
-import { AnimatePresence, AnimateSharedLayout } from 'framer-motion'
+import { AnimatePresence, AnimateSharedLayout, motion as m, Variants } from 'framer-motion'
 import React, { useEffect, useState } from 'react'
 
 import { TIMELINE, TimelineID } from 'data/about'
@@ -10,6 +10,19 @@ import Urbanplay from './AboutTimelineEntryDetails/Urbanplay'
 import Woowa from './AboutTimelineEntryDetails/Woowa'
 import Yanolja from './AboutTimelineEntryDetails/Yanolja'
 import { Break, Container as ContainerBase, NoScreen } from './basics'
+
+const TIMELINE_VARIANTS: Variants = {
+  initial: {
+    opacity: 0,
+  },
+  present: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3,
+      when: 'beforeChildren',
+    },
+  },
+}
 
 const Container = styled(ContainerBase, {
   paddingBottom: 172,
@@ -70,7 +83,7 @@ const Description = styled('p', {
   marginTop: 20,
 })
 
-const Timeline = styled('div', {
+const Timeline = styled(m.div, {
   listStyle: 'none',
   paddingTop: 32,
   paddingLeft: 16,
@@ -78,7 +91,7 @@ const Timeline = styled('div', {
   '&::before': {
     content: "''",
     width: 1,
-    background: '$base60',
+    background: '$base70',
     position: 'absolute',
     top: 32,
     bottom: 0,
@@ -93,7 +106,8 @@ const Poser = styled('div', {
     content: "''",
     width: 8,
     height: 8,
-    background: '$base40',
+    background: '$base60',
+    borderRadius: '50%',
     display: 'block',
   },
   '& + &': {
@@ -145,7 +159,7 @@ const AboutBody: React.VFC = () => {
         </ColumnNarrow>
         <ColumnWide>
           <NoScreen as="h1">Timeline</NoScreen>
-          <Timeline>
+          <Timeline variants={TIMELINE_VARIANTS} initial="initial" animate="present">
             <AnimateSharedLayout type="crossfade">
               {TIMELINE.map((data) => (
                 <Poser key={data.id}>

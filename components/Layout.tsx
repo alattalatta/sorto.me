@@ -20,7 +20,7 @@ const Layout: React.FC<Props> = ({ children: { brand, menu, page }, variants }) 
           menu,
         }}
       </BaseHeader>
-      <main>{page}</main>
+      <main id="main">{page}</main>
     </div>
   )
 }

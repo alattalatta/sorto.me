@@ -2,7 +2,7 @@ import React from 'react'
 
 import { styled } from 'utils/styler'
 
-import { Anchor, Container as BaseContainer } from './basics'
+import { Anchor, Break, Container as BaseContainer } from './basics'
 
 const FooterContainer = styled('footer', {
   background: '$base10',
@@ -58,12 +58,12 @@ const BaseFooter: React.FC<Props> = ({ children, sourceHref, updated }) => {
         <FooterColumn>
           <p>
             마지막 업데이트
-            <br />
+            <Break />
             <time>
               {y}년 {m}월 {d}일
             </time>
-            <br />
-            <br />
+            <Break />
+            <Break />
             <Anchor href={sourceHref}>GitHub에서 보기</Anchor>
           </p>
         </FooterColumn>

@@ -2,17 +2,14 @@ import { motion as m, Variants } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
 import { useToggleState } from 'hooks/useToggleState'
-import { styled } from 'utils/styler'
+import { easeStandard, styled } from 'utils/styler'
 
 import { Anchor, NoScreen } from './basics'
 
 const BODY_VARIANTS: Variants = {
   closed: {
     clipPath: 'inset(0% 0% 100% 0%)',
-    transition: {
-      type: 'tween',
-      ease: 'anticipate',
-    },
+    transition: easeStandard(0.15),
     transitionEnd: {
       visibility: 'hidden',
     },
@@ -20,10 +17,7 @@ const BODY_VARIANTS: Variants = {
   opened: {
     clipPath: 'inset(0% 0% 0% 0%)',
     visibility: 'visible',
-    transition: {
-      type: 'tween',
-      ease: 'anticipate',
-    },
+    transition: easeStandard(0.2),
   },
 }
 

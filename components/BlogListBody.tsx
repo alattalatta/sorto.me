@@ -4,7 +4,7 @@ import React from 'react'
 import { styled } from 'utils/styler'
 
 import BlogPostEntry, { PostDatum } from './BlogPostEntry'
-import { Anchor, Container as ContainerBase, NoScreen } from './basics'
+import { Container as ContainerBase, NoScreen } from './basics'
 
 const CONTAINER_VARIANTS: Variants = {
   initial: {},

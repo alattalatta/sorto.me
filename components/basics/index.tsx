@@ -16,7 +16,7 @@ export const Container = styled('div', {
     tiny: {
       paddingLeft: 24,
       paddingRight: 24,
-    }
+    },
   },
 })
 
@@ -29,3 +29,5 @@ export const NoScreen = styled('span', {
   width: 1,
   zIndex: -9,
 })
+
+export const Break: React.VFC<JSX.IntrinsicElements['br']> = (props) => <br aria-hidden="true" {...props} />

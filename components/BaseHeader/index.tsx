@@ -2,6 +2,7 @@ import { AnimatePresence, motion as m, Variants } from 'framer-motion'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 
+import { makeScrollLocker } from 'utils/element'
 import { styled } from 'utils/styler'
 
 import { Container as ContainerBase } from '../basics'
@@ -107,18 +108,12 @@ const BaseHeader: React.VFC<Props> = ({ brightness = 'light', children: { brand,
     return () => router.events.off('routeChangeComplete', closeWhenRouteChanges)
   }, [])
 
+  const scrollLock = makeScrollLocker(() => document.querySelectorAll('#main'))
   useEffect(() => {
-    if (menuOpened) {
-      document.body.classList.add('o')
-      document.querySelector('main')?.setAttribute('aria-hidden', 'true')
-    } else {
-      document.body.classList.remove('o')
-      document.querySelector('main')?.setAttribute('aria-hidden', 'false')
-    }
+    scrollLock(menuOpened)
 
     return () => {
-      document.body.classList.remove('o')
-      document.querySelector('main')?.setAttribute('aria-hidden', 'false')
+      scrollLock(false)
     }
   }, [menuOpened])
 
@@ -126,7 +121,7 @@ const BaseHeader: React.VFC<Props> = ({ brightness = 'light', children: { brand,
 
   return (
     <>
-      <Root brightness={brightness} position={menuOpened ? 'fixed' : 'normal'} role="navigation">
+      <Root id="header" brightness={brightness} position={menuOpened ? 'fixed' : 'normal'} role="navigation">
         <Container>
           <Hamburger brightness={reversedBrightness} opened={menuOpened} onClick={() => setMenuOpened(!menuOpened)} />
           <AnimatePresence>{brand}</AnimatePresence>

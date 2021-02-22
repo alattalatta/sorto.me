@@ -57,7 +57,7 @@ const headingOf = (level: 2 | 3 | 4): React.FC => {
     return (
       <H className={className} id={id}>
         {children}
-        <a className={styles.headingAnchor} href={`#${id}`} aria-hidden>
+        <a className={styles.headingAnchor} href={`#${id}`} aria-hidden="true">
           #
         </a>
       </H>

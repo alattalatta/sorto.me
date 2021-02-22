@@ -70,6 +70,9 @@ const IndexBody: React.VFC<Props> = ({ latestPost }) => {
           <Anchor href="/about">Click here</Anchor>
         </ToAboutWrap>
       </Section>
+      <Section as="footer">
+        <Anchor href="https://github.com/alattalatta/sorto.me">GitHub: alattalatta/sorto.me</Anchor>
+      </Section>
       <Eyecatch src="/images/brand-d.svg" alt="Sorto." />
     </Container>
   )

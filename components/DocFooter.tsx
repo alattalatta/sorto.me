@@ -5,7 +5,7 @@ import { GITHUB_MAIN_URL } from 'utils/external'
 import { styled } from 'utils/styler'
 
 import BaseFooter from './BaseFooter'
-import { Anchor } from './basics'
+import { Anchor, Break } from './basics'
 
 const Paragraph = styled('p', {
   '&:not(:first-child)': {
@@ -25,14 +25,14 @@ const PostFooter: React.VFC<Props> = ({ meta, slugs }) => {
     <BaseFooter sourceHref={`${GITHUB_MAIN_URL}/docs/${path}.mdx`} updated={meta.updated}>
       <Paragraph>
         본 문서는 <Anchor href="https://developer.mozilla.org/">MDN</Anchor> (en-US 및 ko) 문서에 기반을 두고 있습니다.
-        <br />
+        <Break />
         <Anchor href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</Anchor> 아래에서 자유롭게 이용할 수
         있습니다.
       </Paragraph>
       <Paragraph>
         <small>
           "{attributionTitle}" from MDN contributors is licensed under{' '}
-          <Anchor href="https://creativecommons.org/licenses/by-sa/2.5/">CC BY-SA 2.5</Anchor>.<br />
+          <Anchor href="https://creativecommons.org/licenses/by-sa/2.5/">CC BY-SA 2.5</Anchor>.<Break />
           <Anchor href={`https://developer.mozilla.org/en-US/docs/${path}/contributors.txt`}>
             List of the contributors
           </Anchor>{' '}

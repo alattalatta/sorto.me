@@ -41,3 +41,15 @@ export function sanitizeID(text: string): string {
     .replace(/[\s\n]+/g, '-')
     .replace(/[!@#$%^&*()=+~`'"/\\?.,<>[\]|{}]/g, '')
 }
+
+export function makeScrollLocker(lockingTargetGetters?: () => NodeListOf<HTMLElement>): (lock: boolean) => void {
+  return (lock) => {
+    if (lock) {
+      document.body.classList.add('o')
+      lockingTargetGetters?.().forEach((lockingTarget) => lockingTarget.setAttribute('aria-hidden', 'true'))
+    } else {
+      document.body.classList.remove('o')
+      lockingTargetGetters?.().forEach((lockingTarget) => lockingTarget.setAttribute('aria-hidden', 'false'))
+    }
+  }
+}

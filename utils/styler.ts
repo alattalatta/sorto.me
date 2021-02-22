@@ -9,6 +9,7 @@ export const ACCENT_B = '#57D8FF'
 const stitchesConfig = createStyled({
   conditions: {
     wide: '@media (max-width: 1720px)',
+    broad: '@media (max-width: 1280px)',
     medium: '@media (max-width: 1024px)',
     narrow: '@media (max-width: 768px)',
     tiny: '@media (max-width: 480px)',
@@ -39,6 +40,11 @@ const stitchesConfig = createStyled({
   },
 })
 
-export const { css, getCssString, styled } = stitchesConfig
+export const {
+  css,
+  getCssString,
+  styled,
+  theme: { colors },
+} = stitchesConfig
 
 export type StyleSheet = StitchesCss<typeof stitchesConfig>

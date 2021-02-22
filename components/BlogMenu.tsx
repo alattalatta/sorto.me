@@ -28,7 +28,7 @@ const BlogMenu: React.VFC = () => {
       </BaseMenu>
       <BaseMenu css={{ marginTop: 72 }} aria-label="다른 곳으로 이동">
         <li>
-          <BaseIntraNavItem href="/docs/Web">Docs</BaseIntraNavItem>
+          <BaseIntraNavItem href="/docs">Docs</BaseIntraNavItem>
         </li>
       </BaseMenu>
     </Container>

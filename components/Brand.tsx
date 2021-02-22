@@ -115,8 +115,9 @@ const Body: React.VFC<React.ComponentPropsWithRef<typeof SVGRoot>> = (props) => 
 
 type Props = {
   brightness?: 'dark' | 'light'
+  href?: string
 }
-const Brand: React.VFC<Props> = ({ brightness = 'dark' }) => {
+const Brand: React.VFC<Props> = ({ brightness = 'dark', href = '/' }) => {
   return (
     <Root
       brightness={brightness}
@@ -126,7 +127,7 @@ const Brand: React.VFC<Props> = ({ brightness = 'dark' }) => {
       exit={[brightness, 'initial']}
       whileHover="hover"
     >
-      <Anchor href="/" title="홈으로 이동" aria-label="홈으로 이동">
+      <Anchor href={href} title="홈으로 이동" aria-label="홈으로 이동">
         <Body brightness={brightness} shadow="false" />
         <Shadow variants={SHADOW_VARIANTS}>
           <Body />

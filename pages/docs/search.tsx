@@ -31,6 +31,6 @@ const DocSearch: Page = () => {
     </>
   )
 }
-DocSearch.getLayout = getLayout(<DocMenu />, <Brand />)
+DocSearch.getLayout = getLayout(<DocMenu />, <Brand href="/docs" />)
 
 export default DocSearch

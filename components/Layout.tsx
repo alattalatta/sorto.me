@@ -1,6 +1,6 @@
 import React from 'react'
 
-import BaseHeader from './BaseHeader'
+import Header from './Header'
 
 type Props = {
   children: {
@@ -14,12 +14,12 @@ type Props = {
 const Layout: React.FC<Props> = ({ children: { brand, menu, page }, variants }) => {
   return (
     <div>
-      <BaseHeader {...variants}>
+      <Header {...variants}>
         {{
           brand,
           menu,
         }}
-      </BaseHeader>
+      </Header>
       <main id="main">{page}</main>
     </div>
   )

@@ -3,6 +3,7 @@ import React from 'react'
 
 import Brand from 'components/Brand'
 import DocMenu from 'components/DocMenu'
+import DocSearchField from 'components/DocSearchField'
 import { getLayout } from 'components/Layout'
 import { Container as BaseContainer } from 'components/basics'
 import { useSearchQuery } from 'hooks/useSearchQuery'
@@ -27,7 +28,10 @@ const DocSearch: Page = () => {
         <meta key="og:title" property="og:title" content={title} />
         {searchQuery && <script async src="https://cse.google.com/cse.js?cx=2398f7a238d7a4f0e" />}
       </Head>
-      <Container>{searchQuery && <div className="gcse-searchresults-only" />}</Container>
+      <Container>
+        <DocSearchField initialValue={searchQuery} />
+        {searchQuery && <div className="gcse-searchresults-only" />}
+      </Container>
     </>
   )
 }

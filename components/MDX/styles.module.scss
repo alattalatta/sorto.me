@@ -7,6 +7,11 @@
 .wrap {
   font-family: var(--fonts-sans);
   line-height: 1.75;
+  &::after {
+    content: '';
+    clear: both;
+    display: table;
+  }
 
   #{child("* + *")} {
     margin-top: 20px;

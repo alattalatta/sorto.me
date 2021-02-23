@@ -2,6 +2,7 @@ import Head from 'next/head'
 import React from 'react'
 
 import BlogMenu from 'components/BlogMenu'
+import BlogSearchField from 'components/BlogSearchField'
 import Brand from 'components/Brand'
 import { getLayout } from 'components/Layout'
 import { Container as BaseContainer } from 'components/basics'
@@ -27,7 +28,10 @@ const BlogSearch: Page = () => {
         <meta key="og:title" property="og:title" content={title} />
         {searchQuery && <script async src="https://cse.google.com/cse.js?cx=2583b4522ab9cd371" />}
       </Head>
-      <Container>{searchQuery && <div className="gcse-searchresults-only" />}</Container>
+      <Container>
+        <BlogSearchField initialValue={searchQuery} />
+        {searchQuery && <div className="gcse-searchresults-only" />}
+      </Container>
     </>
   )
 }

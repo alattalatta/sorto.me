@@ -36,14 +36,15 @@ const Container = styled('form', {
 })
 
 type Props = {
+  initialValue?: string
   placeholder?: string
   targetUrl: string
   onSubmit?: React.FormEventHandler<HTMLFormElement>
 }
-const SearchField: React.VFC<Props> = ({ placeholder, targetUrl, onSubmit }) => {
+const SearchField: React.VFC<Props> = ({ initialValue, placeholder, targetUrl, onSubmit }) => {
   return (
     <Container action={targetUrl} role="search" onSubmit={onSubmit}>
-      <TextField name="q" placeholder={placeholder} type="search" />
+      <TextField defaultValue={initialValue} name="q" placeholder={placeholder} type="search" />
       <SubmitButton type="submit">검색</SubmitButton>
     </Container>
   )

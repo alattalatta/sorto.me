@@ -5,7 +5,14 @@
   <link>https://sorto.me</link>
   <description>웹 프엔 개발하기</description>
   <language>ko</language>
-  <lastBuildDate>2021-02-20T08:59:54.002Z</lastBuildDate>
+  <lastBuildDate>2021-02-23T15:31:44.767Z</lastBuildDate>
+<item>
+  <title>정적 웹사이트의 검색</title>
+  <link>https://sorto.me/posts/2021-02-24+pse?utm_medium=rss</link>
+  <guid>pse</guid>
+  <description>Google Programmable Search Engine으로 정적 웹사이트에서도 검색 달기</description>
+  <pubDate>2021-02-24</pubDate>
+</item>
 <item>
   <title>올바른 대체 텍스트</title>
   <link>https://sorto.me/posts/2021-02-18+alt?utm_medium=rss</link>

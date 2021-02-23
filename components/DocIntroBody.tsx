@@ -6,7 +6,7 @@ import { Anchor, Container as ContainerBase } from './basics'
 
 const Container = styled(ContainerBase, {
   lineHeight: 1.75,
-  '& * + *': {
+  '& > * + *': {
     marginTop: 24,
   },
 })
@@ -48,6 +48,9 @@ const DocIntroBody: React.VFC = () => {
         </p>
         <H2>페이지 목록</H2>
         <ul>
+          <li>
+            <Anchor href="/docs/search">검색하기</Anchor>
+          </li>
           <li>
             <Anchor href="/docs/Web/HTML/Element">HTML 요소 참고서</Anchor>
           </li>

@@ -5,6 +5,7 @@ import BlogMenu from 'components/BlogMenu'
 import BlogSearchField from 'components/BlogSearchField'
 import Brand from 'components/Brand'
 import { getLayout } from 'components/Layout'
+import SearchResult from 'components/SearchResult'
 import { Container as BaseContainer } from 'components/basics'
 import { useSearchQuery } from 'hooks/useSearchQuery'
 import { styled } from 'utils/styler'
@@ -26,11 +27,10 @@ const BlogSearch: Page = () => {
       <Head>
         <title key="title">{title}</title>
         <meta key="og:title" property="og:title" content={title} />
-        {searchQuery && <script async src="https://cse.google.com/cse.js?cx=2583b4522ab9cd371" />}
       </Head>
       <Container>
         <BlogSearchField initialValue={searchQuery} />
-        {searchQuery && <div className="gcse-searchresults-only" />}
+        <SearchResult cx="2583b4522ab9cd371" query={searchQuery} />
       </Container>
     </>
   )

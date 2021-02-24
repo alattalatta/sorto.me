@@ -5,7 +5,9 @@ excerpt: HTML <aside> 요소는 문서의 주요 내용에 간접적으로만 �
 
 **HTML `<aside>` 요소**는 문서의 주요 내용에 간접적으로만 연관된 부분을 나타내며, 주로 사이드바와 콜아웃 박스에 사용합니다.
 
-```css name=main hidden
+<Demo />
+
+```css name=demo sub
 article {
   max-width: 700px;
   line-height: 1.6;
@@ -14,15 +16,15 @@ aside {
   max-width: 200px;
   border-left: 4px solid maroon;
   float: right;
-  margin-left: 8px;
+  margin-bottom: 16px;
+  margin-left: 16px;
   padding-left: 8px;
 }
 aside p {
   margin: 0;
 }
 ```
-
-```html name=main
+```html name=demo
 <article>
   <p>행성상성운은 발광성운의 일종으로, 늙은 적색거성의 외피층이 팽창하여 형성된 전리 기체들로 이루어져 있다.</p>
   <aside>
@@ -42,8 +44,6 @@ aside p {
   </footer>
 </article>
 ```
-
-<LiveExample height={210} name="main" />
 
 # 특성
 

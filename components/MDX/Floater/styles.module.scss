@@ -1,8 +1,12 @@
 %base {
-  max-width: 400px;
-  border: 1px solid var(--colors-base70);
+  width: 400px;
+  max-width: 100%;
   margin-top: 0;
   margin-bottom: 0;
+}
+
+.bordered {
+  border: 1px solid var(--colors-base70);
 }
 
 .left[class] {
@@ -23,7 +27,6 @@
 
 @media (max-width: 768px) {
   %base {
-    max-width: 100%;
     float: none;
   }
   .left[class] {

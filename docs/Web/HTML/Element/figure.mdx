@@ -5,12 +5,28 @@ excerpt: HTML <figure> 요소는 독립적인 콘텐츠를 나타내며, 선택�
 
 **HTML `<figure>` 요소**는 독립적인 콘텐츠를 나타내며, 선택적으로 [`<figcaption>`](./figcaption)을 사용해 설명을 제공할 수 있습니다.
 
-```html
+```css name=main hidden
+figure {
+  border: 1px solid #000;
+  max-width: 320px;
+  text-align: center;
+  padding: 8px;
+}
+img {
+  width: 100%;
+}
+figcaption {
+  font-size: 12px;
+}
+```
+```html name=main
 <figure>
-  <img src="/media/example/elephant.jpg" alt="진흙 목욕을 하는 코끼리">
-  <figcaption>코끼리의 생태</figcaption>
+  <img src="/images/docs/plumbing.jpg" alt="복잡한 배관 사진.">
+  <figcaption>모범 사례</figcaption>
 </figure>
 ```
+
+<LiveExample height={280} name="main" />
 
 # 특성
 

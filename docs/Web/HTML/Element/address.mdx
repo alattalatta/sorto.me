@@ -5,13 +5,15 @@ excerpt: HTML <address> 요소는 가장 가까운 <article> 또는 <body> 요�
 
 **HTML `<address>`** 요소는 가장 가까운 [`<article>`](./article) 또는 [`<body>`](./body) 요소의 연락처 정보를 나타냅니다.
 
-```tsx
+```html name=main
 <p>연락처</p>
 <address>
-  <a href="mailto:example@example.org">example@example.org</a>
+  <a href="mailto:example@example.org">example@example.org</a><br>
   <a href="tel:+821012341234">010-1234-1234</a>
 </address>
 ```
+
+<LiveExample height={100} name="main" />
 
 `<address>` 요소가 제공하는 연락처 정보는 현재 맥락에 적절한 형태라면 무엇이든 가질 수 있으며, 물리적 주소, URL, 이메일 주소, 전화번호, SNS ID, 좌표 등 어떠한 정보도 포함할 수 있습니다.
 
@@ -24,15 +26,6 @@ excerpt: HTML <address> 요소는 가장 가까운 <article> 또는 <body> 요�
 # 사용 일람
 
 - `<address>` 요소는 연락처 정보만 담아야 합니다. 글을 발행한 날짜(`<time>`) 등 다른 정보는 포함해서는 안됩니다.
-
-# 예제
-
-```html
-<address>
-  버그 관련 문의는 <a href="https://github.com/alattalatta/sorto.me">GitHub</a> 이슈로 남겨주세요. <br /><br />
-  서울특별시 종로구 세종로 세종대로 172
-</address>
-```
 
 # 명세
 

@@ -16,7 +16,10 @@ type Props = {
   disabled?: boolean
 } & Omit<JSX.IntrinsicElements['a'], 'ref'>
 /**
- * Automatic anchor. Applies client routing when given an internal link (relative href). Otherwise, uses simple `<a>` tag.
+ * Automatic anchor.
+ *
+ * Applies client routing when given an internal link (relative href) which contains no fragment (to prevent inaccurate scroll position).
+ * Otherwise, uses simple `<a>` tag.
  */
 const Anchor = forwardRef<HTMLAnchorElement, Props>(
   ({ children, disabled, href = '', ...props }, ref: React.Ref<HTMLAnchorElement>) => {
@@ -28,7 +31,7 @@ const Anchor = forwardRef<HTMLAnchorElement, Props>(
       )
     }
 
-    const fragment = href.startsWith('#')
+    const fragment = href.includes('#')
     if (fragment) {
       return (
         <a ref={ref} href={href} {...props}>

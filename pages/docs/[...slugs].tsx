@@ -11,8 +11,8 @@ import React from 'react'
 import Brand from 'components/Brand'
 import DocBody from 'components/DocBody'
 import DocMenu from 'components/DocMenu'
+import { DOCS_MDX_COMPONENTS } from 'components/DocsMDX'
 import { getLayout } from 'components/Layout'
-import { MDX_COMPONENTS } from 'components/MDX'
 import { DocMetadata, DOCS_PATH, getDocFiles, parseDoc } from 'utils/docs'
 import { Page } from 'utils/types'
 
@@ -51,7 +51,7 @@ export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({
   const { content, meta } = await parseDoc(filePath, source)
 
   const mdxOptions = { rehypePlugins: [rehypePrism] }
-  const body = await renderToString(content, { components: MDX_COMPONENTS, mdxOptions, scope: meta })
+  const body = await renderToString(content, { components: DOCS_MDX_COMPONENTS, mdxOptions, scope: meta })
 
   return {
     props: {

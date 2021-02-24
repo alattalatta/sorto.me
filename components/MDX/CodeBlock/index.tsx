@@ -7,13 +7,21 @@ export const CodeBlock: React.FC<{ className?: string }> = ({ className, ...prop
   <pre className={clsx(prism.prism, className)} {...props} />
 )
 
-export const Code: React.FC<{ className?: string; variant: 'bad' | 'good' }> = ({
-  children,
-  className,
-  variant,
-  ...props
-}) => (
-  <code className={clsx(styles.code, className, styles[variant])} {...props}>
-    <span className={styles.codeBody}>{children}</span>
+type Props = {
+  className?: string
+  hidden?: boolean
+  name?: string
+  variant: 'bad' | 'good'
+}
+
+export const Code: React.FC<Props> = ({ children, className, hidden, name, variant, ...props }) => (
+  <code
+    className={clsx(styles.code, className, styles[variant])}
+    data-codeblock-name={name}
+    {...props}
+    hidden={hidden}
+    aria-hidden={hidden}
+  >
+    <span className={clsx(styles.codeBody)}>{children}</span>
   </code>
 )

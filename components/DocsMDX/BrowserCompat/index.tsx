@@ -11,7 +11,7 @@ import { Anchor } from 'components/basics'
 import { getCompatData, getSubIdentifierKeys } from 'utils/docs/browserCompat'
 import { styled } from 'utils/styler'
 
-import Callout from '../Callout'
+import Callout from '../../MDX/Callout'
 import CompatRow from './CompatRow'
 import { Cell } from './shared'
 

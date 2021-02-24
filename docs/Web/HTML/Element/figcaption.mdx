@@ -5,12 +5,28 @@ excerpt: HTML <figcaption> 요소는 부모 <figure> 요소의 콘텐츠에 대�
 
 **HTML `<figcaption>` 요소**는 부모 [`<figure>`](./figure) 요소의 콘텐츠에 대한 설명 또는 범례를 제공합니다.
 
-```html
+```css name=main hidden
+figure {
+  border: 1px solid #000;
+  max-width: 320px;
+  text-align: center;
+  padding: 8px;
+}
+img {
+  width: 100%;
+}
+figcaption {
+  font-size: 12px;
+}
+```
+```html name=main
 <figure>
-  <img src="/media/example/elephant.jpg" alt="진흙 목욕을 하는 코끼리">
-  <figcaption>코끼리의 생태</figcaption>
+  <img src="/images/docs/plumbing.jpg" alt="복잡한 배관 사진.">
+  <figcaption>모범 사례</figcaption>
 </figure>
 ```
+
+<LiveExample height={280} name="main" />
 
 # 특성
 

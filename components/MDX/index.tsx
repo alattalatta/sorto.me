@@ -1,7 +1,6 @@
 import clsx from 'clsx'
 import hydrate from 'next-mdx-remote/hydrate'
 import { MdxRemote } from 'next-mdx-remote/types'
-import dynamic from 'next/dynamic'
 import React from 'react'
 
 import { useUniqueID } from 'hooks/MDX/useUniqueID'
@@ -84,7 +83,6 @@ export const MDX_COMPONENTS: MdxRemote.Components = Object.freeze({
   img: Image,
   table: Table,
   Anchor,
-  BrowserCompat: dynamic(() => import('./BrowserCompat'), { ssr: false }),
   Callout,
   CalloutCite,
   FloatClear,

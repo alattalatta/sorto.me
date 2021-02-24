@@ -3,7 +3,7 @@ import React from 'react'
 
 import { styled } from 'utils/styler'
 
-import { StatusIcon } from '../Icon'
+import { StatusIcon } from '../../MDX/Icon'
 
 const StatusIconsWrap = styled('div', {
   minWidth: 1,

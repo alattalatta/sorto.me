@@ -6,7 +6,8 @@ import { DocMetadata } from 'utils/docs'
 
 import DocFooter from './DocFooter'
 import DocHero from './DocHero'
-import { MDX_COMPONENTS, MDXWrap } from './MDX'
+import { DOCS_MDX_COMPONENTS } from './DocsMDX'
+import { MDXWrap } from './MDX'
 import TableOfContent from './TableOfContent'
 import { Container } from './basics'
 
@@ -24,7 +25,7 @@ const DocBody: React.VFC<Props> = ({ children, meta, slugs }) => {
       <DocHero slugs={slugs}>{meta.title}</DocHero>
       <Container>
         <TableOfContent key={router.asPath} />
-        <MDXWrap components={MDX_COMPONENTS}>{children}</MDXWrap>
+        <MDXWrap components={DOCS_MDX_COMPONENTS}>{children}</MDXWrap>
       </Container>
       <DocFooter meta={meta} slugs={slugs} />
     </article>

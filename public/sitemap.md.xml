@@ -2,27 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/Heading_Elements</loc>
-  <lastmod>2021-02-21</lastmod>
+  <lastmod>2021-02-24</lastmod>
+</url>
+<url>
+  <loc>https://sorto.me/docs/Web/HTML/Element/a</loc>
+  <lastmod>2021-02-24</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/address</loc>
-  <lastmod>2021-02-21</lastmod>
+  <lastmod>2021-02-24</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/article</loc>
-  <lastmod>2021-02-21</lastmod>
+  <lastmod>2021-02-24</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/aside</loc>
-  <lastmod>2021-02-21</lastmod>
+  <lastmod>2021-02-24</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/base</loc>
-  <lastmod>2021-02-21</lastmod>
+  <lastmod>2021-02-24</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/blockquote</loc>
-  <lastmod>2021-02-21</lastmod>
+  <lastmod>2021-02-24</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/body</loc>
@@ -30,31 +34,31 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/dd</loc>
-  <lastmod>2021-02-21</lastmod>
+  <lastmod>2021-02-24</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/div</loc>
-  <lastmod>2021-02-21</lastmod>
+  <lastmod>2021-02-24</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/dl</loc>
-  <lastmod>2021-02-21</lastmod>
+  <lastmod>2021-02-24</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/dt</loc>
-  <lastmod>2021-02-21</lastmod>
+  <lastmod>2021-02-24</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/figcaption</loc>
-  <lastmod>2021-02-21</lastmod>
+  <lastmod>2021-02-24</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/figure</loc>
-  <lastmod>2021-02-21</lastmod>
+  <lastmod>2021-02-24</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/footer</loc>
-  <lastmod>2021-02-21</lastmod>
+  <lastmod>2021-02-24</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/head</loc>
@@ -62,15 +66,15 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/header</loc>
-  <lastmod>2021-02-21</lastmod>
+  <lastmod>2021-02-24</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/hgroup</loc>
-  <lastmod>2021-02-21</lastmod>
+  <lastmod>2021-02-24</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/hr</loc>
-  <lastmod>2021-02-21</lastmod>
+  <lastmod>2021-02-24</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/html</loc>
@@ -78,15 +82,15 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/li</loc>
-  <lastmod>2021-02-21</lastmod>
+  <lastmod>2021-02-24</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/link</loc>
-  <lastmod>2021-02-21</lastmod>
+  <lastmod>2021-02-24</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/main</loc>
-  <lastmod>2021-02-21</lastmod>
+  <lastmod>2021-02-24</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/meta</loc>
@@ -94,19 +98,27 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/nav</loc>
-  <lastmod>2021-02-21</lastmod>
+  <lastmod>2021-02-24</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/ol</loc>
-  <lastmod>2021-02-21</lastmod>
+  <lastmod>2021-02-24</lastmod>
+</url>
+<url>
+  <loc>https://sorto.me/docs/Web/HTML/Element/p</loc>
+  <lastmod>2021-02-24</lastmod>
+</url>
+<url>
+  <loc>https://sorto.me/docs/Web/HTML/Element/pre</loc>
+  <lastmod>2021-02-24</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/section</loc>
-  <lastmod>2021-02-21</lastmod>
+  <lastmod>2021-02-24</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/style</loc>
-  <lastmod>2021-02-21</lastmod>
+  <lastmod>2021-02-24</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/title</loc>
@@ -114,11 +126,11 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/ul</loc>
-  <lastmod>2021-02-21</lastmod>
+  <lastmod>2021-02-24</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element</loc>
-  <lastmod>2021-02-21</lastmod>
+  <lastmod>2021-02-24</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Global_attributes</loc>

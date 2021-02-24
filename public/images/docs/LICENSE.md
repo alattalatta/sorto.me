@@ -1,0 +1,1 @@
+- `lion.jpg` by _Charl Durand_, https://unsplash.com/photos/Sb7UlHaJGVk. See https://unsplash.com/license for license.

@@ -5,13 +5,27 @@ excerpt: HTML <footer> 요소는 가장 가까운 구획 콘텐츠나 구획 루
 
 **HTML `<footer>` 요소**는 가장 가까운 [구획 콘텐츠](https://html.spec.whatwg.org/multipage/dom.html#sectioning-content-2)나 [구획 루트](https://html.spec.whatwg.org/multipage/sections.html#sectioning-root)의 푸터(꼬리말 영역)를 나타냅니다. 푸터는 보통 구획의 작성자, 저작권 정보, 관련 문서 등의 내용을 담습니다.
 
-```html
+<Demo height={200} />
+
+```css name=demo sub
+footer {
+  background: #333;
+  color: #fff;
+  padding: 16px 8px;
+  text-align: center;
+}
+```
+```html name=demo
 <article>
-  <h1>Sorto.me</h1>
-  <p>봉골레 파스타 만드는 법</p>
-  <ol><!-- ... --></ol>
+  <h1>봉골레 파스타 만드는 법</h1>
+  <ol>
+    <li>준비한 면을 삶는다. 맛소금을 넣으면 좋다.</li>
+    <li>팬에 오일을 두른다.</li>
+    <li>???</li>
+    <li>완성!</li>
+  </ol>
   <footer>
-    <p>라이선스: CC BY-SA 4.0</p>
+    <small>라이선스: CC BY-SA 4.0</small>
   </footer>
 </article>
 ```

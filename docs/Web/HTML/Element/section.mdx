@@ -5,20 +5,19 @@ excerpt: HTML <section> 요소는 문서의 독립적인 구획을 나타내며,
 
 **HTML `<section>` 요소**는 문서의 독립적인 구획을 나타내며, 더 적합한 의미를 가진 요소가 없을 때 사용합니다. `<section>`은 보통 헤딩을 포함합니다.
 
-```css name=main hidden
-section {
-  border: 1px solid #ccc;
-  padding: 8px;
-}
-```
-```html name=main
+<Demo height={180} />
+
+```html name=demo
+<h1>사과 고르기</h1>
 <section>
-  <h1>HTML 구획 콘텐츠</h1>
-  <p>구획 콘텐츠란?</p>
+  <h2>소개</h2>
+  <p>이 문서에서는 사과를 잘 고르는 법에 대해 알아봅니다.</p>
+</section>
+<section>
+  <h2>기준</h2>
+  <p>사과를 고를 땐 다양한 것을 고려해야 합니다. 크기, 색상, 단단함, 달콤함, 새콤함... (이어서)</p>
 </section>
 ```
-
-<LiveExample height={120} name="main" />
 
 <Callout childAs="div" label="참고">
   <p>더 적합한 의미를 가진 요소가 없을 때란 다음과 같습니다.</p>

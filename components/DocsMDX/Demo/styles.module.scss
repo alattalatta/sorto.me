@@ -1,0 +1,48 @@
+.floater {
+  width: 100%;
+  max-width: 400px;
+  float: right;
+  margin-top: 24px;
+  margin-left: 16px;
+}
+
+.buttons {
+  margin-top: 8px;
+}
+
+.button {
+  background: none;
+  border: none;
+  border-radius: var(--radii-cornerRadius);
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0 16px;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    background: var(--colors-base90);
+  }
+}
+
+%buttonHighlight {
+  display: block;
+  padding: 8px 4px;
+}
+.buttonHighlightInactive {
+  @extend %buttonHighlight;
+  border-bottom: 4px solid transparent;
+}
+.buttonHighlightActive {
+  @extend %buttonHighlight;
+  border-bottom: 4px solid var(--colors-accentB);
+}
+
+@media (max-width: 768px) {
+  .floater {
+    max-width: 100%;
+    float: none;
+    margin-bottom: -16px;
+    margin-left: 0;
+  }
+}

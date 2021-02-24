@@ -20,7 +20,8 @@ pre > .code {
   &.good {
     border-left-color: #74c162;
   }
-  &[hidden] {
+  &[hidden],
+  &[data-codeblock-sub=true] {
     display: none;
     visibility: hidden;
   }

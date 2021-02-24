@@ -23,7 +23,7 @@ const LiveCode: React.VFC<Props> = ({ data: { htmls, scripts, styles }, height }
     const styleElements = styles.map((it) => `<style>${it}</style>`).join('')
     const view = htmls.join('\n')
 
-    return `<html><head><link rel="stylesheet" href="/frame/frame.css">${scriptElements}${styleElements}</head><body>${view}</body></html>`
+    return `<html><head><link rel="stylesheet" href="/frame/frame.css">${styleElements}</head><body>${view}${scriptElements}</body></html>`
   }
 }
 

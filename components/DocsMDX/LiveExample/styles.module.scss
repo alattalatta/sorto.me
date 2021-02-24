@@ -7,30 +7,32 @@
 }
 
 .container {
-  background: var(--colors-base90);
   border: 1px solid var(--colors-base70);
   border-left: 4px solid var(--colors-base60);
   border-radius: var(--radii-cornerRadius);
+  box-sizing: content-box;
   overflow: hidden;
+  padding: 16px;
   position: relative;
 }
 
 .caption {
   background: var(--colors-base90);
+  border: 1px solid var(--colors-base70);
   border-radius: 0 0 var(--radii-cornerRadius) var(--radii-cornerRadius);
   font-size: 12px;
   padding: 4px 8px;
   position: absolute;
-  top: 1px;
+  top: 0;
   right: 16px;
   z-index: 2;
 }
 
 .resultWrap {
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  top: 16px;
+  right: 16px;
+  bottom: 16px;
+  left: 16px;
   z-index: 1;
 }

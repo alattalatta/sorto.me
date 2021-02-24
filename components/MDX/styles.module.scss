@@ -77,6 +77,10 @@
   li + li {
     margin-top: 8px;
   }
+
+  pre + pre {
+    margin-top: -16px;
+  }
 }
 
 .headingAnchor {

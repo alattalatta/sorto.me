@@ -11,5 +11,8 @@
     "out": true,
   },
   "typescript.tsdk": "node_modules/typescript/lib",
-  "editor.fontFamily": "'나눔고딕코딩', monospace"
+  "editor.fontFamily": "'나눔고딕코딩', monospace",
+  "[mdx]": {
+    "editor.formatOnSave": true
+  }
 }

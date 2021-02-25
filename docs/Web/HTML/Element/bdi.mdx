@@ -1,0 +1,64 @@
+---
+title: 'HTML <bdi>: 양방향 텍스트 분리 요소'
+excerpt: HTML <bdi> (양방향, bidirectional) 요소는 브라우저가 유니코드 양방향 알고리즘(BiDi)을 적용할 때, 이 요소의 콘텐츠를 주변 텍스트와 별도로 취급하도록 설정합니다.
+---
+
+**HTML `<bdi>` 요소**는 브라우저가 [유니코드 양방향 알고리즘](https://www.unicode.org/reports/tr9/)(BiDi)을 적용할 때, 이 요소의 콘텐츠를 주변 텍스트와 별도로 취급하도록 설정합니다. 웹사이트에서 동적으로 텍스트를 삽입하는데, 텍스트의 쓰기 방향은 알지 못할 때 유용합니다.
+
+<Demo height={190} />
+
+```html name=demo
+<h1>세계 챔피언십 순위</h1>
+<ul>
+  <li><bdi class="name">Evil Steven</bdi>: 1등</li>
+  <li><bdi class="name">François fatale</bdi>: 2등</li>
+  <li><span class="name">تیز سمی</span>: 3등</li>
+  <li><bdi class="name">الرجل القوي إيان</bdi>: 4등</li>
+  <li><span class="name" dir="auto">تیز سمی</span>: 5등</li>
+</ul>
+```
+
+```css name=demo sub
+.name {
+  color: crimson;
+}
+```
+
+양방향 텍스트는 좌측에서 우측(LTR)으로 정렬하는 문자 시퀀스와, 우측에서 좌측(RTL)으로 정렬하는 문자 시퀀스가 함께 존재할 수 있는 텍스트로서, 대표적으로 영어 안에 배치한 아랍어 인용문이 있습니다. 브라우저는 양방향 알고리즘을 구현해 이런 상황을 처리합니다. 양방향 알고리즘에서, 각각의 문자는 암시적으로 방향성을 지닙니다. 예컨대 라틴 문자는 LTR, 아랍 문자는 RTL로 취급합니다. 공백이나 몇몇 문장 부호와 같은 일부 문자는 중립으로 취급해서, 주변 문자의 방향을 따라갑니다.
+
+일반적으로는 저작자가 특별한 마크업을 제공하지 않아도 양방향 알고리즘이 올바른 결과를 만들어냅니다. 그러나 간혹 그렇지 않은 상황이 오는데, 이럴 때 `<bdi>`를 사용하게 됩니다.
+
+`<bdi>` 요소는 텍스트의 구간을 감싸는 식으로 사용하여, 양방향 알고리즘에게 해당 구간과 그 주변을 분리해서 계산하라고 알려줍니다. 그러면 다음과 같이 서로의 방향성에 영향을 주지 않습니다.
+
+- `<bdi>` 안쪽 텍스트의 방향성은 주변 텍스트의 방향성에 영향을 주지 않습니다.
+- `<bdi>` 바깥 텍스트의 방향성은 안쪽 텍스트의 방향성에 영향을 주지 않습니다.
+
+위의 데모를 사용해 살펴보겠습니다.
+
+```
+EMBEDDED-TEXT: 1등
+```
+
+`EMBEDDED-TEXT`가 LTR 문자라면 위의 텍스트는 정상적으로 보입니다. 그러나 RTL 문자인 경우, `: 1`의 콜론, 공백, `1` 모두 방향 중립 또는 약한 방향 문자이므로 함께 RTL로 취급해버립니다. 그 결과는 아래처럼 엉망이 된 문자열입니다.
+
+```
+1 :EMBEDDED-TEXT등
+```
+
+`EMBEDDED-TEXT`의 방향을 사전에 알고 있으면 `<span>`으로 감싸서 <HTMLAttr>dir</HTMLAttr> 특성을 지정해 해결할 수 있는 문제입니다. 그러나, `EMBEDDED-TEXT`를 데이터베이스에서 읽어온다거나 사용자의 입력에서 가져와야 해서 방향을 알 수 없으면 `<bdi>`를 사용해 `EMBEDDED-TEXT`가 주변 텍스트의 방향성을 바꾸지 않도록 해야 합니다.
+
+CSS의 `[unicode-bidi](https://developer.mozilla.org/en-US/docs/Web/CSS/unicode-bidi): isolate` 선언을 `<span>` 등 기타 텍스트 형식 요소에 지정해도 같은 시각적 효과는 기대할 수 있지만, 이는 별도의 구문 의미가 없으며 브라우저는 CSS 스타일을 무시할 수 있으므로 HTML 저작자는 사용하지 말아야 하는 방법입니다.
+
+`<span dir="bidi">`도 `<bdi>`와 같은 효과를 갖지만 구문 의미가 보다 덜 분명합니다.
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)만 포함합니다. <HTMLAttr>dir</HTMLAttr> 특성은 다른 요소와 다르게 기본값이 `auto`입니다. 즉 방향을 부모 요소에서 상속하지 않으므로, 직접 `dir="ltr"`이나 `dir="rtl"`을 지정하지 않았다면 사용자 에이전트가 올바른 방향을 설정합니다.
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/semantics.html#the-bdi-element)
+
+# 브라우저 호환성
+
+<BrowserCompat>html.elements.bdi</BrowserCompat>

@@ -1,6 +1,6 @@
 ---
-title: HTML <style> 요소
-excerpt: HTML <style> 요소는 문서나 문서 일부에 대한 스타일 정보를 포함합니다.
+title: 'HTML <style>: 스타일 정보 요소'
+excerpt: HTML <style> (스타일 정보) 요소는 문서나 문서 일부에 대한 스타일 정보를 포함합니다.
 ---
 
 **HTML `<style>`** 요소는 문서나 문서 일부에 대한 스타일 정보를 포함합니다.
@@ -61,18 +61,23 @@ excerpt: HTML <style> 요소는 문서나 문서 일부에 대한 스타일 정�
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-  <style>
-  p { color: red }
-  </style>
-  <style media="all and (max-width: 500px)">
-  p { color: blue }
-  </style>
-</head>
-<body>
-  <p>화면 너비가 500픽셀 이하면 파랗게 됩니다!</p>
-</body>
-<html>
+  <head>
+    <style>
+      p {
+        color: red;
+      }
+    </style>
+    <style media="all and (max-width: 500px)">
+      p {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <p>화면 너비가 500픽셀 이하면 파랗게 됩니다!</p>
+  </body>
+  <html></html>
+</html>
 ```
 
 # 명세

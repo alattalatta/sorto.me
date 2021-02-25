@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 
+import { FloatClear } from 'components/MDX/Floater'
+
 import LiveExample from '../LiveExample'
 import styles from './styles.module.scss'
 
@@ -45,23 +47,33 @@ const Demo: React.VFC<Props> = ({ height = 240, primary = 'html' }) => {
   const choosableLangs = Object.entries(primaryBlocks).filter(([, val]) => Boolean(val)) as [Lang, HTMLElement][]
 
   return (
-    <aside className={styles.floater}>
-      <LiveExample height={height} name="demo" />
-      {choosableLangs.length > 1 && (
-        <div className={styles.buttons}>
-          {choosableLangs.map(
-            ([lang, val]) =>
-              val && (
-                <button key={lang} className={styles.button} type="button" onClick={() => setActiveLang(lang as Lang)}>
-                  <span className={activeLang === lang ? styles.buttonHighlightActive : styles.buttonHighlightInactive}>
-                    {lang.toUpperCase()}
-                  </span>
-                </button>
-              ),
-          )}
-        </div>
-      )}
-    </aside>
+    <>
+      <FloatClear />
+      <aside className={styles.floater}>
+        <LiveExample height={height} name="demo" />
+        {choosableLangs.length > 1 && (
+          <div className={styles.buttons}>
+            {choosableLangs.map(
+              ([lang, val]) =>
+                val && (
+                  <button
+                    key={lang}
+                    className={styles.button}
+                    type="button"
+                    onClick={() => setActiveLang(lang as Lang)}
+                  >
+                    <span
+                      className={activeLang === lang ? styles.buttonHighlightActive : styles.buttonHighlightInactive}
+                    >
+                      {lang.toUpperCase()}
+                    </span>
+                  </button>
+                ),
+            )}
+          </div>
+        )}
+      </aside>
+    </>
   )
 
   function getPrimaryLanguageBlock(lang: Lang): HTMLElement | null {

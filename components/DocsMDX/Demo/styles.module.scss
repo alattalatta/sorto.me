@@ -1,9 +1,14 @@
 .floater {
   width: 100%;
   max-width: 400px;
+  background: #fff;
+  box-sizing: content-box;
   float: right;
-  margin-top: 24px;
-  margin-left: 16px;
+  margin: 0;
+  padding-bottom: 16px;
+  padding-left: 16px;
+  position: relative;
+  z-index: 1;
 }
 
 .buttons {

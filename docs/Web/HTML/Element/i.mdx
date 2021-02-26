@@ -1,0 +1,60 @@
+---
+title: 'HTML <i>: 관용적 텍스트 요소'
+excerpt: HTML <i> (관용적 텍스트, idiomatic) 요소는 관용적 텍스트나 기술적 용어, 학명처럼 모종의 이유로 일반적인 글에서 벗어난 텍스트를 나타냅니다.
+---
+
+**HTML `<i>` 요소**는 관용적 텍스트나 기술적 용어처럼 모종의 이유로 일반적인 글에서 벗어난 텍스트를 나타냅니다. 역사적으로는 기울임꼴(이탤릭, italic)을 그리기 위해 사용했으며, 요소의 이름도 **I**talic에서 따온 것입니다. 그래서 지금도 대부분의 브라우저에서는 여전히 기울임꼴로 표시하지만, 이제는 단순히 기울임꼴을 그리기 위한 용도로 사용해서는 안됩니다. 대신 CSS [`font-style`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-style)을 사용하세요.
+
+<Demo height={100} />
+
+```html name=demo
+<p>찰나의 순간, 그는 생각했다. <i>그럴 수는 없다!</i></p>
+<p>은행나무는 <i>Ginkgophyta</i>에 속하는 생물 중 유일하게 지금까지 생존하고 있습니다.</p>
+```
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)만 포함합니다.
+
+# 사용 일람
+
+`<i>` 요소는 일반 산문에서 벗어난 글을 표시해서 가독성을 높이기 위해 사용합니다. 다른 느낌과 기분을 가진 글을 표시하는 것 외에도 다음과 같은 곳에 사용할 수 있습니다.
+
+- 다른 목소리
+- 학명 (<i>Homo sapiens</i>)
+- 다른 언어로 된 용어 (<i lang="la">et cetera</i>)—<HTMLAttr>lang</HTMLAttr> 특성을 지정해서 어떤 언어인지 나타내야 합니다.
+- 기술 용어
+- 음역
+- 생각 (그는 고민했다. <i>대체 무슨 속셈이지?</i>)
+- 주로 서양권에서, 함선 이름 (<i>엔터프라이즈</i>의 함교는 높았다.)
+
+`<i>`를 적용하려는 텍스트에 더 적합한 요소가 없는지 확인하세요.
+
+- 강세를 표시하려면 [`<em>`](./em)을 사용하세요.
+- 중요성, 심각성, 시급성을 나타내려면 `<strong>`을 사용하세요.
+- 관련성을 나타내려면 `<mark>`를 사용하세요.
+- 책, 공연, 노래같은 창작물의 제목을 나타내려면 [`<cite>`](./cite)를 사용하세요.
+- 정의 중인 용어를 나타내려면 [`<dfn>`]을 사용하세요.
+
+과거 HTML 명세에서 `<i>` 요소는, 마치 `<b>` 요소의 용도가 오직 글씨를 굵게 보여주기 위한 것이었던 것과 마찬가지로, 오로지 글씨를 기울임꼴로 보여주기 위한 요소였습니다. 그러나 지금은 그렇지 않으며, `<i>`는 외형을 정의하는 것이 아니라 별도의 의미를 갖게 됐습니다. 브라우저는 여전히 `<i>` 요소를 기울임꼴로 표현하기는 하지만, 요소 정의에는 그런 시각적 요구사항이 없습니다. 기울임꼴이 필요하면 CSS [`font-style`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-style) 속성을 사용하세요.
+
+<Callout color="warn" label="참고">
+  대부분의 한글 글꼴은 별도의 이탤릭(italic) 패밀리를 포함하지 않으므로 글꼴을 강제로 기울여서 그리게 되고, 어긋난 글자
+  형태로 인해 가독성에 악영향을 줄 수 있습니다. CSS를 사용해서 기울임꼴은 제거하고, 다른 굵기(
+  <Anchor href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight">
+    <code>font-weight</code>
+  </Anchor>
+  ), 다른 글꼴(
+  <Anchor href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-family">
+    <code>font-family</code>
+  </Anchor>
+  )을 적용하거나 따옴표를 붙이는 것을 고려해보세요.
+</Callout>
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-i-element)
+
+# 브라우저 호환성
+
+<BrowserCompat>html.elements.i</BrowserCompat>

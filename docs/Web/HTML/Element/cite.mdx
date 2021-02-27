@@ -1,9 +1,9 @@
 ---
-title: 'HTML <cite>: 인용문 요소'
-excerpt: HTML <cite> (인용문) 요소는 창작물로의 참조를 설명합니다. 반드시 창작물의 제목을 포함해야 합니다.
+title: 'HTML <cite>: 인용 출처 요소'
+excerpt: HTML <cite> (인용 출처) 요소는 창작물로의 참조를 나타냅니다. 반드시 창작물의 제목을 포함해야 합니다.
 ---
 
-**HTML `<cite>` 요소**는 창작물로의 참조를 설명합니다. 반드시 창작물의 제목을 포함해야 합니다. 적절한 맥락 아래에서는 축약해서 표기할 수도 있습니다.
+**HTML `<cite>` 요소**는 창작물로의 참조를 설명합니다. 반드시 창작물의 제목을 포함해야 합니다. 적절한 맥락 아래에서는 제목을 축약해서 표기할 수도 있습니다.
 
 <Demo height={90} />
 
@@ -12,12 +12,22 @@ excerpt: HTML <cite> (인용문) 요소는 창작물로의 참조를 설명합�
   <p>4월, 맑고 쌀쌀한 날이었다. 괘종시계가 13시를 알렸다.</p>
   <footer>
     조지 오웰,
-    <cite><a href="https://books.google.co.kr/books?id=-sVdQ32rW0QC&dq=1984">1984</a></cite>, 정희성 옮김, 민음사(2012), p9.
+    <cite><a href="https://books.google.co.kr/books?id=-sVdQ32rW0QC&dq=1984">1984</a></cite>,
+    정희성 옮김, 민음사(2012), p9.
   </footer>
 </blockquote>
 ```
 
-```css name=demo hidden
+```css name=demo sub
+cite {
+  font-style: normal
+}
+cite::before {
+  content: '『'
+}
+cite::after {
+  content: '』'
+}
 blockquote {
   margin: 0
 }

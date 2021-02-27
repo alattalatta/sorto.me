@@ -1,0 +1,62 @@
+---
+title: 'HTML <mark>: 텍스트 표시 요소'
+excerpt: HTML <mark> (텍스트 표시) 요소는 텍스트의 현재 방향성을 재정의해서 다른 방향으로 렌더링합니다.
+---
+
+**HTML `<mark>` 요소**는 현재 맥락과 관련성을 표시하기 위해 강조할 텍스트를 나타냅니다.
+
+<Demo height={120} />
+
+```html name=demo
+<p><b>스타트업</b> 검색 결과:</p>
+<hr>
+<p><mark>스타트업</mark>은 새로운 아이디어를 비즈니스 모델로 삼는 신생 기업을 말합니다.</p>
+<p>tvN의 드라마 <mark>스타트업</mark>은 2020년 10월부터 2020년 12월까지 방영했습니다.</p>
+```
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)만 포함합니다.
+
+# 사용 일람
+
+일반적인 `<mark>`의 사용법은 다음과 같습니다.
+
+- 인용문([`<blockquote>`](./blockquote), `<q>`) 안에서 사용하면 원본에서는 따로 강조가 없었더라도 인용한 사람이 중요하다고 생각한 부분을 표시할 수 있습니다. 공부할 때 사용하는 형광펜을 생각해보세요.
+- 그 외에는 검색 결과에서 키워드 강조처럼 사용자의 현재 활동과 관련 있는 부분을 표시할 수 있습니다.
+- `<mark>`를 단순한 강조 표시의 용도로 사용하지 마세요. 적절한 CSS를 적용한 `<span>`을 쓰세요.
+
+# 접근성 고려사항
+
+대부분의 스크린 리더는 기본 설정에서 `<mark>` 요소의 존재를 표현하지 않습니다. 사용자가 반드시 `<mark>`가 있다는 것을 알아야 한다면 CSS [`::before`]()과 [`::after`]() 의사 선택자의 [`content`]() 속성을 사용하세요.
+
+```css
+mark::before,
+mark::after {
+  clip-path: inset(100%);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+mark::before {
+  content: " [강조표시 시작] ";
+}
+
+mark::after {
+  content: " [강조표시 끝] ";
+}
+```
+
+그러나 일부 스크린 리더 사용자는 필요한 정보만 들을 수 있도록 상세한 표현을 의도적으로 끄는 경우가 있습니다. 따라서 이렇게 임의로 표현을 강제하는 방법을 남용해서는 안되고, `<mark>`의 유무가 콘텐츠의 이해에 직접 영향을 줄 때만 적용하세요.
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-mark-element)
+
+# 브라우저 호환성
+
+<BrowserCompat>html.elements.mark</BrowserCompat>

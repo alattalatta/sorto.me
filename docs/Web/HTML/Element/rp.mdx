@@ -1,0 +1,72 @@
+---
+title: 'HTML <rp>: 루비 대체 괄호 요소'
+excerpt: HTML <rp> (루비 대체 괄호, Ruby fallback parenthesis) 요소는 <ruby>를 사용한 표기법을 지원하지 않는 브라우저에서 가독성을 해치지 않도록 보여줄 괄호를 나타냅니다.
+---
+
+**HTML `<rp>` 요소**는 [`<ruby>`](./ruby)를 사용한 표기법을 지원하지 않는 브라우저에서 가독성을 해치지 않도록 보여줄 괄호를 나타냅니다. 루비 문자를 나타내는 [`<rt>`](./rt) 요소를 괄호로 감싸게 하고, 괄호의 열고 닫는 것을 각각의 `<rp>` 요소로 감싸야 합니다.
+
+<Demo height={100} />
+
+```html name=demo
+<ruby>
+  景 <rp>(</rp><rt>경</rt><rp>)</rp>
+  福 <rp>(</rp><rt>복</rt><rp>)</rp>
+  宮 <rp>(</rp><rt>궁</rt><rp>)</rp>
+</ruby>
+```
+
+```css name=demo hidden
+ruby {
+  font-size: 4em
+}
+```
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)만 포함합니다.
+
+# 예제
+
+```html name=supported
+<ruby>
+  韓 <rp>(</rp><rt>한</rt><rp>)</rp>
+  國 <rp>(</rp><rt>국</rt><rp>)</rp>
+  語 <rp>(</rp><rt>어</rt><rp>)</rp>
+</ruby>
+```
+
+```css name=supported hidden
+body {
+  font-size: 1.5em
+}
+```
+
+루비 문자를 지원하는 브라우저에서는 다음과 같이 보입니다. (현재 브라우저가 [`<ruby>`](./ruby)를 지원해야 함)
+
+<LiveExample name="supported" height={40} />
+
+그리고 지원하지 않는 브라우저에는 다음처럼 보이게 됩니다.
+
+```html name=no-support hidden
+<div>
+  韓 (한)
+  國 (국)
+  語 (어)
+</div>
+```
+
+```css name=no-support hidden
+body {
+  font-size: 1.5em
+}
+```
+
+<LiveExample name="no-support" height={40} />
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/semantics.html#the-ruby-element)
+
+# 브라우저 호환성
+
+<BrowserCompat>html.elements.ruby</BrowserCompat>

@@ -2,7 +2,7 @@ import { styled } from 'utils/styler'
 
 import { Anchor } from './basics'
 
-export const BaseMenu = styled('ul', {
+export const BaseMenu = styled('nav', {
   listStyle: 'none',
   paddingLeft: 0,
 })

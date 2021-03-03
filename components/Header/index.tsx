@@ -130,7 +130,6 @@ const BaseHeader: React.VFC<Props> = ({ brightness = 'light', children: { brand,
       <HeaderMenu
         id="header-menu"
         aria-hidden={!menuOpened}
-        role="menu"
         variants={HEADER_MENU_VARIANTS}
         initial="closed"
         animate={menuOpened ? 'opened' : 'closed'}

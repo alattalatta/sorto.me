@@ -29,8 +29,9 @@ const stitchesConfig = createStyled({
       accentY: '#FCEC6F',
       accentB: '#57D8FF',
       linkblueDark: '#0066CF',
+      linkblueDarkHover: '#009A29',
       linkblueLight: '#2B8DF2',
-      linkblueLighter: '#13AAFF',
+      linkblueLightHover: '#0AC556',
     },
     fonts: {
       mono: '"Nanum Gothic Coding", "나눔고딕코딩", monospace',

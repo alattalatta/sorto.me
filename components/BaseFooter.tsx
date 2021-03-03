@@ -22,7 +22,11 @@ const FooterContainer = styled('footer', {
 const Container = styled(BaseContainer, {
   display: 'flex',
   '& a': {
+    color: '$linkblueLight',
     display: 'inline-block',
+  },
+  '& a:hover': {
+    color: '$linkblueLightHover',
   },
   when: {
     narrow: {

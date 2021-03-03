@@ -26,7 +26,7 @@ type Props = {
 const AboutTimelineHeader: React.VFC<Props> = ({ asHeaderElement, data }) => {
   return (
     <Header as={asHeaderElement ? m.header : m.div} layoutId={`${data.id}-header`} transition={easeStandard(0.4)}>
-      <Name id={`${data.id}-id`}>{data.name}</Name>
+      <Name id={asHeaderElement ? `${data.id}-header-id` : `${data.id}-id`}>{data.name}</Name>
       <Period from={data.from} to={data.to} />
       <Body>
         <p>{data.position}</p>

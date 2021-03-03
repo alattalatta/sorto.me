@@ -72,10 +72,11 @@ const Root: React.FC<Props> = ({ children, data, onShrinkRequest }) => {
       <Container
         ref={containerRef}
         as={m.article}
+        id={data.id}
         tabIndex={-1}
         layoutId={data.id}
         transition={easeStandard(0.4)}
-        aria-labelledby={`${data.id}-id`}
+        aria-labelledby={`${data.id}-header-id`}
       >
         <HeaderWrap>
           <AboutTimelineHeader asHeaderElement data={data} />

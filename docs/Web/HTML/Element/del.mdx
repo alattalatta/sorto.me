@@ -1,0 +1,82 @@
+---
+title: 'HTML <del>: 삭제한 텍스트 요소'
+excerpt: HTML <del> (삭제한 텍스트) 요소는 문서에서 삭제한 텍스트 범위를 나타냅니다.
+---
+
+**HTML `<del>` 요소**는 문서에서 삭제한 텍스트 범위를 나타냅니다. 문서 변경점 추적 기능 등에 사용할 수 있습니다. 반대로, [`<ins>`](./ins) 요소는 문서에 새로 추가한 텍스트 범위를 나타냅니다.
+
+<Demo height={60} />
+
+```html name=demo
+<p>저 황소는 <del>숫소</del> <ins>수소</ins>인가 암소인가?</p>
+```
+
+```css name=demo sub
+body {
+  line-height: 1.7
+}
+ins, del {
+  display: inline-block
+}
+ins {
+  background-color: #d4f5b5;
+  text-decoration: none
+}
+del {
+  background-color: #ffb5ad
+}
+```
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)을 포함합니다.
+
+<dl>
+  <Term>cite</Term>
+  <dd>회의록이나 이슈 링크처럼, 해당 변경사항을 설명하는 리소스의 URL입니다.</dd>
+  <Term>datetime</Term>
+  <dd>
+    변경이 발생한 시점을 나타내는 날짜 문자열입니다. 시간도 포함할 수 있습니다. 유효한{' '}
+    <Anchor href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO 8601</Anchor>{' '}
+    형식으로 지정하세요. 인식할 수 없는 잘못된 값을 지정한 경우 날짜를 지정하지 않은 것으로 취급합니다.
+  </dd>
+</dl>
+
+# 접근성 고려사항
+
+대부분의 스크린 리더는 기본 설정에서 `<del>` 요소의 존재를 표현하지 않습니다. 사용자가 반드시 `<del>`이 있다는 것을 알아야 한다면 CSS [`::before`]()과 [`::after`]() 의사 선택자의 [`content`]() 속성을 사용하세요.
+
+```css
+del::before,
+del::after {
+  clip-path: inset(100%);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+del::before {
+  content: " [삭제 시작] ";
+}
+
+del::after {
+  content: " [삭제 끝] ";
+}
+```
+
+그러나 일부 스크린 리더 사용자는 필요한 정보만 들을 수 있도록 상세한 표현을 의도적으로 끄는 경우가 있습니다. 따라서 이렇게 임의로 표현을 강제하는 방법을 남용해서는 안되고, `<del>`의 유무가 콘텐츠의 이해에 직접 영향을 줄 때만 적용하세요.
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/edits.html#the-del-element)
+
+# 브라우저 호환성
+
+<BrowserCompat>html.elements.del</BrowserCompat>
+
+# 같이 보기
+
+- 반대로, 추가한 텍스트를 나타내는 [`<ins>`](./ins)

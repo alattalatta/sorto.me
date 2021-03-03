@@ -1,7 +1,7 @@
 import { motion as m, Variants } from 'framer-motion'
 import React from 'react'
 
-import { TimelineData } from 'data/about'
+import { TimelineData, TimelineID } from 'data/about'
 import { easeStandard, styled } from 'utils/styler'
 
 import AboutTimelineHeader from './AboutTimelineHeader'
@@ -36,11 +36,12 @@ const Wrap = styled('div', {
 })
 
 type Props = {
+  activeID: TimelineID | null
   data: TimelineData
   onClickExpand: () => void
 }
 
-const AboutTimelineEntry: React.FC<Props> = ({ data, onClickExpand }) => {
+const AboutTimelineEntry: React.FC<Props> = ({ activeID, data, onClickExpand }) => {
   return (
     <Root
       layoutId={data.id}
@@ -52,7 +53,14 @@ const AboutTimelineEntry: React.FC<Props> = ({ data, onClickExpand }) => {
       <Wrap>
         <AboutTimelineHeader data={data} />
       </Wrap>
-      <NoScreen as="button" type="button" onClick={onClickExpand} aria-haspopup="dialog">
+      <NoScreen
+        as="button"
+        type="button"
+        onClick={onClickExpand}
+        aria-controls={data.id}
+        aria-expanded={activeID === data.id}
+        aria-haspopup="dialog"
+      >
         자세히
       </NoScreen>
     </Root>

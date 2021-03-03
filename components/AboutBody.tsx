@@ -163,7 +163,7 @@ const AboutBody: React.VFC = () => {
             <AnimateSharedLayout type="crossfade">
               {TIMELINE.map((data) => (
                 <Poser key={data.id}>
-                  <AboutTimelineEntry data={data} onClickExpand={expansionHandler(data.id)} />
+                  <AboutTimelineEntry activeID={expanded} data={data} onClickExpand={expansionHandler(data.id)} />
                 </Poser>
               ))}
               <AnimatePresence>{activeDetail}</AnimatePresence>

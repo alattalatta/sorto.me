@@ -44,7 +44,7 @@ type Props = {
 const SearchField: React.VFC<Props> = ({ initialValue, placeholder, targetUrl, onSubmit }) => {
   return (
     <Container action={targetUrl} role="search" onSubmit={onSubmit}>
-      <TextField defaultValue={initialValue} name="q" placeholder={placeholder} type="search" />
+      <TextField defaultValue={initialValue} name="q" placeholder={placeholder} title={placeholder} type="search" />
       <SubmitButton type="submit">검색</SubmitButton>
     </Container>
   )

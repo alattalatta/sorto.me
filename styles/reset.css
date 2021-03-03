@@ -31,7 +31,7 @@ a {
   color: var(--colors-linkblueDark);
 }
 a:hover {
-  color: var(--colors-accentB);
+  color: var(--colors-linkblueDarkHover);
 }
 
 button {

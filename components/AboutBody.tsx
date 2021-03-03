@@ -83,10 +83,7 @@ const Description = styled('p', {
   marginTop: 20,
 })
 
-const Timeline = styled(m.div, {
-  listStyle: 'none',
-  paddingTop: 32,
-  paddingLeft: 16,
+const TimelineWrap = styled('div', {
   position: 'relative',
   '&::before': {
     content: "''",
@@ -99,7 +96,13 @@ const Timeline = styled(m.div, {
   },
 })
 
-const Poser = styled('div', {
+const Timeline = styled(m.ul, {
+  listStyle: 'none',
+  paddingTop: 32,
+  paddingLeft: 16,
+})
+
+const Poser = styled('li', {
   height: 8,
   position: 'relative',
   '&::before': {
@@ -159,16 +162,18 @@ const AboutBody: React.VFC = () => {
         </ColumnNarrow>
         <ColumnWide>
           <NoScreen as="h1">Timeline</NoScreen>
-          <Timeline variants={TIMELINE_VARIANTS} initial="initial" animate="present">
-            <AnimateSharedLayout type="crossfade">
-              {TIMELINE.map((data) => (
-                <Poser key={data.id}>
-                  <AboutTimelineEntry activeID={expanded} data={data} onClickExpand={expansionHandler(data.id)} />
-                </Poser>
-              ))}
-              <AnimatePresence>{activeDetail}</AnimatePresence>
-            </AnimateSharedLayout>
-          </Timeline>
+          <AnimateSharedLayout type="crossfade">
+            <TimelineWrap>
+              <Timeline variants={TIMELINE_VARIANTS} initial="initial" animate="present" role="list">
+                {TIMELINE.map((data) => (
+                  <Poser key={data.id}>
+                    <AboutTimelineEntry activeID={expanded} data={data} onClickExpand={expansionHandler(data.id)} />
+                  </Poser>
+                ))}
+              </Timeline>
+            </TimelineWrap>
+            <AnimatePresence>{activeDetail}</AnimatePresence>
+          </AnimateSharedLayout>
         </ColumnWide>
       </Columns>
     </Container>

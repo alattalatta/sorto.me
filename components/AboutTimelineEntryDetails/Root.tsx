@@ -40,7 +40,7 @@ const Body = styled(m.div, {
 
 type Props = {
   data: TimelineData
-  onShrinkRequest?: () => void
+  onShrinkRequest: () => void
 }
 
 const Root: React.FC<Props> = ({ children, data, onShrinkRequest }) => {
@@ -49,12 +49,27 @@ const Root: React.FC<Props> = ({ children, data, onShrinkRequest }) => {
 
   useEffect(() => {
     containerRef.current?.focus()
-  })
+
+    // close on escape keypress
+    const escapeHandler = (event: KeyboardEvent): void => {
+      if (event.isComposing) {
+        return
+      }
+      if (event.key === 'Escape' || event.key === 'Esc') {
+        onShrinkRequest()
+      }
+    }
+    document.addEventListener('keyup', escapeHandler)
+
+    return () => {
+      document.removeEventListener('keyup', escapeHandler)
+    }
+  }, [])
 
   // shrink iff user clicked the overlay itself, not its descendants.
   const shrinkOnlyWhenSelfClicked: React.MouseEventHandler<HTMLDivElement> = (event) => {
     if (event.target === overlayRef.current) {
-      onShrinkRequest?.()
+      onShrinkRequest()
     }
   }
 

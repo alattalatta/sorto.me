@@ -18,7 +18,7 @@ const ROOT_VARIANTS: Variants = {
   },
 }
 
-const Root = styled(m.article, {
+const Root = styled(m.div, {
   background: '#fff',
   cursor: 'pointer',
   padding: '16px 24px',

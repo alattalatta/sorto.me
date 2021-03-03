@@ -170,7 +170,7 @@ const Hamburger: React.VFC<Props> = ({ brightness, opened, onClick }) => {
       whileTap="tap"
       onClick={onClick}
       aria-controls="header-menu"
-      aria-haspopup="menu"
+      aria-haspopup="true"
       aria-expanded={opened}
     >
       <Container brightness={brightness} shadow="false" viewBox="0 0 32 24" variants={CONTAINER_VARIANTS}>

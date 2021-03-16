@@ -1,0 +1,189 @@
+---
+title: "TypeScript: 공변과 반변, 그리고 객체 타입에서의 두 가지 함수 표기법"
+description: TypeScript로 알아보는 공변과 반변, 그리고 객체 타이핑에서 주의해야 하는 점
+excerpt: Variance, variance!
+image: /images/2021-03-16/variance.png
+---
+
+객체의 키에 함수를 할당하는 법은 두 가지가 있다.
+
+```ts
+const obj = {
+  // 화살표 표기법
+  foo: () => { console.log(this) }, // Window
+  // 속성 단축 표기법
+  bar() { console.log(this) },      // {foo: function, bar: function}
+}
+```
+
+구분해서 부르자면, `foo`는 `this` 맥락을 생성하지 않으므로 객체의 키에 할당한 함수, `bar`는 `this`를 객체로 묶어주므로 메서드라고 할 수 있을까?
+
+TypeScript에서 객체 타입을 선언할 때도 두 표기법을 모두 사용할 수 있다. 그런데 결과물에는 차이가 없는 것처럼 보여서, 그저 팀의 코드 컨벤션 수준에 그칠 수도 있다.
+
+```ts
+type ObjType = {
+  foo: () => void
+  bar(): void
+}
+
+interface ObjInterface {
+  foo: () => void
+  bar(): void
+}
+```
+
+그러나 `--strict`를 키면 차이가 생기는데, 정확한 차이를 알려면 공변과 반변, **variance**에 대해 먼저 알아야 한다.
+
+# 타입과 서브타입의 관계
+
+`Dog` 타입과 `Animal` 타입이 존재하고, `Dog`이 `Animal`의 서브타입이라고 하자.
+
+```ts
+interface Animal {
+  id: number
+}
+interface Dog extends Animal {
+  name: string
+}
+```
+
+그렇다면 `Animal`의 자리에는 `Dog`도 제공할 수 있어야 한다.
+
+```ts
+declare let animal: Animal
+declare let dog: Dog
+
+animal = dog // OK, dog도 id가 있음
+```
+
+여기까지는 대부분 알고 있는 내용이다. 그러면... `Animal`과 `Dog`의 관계만으로 `Array<Animal>`와 `Array<Dog>`의 관계도 설명할 수 있을까?
+
+## 공변 타입, Covariant
+
+```ts
+declare let animals: Array<Animal>
+declare let dogs: Array<Dog>
+
+animals = dogs // OK!
+```
+
+위의 코드는 오류가 아니다. `Dog`와 `Animal`의 타입 관계가 `Array<Dog>`와 `Array<Animal>`에서도 유지되는 것이다. 그래서 제네릭을 사용하지 않아도 아래 코드는 유효하다.
+
+```ts
+function sortByName(cs: Animal[]): Animal[] {
+  return [...cs].sort((a, b) => a.id - b.id)
+}
+// 반환할 때 Dog[]을 유지하고 싶으면 제네릭을 써야 함
+// function sortByName<T extends Animal>(cs: T[]): T[]
+
+sortByName(animals)
+sortByName(dogs) // 모든 Dog는 id를 가지고 있으므로 문제 없음
+```
+
+`Array<T>`처럼 타입을 받아서 더 복잡한 타입을 반환하는 타입을 **고차 타입**(Higher order type)이라고 한다. 마치 `Array`처럼, 임의의 고차 타입 `X`에 대해, `A` → `B`일 때 `X<A>` → `X<B>`이면 `X`는 <b>공</b>변(<b>co</b>variant) 타입이다.
+
+## 반변, Contravariant
+
+타입과 서브타입의 관계가 고차 타입 사이에서도 유지될 때 공변함을 보았다. 그 반대인 <b>반</b>변(<b>contra</b>variant) 타입은, 이름에서 유추할 수 있듯, 타입과 서브타입의 관계가 고차 타입에서 역전된다. 즉 임의의 고차 타입 `X`에 대해 `A` → `B`일 때 `X<B>` → `X<A>`인 경우 `X`는 반변 타입이다.
+
+공변은 상속과 방향이 같으니까 조금만 생각해도 쉽게 이해할 수 있었겠지만, 이건 방향이 정반대다. 어떻게 가능한 걸까? 잘 와 닿지 않으니, 동물 정보를 화면에 출력하는 함수로 알아보자.
+
+```ts
+type View<T> = (v: T) => void
+
+let viewAnimal: View<Animal> = (a) => console.log('ID', a.id)
+let viewDog: View<Dog> = (d) => console.log('ID', d.id, 'Name', d.name)
+
+viewDog = viewAnimal // OK!
+viewAnimal = viewDog // Property 'name' is missing in type 'Animal' but required in type 'Dog'.
+```
+
+[TypeScript Playground](https://www.typescriptlang.org/play?ssl=1&ssc=1&pln=14&pc=21#code/JYOwLgpgTgZghgYwgAgIImAWzgG2QbwChllgATALmRAFdMAjaQgX0NElkRQBEB7Ac2QQAHpBBkAzmgzY8REiDiYIVCWCih+LQoTABPAA4oAasAgB3ADwAVAHzIAvMgAUANyrWAlI-uve5HRwIMGRXM3N0LFwqUwtLSNl7J2c4bwd7BF4QCV4ggDocAWcAcgBJbmKAGmQ4PPJPQiCQsIs+fhjwyzaklzI0jKyc-ML+EvKq5DI6smrigDklCAmpxWUGwhaImVxHUPC2jf2BXc2E3CA)에서 확인할 수 있듯, `View<Dog>`에는 `View<Animal>`을 대입할 수 있지만 그 역은 성립하지 않는다. `Dog`에 `Animal`을 넣을 수 없다는 것을 생각하면 관계가 역전된 셈이다. 타입 안전성이 깨지지 않는지 하나씩 살펴보자.
+
+- `View<Dog>`에 `View<Animal>`을 대입할 경우,
+  1. `View<Dog>`는 `Dog`를 제공하면 `id`와 `name`을 화면에 출력한다.
+  2. `View<Animal>`은 `Animal`을 제공하면 `id`를 화면에 출력한다.
+  3. `View<Dog>`에 `View<Animal>`을 대입하면, `Dog`를 제공했을 때 `id`를 화면에 출력한다.
+  4. 모든 `Dog`는 `id`를 가지고 있으므로 항상 정상으로 동작한다.
+- `View<Animal>`에 `View<Dog>`를 대입할 경우,
+  1. `View<Animal>`은 `Animal`을 제공하면 `id`를 화면에 출력한다.
+  2. `View<Dog>`는 `Dog`를 제공하면 `id`와 `name`을 화면에 출력한다.
+  3. `View<Animal>`에 `View<Dog>`를 대입하면, `Animal`을 제공했을 때 `id`와 `name`을 화면에 출력한다.
+  4. `Animal`은 `name`을 가지고 있지 않을 수도 있다. 따라서 정상 동작을 장담할 수 없다.
+
+그러니 반변성을 통해 타입 시스템의 견고함을 유지할 수 있는 것이다.
+
+## 반변하는 경우, 공변하는 경우, 그 외의 경우
+
+TypeScript는 공변과 반변을 나타내는 별도의 구문이나 키워드가 존재하지 않는다.
+
+- 함수가 아닌 타입은 공변한다.
+  - `type WithID<T> = T & { id: number }`
+- 제공한 타입을 반환하는 함수 타입 역시 공변한다.
+  - `type Picker<T> = (arr: unknown[]) => T`
+- 제공한 타입을 매개변수로 사용하는 함수 타입은 반변한다.
+  - `type NumberParser<T> = (v: T) => number`
+- 제공한 타입을 매개변수로도 사용하고 반환형으로도 사용하는 함수 타입은 무공변(invariance)해서, 기존 관계를 유지하지 않는다.
+  - `type Finder<T> = (arr: T[]) => T`
+
+넓은 값은 더 넓은 곳에 적용할 수 있으니 공변하고, 넓은 값을 필요로 하는 함수는 더 좁은 경우에만 사용할 수 있으니 반변한다고 이해할 수 있다.
+
+그리고 고차 타입의 매개변수가 두 개 이상이면 각각 규칙을 적용해야 한다. [`Map<K, V>`의 공변성과 반변성을 확인해보자](https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgIImAWzgG2QbwChllgATALmRAFdMAjaQgX0NElkRQBEB7Ac2QQAHpBBkAzmgzY8REiDiYIVCWCih+LQoTIQEOOFBQ4IYZAl5w4VALJwADgB4AFAEpkAXgB80rLgAaP1lvXX1DY2RTc0sySmR7Z3cvXz5+ILTQwktrLwteOOQAeiLkAGlAATHkADVkQAquwAUW5EBXmsABnp09AyMTM3zwKGt4xNcANyp0fxwPH2QR3nIMgVDOiJ6Y3n64MhsEx1GqNOnfOYXg3CzLTe28y-VB4tKywBSm5EAMHtag6pe2oA).
+
+# 그래서 차이가...
+
+`Viewer<T>` 인터페이스를 생각해보자.
+
+```ts
+interface Viewer<T> {
+  view: (v: T) => void
+}
+```
+
+`Viewer<T>`는 두 개의 고차 타입으로 분해할 수 있다.
+
+```ts
+type View<T> = (v: T) => void
+type WithView<T> = { view: T }
+
+type Viewer<T> = WithView<View<T>>
+```
+
+- `View`는 반변한다.
+- `WithView`는 함수가 아닌 타입이므로 공변한다.
+- 반변하는 타입에 공변하는 타입은 반변한다는 것을 도출할 수 있다. (`-1 * 1 = -1`) 따라서 `Viewer`는 `T`에 대해 반변한다.
+
+```ts
+interface Viewer<T> {
+  view: (v: T) => void
+}
+
+declare let animalViewer: Viewer<Animal>
+declare let dogViewer: Viewer<Dog>
+
+dogViewer = animalViewer // OK!
+animalViewer = dogViewer // Error!
+```
+
+타입 시스템 역시 예상한 그대로 동작하는 것을 확인할 수 있다. 그러면 속성 단축 구문을 사용해도 동일해야 한다. 그러나, 여기까지 왔으면 예상했겠지만, 그렇지 않다.
+
+```ts
+interface Viewer<T> {
+  view(v: T): void
+}
+
+declare let animalViewer: Viewer<Animal>
+declare let dogViewer: Viewer<Dog>
+
+dogViewer = animalViewer // OK!
+animalViewer = dogViewer // OK..?
+```
+
+`animalViewer = dogViewer`는 성립하지 않아야 하지만... 타입 시스템은 유효하다고 생각한다. 속성 단축 표기법을 사용할 경우 실제 공변/반변성과는 달리 **양변**(bivariance)한다. `--strict`를 켰음에도 불구하고 타입 시스템의 안정성을 확보할 수 없다!
+
+그러므로 인터페이스건, 객체 타입이건, 정말로 양변하는 타입을 의도한 것이 아니면 항상 화살표 표기법을 사용하는 것이 좋겠다.
+
+# 참고 문서
+
+- [Strict function types (#18654) - microsoft/TypeScript](https://github.com/microsoft/TypeScript/pull/18654)
+- [Covariance, contravariance and a little bit of TypeScript - Michał Skoczylas](https://medium.com/@michalskoczylas/covariance-contravariance-and-a-little-bit-of-typescript-2e61f41f6f68)

@@ -31,26 +31,19 @@ const Anchor = forwardRef<HTMLAnchorElement, Props>(
       )
     }
 
-    const fragment = href.includes('#')
-    if (fragment) {
-      return (
-        <a ref={ref} href={href} {...props}>
-          {children}
-        </a>
-      )
-    }
-
     const internal = /^[./]/.test(href)
-    if (internal && !process.browser) {
-      // can't get absolute url to resolve against
-      return (
-        <a ref={ref} href={href} {...props}>
-          {children}
-        </a>
-      )
-    }
-
     if (internal) {
+      const fragment = href.includes('#')
+      // server: no url to resolve against
+      // fragment: do not use <Link> for better scroll position
+      if (!process.browser || fragment) {
+        return (
+          <a ref={ref} href={href} {...props}>
+            {children}
+          </a>
+        )
+      }
+
       const resolvedURL = new URL(href, location.href)
       return (
         <Link href={resolvedURL}>

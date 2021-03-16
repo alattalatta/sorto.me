@@ -10,7 +10,7 @@
     "script:feed": "yarn script scripts/feed"
   },
   "dependencies": {
-    "@mapbox/rehype-prism": "^0.5.0",
+    "@mapbox/rehype-prism": "^0.6.0",
     "@mdn/browser-compat-data": "^3.0.6",
     "@mdn/dinocons": "^0.3.0",
     "@stitches/react": "^0.1.0-canary.1",

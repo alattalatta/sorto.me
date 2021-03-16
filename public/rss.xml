@@ -5,7 +5,14 @@
   <link>https://sorto.me</link>
   <description>웹 프엔 개발하기</description>
   <language>ko</language>
-  <lastBuildDate>2021-02-23T15:31:44.767Z</lastBuildDate>
+  <lastBuildDate>2021-03-16T13:49:13.336Z</lastBuildDate>
+<item>
+  <title>TypeScript: 공변과 반변, 그리고 객체 타입에서의 두 가지 함수 표기법</title>
+  <link>https://sorto.me/posts/2021-03-16+variance?utm_medium=rss</link>
+  <guid>variance</guid>
+  <description>TypeScript로 알아보는 공변과 반변, 그리고 객체 타이핑에서 주의해야 하는 점</description>
+  <pubDate>2021-03-16</pubDate>
+</item>
 <item>
   <title>정적 웹사이트의 검색</title>
   <link>https://sorto.me/posts/2021-02-24+pse?utm_medium=rss</link>

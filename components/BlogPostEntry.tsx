@@ -82,6 +82,9 @@ const Image = styled('img', {
 const Title = styled('h2', {
   fontSize: 36,
   fontWeight: 700,
+  lineHeight: 1.2,
+  marginTop: -4,
+  wordBreak: 'keep-all',
 })
 
 const Excerpt = styled('p', {

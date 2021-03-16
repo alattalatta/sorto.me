@@ -52,6 +52,8 @@ const Image = styled('img', {
 const Title = styled('h1', {
   color: '$base70',
   fontSize: 36,
+  lineHeight: 1.3,
+  wordBreak: 'keep-all',
 })
 
 const Created = styled('time', {

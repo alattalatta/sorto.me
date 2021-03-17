@@ -18,7 +18,7 @@ const obj = {
 
 구분해서 부르자면, `foo`는 `this` 맥락을 생성하지 않으므로 객체의 키에 할당한 함수, `bar`는 `this`를 객체로 묶어주므로 메서드라고 할 수 있을까?
 
-TypeScript에서 객체 타입을 선언할 때도 두 표기법을 모두 사용할 수 있다. 그런데 결과물에는 차이가 없는 것처럼 보여서, 그저 팀의 코드 컨벤션 수준에 그칠 수도 있다.
+TypeScript에서 객체 타입을 선언할 때도 두 표기법을 모두 사용할 수 있다. 그런데 결과물에는 차이가 없는 것처럼 보여서, 팀의 코드 컨벤션으로 어느 하나를 선택하는 수준에 그칠 수도 있다.
 
 ```ts
 type ObjType = {
@@ -123,14 +123,14 @@ TypeScript는 공변과 반변을 나타내는 별도의 구문이나 키워드�
   - `type Picker<T> = (arr: unknown[]) => T`
 - 제공한 타입을 매개변수로 사용하는 함수 타입은 반변한다.
   - `type NumberParser<T> = (v: T) => number`
-- 제공한 타입을 매개변수로도 사용하고 반환형으로도 사용하는 함수 타입은 무공변(invariance)해서, 기존 관계를 유지하지 않는다.
+- 제공한 타입을 매개변수로도 사용하고 반환형으로도 사용하는 함수 타입은, 하나의 타입에 대해 공변하는 동시에 반변할 수는 없으므로 무공변(invariance) 타입이다. 즉 기존의 타입 관계를 유지하지 않는다.
   - `type Finder<T> = (arr: T[]) => T`
 
 넓은 값은 더 넓은 곳에 적용할 수 있으니 공변하고, 넓은 값을 필요로 하는 함수는 더 좁은 경우에만 사용할 수 있으니 반변한다고 이해할 수 있다.
 
 그리고 고차 타입의 매개변수가 두 개 이상이면 각각 규칙을 적용해야 한다. [`Map<K, V>`의 공변성과 반변성을 확인해보자](https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgIImAWzgG2QbwChllgATALmRAFdMAjaQgX0NElkRQBEB7Ac2QQAHpBBkAzmgzY8REiDiYIVCWCih+LQoTIQEOOFBQ4IYZAl5w4VALJwADgB4AFAEpkAXgB80rLgAaP1lvXX1DY2RTc0sySmR7Z3cvXz5+ILTQwktrLwteOOQAeiLkAGlAATHkADVkQAquwAUW5EBXmsABnp09AyMTM3zwKGt4xNcANyp0fxwPH2QR3nIMgVDOiJ6Y3n64MhsEx1GqNOnfOYXg3CzLTe28y-VB4tKywBSm5EAMHtag6pe2oA).
 
-# 그래서 차이가...
+# 그래서 함수 표기법의 차이가..?
 
 `Viewer<T>` 인터페이스를 생각해보자.
 
@@ -179,9 +179,9 @@ dogViewer = animalViewer // OK!
 animalViewer = dogViewer // OK..?
 ```
 
-`animalViewer = dogViewer`는 성립하지 않아야 하지만... 타입 시스템은 유효하다고 생각한다. 속성 단축 표기법을 사용할 경우 실제 공변/반변성과는 달리 **양변**(bivariance)한다. `--strict`를 켰음에도 불구하고 타입 시스템의 안정성을 확보할 수 없다!
+`animalViewer = dogViewer`는 성립하지 않아야 하지만 타입 시스템은 아무런 문제도 찾지 못한다. 속성 단축 표기법을 사용할 경우 실제 공변/반변성과는 달리 **양변**(bivariant) 타입이 된다. `--strict`를 켰음에도 불구하고 타입 시스템의 안정성을 확보할 수 없는 부분이 생기는 것.
 
-그러므로 인터페이스건, 객체 타입이건, 정말로 양변하는 타입을 의도한 것이 아니면 항상 화살표 표기법을 사용하는 것이 좋겠다.
+그러므로 인터페이스건 객체 타입이건, 정말로 양변하는 타입을 의도한 것이 아니면 항상 화살표 표기법을 사용하는 것이 좋다.
 
 # 참고 문서
 

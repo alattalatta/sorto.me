@@ -63,13 +63,11 @@ const Caption = styled('figcaption', {
 const BrowserCompat: React.VFC<{ children: string }> = ({ children }) => {
   const [loadedData, setLoadedData] = useState<Identifier | undefined | null>(undefined)
 
-  const keys = children.split('.')
-
   useEffect(() => {
     ;(async () => {
-      setLoadedData(await getCompatData(keys))
+      setLoadedData(await getCompatData(children))
     })()
-  }, [keys])
+  }, [children])
 
   if (loadedData === undefined) {
     return null
@@ -82,6 +80,8 @@ const BrowserCompat: React.VFC<{ children: string }> = ({ children }) => {
       </Callout>
     )
   }
+
+  const keys = children.split('.')
 
   return (
     <figure>

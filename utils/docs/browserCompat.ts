@@ -8,15 +8,12 @@ import { Identifier, SimpleSupportStatement, SupportStatement, VersionValue } fr
  * @example
  * const headerData = await getCompatData(['html', 'element', 'header'])
  */
-export async function getCompatData(keys: string[]): Promise<Identifier | null> {
-  let res: Identifier
-  try {
-    res = await import(`@mdn/browser-compat-data/${keys.join('/')}.json`)
-  } catch (e) {
-    return null
-  }
+export async function getCompatData(keys: string): Promise<Identifier | null> {
+  const bcd = await import('@mdn/browser-compat-data')
 
-  for (const key of keys) {
+  let res = (bcd as unknown) as Identifier
+
+  for (const key of keys.split('.')) {
     if (!res) {
       return null
     }

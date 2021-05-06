@@ -3,21 +3,20 @@ import path from 'path'
 
 import rehypePrism from '@mapbox/rehype-prism'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import renderToString from 'next-mdx-remote/render-to-string'
-import { MdxRemote } from 'next-mdx-remote/types'
+import { MDXRemoteSerializeResult } from 'next-mdx-remote'
+import { serialize } from 'next-mdx-remote/serialize'
 import Head from 'next/head'
 import React from 'react'
 
 import Brand from 'components/Brand'
 import DocBody from 'components/DocBody'
 import DocMenu from 'components/DocMenu'
-import { DOCS_MDX_COMPONENTS } from 'components/DocsMDX'
 import { getLayout } from 'components/Layout'
 import { DocMetadata, DOCS_PATH, getDocFiles, parseDoc } from 'utils/docs'
 import { Page } from 'utils/types'
 
 type StaticParam = { slugs: string[] }
-type StaticProps = { body: MdxRemote.Source; meta: DocMetadata; slugs: string[] }
+type StaticProps = { body: MDXRemoteSerializeResult; meta: DocMetadata; slugs: string[] }
 
 const Doc: Page<StaticProps> = ({ body, meta, slugs }) => {
   return (
@@ -51,7 +50,7 @@ export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({
   const { content, meta } = await parseDoc(filePath, source)
 
   const mdxOptions = { rehypePlugins: [rehypePrism] }
-  const body = await renderToString(content, { components: DOCS_MDX_COMPONENTS, mdxOptions, scope: meta })
+  const body = await serialize(content, { mdxOptions, scope: meta })
 
   return {
     props: {

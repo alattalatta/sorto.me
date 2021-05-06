@@ -1,6 +1,4 @@
-import clsx from 'clsx'
-import hydrate from 'next-mdx-remote/hydrate'
-import { MdxRemote } from 'next-mdx-remote/types'
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import React from 'react'
 
 import { useUniqueID } from 'hooks/MDX/useUniqueID'
@@ -13,36 +11,17 @@ import { FloatClear, Floater } from './Floater'
 import { UniqueIDProvider } from './UniqueIDContext'
 import styles from './styles.module.scss'
 
-/** Non-hydrated MDX contents wrapper. */
-const MDXStatic: React.VFC<{ children: string; className?: string }> = ({ children, className }) => (
-  <div className={clsx(styles.wrap, className)} dangerouslySetInnerHTML={{ __html: children }} />
-)
-
-/** Hydrated MDX contents wrapper. */
-const MDXHydrated: React.FC<{ className?: string }> = ({ children, className }) => (
-  <div className={clsx(styles.wrap, className)}>{children}</div>
-)
-
 type Props = {
-  children: MdxRemote.Source
-  className?: string
-  components: MdxRemote.Components
+  children: MDXRemoteSerializeResult
+  components: Record<string, React.ReactNode>
 }
-export const MDXWrap: React.VFC<Props> = ({ children, className, components }) => {
-  const content = hydrate(children, {
-    components,
-    provider: { component: UniqueIDProvider, props: {} },
-  }) as React.ReactElement
-
-  // pretty lame but uh
-  // should properly handle when https://github.com/hashicorp/next-mdx-remote/issues/88 gets resolved
-  // not "content.type", because it'll be wrapped in HeadingContext
-  const childrenType = content.props.children?.type || 'div'
-
-  return childrenType === 'div' ? (
-    <MDXStatic className={className}>{children.renderedOutput}</MDXStatic>
-  ) : (
-    <MDXHydrated className={className}>{content}</MDXHydrated>
+export const MDXWrap: React.VFC<Props> = ({ children, components }) => {
+  return (
+    <UniqueIDProvider>
+      <div className={styles.wrap}>
+        <MDXRemote {...children} components={components} />
+      </div>
+    </UniqueIDProvider>
   )
 }
 
@@ -72,7 +51,7 @@ const Image: React.VFC<JSX.IntrinsicElements['img']> = ({ alt = '', ...props }) 
 
 const Table: React.FC = (props) => <table className={styles.table} {...props} />
 
-export const MDX_COMPONENTS: MdxRemote.Components = Object.freeze({
+export const MDX_COMPONENTS: Record<string, React.ReactNode> = Object.freeze({
   a: Anchor,
   code: Code,
   pre: CodeBlock,

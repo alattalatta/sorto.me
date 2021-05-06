@@ -1,9 +1,3 @@
-// [warn] next-mdx-remote adds a <div /> while hydrating
-// when using direct children selectors, this must be considered
-@function child($selector) {
-  @return '& > div:not([class]) > #{$selector}, & > #{$selector}';
-}
-
 .wrap {
   font-family: var(--fonts-sans);
   line-height: 1.75;
@@ -13,12 +7,12 @@
     display: table;
   }
 
-  #{child("* + *")} {
+  & > * + * {
     margin-top: 20px;
     margin-bottom: 20px;
   }
 
-  #{child("dt")} {
+  & > dt {
     font-weight: 700;
     margin-top: 20px;
   }

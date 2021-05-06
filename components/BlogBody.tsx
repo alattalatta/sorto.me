@@ -1,5 +1,5 @@
 import { motion as m } from 'framer-motion'
-import { MdxRemote } from 'next-mdx-remote/types'
+import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import React from 'react'
 
 import { PostMetadata } from 'utils/posts'
@@ -12,7 +12,7 @@ import TableOfContent from './TableOfContent'
 import { Container } from './basics'
 
 type Props = {
-  children: MdxRemote.Source
+  children: MDXRemoteSerializeResult
   meta: PostMetadata
 }
 const BlogBody: React.VFC<Props> = ({ children, meta }) => {

@@ -5,7 +5,14 @@
   <link>https://sorto.me</link>
   <description>웹 프엔 개발하기</description>
   <language>ko</language>
-  <lastBuildDate>2021-03-16T13:49:13.336Z</lastBuildDate>
+  <lastBuildDate>2021-05-06T13:46:37.801Z</lastBuildDate>
+<item>
+  <title>TypeScript: 문자열 타입과 문자열 타입 구분하기</title>
+  <link>https://sorto.me/posts/2021-05-07+nominal?utm_medium=rss</link>
+  <guid>nominal</guid>
+  <description>TypeScript에서 명목적 타입을 흉내내기</description>
+  <pubDate>2021-05-07</pubDate>
+</item>
 <item>
   <title>TypeScript: 공변과 반변, 그리고 객체 타입에서의 두 가지 함수 표기법</title>
   <link>https://sorto.me/posts/2021-03-16+variance?utm_medium=rss</link>

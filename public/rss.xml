@@ -5,12 +5,12 @@
   <link>https://sorto.me</link>
   <description>웹 프엔 개발하기</description>
   <language>ko</language>
-  <lastBuildDate>2021-05-06T13:46:37.801Z</lastBuildDate>
+  <lastBuildDate>2021-05-06T15:56:14.815Z</lastBuildDate>
 <item>
-  <title>TypeScript: 문자열 타입과 문자열 타입 구분하기</title>
+  <title>TypeScript: 타입 시스템으로 원시 값을 구분하기</title>
   <link>https://sorto.me/posts/2021-05-07+nominal?utm_medium=rss</link>
   <guid>nominal</guid>
-  <description>TypeScript에서 명목적 타입을 흉내내기</description>
+  <description>주소와 전화번호, 원화와 달러—TypeScript에서 명목적 타입을 흉내내기</description>
   <pubDate>2021-05-07</pubDate>
 </item>
 <item>

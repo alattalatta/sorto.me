@@ -1,4 +1,4 @@
-import createStyled, { StitchesCss } from '@stitches/react'
+import { createCss, StitchesCss } from '@stitches/react'
 import { Tween } from 'framer-motion'
 import { Easing } from 'framer-motion/types/types'
 
@@ -8,8 +8,8 @@ export const ACCENT_R = '#FF5252'
 export const ACCENT_Y = '#FCEC6F'
 export const ACCENT_B = '#57D8FF'
 
-const stitchesConfig = createStyled({
-  conditions: {
+const stitchesConfig = createCss({
+  media: {
     wide: '@media (max-width: 1720px)',
     broad: '@media (max-width: 1280px)',
     medium: '@media (max-width: 1024px)',

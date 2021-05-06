@@ -31,6 +31,17 @@ const Anchor = forwardRef<HTMLAnchorElement, Props>(
       )
     }
 
+    // am I pointing to a specific fragment within this page?
+    const fragmentOnly = href.startsWith('#')
+    if (fragmentOnly) {
+      return (
+        <a ref={ref} href={href} {...props}>
+          {children}
+        </a>
+      )
+    }
+
+    // am I pointing within Sorto.me?
     const internal = /^[./]/.test(href)
     if (internal) {
       const fragment = href.includes('#')

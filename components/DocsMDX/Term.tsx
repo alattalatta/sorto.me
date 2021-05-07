@@ -7,16 +7,26 @@ import { childrenToText } from 'utils/element'
 import { DeprecatedInline, ExperimentalInline, NonStandardInline } from '../MDX/Icon'
 
 type TermProps = {
+  href?: string
+  monospaced?: boolean
+  // flags
   deprecated?: boolean
   experimental?: boolean
-  monospaced?: boolean
   nonStandard?: boolean
 }
 
-export const Term: React.FC<TermProps> = ({ children, deprecated, experimental, monospaced = true, nonStandard }) => {
+export const Term: React.FC<TermProps> = ({
+  children,
+  deprecated,
+  href,
+  experimental,
+  monospaced = true,
+  nonStandard,
+}) => {
   const id = useUniqueID(`term-${childrenToText(children)}`)
 
-  const content = monospaced ? <code>{children}</code> : children
+  const name = href ? <Anchor href={href}>{children}</Anchor> : children
+  const content = monospaced ? <code>{name}</code> : name
 
   return (
     <dt id={id}>

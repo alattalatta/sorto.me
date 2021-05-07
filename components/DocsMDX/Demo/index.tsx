@@ -47,7 +47,7 @@ const Demo: React.VFC<Props> = ({ height = 240, primary = 'html' }) => {
   const choosableLangs = Object.entries(primaryBlocks).filter(([, val]) => Boolean(val)) as [Lang, HTMLElement][]
 
   return (
-    <>
+    <div>
       <FloatClear />
       <aside className={styles.floater}>
         <LiveExample height={height} name="demo" />
@@ -73,7 +73,7 @@ const Demo: React.VFC<Props> = ({ height = 240, primary = 'html' }) => {
           </div>
         )}
       </aside>
-    </>
+    </div>
   )
 
   function getPrimaryLanguageBlock(lang: Lang): HTMLElement | null {

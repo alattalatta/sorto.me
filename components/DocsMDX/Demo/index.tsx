@@ -28,8 +28,6 @@ const Demo: React.VFC<Props> = ({ height = 240, primary = 'html' }) => {
         primaryBlocks,
       )
     }
-
-    console.log(primaryBlocks)
   }, [])
 
   // update primary blocks' sub status

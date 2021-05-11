@@ -1,0 +1,73 @@
+---
+title: 'HTML <wbr>: 워드 브레이크 요소'
+excerpt: HTML <wbr> (워드 브레이크, word break) 요소는 수학 표현식과 프로그래밍에서 변수의 이름을 나타냅니다.
+---
+
+**HTML `<u>` 요소**는 브라우저가 현재 요소의 줄바꿈 규칙을 무시하고 줄을 바꿀 수 있는 위치를 나타냅니다.
+
+<Demo height={200} />
+
+```html name=demo
+<div class="background">
+  <div class="resizable">
+    <p>크기를 조절해보세요.</p>
+    <p>Fernstraßenbauprivatfinanzierungsgesetz</p>
+    <p>Fernstraßen<wbr>bau<wbr>privat<wbr>finanzierungs<wbr>gesetz</p>
+    <p>Fernstraßen&shy;bau&shy;privat&shy;finanzierungs&shy;gesetz</p>
+  </div>
+</div>
+```
+
+```css name=demo sub
+.background {
+  height: 100vh;
+  background: gray;
+}
+
+.resizable {
+  width: 18rem;
+  background: #fff;
+  overflow: hidden;
+  resize: horizontal;
+}
+```
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)만 포함합니다.
+
+# 사용 일람
+
+UTF-8 인코딩을 사용한 페이지의 `<wbr>`은 `U+200B ZERO-WIDTH SPACE` 코드 포인트처럼 동작합니다. 특히, 유니코드 BiDi BN 코드 포인트처럼 행동하므로 [BiDi](https://developer.mozilla.org/en-US/docs/Glossary/BiDi) 정렬의 영향을 받지 않습니다. 즉 `<div dir=rtl>123,<wbr>456</div>`의 줄이 바뀌지 않은 경우, `456,123`이 아니라 `123,456`으로 나타납니다.
+
+같은 이유로 인해 `<wbr>` 요소로 인한 줄바꿈으로는 붙임표(하이픈)가 나타나지 않습니다. 줄의 끝에 붙임표가 필요한 경우 `<wbr>` 대신 소프트 하이픈 문자 개체(`&shy;`)를 사용하세요.
+
+# 예제
+
+## 엄청나게 긴 URL
+
+URL의 줄을 바꿀 때, 줄바꿈이 문장 부호 다음에 발생하는 경우 URL이 끝난 것으로 오해할 수 있습니다. 그러므로 `<wbr>`을 `/` 앞에 배치한 것을 확인할 수 있습니다.
+
+```html name=long
+<p>http://this<wbr>.is<wbr>.a<wbr>.really<wbr>.long<wbr>.example<wbr>.com/with<wbr>/deeper<wbr>/level<wbr>/pages<wbr>/deeper<wbr>/level<wbr>/pages<wbr>/deeper<wbr>/level<wbr>/pages<wbr>/deeper<wbr>/level<wbr>/pages<wbr>/deeper<wbr>/level<wbr>/pages</p>
+```
+
+```css name=long hidden
+p {
+  max-width: 600px;
+}
+```
+
+<LiveExample name="long" height={100} />
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/semantics.html#the-wbr-element)
+
+# 브라우저 호환성
+
+<BrowserCompat>html.elements.wbr</BrowserCompat>
+
+# 같이 보기
+
+- 줄바꿈 요소 [`<br>`](./br)

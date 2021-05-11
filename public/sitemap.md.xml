@@ -1,12 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+  <loc>https://sorto.me/docs/Web/CSS/Reference</loc>
+  <lastmod>2021-05-08</lastmod>
+</url>
+<url>
+  <loc>https://sorto.me/docs/Web/CSS/font-weight</loc>
+  <lastmod>2021-05-11</lastmod>
+</url>
+<url>
+  <loc>https://sorto.me/docs/Web/CSS/integer</loc>
+  <lastmod>2021-05-11</lastmod>
+</url>
+<url>
+  <loc>https://sorto.me/docs/Web/CSS/number</loc>
+  <lastmod>2021-05-11</lastmod>
+</url>
+<url>
+  <loc>https://sorto.me/docs/Web/CSS</loc>
+  <lastmod>2021-05-08</lastmod>
+</url>
+<url>
   <loc>https://sorto.me/docs/Web/HTML/Element/Heading_Elements</loc>
   <lastmod>2021-02-27</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/a</loc>
-  <lastmod>2021-02-25</lastmod>
+  <lastmod>2021-05-11</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/abbr</loc>
@@ -26,7 +46,7 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/b</loc>
-  <lastmod>2021-05-07</lastmod>
+  <lastmod>2021-05-09</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/base</loc>
@@ -78,7 +98,7 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/div</loc>
-  <lastmod>2021-05-07</lastmod>
+  <lastmod>2021-05-08</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/dl</loc>
@@ -126,7 +146,7 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/i</loc>
-  <lastmod>2021-05-07</lastmod>
+  <lastmod>2021-05-09</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/ins</loc>
@@ -233,12 +253,24 @@
   <lastmod>2021-02-25</lastmod>
 </url>
 <url>
+  <loc>https://sorto.me/docs/Web/HTML/Element/u</loc>
+  <lastmod>2021-05-09</lastmod>
+</url>
+<url>
   <loc>https://sorto.me/docs/Web/HTML/Element/ul</loc>
   <lastmod>2021-02-27</lastmod>
 </url>
 <url>
+  <loc>https://sorto.me/docs/Web/HTML/Element/var</loc>
+  <lastmod>2021-05-11</lastmod>
+</url>
+<url>
+  <loc>https://sorto.me/docs/Web/HTML/Element/wbr</loc>
+  <lastmod>2021-05-11</lastmod>
+</url>
+<url>
   <loc>https://sorto.me/docs/Web/HTML/Element</loc>
-  <lastmod>2021-05-08</lastmod>
+  <lastmod>2021-05-11</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Global_attributes/autocapitalize</loc>
@@ -258,7 +290,7 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web</loc>
-  <lastmod>2021-02-22</lastmod>
+  <lastmod>2021-05-08</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/posts/2021-02-02+swr</loc>

@@ -9,14 +9,12 @@ export const Container = styled('div', {
   paddingLeft: 40,
   paddingRight: 40,
   width: '100%',
-  when: {
-    narrow: {
-      maxWidth: 680,
-    },
-    tiny: {
-      paddingLeft: 24,
-      paddingRight: 24,
-    },
+  '@narrow': {
+    maxWidth: 680,
+  },
+  '@tiny': {
+    paddingLeft: 24,
+    paddingRight: 24,
   },
 })
 

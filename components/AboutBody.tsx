@@ -36,39 +36,31 @@ const Columns = styled('div', {
   display: 'flex',
   marginRight: -24,
   marginLeft: -24,
-  when: {
-    broad: {
-      display: 'block',
-      marginRight: 0,
-      marginLeft: 0,
-    },
+  '@broad': {
+    display: 'block',
+    marginRight: 0,
+    marginLeft: 0,
   },
 })
 
 const Column = styled('section', {
   paddingRight: 24,
   paddingLeft: 24,
-  when: {
-    broad: {
-      paddingRight: 0,
-      paddingLeft: 0,
-    },
+  '@broad': {
+    paddingRight: 0,
+    paddingLeft: 0,
   },
 })
 const ColumnNarrow = styled(Column, {
   width: '33%',
-  when: {
-    broad: {
-      width: '100%',
-    },
+  '@broad': {
+    width: '100%',
   },
 })
 const ColumnWide = styled(Column, {
   flexGrow: 1,
-  when: {
-    broad: {
-      marginTop: 72,
-    },
+  '@broad': {
+    marginTop: 72,
   },
 })
 

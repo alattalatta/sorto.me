@@ -19,13 +19,11 @@ const CONTAINER_VARIANTS: Variants = {
 const Container = styled(ContainerBase, {
   paddingTop: 48,
   paddingBottom: 72,
-  when: {
-    narrow: {
-      paddingTop: 24,
-    },
-    tiny: {
-      paddingTop: 0,
-    },
+  '@narrow': {
+    paddingTop: 24,
+  },
+  '@tiny': {
+    paddingTop: 0,
   },
 })
 

@@ -12,19 +12,15 @@ const HeroContainer = styled('header', {
   paddingTop: 36,
   paddingBottom: 52,
   textAlign: 'right',
-  when: {
-    tiny: {
-      paddingTop: 0,
-    },
+  '@tiny': {
+    paddingTop: 0,
   },
 })
 
 const Container = styled(ContainerBase, {
   display: 'flex',
-  when: {
-    narrow: {
-      display: 'block',
-    },
+  '@narrow': {
+    display: 'block',
   },
 })
 
@@ -34,12 +30,10 @@ const Block = styled('div', {
   alignItems: 'flex-end',
   justifyContent: 'center',
   flexDirection: 'column',
-  when: {
-    narrow: {
-      width: '100%',
-      '&:not(:first-child)': {
-        marginTop: 24,
-      },
+  '@narrow': {
+    width: '100%',
+    '&:not(:first-child)': {
+      marginTop: 24,
     },
   },
 })

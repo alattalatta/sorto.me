@@ -19,10 +19,8 @@ const ToBlogWrap = styled('div', {
   display: 'flex',
   justifyContent: 'center',
   marginTop: 16,
-  when: {
-    wide: {
-      justifyContent: 'flex-start',
-    },
+  '@wide': {
+    justifyContent: 'flex-start',
   },
 })
 

@@ -11,11 +11,9 @@ const FooterContainer = styled('footer', {
   marginTop: 72,
   paddingTop: 84,
   paddingBottom: 84,
-  when: {
-    tiny: {
-      paddingTop: 60,
-      paddingBottom: 60,
-    },
+  '@tiny': {
+    paddingTop: 60,
+    paddingBottom: 60,
   },
 })
 
@@ -28,10 +26,8 @@ const Container = styled(BaseContainer, {
   '& a:hover': {
     color: '$linkblueLightHover',
   },
-  when: {
-    narrow: {
-      display: 'block',
-    },
+  '@narrow': {
+    display: 'block',
   },
 })
 
@@ -39,12 +35,10 @@ const FooterColumn = styled('div', {
   width: '50%',
   color: '#A4ACB3',
   fontSize: '1em',
-  when: {
-    narrow: {
-      width: '100%',
-      '&:not(:first-child)': {
-        marginTop: 36,
-      },
+  '@narrow': {
+    width: '100%',
+    '&:not(:first-child)': {
+      marginTop: 36,
     },
   },
 })

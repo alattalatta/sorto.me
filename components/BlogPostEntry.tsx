@@ -24,11 +24,9 @@ const Root = styled(m.article, {
   paddingTop: 24,
   paddingBottom: 24,
   position: 'relative',
-  when: {
-    tiny: {
-      '&::before': {
-        transform: 'scaleY(0.6)',
-      },
+  '@tiny': {
+    '&::before': {
+      transform: 'scaleY(0.6)',
     },
   },
 })
@@ -42,10 +40,8 @@ const Wrap = styled(Anchor, {
   '&:hover': {
     color: 'inherit',
   },
-  when: {
-    medium: {
-      display: 'block',
-    },
+  '@medium': {
+    display: 'block',
   },
 })
 
@@ -53,12 +49,10 @@ const Block = styled('div', {
   '&:not(:first-child)': {
     marginLeft: 64,
   },
-  when: {
-    medium: {
-      '&:not(:first-child)': {
-        marginTop: 16,
-        marginLeft: 0,
-      },
+  '@medium': {
+    '&:not(:first-child)': {
+      marginTop: 16,
+      marginLeft: 0,
     },
   },
 })
@@ -72,10 +66,8 @@ const TextBlock = styled(Block, {
 const Image = styled('img', {
   width: 420,
   display: 'block',
-  when: {
-    narrow: {
-      width: '100%',
-    },
+  '@narrow': {
+    width: '100%',
   },
 })
 

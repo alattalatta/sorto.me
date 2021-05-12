@@ -1,0 +1,162 @@
+---
+title: "TypeScript: 타입 시스템으로 원시 값을 구분하기"
+description: 주소와 전화번호, 원화와 달러—TypeScript에서 명목적 타입을 흉내내기
+excerpt: 주소와 전화번호, 원화와 달러
+image: /images/2021-05-12/nominal.png
+---
+
+타입 시스템은 프로그램을 돌려보지 않고도 개발 과정에서 프로그램의 유효성을 판단할 수 있는 방법이다. 숫자를 바라는 곳에 함수를 넣으면 안된다거나. 그러면 전화번호에 주소를 넣어버린 상황 역시 프로그램 실행 전에 알 수 있을까?
+
+# 명목적과 구조적
+
+명목적(Nominal)과 구조적(Structural) 시스템은 타입 시스템을 구분하는 큰 방법 중 하나이다.
+
+```ts
+type Address = string
+type Tel = string
+
+const address = '010-1111-2222' as Tel
+```
+
+TypeScript에서 위의 코드는 유효하다. `Address`와 `Tel`은 이름이 다르지만, 문자열이라는 "구조"(형태)가 동일하기 때문이다. 구조에 대해 더 쉽게 보려면 인터페이스의 예시를 보면 된다.
+
+```ts
+interface Foo { a: number }
+interface Bar { a: number, b: string }
+
+const foo: Foo = { a: 3, b: 'b' } as Bar
+```
+
+이 코드 역시 `Foo`에 `Bar`를 할당하고 있지만 유효하다. 심지어 `Bar`에는 추가 문자열 속성 `b`가 존재하는데도. 이는 `Foo`가 되기 위해 필요한 `a: number`를 `Bar`도 만족하기 때문이다. `Foo`는 `b`에 대해 알지 못하므로, 이 추가 속성에 대해서는 아무것도 묻지 않는다.
+
+이렇게, 서로 상속 따위의 관계가 없는데도 구조만 같으면 동일한 타입으로 취급하는 시스템을 **구조적 타입 시스템**(Structual type system)이라고 말한다. 반면, 타입의 **이름**만 달라도 별개의 타입으로 취급하면 **명목적 타입 시스템**(Nominal type system)이라고 부른다. ReScript와 같은 언어에서는 (Polymorphic Variant 제외) 명목적 타입을 채택하고 있으므로 같은 문자열 타입이라도 서로 호환되지 않는다.
+
+하나의 언어에서 두 가지 시스템을 모두 사용할 수도 있다. Flow의 경우 클래스에 한정해서 명목적 타입을 사용한다.
+
+```ts
+/* @flow */
+class Foo { a: number }
+class Bar { a: number }
+
+// TS에서는 오류 아님
+const foo: Foo = new Bar() // Cannot assign `new B()` to `a` because `B` is incompatible with `A`.
+```
+
+두 가지 시스템 중 어느 하나가 우월하거나 열등한 것도 아니다.
+
+그래도 내가 원한다면 TypeScript 환경에서 주소 문자열 자리에 전화번호 문자열을 넣는 것을 미연에 방지할 방법은 없을까?
+
+# 정석: 객체와 구분용 속성
+
+"정석"적인 방법으로는 [Discriminated Union](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#discriminated-unions)(구별된 구조체?)을 들 수 있겠다. "구별된 구조체"는 두 개의 객체 타입을 묶은 타입(`A | B`)인데, 두 타입이 공통으로 가진 한 속성에 서로 다른 고유한 값을 지정하는 것이다.
+
+```ts
+type Circle = {
+  size: number
+  kind: 'circle'
+}
+type Square = {
+  size: number
+  kind: 'square'
+}
+type Shape = Circle | Square
+```
+
+위의 코드에서는 `kind`가 구분용 속성으로, 임의의 `Shape`가 `Circle`인지 `Square`인지 알아내는 것은 `shape.kind === 'circle'`만으로 구분 가능하다. `'circle'`인 경우는 `Circle`밖에 없고, `Circle`이 아니면 `Square`니까, 저 "크기"가 원의 크기인지 사각형의 크기인지 역시 빌드 타임에 구분할 수 있는 것이다. 종류가 많아지면 `switch` 문으로도 타입을 좁힐 수 있다.
+
+그렇다면 우리의 문제도 동일하게 해결할 수 있겠다. 인터페이스보다 짧은 길이로 정의할 수 있는 튜플을 활용해보자.
+
+```ts
+type Unique<Kind extends string, Value> = readonly [Kind, Value]
+
+type Address = Unique<'Address', string>
+type Tel = Unique<'Tel', string>
+
+const asAddress = (value: string): Address => ['Address', value]
+const asPhone = (value: string): Tel => ['Tel', value]
+
+const nationalAssemblyAddr = asAddress('서울특별시 영등포구 여의도동 의사당대로 1')
+const nationalAssemblyTel = asTel('02-788-2114')
+```
+
+이제 주소와 전화번호를 헷갈리고 싶어도 헷갈릴 수 없게 됐다?
+
+그러나... 이제 원시 문자열을 튜플/객체로 만드는 런타임 코드(`asAddress()`, `asPhone()`)가 필요해졌고, 데이터 역시 원시 문자열이 아닌 완전히 다른 존재가 됐다. 타입 시스템 안에서만 해결할 수도 있을까?
+
+# 낙인 찍기
+
+자주 쓰이는 기법 하나는 타입 브랜딩(branding, 낙인)으로, 원시 값에 객체를 "낙인" 찍어서 일반적으로 생성할 수 없는 타입을 선언한다. 우연히 생성할 수 없으므로 구조적으로 동일해지는, 즉 두 타입이 동일하게 간주되는 일이 없고, 따라서 고유한 타입을 흉내낼 수 있는 방식이다.
+
+```ts
+type Brand<Key extends string, Value> = Value & { __brand: Key } // 키 이름은 아무거나 가능
+
+type Address = Brand<'Address', string>
+type Tel = Brand<'Tel', string>
+
+const nationalAssemblyAddr = '서울특별시 영등포구 여의도동 의사당대로 1' as Address
+const nationalAssemblyTel = '02-788-2114' as Tel
+
+const incorrectAssignment1: Tel = nationalAssemblyAddress
+//                              ^^^^^^^^^^^^^^^^^^^^^^^ Error
+const incorrectAssignment2: Tel = nationalAssemblyAddress as Tel
+//                                                 ^^^^^^^ Error
+```
+
+간단한 예제이므로 타입 캐스팅을 하고 있지만, 브랜딩은 검증 수단과 쉽게 통합할 수 있다는 것이 강점이다.
+
+```ts
+function parseTel(raw: string): Tel | null {
+  return TEL_REGEX.test(raw) ? raw as Tel : null
+}
+```
+
+또한 브랜딩만으로는 런타임 코드의 변화가 없으므로, 서버 응답이 확실한 경우 그 타입을 처음부터 브랜딩한 타입으로 지정할 수 있어 편리하다.
+
+```ts
+type ProductID = Brand<'ProductID', number>
+type KRW = Brand<'KRW', number>
+
+type Product = {
+  id: ProductID
+  name: string
+  price: KRW
+}
+
+declare const getProduct = (id: ProductID) => Product
+declare const deleteProduct = (id: ProductID) => void
+
+declare const SOME_PRODUCT_ID: ProductID
+
+const product = getProduct(SOME_PRODUCT_ID)
+deleteProduct(product.price) // Error!
+```
+
+## 한계
+
+하지만 브랜딩은 명목적 타이핑의 흉내만 내는 것이라서, 원본 원시 타입과 브랜딩한 타입의 비교에는 취약하다.
+
+```ts
+declare const addr: Address
+
+const str: string = address // OK?
+```
+
+덕분에 원본 원시 값에 대한 연산이나 함수는 그대로 사용할 수는 있으나, 그 결과는 무조건 원시 값으로 나타난다. 따라서 래핑 함수를 추가로 생성해줘야 개발에 불편함이 없다. 작성하는 것 자체가 불편함일 수는 있다.
+
+```ts
+function addKRW(a: KRW, b: KRW): KRW {
+  return a + b as KRW
+}
+
+function maxKRW(...values): KRW {
+  return Math.max(...values) as KRW
+}
+```
+
+그런데 리팩터링(2판)에서는 이렇게 작은 함수로 캡슐화하는 것을 추구하던데, 오히려 좋은 습관을 강제하는 걸까? 사용할 연산을 모두 새롭게 정의해줘야 한다는 것이 너무너무 귀찮아서 피해왔던 건 아닐지 반성하기...
+
+---
+
+기존 JavaScript 환경의 엄청나게 동적인 성질때문에라도 TypeScript의 구조적 타입 시스템은 좋은 선택이라고 생각한다. 하지만 가끔 엄격한 타입 안전 레이어가 있으면 좋겠다 싶을 때도 있는데, 그럴 땐 중요한 값에 한정해서 낙인을 찍어보면 어떨까?
+
+[네이티브 명목 타이핑 지원 요청 이슈](https://github.com/Microsoft/Typescript/issues/202)는 무려 2014년! 부터 열려있는 상태다. 추가가 불투명한 현 상황에서 제일 뛰어난 명목 타이핑 시뮬레이션이라고 평가받는 라이브러리는 [`newtype-ts`](https://github.com/gcanti/newtype-ts)다. 런타임 코드가 존재하긴 하지만 벤치마크 결과는 쓰지 않은 것과 거의 차이가 없고, `fp-ts` 생태계의 일원이라서 `Option`을 사용한 불확실한 값 모델링, 명목적 타입을 포함한 객체의 인코딩/디코딩처럼 복잡한 작업도 끊김 없이 지원한다. 단점이라면 `fp-ts` 생태계가 다 그렇듯 개념도 낯설지만 문서화도 잘 되어있지 않다는 점...

@@ -45,6 +45,9 @@ const SHADOW_VARIANTS: Variants = {
 }
 
 const HAMBURGER_LINE_VARIANTS_A: Variants = {
+  init: {
+    d: 'M0 12 L16 12 L32 12',
+  },
   closed: {
     d: [null, 'M0 12 L16 12 L32 12', 'M0 1.5 L16 1.5 L32 1.5'],
     transition: {
@@ -67,6 +70,9 @@ const HAMBURGER_LINE_VARIANTS_B: Variants = {
   },
 }
 const HAMBURGER_LINE_VARIANTS_C: Variants = {
+  init: {
+    d: 'M0 12 L16 12 L32 12',
+  },
   closed: {
     d: [null, 'M0 12 L16 12 L32 12', 'M0 22.5 L16 22.5 L32 22.5'],
     transition: {
@@ -165,7 +171,7 @@ const Hamburger: React.VFC<Props> = ({ brightness, opened, onClick }) => {
       title="메뉴 열기"
       variants={ROOT_VARIANTS}
       animate={[brightness, opened ? 'opened' : 'closed']}
-      initial={[brightness, 'closed']}
+      initial={[brightness, 'init']}
       whileHover="hover"
       whileTap="tap"
       onClick={onClick}
@@ -173,15 +179,15 @@ const Hamburger: React.VFC<Props> = ({ brightness, opened, onClick }) => {
       aria-expanded={opened}
     >
       <Container brightness={brightness} shadow="false" viewBox="0 0 32 24" variants={CONTAINER_VARIANTS}>
-        <Line as={m.path} d="M0 1.5 h16 h16" variants={HAMBURGER_LINE_VARIANTS_A} />
+        <Line as={m.path} d="M0 1.5 L16 1.5 L32 1.5" variants={HAMBURGER_LINE_VARIANTS_A} />
         <Line x1="0" y1="12" x2="32" y2="12" variants={HAMBURGER_LINE_VARIANTS_B} />
-        <Line as={m.path} d="M0 22.5 h16 h16" variants={HAMBURGER_LINE_VARIANTS_C} />
+        <Line as={m.path} d="M0 22.5 L16 22.5 L32 22.5" variants={HAMBURGER_LINE_VARIANTS_C} />
       </Container>
       <Shadow variants={SHADOW_VARIANTS}>
         <Container viewBox="0 0 32 24">
-          <Line as={m.path} d="M0 1.5 h16 h16" variants={HAMBURGER_LINE_VARIANTS_A} />
+          <Line as={m.path} d="M0 1.5 L16 1.5 L32 1.5" variants={HAMBURGER_LINE_VARIANTS_A} />
           <Line x1="0" y1="12" x2="32" y2="12" variants={HAMBURGER_LINE_VARIANTS_B} />
-          <Line as={m.path} d="M0 22.5 h16 h16" variants={HAMBURGER_LINE_VARIANTS_C} />
+          <Line as={m.path} d="M0 22.5 L16 22.5 L32 22.5" variants={HAMBURGER_LINE_VARIANTS_C} />
         </Container>
       </Shadow>
     </Root>

@@ -16,7 +16,7 @@
     "@stitches/react": "^0.1.9",
     "clsx": "^1.1.1",
     "entities": "^2.2.0",
-    "framer-motion": "3.3",
+    "framer-motion": "3.9",
     "gray-matter": "^4.0.2",
     "next": "^10.2.0",
     "next-images": "^1.7.0",

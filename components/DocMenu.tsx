@@ -20,9 +20,7 @@ const DocMenu: React.VFC = () => {
       <SearchField placeholder="Docs 검색..." targetUrl="/docs/search" />
       <BaseMenu css={{ marginTop: 48 }} aria-label="문서 링크">
         <BaseMenuItem href="/docs/Web/HTML">HTML</BaseMenuItem>
-        <BaseMenuItem disabled={true} href="/docs/Web/CSS" title="공사 중">
-          CSS
-        </BaseMenuItem>
+        <BaseMenuItem href="/docs/Web/CSS">CSS</BaseMenuItem>
         <BaseMenuItem disabled={true} href="/docs/Web/JavaScript" title="공사 중">
           JavaScript
         </BaseMenuItem>

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Anchor } from 'components/basics'
 import { useUniqueID } from 'hooks/MDX/useUniqueID'
-import { childrenToText } from 'utils/element'
+import { childrenToText, sanitizeID } from 'utils/element'
 
 import { DeprecatedInline, ExperimentalInline, NonStandardInline } from '../MDX/Icon'
 
@@ -44,7 +44,12 @@ type TermLinkProps = {
   target?: string
 }
 
-export const TermLink: React.FC<TermLinkProps> = ({ children, doc, monospace = true, target = children }) => {
+export const TermLink: React.FC<TermLinkProps> = ({
+  children,
+  doc,
+  monospace = true,
+  target = sanitizeID(childrenToText(children)),
+}) => {
   const fragment = `#term-${target}`
   const href = doc ? `${doc}${fragment}` : fragment
 

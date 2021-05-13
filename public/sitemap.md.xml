@@ -2,11 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
   <loc>https://sorto.me/docs/Web/CSS/Reference</loc>
-  <lastmod>2021-05-08</lastmod>
+  <lastmod>2021-05-13</lastmod>
+</url>
+<url>
+  <loc>https://sorto.me/docs/Web/CSS/font-family</loc>
+  <lastmod>2021-05-13</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/CSS/font-weight</loc>
-  <lastmod>2021-05-11</lastmod>
+  <lastmod>2021-05-13</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/CSS/integer</loc>
@@ -18,7 +22,7 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/CSS</loc>
-  <lastmod>2021-05-08</lastmod>
+  <lastmod>2021-05-13</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/Heading_Elements</loc>
@@ -313,7 +317,7 @@
   <lastmod>2021-05-06</lastmod>
 </url>
 <url>
-  <loc>https://sorto.me/posts/2021-05-07+nominal</loc>
-  <lastmod>2021-05-06</lastmod>
+  <loc>https://sorto.me/posts/2021-05-12+nominal</loc>
+  <lastmod>2021-05-13</lastmod>
 </url>
 </urlset>

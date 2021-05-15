@@ -1,0 +1,228 @@
+---
+title: 'HTML <audio>: 오디오 삽입 요소'
+excerpt: HTML <audio> (오디오) 요소는 오디오 콘텐츠를 문서에 삽입할 때 사용합니다.
+---
+
+**HTML `<audio>` 요소**는 오디오 콘텐츠를 문서에 삽입할 때 사용합니다. `src` 특성과 [`<source>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source) 요소를 이용해서 하나 이상의 오디오 소스를 제공할 수 있고, 여러 개를 제공한 경우 브라우저가 제일 적합한 소스를 선택합니다. [`MediaStream`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream)을 사용해 미디어 스트림의 목적지로 지정할 수도 있습니다.
+
+<Demo height={180} />
+
+```html name=demo
+<figure>
+  <figcaption>숲의 소리를 들어보세요.</figcaption>
+  <audio controls disableRemotePlayback src="/doc-assets/forest.wav">
+    브라우저가 오디오를 지원하지 않습니다.
+  </audio>
+</figure>
+<p>
+  <cite>
+    <a href="https://freesound.org/people/reinsamba/sounds/18765/" target="_parent">
+      evening in the forest.wav
+    </a>
+  </cite> by reinsamba
+</p>
+```
+
+`<audio></audio>` 안의 내용은 미지원 브라우저에서 대체 콘텐츠로 보여집니다.
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)을 포함합니다.
+
+<dl>
+<Term>autoplay</Term>
+<dd>
+
+지정하면 오디오 다운로드가 끝나지 않았더라도 최대한 빠른 시점에 자동으로 재생하는 불리언 특성입니다.
+
+<Callout childAs="div" color="warn" label="참고">
+
+오디오(또는 오디오를 포함한 비디오)를 자동으로 재생하는 웹 사이트는 사용자 경험에 좋지 않으므로 되도록 피해야 합니다. 반드시 자동으로 재생해야 하는 경우 옵트인(opt-in) 기능, 즉 사용자가 직접 자동재생 기능을 활성화해야 하도록 개발하세요. 다만 미디어 소스를 처음부터 제공하지 않고, 나중에 사용자가 직접 지정하는 경우 `autoplay`를 유용하게 사용할 수 있습니다.
+
+</Callout>
+
+</dd>
+
+<Term>controls</Term>
+<dd>지정하면 볼륨, 탐색, 일시정지/재생 등 브라우저가 사용자 컨트롤을 제공하는 불리언 특성입니다.</dd>
+
+<Term>crossorigin</Term>
+<dd>
+
+CORS를 사용해 지정한 오디오 파일을 가져올지 나타내는 열거형 특성입니다. [CORS 활성화 리소스](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image)는 [`<canvas>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) 요소에 사용해도 캔버스가 오염(taint)되지 않습니다. 가능한 값은 다음과 같습니다.
+
+<dl>
+
+<Term>anonymous</Term>
+<dd>
+
+자격 증명 없이 교차 출처 요청을 전송합니다. 즉, `Origin` HTTP 헤더를 쿠키, 인증서, HTTP Basic 인증 없이 전송합니다. 서버에서 `Access-Control-Allow-Origin` HTTP 헤더를 지정하지 않아서 요청 출처 사이트에 자격 증명을 보내지 않는다면 캔버스 이미지가 오염되고, 사용처가 제한됩니다.
+
+</dd>
+
+<Term>user-credentials</Term>
+<dd>
+
+자격 증명과 함께 교차 출처 요청을 전송합니다. 즉, `Origin` HTTP 헤더를 쿠키, 인증서, 또는 HTTP Basic 인증과 함께 전송합니다. 서버에서 `Access-Control-Allow-Origin` HTTP 헤더를 지정하지 않아서 요청 출처 사이트에 자격 증명을 보내지 않는다면 캔버스 이미지가 오염되고, 사용처가 제한됩니다.
+
+</dd>
+</dl>
+
+특성이 존재하지 않으면 리소스를 CORS 요청 없이(`Origin` HTTP 헤더 없이) 가져오므로, `<canvas>`가 오염됩니다. 유효하지 않은 값의 경우 `anonymous` 깂을 사용한 것으로 간주합니다.
+
+</dd>
+
+<Term>disableremoteplayback</Term>
+<dd>
+
+지정하면 유선으로 연결한 장치(HDMI, DVI 등)와 무선 연결 기술(Miracast, Chromecast, DLNA, AirPlay 등)을 통한 오디오 원격 재생을 할 수 없는 불리언 특성입니다. [제안된 명세](https://www.w3.org/TR/remote-playback/#the-disableremoteplayback-attribute)를 방문해 자세한 정보를 알아보세요.
+
+</dd>
+
+<Term>loop</Term>
+<dd>지정하면 오디오를 끝까지 재생했을 때 다시 처음으로 돌아가서 재생을 이어갑니다.</dd>
+
+<Term>muted</Term>
+<dd>지정하면 오디오의 초기 상태를 음소거로 설정하는 불리언 특성입니다.</dd>
+
+<Term>preload</Term>
+<dd>
+
+최적의 사용자 경험을 제공하기 위해 미리 불러올 오디오 데이터에 대한 힌트를 브라우저에 제공하는 열거형 특성입니다. 가능한 값은 다음과 같습니다.
+
+- `none`: 오디오를 미리 불러오지 않습니다.
+- `metadata`: 길이 등 오디오 메타데이터만 미리 불러오도록 지정합니다.
+- `auto`: 사용자가 오디오를 재생할 것으로 예상하지 않더라도 전체 오디오 파일을 미리 불러옵니다.
+- 빈 문자열: `auto`와 같습니다.
+
+기본값은 브라우저마다 다르나, 명세는 `metadata`를 추천합니다.
+
+<Callout childAs="div" color="warn" label="참고">
+
+- `autoplay` 특성이 `preload`보다 우선합니다. `autoplay`를 지정한 경우 당연히 브라우저는 전체 오디오를 다운로드해야 합니다.
+- `preload` 특성은 어디까지나 힌트 특성으로, 브라우저가 반드시 따라야 하는 것은 아닙니다.
+
+</Callout>
+
+</dd>
+
+<Term>src</Term>
+<dd>
+
+삽입할 오디오의 URL입니다. [HTTP 접근 제어](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)의 대상입니다. [`<source>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source) 요소를 사용하면 지정하지 않아도 됩니다.
+
+</dd>
+</dl>
+
+# 사용 일람
+
+브라우저가 지원하는 파일 유형과 오디오 코덱은 서로 다릅니다. [`<source>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source) 요소를 추가해서 다수의 소스를 제공하면 브라우저가 이해할 수 있는 첫 번째 소스를 자동으로 사용하므로 지원 범위를 넓힐 수 있습니다.
+
+```html
+<audio controls>
+  <source src="audio.mp3" type="audio/mpeg" />
+  <source src="audio.ogg" type="audio/ogg" />
+  <p>
+    브라우저가 HTML 오디오를 지원하지 않습니다. <a href="audio.mp3">오디오 파일 링크</a>
+    를 대신 사용하세요.
+  </p>
+</audio>
+```
+
+- [`controls`](#term-controls) 특성을 지정하지 않으면 오디오 플레이어가 브라우저 기본 컨트롤을 제공하지 않습니다. 대신 JavaScript와 [`HTMLMediaElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement) API를 사용해서 컨트롤을 직접 구현할 수 있습니다.
+- 오디오 콘텐츠를 세밀하게 통제할 수 있도록, `HTMLMediaElement`에서는 [여러가지 다양한 이벤트](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement#events)가 발생합니다. 또한 이벤트를 사용하면 오류 발생 여부를 탐지할 수 있고, 오디오를 재생 또는 조작하기에 충분하게 불러온 시점도 알아낼 수 있습니다.
+- [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)를 사용하면 이미 존재하는 오디오 파일을 사용하지 않고도 JavaScript 코드로 오디오 스트림을 생성 및 조작할 수 있습니다.
+- `<video>` 요소와 달리, `<audio>` 요소는 자막을 가질 수 없습니다. 그러나 `<video>` 요소에 오디오 소스도 지정할 수 있으므로, 자막이 필요한 경우 `<video>`를 사용하세요.
+
+## CSS 스타일링
+
+[`controls`](#term-controls) 특성을 지정하지 않은 `<audio>`는 내재된 스타일을 가지고 있지 않습니다.
+
+브라우저 내장 컨트롤의 경우 [`display`](https://developer.mozilla.org/en-US/docs/Web/CSS/display)가 기본적으로 `inline`이므로, 텍스트 내에 컨트롤을 배치하고 싶은 것이 아니면 위치와 레이아웃 조정을 편하게 할 수 있도록 `block`으로 설정하는 편이 좋습니다.
+
+내장 컨트롤에는 [`border`](https://developer.mozilla.org/en-US/docs/Web/CSS/border), [`border-radius`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius), [`padding`](https://developer.mozilla.org/en-US/docs/Web/CSS/padding), [`margin`](https://developer.mozilla.org/en-US/docs/Web/CSS/margin)처럼 블록 단위로 영향을 주는 스타일을 적용할 수 있습니다. 그러나 버튼 크기나 아이콘, 글꼴처럼 내부의 개별 구성요소는 변경할 수 없으며, 브라우저마다 컨트롤의 생김새가 다릅니다.
+
+여러 브라우저에 걸쳐 일관적인 생김새를 유지하려면 컨트롤을 직접 구현해야 합니다. 원하는 디자인으로 마크업과 스타일을 작성하고, [`HTMLMediaElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement) API를 사용해서 기능을 연결하세요.
+
+## 트랙 추가/제거 감지하기
+
+`<audio>` 요소에 트랙이 추가되거나 제거되는 것은 [`addtrack`](https://developer.mozilla.org/en-US/docs/Web/API/VideoTrackList/addtrack_event)과 [`removetrack`](https://developer.mozilla.org/en-US/docs/Web/API/VideoTrackList/removetrack_event) 이벤트로 감지할 수 있습니다. 그런데 이 두 종류의 이벤트는 `<audio>` 요소에서 직접 발생하는 것이 아니라 `<audio>`의 [`HTMLMediaElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement)의 [`audioTracks`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/audioTracks) 트랙 리스트 객체에서 발생합니다.
+
+예를 들어, `<audio>` 요소에 트랙이 추가되거나 제거될 때를 감지하는 코드는 다음과 같이 작성할 수 있습니다.
+
+```js
+const elem = document.querySelector('audio')
+
+elem.audioTrackList.addEventListener('addtrack', (event) => {
+  console.log('추가함:', event.track)
+})
+
+elem.audioTrackList.addEventListener('removetrack', (event) => {
+  console.log('제거함:', event.track)
+})
+```
+
+위의 코드는 트랙의 추가와 제거 이벤트를 수신하다가, 감지하면 콘솔에 기록합니다.
+
+# 예제
+
+## `<source>`를 사용한 `<audio>`
+
+이 예제는 오디오 소스를 `<audio>`에 직접 지정하지 않고, 내부의 `<source>` 요소 `src` 특성에 지정합니다. 항상 파일의 MIME 유형을 지정해서 브라우저가 재생 가능 여부를 알아내느라 시간을 낭비하지 않도록 하는 것이 좋습니다.
+
+```html
+<audio controls>
+  <source src="foo.wav" type="audio/wav" />
+</audio>
+```
+
+## 다수의 `<source>`를 사용한 `<audio>`
+
+이 예제는 다수의 `<source>`를 사용해 소스를 제공합니다. 브라우저가 첫 소스 파일(Opus)을 재생할 수 있으면 그걸 불러오고, 그렇지 않으면 두 번째(Vorbis), 마지막으로 MP3를 불러옵니다.
+
+```html
+<audio controls>
+  <source src="foo.opus" type="audio/ogg; codecs=opus" />
+  <source src="foo.ogg" type="audio/ogg; codecs=vorbis" />
+  <source src="foo.mp3" type="audio/mpeg" />
+</audio>
+```
+
+# 접근성 고려사항
+
+발화를 포함하는 오디오는 콘텐츠를 정확히 설명하는 자막과 녹취록 모두 포함해야 합니다. [WebVTT](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API)로 지정하는 자막은 청각이 저하된 사용자가 오디오 콘텐츠를 재생하면서 실시간으로 알 수 있고, 녹취록은 콘텐츠를 이해하는데 시간이 필요한 사용자가 익숙한 형식과 원하는 속도로 천천히 읽어볼 수 있습니다.
+
+자동 자막 생성 서비스를 사용한 경우 내용을 읽어보고 틀림이 없는지 확인해야 합니다.
+
+`<audio>` 요소는 WebVTT를 지원하지 않습니다. 지원 기능을 포함하는 라이브러리나 프레임워크를 찾거나, 자막을 표시하기 위한 코드를 직접 작성할 필요가 있습니다. 또는 WebVTT를 지원하는 `<video>` 요소로 오디오를 재생하는 방법도 있습니다.
+
+발화 내용 외에도, 자막과 녹취록은 중요한 정보를 포함하는 음악과 소리 효과, 감정과 분위기 등을 포함해야 합니다. 아래의 WebVTT 예제를 보면 대괄호를 사용해서 독자가 분위기를 알 수 있도록 돕고 있습니다. 이렇게 청각적 콘텐츠에서 음악, 비언어적 소리와 중요한 소리 효과를 통해 조성하는 분위기를 텍스트로도 만들 수 있습니다.
+
+```
+1
+00:00:00 --> 00:00:45
+[밝은 테크노 음악]
+
+2
+00:00:46 --> 00:00:51
+타임키퍼의 팟캐스트에 오신 것을 환영합니다! 이번 에피소드에서는 어떤 스위스 시계가 손목시계인지 알아보겠습니다!
+
+16
+00:00:52 --> 00:01:02
+[웃음] 아, 죄송해요! 그러니까, 어떤 손목시계가 스위스 손목시계일까요?
+```
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/embedded-content.html#the-audio-element)
+
+# 브라우저 호환성
+
+<BrowserCompat>html.elements.audio</BrowserCompat>
+
+<!--
+# 같이 보기
+
+- 미디어 출처 추가: [<source>](./source)
+- 비디오 삽입: [<video>](./video)
+-->

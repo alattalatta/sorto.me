@@ -27,6 +27,9 @@ export default class Document extends NextDocument {
             href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@400;700&family=Nanum+Gothic:wght@400;700&display=swap"
             rel="stylesheet"
           />
+          <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+          <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
           {process.env.NEXT_PUBLIC_ANALYTICS && (
             <>
               <script async src="https://www.googletagmanager.com/gtag/js?id=G-7F0E6D3XE2" />

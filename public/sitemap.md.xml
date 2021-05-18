@@ -42,7 +42,7 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/area</loc>
-  <lastmod>2021-05-15</lastmod>
+  <lastmod>2021-05-18</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/article</loc>
@@ -185,6 +185,10 @@
   <lastmod>2021-05-15</lastmod>
 </url>
 <url>
+  <loc>https://sorto.me/docs/Web/HTML/Element/map</loc>
+  <lastmod>2021-05-18</lastmod>
+</url>
+<url>
   <loc>https://sorto.me/docs/Web/HTML/Element/mark</loc>
   <lastmod>2021-05-15</lastmod>
 </url>
@@ -269,6 +273,10 @@
   <lastmod>2021-05-15</lastmod>
 </url>
 <url>
+  <loc>https://sorto.me/docs/Web/HTML/Element/track</loc>
+  <lastmod>2021-05-18</lastmod>
+</url>
+<url>
   <loc>https://sorto.me/docs/Web/HTML/Element/u</loc>
   <lastmod>2021-05-15</lastmod>
 </url>
@@ -286,7 +294,7 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element</loc>
-  <lastmod>2021-05-16</lastmod>
+  <lastmod>2021-05-18</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Global_attributes/autocapitalize</loc>

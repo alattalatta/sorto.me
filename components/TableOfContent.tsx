@@ -6,7 +6,8 @@ import { styled } from 'utils/styler'
 import { Anchor } from './basics'
 
 const Root = styled('nav', {
-  width: 'calc(50vw - 640px)',
+  width: 'calc(50vw - 690px)',
+  maxWidth: 240,
   height: '100%',
   background: '#fff',
   borderRight: '4px solid transparent',

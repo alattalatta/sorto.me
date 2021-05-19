@@ -1,30 +1,29 @@
-import { motion as m } from 'framer-motion'
+import { useMemo } from 'react'
+
+type Language = 'css' | 'html' | 'js'
 
 type Props = {
-  data: {
-    htmls: string[]
-    scripts: string[]
-    styles: string[]
-  }
+  className?: string
   height?: number
-}
+} & Record<Language, readonly string[]>
 
-const LiveCode: React.VFC<Props> = ({ data: { htmls, scripts, styles }, height }) => {
-  const notFound = !(htmls.length || scripts.length || styles.length)
+const LiveCode: React.VFC<Props> = ({ className, css, height, html, js }) => {
+  const notFound = !(css.length || html.length || js.length)
 
-  return notFound ? (
-    <div style={{ height: `${height}px` }} />
-  ) : (
-    <m.iframe height={height} srcDoc={buildHTML()} title="예제" initial={{ opacity: 0 }} animate={{ opacity: 1 }} />
-  )
-
-  function buildHTML(): string {
-    const scriptElements = scripts.map((it) => `<script>${it}</script>`).join('')
-    const styleElements = styles.map((it) => `<style>${it}</style>`).join('')
-    const view = htmls.join('\n')
+  const srcDoc = useMemo(() => {
+    const view = html.join('\n')
+    const styleElements = css.map((it) => `<style>${it}</style>`).join('')
+    const scriptElements = js.map((it) => `<script>${it}</script>`).join('')
 
     return `<html><head><link rel="stylesheet" href="/frame/frame.css">${styleElements}</head><body>${view}${scriptElements}</body></html>`
-  }
+  }, [css, html, js])
+
+  return notFound ? (
+    <div className={className} style={{ height: `${height}px` }} />
+  ) : (
+    <iframe className={className} height={height} srcDoc={srcDoc} title="예제" />
+  )
 }
 
 export default LiveCode
+export type { Language }

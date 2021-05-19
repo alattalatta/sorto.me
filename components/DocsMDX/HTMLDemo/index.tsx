@@ -1,10 +1,10 @@
 import * as DemoProvider from '../DemoProvider'
 import Body from './Body'
 
-const HTMLDemo: React.FC = ({ children }) => {
+const HTMLDemo: React.FC<{ height?: number }> = ({ children, height }) => {
   return (
     <DemoProvider.Root>
-      <Body>{children}</Body>
+      <Body height={height}>{children}</Body>
     </DemoProvider.Root>
   )
 }

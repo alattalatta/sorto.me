@@ -19,7 +19,7 @@ const ToBlogWrap = styled('div', {
   display: 'flex',
   justifyContent: 'center',
   marginTop: 16,
-  '@wide': {
+  '@medium': {
     justifyContent: 'flex-start',
   },
 })

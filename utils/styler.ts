@@ -10,7 +10,7 @@ export const ACCENT_B = '#57D8FF'
 
 const stitchesConfig = createCss({
   media: {
-    wide: '(max-width: 1720px)',
+    wide: '(max-width: 1600px)',
     broad: '(max-width: 1280px)',
     medium: '(max-width: 1024px)',
     narrow: '(max-width: 768px)',

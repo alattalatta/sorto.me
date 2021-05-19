@@ -1,57 +1,86 @@
-import { motion as m, Variants } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { useToggleState } from 'hooks/useToggleState'
-import { easeStandard, styled } from 'utils/styler'
+import { styled } from 'utils/styler'
 
-import { Anchor, NoScreen } from './basics'
+import { Anchor } from './basics'
 
-const BODY_VARIANTS: Variants = {
-  closed: {
-    clipPath: 'inset(0% 0% 100% 0%)',
-    transition: easeStandard(0.15),
-    transitionEnd: {
-      visibility: 'hidden',
+const Root = styled('nav', {
+  width: 'calc(50vw - 640px)',
+  height: '100%',
+  background: '#fff',
+  borderRight: '4px solid transparent',
+  paddingLeft: 24,
+  position: 'absolute',
+  top: 0,
+  right: '100%',
+  zIndex: 9,
+  '@wide': {
+    width: 240,
+    paddingRight: 40,
+    left: 24,
+  },
+  variants: {
+    opened: {
+      true: {
+        '@wide': {
+          borderRightColor: '$base40',
+          transform: 'translateX(0)',
+          transition: 'border-color 500ms ease, transform 500ms ease',
+        },
+      },
+      false: {
+        '@wide': {
+          transform: 'translateX(-100%)',
+          transition: 'transform 500ms ease',
+        },
+      },
     },
   },
-  opened: {
-    clipPath: 'inset(0% 0% 0% 0%)',
-    visibility: 'visible',
-    transition: easeStandard(0.2),
-  },
-}
+})
 
-const Root = styled('aside', {
-  width: 282,
-  fontFamily: '$sans',
-  marginLeft: 'auto',
-  position: 'relative',
+const OpenerWrap = styled('div', {
+  height: '100%',
+  position: 'absolute',
+  top: 0,
+  right: 0,
+  zIndex: 1,
 })
 
 const Opener = styled('button', {
-  width: '100%',
-  background: '$base70',
-  border: 0,
-  borderRadius: '$cornerRadius',
-  cursor: 'pointer',
-  padding: '8px 16px',
-})
-
-const Body = styled(m.nav, {
-  width: '100%',
   background: '#fff',
-  border: '4px solid $base70',
-  borderRadius: '$cornerRadius',
-  padding: 16,
-  position: 'absolute',
-  top: '100%',
-  left: 0,
-  transform: 'translateY(8px)',
-  zIndex: 8,
+  border: 'none',
+  borderBottom: '4px solid $base40',
+  cursor: 'pointer',
+  display: 'none',
+  fontSize: 14,
+  fontWeight: 700,
+  marginTop: 128,
+  padding: '0 0 4px',
+  position: 'sticky',
+  top: 162,
+  left: '100%',
+  transform: 'rotate(-90deg) translateY(-100%) translateY(4px)',
+  transformOrigin: 'top right',
+  '@wide': {
+    display: 'block',
+  },
 })
 
-const NavList = styled('ul', {
+const Body = styled('div', {
+  maxHeight: 'calc(100vh - 96px)', // top 32 + bottom 64
+  position: 'sticky',
+  top: 32,
+})
+
+const TOCHeading = styled('h2', {
+  marginTop: 16,
+})
+
+const Headings = styled('ul', {
   listStyle: 'none',
+  marginTop: 16,
+  overflow: 'auto',
   padding: 0,
   '& > li + li': {
     marginTop: 8,
@@ -66,43 +95,62 @@ const Heading = styled(Anchor, {
 })
 
 const TableOfContent: React.VFC = () => {
-  const [opened, toggleOpened] = useToggleState(false)
-  const [headings, setHeadings] = useState<(readonly [number, string, string])[]>([])
+  const el = useRef<HTMLElement>(null)
+
+  const [headings, setHeadings] = useState<(readonly [level: number, text: string, id: string])[]>([])
+  const [opened, toggleOpened, setOpened] = useToggleState(false)
 
   useEffect(() => {
+    const hs = Array.from(
+      document.querySelector('main')?.querySelectorAll('h2[id]:not([id="toc-heading"]), h3[id]') || [],
+    ).map(
+      (el) =>
+        [
+          Number(el.tagName.slice(1)),
+          (el.textContent || '').slice(0, -1), // shoud slice (0, -1) to exclude "#"
+          el.id,
+        ] as const,
+    )
+    setHeadings(hs)
+  }, [])
+
+  useEffect(() => {
+    const handleWindowClick = (event: MouseEvent) => {
+      if (!el.current?.contains(event.target as HTMLElement)) {
+        setOpened(false)
+      }
+    }
+
     if (opened) {
-      const hs = Array.from(
-        document.querySelector('main')?.querySelectorAll('h1[id], h2[id]:not([id="toc-heading"]), h3[id], h4[id]') ||
-          [],
-      ).map((el) => [Number(el.tagName.slice(1)), (el.textContent || '').slice(0, -1), el.id] as const)
-      setHeadings(hs)
+      window.addEventListener('click', handleWindowClick)
+    }
+
+    return () => {
+      window.removeEventListener('click', handleWindowClick)
     }
   }, [opened])
 
+  // screen readers have their own indexes
   return (
-    <Root>
-      <Opener onClick={toggleOpened} aria-controls="toc" aria-haspopup="menu" aria-expanded={opened}>
-        목차 {opened ? '닫기' : '열기'}
-      </Opener>
-      <Body
-        id="toc"
-        variants={BODY_VARIANTS}
-        initial="closed"
-        animate={opened ? 'opened' : 'closed'}
-        aria-labelledby="toc-heading"
-      >
-        <NoScreen as="h2" id="toc-heading">
-          목차
-        </NoScreen>
-        <NavList>
+    <Root ref={el} opened={opened} aria-hidden>
+      <OpenerWrap>
+        <Opener onClick={toggleOpened}>{opened ? '목차닫기' : '목차열기'}</Opener>
+      </OpenerWrap>
+      <Body>
+        <TOCHeading>목차</TOCHeading>
+        <Headings>
           {headings.map(([level, text, id]) => (
             <li key={id}>
-              <Heading css={{ paddingLeft: `${(level - 2) * 16}px` }} href={`#${id}`} onClick={toggleOpened}>
+              <Heading
+                css={{ fontSize: `${1 - (level - 2) * 0.2}em`, paddingLeft: `${(level - 2) * 8}px` }}
+                href={`#${id}`}
+                onClick={toggleOpened}
+              >
                 {text}
               </Heading>
             </li>
           ))}
-        </NavList>
+        </Headings>
       </Body>
     </Root>
   )

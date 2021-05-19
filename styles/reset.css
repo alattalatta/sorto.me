@@ -5,7 +5,8 @@
 
 html {
   color: var(--colors-base10);
-  font-family: var(--fonts-mono)
+  font-family: var(--fonts-mono);
+  scroll-behavior: smooth;
 }
 
 body {

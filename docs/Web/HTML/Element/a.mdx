@@ -107,7 +107,7 @@ excerpt: HTML <a> (앵커, anchor) 요소는 가장 가까운 <article> 또는 <
 - `_parent`: 현재 페이지가 프레임 안에 존재하는 경우, 결과를 현재 브라우징 맥락의 부모에 보여줍니다. 부모가 없으면 `_self`와 동일합니다.
 - `_top`: 결과를 최상위 브라우징 맥락에 보여줍니다. 최상위 브라우징 맥락이란 현재 맥락의 조상 중 부모가 없는 맥락입니다. 현재 맥락이 부모를 가지지 않으면 `_self`와 동일합니다.
 
-<Callout.Root color="warn" label="참고">
+<Callout.Root childAs="div" color="warn" label="참고">
 
 `target="_blank"`는 `rel="noopener"`를 암시합니다. 따라서 `window.opener`를 설정하지 않습니다. [브라우저 호환성](#브라우저-호환성)에서 이 동작의 지원 범위를 확인하세요.
 
@@ -159,7 +159,7 @@ a + a {
 
 <LiveExample name="fragment" height={20} />
 
-<Callout.Root color="warn" label="참고">
+<Callout.Root childAs="div" color="warn" label="참고">
 
 [HTML 명세](https://html.spec.whatwg.org/multipage/browsing-the-web.html#scroll-to-the-fragment-identifier)에 나와있는 것과 같이, `href="#top"`"이나 `href="#"`을 사용하면 페이지 최상단으로 이동하는 링크를 만들 수 있습니다.
 

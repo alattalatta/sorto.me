@@ -62,6 +62,7 @@ const Result = styled('div', {
   flexShrink: 0,
   '@narrow': {
     width: '100%',
+    minWidth: 0,
     marginTop: 16,
   },
 })

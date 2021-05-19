@@ -1,16 +1,9 @@
-import { eq, set } from 'fp-ts'
-import { useCallback, useState } from 'react'
+import { eq, record, readonlyArray, semigroup, set } from 'fp-ts'
+import { useCallback, useMemo, useState } from 'react'
 
 import { setupContext } from 'utils/setupContext'
 
-type Language = 'css' | 'html' | 'js'
-type CodeBlocks = Record<'main' | 'sub', Record<Language, Set<HTMLElement>>>
-
-type CodeBlockDispatch = (main: boolean, language: Language, element: HTMLElement) => void
-type CodeBlockDispatchers = {
-  register: CodeBlockDispatch
-  unregister: CodeBlockDispatch
-}
+import { CodeBlockDispatch, CodeBlockDispatchers, CodeBlocks, CodeStrings, Language } from './types'
 
 const eqElement = eq.eqStrict as eq.Eq<HTMLElement>
 const insertElement = set.insert(eqElement)
@@ -33,13 +26,28 @@ const assignBlock = (
 
 const [DemoCodeBlockDispatchProvider, useDemoCodeBlockDispatch] =
   setupContext<CodeBlockDispatchers>('DemoCodeBlockDispatch')
-const [DemoCodeBlocksProvider, useDemoCodeBlocks] = setupContext<CodeBlocks>('DemoCodeBlocks')
+const [DemoCodeStringsProvider, useDemoCodeStrings] = setupContext<CodeStrings>('DemoCodeStrings')
+
+const grabInnerText = (elSet: Set<HTMLElement>) => Array.from(elSet.values()).map((el) => el.innerText)
+const grabCodeBlocksInnerTexts = record.map(grabInnerText)
+
+const stringArraySemigroup = readonlyArray.getSemigroup<string>()
+const codeStringsSemigroup = semigroup.struct({
+  css: stringArraySemigroup,
+  html: stringArraySemigroup,
+  js: stringArraySemigroup,
+})
 
 const DemoProvider: React.FC = ({ children }) => {
   const [codeBlocks, setCodeBlocks] = useState<CodeBlocks>({
     main: { css: new Set(), html: new Set(), js: new Set() },
     sub: { css: new Set(), html: new Set(), js: new Set() },
   })
+
+  const codeStrings = useMemo(
+    () => ({ main: grabCodeBlocksInnerTexts(codeBlocks.main), sub: grabCodeBlocksInnerTexts(codeBlocks.sub) }),
+    [codeBlocks],
+  )
 
   const addCodeBlock: CodeBlockDispatch = useCallback((main, language, element) => {
     setCodeBlocks((prevCodeBlocks) => {
@@ -61,10 +69,12 @@ const DemoProvider: React.FC = ({ children }) => {
 
   return (
     <DemoCodeBlockDispatchProvider register={addCodeBlock} unregister={removeCodeBlock}>
-      <DemoCodeBlocksProvider {...codeBlocks}>{children}</DemoCodeBlocksProvider>
+      <DemoCodeStringsProvider {...codeStrings}>{children}</DemoCodeStringsProvider>
     </DemoCodeBlockDispatchProvider>
   )
 }
 
-export { DemoProvider as Root, useDemoCodeBlockDispatch as useDispatch, useDemoCodeBlocks as useCodeBlocks }
-export type { Language, CodeBlocks }
+export { codeStringsSemigroup }
+
+export { DemoProvider as Root, useDemoCodeBlockDispatch as useDispatch, useDemoCodeStrings as useCodeStrings }
+export type { Language, CodeStrings }

@@ -1,4 +1,6 @@
 pre > .code {
+  // can't move this to pre
+  // as pre can't know about sub and hidden prop
   background: #f6f6f6;
   border: 1px solid #b6d5f5;
   border-radius: var(--radii-cornerRadius);

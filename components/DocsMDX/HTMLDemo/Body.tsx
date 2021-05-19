@@ -1,9 +1,9 @@
-import { array, record, semigroup } from 'fp-ts'
 import { useMemo, useState } from 'react'
 
 import { css, styled } from 'utils/styler'
 
 import * as DemoProvider from '../DemoProvider'
+import { codeBlockSemigroup } from '../DemoProvider/types'
 import LiveCode from '../LiveCode'
 import LanguageChoice from './LanguageChoice'
 
@@ -73,36 +73,23 @@ const frameStyler = (height?: number) =>
     minHeight: height,
   })
 
-const grabInnerText = (elSet: Set<HTMLElement>) => Array.from(elSet.values()).map((el) => el.innerText)
-const grabCodeBlocksInnerTexts = record.map(grabInnerText)
-
-const stringArraySemigroup = array.getSemigroup<string>()
-const codeBlockSemigroup = semigroup.struct({
-  css: stringArraySemigroup,
-  html: stringArraySemigroup,
-  js: stringArraySemigroup,
-})
-
 const HTMLDemoBody: React.FC<{ height?: number }> = ({ children, height }) => {
-  const codeBlocks = DemoProvider.useCodeBlocks()
+  const codeStrings = DemoProvider.useCodeStrings()
   const [activeLanguage, setActiveLanguage] = useState<DemoProvider.Language>('html')
 
-  if (!codeBlocks) {
-    throw new Error("HTMLDemoBody couldn't find DemoProvider.")
+  if (!codeStrings) {
+    throw new Error(`Couldn't find DemoProvider`)
   }
 
   const frameStyle = useMemo(() => frameStyler(height)(), [height])
   const stringifiedCodeBlocks = useMemo(() => {
-    const mainBlocks = grabCodeBlocksInnerTexts(codeBlocks.main)
-    const subBlocks = grabCodeBlocksInnerTexts(codeBlocks.sub)
-
-    return codeBlockSemigroup.concat(mainBlocks, subBlocks)
-  }, [codeBlocks])
+    return codeBlockSemigroup.concat(codeStrings.main, codeStrings.sub)
+  }, [codeStrings])
 
   return (
     <Root aria-label="데모">
       <Codes language={activeLanguage}>
-        <LanguageChoice codeBlocks={codeBlocks.main} onChange={setActiveLanguage} />
+        <LanguageChoice codeStrings={codeStrings.main} onChange={setActiveLanguage} />
         {children}
       </Codes>
       <Result>

@@ -18,7 +18,7 @@ function setupContext<ContextValueType extends object>(
   }
   Provider.displayName = name + 'Provider'
 
-  function useContext() {
+  function useContext(): ContextValueType | null {
     const context = React.useContext(Context)
 
     return context

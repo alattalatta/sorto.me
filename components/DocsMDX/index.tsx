@@ -9,6 +9,7 @@ export const DOCS_MDX_COMPONENTS = Object.freeze({
   ...MDX_COMPONENTS,
   code: PolyCodeBlock,
   BrowserCompat: dynamic(() => import('./BrowserCompat')),
+  CSSDemo: dynamic(() => import('./CSSDemo')),
   HTMLAttr,
   HTMLDemo: dynamic(() => import('./HTMLDemo')),
   LiveExample: dynamic(() => import('./LiveExample')),

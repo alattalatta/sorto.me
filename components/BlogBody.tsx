@@ -21,6 +21,7 @@ const BlogBody: React.VFC<Props> = ({ children, meta }) => {
       <BlogHero meta={meta} />
       <Container
         as={m.div}
+        css={{ position: 'relative' }}
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{

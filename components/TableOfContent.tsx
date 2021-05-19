@@ -15,7 +15,7 @@ const Root = styled('nav', {
   position: 'absolute',
   top: 0,
   right: '100%',
-  zIndex: 9,
+  zIndex: 2,
   '@wide': {
     width: 240,
     paddingRight: 40,
@@ -152,6 +152,10 @@ const TableOfContent: React.VFC = () => {
             </li>
           ))}
         </Headings>
+        <hr />
+        <Heading href="#" onClick={toggleOpened}>
+          맨 위로
+        </Heading>
       </Body>
     </Root>
   )

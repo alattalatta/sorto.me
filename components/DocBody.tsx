@@ -23,7 +23,7 @@ const DocBody: React.VFC<Props> = ({ children, meta, slugs }) => {
   return (
     <article>
       <DocHero slugs={slugs}>{meta.title}</DocHero>
-      <Container position="relative">
+      <Container css={{ position: 'relative' }}>
         <TableOfContent key={router.asPath} />
         <MDXWrap components={DOCS_MDX_COMPONENTS} scope={MDX_SCOPE}>
           {children}

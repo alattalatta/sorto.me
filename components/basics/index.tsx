@@ -16,13 +16,6 @@ export const Container = styled('div', {
     paddingLeft: 24,
     paddingRight: 24,
   },
-  variants: {
-    position: {
-      relative: {
-        position: 'relative',
-      },
-    },
-  },
 })
 
 export const NoScreen = styled('span', {

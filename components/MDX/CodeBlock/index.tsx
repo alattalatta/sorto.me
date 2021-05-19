@@ -3,11 +3,11 @@ import clsx from 'clsx'
 import prism from './prism.module.scss'
 import styles from './styles.module.scss'
 
-export const CodeBlock: React.FC<{ className?: string }> = ({ className, ...props }) => (
+const Root: React.FC<{ className?: string }> = ({ className, ...props }) => (
   <pre className={clsx(prism.prism, className)} {...props} />
 )
 
-type Props = {
+type BodyProps = {
   className?: string
   hidden?: boolean
   name?: string
@@ -15,7 +15,7 @@ type Props = {
   variant?: 'bad' | 'good'
 }
 
-export const Code: React.FC<Props> = ({ children, className, hidden, name, sub, variant, ...props }) => (
+const Body: React.FC<BodyProps> = ({ children, className, hidden, name, sub, variant, ...props }) => (
   <code
     className={clsx(styles.code, className, variant && styles[variant])}
     {...props}
@@ -28,3 +28,6 @@ export const Code: React.FC<Props> = ({ children, className, hidden, name, sub, 
     <span className={clsx(styles.codeBody)}>{children}</span>
   </code>
 )
+
+export { Root, Body }
+export type { BodyProps }

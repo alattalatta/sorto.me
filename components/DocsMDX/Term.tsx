@@ -4,7 +4,7 @@ import { Anchor } from 'components/basics'
 import { useUniqueID } from 'hooks/MDX/useUniqueID'
 import { childrenToText, sanitizeID } from 'utils/element'
 
-import { DeprecatedInline, ExperimentalInline, NonStandardInline } from '../MDX/Icon'
+import { DeprecatedInline, ExperimentalInline, NonStandardInline } from './StatusIcon'
 
 type TermProps = {
   href?: string

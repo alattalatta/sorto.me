@@ -64,41 +64,40 @@ type Props = {
   onClick?: (data: SupportStatement) => void
 }
 
-const CompatCell: React.VFC<
-  Props & Pick<React.ComponentPropsWithoutRef<typeof CompatCellBody>, 'support' | 'type'>
-> = ({ as = 'div', data, opened, onClick, ...props }) => {
-  const clickable = data && (Array.isArray(data) || data.notes) && onClick
-  const label = `${supportLabel(data)}${clickable ? '*' : ''}`
+const CompatCell: React.VFC<Props & Pick<React.ComponentPropsWithoutRef<typeof CompatCellBody>, 'support' | 'type'>> =
+  ({ as = 'div', data, opened, onClick, ...props }) => {
+    const clickable = data && (Array.isArray(data) || data.notes) && onClick
+    const label = `${supportLabel(data)}${clickable ? '*' : ''}`
 
-  const handleClick = (): void => {
-    if (!clickable) {
-      return
+    const handleClick = (): void => {
+      if (!clickable) {
+        return
+      }
+
+      onClick?.(data as SupportStatement)
     }
 
-    onClick?.(data as SupportStatement)
+    const head = Array.isArray(data) ? data[0] : data
+
+    return (
+      <CompatCellBody
+        {...props}
+        // can't infer properly
+        as={as as keyof JSX.IntrinsicElements}
+        css={{ cursor: clickable ? 'pointer' : 'normal' }}
+        opened={opened ? 'yes' : undefined}
+        support={variantOf(head)}
+        onClick={handleClick}
+      >
+        {label}
+        {clickable && (
+          <NoScreen as="button" type="button" onClick={handleClick} aria-expanded={opened}>
+            {opened ? '호환성 상세정보 닫기' : '호환성 상세정보 열기'}
+          </NoScreen>
+        )}
+      </CompatCellBody>
+    )
   }
-
-  const head = Array.isArray(data) ? data[0] : data
-
-  return (
-    <CompatCellBody
-      {...props}
-      // can't infer properly
-      as={as as keyof JSX.IntrinsicElements}
-      css={{ cursor: clickable ? 'pointer' : 'normal' }}
-      opened={opened ? 'yes' : undefined}
-      support={variantOf(head)}
-      onClick={handleClick}
-    >
-      {label}
-      {clickable && (
-        <NoScreen as="button" type="button" onClick={handleClick} aria-expanded={opened}>
-          {opened ? '호환성 상세정보 닫기' : '호환성 상세정보 열기'}
-        </NoScreen>
-      )}
-    </CompatCellBody>
-  )
-}
 
 export default CompatCell
 

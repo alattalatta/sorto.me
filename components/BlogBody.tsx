@@ -7,7 +7,7 @@ import { easeStandard } from 'utils/styler'
 
 import BlogFooter from './BlogFooter'
 import BlogHero from './BlogHero'
-import { MDX_COMPONENTS, MDXWrap } from './MDX'
+import { MDX_COMPONENTS, MDXWrap, MDX_SCOPE } from './MDX'
 import TableOfContent from './TableOfContent'
 import { Container } from './basics'
 
@@ -30,7 +30,9 @@ const BlogBody: React.VFC<Props> = ({ children, meta }) => {
         }}
       >
         <TableOfContent />
-        <MDXWrap components={MDX_COMPONENTS}>{children}</MDXWrap>
+        <MDXWrap components={MDX_COMPONENTS} scope={MDX_SCOPE}>
+          {children}
+        </MDXWrap>
       </Container>
       <BlogFooter meta={meta} />
     </article>

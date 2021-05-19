@@ -79,7 +79,7 @@ const handleSubmit = (): void => {
 <Callout
   childAs="blockquote"
   label={
-    <CalloutCite href="https://twitter.com/kentcdodds/status/1228727040238473216?s=20">@Kent C. Dodds</CalloutCite>
+    <Callout.Cite href="https://twitter.com/kentcdodds/status/1228727040238473216?s=20">@Kent C. Dodds</Callout.Cite>
   }
 >
   <p>
@@ -99,14 +99,14 @@ const handleSubmit = (): void => {
     일관성과 유효성 vs. 자원 관리의 균형이겠지만, 많은 수의 앱이 주의를 유효성으로 기울이면 구조도 더 간단해지면서
     사용자 경험도 향상될 것이라고 생각합니다.
   </p>
-</Callout>
+</Callout.Root>
 
 <Callout
   childAs="blockquote"
   label={
-    <CalloutCite href="https://twitter.com/sebmarkbage/status/1228758860644544514?s=20">
+    <Callout.Cite href="https://twitter.com/sebmarkbage/status/1228758860644544514?s=20">
       @Sebastian Markbåge
-    </CalloutCite>
+    </Callout.Cite>
   }
 >
   <p>
@@ -114,7 +114,7 @@ const handleSubmit = (): void => {
     되지 않습니다. <code>window.businessLogic</code>은 이상해요. 마치 하나의 탭에서만 동작하던 Outlook for Web 같죠.
     다른 탭에서 쓰고 싶지 않을 이유가 뭐가 있나요?
   </p>
-</Callout>
+</Callout.Root>
 
 \*Optimistic UI. 데이터 업데이트 요청을 보낸 후, 응답이 오기 전에 성공을 가정하고 UI를 업데이트함.
 
@@ -124,17 +124,17 @@ const handleSubmit = (): void => {
 
 Vercel은 React 대표 서버사이드 렌더링 프레임워크인 Next.js의 개발사로, 지금 말하려는 라이브러리인 SWR을 만든 곳이기도 하다. 글 작성 시점에는 SWR의 버전이 아직 1.0.0에 도달하지 못했지만, 의외로 역사는 오래 되어 최초 배포가 2019년 10월 30일에 있었다.
 
-<Callout color="warn" label="참고">
+<Callout.Root color="warn" label="참고">
   공식 문서가 Next.js와의 사용법을 포함하긴 하지만, 꼭 Next.js와 함께 사용할 필요는 없습니다.
-</Callout>
+</Callout.Root>
 
 npm의 라이브러리 이름이 [수도 없이 많은 어휘를 소진](https://hackernoon.com/what-will-happen-when-we-run-out-of-names-for-javascript-frameworks-6d91c6005d40)한 것은 이젠 [JavaScript 삼위일체](https://www.reddit.com/r/ProgrammerHumor/comments/6tifn2/the_holy_trinity_and_javascript/) 다음 갈 정도로 대표적인 밈 수준으로, 심지어는 [아직 npm에 없는 영단어를 알아내는 패키지](https://github.com/words/english-words-that-are-not-yet-npm-packages)도 존재한다. 그런데 이름공간도 없이 달랑 세 글자를 당당하게 차지한 SWR은 대체 무슨 뜻일까?
 
-<Callout childAs="blockquote" label={<CalloutCite href="https://swr.vercel.app/">SWR 공식 문서</CalloutCite>}>
+<Callout.Root childAs="blockquote" label={<Callout.Cite href="https://swr.vercel.app/">SWR 공식 문서</Callout.Cite>}>
   The name “SWR” is derived from stale-while-revalidate, a HTTP cache invalidation strategy popularized by [HTTP RFC
   5861](https://tools.ietf.org/html/rfc5861). SWR is a strategy to first return the data from cache (stale), then send
   the fetch request (revalidate), and finally come with the up-to-date data.
-</Callout>
+</Callout.Root>
 
 HTTP `Cache-Control` 응답 헤더의 `stale-while-revalidate`는 캐시 전략 중 하나로, 캐시가 유효하다면 먼저 캐시 데이터를 반환(stale, while...)하고, 요청은 별도로 진행(revalidate)한 후, 응답이 오면 최신 데이터로 캐시를 업데이트한다. 라이브러리로서의 SWR이라는 이름이 바로 이 `stale-while-revalidate`의 두문자어라는 것을 알면, 곧바로 캐시를 사용하는 라이브러리임을 추측할 수 있다.
 
@@ -260,9 +260,9 @@ const Component: React.VFC<Props> = () => {
 
 그러나 이 방법은 최적의 사용자 경험을 제공하지는 않는데, 이전에 API 상태를 가져온 적이 있더라도 다음에 불러오는 중엔 화면에 아무것도 보여주지 않기 때문이다. `/status`가 가벼운 API라고 해도 화면의 깜빡임으로 인해 좋지 않은데, 무거운 API라면 stale한 데이터라도 보여주고, 대신 최신 상태가 아니라고 알려주는 편이 더욱 더 나을 것이다. 오류기 빌생헸을 때도 마찬가지로, 이전 데이터가 존재한다면 영양가 없는 오류 경고를 단독으로 화면에 채우지 말고, 데이터와 함께 보여주는 게 부드러운 UX를 제공하지 않을까?
 
-<Callout color="warn" label="참고">
+<Callout.Root color="warn" label="참고">
   항상 이 방식이 최선인 것은 아닙니다.
-</Callout>
+</Callout.Root>
 
 그렇기에 SWR은 `data`와 `error` 값을 함께 내려줄 수도 있고, 둘 다 존재하지 않을 수도 있다. 따라서 올바른 사용법은 다음과 같다.
 
@@ -480,13 +480,13 @@ SWR은 개발자의 큰 개입 없이도 캐시를 사용한 끊김 없는 UI와
 
 웹 앱에서 전역 상태를 사용하는 이유 중 작지 않은 부분이 원격 데이터라고 생각하는데, SWR과 로컬 상태만으로도 충분히 가능한 규모라면 정말 이 상태가 전역이어야 하는 것인지 고려해봐야 하지 않을까. MobX는 존재만으로 57.1KB를 차지한다. Redux는 1/8정도 되는 크기의 훨씬 가벼운 라이브러리지만, Redux 관련 글과 발표에서 Redux만 단독으로 쓴다는 곳은 볼 수 없었다. 2~3개의 추가 라이브러리를 쓰는 것이, 개발을 위한 Redux인지, 아니면 Redux를 위한 Redux일지 생각해보자.
 
-<Callout color="warn" label="참고">
+<Callout.Root color="warn" label="참고">
   라이브러리 크기는{' '}
   <Anchor href="https://bundlephobia.com/">
     BundlePhobia
   </Anchor>{' '}
   기준입니다. Minification만 가정하고 gzip 압축과 트리셰이킹, 중복 디펜던시로 인한 실제 용량 감소는 고려하지 않았습니다.
-</Callout>
+</Callout.Root>
 
 시간에 따른 상태의 변화를 기록해야 할 때 처럼 [Redux가 **필요**할 수도](https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367) 있다. 아니면 버그 리포트에 앱의 상태를 통째로 덤핑해야 해서 MobX가 필요할 수도 있다. SWR은 "상태"를 관리하지 않으므로 Redux와 함께 쓰지 않을 법도 없으나, 이런 상황에서도 굳이 SWR을 추가해야 할 필요 또한 없다. 라이브러리가 아무리 좋아보여도 자신에게 맞는지는 생각해볼 여지가 있다.
 

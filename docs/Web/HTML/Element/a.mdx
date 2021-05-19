@@ -33,14 +33,14 @@ excerpt: HTML <a> (앵커, anchor) 요소는 가장 가까운 <article> 또는 <
   - 미디어 유형 (HTTP [`Content-Type`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type) 헤더, [`data:` URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) 의 시작 부분, [`blob:` URL](https://developer.mozilla.org/en-US/docs/Web/API/URL/createObjectURL)의 [`Blob.type`](https://developer.mozilla.org/en-US/docs/Web/API/Blob/type)에서 가져옴)
 - 값을 지정하면 해당 값을 파일 이름으로 제안합니다. 문자 중 `\`와 `/`는 `_`로 변환합니다. 파일 시스템에서 다른 문자도 제한하는 경우 브라우저가 추가로 조정할 수 있씁니다.
 
-<Callout childAs="div" color="warn" label="참고">
+<Callout.Root childAs="div" color="warn" label="참고">
 
 - `download`는 [동일 출처 URL](https://developer.mozilla.org/ko/docs/Web/Security/Same-origin_policy), `blob:`, `data:`에만 동작합니다.
 - `Content-Disposition` 헤더의 값이 특성의 값과 다를 경우의 동작은 브라우저마다 다릅니다.
   - 헤더가 `filename` 값을 가지고 있으면 특성의 값보다 우선합니다.
   - 헤더에 `inline`을 지정한 경우 Chrome과 Firefox 82 이상은 특성 값을 우선하여 다운로드 링크로 취급합니다. Firefox 81까지는 헤더를 우선해서, 내용을 인라인으로 보여줍니다.
 
-</Callout>
+</Callout.Root>
 </dd>
 
 <Term>href</Term>
@@ -105,11 +105,11 @@ excerpt: HTML <a> (앵커, anchor) 요소는 가장 가까운 <article> 또는 <
 - `_parent`: 현재 페이지가 프레임 안에 존재하는 경우, 결과를 현재 브라우징 맥락의 부모에 보여줍니다. 부모가 없으면 `_self`와 동일합니다.
 - `_top`: 결과를 최상위 브라우징 맥락에 보여줍니다. 최상위 브라우징 맥락이란 현재 맥락의 조상 중 부모가 없는 맥락입니다. 현재 맥락이 부모를 가지지 않으면 `_self`와 동일합니다.
 
-<Callout color="warn" label="참고">
+<Callout.Root color="warn" label="참고">
 
 `target="_blank"`는 `rel="noopener"`를 암시합니다. 따라서 `window.opener`를 설정하지 않습니다. [브라우저 호환성](#브라우저-호환성)에서 이 동작의 지원 범위를 확인하세요.
 
-</Callout>
+</Callout.Root>
 </dd>
 
 <Term>type</Term>
@@ -157,11 +157,11 @@ a + a {
 
 <LiveExample name="fragment" height={20} />
 
-<Callout color="warn" label="참고">
+<Callout.Root color="warn" label="참고">
 
 [HTML 명세](https://html.spec.whatwg.org/multipage/browsing-the-web.html#scroll-to-the-fragment-identifier)에 나와있는 것과 같이, `href="#top"`"이나 `href="#"`을 사용하면 페이지 최상단으로 이동하는 링크를 만들 수 있습니다.
 
-</Callout>
+</Callout.Root>
 
 ## 이메일 주소로 연결
 

@@ -5,15 +5,7 @@ import { Anchor } from 'components/basics'
 
 import styles from './styles.module.scss'
 
-export const CalloutCite: React.VFC<{ children: string; href: string }> = ({ children, href }) => {
-  return (
-    <cite className={styles.cite}>
-      <Anchor href={href}>{children}</Anchor>
-    </cite>
-  )
-}
-
-const Callout: React.FC<{ childAs?: React.ElementType; color?: 'warn' | 'alert'; label: React.ReactNode }> = ({
+const Root: React.FC<{ childAs?: React.ElementType; color?: 'warn' | 'alert'; label: React.ReactNode }> = ({
   childAs = 'p',
   children,
   color,
@@ -30,4 +22,12 @@ const Callout: React.FC<{ childAs?: React.ElementType; color?: 'warn' | 'alert';
   )
 }
 
-export default Callout
+const Cite: React.VFC<{ children: string; href: string }> = ({ children, href }) => {
+  return (
+    <cite className={styles.cite}>
+      <Anchor href={href}>{children}</Anchor>
+    </cite>
+  )
+}
+
+export { Root, Cite }

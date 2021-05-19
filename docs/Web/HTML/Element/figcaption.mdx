@@ -5,9 +5,16 @@ excerpt: HTML <figcaption> (독립 콘텐츠 설명, figure caption) 요소는 �
 
 **HTML `<figcaption>` 요소**는 부모 [`<figure>`](./figure) 요소의 콘텐츠에 대한 설명 또는 범례를 제공합니다.
 
-<Demo height={260} />
+<HTMLDemo height={260}>
 
-```css name=demo sub
+```html
+<figure>
+  <img src="/images/docs/plumbing.jpg" alt="복잡한 배관 사진." />
+  <figcaption>모범 사례</figcaption>
+</figure>
+```
+
+```css
 figure {
   border: 1px solid #000;
   max-width: 320px;
@@ -22,12 +29,7 @@ figcaption {
 }
 ```
 
-```html name=demo
-<figure>
-  <img src="/images/docs/plumbing.jpg" alt="복잡한 배관 사진." />
-  <figcaption>모범 사례</figcaption>
-</figure>
-```
+</HTMLDemo>
 
 # 특성
 

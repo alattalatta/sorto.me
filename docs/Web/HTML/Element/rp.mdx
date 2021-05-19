@@ -5,9 +5,9 @@ excerpt: HTML <rp> (루비 대체 괄호, Ruby fallback parenthesis) 요소는 <
 
 **HTML `<rp>` 요소**는 [`<ruby>`](./ruby)를 사용한 표기법을 지원하지 않는 브라우저에서 가독성을 해치지 않도록 보여줄 괄호를 나타냅니다. 루비 문자를 나타내는 [`<rt>`](./rt) 요소를 괄호로 감싸게 하고, 괄호의 열고 닫는 것을 각각의 `<rp>` 요소로 감싸야 합니다.
 
-<Demo height={100} />
+<HTMLDemo height={100}>
 
-```html name=demo
+```html
 <ruby>
   景 <rp>(</rp><rt>경</rt><rp>)</rp>
   福 <rp>(</rp><rt>복</rt><rp>)</rp>
@@ -15,11 +15,13 @@ excerpt: HTML <rp> (루비 대체 괄호, Ruby fallback parenthesis) 요소는 <
 </ruby>
 ```
 
-```css name=demo hidden
+```css
 ruby {
   font-size: 4em
 }
 ```
+
+</HTMLDemo>
 
 # 특성
 

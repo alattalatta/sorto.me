@@ -5,9 +5,9 @@ excerpt: HTML <audio> (오디오) 요소는 오디오 콘텐츠를 문서에 삽
 
 **HTML `<audio>` 요소**는 오디오 콘텐츠를 문서에 삽입할 때 사용합니다. `src` 특성과 [`<source>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source) 요소를 이용해서 하나 이상의 오디오 소스를 제공할 수 있고, 여러 개를 제공한 경우 브라우저가 제일 적합한 소스를 선택합니다. [`MediaStream`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream)을 사용해 미디어 스트림의 목적지로 지정할 수도 있습니다.
 
-<Demo height={180} />
+<HTMLDemo height={180}>
 
-```html name=demo
+```html
 <figure>
   <figcaption>숲의 소리를 들어보세요.</figcaption>
   <audio controls disableRemotePlayback src="/assets/forest.wav">
@@ -22,6 +22,8 @@ excerpt: HTML <audio> (오디오) 요소는 오디오 콘텐츠를 문서에 삽
   </cite> by reinsamba
 </p>
 ```
+
+</HTMLDemo>
 
 `<audio></audio>` 안의 내용은 미지원 브라우저에서 대체 콘텐츠로 보여집니다.
 

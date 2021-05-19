@@ -5,9 +5,9 @@ excerpt: HTML <bdi> (양방향 분리, bidirectional isolate) 요소는 브라�
 
 **HTML `<bdi>` 요소**는 브라우저가 [유니코드 양방향 알고리즘](https://www.unicode.org/reports/tr9/)(BiDi)을 적용할 때, 이 요소의 콘텐츠를 주변 텍스트와 별도로 취급하도록 설정합니다. 웹사이트에서 동적으로 텍스트를 삽입하는데, 텍스트의 쓰기 방향은 알지 못할 때 유용합니다.
 
-<Demo height={190} />
+<HTMLDemo height={190}>
 
-```html name=demo
+```html
 <h1>세계 챔피언십 순위</h1>
 <ul>
   <li><bdi class="name">Evil Steven</bdi>: 1등</li>
@@ -18,11 +18,13 @@ excerpt: HTML <bdi> (양방향 분리, bidirectional isolate) 요소는 브라�
 </ul>
 ```
 
-```css name=demo sub
+```css
 .name {
   color: crimson;
 }
 ```
+
+</HTMLDemo>
 
 양방향 텍스트는 좌측에서 우측(LTR)으로 정렬하는 문자 시퀀스와, 우측에서 좌측(RTL)으로 정렬하는 문자 시퀀스가 함께 존재할 수 있는 텍스트로서, 대표적으로 영어 안에 배치한 아랍어 인용문이 있습니다. 브라우저는 양방향 알고리즘을 구현해 이런 상황을 처리합니다. 양방향 알고리즘에서, 각각의 문자는 암시적으로 방향성을 지닙니다. 예컨대 라틴 문자는 LTR, 아랍 문자는 RTL로 취급합니다. 공백이나 몇몇 문장 부호와 같은 일부 문자는 중립으로 취급해서, 주변 문자의 방향을 따라갑니다.
 

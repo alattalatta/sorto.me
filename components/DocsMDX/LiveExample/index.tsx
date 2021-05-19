@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { useCodeBlockGroup } from 'hooks/MDX/useCodeBlockGroup'
-import { css } from 'utils/styler'
 
 import LiveCode from '../LiveCode'
 import styles from './styles.module.scss'

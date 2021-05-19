@@ -4,9 +4,9 @@ import { useCallback, useState } from 'react'
 import { setupContext } from 'utils/setupContext'
 
 type Language = 'css' | 'html' | 'js'
-type CodeBlocks = Record<Language, Set<HTMLElement>>
+type CodeBlocks = Record<'main' | 'sub', Record<Language, Set<HTMLElement>>>
 
-type CodeBlockDispatch = (language: Language, element: HTMLElement) => void
+type CodeBlockDispatch = (main: boolean, language: Language, element: HTMLElement) => void
 type CodeBlockDispatchers = {
   register: CodeBlockDispatch
   unregister: CodeBlockDispatch
@@ -16,23 +16,47 @@ const eqElement = eq.eqStrict as eq.Eq<HTMLElement>
 const insertElement = set.insert(eqElement)
 const removeElement = set.remove(eqElement)
 
+const assignBlock = (
+  category: 'main' | 'sub',
+  language: Language,
+  newSet: Set<HTMLElement>,
+  codeBlocks: CodeBlocks,
+): CodeBlocks => {
+  return {
+    ...codeBlocks,
+    [category]: {
+      ...codeBlocks[category],
+      [language]: newSet,
+    },
+  }
+}
+
 const [DemoCodeBlockDispatchProvider, useDemoCodeBlockDispatch] =
   setupContext<CodeBlockDispatchers>('DemoCodeBlockDispatch')
 const [DemoCodeBlocksProvider, useDemoCodeBlocks] = setupContext<CodeBlocks>('DemoCodeBlocks')
 
 const DemoProvider: React.FC = ({ children }) => {
   const [codeBlocks, setCodeBlocks] = useState<CodeBlocks>({
-    css: new Set(),
-    html: new Set(),
-    js: new Set(),
+    main: { css: new Set(), html: new Set(), js: new Set() },
+    sub: { css: new Set(), html: new Set(), js: new Set() },
   })
 
-  const addCodeBlock: CodeBlockDispatch = useCallback((language, element) => {
-    setCodeBlocks((prevVal) => ({ ...prevVal, [language]: insertElement(element)(prevVal[language]) }))
+  const addCodeBlock: CodeBlockDispatch = useCallback((main, language, element) => {
+    setCodeBlocks((prevCodeBlocks) => {
+      const category = main ? 'main' : 'sub'
+      const newSet = insertElement(element)(prevCodeBlocks[category][language])
+
+      return assignBlock(category, language, newSet, prevCodeBlocks)
+    })
   }, [])
 
-  const removeCodeBlock: CodeBlockDispatch = useCallback((language, element) => {
-    setCodeBlocks((prevVal) => ({ ...prevVal, [language]: removeElement(element)(prevVal[language]) }))
+  const removeCodeBlock: CodeBlockDispatch = useCallback((main, language, element) => {
+    setCodeBlocks((prevCodeBlocks) => {
+      const category = main ? 'main' : 'sub'
+      const newSet = removeElement(element)(prevCodeBlocks[category][language])
+
+      return assignBlock(category, language, newSet, prevCodeBlocks)
+    })
   }, [])
 
   return (

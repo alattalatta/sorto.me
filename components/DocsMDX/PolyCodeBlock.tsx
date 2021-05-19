@@ -18,10 +18,10 @@ const PolyCodeBlock: React.FC<CodeBlock.BodyProps> = (props) => {
       return
     }
 
-    demoDispatch?.register(language, ref.current)
+    demoDispatch?.register(props.sub ?? true, language, ref.current)
 
     return () => {
-      ref.current && demoDispatch?.unregister(language, ref.current)
+      ref.current && demoDispatch?.unregister(props.sub ?? true, language, ref.current)
     }
   }, [])
 

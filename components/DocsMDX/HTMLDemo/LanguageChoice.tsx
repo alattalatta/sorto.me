@@ -3,7 +3,7 @@ import { styled } from 'utils/styler'
 import * as DemoProvider from '../DemoProvider'
 
 type Props = {
-  codeBlocks: DemoProvider.CodeBlocks
+  codeBlocks: DemoProvider.CodeBlocks['main']
   onChange: (language: DemoProvider.Language) => void
 }
 

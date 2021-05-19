@@ -1,4 +1,4 @@
-import { record } from 'fp-ts'
+import { array, record, semigroup } from 'fp-ts'
 import { useMemo, useState } from 'react'
 
 import { css, styled } from 'utils/styler'
@@ -76,6 +76,13 @@ const frameStyler = (height?: number) =>
 const grabInnerText = (elSet: Set<HTMLElement>) => Array.from(elSet.values()).map((el) => el.innerText)
 const grabCodeBlocksInnerTexts = record.map(grabInnerText)
 
+const stringArraySemigroup = array.getSemigroup<string>()
+const codeBlockSemigroup = semigroup.struct({
+  css: stringArraySemigroup,
+  html: stringArraySemigroup,
+  js: stringArraySemigroup,
+})
+
 const HTMLDemoBody: React.FC<{ height?: number }> = ({ children, height }) => {
   const codeBlocks = DemoProvider.useCodeBlocks()
   const [activeLanguage, setActiveLanguage] = useState<DemoProvider.Language>('html')
@@ -85,12 +92,17 @@ const HTMLDemoBody: React.FC<{ height?: number }> = ({ children, height }) => {
   }
 
   const frameStyle = useMemo(() => frameStyler(height)(), [height])
-  const stringifiedCodeBlocks = useMemo(() => grabCodeBlocksInnerTexts(codeBlocks), [codeBlocks])
+  const stringifiedCodeBlocks = useMemo(() => {
+    const mainBlocks = grabCodeBlocksInnerTexts(codeBlocks.main)
+    const subBlocks = grabCodeBlocksInnerTexts(codeBlocks.sub)
+
+    return codeBlockSemigroup.concat(mainBlocks, subBlocks)
+  }, [codeBlocks])
 
   return (
     <Root aria-label="데모">
       <Codes language={activeLanguage}>
-        <LanguageChoice codeBlocks={codeBlocks} onChange={setActiveLanguage} />
+        <LanguageChoice codeBlocks={codeBlocks.main} onChange={setActiveLanguage} />
         {children}
       </Codes>
       <Result>

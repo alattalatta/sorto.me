@@ -29,6 +29,9 @@ const Table = styled('table', {
   '& th': {
     background: '$base90',
   },
+  '@narrow': {
+    display: 'none',
+  },
 })
 
 const ColumnHeaderCell = styled(Cell, {
@@ -51,6 +54,14 @@ const BrowserIcon = styled('img', {
   display: 'block',
   marginLeft: 'auto',
   marginRight: 'auto',
+})
+
+const NarrowScreenWarning = styled('p', {
+  color: '$accentR',
+  display: 'none',
+  '@narrow': {
+    display: 'block',
+  },
 })
 
 const Caption = styled('figcaption', {
@@ -142,6 +153,7 @@ const BrowserCompat: React.VFC<{ children: string }> = ({ children }) => {
           ))}
         </tbody>
       </Table>
+      <NarrowScreenWarning>작은 화면 개발 중: 브라우저 호환성 표는 넓은 화면에서 확인해주세요</NarrowScreenWarning>
       <Caption>
         MDN <Anchor href="https://github.com/mdn/browser-compat-data">BCD</Anchor>에서 가져오는 데이터입니다.
       </Caption>

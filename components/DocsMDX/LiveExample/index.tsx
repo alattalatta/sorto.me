@@ -1,10 +1,9 @@
-import dynamic from 'next/dynamic'
+import React from 'react'
 
 import { useCodeBlockGroup } from 'hooks/MDX/useCodeBlockGroup'
 
+import LiveCode from '../LiveCode'
 import styles from './styles.module.scss'
-
-const LiveCode = dynamic(() => import('../LiveCode'))
 
 type Props = {
   height?: number

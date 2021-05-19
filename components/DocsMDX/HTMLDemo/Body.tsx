@@ -26,6 +26,9 @@ const Codes = styled('div', {
     display: 'none',
     margin: 0,
   },
+  '@narrow': {
+    paddingRight: 0,
+  },
   variants: {
     language: {
       css: {
@@ -59,8 +62,15 @@ const Result = styled('div', {
   flexShrink: 0,
   '@narrow': {
     width: '100%',
+    marginTop: 16,
   },
 })
+
+const frameStyler = (height?: number) =>
+  css({
+    height: '100%',
+    minHeight: height,
+  })
 
 const grabInnerText = (elSet: Set<HTMLElement>) => Array.from(elSet.values()).map((el) => el.innerText)
 const grabCodeBlocksInnerTexts = record.map(grabInnerText)
@@ -73,6 +83,7 @@ const HTMLDemoBody: React.FC<{ height?: number }> = ({ children, height }) => {
     throw new Error("HTMLDemoBody couldn't find DemoProvider.")
   }
 
+  const frameStyle = useMemo(() => frameStyler(height)(), [height])
   const stringifiedCodeBlocks = useMemo(() => grabCodeBlocksInnerTexts(codeBlocks), [codeBlocks])
 
   return (
@@ -82,7 +93,7 @@ const HTMLDemoBody: React.FC<{ height?: number }> = ({ children, height }) => {
         {children}
       </Codes>
       <Result>
-        <LiveCode height={height} {...stringifiedCodeBlocks} />
+        <LiveCode className={frameStyle} height={height} {...stringifiedCodeBlocks} />
       </Result>
     </Root>
   )

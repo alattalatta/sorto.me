@@ -74,7 +74,7 @@ CORS를 사용해 지정한 오디오 파일을 가져올지 나타내는 열거
 
 </dd>
 
-<Term>disableremoteplayback</Term>
+<Term experimental>disableremoteplayback</Term>
 <dd>
 
 지정하면 유선으로 연결한 장치(HDMI, DVI 등)와 무선 연결 기술(Miracast, Chromecast, DLNA, AirPlay 등)을 통한 오디오 원격 재생을 할 수 없는 불리언 특성입니다. [제안된 명세](https://www.w3.org/TR/remote-playback/#the-disableremoteplayback-attribute)를 방문해 자세한 정보를 알아보세요.
@@ -132,7 +132,7 @@ CORS를 사용해 지정한 오디오 파일을 가져올지 나타내는 열거
 ```
 
 - [`controls`](#term-controls) 특성을 지정하지 않으면 오디오 플레이어가 브라우저 기본 컨트롤을 제공하지 않습니다. 대신 JavaScript와 [`HTMLMediaElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement) API를 사용해서 컨트롤을 직접 구현할 수 있습니다.
-- 오디오 콘텐츠를 세밀하게 통제할 수 있도록, `HTMLMediaElement`에서는 [여러가지 다양한 이벤트](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement#events)가 발생합니다. 또한 이벤트를 사용하면 오류 발생 여부를 탐지할 수 있고, 오디오를 재생 또는 조작하기에 충분하게 불러온 시점도 알아낼 수 있습니다.
+- 오디오 콘텐츠를 세밀하게 통제할 수 있도록, `HTMLMediaElement`에서는 [여러가지 다양한 이벤트](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement#events)가 발생합니다. 오류 발생 여부와 함께, 오디오를 재생 또는 조작하기에 충분히 불러온 순간도 알아낼 수 있습니다.
 - [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)를 사용하면 이미 존재하는 오디오 파일을 사용하지 않고도 JavaScript 코드로 오디오 스트림을 생성 및 조작할 수 있습니다.
 - `<video>` 요소와 달리, `<audio>` 요소는 자막을 가질 수 없습니다. 그러나 `<video>` 요소에 오디오 소스도 지정할 수 있으므로, 자막이 필요한 경우 `<video>`를 사용하세요.
 
@@ -222,9 +222,10 @@ elem.audioTrackList.addEventListener('removetrack', (event) => {
 
 <BrowserCompat>html.elements.audio</BrowserCompat>
 
-<!--
 # 같이 보기
 
+- 비디오 삽입: [`<video>`](./video)
+
+<!--
 - 미디어 출처 추가: [<source>](./source)
-- 비디오 삽입: [<video>](./video)
 -->

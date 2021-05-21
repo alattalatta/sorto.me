@@ -7,6 +7,17 @@ module.exports = withImages({
   future: {
     webpack5: true,
   },
+  async headers() {
+    return [
+      {
+        source: '/assets/:path*',
+        headers: [
+          { key: 'Access-Control-Allow-Origin', value: 'https://sorto.me' },
+          { key: 'Vary', value: 'Origin' },
+        ],
+      },
+    ]
+  },
   async redirects() {
     return [
       {

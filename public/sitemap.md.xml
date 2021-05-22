@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+  <loc>https://sorto.me/docs/Web/CSS/@font-face/font-display</loc>
+  <lastmod>2021-05-22</lastmod>
+</url>
+<url>
+  <loc>https://sorto.me/docs/Web/CSS/@font-face</loc>
+  <lastmod>2021-05-22</lastmod>
+</url>
+<url>
   <loc>https://sorto.me/docs/Web/CSS/Reference</loc>
-  <lastmod>2021-05-15</lastmod>
+  <lastmod>2021-05-22</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/CSS/font-family</loc>
-  <lastmod>2021-05-19</lastmod>
+  <lastmod>2021-05-22</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/CSS/font-weight</loc>
-  <lastmod>2021-05-19</lastmod>
+  <lastmod>2021-05-21</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/CSS/integer</loc>
@@ -54,7 +62,7 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/audio</loc>
-  <lastmod>2021-05-19</lastmod>
+  <lastmod>2021-05-20</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/b</loc>
@@ -162,7 +170,7 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/img</loc>
-  <lastmod>2021-05-19</lastmod>
+  <lastmod>2021-05-20</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/ins</loc>
@@ -289,12 +297,16 @@
   <lastmod>2021-05-19</lastmod>
 </url>
 <url>
+  <loc>https://sorto.me/docs/Web/HTML/Element/video</loc>
+  <lastmod>2021-05-21</lastmod>
+</url>
+<url>
   <loc>https://sorto.me/docs/Web/HTML/Element/wbr</loc>
   <lastmod>2021-05-19</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element</loc>
-  <lastmod>2021-05-19</lastmod>
+  <lastmod>2021-05-20</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Global_attributes/autocapitalize</loc>

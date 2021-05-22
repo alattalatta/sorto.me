@@ -54,6 +54,7 @@ const Table: React.FC = (props) => <table className={styles.table} {...props} />
 
 export const MDX_COMPONENTS: Record<string, React.ReactNode> = Object.freeze({
   a: Anchor,
+  em: 'i',
   pre: CodeBlock.Root,
   code: CodeBlock.Body,
   h1: headingOf(2),

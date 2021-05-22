@@ -47,3 +47,8 @@ ul,
 ol {
   padding-left: 30px;
 }
+
+i {
+  font-family: 'Noto Serif KR', serif;
+  font-style: normal;
+}

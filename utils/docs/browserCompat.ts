@@ -1,4 +1,10 @@
-import { Identifier, SimpleSupportStatement, SupportStatement, VersionValue } from '@mdn/browser-compat-data/types'
+import type {
+  CompatData,
+  Identifier,
+  SimpleSupportStatement,
+  SupportStatement,
+  VersionValue,
+} from '@mdn/browser-compat-data/types'
 
 /**
  * Retrieve browser compatibility data from `@mdn/bcd`.
@@ -8,10 +14,8 @@ import { Identifier, SimpleSupportStatement, SupportStatement, VersionValue } fr
  * @example
  * const headerData = await getCompatData(['html', 'element', 'header'])
  */
-export async function getCompatData(keys: string): Promise<Identifier | null> {
-  const bcd = await import('@mdn/browser-compat-data')
-
-  let res = (bcd as unknown) as Identifier
+export function getCompatData(compatData: CompatData, keys: string): Identifier | null {
+  let res = compatData as unknown as Identifier
 
   for (const key of keys.split('.')) {
     if (!res) {

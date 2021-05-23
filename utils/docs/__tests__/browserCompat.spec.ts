@@ -1,18 +1,20 @@
-import { Identifier, SimpleSupportStatement } from '@mdn/browser-compat-data/types'
+import bcd from '@mdn/browser-compat-data'
 
 import { determineStatus, getCompatData, getSubIdentifierKeys, supportLabel } from '../browserCompat'
+
+import type { Identifier, SimpleSupportStatement } from '@mdn/browser-compat-data/types'
 
 describe('Docs utilities, browserCompat', () => {
   describe('getCompatData', () => {
     it('can get the requested compat data', async () => {
-      const a = await getCompatData('html.elements.a')
+      const a = getCompatData(bcd, 'html.elements.a')
 
       expect(a?.__compat?.mdn_url).toBe('https://developer.mozilla.org/docs/Web/HTML/Element/a')
       expect(a?.['target'].__compat).toBeDefined()
     })
 
     it('returns null when requested with an invalid key', async () => {
-      const a = await getCompatData('html.elements.aa.cc')
+      const a = getCompatData(bcd, 'html.elements.aa.cc')
 
       expect(a).toBe(null)
     })

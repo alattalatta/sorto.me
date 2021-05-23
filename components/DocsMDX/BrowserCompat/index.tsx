@@ -1,4 +1,3 @@
-import { Identifier } from '@mdn/browser-compat-data/types'
 import chromeIcon from '@mdn/dinocons/browsers/chrome.svg'
 import edgeIcon from '@mdn/dinocons/browsers/edge.svg'
 import firefoxIcon from '@mdn/dinocons/browsers/firefox.svg'
@@ -14,6 +13,8 @@ import { styled } from 'utils/styler'
 import * as Callout from '../../MDX/Callout'
 import CompatRow from './CompatRow'
 import { Cell } from './shared'
+
+import type { CompatData, Identifier } from '@mdn/browser-compat-data/types'
 
 const Table = styled('table', {
   width: '100%',
@@ -76,7 +77,8 @@ const BrowserCompat: React.VFC<{ children: string }> = ({ children }) => {
 
   useEffect(() => {
     ;(async () => {
-      setLoadedData(await getCompatData(children))
+      const bcd = (await import('@mdn/browser-compat-data')) as unknown as CompatData
+      setLoadedData(getCompatData(bcd, children))
     })()
   }, [children])
 

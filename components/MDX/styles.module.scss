@@ -11,6 +11,27 @@
     margin-top: 20px;
   }
 
+  & a[target="_blank"]::after {
+    content: '';
+    width: 14px;
+    height: 14px;
+    background: url('/images/launch.svg') center no-repeat;
+    background-size: contain;
+    display: inline-block;
+    opacity: 0.8;
+    vertical-align: top;
+  }
+
+  & a[href^="https://developer.mozilla.org/"]::after {
+    content: 'MDN';
+    background: none;
+    font-size: 10px;
+    font-weight: 700;
+    width: auto;
+    height: auto;
+    color: var(--colors-base10);
+  }
+
   & > dt {
     font-weight: 700;
     margin-top: 20px;

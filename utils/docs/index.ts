@@ -6,6 +6,7 @@ import matter from 'gray-matter'
 import { onlyMDXFiles, readFilesRec, readLastModified } from '../system'
 
 export type DocMetadata = {
+  bcd: string | null
   /** Escaped version of `excerpt`. */
   description: string | null
   excerpt: string | null

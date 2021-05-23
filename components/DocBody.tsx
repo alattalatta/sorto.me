@@ -1,4 +1,3 @@
-import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { useRouter } from 'next/router'
 import React from 'react'
 
@@ -11,13 +10,20 @@ import { MDXWrap, MDX_SCOPE } from './MDX'
 import TableOfContent from './TableOfContent'
 import { Container } from './basics'
 
+import type { Identifier } from '@mdn/browser-compat-data/types'
+import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
+
 type Props = {
+  bcd: {
+    data: Identifier
+    name: string
+  } | null
   children: MDXRemoteSerializeResult
   meta: DocMetadata
   slugs: string[]
 }
 
-const DocBody: React.VFC<Props> = ({ children, meta, slugs }) => {
+const DocBody: React.VFC<Props> = ({ bcd, children, meta, slugs }) => {
   const router = useRouter()
 
   return (
@@ -25,7 +31,7 @@ const DocBody: React.VFC<Props> = ({ children, meta, slugs }) => {
       <DocHero slugs={slugs}>{meta.title}</DocHero>
       <Container css={{ position: 'relative' }}>
         <TableOfContent key={router.asPath} />
-        <MDXWrap components={DOCS_MDX_COMPONENTS} scope={MDX_SCOPE}>
+        <MDXWrap components={DOCS_MDX_COMPONENTS} scope={{ ...MDX_SCOPE, bcd }}>
           {children}
         </MDXWrap>
       </Container>

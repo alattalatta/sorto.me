@@ -16,6 +16,7 @@ describe('Docs utilities', () => {
 
       expect(parsed.content).toBe('zzz')
       expect(parsed.meta).toEqual<DocMetadata>({
+        bcd: null,
         description: 'aaa&#x26;bbb',
         excerpt: 'aaa&bbb',
         originalTitle: 'blah',
@@ -33,6 +34,7 @@ describe('Docs utilities', () => {
 
       expect(parsed.content).toBe('')
       expect(parsed.meta).toEqual<DocMetadata>({
+        bcd: null,
         description: null,
         excerpt: null,
         originalTitle: 'title',

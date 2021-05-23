@@ -72,29 +72,46 @@ const Caption = styled('figcaption', {
   textAlign: 'right',
 })
 
-const BrowserCompat: React.VFC<{ children: string }> = ({ children }) => {
+const BrowserCompat: React.VFC<{ children?: string; data?: { data: Identifier; name: string } | null }> = ({
+  children,
+  data: dataProp,
+}) => {
   const [loadedData, setLoadedData] = useState<Identifier | undefined | null>(undefined)
 
   useEffect(() => {
-    ;(async () => {
-      const bcd = (await import('@mdn/browser-compat-data')) as unknown as CompatData
-      setLoadedData(getCompatData(bcd, children))
-    })()
+    if (children) {
+      ;(async () => {
+        const bcd = (await import('@mdn/browser-compat-data')) as unknown as CompatData
+        setLoadedData(getCompatData(bcd, children))
+      })()
+    }
   }, [children])
 
-  if (loadedData === undefined) {
+  const data = dataProp?.data || loadedData
+  const name = (() => {
+    if (dataProp?.name) {
+      return dataProp.name
+    }
+
+    if (!children) {
+      throw new Error('BrowserCompat needs data name.')
+    }
+
+    const keys = children.split('.')
+    return keys[keys.length - 1]
+  })()
+
+  if (data === undefined) {
     return null
   }
 
-  if (loadedData === null) {
+  if (data === null) {
     return (
       <Callout.Root color="alert" label="브라우저 호환성 데이터 없음">
         <code>{children}</code>의 호환성 데이터를 찾을 수 없습니다.
       </Callout.Root>
     )
   }
-
-  const keys = children.split('.')
 
   return (
     <figure>
@@ -149,9 +166,9 @@ const BrowserCompat: React.VFC<{ children: string }> = ({ children }) => {
           </tr>
         </thead>
         <tbody>
-          <CompatRow data={loadedData} name={keys[keys.length - 1]} />
-          {getSubIdentifierKeys(loadedData).map((key) => (
-            <CompatRow key={key} data={loadedData[key]} name={key} recurse={true} />
+          <CompatRow data={data} name={name} />
+          {getSubIdentifierKeys(data).map((key) => (
+            <CompatRow key={key} data={data[key]} name={key} recurse={true} />
           ))}
         </tbody>
       </Table>

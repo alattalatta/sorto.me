@@ -2,8 +2,8 @@ import { promises as fs } from 'fs'
 import path from 'path'
 
 import rehypePrism from '@mapbox/rehype-prism'
+import bcd from '@mdn/browser-compat-data'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
 import Head from 'next/head'
 import React from 'react'
@@ -13,12 +13,24 @@ import DocBody from 'components/DocBody'
 import DocMenu from 'components/DocMenu'
 import { getLayout } from 'components/Layout'
 import { DocMetadata, DOCS_PATH, getDocFiles, parseDoc } from 'utils/docs'
+import { getCompatData } from 'utils/docs/browserCompat'
 import { Page } from 'utils/types'
 
-type StaticParam = { slugs: string[] }
-type StaticProps = { body: MDXRemoteSerializeResult; meta: DocMetadata; slugs: string[] }
+import type { Identifier } from '@mdn/browser-compat-data/types'
+import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
 
-const Doc: Page<StaticProps> = ({ body, meta, slugs }) => {
+type StaticParam = { slugs: string[] }
+type StaticProps = {
+  bcd: {
+    data: Identifier
+    name: string
+  } | null
+  body: MDXRemoteSerializeResult
+  meta: DocMetadata
+  slugs: string[]
+}
+
+const Doc: Page<StaticProps> = ({ bcd, body, meta, slugs }) => {
   return (
     <>
       <Head>
@@ -29,7 +41,7 @@ const Doc: Page<StaticProps> = ({ body, meta, slugs }) => {
         {meta.excerpt && <meta key="og:description" name="og:description" content={meta.excerpt} />}
         <meta key="article:modified_time" property="article:modified_time" content={meta.updated} />
       </Head>
-      <DocBody meta={meta} slugs={slugs}>
+      <DocBody bcd={bcd} meta={meta} slugs={slugs}>
         {body}
       </DocBody>
     </>
@@ -49,11 +61,13 @@ export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({
 
   const { content, meta } = await parseDoc(filePath, source)
 
-  const mdxOptions = { rehypePlugins: [rehypePrism] }
-  const body = await serialize(content, { mdxOptions, scope: meta })
+  const bcd = makeBCDData(meta.bcd)
+
+  const body = await serialize(content, { mdxOptions: { rehypePlugins: [rehypePrism] }, scope: { ...meta, bcd } })
 
   return {
     props: {
+      bcd,
       body,
       meta,
       slugs: params.slugs,
@@ -67,5 +81,24 @@ export const getStaticPaths: GetStaticPaths<StaticParam> = async () => {
     paths: (await getDocFiles())
       .map((path) => path.replace('.mdx', ''))
       .map((path) => ({ params: { slugs: path.split('/') } })),
+  }
+}
+
+function makeBCDData(bcdKey: string | null): { data: Identifier; name: string } | null {
+  if (!bcdKey) {
+    return null
+  }
+
+  const data = getCompatData(bcd, bcdKey)
+  if (!data) {
+    return null
+  }
+
+  const keys = bcdKey.split('.')
+  const name = keys[keys.length - 1]
+
+  return {
+    data,
+    name,
   }
 }

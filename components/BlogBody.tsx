@@ -8,7 +8,6 @@ import { easeStandard } from 'utils/styler'
 import BlogFooter from './BlogFooter'
 import BlogHero from './BlogHero'
 import { MDX_COMPONENTS, MDXWrap, MDX_SCOPE } from './MDX'
-import TableOfContent from './TableOfContent'
 import { Container } from './basics'
 
 type Props = {
@@ -30,7 +29,6 @@ const BlogBody: React.VFC<Props> = ({ children, meta }) => {
           y: easeStandard(0.5),
         }}
       >
-        <TableOfContent />
         <MDXWrap components={MDX_COMPONENTS} scope={MDX_SCOPE}>
           {children}
         </MDXWrap>

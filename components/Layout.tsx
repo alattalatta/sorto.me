@@ -26,8 +26,7 @@ const Layout: React.FC<Props> = ({ children: { brand, menu, page }, variants }) 
 }
 export default Layout
 
-export const getLayout = (
-  menu: React.ReactNode,
-  brand?: React.ReactNode,
-  variants?: { brightness: 'dark' | 'light' },
-) => (page: JSX.Element): JSX.Element => <Layout variants={variants}>{{ brand, menu, page }}</Layout>
+export const getLayout =
+  (menu: React.ReactNode, brand?: React.ReactNode, variants?: { brightness: 'dark' | 'light' }) =>
+  (page: JSX.Element): JSX.Element =>
+    <Layout variants={variants}>{{ brand, menu, page }}</Layout>

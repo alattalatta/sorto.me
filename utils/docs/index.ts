@@ -57,6 +57,7 @@ export async function parseDoc(filePath: string, source: Buffer): Promise<{ cont
     content,
     meta: {
       ...data,
+      bcd: null,
       description: excerpt ? escapeUTF8(excerpt) : null,
       excerpt: excerpt || null,
       originalTitle: originalTitle || title,

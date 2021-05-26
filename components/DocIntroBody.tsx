@@ -37,6 +37,9 @@ const DocIntroBody: React.VFC = () => {
           <li>
             <Anchor href="/docs/Web/HTML/Global_attributes">HTML 전역 특성 참고서</Anchor>
           </li>
+          <li>
+            <Anchor href="/docs/Web/CSS/Reference">CSS 참고서</Anchor>
+          </li>
         </ul>
       </Container>
     </article>

@@ -1,0 +1,41 @@
+---
+title: 'HTML <datalist>: 데이터 리스트 요소'
+excerpt: HTML <datalist> (데이터 리스트) 요소는 다른 컨트롤에서 제공할 수 있는 추천 선택지 목록을 나타냅니다. 각각의 선택지는 <option> 요소로 표현합니다.
+bcd: html.elements.datalist
+---
+
+**HTML `<datalist>` 요소**는 다른 컨트롤에서 제공할 수 있는 추천 선택지 목록을 나타냅니다. 각각의 선택지는 [`<option>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option) 요소로 표현합니다.
+
+<HTMLDemo height={200}>
+
+```html
+<label for="choice">맛을 고르세요.</label>
+<input id="choice" list="flavors" name="choice">
+
+<datalist id="flavors">
+  <option value="딸기">
+  <option value="바나나">
+  <option value="초코">
+  <option value="민트">
+</datalist>
+```
+
+</HTMLDemo>
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)만 포함합니다.
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/forms.html#the-datalist-element)
+
+# 브라우저 호환성
+
+<BrowserCompat data={bcd} />
+
+<!--
+# 같이 보기
+
+- 데이터 리스트를 사용하는 컨트롤: [`<input>`](./input) 요소와 [`list`](./input#term-list) 특성.
+-->

@@ -5,11 +5,7 @@ const { PHASE_DEVELOPMENT_SERVER } = require('next/constants')
 
 module.exports = (phase) =>
   withImages({
-    future: {
-      webpack5: true,
-    },
     async headers() {
-      console.log(phase)
       if (phase === PHASE_DEVELOPMENT_SERVER) {
         return []
       }

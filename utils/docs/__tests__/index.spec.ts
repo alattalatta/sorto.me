@@ -14,9 +14,9 @@ describe('Docs utilities', () => {
 
       const parsed = await parseDoc(mockFilePath, await fileAsync)
 
-      expect(parsed.content).toBe('zzz')
+      expect(parsed.content.trim()).toBe('zzz')
       expect(parsed.meta).toEqual<DocMetadata>({
-        bcd: null,
+        bcd: 'foo.bar',
         description: 'aaa&#x26;bbb',
         excerpt: 'aaa&bbb',
         originalTitle: 'blah',
@@ -34,7 +34,6 @@ describe('Docs utilities', () => {
 
       expect(parsed.content).toBe('')
       expect(parsed.meta).toEqual<DocMetadata>({
-        bcd: null,
         description: null,
         excerpt: null,
         originalTitle: 'title',

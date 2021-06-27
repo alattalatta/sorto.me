@@ -1,3 +1,4 @@
+import type { CompatData, Identifier } from '@mdn/browser-compat-data/types'
 import chromeIcon from '@mdn/dinocons/browsers/chrome.svg'
 import edgeIcon from '@mdn/dinocons/browsers/edge.svg'
 import firefoxIcon from '@mdn/dinocons/browsers/firefox.svg'
@@ -13,8 +14,6 @@ import { styled } from 'utils/styler'
 import * as Callout from '../../MDX/Callout'
 import CompatRow from './CompatRow'
 import { Cell } from './shared'
-
-import type { CompatData, Identifier } from '@mdn/browser-compat-data/types'
 
 const Table = styled('table', {
   width: '100%',

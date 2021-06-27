@@ -51,7 +51,7 @@ button:active {
 <Term>form</Term>
 <dd>
 
-이 버튼을 연결할 _양식 소유자_([`<form>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form) 요소)의 ID를 지정합니다. 같은 문서 상에 존재하는 `<form>`의 `id` 특성을 지정할 수 있습니다. 이 특성이 존재하지 않으면 `<button>`의 양식 소유자는 가장 가까운 조상 `<form>`이 됩니다. (존재할 경우)
+이 버튼을 연결할 _양식 소유자_([`<form>`](./form) 요소)의 ID를 지정합니다. 같은 문서 상에 존재하는 `<form>`의 `id` 특성을 지정할 수 있습니다. 이 특성이 존재하지 않으면 `<button>`의 양식 소유자는 가장 가까운 조상 `<form>`이 됩니다. (존재할 경우)
 
 `form` 특성을 사용하면 `<button>`이 `<form>`의 자손이 아니어도 연결할 수 있습니다. 조상에 `<form>`이 있는데 `form` 특성을 지정한 경우 특성이 가리키는 `<form>`이 우선합니다.
 
@@ -60,7 +60,7 @@ button:active {
 <Term>formaction</Term>
 <dd>
 
-버튼을 클릭했을 때의 데이터를 제출할 URL을 지정합니다. 버튼의 *양식 소유자*에 지정한 [`action`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-action) 특성보다 우선합니다. 양식 소유자가 없으면 아무 효과도 없습니다.
+버튼을 클릭했을 때의 데이터를 제출할 URL을 지정합니다. 버튼의 *양식 소유자*에 지정한 [`action`](./form#term-action) 특성보다 우선합니다. 양식 소유자가 없으면 아무 효과도 없습니다.
 
 </dd>
 
@@ -70,10 +70,10 @@ button:active {
 버튼이 (*양식 소유자*가 존재하고, `type="button"`을 지정하지 않은) 제출용 버튼일 때, 제출할 데이터를 인코딩하는 방법을 지정합니다. 가능한 값은 다음과 같습니다.
 
 - `application/x-www-form-urlencoded`: 기본값입니다.
-- `multipart/form-data`: [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-type)이 `file`인 [`<input>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input)을 제출할 때 사용합니다.
+- `multipart/form-data`: [`type`](./input#term-type)이 `file`인 [`<input>`](./input)을 제출할 때 사용합니다.
 - `text/plain`: 디버깅 용도로 사용하는 값입니다. 실제 사용자가 제출하는 데이터의 인코딩에는 사용하지 말아야 합니다.
 
-버튼의 양식 소유자에 지정한 [`enctype`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-enctype) 특성보다 우선합니다.
+버튼의 양식 소유자에 지정한 [`enctype`](./form#term-enctype) 특성보다 우선합니다.
 
 </dd>
 
@@ -86,14 +86,14 @@ button:active {
 - `get`: 양식의 데이터를 `action` URL 뒤의 쿼리 문자열로 붙여서 서버로 전송합니다. 검색 창처럼 [양식이 유발하는 부수효과가 없을 때](https://developer.mozilla.org/ko/docs/Glossary/Idempotent) 사용하세요.
 - `dialog`: 양식이 [`<dialog>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) 안에 있을 때, 양식을 제출하면 대화상자를 닫습니다.
 
-버튼의 양식 소유자에 지정한 [`method`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-method) 특성보다 우선합니다.
+버튼의 양식 소유자에 지정한 [`method`](./form#term-method) 특성보다 우선합니다.
 
 </dd>
 
 <Term>formnovalidate</Term>
 <dd>
 
-버튼이 (*양식 소유자*가 존재하고, `type="button"`을 지정하지 않은) 제출용 버튼일 때, 제출 시 양식의 데이터를 [검증](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation)하지 않음을 지정하는 불리언 특성입니다. 버튼의 양식 소유자에 지정한 [`novalidate`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-novalidate) 특성보다 우선합니다.
+버튼이 (*양식 소유자*가 존재하고, `type="button"`을 지정하지 않은) 제출용 버튼일 때, 제출 시 양식의 데이터를 [검증](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation)하지 않음을 지정하는 불리언 특성입니다. 버튼의 양식 소유자에 지정한 [`novalidate`](./form#term-novalidate) 특성보다 우선합니다.
 
 </dd>
 
@@ -109,7 +109,7 @@ button:active {
 - `_parent`: 현재 페이지가 프레임 안에 존재하는 경우, 결과를 현재 브라우징 맥락의 부모에 보여줍니다. 부모가 없으면 `_self`와 동일합니다.
 - `_top`: 결과를 최상위 브라우징 맥락에 보여줍니다. 최상위 브라우징 맥락이란 현재 맥락의 조상 중 부모가 없는 맥락입니다. 현재 맥락이 부모를 가지지 않으면 `_self`와 동일합니다.
 
-버튼의 양식 소유자에 지정한 [`target`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-target) 특성보다 우선합니다.
+버튼의 양식 소유자에 지정한 [`target`](./form#attr-target) 특성보다 우선합니다.
 
 </dd>
 
@@ -142,7 +142,7 @@ button:active {
 
 # 참고
 
-[`<input>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input)과는 달리, `<button>`에는 내부에 HTML 콘텐츠([`<i>`](./i), [`<br>`](./br), [`<img>`](./img)까지)를 넣을 수 있고, [`::after`](https://developer.mozilla.org/en-US/docs/Web/CSS/::after)와 [`::before`](https://developer.mozilla.org/en-US/docs/Web/CSS/::before) 의사 요소를 사용해서 복잡한 렌더링도 추가할 수 있습니다.
+[`<input>`](./input)과는 달리, `<button>`에는 내부에 HTML 콘텐츠([`<i>`](./i), [`<br>`](./br), [`<img>`](./img)까지)를 넣을 수 있고, [`::after`](https://developer.mozilla.org/en-US/docs/Web/CSS/::after)와 [`::before`](https://developer.mozilla.org/en-US/docs/Web/CSS/::before) 의사 요소를 사용해서 복잡한 렌더링도 추가할 수 있습니다.
 
 버튼을 제출 용도로 추가하는 것이 아니면 `type` 특성을 `button`으로 설정하세요. 그렇지 않으면 의도하지 않은 데이터 제출로 인해 정상적인 응답을 받지 못하고, (존재하지 않을 수도 있는) 그 응답을 불러오려고 시도하는 과정에서 문서의 현재 상태가 사라질 수 있습니다.
 
@@ -169,7 +169,7 @@ button:active {
 
 ### 크기
 
-버튼과 같은 대화형 요소는 상호작용하기 충분한 크기의 활성화 영역을 가져야 합니다. 운동 조절 장애를 가진 사용자뿐만 아니라 터치스크린처럼 정확하지 않은 입력 도구 사용자도 충분한 활성화 영역 크기에 도움을 받습니다. 최소 44x44의 CSS 픽셀 크기를 권고합니다.
+버튼과 같은 대화형 요소는 상호작용하기 충분한 크기의 활성화 영역을 가져야 합니다. 운동 조절 장애를 가진 사용자뿐만 아니라 터치 스크린처럼 정확하지 않은 입력 도구 사용자도 충분한 활성화 영역 크기에 도움을 받습니다. 최소 44x44의 CSS 픽셀 크기를 권고합니다.
 
 ### 간격
 

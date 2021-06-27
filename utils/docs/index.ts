@@ -6,7 +6,7 @@ import matter from 'gray-matter'
 import { onlyMDXFiles, readFilesRec, readLastModified } from '../system'
 
 export type DocMetadata = {
-  bcd: string | null
+  bcd?: string
   /** Escaped version of `excerpt`. */
   description: string | null
   excerpt: string | null
@@ -57,7 +57,6 @@ export async function parseDoc(filePath: string, source: Buffer): Promise<{ cont
     content,
     meta: {
       ...data,
-      bcd: null,
       description: excerpt ? escapeUTF8(excerpt) : null,
       excerpt: excerpt || null,
       originalTitle: originalTitle || title,

@@ -3,7 +3,9 @@ import path from 'path'
 
 import rehypePrism from '@mapbox/rehype-prism'
 import bcd from '@mdn/browser-compat-data'
+import type { Identifier } from '@mdn/browser-compat-data/types'
 import { GetStaticPaths, GetStaticProps } from 'next'
+import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
 import Head from 'next/head'
 import React from 'react'
@@ -15,9 +17,6 @@ import { getLayout } from 'components/Layout'
 import { DocMetadata, DOCS_PATH, getDocFiles, parseDoc } from 'utils/docs'
 import { getCompatData } from 'utils/docs/browserCompat'
 import { Page } from 'utils/types'
-
-import type { Identifier } from '@mdn/browser-compat-data/types'
-import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
 
 type StaticParam = { slugs: string[] }
 type StaticProps = {
@@ -61,7 +60,7 @@ export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({
 
   const { content, meta } = await parseDoc(filePath, source)
 
-  const bcd = makeBCDData(meta.bcd)
+  const bcd = makeBCDData(meta.bcd || null)
 
   const body = await serialize(content, { mdxOptions: { rehypePlugins: [rehypePrism] }, scope: { ...meta, bcd } })
 

@@ -1,3 +1,5 @@
+import type { Identifier } from '@mdn/browser-compat-data/types'
+import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import React from 'react'
 
 import { DocMetadata } from 'utils/docs'
@@ -7,9 +9,6 @@ import DocHero from './DocHero'
 import { DOCS_MDX_COMPONENTS } from './DocsMDX'
 import { MDXWrap, MDX_SCOPE } from './MDX'
 import { Container } from './basics'
-
-import type { Identifier } from '@mdn/browser-compat-data/types'
-import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
 
 type Props = {
   bcd: {

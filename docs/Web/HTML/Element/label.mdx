@@ -1,0 +1,94 @@
+---
+title: 'HTML <label>: 사용자 인터페이스 레이블 요소'
+excerpt: HTML <label> (레이블) 요소는 사용자 인터페이스 항목의 설명을 나타냅니다.
+bcd: html.elements.label
+---
+
+**HTML `<label>` 요소**는 사용자 인터페이스 항목의 설명을 나타냅니다.
+
+<HTMLDemo height={180}>
+
+```html
+<div>
+  <label for="cheese">치즈를 좋아하시나요?</label>
+  <input type="checkbox" name="cheese" id="cheese">
+</div>
+
+<div>
+  <label for="peas">콩을 좋아하시나요?</label>
+  <input type="checkbox" name="peas" id="peas">
+</div>
+```
+
+</HTMLDemo>
+
+[`<input>`](./input) 요소에 `<label>`을 연결하는 것에는 큰 장점이 있습니다.
+
+- 레이블 텍스트는 시각적으로만 컨트롤에 연결된 것이 아니라, 프로그램 상에서도 연결됩니다. 이 말은 보조 기술 역시 어떤 컨트롤의 설명이 정확히 무엇인지 알 수 있다는 것이므로, 사용자가 양식 입력 칸에 포커스를 한 경우, 스크린 리더가 그 칸에 대한 올바른 설명을 읽어줄 수 있어서 사용자가 어떤 데이터를 입력해야 하는지 이해하기가 쉬워집니다.
+- 레이블을 클릭해도 연결한 `<input>`을 직접 활성화/포커스한 것과 동일하게 동작합니다. 이렇게 넓어진 상호작용 범위는 터치 스크린 사용자처럼 부정확한 입력 방식 사용자에게 도움이 됩니다.
+
+`<label>`을 `<input>`과 연결하려면 우선 `<input>`에 [`id`](/docs/Web/HTML/Global_attributes#term-id) 특성을 지정해야 합니다. `<label>`에는 [`for`](#term-for) 특성에 그 `id`와 동일한 값을 지정하세요.
+
+또는, `<input>`을 `<label>`의 안에 배치하는 방법도 있습니다. 이 때는 암시적으로 서로의 관계를 생성하므로 `id`와 `for` 특성을 지정할 필요는 없습니다.
+
+```html
+<label>치즈를 좋아하시나요?
+  <input type="checkbox" name="cheese">
+</label>
+```
+
+레이블을 클릭할 경우, `<label>`에 연결한 `<input>` 요소에서도 `click` 이벤트가 발생합니다.
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)을 포함합니다.
+
+<dl>
+<Term>for</Term>
+<dd>
+
+같은 문서 내의 레이블 가능한 양식 관련 요소 중 `<label>`과 연결할 요소의 [`id`](/docs/Web/HTML/Global_attributes#term-id) 특성 값입니다. 이 값과 동일한 `id`를 지닌 요소가 레이블 가능한 요소에 속하지 않을 경우 아무런 효과도 없습니다. 다수의 요소가 같은 `id` 값을 사용한다면 맨 처음 요소만 고려합니다.
+
+</dd>
+</dl>
+
+# 접근성 고려사항
+
+## 상호작용 콘텐츠
+
+[`<a>`](./a)나 [`<button>`](./button)처럼 상호작용 가능한 요소를 `<label>` 안에 배치하면 사용자가 레이블과 연결된 컨트롤을 활성화하기 힘들어지므로, 레이블 안에는 상호작용 불가한 콘텐츠만 배치해야 합니다.
+
+```html variant=bad
+<label for="tac">
+  <input id="tac" type="checkbox" name="terms-and-conditions">
+  <a href="/terms-and-conditions">이용약관</a>에 동의합니다.
+</label>
+```
+
+```html variant=good
+<label for="tac">
+  <input id="tac" type="checkbox" name="terms-and-conditions">
+  이용약관에 동의합니다.
+</label>
+<p>
+  <a href="/terms-and-conditions">이용약관</a>
+</p>
+```
+
+## 헤딩
+
+보조 기술은 [`<h1-6>`](./Heading_Elements) 요소를 탐색 보조용으로 사용하므로, `<label>` 안에 `<h1-6>`를 배치하면 다양한 종류의 보조 기술과 충돌합니다. 레이블의 시각적인 모습을 바꾸려면 CSS를 사용하세요.
+
+양식이나 양식의 일부에 제목을 지정해야 하면 [`<fieldset>`](./fieldset) 요소 안쪽에 배치하는 [`<legend>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend) 요소를 사용하세요.
+
+## 버튼
+
+유효한 [`value`](./input#term-value)를 지정한 [`<input type="button">`](./input) 요소에는 별도의 레이블이 불필요합니다. `<label>`을 연결할 경우 보조 기술이 버튼을 인식하는 방법과 충돌할 수 있습니다. [`<button>`](./button) 요소도 동일합니다.
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/forms.html#the-label-element)
+
+# 브라우저 호환성
+
+<BrowserCompat data={bcd} />

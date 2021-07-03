@@ -94,7 +94,7 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/button</loc>
-  <lastmod>2021-05-26</lastmod>
+  <lastmod>2021-06-27</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/cite</loc>
@@ -110,7 +110,7 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/datalist</loc>
-  <lastmod>2021-05-26</lastmod>
+  <lastmod>2021-06-27</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/dd</loc>
@@ -158,7 +158,7 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/form</loc>
-  <lastmod>2021-05-26</lastmod>
+  <lastmod>2021-07-03</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/head</loc>
@@ -189,12 +189,20 @@
   <lastmod>2021-05-23</lastmod>
 </url>
 <url>
+  <loc>https://sorto.me/docs/Web/HTML/Element/input</loc>
+  <lastmod>2021-07-03</lastmod>
+</url>
+<url>
   <loc>https://sorto.me/docs/Web/HTML/Element/ins</loc>
   <lastmod>2021-05-23</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/kbd</loc>
   <lastmod>2021-05-23</lastmod>
+</url>
+<url>
+  <loc>https://sorto.me/docs/Web/HTML/Element/label</loc>
+  <lastmod>2021-07-03</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/li</loc>
@@ -322,7 +330,7 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element</loc>
-  <lastmod>2021-05-26</lastmod>
+  <lastmod>2021-07-03</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Global_attributes/autocapitalize</loc>

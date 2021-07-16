@@ -37,7 +37,7 @@ legend {
 
 </HTMLDemo>
 
-위의 예제에서 볼 수 있듯, `<fieldset>` 요소는 HTML 양식의 일부를 묶을 수 있으며 안쪽의 [`<legend>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend) 요소로 그룹에 이름을 붙일 수 있습니다.
+위의 예제에서 볼 수 있듯, `<fieldset>` 요소는 HTML 양식의 일부를 묶을 수 있으며 안쪽의 [`<legend>`](./legend) 요소로 그룹에 이름을 붙일 수 있습니다.
 
 # 특성
 
@@ -49,14 +49,14 @@ legend {
 
 지정하면 그룹 내의 모든 컨트롤을 비활성화하는 불리언 특성입니다. 즉, `<fieldset>`에 속하는 모든 자손 컨트롤의 클릭과 포커스 획득을 막습니다.
 
-[`<legend>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend) 안에 배치한 컨트롤은 비활성화하지 않습니다.
+[`<legend>`](./legend) 안에 배치한 컨트롤은 비활성화하지 않습니다.
 
 </dd>
 
 <Term>form</Term>
 <dd>
 
-이 `<fieldset>`을 연결할 _양식 소유자_([`<form>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form) 요소)의 ID를 지정합니다. 같은 문서 상에 존재하는 `<form>`의 `id` 특성을 지정할 수 있습니다. 이 특성이 존재하지 않으면 `<fieldset>`의 양식 소유자는 가장 가까운 조상 `<form>`이 됩니다. (존재할 경우)
+이 `<fieldset>`을 연결할 _양식 소유자_([`<form>`](./form) 요소)의 ID를 지정합니다. 같은 문서 상에 존재하는 `<form>`의 `id` 특성을 지정할 수 있습니다. 이 특성이 존재하지 않으면 `<fieldset>`의 양식 소유자는 가장 가까운 조상 `<form>`이 됩니다. (존재할 경우)
 
 헷갈릴 수 있으나, `<fieldset>`을 양식과 연결해도 그 안의 컨트롤은 연결되지 않습니다. 컨트롤과 양식을 연결하려면 컨트롤 각각의 `form` 특성을 지정하세요. 양식에 연결된 컨트롤의 목록은 JavaScript의 [`HTMLFormElement.elements`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/elements)로 가져올 수 있습니다.
 
@@ -69,7 +69,7 @@ legend {
 
 <Callout.Root childAs="div" color="warn" label="참고">
 
-사용자가 보는 이름은 이 특성이 아니라 [`<legend>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend) 요소로 추가합니다.
+사용자에게 보이는 그룹 이름은 이 특성이 아니라 [`<legend>`](./legend) 요소로 추가합니다.
 
 </Callout.Root>
 

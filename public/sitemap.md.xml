@@ -142,7 +142,7 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/fieldset</loc>
-  <lastmod>2021-05-26</lastmod>
+  <lastmod>2021-07-16</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/figcaption</loc>
@@ -202,7 +202,11 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/label</loc>
-  <lastmod>2021-07-03</lastmod>
+  <lastmod>2021-07-16</lastmod>
+</url>
+<url>
+  <loc>https://sorto.me/docs/Web/HTML/Element/legend</loc>
+  <lastmod>2021-07-16</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/li</loc>
@@ -330,19 +334,23 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element</loc>
-  <lastmod>2021-07-03</lastmod>
+  <lastmod>2021-07-16</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Global_attributes/autocapitalize</loc>
-  <lastmod>2021-05-15</lastmod>
+  <lastmod>2021-07-06</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Global_attributes/class</loc>
-  <lastmod>2021-05-19</lastmod>
+  <lastmod>2021-07-06</lastmod>
+</url>
+<url>
+  <loc>https://sorto.me/docs/Web/HTML/Global_attributes/contenteditable</loc>
+  <lastmod>2021-07-06</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Global_attributes</loc>
-  <lastmod>2021-05-19</lastmod>
+  <lastmod>2021-07-06</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML</loc>

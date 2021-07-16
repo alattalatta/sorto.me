@@ -1,11 +1,9 @@
 {
   "root": true,
-  "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "import"],
   "extends": [
     "eslint:recommended",
+    "next",
     "plugin:@typescript-eslint/recommended",
-    "plugin:import/typescript",
     "plugin:prettier/recommended"
   ],
   "rules": {
@@ -21,6 +19,9 @@
       }
     ],
     "prettier/prettier": "warn",
+    "react/display-name": "off",
+    "react/no-unescaped-entities": "off",
+    "@next/next/no-img-element": "off",
     "@typescript-eslint/member-ordering": [
       "warn",
       {

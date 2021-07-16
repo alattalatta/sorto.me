@@ -1,11 +1,11 @@
-import NextDocument, { DocumentContext, DocumentInitialProps, Head, Html, Main, NextScript } from 'next/document'
+import Document, { DocumentContext, DocumentInitialProps, Head, Html, Main, NextScript } from 'next/document'
 import React from 'react'
 
 import { getCssString } from 'utils/styler'
 
-export default class Document extends NextDocument {
+export default class TheDocument extends Document {
   static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
-    const initialProps = await NextDocument.getInitialProps(ctx)
+    const initialProps = await Document.getInitialProps(ctx)
 
     return {
       ...initialProps,

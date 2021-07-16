@@ -10,14 +10,14 @@
     "script:feed": "yarn script scripts/feed"
   },
   "dependencies": {
-    "@mapbox/rehype-prism": "^0.6.0",
+    "@mapbox/rehype-prism": "^0.7.0",
     "@mdn/browser-compat-data": "^3.3.9",
     "@mdn/dinocons": "^0.3.1",
     "@stitches/react": "^0.2.2",
     "clsx": "^1.1.1",
     "entities": "^2.2.0",
     "fp-ts": "^2.10.5",
-    "framer-motion": "3.9",
+    "framer-motion": "^4.1.17",
     "gray-matter": "^4.0.2",
     "next": "^11.0.1",
     "next-mdx-remote": "^3.0.1",

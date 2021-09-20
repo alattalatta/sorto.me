@@ -234,7 +234,7 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/meter</loc>
-  <lastmod>2021-07-18</lastmod>
+  <lastmod>2021-09-13</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/nav</loc>
@@ -243,6 +243,14 @@
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/ol</loc>
   <lastmod>2021-05-23</lastmod>
+</url>
+<url>
+  <loc>https://sorto.me/docs/Web/HTML/Element/optgroup</loc>
+  <lastmod>2021-09-20</lastmod>
+</url>
+<url>
+  <loc>https://sorto.me/docs/Web/HTML/Element/option</loc>
+  <lastmod>2021-09-20</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/p</loc>
@@ -338,7 +346,7 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element</loc>
-  <lastmod>2021-07-18</lastmod>
+  <lastmod>2021-09-20</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Global_attributes/autocapitalize</loc>
@@ -390,6 +398,6 @@
 </url>
 <url>
   <loc>https://sorto.me/posts/2021-09-10+pom</loc>
-  <lastmod>2021-09-10</lastmod>
+  <lastmod>2021-09-13</lastmod>
 </url>
 </urlset>

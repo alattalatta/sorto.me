@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "./base.json",
   "compilerOptions": {
-    "lib": ["ES2015"],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "module": "ESNext",
     "target": "ES6",
     "jsx": "react-jsx"

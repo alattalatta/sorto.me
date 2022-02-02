@@ -9,6 +9,10 @@
     "script": "ts-node -r tsconfig-paths/register --project ./tsconfig.script.json",
     "script:feed": "yarn script scripts/feed"
   },
+  "workspaces": [
+    "app/*",
+    "packages/*"
+  ],
   "dependencies": {
     "@mapbox/rehype-prism": "^0.7.0",
     "@mdn/browser-compat-data": "^4.0.4",
@@ -51,6 +55,7 @@
     "sass": "^1.35.1",
     "ts-node": "^10.0.0",
     "tsconfig-paths": "^3.9.0",
+    "turbo": "^1.1.2",
     "typescript": "^4.3.4"
   }
 }

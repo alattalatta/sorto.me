@@ -14,5 +14,6 @@
   "devDependencies": {
     "turbo": "^1.1.2"
   },
-  "packageManager": "pnpm@6.29.1"
+  "packageManager": "pnpm@6.29.1",
+  "prettier": "@alattalatta/prettier-config"
 }

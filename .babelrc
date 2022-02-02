@@ -1,4 +1,0 @@
-{
-  "presets": ["next/babel"],
-  "exclude": ["node_modules"]
-}

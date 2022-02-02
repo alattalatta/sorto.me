@@ -1,3 +1,16 @@
 {
-  "baseBranch": "origin/main"
+  "baseBranch": "origin/main",
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**"]
+    },
+    "dev": {
+      "cache": false
+    },
+    "export": {
+      "dependsOn": ["^export"],
+      "outputs": ["out/**"]
+    }
+  }
 }

@@ -44,7 +44,7 @@
   "settings": {
     "import/resolver": {
       "typescript": {
-        "project": "tsconfig.json"
+        "project": "apps/web/tsconfig.json"
       }
     }
   }

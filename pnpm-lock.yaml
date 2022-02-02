@@ -1,92 +1,102 @@
 lockfileVersion: 5.3
 
-specifiers:
-  '@babel/core': ^7.14.6
-  '@mapbox/rehype-prism': ^0.7.0
-  '@mdn/browser-compat-data': ^4.0.4
-  '@mdn/dinocons': ^0.3.1
-  '@stitches/react': ^0.2.2
-  '@testing-library/jest-dom': ^5.14.1
-  '@testing-library/react': ^12.0.0
-  '@types/jest': ^27.0.1
-  '@types/mock-fs': ^4.13.0
-  '@types/node': '14'
-  '@types/qs': ^6.9.5
-  '@types/react': ^17.0.11
-  '@types/react-dom': ^17.0.8
-  '@typescript-eslint/eslint-plugin': ^4.28.0
-  '@typescript-eslint/parser': ^4.28.0
-  babel-jest: ^27.0.5
-  clsx: ^1.1.1
-  entities: ^3.0.1
-  eslint: ^7.29.0
-  eslint-config-next: ^11.0.1
-  eslint-config-prettier: ^8.3.0
-  eslint-import-resolver-typescript: ^2.3.0
-  eslint-plugin-import: ^2.23.4
-  eslint-plugin-prettier: ^4.0.0
-  fp-ts: ^2.10.5
-  framer-motion: ^4.1.17
-  gray-matter: ^4.0.2
-  jest: ^27.0.5
-  mock-fs: ^5.0.0
-  next: ^11.0.1
-  next-images: ^1.8.1
-  next-mdx-remote: ^3.0.1
-  prettier: ^2.3.2
-  qs: ^6.10.1
-  react: ^17.0.2
-  react-dom: ^17.0.2
-  sass: ^1.35.1
-  ts-node: ^10.0.0
-  tsconfig-paths: ^3.9.0
-  turbo: ^1.1.2
-  typescript: ^4.3.4
+importers:
 
-dependencies:
-  '@mapbox/rehype-prism': 0.7.0
-  '@mdn/browser-compat-data': 4.1.6
-  '@mdn/dinocons': 0.3.5
-  '@stitches/react': 0.2.5_react@17.0.2
-  clsx: 1.1.1
-  entities: 3.0.1
-  fp-ts: 2.11.8
-  framer-motion: 4.1.17_react-dom@17.0.2+react@17.0.2
-  gray-matter: 4.0.3
-  next: 11.1.4_34a1b3c8dd655a3a9deafed6c535dd42
-  next-mdx-remote: 3.0.8_react-dom@17.0.2+react@17.0.2
-  qs: 6.10.3
-  react: 17.0.2
-  react-dom: 17.0.2_react@17.0.2
+  .:
+    specifiers:
+      turbo: ^1.1.2
+    devDependencies:
+      turbo: 1.1.2
 
-devDependencies:
-  '@babel/core': 7.16.12
-  '@testing-library/jest-dom': 5.16.1
-  '@testing-library/react': 12.1.2_react-dom@17.0.2+react@17.0.2
-  '@types/jest': 27.4.0
-  '@types/mock-fs': 4.13.1
-  '@types/node': 14.18.10
-  '@types/qs': 6.9.7
-  '@types/react': 17.0.38
-  '@types/react-dom': 17.0.11
-  '@typescript-eslint/eslint-plugin': 4.33.0_959502c0ea240e86d4d2ba8b8c0fee45
-  '@typescript-eslint/parser': 4.33.0_eslint@7.32.0+typescript@4.5.5
-  babel-jest: 27.4.6_@babel+core@7.16.12
-  eslint: 7.32.0
-  eslint-config-next: 11.1.4_0befe71db3ebac0678ef7c8aabf9f104
-  eslint-config-prettier: 8.3.0_eslint@7.32.0
-  eslint-import-resolver-typescript: 2.5.0_157002f9dff1b62f2b20650d7e8bf1eb
-  eslint-plugin-import: 2.25.4_eslint@7.32.0
-  eslint-plugin-prettier: 4.0.0_6e6a25a49a944db0fa38418c3ba4bc86
-  jest: 27.4.7_ts-node@10.4.0
-  mock-fs: 5.1.2
-  next-images: 1.8.4
-  prettier: 2.5.1
-  sass: 1.49.7
-  ts-node: 10.4.0_d9704c9be36ede869b5c33ef6688872e
-  tsconfig-paths: 3.12.0
-  turbo: 1.1.2
-  typescript: 4.5.5
+  apps/web:
+    specifiers:
+      '@babel/core': ^7.14.6
+      '@mapbox/rehype-prism': ^0.7.0
+      '@mdn/browser-compat-data': ^4.0.4
+      '@mdn/dinocons': ^0.3.1
+      '@stitches/react': ^0.2.2
+      '@testing-library/jest-dom': ^5.14.1
+      '@testing-library/react': ^12.0.0
+      '@types/jest': ^27.0.1
+      '@types/mock-fs': ^4.13.0
+      '@types/node': '14'
+      '@types/qs': ^6.9.5
+      '@types/react': ^17.0.11
+      '@types/react-dom': ^17.0.8
+      '@typescript-eslint/eslint-plugin': ^4.28.0
+      '@typescript-eslint/parser': ^4.28.0
+      babel-jest: ^27.0.5
+      clsx: ^1.1.1
+      entities: ^3.0.1
+      eslint: ^7.29.0
+      eslint-config-next: ^11.0.1
+      eslint-config-prettier: ^8.3.0
+      eslint-import-resolver-typescript: ^2.3.0
+      eslint-plugin-import: ^2.23.4
+      eslint-plugin-prettier: ^4.0.0
+      fp-ts: ^2.10.5
+      framer-motion: ^4.1.17
+      gray-matter: ^4.0.2
+      jest: ^27.0.5
+      mock-fs: ^5.0.0
+      next: ^11.0.1
+      next-images: ^1.8.1
+      next-mdx-remote: ^3.0.1
+      prettier: ^2.3.2
+      qs: ^6.10.1
+      react: ^17.0.2
+      react-dom: ^17.0.2
+      sass: ^1.35.1
+      ts-node: ^10.0.0
+      tsconfig: workspace:*
+      tsconfig-paths: ^3.9.0
+      typescript: ^4.3.4
+    dependencies:
+      '@mapbox/rehype-prism': 0.7.0
+      '@mdn/browser-compat-data': 4.1.6
+      '@mdn/dinocons': 0.3.5
+      '@stitches/react': 0.2.5_react@17.0.2
+      clsx: 1.1.1
+      entities: 3.0.1
+      fp-ts: 2.11.8
+      framer-motion: 4.1.17_react-dom@17.0.2+react@17.0.2
+      gray-matter: 4.0.3
+      next: 11.1.4_34a1b3c8dd655a3a9deafed6c535dd42
+      next-mdx-remote: 3.0.8_react-dom@17.0.2+react@17.0.2
+      qs: 6.10.3
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+    devDependencies:
+      '@babel/core': 7.16.12
+      '@testing-library/jest-dom': 5.16.1
+      '@testing-library/react': 12.1.2_react-dom@17.0.2+react@17.0.2
+      '@types/jest': 27.4.0
+      '@types/mock-fs': 4.13.1
+      '@types/node': 14.18.10
+      '@types/qs': 6.9.7
+      '@types/react': 17.0.38
+      '@types/react-dom': 17.0.11
+      '@typescript-eslint/eslint-plugin': 4.33.0_959502c0ea240e86d4d2ba8b8c0fee45
+      '@typescript-eslint/parser': 4.33.0_eslint@7.32.0+typescript@4.5.5
+      babel-jest: 27.4.6_@babel+core@7.16.12
+      eslint: 7.32.0
+      eslint-config-next: 11.1.4_0befe71db3ebac0678ef7c8aabf9f104
+      eslint-config-prettier: 8.3.0_eslint@7.32.0
+      eslint-import-resolver-typescript: 2.5.0_157002f9dff1b62f2b20650d7e8bf1eb
+      eslint-plugin-import: 2.25.4_eslint@7.32.0
+      eslint-plugin-prettier: 4.0.0_6e6a25a49a944db0fa38418c3ba4bc86
+      jest: 27.4.7_ts-node@10.4.0
+      mock-fs: 5.1.2
+      next-images: 1.8.4
+      prettier: 2.5.1
+      sass: 1.49.7
+      ts-node: 10.4.0_d9704c9be36ede869b5c33ef6688872e
+      tsconfig: link:../../packages/tsconfig
+      tsconfig-paths: 3.12.0
+      typescript: 4.5.5
+
+  packages/tsconfig:
+    specifiers: {}
 
 packages:
 
@@ -279,7 +289,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.12.9
-      '@babel/helper-plugin-utils': 7.10.4
+      '@babel/helper-plugin-utils': 7.16.7
       '@babel/plugin-syntax-object-rest-spread': 7.8.3_@babel+core@7.12.9
       '@babel/plugin-transform-parameters': 7.16.7_@babel+core@7.12.9
     dev: false

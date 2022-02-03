@@ -8,9 +8,8 @@
     "dev": {
       "cache": false
     },
-    "export": {
-      "dependsOn": ["^export"],
-      "outputs": ["out/**"]
+    "ui": {
+      "cache": false
     }
   }
 }

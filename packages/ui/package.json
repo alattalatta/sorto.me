@@ -5,7 +5,7 @@
   "main": "./index.tsx",
   "types": "./index.tsx",
   "scripts": {
-    "cosmos": "cosmos"
+    "ui": "cosmos"
   },
   "devDependencies": {
     "@alattalatta/eslint-config": "^0.3.0",

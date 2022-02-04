@@ -1,15 +1,8 @@
 import { Splash, styled } from '@app/ui'
 
-const Root = styled('main', {
-  display: 'flex',
-})
+const Root = styled('main', {})
 
-const Column = styled('section', {
-  width: `${300 / 16}rem`,
-  minWidth: `${300 / 16}rem`,
-})
-
-const Label = styled('h1', {
+const Label = styled('h2', {
   fontSize: '1em',
   margin: 0,
 })
@@ -28,22 +21,20 @@ const IndexBody: React.VFC = () => {
   return (
     <Splash>
       <Root>
-        <Column>
-          <Label>alattalatta</Label>
-        </Column>
-        <Column>
+        <Label as="h1">alattalatta</Label>
+        <section>
           <Label>library</Label>
           <Item>
             <a href="https://www.npmjs.com/package/k-popo">k-popo</a>
           </Item>
-        </Column>
-        <Column>
+        </section>
+        <section>
           <Label>experiments</Label>
           <Item>
             <a href="https://dialog98.sorto.me/">dialog98</a>
           </Item>
-        </Column>
-        <Column>
+        </section>
+        <section>
           <Label>enter</Label>
           <Item>
             <a href="/posts">blog</a>
@@ -54,13 +45,13 @@ const IndexBody: React.VFC = () => {
           <Item>
             <a href="https://github.com/alattalatta">github</a>
           </Item>
-        </Column>
-        <Column>
+        </section>
+        <section>
           <Label>contact</Label>
           <Item>
             <a href="mailto:alattalatta@sorto.me">@sorto.me</a>
           </Item>
-        </Column>
+        </section>
       </Root>
     </Splash>
   )

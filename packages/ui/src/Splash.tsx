@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import { styled } from './stitches'
 import color from './the-color.svg'
@@ -32,44 +32,38 @@ const Strip = styled('div', {
 })
 
 const ContentsRoot = styled('div', {
-  overflowX: 'auto',
-  position: 'fixed',
-  inset: 0,
-})
-
-const ContentsWrap = styled('div', {
   fontSize: 36,
-  marginLeft: 99,
-  position: 'relative',
-  top: 522,
+  marginLeft: 'min(99px, 10vw)',
+  position: 'absolute',
+  top: 380,
   transform: 'rotate(-15deg)',
   transformOrigin: 'top left',
-  whiteSpace: 'nowrap',
   zIndex: 1,
 })
 
 const Splash: React.FC = ({ children }) => {
-  const contentsRoot = useRef<HTMLDivElement>(null)
-
   const [width, setWidth] = useState(0)
   const [scroll, setScroll] = useState(0)
 
-  const updateScrollThrottled: React.UIEventHandler = useMemo(
-    () =>
-      throttle((event) => setScroll((event.target as HTMLElement).scrollLeft), 10, { leading: false, trailing: true }),
-    [],
-  )
+  const setScrolledThrottled = useMemo(() => throttle(setScroll, 10, { leading: false, trailing: true }), [])
   const updateWidthThrottled = useMemo(
     () =>
       throttle(
         () => {
-          contentsRoot.current && setWidth(calculateStripWidth(contentsRoot.current.scrollWidth, window.innerHeight))
+          setWidth(calculateStripWidth(document.documentElement.scrollWidth, window.innerHeight))
         },
         100,
         { leading: false, trailing: true },
       ),
     [],
   )
+
+  useEffect(() => {
+    const scrollHandler = (): void => setScrolledThrottled(window.scrollX)
+
+    window.addEventListener('scroll', scrollHandler)
+    return () => window.removeEventListener('scroll', scrollHandler)
+  }, [setScrolledThrottled])
 
   useEffect(() => {
     updateWidthThrottled()
@@ -85,11 +79,7 @@ const Splash: React.FC = ({ children }) => {
           <Strip css={{ width, transform: `translateX(-${scroll / 5}px) rotate(28.85deg)` }} />
         </StripWrap>
       </StripRoot>
-      {children && (
-        <ContentsRoot ref={contentsRoot} onScroll={updateScrollThrottled}>
-          <ContentsWrap>{children}</ContentsWrap>
-        </ContentsRoot>
-      )}
+      {children && <ContentsRoot>{children}</ContentsRoot>}
     </>
   )
 }

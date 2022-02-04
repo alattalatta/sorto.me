@@ -11,6 +11,7 @@ importers:
   apps/web:
     specifiers:
       '@alattalatta/prettier-config': ^0.2.0
+      '@app/ui': workspace:*
       '@babel/core': ^7.14.6
       '@mapbox/rehype-prism': ^0.7.0
       '@mdn/browser-compat-data': ^4.0.4
@@ -43,6 +44,7 @@ importers:
       next: ^11.0.1
       next-images: ^1.8.1
       next-mdx-remote: ^3.0.1
+      next-transpile-modules: ^9.0.0
       prettier: ^2.5.1
       qs: ^6.10.1
       react: ^17.0.2
@@ -53,6 +55,7 @@ importers:
       tsconfig-paths: ^3.9.0
       typescript: ^4.3.4
     dependencies:
+      '@app/ui': link:../../packages/ui
       '@mapbox/rehype-prism': 0.7.0
       '@mdn/browser-compat-data': 4.1.6
       '@mdn/dinocons': 0.3.5
@@ -90,6 +93,7 @@ importers:
       jest: 27.4.7_ts-node@10.4.0
       mock-fs: 5.1.2
       next-images: 1.8.4
+      next-transpile-modules: 9.0.0
       prettier: 2.5.1
       sass: 1.49.7
       ts-node: 10.4.0_d9704c9be36ede869b5c33ef6688872e
@@ -6708,6 +6712,13 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: false
+
+  /next-transpile-modules/9.0.0:
+    resolution: {integrity: sha512-VCNFOazIAnXn1hvgYYSTYMnoWgKgwlYh4lm1pKbSfiB3kj5ZYLcKVhfh3jkPOg1cnd9DP+pte9yCUocdPEUBTQ==}
+    dependencies:
+      enhanced-resolve: 5.8.3
+      escalade: 3.1.1
+    dev: true
 
   /next/11.1.4_34a1b3c8dd655a3a9deafed6c535dd42:
     resolution: {integrity: sha512-GWQJrWYkfAKP8vmrzJcCfRSKv955Khyjqd5jipTcVKDGg+SH+NfjDMWFtCwArcQlHPvzisGu1ERLY0+Eoj7G+g==}

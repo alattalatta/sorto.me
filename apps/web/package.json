@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next",
+    "dev": "PORT=3333 next",
     "build": "next build",
     "export": "next export",
     "test": "jest",
@@ -11,6 +11,7 @@
     "script:feed": "yarn script scripts/feed"
   },
   "dependencies": {
+    "@app/ui": "workspace:*",
     "@mapbox/rehype-prism": "^0.7.0",
     "@mdn/browser-compat-data": "^4.0.4",
     "@mdn/dinocons": "^0.3.1",
@@ -49,6 +50,7 @@
     "jest": "^27.0.5",
     "mock-fs": "^5.0.0",
     "next-images": "^1.8.1",
+    "next-transpile-modules": "^9.0.0",
     "prettier": "^2.5.1",
     "sass": "^1.35.1",
     "ts-node": "^10.0.0",

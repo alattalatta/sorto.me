@@ -1,11 +1,11 @@
 {
-  "name": "ui",
+  "name": "@app/ui",
   "version": "1.0.0",
   "private": true,
   "main": "./index.tsx",
   "types": "./index.tsx",
   "scripts": {
-    "ui": "cosmos"
+    "dev": "cosmos"
   },
   "devDependencies": {
     "@alattalatta/eslint-config": "^0.3.0",

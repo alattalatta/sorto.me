@@ -27,15 +27,15 @@ const Strip = styled('div', {
   top: -OFFSET_TOP,
   left: -OFFSET_LEFT,
   transform: `rotate(${THETA}deg)`,
-  // transformOrigin: 'top left',
   transformOrigin: 'bottom left',
   transition: 'transform 50ms ease-out',
 })
 
-const ContentsRoot = styled('main', {
+const ContentsRoot = styled('div', {
   fontSize: 36,
-  margin: '522px 0 0 99px',
+  marginLeft: 99,
   position: 'relative',
+  top: 522,
   transform: 'rotate(-15deg)',
   transformOrigin: 'top left',
   whiteSpace: 'nowrap',

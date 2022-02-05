@@ -1,45 +1,50 @@
-import { motion as m, Variants } from 'framer-motion'
+import type { PostMetadata } from '@app/posts'
+import { Post, styled } from '@app/ui'
 import React from 'react'
 
-import { styled } from 'utils/styler'
+import { Anchor } from './basics'
 
-import BlogPostEntry, { PostDatum } from './BlogPostEntry'
-import { Container as ContainerBase, NoScreen } from './basics'
-
-const CONTAINER_VARIANTS: Variants = {
-  initial: {},
-  present: {
-    transition: {
-      delayChildren: 0.1,
-      staggerChildren: 0.3,
-    },
-  },
+type Props = {
+  posts: readonly PostMetadata[]
 }
 
-const Container = styled(ContainerBase, {
-  paddingTop: 48,
-  paddingBottom: 72,
-  '@narrow': {
-    paddingTop: 24,
-  },
-  '@tiny': {
-    paddingTop: 0,
+const Root = styled('main', {
+  maxWidth: `${412 / 16}rem`,
+  display: 'grid',
+  gap: '1.5rem',
+  gridTemplateColumns: 'none',
+  margin: 'auto',
+  padding: '1rem',
+  '@w2': {
+    maxWidth: `${824 / 16}rem`,
+    gridTemplateColumns: '1fr 1fr',
   },
 })
 
-type Props = {
-  posts: readonly PostDatum[]
-}
-const BlogListBody: React.VFC<Props> = ({ posts }) => {
+const AnchorNoStyle = styled(Anchor, {
+  color: 'inherit',
+  textDecoration: 'none',
+})
+
+const PostFillHeight = styled(Post, {
+  height: '100%',
+})
+
+const PostsBody: React.VFC<Props> = ({ posts }) => {
   return (
-    <Container as={m.div} variants={CONTAINER_VARIANTS} initial="initial" animate="present">
-      <NoScreen as="h1">블로그 포스트 목록</NoScreen>
-      {/* <Anchor href="/rss.xml">구독하기 (RSS)</Anchor> */}
+    <Root>
       {posts.map((post) => (
-        <BlogPostEntry key={post.slug} post={post} />
+        <AnchorNoStyle key={post.slug} href={`/posts/${post.slug}`}>
+          <PostFillHeight
+            image={post.image}
+            title={post.title}
+            // [todo] parse as Date
+            written={new Date(post.created)}
+          />
+        </AnchorNoStyle>
       ))}
-    </Container>
+    </Root>
   )
 }
 
-export default BlogListBody
+export default PostsBody

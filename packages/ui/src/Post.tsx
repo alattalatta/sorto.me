@@ -1,12 +1,22 @@
 import { styled } from './stitches'
 
 type Props = {
+  as?: 'article' | 'header'
+  className?: string
   image: string
   title: string
   written: Date
 }
 
+const Root = styled('article', {
+  display: 'flex',
+  flexDirection: 'column',
+})
+
 const Body = styled('div', {
+  display: 'flex',
+  alignItems: 'flex-end',
+  flexGrow: 1,
   position: 'relative',
   padding: `${120 / 16}rem 0 ${12 / 16}rem ${60 / 16}rem`,
 })
@@ -45,13 +55,13 @@ const Written = styled('time', {
   marginTop: '.5rem',
 })
 
-const Post: React.VFC<Props> = ({ image, title, written }) => {
+const Post: React.VFC<Props> = ({ as = 'article', className, image, title, written }) => {
   const year = written.getFullYear()
   const month = written.getMonth() + 1
   const date = written.getDate()
 
   return (
-    <header>
+    <Root as={as} className={className}>
       <Body>
         <ImageBox>
           <Image alt="" src={image} />
@@ -61,7 +71,7 @@ const Post: React.VFC<Props> = ({ image, title, written }) => {
       <Written dateTime={written.toISOString()}>
         {year}년 {month}월 {date}일 작성
       </Written>
-    </header>
+    </Root>
   )
 }
 

@@ -14,10 +14,10 @@ function App({ Component, pageProps }: { Component: Page; pageProps: Record<stri
     <>
       <Head>
         <title key="title">Sorto.me</title>
-        <meta key="description" name="description" content="Sorto.me - Blog/Web Docs" />
+        <meta key="description" name="description" content="sorto.me" />
         <meta key="og:type" property="og:type" content="website" />
-        <meta key="og:title" property="og:title" content="Sorto.me" />
-        <meta key="og:description" property="og:description" content="Sorto.me - Blog/Web Docs" />
+        <meta key="og:title" property="og:title" content="sorto.me" />
+        <meta key="og:description" property="og:description" content="sorto.me" />
         <meta key="og:url" property="og:url" content={`https://sorto.me${router.asPath}`} />
       </Head>
       <Component {...pageProps} />

@@ -6,11 +6,11 @@
     "dev": "PORT=3333 next",
     "build": "next build",
     "export": "next export",
-    "test": "jest",
     "script": "ts-node -r tsconfig-paths/register --project ./tsconfig.script.json",
     "script:feed": "yarn script scripts/feed"
   },
   "dependencies": {
+    "@app/posts": "workspace:*",
     "@app/ui": "workspace:*",
     "@mapbox/rehype-prism": "^0.7.0",
     "@mdn/browser-compat-data": "^4.0.4",

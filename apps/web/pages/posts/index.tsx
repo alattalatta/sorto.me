@@ -1,34 +1,27 @@
 import { promises as fs } from 'fs'
 import path from 'path'
 
-import { GetStaticProps } from 'next'
+import type { GetStaticProps } from 'next'
 import Head from 'next/head'
 import React from 'react'
 
-import BlogListBody from 'components/BlogListBody'
-import BlogMenu from 'components/BlogMenu'
-import { PostDatum } from 'components/BlogPostEntry'
-import Brand from 'components/Brand'
-import { getLayout } from 'components/Layout'
+import type { PostDatum } from 'components/BlogPostEntry'
 import { parsePost, POSTS_PATH, POST_FILES_PENDING } from 'utils/posts'
-import { Page } from 'utils/types'
+import type { Page } from 'utils/types'
 
 type StaticProps = { posts: readonly PostDatum[] }
 
 const Blog: Page<StaticProps> = ({ posts }) => {
   return (
-    <div>
-      <Head>
-        <title key="title">Blog - Sorto.me</title>
-        <meta key="description" content="이것저것 블로그" />
-        <meta key="og:title" property="og:title" content="Sorto.me - Blog" />
-        <meta key="og:description" property="og:description" content="이것저것 블로그" />
-      </Head>
-      <BlogListBody posts={posts} />
-    </div>
+    <Head>
+      <title key="title">Blog - sorto.me</title>
+      <meta key="description" content="블로그" />
+      <meta key="og:title" content="sorto.me - blog" property="og:title" />
+      <meta key="og:description" content="블로그" property="og:description" />
+    </Head>
   )
 }
-Blog.getLayout = getLayout(<BlogMenu />, <Brand />)
+
 export default Blog
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {

@@ -1,14 +1,17 @@
 {
   "baseBranch": "origin/main",
   "pipeline": {
+    "prepare": {
+      "outputs": ["data/**"]
+    },
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^prepare", "^build"],
       "outputs": ["dist/**", ".next/**"]
     },
     "dev": {
       "cache": false
     },
-    "ui": {
+    "test": {
       "cache": false
     }
   }

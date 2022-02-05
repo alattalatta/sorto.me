@@ -3,7 +3,7 @@ import path from 'path'
 import { escapeUTF8 } from 'entities'
 import matter from 'gray-matter'
 
-import { onlyMDXFiles, readFilesRec, readLastModified } from '../system'
+import { readFilesRec, readLastModified } from '../system'
 
 export type DocMetadata = {
   bcd?: string
@@ -37,7 +37,7 @@ export const getDocFiles = async (): Promise<string[]> => {
     }
   }
 
-  return onlyMDXFiles(DOC_FILES_CACHE)
+  return DOC_FILES_CACHE.filter((it) => it.endsWith('.mdx'))
 }
 
 /**

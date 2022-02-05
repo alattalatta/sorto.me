@@ -1,9 +1,8 @@
-import fs from 'fs'
-import path from 'path'
-
+import type { Post, PostMetadata } from '@app/posts'
+import postIndex from '@app/posts/data/index.json'
 import rehypePrism from '@mapbox/rehype-prism'
-import { GetStaticPaths, GetStaticProps } from 'next'
-import { MDXRemoteSerializeResult } from 'next-mdx-remote'
+import type { GetStaticPaths, GetStaticProps } from 'next'
+import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
 import Head from 'next/head'
 import React from 'react'
@@ -12,8 +11,7 @@ import BlogBody from 'components/BlogBody'
 import BlogMenu from 'components/BlogMenu'
 import Brand from 'components/Brand'
 import { getLayout } from 'components/Layout'
-import { parsePost, PostMetadata, POSTS_PATH, POST_FILES_PENDING } from 'utils/posts'
-import { Page } from 'utils/types'
+import type { Page } from 'utils/types'
 
 type StaticParam = { slug: string }
 type StaticProps = { body: MDXRemoteSerializeResult; meta: PostMetadata }
@@ -23,13 +21,13 @@ const BlogPost: Page<StaticProps> = ({ body, meta }) => {
     <>
       <Head>
         <title key="title">{meta.title} - Sorto.me</title>
-        {meta.description && <meta key="description" name="description" content={meta.description} />}
-        <meta key="og:type" property="og:type" content="article" />
-        <meta key="og:title" property="og:title" content={`${meta.title} - Sorto.me`} />
-        {meta.excerpt && <meta key="og:description" property="og:description" content={meta.excerpt} />}
-        {meta.image && <meta key="og:image" property="og:image" content={meta.image} />}
-        <meta key="article:published_time" property="article:published_time" content={meta.created} />
-        <meta key="article:modified_time" property="article:modified_time" content={meta.updated} />
+        {meta.description && <meta key="description" content={meta.description} name="description" />}
+        <meta key="og:type" content="article" property="og:type" />
+        <meta key="og:title" content={`${meta.title} - Sorto.me`} property="og:title" />
+        {meta.description && <meta key="og:description" content={meta.description} property="og:description" />}
+        {meta.image && <meta key="og:image" content={meta.image} property="og:image" />}
+        <meta key="article:published_time" content={meta.created} property="article:published_time" />
+        <meta key="article:modified_time" content={meta.updated} property="article:modified_time" />
       </Head>
       <BlogBody meta={meta}>{body}</BlogBody>
     </>
@@ -43,10 +41,7 @@ export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({
     throw new Error('Slug must exist')
   }
 
-  const filePath = path.join(POSTS_PATH, `${params.slug}.mdx`)
-  const source = fs.readFileSync(filePath)
-
-  const { content, meta } = await parsePost(filePath, source)
+  const { content, meta } = await importPostData(params.slug)
 
   const mdxOptions = { rehypePlugins: [rehypePrism] }
   const body = await serialize(content, { mdxOptions, scope: meta })
@@ -59,13 +54,13 @@ export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({
   }
 }
 
-export const getStaticPaths: GetStaticPaths<StaticParam> = async () => {
+export const getStaticPaths: GetStaticPaths<StaticParam> = () => {
   return {
     fallback: false,
-    paths: (await POST_FILES_PENDING)
-      .map((path) => path.replace('.mdx', ''))
-      .map((slug) => ({
-        params: { slug },
-      })),
+    paths: postIndex.map((post) => ({ params: { slug: post.slug } })),
   }
+}
+
+function importPostData(slug: string): Promise<Post> {
+  return import(`@app/posts/data/${slug}.json`) as Promise<Post>
 }

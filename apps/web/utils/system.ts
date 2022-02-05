@@ -2,15 +2,6 @@ import { promises as fs } from 'fs'
 import path from 'path'
 
 /**
- * Filters out all values not ending with '.mdx' extension.
- *
- * @param paths An array of path strings.
- */
-export function onlyMDXFiles(paths: string[]): string[] {
-  return paths.filter((path) => /\.mdx$/.test(path))
-}
-
-/**
  * Returns an async iterator which iterates over every files under a given path.
  *
  * @param dir A path to start iterating.

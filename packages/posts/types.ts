@@ -19,8 +19,8 @@ type PostMetadata = {
 }
 
 type Post = {
+  content: string
   meta: PostMetadata
-  slug: string
 }
 
 export type { PostMetadata, Post }

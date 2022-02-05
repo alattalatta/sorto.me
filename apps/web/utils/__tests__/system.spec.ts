@@ -2,17 +2,9 @@ import path from 'path'
 
 import mock from 'mock-fs'
 
-import { onlyMDXFiles, readFilesRec, readLastModified } from '../system'
+import { readFilesRec, readLastModified } from '../system'
 
 describe('System utilities', () => {
-  describe('onlyMDXFiles', () => {
-    it('can filter out non-MDX file paths', async () => {
-      const paths = ['./a.mdx', 'b.mdx/c.ts', 'd.md', 'e.mdx']
-
-      expect(onlyMDXFiles(paths)).toEqual(['./a.mdx', 'e.mdx'])
-    })
-  })
-
   describe('readFilesRec', () => {
     beforeAll(() =>
       // fake fs, should be in ascending order

@@ -1,12 +1,4 @@
-import { globalCss } from '@stitches/react'
-
 import { Footer } from './Footer'
-
-globalCss({
-  html: {
-    fontFamily: 'Pretendard, sans-serif',
-  },
-})()
 
 const Fixture: React.VFC = () => {
   const twoWeeksBefore = new Date()

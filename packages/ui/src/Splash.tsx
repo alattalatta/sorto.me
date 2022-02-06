@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 
+import color from './assets/the-color.svg'
 import { styled } from './stitches'
-import color from './the-color.svg'
 import { throttle } from './throttle'
 
 const THETA = 28.85

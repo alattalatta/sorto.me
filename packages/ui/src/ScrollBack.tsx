@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import arrow from './arrow-up.svg'
+import arrow from './assets/arrow-up.svg'
 import { styled } from './stitches'
 import { useScrollThreshold } from './useScrollThreshold'
 

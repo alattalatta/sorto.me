@@ -7,10 +7,7 @@ import { serialize } from 'next-mdx-remote/serialize'
 import Head from 'next/head'
 import React from 'react'
 
-import BlogBody from 'components/BlogBody'
-import BlogMenu from 'components/BlogMenu'
-import Brand from 'components/Brand'
-import { getLayout } from 'components/Layout'
+import BlogBody from 'components/PostBody'
 import type { Page } from 'utils/types'
 
 type StaticParam = { slug: string }
@@ -33,7 +30,7 @@ const BlogPost: Page<StaticProps> = ({ body, meta }) => {
     </>
   )
 }
-BlogPost.getLayout = getLayout(<BlogMenu />, <Brand brightness="light" />, { brightness: 'dark' })
+
 export default BlogPost
 
 export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({ params }) => {

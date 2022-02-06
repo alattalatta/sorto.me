@@ -1,19 +1,21 @@
-import type { Post, PostMetadata } from '@app/posts'
+import { compile, useMDXRenderer } from '@app/mdx'
+import { Post } from '@app/posts'
+import type { PostMetadata } from '@app/posts'
 import postIndex from '@app/posts/data/index.json'
-import rehypePrism from '@mapbox/rehype-prism'
+import { DocumentBody } from '@app/ui'
 import type { GetStaticPaths, GetStaticProps } from 'next'
-import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
-import { serialize } from 'next-mdx-remote/serialize'
 import Head from 'next/head'
 import React from 'react'
 
-import BlogBody from 'components/PostBody'
+import { MDX_COMPONENTS } from 'components/MDX'
 import type { Page } from 'utils/types'
 
 type StaticParam = { slug: string }
-type StaticProps = { body: MDXRemoteSerializeResult; meta: PostMetadata }
+type StaticProps = { compiledSource: string; meta: PostMetadata }
 
-const BlogPost: Page<StaticProps> = ({ body, meta }) => {
+const Post: Page<StaticProps> = ({ compiledSource, meta }) => {
+  const Content = useMDXRenderer(compiledSource)
+
   return (
     <>
       <Head>
@@ -26,12 +28,14 @@ const BlogPost: Page<StaticProps> = ({ body, meta }) => {
         <meta key="article:published_time" content={meta.created} property="article:published_time" />
         <meta key="article:modified_time" content={meta.updated} property="article:modified_time" />
       </Head>
-      <BlogBody meta={meta}>{body}</BlogBody>
+      <DocumentBody>
+        <Content components={MDX_COMPONENTS} />
+      </DocumentBody>
     </>
   )
 }
 
-export default BlogPost
+export default Post
 
 export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({ params }) => {
   if (!params?.slug) {
@@ -40,12 +44,11 @@ export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({
 
   const { content, meta } = await importPostData(params.slug)
 
-  const mdxOptions = { rehypePlugins: [rehypePrism] }
-  const body = await serialize(content, { mdxOptions, scope: meta })
+  const compiled = await compile(content)
 
   return {
     props: {
-      body,
+      compiledSource: compiled,
       meta,
     },
   }

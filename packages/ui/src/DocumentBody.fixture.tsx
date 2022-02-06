@@ -2,7 +2,7 @@ import { DocumentBody } from './DocumentBody'
 
 const Fixture: React.VFC = () => {
   return (
-    <DocumentBody style={{ maxWidth: `${480 / 16}rem` }}>
+    <DocumentBody css={{ maxWidth: `${480 / 16}rem` }}>
       <style>@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@700&display=swap');</style>
       <h2>그들의 장비와 기구는 모두 살아 있다</h2>
       <p>

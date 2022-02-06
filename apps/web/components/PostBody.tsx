@@ -1,11 +1,15 @@
+import { useMDXRenderer } from '@app/mdx'
 import type { PostMetadata } from '@app/posts'
-import { Footer, Post, ScrollBack, SCROLL_BACK_HEIGHT, styled } from '@app/ui'
+import { DocumentBody, Footer, Post, ScrollBack, SCROLL_BACK_HEIGHT, styled } from '@app/ui'
 import { motion as m } from 'framer-motion'
 import React from 'react'
 
 import { easeStandard } from 'utils/styler'
 
+import { MDX_COMPONENTS } from './MDX'
+
 type Props = {
+  compiledSource: string
   meta: PostMetadata
 }
 
@@ -24,7 +28,9 @@ const ScrollBack768 = styled(ScrollBack, {
   maxWidth: `${768 / 16}rem`,
 })
 
-const BlogBody: React.FC<Props> = ({ children, meta }) => {
+const PostBody: React.VFC<Props> = ({ compiledSource, meta }) => {
+  const Content = useMDXRenderer(compiledSource)
+
   return (
     <Root>
       <Post as="header" image={meta.image} title={meta.title} written={new Date(meta.created)} />
@@ -37,7 +43,9 @@ const BlogBody: React.FC<Props> = ({ children, meta }) => {
           y: easeStandard(0.5),
         }}
       >
-        {children}
+        <DocumentBody>
+          <Content components={MDX_COMPONENTS} />
+        </DocumentBody>
       </Body>
       <Footer updated={new Date(meta.updated)} />
       <ScrollBack768 />
@@ -45,4 +53,4 @@ const BlogBody: React.FC<Props> = ({ children, meta }) => {
   )
 }
 
-export default BlogBody
+export default PostBody

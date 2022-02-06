@@ -80,18 +80,16 @@ HTML Living Standard는 이미지 대체 텍스트 가이드라인에 별도 섹
 
 가이드라인은 "모든 이미지를 `alt`의 값으로 바꿔도 그 의미가 바뀌지 않아야 한다"라고 했다. 직접 바꿔보면 QA에서 버그로 잡을 법한 결과가 나온다.
 
-```jsx variant=bad
-<button onClick={copyURLToClipboard}>체인 아이콘</button>
+```html variant=bad
+<button onclick="copyURLToClipboard">체인 아이콘</button>
 ```
 
 버튼의 경우 시각적 사용자가 받아들이는 의미와 동일하게, 이미지의 대체 텍스트는 그 동작을 설명해야 한다.
 
-```jsx variant=good
-<button onClick={copyURLToClipboard}>
-  URL 복사하기
-</button>
+```html variant=good
+<button onclick="copyURLToClipboard">URL 복사하기</button>
 
-<button onClick={copyURLToClipboard}>
+<button onclick="copyURLToClipboard">
   <img src="/icons/share-chain.svg" alt="URL 복사하기" />
 </button>
 ```

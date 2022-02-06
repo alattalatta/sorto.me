@@ -1,21 +1,18 @@
-import { compile, useMDXRenderer } from '@app/mdx'
+import { compile } from '@app/mdx'
 import { Post } from '@app/posts'
 import type { PostMetadata } from '@app/posts'
 import postIndex from '@app/posts/data/index.json'
-import { DocumentBody } from '@app/ui'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import React from 'react'
 
-import { MDX_COMPONENTS } from 'components/MDX'
+import PostBody from 'components/PostBody'
 import type { Page } from 'utils/types'
 
 type StaticParam = { slug: string }
 type StaticProps = { compiledSource: string; meta: PostMetadata }
 
 const Post: Page<StaticProps> = ({ compiledSource, meta }) => {
-  const Content = useMDXRenderer(compiledSource)
-
   return (
     <>
       <Head>
@@ -27,10 +24,12 @@ const Post: Page<StaticProps> = ({ compiledSource, meta }) => {
         {meta.image && <meta key="og:image" content={meta.image} property="og:image" />}
         <meta key="article:published_time" content={meta.created} property="article:published_time" />
         <meta key="article:modified_time" content={meta.updated} property="article:modified_time" />
+        <link
+          href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/base16/github.min.css"
+          rel="stylesheet"
+        />
       </Head>
-      <DocumentBody>
-        <Content components={MDX_COMPONENTS} />
-      </DocumentBody>
+      <PostBody compiledSource={compiledSource} meta={meta} />
     </>
   )
 }

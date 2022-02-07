@@ -1,0 +1,73 @@
+---
+title: 'HTML <strong>: 중요 표시 요소'
+description: HTML <strong> (중요 표시) 요소는 구문 콘텐츠를 위한 범용 인라인 컨테이너입니다.
+bcd: html.elements.strong
+---
+
+**HTML `<strong>` 요소**는 중요하거나 긴급한 콘텐츠를 나타냅니다.
+
+<HTMLDemo height={80}>
+
+```html
+<p>
+  복도를 돌아다니다가 302호의 방문이 열려있는 것을 발견하면
+  <strong>즉시 방문을 잠가주시기 바랍니다.</strong>
+</p>
+```
+
+</HTMLDemo>
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)만 포함합니다.
+
+# 사용 일람
+
+## `<b>` vs. `<strong>`
+
+동일한 렌더링 결과를 낳는 요소의 종류가 많다는 것은 새로운 웹 개발자에게 어려운 부분 중 하나입니다. 특히 [`<b>`](./b)와 `<strong>`은 겉보기에 완전히 같아서, 많은 사람들이 대체 둘 중에 어떤 걸 써야 하는지 혼란스러워하곤 합니다.
+
+그러나 사실 둘은 다른 요소입니다. `<strong>`은 중요도가 높은 요소를 나타낼 때 사용하지만, `<b>`는 중요함을 나타내지는 않으면서도 주의를 끌어야 하는 부분을 표시합니다.
+
+`<b>`와 `<strong>` 모두 유효한 시맨틱 HTML 요소고, 두 요소의 기본 스타일이 대부분 굵은 글씨로 동일한 것은 순전히 우연이라는 점을 기억하세요. 각자 적합한 용도가 다릅니다. 다른 의미 없이 글씨만 굵게 하려면 CSS [`font-weight`](https://developer.mozilla.org/ko/docs/Web/CSS/font-weight)를 사용하세요.
+
+의미를 표현하는 것이 시맨틱 요소의 존재 의의이기에, 어떤 요소를 사용해야 하는지는 결국 그 안의 글이 가진 의미와 목적이 결정합니다.
+
+## `<em>` vs. `<strong>`
+
+구분을 어렵게 만드는 또 다른 문제로는, `<strong>`이 HTML 4까지만 해도 강세를 표현했지만, HTML 5 이후로는 중요한 콘텐츠를 나타내게 된 것입니다. 두 개의 차이를 별하는 것이 중요합니다.
+
+[`<em>`](./em)은 말할 때 힘을 줘야 하는 부분을 나타냅니다. ("나는 <em>개발</em>이 좋아." vs. "<em>나는</em> 개발이 좋아.") 반면 `<strong>`은 문장의 어느 부분에 중요 표시를 할 때 사용합니다. ("<strong>잠깐!</strong> 마스크를 쓰지 않으면 <strong>과태료 부과</strong>의 대상이 됩니다.")
+
+# 예제
+
+## 강조 표시
+
+```html name=first
+작업을 계속 하시기 전에 <strong>꼭 보안경을 착용하세요.</strong>
+```
+
+<LiveExample name="first" height={20} />
+
+## 경고 강조
+
+```html name=second
+<strong>주의!</strong> 버터가 쉽게 타버리므로 불 조절에 유의하세요.
+```
+
+<LiveExample name="second" height={20} />
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-strong-element)
+
+# 브라우저 호환성
+
+<BrowserCompat data={bcd} />
+
+# 같이 보기
+
+- 주목할 부분: [`<b>`](./b)
+- 강세 표현: [`<em>`](./em)
+- 일반적인 사용에서 벗어난 글: [`<i>`](./i)
+- 연관성 표현: [`<mark>`](./mark)

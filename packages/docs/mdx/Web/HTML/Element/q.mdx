@@ -1,0 +1,59 @@
+---
+title: 'HTML <q>: 인라인 인용문 요소'
+description: HTML <q> (인라인 인용문, inline quotation) 요소는 텍스트의 현재 방향성을 재정의해서 다른 방향으로 렌더링합니다.
+bcd: html.elements.q
+---
+
+**HTML `<q>` 요소**는 텍스트가 짧은 인라인 인용문임을 나타냅니다. 대부분의 최신 브라우저에서는 텍스트를 따옴표로 감싸서 표시합니다. `<q>`는 문단 분리가 필요하지 않은 짧은 인용문에 사용하는 요소입니다. 긴 인용문에는 [`<blockquot>`](./blockquote) 요소를 사용하세요.
+
+<HTMLDemo height={180}>
+
+```html
+<p>
+  테드 창의 <cite class="book">당신 인생의 이야기</cite> (김상훈 옮김, 엘리)에서, 옮긴이는
+  <cite class="chapter">지옥은 신의 부재</cite>를 <q>이 작품집 중 가장 환상적이면서 강렬한 인상을 남기는</q> 작품이라고
+  평했습니다.
+</p>
+```
+
+```css
+cite {
+  font-style: normal;
+}
+.book::before {
+  content: '『';
+}
+.book::after {
+  content: '』';
+}
+.chapter::before {
+  content: '「';
+}
+.chapter::after {
+  content: '」';
+}
+```
+
+</HTMLDemo>
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)을 포함합니다.
+
+<dl>
+  <Term>cite</Term>
+  <dd>출처 문서나 메시지를 가리키는 URL입니다. 인용문의 맥락 혹은 출처 정보를 가리킬 용도입니다.</dd>
+</dl>
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/semantics.html#the-q-element)
+
+# 브라우저 호환성
+
+<BrowserCompat data={bcd} />
+
+# 같이 보기
+
+- 긴 블록 인용문: [`<q>`](./q)
+- 저작물 이름: [`<cite>`](./cite)

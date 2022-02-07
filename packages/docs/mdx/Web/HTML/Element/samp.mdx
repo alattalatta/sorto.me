@@ -1,0 +1,63 @@
+---
+title: 'HTML <samp>: 출력 본보기 요소'
+description: HTML <samp> (출력 본보기, sample) 요소는 컴퓨터 프로그램의 출력 본보기 및 인용한 출력 결과를 나타냅니다.
+bcd: html.elements.samp
+---
+
+**HTML `<samp>` 요소**는 컴퓨터 프로그램의 출력 본보기 및 인용한 출력 결과를 나타냅니다.
+
+<HTMLDemo height={160}>
+
+```html
+<article>
+  <h1>Q1. 실행 불가</h1>
+  <p>터미널에 <kbd>./program.js</kbd>를 입력했지만, 다음과 같은 메시지만 나오고 실행이 되지 않습니다.</p>
+  <p>
+    <samp>permission denied: ./program.js</samp>
+  </p>
+  <article></article>
+</article>
+```
+
+</HTMLDemo>
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)만 포함합니다.
+
+# 예제
+
+## 사용자의 입력을 포함한 출력
+
+`<samp>` 안에 [`<kbd>`](./kbd) 요소를 중첩하면 사용자의 입력이 화면에 보이는 상황을 나타낼 수 있습니다.
+
+```html name=kbd
+<pre><samp><span class="prompt">alattalatta@Home: $</span> <kbd>md5 -s "Hello World!"</kbd>
+MD5 ("Hello World") = b10a8db164e0754105b7a99be72e3fe5
+
+<span class="prompt">alattalatta@Home: $</span> █</samp></pre>
+```
+
+사용자가 터미널에 입력한 명령어를 `<kbd>`를 사용해서 나타냈습니다. 적당한 스타일을 추가한 결과를 확인해보세요.
+
+```css name=kbd
+.prompt {
+  color: crimson;
+}
+```
+
+<LiveExample name="kbd" height={120} />
+
+[`<kbd>` 요소의 "화면에 표시된 입력 옵션" 예제](./kbd#화면에-표시된-입력-옵션)도 참고하세요.
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/semantics.html#the-samp-element)
+
+# 브라우저 호환성
+
+<BrowserCompat data={bcd} />
+
+# 같이 보기
+
+- 사용자 입력을 나타내는 [`<kbd>`](./kbd)

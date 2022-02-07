@@ -1,0 +1,276 @@
+---
+title: 'CSS font-weight: 글씨 굵기'
+description: CSS font-weight 속성은 글꼴의 굵기(웨이트)를 설정합니다. 사용 가능한 굵기 값은 적용된 font-family에 따라 다릅니다.
+bcd: css.properties.font-weight
+---
+
+**CSS `font-weight` 속성**은 글꼴의 굵기(웨이트)를 설정합니다. 사용 가능한 굵기 값은 적용된 [`font-family`](./font-family)에 따라 다릅니다.
+
+<CSSDemo selector="pre{$}">
+
+```css
+font-weight: normal;
+```
+
+```css
+font-weight: bold;
+```
+
+```css
+font-weight: lighter;
+```
+
+```css
+font-weight: bolder;
+```
+
+```css sub
+text-align: center;
+```
+
+```html
+<pre>
+내 그대를 생각함은
+항상 그대가 앉아 있는 배경에서
+해가 지고 바람이 부는 일처럼 사소한 일 일것이나
+언젠가 그대가
+한없이 괴로움 속을 헤매일 때에
+오랫동안 전해 오던 그 사소함으로
+그대를 불러보리라
+</pre>
+```
+
+</CSSDemo>
+
+# 구문
+
+```css
+/* 키워드 */
+font-weight: normal;
+font-weight: bold;
+
+/* 부모 굵기에 상대적인 키워드 */
+font-weight: lighter;
+font-weight: bolder;
+
+/* 숫자 */
+font-weight: 100;
+font-weight: 200;
+font-weight: 300;
+font-weight: 400; // normal
+font-weight: 500;
+font-weight: 600;
+font-weight: 700; // bold
+font-weight: 800;
+font-weight: 900;
+
+/* 전역 값 */
+font-weight: inherit;
+font-weight: initial;
+font-weight: unset;
+```
+
+`font-weight`는 다음 값 중 하나를 사용해 지정할 수 있습니다.
+
+## 값
+
+<dl>
+
+<Term>normal</Term>
+<dd>
+  일반 글꼴입니다. <code>400</code>과 동일합니다.
+</dd>
+
+<Term>bold</Term>
+<dd>
+  굵은 글꼴입니다. <code>700</code>과 동일합니다.
+</dd>
+
+<Term>lighter</Term>
+<dd>
+
+부모 요소보다 한 단계 얇은 글꼴입니다. 상대적 굵기는 네 종류만 사용한다는 것에 주의하세요. 아래의 [상대적 굵기의 의미](#상대적-굵기의-의미) 항목을 참고하세요.
+
+</dd>
+
+<Term>bolder</Term>
+<dd>
+
+부모 요소보다 한 단계 굵은 글꼴입니다. 상대적 굵기는 네 종류만 사용한다는 것에 주의하세요. 아래의 [상대적 굵기의 의미](#상대적-굵기의-의미) 항목을 참고하세요.
+
+</dd>
+
+<Term>{'<number>'}</Term>
+<dd>
+
+1 이상 1000 이하의 [`<number>`](./number) 값입니다. 높은 값은 더 굵은 글꼴, 낮은 값은 더 얇은 글꼴을 나타냅니다. 일부 자주 사용되는 값은 이름으로도 많이 부릅니다. 아래의 [자주 쓰이는 굵기 이름](#자주-쓰이는-굵기-이름) 항목을 참고하세요.
+
+</dd>
+
+</dl>
+
+`font-weight`의 이전 명세에서는 키워드와 100 단위로 끊어지는 값인 100, 200, 300, 400, 500, 600, 700, 800, 900만 받았었습니다. 글꼴 역시 이 굵기들만 사용할 수 있었으며, 451과 같은 세부적인 값은 [대체 굵기](#대체-굵기) 시스템을 통해 인접한 다른 굵기로 나타냈습니다.
+
+CSS Fonts Level 4 명세는 가능한 값을 1~1000의 정수로 확장했으며, 훨씬 상세하게 조절 가능한 굵기에 대응할 수 있는 [가변 글꼴](#가변-글꼴)을 추가했습니다.
+
+## 대체 굵기
+
+주어진 굵기 값을 사용할 수 없는 경우, 다음의 규칙을 통해 렌더링에 대신 사용할 굵기를 선택합니다.
+
+- 주어진 굵기가 400 이상 500 이하인 경우,
+  - 주어진 값보다 크고, 500 이하의 가능한 굵기 중 가장 가까운 것을 선택합니다.
+  - 굵기를 찾을 수 없으면, 주어진 값보다 작고, 400 이상의 가능한 굵기 중 가장 가까운 것을 선택합니다.
+  - 굵기를 찾을 수 없으면, 500을 초과하는 굵기 중 가장 가까운 것을 선택합니다.
+- 주어진 굵기가 400 미만인 경우,
+  - 주어진 값보다 작은 굵기 중 가장 가까운 것을 선택합니다.
+  - 굵기를 찾을 수 없으면, 주어진 값보다 큰 굵기 중 가장 가까운 것을 선택합니다.
+- 주어진 굵기가 500 초과인 경우,
+  - 주어진 값보다 큰 굵기 중 가장 가까운 것을 선택합니다.
+  - 굵기를 찾을 수 없으면, 주어진 값보다 작은 굵기 중 가장 가까운 것을 선택합니다.
+
+## 상대적 굵기의 의미
+
+`lighter`와 `bolder` 중 하나를 지정한 경우, 실제로 적용하는 굵기는 아래의 표와 같습니다.
+
+상대적 굵기는 Thin (100), Normal (400), Bold (700), Heavy (900)의 네 가지 굵기만 고려함에 주의하세요. `font-family`가 더 많은 굵기를 가지고 있더라도 상대적 굵기 계산에서는 모두 무시합니다.
+
+| 상속 값 | `bolder` | `lighter` |
+| ------- | -------- | --------- |
+| 100     | 400      | 100       |
+| 200     | 400      | 100       |
+| 300     | 400      | 100       |
+| 400     | 700      | 100       |
+| 500     | 700      | 100       |
+| 600     | 900      | 400       |
+| 700     | 900      | 400       |
+| 800     | 900      | 700       |
+| 900     | 900      | 700       |
+
+## 자주 쓰이는 굵기 이름
+
+100부터 900까지의 숫자 굵기는 대략 다음과 같은 이름에 대응합니다. ([OpenType 명세](https://docs.microsoft.com/en-us/typography/opentype/spec/os2#usweightclass)도 확인하세요)
+
+| 값  | 자주 쓰이는 이름 |
+| --- | ---------------- |
+| 100 | Thin             |
+| 200 | Extra Light      |
+| 300 | Light            |
+| 400 | Normal           |
+| 500 | Medium           |
+| 600 | Semi Bold        |
+| 700 | Bold             |
+| 800 | Extra Bold       |
+| 900 | Black            |
+
+## 가변 글꼴
+
+대부분의 글꼴은 [자주 쓰이는 굵기 이름](#자주-쓰이는-굵기-이름)에 해당하는 굵기만 가지고 있습니다. 그러나 가변 글꼴이라고 불리는 특정 글꼴은 범위 내의 굵기를 세부적으로 지원하므로, 디자이너가 굵기를 더 자세히 조절할 수 있습니다.
+
+TrueType과 OpenType 가변 글꼴은 "wght" 바리에이션을 사용해 가변 굵기를 구현합니다.
+
+아래의 예제가 올바르게 동작하려면 브라우저가 1 ~ 1000의 `font-weight`가 가능한 CSS Fonts Level 4명세를 지원해야 합니다.
+
+### HTML
+
+```html name=variable
+<header>
+  <input type="range" id="weight" name="weight" min="1" max="1000" />
+  <label for="weight">굵기</label>
+</header>
+<div class="container">
+  <p class="sample">
+    ...it would not be wonderful to meet a Megalosaurus, forty feet long or so, waddling like an elephantine lizard up
+    Holborn Hill.
+  </p>
+</div>
+```
+
+### CSS
+
+```css name=variable
+/*
+Mutator Sans is created by LettError (https://github.com/LettError/mutatorSans)
+and is used here under the terms of its license:
+https://github.com/LettError/mutatorSans/blob/master/LICENSE
+*/
+
+@font-face {
+  src: url('https://mdn.mozillademos.org/files/16011/MutatorSans.ttf');
+  font-family: 'MutatorSans';
+  font-style: normal;
+}
+
+label {
+  font: 1rem monospace;
+  white-space: nowrap;
+}
+
+.container {
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.sample {
+  text-transform: uppercase;
+  font: 1.5rem 'MutatorSans', sans-serif;
+}
+```
+
+### JavaScript
+
+```js name=variable
+const weightLabel = document.querySelector('label[for="weight"]')
+const weightInput = document.querySelector('#weight')
+const sampleText = document.querySelector('.sample')
+
+function update() {
+  weightLabel.textContent = `font-weight: ${weightInput.value}`
+  sampleText.style.fontWeight = weightInput.value
+}
+
+weightInput.addEventListener('input', update)
+
+update()
+```
+
+### 결과
+
+<LiveExample name="variable" height={200} />
+
+# 접근성 고려사항
+
+저시력 사용자는 `font-weight`가 100이나 200인 경우 텍스트를 읽기 힘들 수 있습니다. 특히, 글씨 색상의 대비도가 낮은 경우 심각할 수 있습니다.
+
+# 예제
+
+## 다양한 굵기
+
+```html name=weights
+<p>일반 굵기로</p>
+<p class="heavy">
+  두껍게<br />
+  <span>보다 얇게</span>
+</p>
+```
+
+```css name=weights
+p {
+  font-weight: 400;
+}
+.heavy {
+  font-weight: bold;
+}
+span {
+  font-weight: lighter;
+}
+```
+
+<LiveExample name="weights" height={100} />
+
+# 명세
+
+- [CSS Fonts Module Level 4](https://drafts.csswg.org/css-fonts/#font-weight-prop)
+
+# 브라우저 호환성
+
+<BrowserCompat data={bcd} />

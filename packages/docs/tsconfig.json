@@ -1,0 +1,10 @@
+{
+  "extends": "tsconfig/library.json",
+  "include": ["."],
+  "exclude": ["node_modules"],
+  "ts-node": {
+    "moduleTypes": {
+      "build.ts": "cjs"
+    }
+  }
+}

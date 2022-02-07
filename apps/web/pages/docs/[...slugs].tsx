@@ -1,22 +1,17 @@
-import { promises as fs } from 'fs'
-import path from 'path'
-
-import rehypePrism from '@mapbox/rehype-prism'
-import bcd from '@mdn/browser-compat-data'
+import type { DocMetadata } from '@app/docs'
+import { Doc } from '@app/docs'
+import docsIndex from '@app/docs/data/index.json'
+import { compile, useMDXRenderer } from '@app/mdx'
+import { DocumentBody } from '@app/ui'
+import browserCompatData from '@mdn/browser-compat-data'
 import type { Identifier } from '@mdn/browser-compat-data/types'
-import { GetStaticPaths, GetStaticProps } from 'next'
-import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
-import { serialize } from 'next-mdx-remote/serialize'
+import type { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import React from 'react'
 
-import Brand from 'components/Brand'
-import DocBody from 'components/DocBody'
-import DocMenu from 'components/DocMenu'
-import { getLayout } from 'components/Layout'
-import { DocMetadata, DOCS_PATH, getDocFiles, parseDoc } from 'utils/docs'
+import { DOCS_MDX_COMPONENTS } from 'components/DocsMDX'
 import { getCompatData } from 'utils/docs/browserCompat'
-import { Page } from 'utils/types'
+import type { Page } from 'utils/types'
 
 type StaticParam = { slugs: string[] }
 type StaticProps = {
@@ -24,29 +19,29 @@ type StaticProps = {
     data: Identifier
     name: string
   } | null
-  body: MDXRemoteSerializeResult
+  compiledSource: string
   meta: DocMetadata
-  slugs: string[]
 }
 
-const Doc: Page<StaticProps> = ({ bcd, body, meta, slugs }) => {
+const Doc: Page<StaticProps> = ({ bcd, compiledSource, meta }) => {
+  const Content = useMDXRenderer(compiledSource)
+
   return (
     <>
       <Head>
         <title key="title">{meta.title} - Sorto.me Docs</title>
-        {meta.description && <meta key="description" name="description" content={meta.description} />}
-        <meta key="og:type" property="og:type" content="article" />
-        <meta key="og:title" property="og:title" content={`${meta.title} - Sorto.me Docs`} />
-        {meta.excerpt && <meta key="og:description" name="og:description" content={meta.excerpt} />}
-        <meta key="article:modified_time" property="article:modified_time" content={meta.updated} />
+        {meta.description && <meta key="description" content={meta.description} name="description" />}
+        <meta key="og:type" content="article" property="og:type" />
+        <meta key="og:title" content={`${meta.title} - Sorto.me Docs`} property="og:title" />
+        {meta.description && <meta key="og:description" content={meta.description} name="og:description" />}
+        <meta key="article:modified_time" content={meta.updated} property="article:modified_time" />
       </Head>
-      <DocBody bcd={bcd} meta={meta} slugs={slugs}>
-        {body}
-      </DocBody>
+      <DocumentBody>
+        <Content bcd={bcd} components={DOCS_MDX_COMPONENTS} />
+      </DocumentBody>
     </>
   )
 }
-Doc.getLayout = getLayout(<DocMenu />, <Brand brightness="light" href="/docs" />, { brightness: 'dark' })
 
 export default Doc
 
@@ -55,31 +50,24 @@ export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({
     throw new Error('Slugs must exist')
   }
 
-  const filePath = path.join(DOCS_PATH, `${params.slugs.join('/')}.mdx`)
-  const source = await fs.readFile(filePath)
-
-  const { content, meta } = await parseDoc(filePath, source)
+  const { content, meta } = importDocData(params.slugs.join('/'))
 
   const bcd = makeBCDData(meta.bcd || null)
-
-  const body = await serialize(content, { mdxOptions: { rehypePlugins: [rehypePrism] }, scope: { ...meta, bcd } })
+  const compiled = await compile(content)
 
   return {
     props: {
       bcd,
-      body,
+      compiledSource: compiled,
       meta,
-      slugs: params.slugs,
     },
   }
 }
 
-export const getStaticPaths: GetStaticPaths<StaticParam> = async () => {
+export const getStaticPaths: GetStaticPaths<StaticParam> = () => {
   return {
     fallback: false,
-    paths: (await getDocFiles())
-      .map((path) => path.replace('.mdx', ''))
-      .map((path) => ({ params: { slugs: path.split('/') } })),
+    paths: docsIndex.map((doc) => ({ params: { slugs: doc.slug.split('/') } })),
   }
 }
 
@@ -88,7 +76,7 @@ function makeBCDData(bcdKey: string | null): { data: Identifier; name: string } 
     return null
   }
 
-  const data = getCompatData(bcd, bcdKey)
+  const data = getCompatData(browserCompatData, bcdKey)
   if (!data) {
     return null
   }
@@ -100,4 +88,9 @@ function makeBCDData(bcdKey: string | null): { data: Identifier; name: string } 
     data,
     name,
   }
+}
+
+function importDocData(slug: string): Doc {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  return require(`@app/docs/data/${slug}.json`) as Doc
 }

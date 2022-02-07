@@ -1,0 +1,67 @@
+---
+title: 'HTML <dfn>: 정의 요소'
+description: HTML <dfn> (정의, definition) 요소는 용어를 정의하는 문장이나 맥락 안에서 해당 용어를 나타내기 위한 요소입니다.
+bcd: html.elements.dfn
+---
+
+**HTML `<dfn>` 요소**는 용어를 정의하는 문장이나 맥락 안에서 해당 용어를 나타내기 위한 요소입니다. [`<p>`](./p), [`<dt>`](./dt)/[`<dd>`](./dd) 쌍, [`<section>`](./section) 중 가장 가까운 조상 요소의 내용을 용어의 정의로 취급합니다.
+
+<HTMLDemo height={80}>
+
+```html
+<p>
+  <dfn id="dfn-syntax-highlighting">구문 강조</dfn>란 프로그램 코드의 토큰마다 종류에 따른 색이나 스타일을 적용해
+  알아보기 쉽게 표현하는 것을 말합니다.
+</p>
+```
+
+</HTMLDemo>
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)만 포함합니다. 다만 `<dfn>`의 <HTMLAttr>title</HTMLAttr> 특성은 전역 특성과 의미가 다릅니다. 아래의 사용 일람을 참고하세요.
+
+# 사용 일람
+
+`<dfn>` 요소에는 보기만 해서는 분명하지 않은 점이 있습니다.
+
+## 정의하고 있는 용어 지정하기
+
+현재 맥락이 정의하는 용어는 다음의 규칙을 따라서 판별합니다.
+
+- `<dfn>` 요소에 <HTMLAttr>title</HTMLAttr> 특성이 존재하는 경우 그 값을 현재 정의하는 용어로 취급합니다. `<dfn>` 안에는 여전히 텍스트를 지정해야 하지만, 용어의 준말([`<abbr>`](./abbr))이나 기타 다른 형태를 넣을 수 있습니다.
+- `<dfn>` 요소가 자신만의 텍스트 콘텐츠 없이 단 하나의 자식 요소만 가지는데, 그 자식 요소가 `title` 특성을 가진 `<abbr>`이라면, 해당 `title` 특성의 값을 현재 정의하는 용어로 취급합니다.
+- 그 외에는 `<dfn>`의 텍스트 콘텐츠를 현재 정의하는 용어로 취급합니다.
+
+<Callout.Root color="warn" label="참고">
+  <code>{'<dfn>'}</code>에 <code>title</code> 특성이 존재할 경우, 그 값은 반드시 현재 정의하는 용어만 담아야 합니다.
+</Callout.Root>
+
+# 예제
+
+## 정의와 준말 함께 사용하기
+
+용어를 정의할 때 준말을 쓰고 싶은 경우에는 `<dfn>`과 [`<abbr>`]을 함께 사용할 수 있습니다.
+
+```html name=abbr
+<p>
+  <dfn><abbr title="한국종합주가지수">KOSPI</abbr></dfn
+  >는 한국거래소의 유가증권시장에 상장된 회사들의 주식에 대한 총합인 시가총액의 기준시점과 비교시점을 비교하여 나타낸
+  지표다.
+</p>
+<p>
+  <abbr title="한국종합주가지수">KOSPI</abbr>는 1980년 1월 4일의 시가총액을 분모로 하고, 산출시점의 시가총액을 분자로
+  하여 지수화한 것이다.
+</p>
+—위키백과, <cite href="https://ko.wikipedia.org/wiki/%EC%BD%94%EC%8A%A4%ED%94%BC">'코스피'</cite>
+```
+
+<LiveExample name="abbr" height={120} />
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/semantics.html#the-dfn-element)
+
+# 브라우저 호환성
+
+<BrowserCompat data={bcd} />

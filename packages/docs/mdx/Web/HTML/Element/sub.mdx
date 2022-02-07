@@ -1,0 +1,62 @@
+---
+title: 'HTML <sub>: 아래 첨자 요소'
+description: HTML <sub> (아래 첨자, subscript) 요소는 활자 관습상의 이유로 아래 첨자를 사용해야 하는 인라인 텍스트를 지정합니다.
+bcd: html.elements.sub
+---
+
+**HTML `<sub>` 요소**는 활자 관습상의 이유로 아래 첨자를 사용해야 하는 인라인 텍스트를 지정합니다.
+
+<HTMLDemo height={40}>
+
+```html
+<p>H<sub>2</sub>O가 산소라는 것은 누구나 아는 사실입니다.</p>
+```
+
+</HTMLDemo>
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)만 포함합니다.
+
+# 사용 일람
+
+`<sub>` 요소는 아래 첨자로 작성하지 않으면 의미가 바뀌는 텍스트에만 사용해야 하며, 작은 글자를 아래로 배치하는 시각적 효과를 위해 사용해서는 안됩니다. 예컨대, 화학의 원소 표기법에서 원자의 수를 나타내는 숫자는 아래 첨자로 표기해야 합니다. (O<sub>2</sub> vs. O2) 이런 경우에는 `<sub>`를 사용할 수 있습니다.
+
+그 외에도 각주 표기, 다수의 유사한 변수에 숫자 매기기 등에도 사용할 수 있습니다. 아래의 예제를 참고하세요.
+
+# 예제
+
+## 각주 표기
+
+각주 번호는 위 첨자로도 나타낼 수 있고, 아래 첨자로도 나타낼 수 있습니다. 아래 첨자를 사용할 경우의 예제입니다.
+
+```html name=footnote
+<p>JavaScript는 1995년, NetScape<sub>1</sub>의 프로그래머였던 Brandan Eich가 창시한 스크립팅 언어<sub>2</sub>입니다.</p>
+```
+
+<LiveExample name="footnote" height={50} />
+
+## 변수 번호
+
+수학에서는, 같은 축 위에서의 다양한 거리처럼, 유사한 개념의 변수를 표기할 때 같은 문자에 숫자를 다르게 해서 표기합니다.
+
+```html name=math
+<p>
+  주어진 정수 <var>n</var>에 대해, 각각의 거리를 <var>x<sub>1</sub></var> ... <var>x<sub>n</sub></var
+  >이라고 하겠습니다.
+</p>
+```
+
+<LiveExample name="math" height={50} />
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-sub-and-sup-elements)
+
+# 브라우저 호환성
+
+<BrowserCompat data={bcd} />
+
+# 같이 보기
+
+- 위 첨자를 나타내는 [`<sup>`](./sup)

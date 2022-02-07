@@ -1,0 +1,53 @@
+---
+title: 'HTML <figcaption>: 독립 콘텐츠 설명 요소'
+description: HTML <figcaption> (독립 콘텐츠 설명, figure caption) 요소는 부모 <figure> 요소의 콘텐츠에 대한 설명 또는 범례를 제공합니다.
+bcd: html.elements.figcaption
+---
+
+**HTML `<figcaption>` 요소**는 부모 [`<figure>`](./figure) 요소의 콘텐츠에 대한 설명 또는 범례를 제공합니다.
+
+<HTMLDemo height={260}>
+
+```html
+<figure>
+  <img src="/images/docs/plumbing.jpg" alt="복잡한 배관 사진." />
+  <figcaption>모범 사례</figcaption>
+</figure>
+```
+
+```css
+figure {
+  border: 1px solid #000;
+  max-width: 320px;
+  text-align: center;
+  padding: 8px;
+}
+img {
+  width: 100%;
+}
+figcaption {
+  font-size: 12px;
+}
+```
+
+</HTMLDemo>
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)만 포함합니다.
+
+# 예제
+
+[`<figure>` 요소의 예제](./figure#예제)를 확인하세요.
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/semantics.html#the-figcaption-element)
+
+# 브라우저 호환성
+
+<BrowserCompat data={bcd} />
+
+# 같이 보기
+
+- 독립 콘텐츠 컨테이너: [`<figure>`](./figure)

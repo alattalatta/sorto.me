@@ -1,0 +1,69 @@
+---
+title: 'HTML <s>: 관련 없는 텍스트 요소'
+description: HTML <s> (취소선, strikethrough) 요소는 더 이상 관련이 없거나 정확하지 않은 정보를 나타냅니다.
+bcd: html.elements.s
+---
+
+**HTML `<s>` 요소**는 더 이상 관련이 없거나 정확하지 않은 정보를 나타냅니다.
+
+<HTMLDemo height={80}>
+
+```html
+<p><s>3월 15일까지 신청하세요!</s></p>
+<p>신청 마감! 성원에 감사드립니다.</p>
+```
+
+</HTMLDemo>
+
+<Callout.Root color="warn" label="참고">
+  <code>{'<s>'}</code> 요소는 문서에서 수정을 한 부분을 나타내는 데는 적합하지 않습니다.{' '}
+  <Anchor href="./del">
+    <code>{'<del>'}</code>
+  </Anchor>
+  과 <Anchor href="./ins">
+    <code>{'<ins>'}</code>
+  </Anchor>를 사용하세요.
+</Callout.Root>
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)만 포함합니다.
+
+# 접근성 고려사항
+
+대부분의 스크린 리더는 기본 설정에서 `<s>` 요소의 존재를 표현하지 않습니다. 사용자가 반드시 `<s>`가 있다는 것을 알아야 한다면 CSS [`::before`]()과 [`::after`]() 의사 선택자의 [`content`]() 속성을 사용하세요.
+
+```css
+s::before,
+s::after {
+  clip-path: inset(100%);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+s::before {
+  content: ' [취소선 시작] ';
+}
+
+s::after {
+  content: ' [취소선 끝] ';
+}
+```
+
+그러나 일부 스크린 리더 사용자는 필요한 정보만 들을 수 있도록 상세한 표현을 의도적으로 끄는 경우가 있습니다. 따라서 이렇게 임의로 표현을 강제하는 방법을 남용해서는 안되고, `<s>`의 유무가 콘텐츠의 이해에 직접 영향을 줄 때만 적용하세요.
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/semantics.html#the-s-element)
+
+# 브라우저 호환성
+
+<BrowserCompat data={bcd} />
+
+# 같이 보기
+
+- 반대로, 관련 있는 부분을 강조하는 [`<mark>`](./mark)

@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import runtime from 'react/jsx-runtime'
 
 type RendererProps = {
+  [key: string]: unknown
   components?: Record<string, React.ReactNode>
 }
 

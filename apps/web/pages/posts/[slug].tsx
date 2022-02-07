@@ -1,7 +1,7 @@
 import { compile } from '@app/mdx'
 import { Post } from '@app/posts'
 import type { PostMetadata } from '@app/posts'
-import postIndex from '@app/posts/data/index.json'
+import postsIndex from '@app/posts/data/index.json'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import React from 'react'
@@ -56,7 +56,7 @@ export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({
 export const getStaticPaths: GetStaticPaths<StaticParam> = () => {
   return {
     fallback: false,
-    paths: postIndex.map((post) => ({ params: { slug: post.slug } })),
+    paths: postsIndex.map((post) => ({ params: { slug: post.slug } })),
   }
 }
 

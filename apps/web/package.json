@@ -10,6 +10,7 @@
     "script:feed": "yarn script scripts/feed"
   },
   "dependencies": {
+    "@app/docs": "workspace:*",
     "@app/functions": "workspace:*",
     "@app/mdx": "workspace:*",
     "@app/posts": "workspace:*",

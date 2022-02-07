@@ -15,7 +15,7 @@ describe('System utilities', () => {
     })
 
     it("can read a file's last modified date", async () => {
-      expect(await readLastModified('src/virtual')).toBe('2020-12-28')
+      expect(await readLastModified('src/virtual')).toBe('2020-12-28T00:00:00.000Z')
     })
 
     afterAll(() => mock.restore())

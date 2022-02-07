@@ -1,0 +1,231 @@
+---
+title: 'CSS font-family: 글꼴'
+description: CSS font-family 속성은 선택한 요소에 적용할 글꼴 가족(활자 가족)을 지정합니다.
+bcd: css.properties.font-family
+---
+
+**CSS `font-family` 속성**은 선택한 요소에 적용할 글꼴 가족(활자 가족)을 지정합니다.
+
+<CSSDemo selector="pre{$}">
+
+```html sub
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet" />
+```
+
+```css
+font-family: sans-serif;
+```
+
+```css
+font-family: 'Do Hyeon', sans-serif;
+```
+
+```css
+font-family: serif;
+```
+
+```css
+font-family: monospace;
+```
+
+```css sub
+text-align: center;
+```
+
+```html
+<pre>
+내 그대를 생각함은
+항상 그대가 앉아 있는 배경에서
+해가 지고 바람이 부는 일처럼 사소한 일 일것이나
+언젠가 그대가
+한없이 괴로움 속을 헤매일 때에
+오랫동안 전해 오던 그 사소함으로
+그대를 불러보리라
+</pre>
+```
+
+</CSSDemo>
+
+`font-family`의 값은 쉼표로 구분하는 목록으로, 브라우저는 그 중에서 사용자의 컴퓨터에 이미 설치된, 또는 [`@font-face`](./@font-face) @규칙을 통해 다운로드 받을 수 있는 가장 앞쪽 글꼴 가족을 선택합니다.
+
+값 목록의 맨 마지막에는 항상 글꼴 범주명을 하나 추가하세요. 지정한 모든 글꼴을 사용할 수 없는 상황이 닥쳐도, 어느정도 적합한 대체 글꼴이 보여집니다.
+
+`font-family` 목록에서 사용할 글꼴 가족을 선택하는 과정은 전체 텍스트가 아닌 각각의 문자별로 수행하기 때문에, 사용자 컴퓨터에 설치된 글꼴을 찾더라도 멈추는 것이 아닙니다. 즉, 어떤 글꼴이 특정 문자를 포함하고 있지 않으면 그 다음 글꼴로 다시 시도합니다. 어떤 글꼴 가족의 특정 스타일이나 크기, 변형을 사용할 수 없는 경우도 최종 결과에 영향을 줍니다.
+
+# 구문
+
+```css
+/* 글꼴 가족 이름과 범주명 */
+font-family: Nanum Gothic Coding, sans-serif;
+
+/* 글꼴 범주명만 */
+font-family: serif;
+font-family: sans-serif;
+font-family: monospace;
+font-family: cursive;
+font-family: fantasy;
+font-family: system-ui;
+font-family: ui-serif;
+font-family: ui-sans-serif;
+font-family: ui-monospace;
+font-family: ui-rounded;
+font-family: emoji;
+font-family: math;
+font-family: fangsong;
+
+/* 전역 값 */
+font-family: inherit;
+font-family: initial;
+font-family: unset;
+```
+
+`font-weight`는 하나 이상의 글꼴 가족 이름을 쉼표로 구분해서 지정할 수 있습니다. 각각의 글꼴 가족 이름은 [`<family-name>`](#term-family-name)과 [`<generic-name>`](#term-generic-name)을 사용합니다.
+
+## 값
+
+<dl>
+
+<Term>&lt;family-name&gt;</Term>
+<dd>글꼴 가족의 이름입니다. 위의 구문 예제에서는 "Nanum Gothic Coding"이 글꼴 가족의 이름입니다.</dd>
+
+<Term>&lt;generic-name&gt;</Term>
+<dd>
+
+글꼴 범주명은 지정한 글꼴을 사용할 수 없더라도 스타일 시트 저작자의 의도를 보존할 수 있는 방법입니다. 범주명은 키워드 값으로서 따옴표로 감싸서는 안되며, 항상 목록의 마지막에 와야 합니다.
+
+범주에 속하는 글꼴은 언어와 사용자의 환경에 따라 다를 수 있으며, 서로 다른 두 개의 범주명이 같은 글꼴로 표현될 수도 있습니다.
+
+사용할 수 있는 값은 다음과 같습니다.
+
+<dl>
+
+<div style={{ fontFamily: 'serif' }}>
+<Term>serif</Term>
+<dd>
+
+세리프는 획의 끝을 붓으로 그린 것처럼 장식한 글꼴로, 한글 바탕체에 해당합니다. 나눔명조, 본명조, 서울한강체 등이 있습니다.
+
+</dd>
+</div>
+
+<div style={{ fontFamily: 'sans-serif' }}>
+<Term>sans-serif</Term>
+<dd>
+
+산세리프는 장식 없는 글꼴로, 한글 돋움체에 해당합니다. 나눔고딕, 본고딕, 서울남산체 등이 있습니다.
+
+</dd>
+</div>
+
+<div style={{ fontFamily: 'monospace' }}>
+<Term>monospace</Term>
+<dd>
+
+고정폭 글꼴입니다. 나눔고딕코딩, D2 Coding 등이 있습니다.
+
+</dd>
+</div>
+
+<div style={{ fontFamily: 'cursive' }}>
+<Term>cursive</Term>
+<dd>
+
+길게 이어지는 필기체입니다.<br />
+영어로 확인하세요: Glyphs in cursive fonts generally have either joining strokes or other cursive characteristics beyond those of italic typefaces.
+
+</dd>
+</div>
+
+<div style={{ fontFamily: 'fantasy' }}>
+<Term>fantasy</Term>
+<dd>
+
+시각적으로 흥미를 끌 수 있는 요소를 첨가한 글꼴입니다.<br />
+영어로 확인하세요: Fantasy fonts are primarily decorative fonts that contain playful representations of characters.
+
+</dd>
+</div>
+
+<div style={{ fontFamily: 'system-ui' }}>
+<Term>system-ui</Term>
+<dd>
+
+현재 사용자 플랫폼의 사용자 인터페이스 기본 글꼴을 사용합니다. 전세계의 활자 사용법에는 큰 차이가 있으므로, `system-ui`는 위의 5개 범주로 깔끔하게 떨어질 수 없는 글꼴을 위해 제공됩니다.
+
+</dd>
+</div>
+
+<div style={{ fontFamily: 'ui-serif' }}>
+<Term>ui-serif</Term>
+<dd>
+
+사용자 인터페이스의 기본 세리프 글꼴을 사용합니다.
+
+</dd>
+</div>
+
+<div style={{ fontFamily: 'ui-sans-serif' }}>
+<Term>ui-sans-serif</Term>
+<dd>
+
+사용자 인터페이스의 기본 산세리프 글꼴을 사용합니다.
+
+</dd>
+</div>
+
+<div style={{ fontFamily: 'ui-monospace' }}>
+<Term>ui-monospace</Term>
+<dd>
+
+사용자 인터페이스의 기본 고정폭 글꼴을 사용합니다.
+
+</dd>
+</div>
+
+<div style={{ fontFamily: 'ui-rounded' }}>
+<Term>ui-rounded</Term>
+<dd>
+
+사용자 인터페이스의 기본 둥근 글꼴을 사용합니다.
+
+</dd>
+</div>
+
+<div style={{ fontFamily: 'math' }}>
+<Term>math</Term>
+<dd>
+
+아래 첨자와 위 첨자(ax² + bx + c), 여러 줄을 차지하는 괄호, 중첩 표현식, 이중 선 문자(ℕ, ℤ, ℚ, ...)처럼 수학 표현을 나타내는 것에 최적화된 글꼴을 사용합니다.
+
+</dd>
+</div>
+
+<div style={{ fontFamily: 'emoji' }}>
+<Term>emoji</Term>
+<dd>
+
+이모지 📕💻 렌더링을 위해 디자인된 글꼴을 사용합니다.
+
+</dd>
+</div>
+
+<div style={{ fontFamily: 'fangsong' }}>
+<Term>fangsong</Term>
+<dd>
+
+중문 글꼴 중 명조와 해서를 혼합한 듯한 글꼴을 사용합니다. 보통 중국 공문에서 볼 수 있습니다.
+
+</dd>
+</div>
+
+</dl>
+</dd>
+</dl>
+
+# 명세
+
+- [CSS Fonts Module Level 4](https://drafts.csswg.org/css-fonts/#font-family-prop)
+
+# 브라우저 호환성
+
+<BrowserCompat data={bcd} />

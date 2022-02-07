@@ -1,0 +1,67 @@
+---
+title: 'HTML <ruby>: 루비 표기 요소'
+description: HTML <ruby> (루비 문자) 요소는 기준 텍스트의 위, 아래, 옆에 작게 글자를 추가하는 글자를 나타내며, 주로 동아시아 문자의 발음을 표기할 때 사용합니다.
+bcd: html.elements.ruby
+---
+
+**HTML `<ruby>` 요소**는 기준 텍스트의 위, 아래, 옆에 작게 글자를 추가하는 글자를 나타내며, 주로 동아시아 문자의 발음을 표기할 때 사용합니다. 다른 텍스트를 추가할 때도 사용할 수는 있으나 흔히 쓰이지는 않습니다.
+
+"루비"라는 이름은 활자 규격의 명칭에서 가져온 것입니다. 자세한 정보는 [위키백과의 루비 문자](https://ko.wikipedia.org/wiki/%EB%A3%A8%EB%B9%84_%EB%AC%B8%EC%9E%90)를 참고하세요.
+
+<HTMLDemo height={100}>
+
+```html
+<ruby> 景 <rt>경</rt> 福 <rt>복</rt> 宮 <rt>궁</rt> </ruby>
+```
+
+```css
+ruby {
+  font-size: 4em;
+}
+```
+
+</HTMLDemo>
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)만 포함합니다.
+
+# 예제
+
+```html name=char
+<ruby> 韓 <rp>(</rp><rt>한</rt><rp>)</rp> 國 <rp>(</rp><rt>국</rt><rp>)</rp> 語 <rp>(</rp><rt>어</rt><rp>)</rp> </ruby>
+```
+
+```css name=char hidden
+body {
+  font-size: 1.5em;
+}
+```
+
+<LiveExample name="char" height={40} />
+
+## 단어별 표기
+
+```html name=word
+<ruby> 韓國語 <rp>(</rp><rt>한국어</rt><rp>)</rp> </ruby>
+```
+
+```css name=word hidden
+body {
+  font-size: 1.5em;
+}
+```
+
+<LiveExample name="word" height={40} />
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/semantics.html#the-ruby-element)
+
+# 브라우저 호환성
+
+<BrowserCompat data={bcd} />
+
+# 같이 보기
+
+- 루비 표기의 구성 요소: [`<rt>`](./rt), [`<rp>`](./rp)

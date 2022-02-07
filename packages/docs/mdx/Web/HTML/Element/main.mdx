@@ -1,0 +1,108 @@
+---
+title: 'HTML <main>: 주요 콘텐츠 영역 요소'
+description: HTML <main> (주요 콘텐츠 영역) 요소는 문서의 주요 콘텐츠 영역을 나타냅니다.
+bcd: html.elements.main
+---
+
+**HTML `<main>` 요소**는 문서의 주요 콘텐츠 영역을 나타냅니다. 주요 콘텐츠 영역은 문서의 주제와 직접 연관되거나 주제를 확장하는 콘텐츠일 수도 있고, 애플리케이션의 주요 기능 영역일 수도 있습니다.
+
+<HTMLDemo>
+
+```html
+<header>
+  <h1>딸기의 종류</h1>
+  <p>아무개 지음</p>
+  <header>
+    <main>
+      <article>
+        <h2>설향</h2>
+        <p>설향은 한국의 대표적인 딸기 품종입니다.</p>
+        <p>...</p>
+      </article>
+      <article>
+        <h2>매향</h2>
+        <p>매향은 국내에서 수출용으로 많이 재매하는 품종입니다.</p>
+        <p>...</p>
+      </article>
+    </main>
+  </header>
+</header>
+```
+
+```css
+main {
+  background: #f6f6f6;
+  padding: 8px 16px;
+}
+article {
+  background: #fff;
+  border: 1px solid #ccc;
+  margin: 16px 0;
+  padding: 8px;
+}
+h1,
+h2 {
+  margin: 0;
+}
+```
+
+</HTMLDemo>
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)만 포함합니다.
+
+# 사용 일람
+
+- `<main>` 요소의 콘텐츠는 문서에 고유해야 합니다. 사이드바, 탐색 링크, 로고 등 다른 문서나 같은 문서의 다른 구획에서 반복해 나타날 수 있는 콘텐츠는 포함해서는 안됩니다. 검색 창과 같은 것도 해당하는 내용이지만, 페이지의 주요 기능이 검색인 경우 `<main>` 안에 배치할 수 있습니다.
+
+# 접근성 고려사항
+
+## 랜드마크
+
+`<main>` 요소는 [`main` 랜드마크 역할](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Main_role)과 같이 동작합니다. 접근성 보조 기술은 랜드마크를 이용해 문서의 큰 구획을 식별하고 탐색할 수 있습니다. 구형 브라우저를 지원해야 하는 경우가 아니면 `role="main"` 특성보다는 `<main>` 요소를 사용하세요.
+
+## 스킵 내비게이션
+
+스킵 내비게이션은 보조 기술 사용자가 탐색 바, 정보 배너 등 중요하지 않은 콘텐츠를 건너뛰고, 페이지의 주요 내용으로 빠르게 이동할 방법을 제공하는 기법입니다. `<main>` 요소에 [`id`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/id) 특성을 지정해서 스킵 내비게이션 대상으로 지정하세요.
+
+```html
+<body>
+  <a href="#main-content">Skip to main content</a>
+
+  <!-- 탐색 및 헤더 콘텐츠 -->
+
+  <main id="main-content">
+    <!-- 페이지의 주 콘텐츠 -->
+  </main>
+</body>
+```
+
+- [WebAIM: "Skip Navigation" Links](https://webaim.org/techniques/skipnav/)
+
+## 읽기 모드
+
+브라우저의 "읽기 모드" 기능은 콘텐츠의 [헤딩](./Heading_Elements), 구획 요소와 함께 `<main>` 요소의 존재 여부를 고려해 읽기 뷰로 변환합니다.
+
+- [Building websites for Safari Reader Mode and other reading apps](https://medium.com/@mandy.michael/building-websites-for-safari-reader-mode-and-other-reading-apps-1562913c86c9)
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/#the-main-element)
+
+# 브라우저 호환성
+
+<BrowserCompat data={bcd} />
+
+# 같이 보기
+
+- 다른 구획 관련 요소
+  - [`<address>`](./address)
+  - [`<article>`](./article)
+  - [`<aside>`](./aside)
+  - [`<footer>`](./footer)
+  - [`<header>`](./header)
+  - [`<h1>`, `<h2>`, `<h3>`](./Heading_Elements), ...
+  - [`<hgroup>`](./hgroup)
+  - [`<nav>`](./nav)
+  - [`<section>`](./section)

@@ -1,0 +1,31 @@
+---
+title: 'HTML <bdo>: 양방향 텍스트 재정의 요소'
+description: HTML <bdo> (양방향 재정의, bidirectional override) 요소는 텍스트의 현재 방향성을 재정의해서 다른 방향으로 렌더링합니다.
+bcd: html.elements.bdo
+---
+
+**HTML `<bdo>` 요소**는 텍스트의 현재 방향성을 재정의해서 다른 방향으로 렌더링합니다.
+
+<HTMLDemo height={180}>
+
+```html
+<h1>Famous seaside songs</h1>
+
+<p>The English song "Oh I do like to be beside the seaside"</p>
+<p>Looks like this in Hebrew: <span dir="rtl">אה, אני אוהב להיות ליד חוף הים</span></p>
+<p>In the computer's memory, this is stored as <bdo dir="ltr">אה, אני אוהב להיות ליד חוף הים</bdo></p>
+```
+
+</HTMLDemo>
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)만 포함합니다. 텍스트 방향은 <HTMLAttr>dir</HTMLAttr> 특성을 사용해서 지정하세요.
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/semantics.html#the-bdo-element)
+
+# 브라우저 호환성
+
+<BrowserCompat data={bcd} />

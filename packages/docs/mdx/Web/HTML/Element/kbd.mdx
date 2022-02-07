@@ -1,0 +1,127 @@
+---
+title: 'HTML <kbd>: 키보드 입력 요소'
+description: HTML <kbd> (키보드 입력, keyboard input) 요소는 사용자가 키보드, 음성, 기타 다른 텍스트 입력 장치를 사용해 입력하는 텍스트를 나타냅니다.
+bcd: html.elements.kbd
+---
+
+**HTML `<kbd>` 요소**는 사용자가 키보드, 음성 인식, 그 외의 기타 텍스트 입력 장치를 사용해 입력하는 텍스트를 나타냅니다.
+
+<HTMLDemo height={70}>
+
+```html
+<p><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd>을 눌러서 페이지를 다시 불러올 수 있습니다.</p>
+```
+
+```css
+kbd {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: inline-block;
+  padding: 2px 4px;
+}
+```
+
+</HTMLDemo>
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)만 포함합니다.
+
+# 사용 일람
+
+`<kbd>`를 다른 요소와 함께 사용해서 좀 더 상세한 상황을 나타낼 수 있습니다.
+
+- `<kbd>`를 다른 `<kbd>` 안에 배치하면 바깥 `<kbd>`는 입력 전체를 나타내고, 안쪽 `<kbd>`는 키 하나하나의 입력을 나타낼 수 있습니다. ["입력의 키보드 타이핑 나타내기" 예제](#입력의-키보드-타이핑-나타내기)를 참고하세요.
+- `<kbd>`를 [`<samp>`](./samp) 요소 안에 배치하면 시스템이 에코로 다시 출력한 사용자의 입력을 나타냅니다. ["입력 에코 표현" 예제](#입력-에코-표현)를 참고하세요.
+- 반대로 `<samp>`를 `<kbd>`에 배치하는 경우에는 메뉴 이름, 메뉴 항목, 버튼 이름처럼 시스템이 출력한 텍스트를 기반으로 사용자가 입력하는 것을 나타냅니다. ["화면에 표시된 입력 옵션" 예제](#화면에-표시된-입력-옵션)를 참고하세요.
+
+# 예제
+
+## 입력의 키보드 타이핑 나타내기
+
+다수의 키 입력을 구성된 전체 입력을 표현할 땐, 전체 입력을 나타내는 바깥 `<kbd>` 안에 각각의 키 입력이나 키 입력 조합 등 입력 단위을 나타내는 `<kbd>` 요소를 배치할 수 있습니다.
+
+```html name=keystroke
+<p>
+  복사는 <kbd><kbd>Ctrl</kbd> + <kbd>C</kbd></kbd
+  >로 할 수 있습니다.
+</p>
+```
+
+```css name=keystroke
+kbd {
+  border-bottom: 3px double #ccc;
+  display: inline-block;
+  padding: 2px 4px;
+}
+kbd kbd {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+```
+
+<LiveExample name="keystroke" height={60} />
+
+<Callout.Root childAs="div" color="warn" label="참고">
+  <p>
+    모든 입력을 이런 <code>{'<kbd>'}</code> 중첩으로 표현해야 할 필요는 없습니다. 즉,
+    <code>{'<kbd>Ctrl</kbd> + <kbd>C</kbd>'}</code>만 사용해도 완벽하게 유효합니다.
+  </p>
+  <p>다만 현재 사용 중인 스타일에 따라 중첩을 유용하게 쓸 수도 있습니다.</p>
+</Callout.Root>
+
+## 입력 에코 표현
+
+`<kbd>`를 [`<samp>`](./samp) 요소 안에 배치하면 시스템이 에코로 다시 출력한 사용자의 입력을 나타냅니다.
+
+```html name=echo
+<p>수정 가능한 오류를 자동으로 바꾸려면 다음 명령어를 입력하세요:</p>
+<blockquote>
+  <samp><kbd>eslint . --fix</kbd></samp>
+</blockquote>
+```
+
+<LiveExample name="echo" height={80} />
+
+## 화면에 표시된 입력 옵션
+
+[`<samp>`](./samp)를 `<kbd>`에 배치하면 메뉴 이름, 메뉴 항목, 버튼 이름처럼 시스템이 출력한 텍스트를 기반으로 사용자가 입력하는 것을 나타냅니다.
+
+```html name=present
+<p>
+  새로운 파일을 만들 땐 메뉴에서
+  <kbd class="input"
+    ><kbd><samp>파일</samp></kbd>
+    ⇒
+    <kbd><samp>새 문서</samp></kbd></kbd
+  >를 선택하세요.
+</p>
+
+<p>
+  <kbd><samp>확인</samp></kbd> 버튼까지 입력하는 것을 잊지 마세요.
+</p>
+```
+
+```css name=present hidden
+kbd:not(.input) {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: inline-block;
+  padding: 2px 4px;
+}
+```
+
+<LiveExample name="present" height={100} />
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/semantics.html#the-kbd-element)
+
+# 브라우저 호환성
+
+<BrowserCompat data={bcd} />
+
+# 같이 보기
+
+- 화면에 출력된 텍스트를 나타내는 [`<samp>`](./samp)

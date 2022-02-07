@@ -1,0 +1,57 @@
+---
+title: 'HTML <blockquote>: 블록 인용문 요소'
+description: HTML <blockquote> (블록 인용문) 요소는 감싸고 있는 텍스트가 긴 인용문임을 나타냅니다.
+bcd: html.elements.blockquote
+---
+
+**HTML `<blockquote>` 요소**는 감싸고 있는 텍스트가 긴 인용문임을 나타냅니다. 보통 들여쓰기를 적용한 모습으로 그려집니다. 출처의 URL은 <TermLink>cite</TermLink> 특성으로 제공할 수 있고, 출처 텍스트는 [`<cite>`](./cite) 요소로 나타낼 수 있습니다.
+
+<HTMLDemo height={120}>
+
+```html
+<figure>
+  <blockquote cite="https://html.spec.whatwg.org/multipage/grouping-content.html#the-blockquote-element">
+    <p>The blockquote element represents a section that is quoted from another source.</p>
+  </blockquote>
+  <figcaption>—WHATWG, <cite>HTML Living Standard</cite></figcaption>
+</figure>
+```
+
+```css
+blockquote {
+  border-left: 4px solid darkturquoise;
+  margin: 0 0 10px;
+  padding: 2px 30px;
+}
+p {
+  margin: 0;
+}
+```
+
+</HTMLDemo>
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)을 포함합니다.
+
+<dl>
+  <Term>cite</Term>
+  <dd>출처 문서나 메시지를 가리키는 URL입니다. 인용문의 맥락 혹은 출처 정보를 가리킬 용도입니다.</dd>
+</dl>
+
+# 사용 일람
+
+- 짧은 인용문을 별도의 블록 없이 인라인으로 포함하려면 `<q>` 요소를 사용하세요.
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/semantics.html#the-blockquote-element)
+
+# 브라우저 호환성
+
+<BrowserCompat data={bcd} />
+
+# 같이 보기
+
+- 짧은 인라인 인용문: [`<q>`](./q)
+- 저작물 이름: [`<cite>`](./cite)

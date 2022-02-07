@@ -1,0 +1,75 @@
+---
+title: 'HTML <datalist>: 데이터 리스트 요소'
+description: HTML <datalist> (데이터 리스트) 요소는 다른 컨트롤에서 제공할 수 있는 추천 선택지 목록을 나타냅니다. 각각의 선택지는 <option> 요소로 표현합니다.
+bcd: html.elements.datalist
+---
+
+**HTML `<datalist>` 요소**는 다른 컨트롤에서 제공할 수 있는 추천 선택지 목록을 나타냅니다. 각각의 선택지는 [`<option>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option) 요소로 표현합니다.
+
+<HTMLDemo height={200}>
+
+```html
+<label for="choice">맛을 고르세요.</label>
+<input id="choice" list="flavors" name="choice" />
+
+<datalist id="flavors">
+  <option value="딸기"></option>
+  <option value="바나나"></option>
+  <option value="초코"></option>
+  <option value="민트"></option>
+</datalist>
+```
+
+</HTMLDemo>
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)만 포함합니다.
+
+# 예제
+
+## `color` 선택지
+
+```html name=color
+<datalist id="list">
+  <option>#ff0000</option>
+  <option>#ee0000</option>
+  <option>#dd0000</option>
+  <option>#cc0000</option>
+  <option>#bb0000</option>
+</datalist>
+
+<input type="color" list="list" />
+```
+
+<LiveExample name="color" height={40} />
+
+## `range` 선택지
+
+```html name=range
+<datalist id="list">
+  <option>0</option>
+  <option>2</option>
+  <option>4</option>
+  <option>8</option>
+  <option>16</option>
+  <option>32</option>
+  <option>64</option>
+</datalist>
+
+<input type="range" list="list" />
+```
+
+<LiveExample name="range" height={40} />
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/forms.html#the-datalist-element)
+
+# 브라우저 호환성
+
+<BrowserCompat data={bcd} />
+
+# 같이 보기
+
+- 데이터 리스트를 사용하는 컨트롤: [`<input>`](./input) 요소와 [`list`](./input#term-list) 특성.

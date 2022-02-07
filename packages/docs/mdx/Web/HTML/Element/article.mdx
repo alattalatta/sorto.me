@@ -1,0 +1,87 @@
+---
+title: 'HTML <article>: 독립 구획 요소'
+description: HTML <article> (독립 구획) 요소는 문서, 페이지, 애플리케이션, 또는 사이트 안에서 독립적으로 배포 또는 재사용할 수 있는 구획을 나타냅니다.
+bcd: html.elements.article
+---
+
+**HTML `<article>` 요소**는 문서, 페이지, 애플리케이션, 또는 사이트 안에서 독립적으로 배포 또는 재사용할 수 있는 구획을 나타냅니다. 게시판 글과 블로그 포스트, 매거진과 뉴스 기사, 사용자 댓글, 상품 카드, 대화형 위젯 등 무엇이나 가능합니다.
+
+<HTMLDemo>
+
+```css
+.forecast {
+  background: #f0f0f0;
+  padding: 16px;
+}
+.day {
+  background: #fff;
+  margin: 4px 0;
+  padding: 4px;
+}
+h1 {
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+h2 {
+  font-size: 14px;
+}
+h2,
+p {
+  margin: 0.5em;
+}
+```
+
+```html
+<article class="forecast">
+  <h1>서울 예보 - 3일</h1>
+  <article class="day">
+    <h2>2021. 03. 01</h2>
+    <p>비</p>
+  </article>
+  <article class="day">
+    <h2>2021. 03. 02</h2>
+    <p>소나기</p>
+  </article>
+  <article class="day">
+    <h2>2021. 03. 03</h2>
+    <p>호우</p>
+  </article>
+</article>
+```
+
+</HTMLDemo>
+
+하나의 문서는 여러 개의 `<article>`을 가질 수 있습니다. 사용자가 페이지의 마지막으로 스크롤하면 계속 해서 다음 글을 보여주는 블로그의 경우, 각각의 글이 `<article>` 요소가 됩니다. 그 안에 다시 다수의 `<article>`과 [`<section>`](./section)이 존재할 수 있습니다.
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)만 포함합니다.
+
+# 사용 일람
+
+- 각각의 `<article>`을 식별할 수단이 필요합니다. 주로 제목 요소([`<h1> - <h6>`](./Heading_Elements))를 `<article>`의 자식으로 포함하는 방법을 사용합니다.
+- `<article>` 요소가 중첩되어 있으면 안쪽 `<article>`은 바깥과 관련 있는 글을 나타냅니다. 따라서 블로그 글의 댓글은, 글을 나타내는 `<article>` 안에 댓글을 나타내는 `<article>`을 중첩해서 나타낼 수 있습니다.
+- `<article>` 요소의 작성자 정보는 [`<address>`](./address) 요소로 제공할 수 있으나, 중첩된 자식 `<article>`은 영향을 받지 않습니다.
+- 반면, 출판 날짜와 시간은 `<time>` 요소의 `datetime` 특성으로 제공할 수 있습니다.
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/sections.html#the-article-element)
+
+# 브라우저 호환성
+
+<BrowserCompat data={bcd} />
+
+# 같이 보기
+
+- 다른 구획 관련 요소
+  - [`<address>`](./address)
+  - [`<aside>`](./aside)
+  - [`<footer>`](./footer)
+  - [`<header>`](./header)
+  - [`<h1>`, `<h2>`, `<h3>`](./Heading_Elements), ...
+  - [`<hgroup>`](./hgroup)
+  - [`<main>`](./main)
+  - [`<nav>`](./nav)
+  - [`<section>`](./section)

@@ -3,7 +3,7 @@ import path from 'path'
 import { parse } from './parse'
 import type { PostMetadata } from './types'
 
-describe('Post utilities', () => {
+describe('Post parser', () => {
   describe('parse', () => {
     it('can parse post', async () => {
       const filePath = path.resolve(__dirname, 'mocks/2020-02-03+full.mdx')

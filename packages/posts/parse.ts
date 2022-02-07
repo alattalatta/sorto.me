@@ -5,7 +5,7 @@ import { readLastModified } from '@app/functions'
 import { escapeUTF8 } from 'entities'
 import matter from 'gray-matter'
 
-import type { PostMetadata } from './types'
+import type { Post, PostMetadata } from './types'
 
 /**
  * Parses a MDX post file. Creation date is parsed from the file's name.
@@ -14,7 +14,7 @@ import type { PostMetadata } from './types'
  * @param source File's content as `Buffer`.
  */
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-async function parse(filePath: string): Promise<{ content: string; meta: PostMetadata }> {
+async function parse(filePath: string): Promise<Post> {
   const sourceAsync = fs.readFile(filePath)
   const lastModifiedAsync = readLastModified(filePath)
 

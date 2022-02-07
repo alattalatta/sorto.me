@@ -1,4 +1,5 @@
-import Document, { DocumentContext, DocumentInitialProps, Head, Html, Main, NextScript } from 'next/document'
+import type { DocumentContext, DocumentInitialProps } from 'next/document'
+import Document, { Head, Html, Main, NextScript } from 'next/document'
 import React from 'react'
 
 import { getCssString } from 'utils/styler'
@@ -12,7 +13,7 @@ export default class TheDocument extends Document {
       styles: (
         <>
           {initialProps.styles}
-          <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssString() }} />
+          <style dangerouslySetInnerHTML={{ __html: getCssString() }} id="stitches" />
         </>
       ),
     }
@@ -22,15 +23,14 @@ export default class TheDocument extends Document {
     return (
       <Html lang="ko">
         <Head>
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link href="https://fonts.gstatic.com" rel="preconnect" />
           <link
-            href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@400;700&family=Nanum+Gothic:wght@400;700&family=Noto+Serif+KR:wght@400&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@400;700&family=Nanum+Gothic:wght@400;700&family=Noto+Serif+KR:wght@500;700&display=swap"
             rel="stylesheet"
           />
-          <link href="https://fonts.googleapis.com/css2?family=Song+Myung&display=swap" rel="stylesheet" />
-          <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
-          <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
-          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+          <link href="/favicon-192x192.png" rel="icon" sizes="192x192" type="image/png" />
+          <link href="/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png" />
+          <link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
           {process.env.NEXT_PUBLIC_ANALYTICS && (
             <>
               <script async src="https://www.googletagmanager.com/gtag/js?id=G-7F0E6D3XE2" />

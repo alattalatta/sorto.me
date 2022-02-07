@@ -3,18 +3,15 @@ import * as O from 'fp-ts/lib/Option'
 import { fst, mapFst, mapSnd } from 'fp-ts/lib/ReadonlyTuple'
 import { flow, pipe } from 'fp-ts/lib/function'
 import type { Element, Properties, Root as HTMLRoot } from 'hast'
-import type { Root as MDRoot } from 'mdast'
 import rehypeHighlight from 'rehype-highlight'
 import type { Plugin } from 'unified'
 import findAncestor from 'unist-util-ancestor'
 import { visit } from 'unist-util-visit'
-import remarkDirective from 'remark-directive'
 
 async function compile(source: string): Promise<string> {
   const compiled = await compileMDX(source, {
     outputFormat: 'function-body',
-    rehypePlugins: [remarkDirective, rehypeHighlight, metaAttribute],
-    remarkPlugins: [directiveFigure],
+    rehypePlugins: [rehypeHighlight, metaAttribute],
   })
 
   return String(compiled)
@@ -45,18 +42,6 @@ const metaAttribute: Plugin<void[], HTMLRoot> = () => {
           ([el, props]) => (el.properties = props),
         ),
       )
-    })
-  }
-}
-
-const directiveFigure: Plugin<void[], MDRoot> = () => {
-  return (tree) => {
-    visit(tree, (node) => node.type === 'containerDirective' || node.type === 'leafDirective' || node.type === 'textDirective', (node) => {
-      if (!node.data) {
-        node.data = {}
-      }
-
-      node.data.hName = (node as any).name
     })
   }
 }

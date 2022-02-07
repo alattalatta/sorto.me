@@ -1,5 +1,5 @@
 ---
-title: "TypeScript: 타입 시스템으로 원시 값을 구분하기"
+title: 'TypeScript: 타입 시스템으로 원시 값을 구분하기'
 description: 주소와 전화번호, 원화와 달러—TypeScript에서 명목적 타입을 흉내내기
 excerpt: 주소와 전화번호, 원화와 달러
 image: /images/2021-05-12/nominal.png
@@ -21,8 +21,13 @@ const address = '010-1111-2222' as Tel
 TypeScript에서 위의 코드는 유효하다. `Address`와 `Tel`은 이름이 다르지만, 문자열이라는 "구조"(형태)가 동일하기 때문이다. 구조에 대해 더 쉽게 보려면 인터페이스의 예시를 보면 된다.
 
 ```ts
-interface Foo { a: number }
-interface Bar { a: number, b: string }
+interface Foo {
+  a: number
+}
+interface Bar {
+  a: number
+  b: string
+}
 
 const foo: Foo = { a: 3, b: 'b' } as Bar
 ```
@@ -35,8 +40,12 @@ const foo: Foo = { a: 3, b: 'b' } as Bar
 
 ```ts
 /* @flow */
-class Foo { a: number }
-class Bar { a: number }
+class Foo {
+  a: number
+}
+class Bar {
+  a: number
+}
 
 // TS에서는 오류 아님
 const foo: Foo = new Bar() // Cannot assign `new B()` to `a` because `B` is incompatible with `A`.
@@ -97,16 +106,16 @@ const nationalAssemblyAddr = '서울특별시 영등포구 여의도동 의사�
 const nationalAssemblyTel = '02-788-2114' as Tel
 
 const incorrectAssignment1: Tel = nationalAssemblyAddress
-//                              ^^^^^^^^^^^^^^^^^^^^^^^ Error
+//                                ^^^^^^^^^^^^^^^^^^^^^^^ Error
 const incorrectAssignment2: Tel = nationalAssemblyAddress as Tel
-//                                                 ^^^^^^^ Error
+//                                                        ^^^^^^ Error
 ```
 
 간단한 예제이므로 타입 캐스팅을 하고 있지만, 브랜딩은 검증 수단과 쉽게 통합할 수 있다는 것이 강점이다.
 
 ```ts
 function parseTel(raw: string): Tel | null {
-  return TEL_REGEX.test(raw) ? raw as Tel : null
+  return TEL_REGEX.test(raw) ? (raw as Tel) : null
 }
 ```
 
@@ -147,7 +156,7 @@ const str: string = address // OK?
 
 ```ts
 function addKRW(a: KRW, b: KRW): KRW {
-  return a + b as KRW
+  return (a + b) as KRW
 }
 
 function maxKRW(...values): KRW {

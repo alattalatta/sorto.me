@@ -21,6 +21,7 @@ importers:
   apps/web:
     specifiers:
       '@alattalatta/prettier-config': ^0.2.0
+      '@app/functions': workspace:*
       '@app/mdx': workspace:*
       '@app/posts': workspace:*
       '@app/ui': workspace:*
@@ -58,6 +59,7 @@ importers:
       typescript: ^4.3.4
       webpack: '5'
     dependencies:
+      '@app/functions': link:../../packages/functions
       '@app/mdx': link:../../packages/mdx
       '@app/posts': link:../../packages/posts
       '@app/ui': link:../../packages/ui
@@ -8393,7 +8395,7 @@ packages:
       '@types/jest': 27.4.0
       bs-logger: 0.2.6
       fast-json-stable-stringify: 2.1.0
-      jest: 27.4.7_ts-node@10.4.0
+      jest: 27.4.7
       jest-util: 27.5.0
       json5: 2.2.0
       lodash.memoize: 4.1.2

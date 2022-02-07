@@ -9,8 +9,7 @@
       "outputs": ["dist/**", ".next/**"]
     },
     "dev": {
-      "cache": false,
-      "dependsOn": ["^prepare"]
+      "cache": false
     },
     "test": {
       "cache": false

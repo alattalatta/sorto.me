@@ -1,6 +1,6 @@
 {
   "extends": "tsconfig/library.json",
-  "include": ["**/*.ts", "**/*.tsx", "build.ts"],
+  "include": ["."],
   "exclude": ["node_modules"],
   "ts-node": {
     "moduleTypes": {

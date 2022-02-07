@@ -41,7 +41,7 @@ export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({
     throw new Error('Slug must exist')
   }
 
-  const { content, meta } = await importPostData(params.slug)
+  const { content, meta } = importPostData(params.slug)
 
   const compiled = await compile(content)
 
@@ -60,6 +60,7 @@ export const getStaticPaths: GetStaticPaths<StaticParam> = () => {
   }
 }
 
-function importPostData(slug: string): Promise<Post> {
-  return import(`@app/posts/data/${slug}.json`) as Promise<Post>
+function importPostData(slug: string): Post {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  return require(`@app/posts/data/${slug}.json`) as Post
 }

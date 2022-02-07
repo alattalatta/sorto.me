@@ -2,16 +2,19 @@ import { compile as compileMDX } from '@mdx-js/mdx'
 import * as O from 'fp-ts/lib/Option'
 import { fst, mapFst, mapSnd } from 'fp-ts/lib/ReadonlyTuple'
 import { flow, pipe } from 'fp-ts/lib/function'
-import type { Element, Properties, Root } from 'hast'
+import type { Element, Properties, Root as HTMLRoot } from 'hast'
+import type { Root as MDRoot } from 'mdast'
 import rehypeHighlight from 'rehype-highlight'
 import type { Plugin } from 'unified'
 import findAncestor from 'unist-util-ancestor'
 import { visit } from 'unist-util-visit'
+import remarkDirective from 'remark-directive'
 
 async function compile(source: string): Promise<string> {
   const compiled = await compileMDX(source, {
     outputFormat: 'function-body',
-    rehypePlugins: [rehypeHighlight, metaAttribute],
+    rehypePlugins: [remarkDirective, rehypeHighlight, metaAttribute],
+    remarkPlugins: [directiveFigure],
   })
 
   return String(compiled)
@@ -29,7 +32,7 @@ const parseMeta = (meta: string): Properties =>
     // preserve hidden, convert others as data attributes
     .reduce((acc, [key, value]) => ({ ...acc, [key === 'hidden' ? key : `data-${key}`]: value ?? true }), {})
 
-const metaAttribute: Plugin<void[], Root> = () => {
+const metaAttribute: Plugin<void[], HTMLRoot> = () => {
   return (tree) => {
     visit(tree, 'element', (node) => {
       pipe(
@@ -42,6 +45,18 @@ const metaAttribute: Plugin<void[], Root> = () => {
           ([el, props]) => (el.properties = props),
         ),
       )
+    })
+  }
+}
+
+const directiveFigure: Plugin<void[], MDRoot> = () => {
+  return (tree) => {
+    visit(tree, (node) => node.type === 'containerDirective' || node.type === 'leafDirective' || node.type === 'textDirective', (node) => {
+      if (!node.data) {
+        node.data = {}
+      }
+
+      node.data.hName = (node as any).name
     })
   }
 }

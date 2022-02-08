@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "PORT=3333 next",
+    "dev": "PORT=3333 NODE_OPTIONS='--inspect' next",
     "build": "next build",
     "export": "next export",
     "script": "ts-node -r tsconfig-paths/register --project ./tsconfig.script.json",

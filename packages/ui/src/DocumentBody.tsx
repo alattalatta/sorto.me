@@ -7,21 +7,26 @@ const Root = styled('div', {
   '& > *': {
     margin: '1em 0',
   },
-  '& > h2': {
+  '& > :is(h1, h2, h3)': {
     fontFamily: `'Noto Serif KR', serif`,
+    position: 'relative',
+
+    '& a': {
+      color: 'inherit',
+      '&::after': {
+        content: 'none',
+      },
+    },
+  },
+  '& > h2': {
     fontSize: '2em',
-    fontWeight: 700,
     padding: '0.25em 0',
   },
   '& > h3': {
-    fontFamily: `'Noto Serif KR', serif`,
     fontSize: '1.5em',
-    fontWeight: 700,
   },
   '& > h4': {
-    fontFamily: `'Noto Serif KR', serif`,
     fontSize: '1em',
-    fontWeight: 700,
   },
   '& a': {
     color: '#0CA79D',

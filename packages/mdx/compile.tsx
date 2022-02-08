@@ -3,7 +3,9 @@ import * as O from 'fp-ts/lib/Option'
 import { fst, mapFst, mapSnd } from 'fp-ts/lib/ReadonlyTuple'
 import { flow, pipe } from 'fp-ts/lib/function'
 import type { Element, Properties, Root as HTMLRoot } from 'hast'
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeHighlight from 'rehype-highlight'
+import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
 import type { Plugin } from 'unified'
 import findAncestor from 'unist-util-ancestor'
@@ -12,7 +14,15 @@ import { visit } from 'unist-util-visit'
 async function compile(source: string): Promise<string> {
   const compiled = await compileMDX(source, {
     outputFormat: 'function-body',
-    rehypePlugins: [rehypeHighlight, metaAttribute],
+    rehypePlugins: [
+      rehypeHighlight,
+      rehypeCodeblockDataAttr,
+      rehypeSlug,
+      () =>
+        rehypeAutolinkHeadings({
+          behavior: 'wrap',
+        }),
+    ],
     remarkPlugins: [remarkGfm],
   })
 
@@ -31,7 +41,7 @@ const parseMeta = (meta: string): Properties =>
     // preserve hidden, convert others as data attributes
     .reduce((acc, [key, value]) => ({ ...acc, [key === 'hidden' ? key : `data-${key}`]: value ?? true }), {})
 
-const metaAttribute: Plugin<void[], HTMLRoot> = () => {
+const rehypeCodeblockDataAttr: Plugin<void[], HTMLRoot> = () => {
   return (tree) => {
     visit(tree, 'element', (node) => {
       pipe(

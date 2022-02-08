@@ -10,6 +10,7 @@ type TermProps = {
   href?: string
   monospaced?: boolean
   // flags
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   deprecated?: boolean
   experimental?: boolean
   nonStandard?: boolean

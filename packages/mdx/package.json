@@ -7,7 +7,9 @@
   "dependencies": {
     "@mdx-js/mdx": "^2.0.0",
     "fp-ts": "^2.10.5",
+    "rehype-autolink-headings": "^6.1.1",
     "rehype-highlight": "^5.0.2",
+    "rehype-slug": "^5.0.1",
     "remark-gfm": "^3.0.1",
     "unified": "^10.1.1",
     "unist-util-ancestor": "^1.2.1",

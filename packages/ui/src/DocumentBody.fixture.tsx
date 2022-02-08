@@ -4,7 +4,9 @@ const Fixture: React.VFC = () => {
   return (
     <DocumentBody css={{ maxWidth: `${480 / 16}rem` }}>
       <style>@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@700&display=swap');</style>
-      <h2>그들의 장비와 기구는 모두 살아 있다</h2>
+      <h2>
+        <a href="#">그들의 장비와 기구는 모두 살아 있다</a>
+      </h2>
       <p>
         새로운 <a href="#">회계연도</a>가 개시될 때까지 예산안이 의결되지 못한 때에는 정부는 국회에서 예산안이 의결될
         때까지 다음의 목적을 위한 경비는 전년도 예산에 준하여 집행할 수 있다.

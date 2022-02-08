@@ -1,15 +1,14 @@
 import type { DocMetadata } from '@app/docs'
 import { Doc } from '@app/docs'
 import docsIndex from '@app/docs/data/index.json'
-import { compile, useMDXRenderer } from '@app/mdx'
-import { DocumentBody } from '@app/ui'
+import { compile } from '@app/mdx'
 import browserCompatData from '@mdn/browser-compat-data'
 import type { Identifier } from '@mdn/browser-compat-data/types'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import React from 'react'
 
-import { DOCS_MDX_COMPONENTS } from 'components/DocsMDX'
+import DocBody from 'components/DocBody'
 import { getCompatData } from 'utils/docs/browserCompat'
 import type { Page } from 'utils/types'
 
@@ -24,8 +23,6 @@ type StaticProps = {
 }
 
 const Doc: Page<StaticProps> = ({ bcd, compiledSource, meta }) => {
-  const Content = useMDXRenderer(compiledSource)
-
   return (
     <>
       <Head>
@@ -35,10 +32,12 @@ const Doc: Page<StaticProps> = ({ bcd, compiledSource, meta }) => {
         <meta key="og:title" content={`${meta.title} - Sorto.me Docs`} property="og:title" />
         {meta.description && <meta key="og:description" content={meta.description} name="og:description" />}
         <meta key="article:modified_time" content={meta.updated} property="article:modified_time" />
+        <link
+          href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/base16/github.min.css"
+          rel="stylesheet"
+        />
       </Head>
-      <DocumentBody>
-        <Content bcd={bcd} components={DOCS_MDX_COMPONENTS} />
-      </DocumentBody>
+      <DocBody bcd={bcd} compiledSource={compiledSource} meta={meta} />
     </>
   )
 }

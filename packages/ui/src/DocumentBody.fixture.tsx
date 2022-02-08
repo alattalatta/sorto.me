@@ -25,6 +25,128 @@ const Fixture: React.VFC = () => {
         보장된다. 이 헌법시행 당시에 이 헌법에 의하여 <a href="#">새로 설치될 기관의 권한에 속하는 직무</a>를 행하고
         있는 기관은 이 헌법에 의하여 새로운 기관이 설치될 때까지 존속하며 그 직무를 행한다.
       </p>
+      <h2>캡션 없는 표</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>형식</th>
+            <th>MIME 유형</th>
+            <th>비고</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>TrueType</td>
+            <td>
+              <code>font/ttf</code>
+            </td>
+            <td />
+          </tr>
+          <tr>
+            <td>OpenType</td>
+            <td>
+              <code>font/otf</code>
+            </td>
+            <td />
+          </tr>
+          <tr>
+            <td>Web Open Font Format</td>
+            <td>
+              <code>font/woff</code>
+            </td>
+            <td />
+          </tr>
+          <tr>
+            <td>Web Open Font Format 2</td>
+            <td>
+              <code>font/woff2</code>
+            </td>
+            <td />
+          </tr>
+        </tbody>
+      </table>
+      <h2>윗캡션 표</h2>
+      <table>
+        <caption>표 1: 글꼴 형식과 MIME 유형</caption>
+        <thead>
+          <tr>
+            <th>형식</th>
+            <th>MIME 유형</th>
+            <th>비고</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>TrueType</td>
+            <td>
+              <code>font/ttf</code>
+            </td>
+            <td />
+          </tr>
+          <tr>
+            <td>OpenType</td>
+            <td>
+              <code>font/otf</code>
+            </td>
+            <td />
+          </tr>
+          <tr>
+            <td>Web Open Font Format</td>
+            <td>
+              <code>font/woff</code>
+            </td>
+            <td />
+          </tr>
+          <tr>
+            <td>Web Open Font Format 2</td>
+            <td>
+              <code>font/woff2</code>
+            </td>
+            <td />
+          </tr>
+        </tbody>
+      </table>
+      <h2>아래 캡션 표</h2>
+      <table>
+        <caption style={{ captionSide: 'bottom' }}>표 1: 글꼴 형식과 MIME 유형</caption>
+        <thead>
+          <tr>
+            <th>형식</th>
+            <th>MIME 유형</th>
+            <th>비고</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>TrueType</td>
+            <td>
+              <code>font/ttf</code>
+            </td>
+            <td />
+          </tr>
+          <tr>
+            <td>OpenType</td>
+            <td>
+              <code>font/otf</code>
+            </td>
+            <td />
+          </tr>
+          <tr>
+            <td>Web Open Font Format</td>
+            <td>
+              <code>font/woff</code>
+            </td>
+            <td />
+          </tr>
+          <tr>
+            <td>Web Open Font Format 2</td>
+            <td>
+              <code>font/woff2</code>
+            </td>
+            <td />
+          </tr>
+        </tbody>
+      </table>
     </DocumentBody>
   )
 }

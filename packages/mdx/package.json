@@ -8,6 +8,7 @@
     "@mdx-js/mdx": "^2.0.0",
     "fp-ts": "^2.10.5",
     "rehype-highlight": "^5.0.2",
+    "remark-gfm": "^3.0.1",
     "unified": "^10.1.1",
     "unist-util-ancestor": "^1.2.1",
     "unist-util-inspect": "^7.0.0",

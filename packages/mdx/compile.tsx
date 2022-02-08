@@ -4,6 +4,7 @@ import { fst, mapFst, mapSnd } from 'fp-ts/lib/ReadonlyTuple'
 import { flow, pipe } from 'fp-ts/lib/function'
 import type { Element, Properties, Root as HTMLRoot } from 'hast'
 import rehypeHighlight from 'rehype-highlight'
+import remarkGfm from 'remark-gfm'
 import type { Plugin } from 'unified'
 import findAncestor from 'unist-util-ancestor'
 import { visit } from 'unist-util-visit'
@@ -12,6 +13,7 @@ async function compile(source: string): Promise<string> {
   const compiled = await compileMDX(source, {
     outputFormat: 'function-body',
     rehypePlugins: [rehypeHighlight, metaAttribute],
+    remarkPlugins: [remarkGfm],
   })
 
   return String(compiled)

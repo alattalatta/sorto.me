@@ -47,6 +47,11 @@ const Root = styled('div', {
       verticalAlign: 'top',
     },
   },
+  '& hr': {
+    maxWidth: `${219 / 16}rem`,
+    color: '#2c2c2c',
+    margin: '3em 0',
+  },
   // blockquote
   '& blockquote': {
     fontFamily: `'Noto Serif KR', serif`,
@@ -118,13 +123,31 @@ const Root = styled('div', {
       color: '#ed6a43',
     },
   },
+  // list
   '& li': {
     margin: '.5em 0',
   },
-  '& hr': {
-    maxWidth: `${219 / 16}rem`,
-    color: '#2c2c2c',
-    margin: '3em 0',
+  '& dt': {
+    fontWeight: 700,
+    margin: '1.5em 0 .5em',
+  },
+  '& dd': {
+    margin: '.5em 0 .5em 3em',
+  },
+  // table
+  '& table': {
+    borderCollapse: 'collapse',
+    borderTop: `${1 / 16}em solid #2c2c2c`,
+    borderBottom: `${1 / 16}em solid #2c2c2c`,
+  },
+  '& th': {
+    background: '#f2f2f2',
+    border: `${1 / 16}em solid #2c2c2c`,
+    padding: '.5em 1em',
+  },
+  '& td': {
+    border: `${1 / 16}em solid #2c2c2c`,
+    padding: '.5em 1em',
   },
 })
 

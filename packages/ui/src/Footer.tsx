@@ -42,6 +42,9 @@ const MDN = styled('p', {
     color: '#0CA79D',
     textDecoration: 'none',
   },
+  '& a:hover': {
+    textDecoration: 'underline',
+  },
 })
 
 const HOUR = 1000 * 60 * 60

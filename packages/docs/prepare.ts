@@ -34,6 +34,13 @@ del('data/**/*.json')
       )
     }
 
-    return fs.writeFile(relative('data/index.json'), JSON.stringify(docsMeta))
+    return Promise.all([
+      fs.writeFile(relative('data/index.json'), JSON.stringify(docsMeta)),
+      fs.writeFile(
+        relative('data/slugMap.json'),
+        JSON.stringify(docsMeta.reduce((acc, { slug, title }) => ({ ...acc, [slug]: title }), {})),
+      ),
+    ])
   })
+  .then(() => console.log('Done compiling docs.'))
   .catch(console.error)

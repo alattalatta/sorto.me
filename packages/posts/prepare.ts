@@ -21,4 +21,5 @@ del('data/*.json')
       ),
     ]),
   )
+  .then(() => console.log('Done compiling posts.'))
   .catch(console.error)

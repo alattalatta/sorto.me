@@ -80,8 +80,6 @@ function bissectDefinitionList(node: List): readonly [term: ListItem, definision
       return []
     }
 
-    console.log('===\n', definitions)
-
     result.push([term, definitions])
   }
 

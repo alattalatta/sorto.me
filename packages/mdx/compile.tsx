@@ -6,6 +6,7 @@ import remarkGfm from 'remark-gfm'
 
 import { rehypeCodeblockDataAttr } from './rehypeCodeblockDataAttr'
 import { rehypeDefinitionList } from './rehypeDefinitionList'
+import { rehypeTermID } from './rehypeTermID'
 
 async function compile(source: string): Promise<string> {
   const compiled = await compileMDX(source, {
@@ -14,6 +15,7 @@ async function compile(source: string): Promise<string> {
       rehypeHighlight,
       rehypeCodeblockDataAttr,
       rehypeSlug,
+      rehypeTermID,
       () =>
         rehypeAutolinkHeadings({
           behavior: 'wrap',

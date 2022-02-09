@@ -6,7 +6,8 @@
       "outputs": ["dist/**", ".next/**", "data/**"]
     },
     "dev": {
-      "cache": false
+      "cache": false,
+      "dependsOn": ["@app/docs#build", "@app/posts#build"]
     },
     "watch": {
       "cache": false

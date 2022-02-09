@@ -1,4 +1,5 @@
-import { styled, StyleSheet } from 'utils/styler'
+import type { StyleSheet } from 'utils/styler';
+import { styled } from 'utils/styler'
 
 export const DOUBLE_BORDER: StyleSheet = {
   borderRight: '3px double $base60',

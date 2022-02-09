@@ -1,19 +1,17 @@
 type PostMetadata = {
   /**
-   * String representing a date which the post is published. (`yyyy-MM-dd`)
-   * @format date
+   * ISO Datetime string representing a date which the post is published.
    */
   created: string
   /**
-   * A text to feed meta description tag. Defaults to `excerpt`.
+   * A text to feed meta description tag.
    */
   description: string | null
   image: string
   slug: string
   title: string
   /**
-   * String representing a date which the post file was last modified. (`yyyy-MM-dd`)
-   * @format date
+   * ISO Datetime string representing a date which the post file was last modified.
    */
   updated: string
 }

@@ -1,12 +1,10 @@
 type DocMetadata = {
   bcd?: string
-  /** Escaped version of `excerpt`. */
   description: string | null
   slug: string
   title: string
   /**
-   * String representing a date which the doc file was last modified. (`yyyy-MM-dd`)
-   * @format date
+   * ISO Datetime string representing a date which the doc file was last modified.
    */
   updated: string
 }

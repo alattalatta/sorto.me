@@ -1,4 +1,4 @@
-import { BrowserNames, Identifier, SupportStatement } from '@mdn/browser-compat-data/types'
+import type { BrowserNames, Identifier, SupportStatement } from '@mdn/browser-compat-data/types'
 import React, { useState } from 'react'
 
 import { mapOver } from 'utils/array'
@@ -74,7 +74,7 @@ const CompatRow: React.VFC<Props> = ({ data, name, recurse }) => {
   const base = (
     <>
       <Row>
-        <RowHeaderCell as="th" border="doubleRight" scope="row">
+        <RowHeaderCell border="doubleRight" scope="row">
           <RowNameWrap>
             {compat.description ? (
               <span dangerouslySetInnerHTML={{ __html: compat.description }} />
@@ -100,10 +100,10 @@ const CompatRow: React.VFC<Props> = ({ data, name, recurse }) => {
             <dl>
               {mapOver(supportDetail, (support, index) => (
                 <SupportDetail key={index}>
-                  <CompatCell as="dt" type="standalone" data={support} />
+                  <CompatCell as="dt" data={support} type="standalone" />
                   <SupportDetailDescriptions>
-                    {mapOver(support.notes, (note, index) => (
-                      <p key={index} dangerouslySetInnerHTML={{ __html: note || '특이사항 없음' }} />
+                    {mapOver(support.notes, (note, subindex) => (
+                      <p key={subindex} dangerouslySetInnerHTML={{ __html: note || '특이사항 없음' }} />
                     ))}
                   </SupportDetailDescriptions>
                 </SupportDetail>

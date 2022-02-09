@@ -4,6 +4,7 @@
   "compilerOptions": {
     "lib": ["esnext"],
     "module": "CommonJS",
+    "isolatedModules": false,
     "target": "ES6"
   }
 }

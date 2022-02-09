@@ -79,7 +79,7 @@ const BrowserCompat: React.VFC<{ children?: string; data?: { data: Identifier; n
 
   useEffect(() => {
     if (children) {
-      ;(async () => {
+      void (async () => {
         const bcd = (await import('@mdn/browser-compat-data')) as unknown as CompatData
         setLoadedData(getCompatData(bcd, children))
       })()
@@ -118,49 +118,47 @@ const BrowserCompat: React.VFC<{ children?: string; data?: { data: Identifier; n
         <thead>
           <tr>
             <ColumnHeaderCell border="doubleRight" rowSpan={2} />
-            <ColumnHeaderCell as="th" border="doubleRight" colSpan={5}>
+            <ColumnHeaderCell border="doubleRight" colSpan={5}>
               데스크톱
             </ColumnHeaderCell>
-            <ColumnHeaderCell as="th" colSpan={4}>
-              모바일
-            </ColumnHeaderCell>
+            <ColumnHeaderCell colSpan={4}>모바일</ColumnHeaderCell>
           </tr>
           <tr>
-            <ColumnHeaderCell as="th">
+            <ColumnHeaderCell>
               <VertText>Internet Explorer</VertText>
-              <BrowserIcon src={ieIcon} alt="" />
+              <BrowserIcon alt="" src={ieIcon} />
             </ColumnHeaderCell>
-            <ColumnHeaderCell as="th">
+            <ColumnHeaderCell>
               <VertText>Safari</VertText>
-              <BrowserIcon src={safariIcon} alt="" />
+              <BrowserIcon alt="" src={safariIcon} />
             </ColumnHeaderCell>
-            <ColumnHeaderCell as="th">
+            <ColumnHeaderCell>
               <VertText>Google Chrome</VertText>
-              <BrowserIcon src={chromeIcon} alt="" />
+              <BrowserIcon alt="" src={chromeIcon} />
             </ColumnHeaderCell>
-            <ColumnHeaderCell as="th">
+            <ColumnHeaderCell>
               <VertText>Edge</VertText>
-              <BrowserIcon src={edgeIcon} alt="" />
+              <BrowserIcon alt="" src={edgeIcon} />
             </ColumnHeaderCell>
-            <ColumnHeaderCell as="th" border="doubleRight">
+            <ColumnHeaderCell border="doubleRight">
               <VertText>Firefox</VertText>
-              <BrowserIcon src={firefoxIcon} alt="" />
+              <BrowserIcon alt="" src={firefoxIcon} />
             </ColumnHeaderCell>
-            <ColumnHeaderCell as="th">
+            <ColumnHeaderCell>
               <VertText>iOS Safari</VertText>
-              <BrowserIcon src={safariIcon} alt="" />
+              <BrowserIcon alt="" src={safariIcon} />
             </ColumnHeaderCell>
-            <ColumnHeaderCell as="th">
+            <ColumnHeaderCell>
               <VertText>Android WebView</VertText>
-              <BrowserIcon src={androidIcon} alt="" />
+              <BrowserIcon alt="" src={androidIcon} />
             </ColumnHeaderCell>
-            <ColumnHeaderCell as="th">
+            <ColumnHeaderCell>
               <VertText>Chrome</VertText>
-              <BrowserIcon src={chromeIcon} alt="" />
+              <BrowserIcon alt="" src={chromeIcon} />
             </ColumnHeaderCell>
-            <ColumnHeaderCell as="th">
+            <ColumnHeaderCell>
               <VertText>Firefox</VertText>
-              <BrowserIcon src={firefoxIcon} alt="" />
+              <BrowserIcon alt="" src={firefoxIcon} />
             </ColumnHeaderCell>
           </tr>
         </thead>

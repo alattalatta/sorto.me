@@ -1,6 +1,7 @@
-import { createCss, StitchesCss } from '@stitches/react'
-import { Tween } from 'framer-motion'
-import { Easing } from 'framer-motion/types/types'
+import type { CSS } from '@stitches/react';
+import { createStitches } from '@stitches/react'
+import type { Tween } from 'framer-motion'
+import type { Easing } from 'framer-motion/types/types'
 
 export const BASE_10 = '#020D19'
 export const BASE_100 = '#F4FBFF'
@@ -8,7 +9,7 @@ export const ACCENT_R = '#FF5252'
 export const ACCENT_Y = '#FCEC6F'
 export const ACCENT_B = '#57D8FF'
 
-const stitchesConfig = createCss({
+const stitchesConfig = createStitches({
   media: {
     wide: '(max-width: 1600px)',
     broad: '(max-width: 1280px)',
@@ -45,12 +46,12 @@ const stitchesConfig = createCss({
 
 export const {
   css,
-  getCssString,
+  getCssText,
   styled,
   theme: { colors },
 } = stitchesConfig
 
-export type StyleSheet = StitchesCss<typeof stitchesConfig>
+export type StyleSheet = CSS<typeof stitchesConfig>
 
 export const STANDARD_EASE: Easing = [0.4, 0, 0.2, 1]
 

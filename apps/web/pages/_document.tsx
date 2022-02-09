@@ -2,7 +2,7 @@ import type { DocumentContext, DocumentInitialProps } from 'next/document'
 import Document, { Head, Html, Main, NextScript } from 'next/document'
 import React from 'react'
 
-import { getCssString } from 'utils/styler'
+import { getCssText } from 'utils/styler'
 
 export default class TheDocument extends Document {
   static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
@@ -13,7 +13,7 @@ export default class TheDocument extends Document {
       styles: (
         <>
           {initialProps.styles}
-          <style dangerouslySetInnerHTML={{ __html: getCssString() }} id="stitches" />
+          <style dangerouslySetInnerHTML={{ __html: getCssText() }} id="stitches" />
         </>
       ),
     }

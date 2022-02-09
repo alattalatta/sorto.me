@@ -4,7 +4,7 @@ import { Anchor } from 'components/basics'
 import { useUniqueID } from 'hooks/MDX/useUniqueID'
 import { childrenToText, sanitizeID } from 'utils/element'
 
-import { DeprecatedInline, ExperimentalInline, NonStandardInline } from './StatusIcon'
+import { Deprecated, Experimental, NonStandard } from './StatusIcon'
 
 type TermProps = {
   href?: string
@@ -32,9 +32,9 @@ export const Term: React.FC<TermProps> = ({
   return (
     <dt id={id}>
       {content}
-      {nonStandard && <NonStandardInline />}
-      {deprecated && <DeprecatedInline />}
-      {experimental && <ExperimentalInline />}
+      {nonStandard && <NonStandard />}
+      {deprecated && <Deprecated />}
+      {experimental && <Experimental />}
     </dt>
   )
 }

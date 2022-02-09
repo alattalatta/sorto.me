@@ -1,9 +1,5 @@
 import { forwardRef } from 'react'
 
-const CodeBlockRoot: React.FC<{ className?: string }> = ({ className, ...props }) => (
-  <pre className={className} {...props} />
-)
-
 type BodyProps = {
   className?: string
   hidden?: boolean
@@ -29,5 +25,5 @@ const CodeBlockBody = forwardRef<HTMLElement, BodyProps>(
   ),
 )
 
-export { CodeBlockRoot as Root, CodeBlockBody as Body }
+export { CodeBlockBody as Body }
 export type { BodyProps }

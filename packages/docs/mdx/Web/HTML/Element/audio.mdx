@@ -29,90 +29,54 @@ bcd: html.elements.audio
 
 [전역 특성](/docs/Web/HTML/Global_attributes)을 포함합니다.
 
-<dl>
-<Term>autoplay</Term>
-<dd>
+- : `autoplay`
 
-지정하면 오디오 다운로드가 끝나지 않았더라도 최대한 빠른 시점에 자동으로 재생하는 불리언 특성입니다.
+  - 지정하면 오디오 다운로드가 끝나지 않았더라도 최대한 빠른 시점에 자동으로 재생하는 불리언 특성입니다.
 
-<Callout.Root childAs="div" color="warn" label="참고">
+    <Callout.Root childAs="div" color="warn" label="참고">
+      오디오(또는 오디오를 포함한 비디오)를 자동으로 재생하는 웹 사이트는 사용자 경험에 좋지 않으므로 되도록 피해야
+      합니다. 반드시 자동으로 재생해야 하는 경우 옵트인(opt-in) 기능, 즉 사용자가 직접 자동재생 기능을 활성화해야 하도록
+      개발하세요. 다만 미디어 소스를 처음부터 제공하지 않고, 나중에 사용자가 직접 지정하는 경우 `autoplay`를 유용하게
+      사용할 수 있습니다.
+    </Callout.Root>
 
-오디오(또는 오디오를 포함한 비디오)를 자동으로 재생하는 웹 사이트는 사용자 경험에 좋지 않으므로 되도록 피해야 합니다. 반드시 자동으로 재생해야 하는 경우 옵트인(opt-in) 기능, 즉 사용자가 직접 자동재생 기능을 활성화해야 하도록 개발하세요. 다만 미디어 소스를 처음부터 제공하지 않고, 나중에 사용자가 직접 지정하는 경우 `autoplay`를 유용하게 사용할 수 있습니다.
+- : `controls`
+  - 지정하면 볼륨, 탐색, 일시정지/재생 등 브라우저가 사용자 컨트롤을 제공하는 불리언 특성입니다.
+- : `crossorigin`
 
-</Callout.Root>
+  - CORS를 사용해 지정한 오디오 파일을 가져올지 나타내는 열거형 특성입니다. [CORS 활성화 리소스](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image)는 [`<canvas>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) 요소에 사용해도 캔버스가 오염(taint)되지 않습니다. 가능한 값은 다음과 같습니다.
 
-</dd>
+    - : `anonymous`
+      - 자격 증명 없이 교차 출처 요청을 전송합니다. 즉, `Origin` HTTP 헤더를 쿠키, 인증서, HTTP Basic 인증 없이 전송합니다. 서버에서 `Access-Control-Allow-Origin` HTTP 헤더를 지정하지 않아서 요청 출처 사이트에 자격 증명을 보내지 않는다면 캔버스 이미지가 오염되고, 사용처가 제한됩니다.
+    - : `user-credentials`
+      - 자격 증명과 함께 교차 출처 요청을 전송합니다. 즉, `Origin` HTTP 헤더를 쿠키, 인증서, 또는 HTTP Basic 인증과 함께 전송합니다. 서버에서 `Access-Control-Allow-Origin` HTTP 헤더를 지정하지 않아서 요청 출처 사이트에 자격 증명을 보내지 않는다면 캔버스 이미지가 오염되고, 사용처가 제한됩니다.
 
-<Term>controls</Term>
-<dd>지정하면 볼륨, 탐색, 일시정지/재생 등 브라우저가 사용자 컨트롤을 제공하는 불리언 특성입니다.</dd>
+    특성이 존재하지 않으면 리소스를 CORS 요청 없이(`Origin` HTTP 헤더 없이) 가져오므로, `<canvas>`가 오염됩니다. 유효하지 않은 값의 경우 `anonymous` 깂을 사용한 것으로 간주합니다.
 
-<Term>crossorigin</Term>
-<dd>
+- : `disableremoteplayback` <Experimental />
+  - 유선으로 연결한 장치(HDMI, DVI 등) 및 무선 연결 기술(Miracast, Chromecast, DLNA, AirPlay 등)을 통한 오디오 원격 재생을 할 수 없도록 지정하는 불리언 특성입니다. [제안된 명세](https://www.w3.org/TR/remote-playback/#the-disableremoteplayback-attribute)를 방문해 자세한 정보를 알아보세요.
+- : `loop`
+  - 지정하면 오디오를 끝까지 재생했을 때 다시 처음으로 돌아가서 재생을 이어갑니다.
+- : `muted`
+  - 지정하면 오디오의 초기 상태를 음소거로 설정하는 불리언 특성입니다.
+- : `preload`
 
-CORS를 사용해 지정한 오디오 파일을 가져올지 나타내는 열거형 특성입니다. [CORS 활성화 리소스](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image)는 [`<canvas>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) 요소에 사용해도 캔버스가 오염(taint)되지 않습니다. 가능한 값은 다음과 같습니다.
+  - 최적의 사용자 경험을 제공하기 위해 미리 불러올 오디오 데이터에 대한 힌트를 브라우저에 제공하는 열거형 특성입니다. 가능한 값은 다음과 같습니다.
 
-<dl>
+    - `none`: 오디오를 미리 불러오지 않습니다.
+    - `metadata`: 길이 등 오디오 메타데이터만 미리 불러오도록 지정합니다.
+    - `auto`: 사용자가 오디오를 재생할 것으로 예상하지 않더라도 전체 오디오 파일을 미리 불러옵니다.
+    - 빈 문자열: `auto`와 같습니다.
 
-<Term>anonymous</Term>
-<dd>
+    기본값은 브라우저마다 다르나, 명세는 `metadata`를 추천합니다.
 
-자격 증명 없이 교차 출처 요청을 전송합니다. 즉, `Origin` HTTP 헤더를 쿠키, 인증서, HTTP Basic 인증 없이 전송합니다. 서버에서 `Access-Control-Allow-Origin` HTTP 헤더를 지정하지 않아서 요청 출처 사이트에 자격 증명을 보내지 않는다면 캔버스 이미지가 오염되고, 사용처가 제한됩니다.
+    <Callout.Root childAs="div" color="warn" label="참고">
+      - `autoplay` 특성이 `preload`보다 우선합니다. `autoplay`를 지정한 경우 당연히 브라우저는 전체 오디오를
+      다운로드해야 합니다. - `preload` 특성은 어디까지나 힌트 특성으로, 브라우저가 반드시 따라야 하는 것은 아닙니다.
+    </Callout.Root>
 
-</dd>
-
-<Term>user-credentials</Term>
-<dd>
-
-자격 증명과 함께 교차 출처 요청을 전송합니다. 즉, `Origin` HTTP 헤더를 쿠키, 인증서, 또는 HTTP Basic 인증과 함께 전송합니다. 서버에서 `Access-Control-Allow-Origin` HTTP 헤더를 지정하지 않아서 요청 출처 사이트에 자격 증명을 보내지 않는다면 캔버스 이미지가 오염되고, 사용처가 제한됩니다.
-
-</dd>
-</dl>
-
-특성이 존재하지 않으면 리소스를 CORS 요청 없이(`Origin` HTTP 헤더 없이) 가져오므로, `<canvas>`가 오염됩니다. 유효하지 않은 값의 경우 `anonymous` 깂을 사용한 것으로 간주합니다.
-
-</dd>
-
-<Term experimental>disableremoteplayback</Term>
-<dd>
-
-지정하면 유선으로 연결한 장치(HDMI, DVI 등)와 무선 연결 기술(Miracast, Chromecast, DLNA, AirPlay 등)을 통한 오디오 원격 재생을 할 수 없는 불리언 특성입니다. [제안된 명세](https://www.w3.org/TR/remote-playback/#the-disableremoteplayback-attribute)를 방문해 자세한 정보를 알아보세요.
-
-</dd>
-
-<Term>loop</Term>
-<dd>지정하면 오디오를 끝까지 재생했을 때 다시 처음으로 돌아가서 재생을 이어갑니다.</dd>
-
-<Term>muted</Term>
-<dd>지정하면 오디오의 초기 상태를 음소거로 설정하는 불리언 특성입니다.</dd>
-
-<Term>preload</Term>
-<dd>
-
-최적의 사용자 경험을 제공하기 위해 미리 불러올 오디오 데이터에 대한 힌트를 브라우저에 제공하는 열거형 특성입니다. 가능한 값은 다음과 같습니다.
-
-- `none`: 오디오를 미리 불러오지 않습니다.
-- `metadata`: 길이 등 오디오 메타데이터만 미리 불러오도록 지정합니다.
-- `auto`: 사용자가 오디오를 재생할 것으로 예상하지 않더라도 전체 오디오 파일을 미리 불러옵니다.
-- 빈 문자열: `auto`와 같습니다.
-
-기본값은 브라우저마다 다르나, 명세는 `metadata`를 추천합니다.
-
-<Callout.Root childAs="div" color="warn" label="참고">
-
-- `autoplay` 특성이 `preload`보다 우선합니다. `autoplay`를 지정한 경우 당연히 브라우저는 전체 오디오를 다운로드해야 합니다.
-- `preload` 특성은 어디까지나 힌트 특성으로, 브라우저가 반드시 따라야 하는 것은 아닙니다.
-
-</Callout.Root>
-
-</dd>
-
-<Term>src</Term>
-<dd>
-
-삽입할 오디오의 URL입니다. [HTTP 접근 제어](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)의 대상입니다. [`<source>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source) 요소를 사용하면 지정하지 않아도 됩니다.
-
-</dd>
-</dl>
+- : `src`
+  - 삽입할 오디오의 URL입니다. [HTTP 접근 제어](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)의 대상입니다. [`<source>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source) 요소를 사용하면 지정하지 않아도 됩니다.
 
 # 사용 일람
 
@@ -218,12 +182,10 @@ elem.audioTrackList.addEventListener('removetrack', (event) => {
 
 # 브라우저 호환성
 
-<BrowserCompat data={bcd} />
+<BrowserCompat data={props.bcd} />
 
 # 같이 보기
 
 - 비디오 삽입: [`<video>`](./video)
 
-<!--
-- 미디어 출처 추가: [<source>](./source)
--->
+{/* - 미디어 출처 추가: [<source>](./source) */}

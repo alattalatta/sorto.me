@@ -19,7 +19,7 @@ bcd: html.elements.dfn
 
 # 특성
 
-[전역 특성](/docs/Web/HTML/Global_attributes)만 포함합니다. 다만 `<dfn>`의 <HTMLAttr>title</HTMLAttr> 특성은 전역 특성과 의미가 다릅니다. 아래의 사용 일람을 참고하세요.
+[전역 특성](/docs/Web/HTML/Global_attributes)만 포함합니다. 다만 `<dfn>`의 [`title`](../Global_attributes#term-title) 특성은 전역 특성과 의미가 다릅니다. 아래의 사용 일람을 참고하세요.
 
 # 사용 일람
 
@@ -29,12 +29,12 @@ bcd: html.elements.dfn
 
 현재 맥락이 정의하는 용어는 다음의 규칙을 따라서 판별합니다.
 
-- `<dfn>` 요소에 <HTMLAttr>title</HTMLAttr> 특성이 존재하는 경우 그 값을 현재 정의하는 용어로 취급합니다. `<dfn>` 안에는 여전히 텍스트를 지정해야 하지만, 용어의 준말([`<abbr>`](./abbr))이나 기타 다른 형태를 넣을 수 있습니다.
+- `<dfn>` 요소에 [`title`](../Global_attributes#term-title) 특성이 존재하는 경우 그 값을 현재 정의하는 용어로 취급합니다. `<dfn>` 안에는 여전히 텍스트를 지정해야 하지만, 용어의 준말([`<abbr>`](./abbr))이나 기타 다른 형태를 넣을 수 있습니다.
 - `<dfn>` 요소가 자신만의 텍스트 콘텐츠 없이 단 하나의 자식 요소만 가지는데, 그 자식 요소가 `title` 특성을 가진 `<abbr>`이라면, 해당 `title` 특성의 값을 현재 정의하는 용어로 취급합니다.
 - 그 외에는 `<dfn>`의 텍스트 콘텐츠를 현재 정의하는 용어로 취급합니다.
 
 <Callout.Root color="warn" label="참고">
-  <code>{'<dfn>'}</code>에 <code>title</code> 특성이 존재할 경우, 그 값은 반드시 현재 정의하는 용어만 담아야 합니다.
+  `<dfn>`에 [`title`](../Global_attributes#term-title) 특성이 존재할 경우, 그 값은 반드시 현재 정의하는 용어만 담아야 합니다.
 </Callout.Root>
 
 # 예제
@@ -64,4 +64,4 @@ bcd: html.elements.dfn
 
 # 브라우저 호환성
 
-<BrowserCompat data={bcd} />
+<BrowserCompat data={props.bcd} />

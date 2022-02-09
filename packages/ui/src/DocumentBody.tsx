@@ -7,7 +7,7 @@ const Root = styled('div', {
   '& > *': {
     margin: '1em 0',
   },
-  '& > :is(h1, h2, h3)': {
+  '& > :is(h2, h3, h4)': {
     fontFamily: `'Noto Serif KR', serif`,
     position: 'relative',
 
@@ -52,10 +52,17 @@ const Root = styled('div', {
       verticalAlign: 'top',
     },
   },
+  '& * + p': {
+    marginTop: '1em',
+  },
   '& hr': {
     maxWidth: `${219 / 16}rem`,
     color: '#2c2c2c',
     margin: '3em 0',
+  },
+  '& :is(i, em)': {
+    fontFamily: `'Noto Serif KR', serif`,
+    fontStyle: 'normal',
   },
   // blockquote
   '& blockquote': {

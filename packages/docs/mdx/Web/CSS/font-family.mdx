@@ -83,144 +83,64 @@ font-family: unset;
 
 ## 값
 
-<dl>
+- : `<family-name>`
+  - 글꼴 가족의 이름입니다. 위의 구문 예제에서는 "Nanum Gothic Coding"이 글꼴 가족의 이름입니다.
+- : `<generic-name>`
 
-<Term>&lt;family-name&gt;</Term>
-<dd>글꼴 가족의 이름입니다. 위의 구문 예제에서는 "Nanum Gothic Coding"이 글꼴 가족의 이름입니다.</dd>
+  - 글꼴 범주명은 지정한 글꼴을 사용할 수 없더라도 스타일 시트 저작자의 의도를 보존할 수 있는 방법입니다. 범주명은 키워드 값으로서 따옴표로 감싸서는 안되며, 항상 목록의 마지막에 와야 합니다.
 
-<Term>&lt;generic-name&gt;</Term>
-<dd>
+    범주에 속하는 글꼴은 언어와 사용자의 환경에 따라 다를 수 있으며, 서로 다른 두 개의 범주명이 같은 글꼴로 표현될 수도 있습니다.
 
-글꼴 범주명은 지정한 글꼴을 사용할 수 없더라도 스타일 시트 저작자의 의도를 보존할 수 있는 방법입니다. 범주명은 키워드 값으로서 따옴표로 감싸서는 안되며, 항상 목록의 마지막에 와야 합니다.
+    사용할 수 있는 값은 다음과 같습니다.
 
-범주에 속하는 글꼴은 언어와 사용자의 환경에 따라 다를 수 있으며, 서로 다른 두 개의 범주명이 같은 글꼴로 표현될 수도 있습니다.
-
-사용할 수 있는 값은 다음과 같습니다.
-
-<dl>
-
-<div style={{ fontFamily: 'serif' }}>
-<Term>serif</Term>
-<dd>
-
-세리프는 획의 끝을 붓으로 그린 것처럼 장식한 글꼴로, 한글 바탕체에 해당합니다. 나눔명조, 본명조, 서울한강체 등이 있습니다.
-
-</dd>
-</div>
-
-<div style={{ fontFamily: 'sans-serif' }}>
-<Term>sans-serif</Term>
-<dd>
-
-산세리프는 장식 없는 글꼴로, 한글 돋움체에 해당합니다. 나눔고딕, 본고딕, 서울남산체 등이 있습니다.
-
-</dd>
-</div>
-
-<div style={{ fontFamily: 'monospace' }}>
-<Term>monospace</Term>
-<dd>
-
-고정폭 글꼴입니다. 나눔고딕코딩, D2 Coding 등이 있습니다.
-
-</dd>
-</div>
-
-<div style={{ fontFamily: 'cursive' }}>
-<Term>cursive</Term>
-<dd>
-
-길게 이어지는 필기체입니다.<br />
-영어로 확인하세요: Glyphs in cursive fonts generally have either joining strokes or other cursive characteristics beyond those of italic typefaces.
-
-</dd>
-</div>
-
-<div style={{ fontFamily: 'fantasy' }}>
-<Term>fantasy</Term>
-<dd>
-
-시각적으로 흥미를 끌 수 있는 요소를 첨가한 글꼴입니다.<br />
-영어로 확인하세요: Fantasy fonts are primarily decorative fonts that contain playful representations of characters.
-
-</dd>
-</div>
-
-<div style={{ fontFamily: 'system-ui' }}>
-<Term>system-ui</Term>
-<dd>
-
-현재 사용자 플랫폼의 사용자 인터페이스 기본 글꼴을 사용합니다. 전세계의 활자 사용법에는 큰 차이가 있으므로, `system-ui`는 위의 5개 범주로 깔끔하게 떨어질 수 없는 글꼴을 위해 제공됩니다.
-
-</dd>
-</div>
-
-<div style={{ fontFamily: 'ui-serif' }}>
-<Term>ui-serif</Term>
-<dd>
-
-사용자 인터페이스의 기본 세리프 글꼴을 사용합니다.
-
-</dd>
-</div>
-
-<div style={{ fontFamily: 'ui-sans-serif' }}>
-<Term>ui-sans-serif</Term>
-<dd>
-
-사용자 인터페이스의 기본 산세리프 글꼴을 사용합니다.
-
-</dd>
-</div>
-
-<div style={{ fontFamily: 'ui-monospace' }}>
-<Term>ui-monospace</Term>
-<dd>
-
-사용자 인터페이스의 기본 고정폭 글꼴을 사용합니다.
-
-</dd>
-</div>
-
-<div style={{ fontFamily: 'ui-rounded' }}>
-<Term>ui-rounded</Term>
-<dd>
-
-사용자 인터페이스의 기본 둥근 글꼴을 사용합니다.
-
-</dd>
-</div>
-
-<div style={{ fontFamily: 'math' }}>
-<Term>math</Term>
-<dd>
-
-아래 첨자와 위 첨자(ax² + bx + c), 여러 줄을 차지하는 괄호, 중첩 표현식, 이중 선 문자(ℕ, ℤ, ℚ, ...)처럼 수학 표현을 나타내는 것에 최적화된 글꼴을 사용합니다.
-
-</dd>
-</div>
-
-<div style={{ fontFamily: 'emoji' }}>
-<Term>emoji</Term>
-<dd>
-
-이모지 📕💻 렌더링을 위해 디자인된 글꼴을 사용합니다.
-
-</dd>
-</div>
-
-<div style={{ fontFamily: 'fangsong' }}>
-<Term>fangsong</Term>
-<dd>
-
-중문 글꼴 중 명조와 해서를 혼합한 듯한 글꼴을 사용합니다. 보통 중국 공문에서 볼 수 있습니다.
-
-</dd>
-</div>
-
-</dl>
-</dd>
-</dl>
+    - : `serif`
+      - <span style={{ fontFamily: 'serif' }}>
+          세리프는 획의 끝을 붓으로 그린 것처럼 장식한 글꼴로, 한글 바탕체에 해당합니다. 나눔명조, 본명조, 서울한강체
+          등이 있습니다.
+        </span>
+    - : `sans-serif`
+      - <span style={{ fontFamily: 'sans-serif' }}>
+          산세리프는 장식 없는 글꼴로, 한글 돋움체에 해당합니다. 나눔고딕, 본고딕, 서울남산체 등이 있습니다.
+        </span>
+    - : `monospace`
+      - <span style={{ fontFamily: 'monospace' }}>고정폭 글꼴입니다. 나눔고딕코딩, D2 Coding 등이 있습니다.</span>
+    - : `cursive`
+      - <span style={{ fontFamily: 'cursive' }}>
+          이탤릭보다 더 눈에 띄는 필기체의 성격을 가진 글꼴입니다. 영어로 확인하세요:
+          <br />
+          Glyphs in cursive fonts generally have either joining strokes or other cursive characteristics beyond those of
+          italic typefaces.
+        </span>
+    - : `fantasy`
+      - <span style={{ fontFamily: 'fantasy' }}>
+          시각적으로 흥미를 끌 수 있는 요소를 첨가한 글꼴입니다. 영어로 확인하세요:
+          <br />
+          Fantasy fonts are primarily decorative fonts that contain playful representations of characters.
+        </span>
+    - : `system-ui`
+      - <span style={{ fontFamily: 'system-ui' }}>
+          현재 사용자 플랫폼의 사용자 인터페이스 기본 글꼴을 사용합니다. 전세계의 활자 사용법에는 큰 차이가 있으므로,
+          `system-ui`는 위의 5개 범주로 깔끔하게 떨어질 수 없는 글꼴을 위해 제공됩니다.
+        </span>
+    - : `ui-serif`
+      - <span style={{ fontFamily: 'ui-serif' }}>사용자 인터페이스의 기본 세리프 글꼴을 사용합니다.</span>
+    - : `ui-sans-serif`
+      - <span style={{ fontFamily: 'ui-sans-serif' }}>사용자 인터페이스의 기본 산세리프 글꼴을 사용합니다.</span>
+    - : `ui-monospace`
+      - <span style={{ fontFamily: 'ui-monospace' }}>사용자 인터페이스의 기본 고정폭 글꼴을 사용합니다.</span>
+    - : `ui-rounded`
+      - <span style={{ fontFamily: 'ui-rounded' }}>사용자 인터페이스의 기본 둥근 글꼴을 사용합니다.</span>
+    - : `math`
+      - <span style={{ fontFamily: 'math' }}>
+          아래 첨자와 위 첨자(ax² + bx + c), 여러 줄을 차지하는 괄호, 중첩 표현식, 이중 선 문자(ℕ, ℤ, ℚ, ...)처럼 수학
+          표현을 나타내는 것에 최적화된 글꼴을 사용합니다.
+        </span>
+    - : `emoji`
+      - <span style={{ fontFamily: 'emoji' }}>이모지 📕💻 렌더링을 위해 디자인된 글꼴을 사용합니다.</span>
+    - : `fangsong`
+      - <span style={{ fontFamily: 'fangsong' }}>
+          중문 글꼴 중 명조와 해서를 혼합한 듯한 글꼴을 사용합니다. 보통 중국 공문에서 볼 수 있습니다.
+        </span>
 
 # 명세
 
@@ -228,4 +148,4 @@ font-family: unset;
 
 # 브라우저 호환성
 
-<BrowserCompat data={bcd} />
+<BrowserCompat data={props.bcd} />

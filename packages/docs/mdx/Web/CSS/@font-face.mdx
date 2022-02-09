@@ -17,80 +17,48 @@ bcd: css.at-rules.font-face
 
 ## 서술자
 
-<dl>
-<Term>ascent-override</Term>
-<dd>글꼴의 윗선(ascent) 수치를 정의합니다.</dd>
+- : `ascent-override`
+  - 글꼴의 윗선(ascent) 수치를 정의합니다.
+- : `descent-override`
+  - 글꼴의 밑선(descent) 수치를 정의합니다.
+- : [`font-display`](./@font-face/font-display)
+  - 글꼴을 불러오는 동안, 그리고 불러온 후에 어떻게 표시할 것인지 지정합니다.
+- : `font-family`
+  - 이 글꼴이 속하는 글꼴 가족의 이름을 지정합니다.
+- : `font-stretch`
+  - [`font-stretch`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-stretch)의 값입니다. 이 글꼴에서 지원하고자 하는 범위를 두 개의 값으로 지정할 수 있습니다. (`font-stretch: 50% 200%`)
+- : `font-style`
+  - [`font-style`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-style)의 값입니다. 이 글꼴에서 지원하고자 하는 범위를 두 개의 값으로 지정할 수 있습니다. (`font-style: oblique 20deg 50deg`)
+- : `font-weight`
+  - [`font-weight`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight)의 값입니다. 이 글꼴에서 지원하고자 하는 범위를 두 개의 값으로 지정할 수 있습니다. (`font-weight: 100 400`)
+- : `font-variant`
+  - [`font-variant`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant)의 값입니다.
+- : `font-weight`
+  - [`font-weight`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight)의 값입니다. 이 글꼴에서 지원하고자 하는 범위를 두 개의 값으로 지정할 수 있습니다. (`font-weight: 100 400`)
+- : `font-variant`
+  - [`font-variant`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant)의 값입니다.
+- : `font-feature-settings`
+  - OpenType 글꼴의 고급 설정을 조정할 수 있습니다.
+- : `font-variation-settings`
+  - OpenType과 TrueType 가변 글꼴의 디자인 축(axis)을 직접 조절할 수 있습니다.
+- : `line-gap-override`
+  - 글꼴의 행간 수치를 정의합니다.
+- : `src`
 
-<Term>descent-override</Term>
-<dd>글꼴의 밑선(descent) 수치를 정의합니다.</dd>
+  - 글꼴의 데이터가 담긴 리소스를 지정합니다. 원격 글꼴 파일의 URL일 수도 있고, 사용자 컴퓨터에 저장된 글꼴의 이름일 수도 있습니다.
 
-<Term href="./@font-face/font-display">font-display</Term>
-<dd>글꼴을 불러오는 동안, 그리고 불러온 후에 어떻게 표시할 것인지 지정합니다.</dd>
+    `format()` 함수로 글꼴 리소스의 형식을 나타내면 브라우저가 적합한 글꼴을 선택할 때 참고합니다.
 
-<Term>font-family</Term>
-<dd>이 글꼴이 속하게 할 글꼴 가족의 이름을 지정합니다.</dd>
+    ```css
+    src: url(ideal-sans-serif.woff) format('woff'), url(basic-sans-serif.ttf) format('truetype');
+    ```
 
-<Term>font-stretch</Term>
-<dd>
+    `'woff'`, `'woff2'`, `'truetype'`, `'opentype'`, `'embedded-opentype'`를 사용할 수 있습니다.
 
-[`font-stretch`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-stretch)의 값입니다. 이 글꼴에서 지원하고자 하는 범위를 두 개의 값으로 지정할 수 있습니다. (`font-stretch: 50% 200%`)
-
-</dd>
-
-<Term>font-style</Term>
-<dd>
-
-[`font-style`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-style)의 값입니다. 이 글꼴에서 지원하고자 하는 범위를 두 개의 값으로 지정할 수 있습니다. (`font-style: oblique 20deg 50deg`)
-
-</dd>
-
-<Term>font-weight</Term>
-<dd>
-
-[`font-weight`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight)의 값입니다. 이 글꼴에서 지원하고자 하는 범위를 두 개의 값으로 지정할 수 있습니다. (`font-weight: 100 400`)
-
-</dd>
-
-<Term>font-variant</Term>
-<dd>
-
-[`font-variant`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant)의 값입니다.
-
-</dd>
-
-<Term>font-feature-settings</Term>
-<dd>OpenType 글꼴의 고급 설정을 조정할 수 있습니다.</dd>
-
-<Term>font-variation-settings</Term>
-<dd>OpenType과 TrueType 가변 글꼴의 디자인 축(axis)을 직접 조절할 수 있습니다.</dd>
-
-<Term>line-gap-override</Term>
-<dd>글꼴의 행간 수치를 정의합니다.</dd>
-
-<Term>src</Term>
-<dd>
-
-글꼴의 데이터가 담긴 리소스를 지정합니다. 원격 글꼴 파일의 URL일 수도 있고, 사용자 컴퓨터에 저장된 글꼴의 이름일 수도 있습니다.
-
-`format()` 함수로 글꼴 리소스의 형식을 나타내면 브라우저가 적합한 글꼴을 선택할 때 참고합니다.
-
-```css
-src: url(ideal-sans-serif.woff) format('woff'), url(basic-sans-serif.ttf) format('truetype');
-```
-
-`'woff'`, `'woff2'`, `'truetype'`, `'opentype'`, `'embedded-opentype'`를 사용할 수 있습니다.
-
-</dd>
-
-<Term experimental>size-adjust</Term>
-<dd>
-  글꼴의 자형(glyph) 외곽선 및 이 글꼴의 여러 수치에 곱할 계수를 지정합니다. 다양한 글꼴을 같은 크기로 렌더링 하면서도
-  조화를 유지해야 할 때 유용합니다.
-</dd>
-
-<Term>unicode-range</Term>
-<dd>이 글꼴이 사용할 Unicode 코드 포인트 범위를 지정합니다.</dd>
-</dl>
+- : `size-adjust` <Experimental />
+  - 글꼴의 자형(glyph) 외곽선 및 이 글꼴의 여러 수치에 곱할 계수를 지정합니다. 다양한 글꼴을 같은 크기로 렌더링 하면서도 조화를 유지해야 할 때 유용합니다.
+- : `unicode-range`
+  - 이 글꼴이 사용할 Unicode 코드 포인트 범위를 지정합니다.
 
 # 설명
 

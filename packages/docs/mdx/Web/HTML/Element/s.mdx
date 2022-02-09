@@ -16,13 +16,7 @@ bcd: html.elements.s
 </HTMLDemo>
 
 <Callout.Root color="warn" label="참고">
-  <code>{'<s>'}</code> 요소는 문서에서 수정을 한 부분을 나타내는 데는 적합하지 않습니다.{' '}
-  <Anchor href="./del">
-    <code>{'<del>'}</code>
-  </Anchor>
-  과 <Anchor href="./ins">
-    <code>{'<ins>'}</code>
-  </Anchor>를 사용하세요.
+  `<s>` 요소는 문서가 수정된 부분을 나타내는 데는 적합하지 않습니다. [`<del>`](./del)과 [`<ins>`](./ins)를 사용하세요.
 </Callout.Root>
 
 # 특성
@@ -62,7 +56,7 @@ s::after {
 
 # 브라우저 호환성
 
-<BrowserCompat data={bcd} />
+<BrowserCompat data={props.bcd} />
 
 # 같이 보기
 

@@ -23,26 +23,7 @@ bcd: html.elements.section
 </HTMLDemo>
 
 <Callout.Root childAs="div" label="참고">
-  <p>더 적합한 의미를 가진 요소가 없을 때란 다음과 같습니다.</p>
-  <ul>
-    <li>
-      탐색 메뉴는{' '}
-      <Anchor href="./nav">
-        <code>&lt;nav&gt;</code>
-      </Anchor>{' '}
-      요소로 묶을 수 있습니다.
-    </li>
-    <li>
-      블로그 글이나 댓글은{' '}
-      <Anchor href="./article">
-        <code>&lt;article&gt;</code>
-      </Anchor>{' '}
-      요소로 묶을 수 있습니다.
-    </li>
-    <li>
-      그러나 검색 결과를 나타낼 수 있는 <code>&lt;result&gt;</code> 등의 요소는 없습니다.
-    </li>
-  </ul>
+  탐색 메뉴는 [`<nav>`](./nav) 요소로 묶을 수 있고, 블로그 글이나 댓글은 [`<article>`](./article) 요소로 묶을 수 있습니다. 그러나 검색 결과를 나타낼 때 사용할 `<result>`라는 이름의 요소는 없습니다. 이 때가 *더 적합한 의미를 가진 요소가 없을 때*입니다.
 </Callout.Root>
 
 # 특성
@@ -61,7 +42,7 @@ bcd: html.elements.section
 
 # 브라우저 호환성
 
-<BrowserCompat data={bcd} />
+<BrowserCompat data={props.bcd} />
 
 # 같이 보기
 

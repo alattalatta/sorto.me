@@ -7,12 +7,7 @@ bcd: html.elements.head
 **HTML `<head>`** 요소는 기계가 식별할 수 있는 문서 정보, 메타데이터를 담습니다. 메타데이터에는 문서의 [제목](./title), 스크립트, 스타일 시트 등이 있습니다.
 
 <Callout.Root color="warn" label="참고">
-  <code>&lt;head&gt;</code>는 주로 기계 처리를 위한 정보를 담습니다. 최상위 헤딩이나 글쓴이 목록처럼 사람이 읽을 수 있는
-  정보는{' '}
-  <Anchor href="./header">
-    <code>&lt;header&gt;</code>
-  </Anchor>{' '}
-  요소를 활용하세요.
+  `<head>`는 주로 기계 처리를 위한 정보를 담습니다. 최상위 헤딩이나 글쓴이 목록처럼 사람이 읽을 수 있는 정보는 [`<header>`](./header) 요소를 활용하세요.
 </Callout.Root>
 
 ```html
@@ -34,7 +29,7 @@ bcd: html.elements.head
 
 # 브라우저 호환성
 
-<BrowserCompat data={bcd} />
+<BrowserCompat data={props.bcd} />
 
 # 같이 보기
 

@@ -35,16 +35,10 @@ del {
 
 [전역 특성](/docs/Web/HTML/Global_attributes)을 포함합니다.
 
-<dl>
-  <Term>cite</Term>
-  <dd>회의록이나 이슈 링크처럼, 해당 변경사항을 설명하는 리소스의 URL입니다.</dd>
-  <Term>datetime</Term>
-  <dd>
-    변경이 발생한 시점을 나타내는 날짜 문자열입니다. 시간도 포함할 수 있습니다. 유효한{' '}
-    <Anchor href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO 8601</Anchor> 형식으로 지정하세요. 인식할
-    수 없는 잘못된 값을 지정한 경우 날짜를 지정하지 않은 것으로 취급합니다.
-  </dd>
-</dl>
+- : `cite`
+  - 회의록이나 이슈 링크처럼, 해당 변경사항을 설명하는 리소스의 URL입니다.
+- : `datetime`
+  - 변경이 발생한 시점을 나타내는 날짜 문자열입니다. 시간도 포함할 수 있습니다. 유효한 [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) 형식으로 지정하세요. 인식할 수 없는 잘못된 값을 지정한 경우 날짜를 지정하지 않은 것으로 취급합니다.
 
 # 접근성 고려사항
 
@@ -79,7 +73,7 @@ del::after {
 
 # 브라우저 호환성
 
-<BrowserCompat data={bcd} />
+<BrowserCompat data={props.bcd} />
 
 # 같이 보기
 

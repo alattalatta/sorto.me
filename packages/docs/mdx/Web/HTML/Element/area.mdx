@@ -6,85 +6,43 @@ bcd: html.elements.area
 
 **HTML `<area>` 요소**는 [이미지 맵](./map) 안의 클릭 가능한 영역을 정의합니다. 이미지 맵은 이미지의 일부 영역을 [하이퍼텍스트 링크](https://developer.mozilla.org/en-US/docs/Glossary/Hyperlink)와 연결할 때 사용합니다.
 
-<!-- Demo -->
-
 # 특성
 
 [전역 특성](/docs/Web/HTML/Global_attributes)을 포함합니다.
 
-<dl>
-<Term>alt</Term>
-<dd>
+- : `alt`
+  - 이미지를 출력하지 않는 브라우저에서 대신 사용할 대체 텍스트를 지정합니다. 텍스트의 내용은 이미지의 해당 영역이 나타내는 선택지를 동일하게 표현할 수 있어야 합니다. [`href`](#term-href) 특성이 존재할 때는 필수 특성입니다.
+- : `coords`
 
-이미지를 출력하지 않는 브라우저에서 대신 사용할 대체 텍스트를 지정합니다. 텍스트의 내용은 이미지의 해당 영역이 나타내는 선택지를 동일하게 표현할 수 있어야 합니다. [`href`](#term-href) 특성이 존재할 때는 필수 특성입니다.
+  - [`shape`](#term-shape) 특성으로 지정한 모양의 자세한 형태, 크기, 위치 등을 지정합니다. 값의 형태는 `shape` 특성에 따라 다릅니다.
 
-</dd>
+    - `rect`: `coords` 값의 형태가 `x1,y1,x2,y2`입니다. 각각 직사각형의 좌상단, 우하단 꼭짓점 좌표를 지정합니다. `<area shape="rect" coords="0,0,253,27" href="#" target="_blank" alt="Docs" />`의 예제에서는 클릭 영역이 왼쪽 위 0, 0에서 오른쪽 아래 253, 27까지 차지하는 사각형입니다.
+    - `circle`: 값의 형태가 `x,y,radius`입니다. 원의 중심과 반지름을 지정합니다.
+    - `poly`: 값의 형태가 `x1,y1,x2,y2,...,xn,yn`입니다. 각각의 쌍이 다각형의 꼭짓점 하나를 정의합니다. 맨 처음 꼭짓점과 마지막 꼭짓점의 좌표가 같지 않으면 브라우저가 자동으로 끝선을 이어줍니다.
+    - `default`: 맵 전체를 덮으므로 `coords` 특성을 지정해서는 안됩니다.
 
-<Term>coords</Term>
-<dd>
+    값의 단위는 CSS 픽셀입니다.
 
-[`shape`](#term-shape) 특성으로 지정한 모양의 자세한 형태, 크기, 위치 등을 지정합니다. 값의 형태는 `shape` 특성에 따라 다릅니다.
+- : `download`
+  - 사용자를 연결된 URL로 바로 보내는 대신, 지정한 링크의 자원을 다운로드할지 여부를 물어보게 됩니다. [`<a>` 요소의 `download` 특성](./a#term-download)에서 전체 설명을 볼 수 있습니다.
+- : `href`
+  - 클릭 영역에 연결할 하이퍼링크입니다. 지정하지 않으면 요소가 하이퍼링크를 나타내지 않습니다.
+- : `hreflang`
+  - `href`로 연결한 링크의 인간 언어를 지정합니다. 별도의 기능은 없습니다. [전역 `lang` 특성](../Global_attributes#term-lang)과 같은 값을 사용합니다.
+- : `ping`
+  - 공백으로 구분하는 URL 리스트입니다. 사용자가 링크를 따라가면 본문을 `PING`으로 하는 [`POST`](https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/POST) 요청을 주어진 모든 URL로 전송합니다. 보통 행동 추적 용도로 사용합니다.
+- : `referrerpolicy`
+  - 링크를 따라갈 때 전송할 보낼 리퍼러를 지정합니다. [`<a>` 요소의 `referrerpolicy` 특성](./a#term-referrerpolicy)에서 전체 설명을 볼 수 있습니다.
+- : `rel`
+  - 연결한 URL과 현재 문서 사이의 관계를 명시합니다. 공백으로 구분한 [링크 유형 값](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types)의 목록이어야 합니다.
+- : `shape`
 
-- `rect`: `coords` 값의 형태가 `x1,y1,x2,y2`입니다. 각각 직사각형의 좌상단, 우하단 꼭짓점 좌표를 지정합니다. `<area shape="rect" coords="0,0,253,27" href="#" target="_blank" alt="Docs" />`의 예제에서는 클릭 영역이 왼쪽 위 0, 0에서 오른쪽 아래 253, 27까지 차지하는 사각형입니다.
-- `circle`: 값의 형태가 `x,y,radius`입니다. 원의 중심과 반지름을 지정합니다.
-- `poly`: 값의 형태가 `x1,y1,x2,y2,...,xn,yn`입니다. 각각의 쌍이 다각형의 꼭짓점 하나를 정의합니다. 맨 처음 꼭짓점과 마지막 꼭짓점의 좌표가 같지 않으면 브라우저가 자동으로 끝선을 이어줍니다.
-- `default`: 맵 전체를 덮으므로 `coords` 특성을 지정해서는 안됩니다.
+  - 클릭 가능한 영역의 형태를 지정합니다. HTML 명세는 직사각형 영역을 나타내는 `rect`, 원형 영역을 나타내는 `circle`, 다각형 영역을 나타내는 `poly`, 전체 영역을 덮는 `default` 값을 정의하고 있습니다.
 
-값의 단위는 CSS 픽셀입니다.
+    다수의 브라우저에서 `circ`, `polygon`, `rectangle`도 지원하지만 이 세 값은 표준에 정의된 값이 아닙니다.
 
-</dd>
-<Term>download</Term>
-<dd>
-
-사용자를 연결된 URL로 바로 보내는 대신, 지정한 링크의 자원을 다운로드할지 여부를 물어보게 됩니다. [`<a>` 요소의 `download` 특성](./a#term-download)에서 전체 설명을 볼 수 있습니다.
-
-</dd>
-<Term>href</Term>
-<dd>
-
-클릭 영역에 연결할 하이퍼링크입니다. 지정하지 않으면 요소가 하이퍼링크를 나타내지 않습니다.
-
-</dd>
-<Term>hreflang</Term>
-<dd>
-
-`href`로 연결한 링크의 인간 언어를 지정합니다. 별도의 기능은 없습니다. 전역 <HTMLAttr>lang</HTMLAttr> 특성과 같은 값을 사용합니다.
-
-</dd>
-<Term>ping</Term>
-<dd>
-
-공백으로 구분하는 URL 리스트입니다. 사용자가 링크를 따라가면 본문 `PING`으로 하는 [`POST`](https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/POST) 요청을 주어진 URL 모두에 전송합니다. 보통 행동 추적 용도로 사용합니다.
-
-</dd>
-<Term>referrerpolicy</Term>
-<dd>
-
-링크를 따라갈 때 전송할 보낼 리퍼러를 지정합니다. [`<a>` 요소의 `referrerpolicy` 특성](./a#term-referrerpolicy)에서 전체 설명을 볼 수 있습니다.
-
-</dd>
-<Term>rel</Term>
-<dd>
-
-연결한 URL과 현재 문서 사이의 관계를 명시합니다. 공백으로 구분한 [링크 유형 값](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types)의 목록이어야
-합니다.
-
-</dd>
-<Term>shape</Term>
-<dd>
-
-클릭 가능한 영역의 형태를 지정합니다. HTML 명세는 직사각형 영역을 나타내는 `rect`, 원형 영역을 나타내는 `circle`, 다각형 영역을 나타내는 `poly`, 전체 영역을 덮는 `default` 값을 정의하고 있습니다.
-
-다수의 브라우저가 `circ`, `polygon`, `rectangle`도 지원하지만 이 세 값은 표준에 정의된 값이 아닙니다.
-
-</dd>
-<Term>target</Term>
-<dd>
-
-연결한 URL을 표시할 위치입니다. [`<a>` 요소의 `target` 특성](./a#term-target)에서 전체 설명을 볼 수 있습니다.
-
-</dd>
-</dl>
+- : `target`
+  - 연결한 URL을 표시할 위치입니다. [`<a>` 요소의 `target` 특성](./a#term-target)에서 전체 설명을 볼 수 있습니다.
 
 # 명세
 
@@ -92,7 +50,7 @@ bcd: html.elements.area
 
 # 브라우저 호환성
 
-<BrowserCompat data={bcd} />
+<BrowserCompat data={props.bcd} />
 
 # 같이 보기
 

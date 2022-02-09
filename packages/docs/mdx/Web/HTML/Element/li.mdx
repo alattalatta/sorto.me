@@ -24,19 +24,8 @@ bcd: html.elements.li
 
 [전역 특성](/docs/Web/HTML/Global_attributes)을 포함합니다.
 
-<dl>
-  <Term>value</Term>
-  <dd>
-    <Anchor href="./ol">
-      <code>{'<ol>'}</code>
-    </Anchor>{' '}
-    요소 아래에서의 현재 순서를 재정의하는 정수형 특성입니다. 리스트가 로마 숫자나 영문자를 쓰더라도 항상 숫자 값만
-    지정해야 합니다. 이후의 목록 항목은 이 값을 기준으로 시작합니다. 비정렬 목록(
-    <Anchor href="./ul">
-      <code>{'<ul>'}</code>
-    </Anchor>) 아래에서는 아무런 영향도 없습니다.
-  </dd>
-</dl>
+- : `value`
+  - [`<ol>`](./ol)에 속하는 경우, 현재 순번을 재정의하는 정수형 특성입니다. 리스트가 로마 숫자나 영문자를 쓰더라도 항상 숫자 값을 지정해야 합니다. 이후의 `<li>`는 이 값을 기준으로 번호를 매깁니다. 비정렬 목록([`<ul>`](./ul))에서는 아무 효과도 없습니다.
 
 # 예제
 
@@ -56,7 +45,7 @@ bcd: html.elements.li
 
 # 브라우저 호환성
 
-<BrowserCompat data={bcd} />
+<BrowserCompat data={props.bcd} />
 
 # 같이 보기
 

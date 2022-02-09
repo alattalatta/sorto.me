@@ -40,101 +40,63 @@ button:active {
 
 [전역 특성](/docs/Web/HTML/Global_attributes)을 포함합니다.
 
-<dl>
-<Term>disabled</Term>
-<dd>지정하면 사용자의 상호작용을 비활성화하는, 즉 버튼의 클릭과 포커스 획득을 막는 불리언 특성입니다.</dd>
+- : `disabled`
+  - 지정하면 사용자의 상호작용을 비활성화, 즉 버튼의 클릭과 포커스 획득을 막는 불리언 특성입니다.
+- : `form`
 
-<Term>form</Term>
-<dd>
+  - 이 버튼을 연결할 _양식 소유자_([`<form>`](./form) 요소)의 ID를 지정합니다. 같은 문서 상에 존재하는 `<form>`의 `id` 특성을 지정할 수 있습니다. 이 특성이 존재하지 않으면 `<button>`의 양식 소유자는 가장 가까운 조상 `<form>`이 됩니다. (존재할 경우)
 
-이 버튼을 연결할 _양식 소유자_([`<form>`](./form) 요소)의 ID를 지정합니다. 같은 문서 상에 존재하는 `<form>`의 `id` 특성을 지정할 수 있습니다. 이 특성이 존재하지 않으면 `<button>`의 양식 소유자는 가장 가까운 조상 `<form>`이 됩니다. (존재할 경우)
+    `form` 특성을 사용하면 `<button>`이 `<form>`의 자손이 아니어도 연결할 수 있습니다. 조상에 `<form>`이 있는데 `form` 특성을 지정한 경우 특성이 가리키는 `<form>`이 우선합니다.
 
-`form` 특성을 사용하면 `<button>`이 `<form>`의 자손이 아니어도 연결할 수 있습니다. 조상에 `<form>`이 있는데 `form` 특성을 지정한 경우 특성이 가리키는 `<form>`이 우선합니다.
+- : `formaction`
+  - 버튼을 클릭했을 때 데이터를 제출할 URL을 지정합니다. 버튼의 *양식 소유자*에 지정한 [`action`](./form#term-action) 특성보다 우선합니다. 양식 소유자가 없으면 아무 효과도 없습니다.
+- : `formenctype`
 
-</dd>
+  - 버튼이 (*양식 소유자*가 존재하고, `type="button"`을 지정하지 않은) 제출용 버튼일 때, 제출할 데이터를 인코딩하는 방법을 지정합니다. 가능한 값은 다음과 같습니다.
 
-<Term>formaction</Term>
-<dd>
+    - `application/x-www-form-urlencoded`: 기본값입니다.
+    - `multipart/form-data`: [`type`](./input#term-type)이 `file`인 [`<input>`](./input)을 제출할 때 사용합니다.
+    - `text/plain`: 디버깅 용도로 사용하는 값입니다. 실제 사용자가 제출하는 데이터의 인코딩에는 사용하지 말아야 합니다.
 
-버튼을 클릭했을 때의 데이터를 제출할 URL을 지정합니다. 버튼의 *양식 소유자*에 지정한 [`action`](./form#term-action) 특성보다 우선합니다. 양식 소유자가 없으면 아무 효과도 없습니다.
+    버튼의 양식 소유자에 지정한 [`enctype`](./form#term-enctype) 특성보다 우선합니다.
 
-</dd>
+- : `formmethod`
 
-<Term>formenctype</Term>
-<dd>
+  - 버튼이 (*양식 소유자*가 존재하고, `type="button"`을 지정하지 않은) 제출용 버튼일 때, 제출할 데이터를 전송할 [HTTP 메서드](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)를 지정합니다. 가능한 값은 다음과 같습니다.
 
-버튼이 (*양식 소유자*가 존재하고, `type="button"`을 지정하지 않은) 제출용 버튼일 때, 제출할 데이터를 인코딩하는 방법을 지정합니다. 가능한 값은 다음과 같습니다.
+    - `post`: 양식의 데이터를 HTTP 요청의 본문에 넣어서 서버로 전송합니다. 로그인 키처럼 공개해선 안되는 정보를 포함해야 할 때 사용하세요.
+    - `get`: 양식의 데이터를 `action` URL 뒤의 쿼리 문자열로 붙여서 서버로 전송합니다. 검색 창처럼 [양식이 유발하는 부수효과가 없을 때](https://developer.mozilla.org/ko/docs/Glossary/Idempotent) 사용하세요.
+    - `dialog`: 양식이 [`<dialog>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) 안에 있을 때, 양식을 제출하면 대화상자를 닫습니다.
 
-- `application/x-www-form-urlencoded`: 기본값입니다.
-- `multipart/form-data`: [`type`](./input#term-type)이 `file`인 [`<input>`](./input)을 제출할 때 사용합니다.
-- `text/plain`: 디버깅 용도로 사용하는 값입니다. 실제 사용자가 제출하는 데이터의 인코딩에는 사용하지 말아야 합니다.
+    버튼의 양식 소유자에 지정한 [`method`](./form#term-method) 특성보다 우선합니다.
 
-버튼의 양식 소유자에 지정한 [`enctype`](./form#term-enctype) 특성보다 우선합니다.
+- : `formnovalidate`
+  - 버튼이 (*양식 소유자*가 존재하고, `type="button"`을 지정하지 않은) 제출용 버튼일 때, 제출 시 [양식의 데이터를 검증](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation)하지 않음을 지정하는 불리언 특성입니다. 버튼의 양식 소유자에 지정한 [`novalidate`](./form#term-novalidate) 특성보다 우선합니다.
+- : `formtarget`
 
-</dd>
+  - 버튼이 (*양식 소유자*가 존재하고, `type="button"`을 지정하지 않은) 제출용 버튼일 때, 제출 결과를 표시할 위치를 지정합니다. 가능한 값은 브라우징 맥락(탭, 창, <code>&lt;iframe&gt;</code>)의 이름입니다.
 
-<Term>formmethod</Term>
-<dd>
+    다음의 키워드는 특별한 뜻을 가지고 있습니다.
 
-버튼이 (*양식 소유자*가 존재하고, `type="button"`을 지정하지 않은) 제출용 버튼일 때, 제출할 데이터를 전송할 [HTTP 메서드](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)를 지정합니다. 가능한 값은 다음과 같습니다.
+    - `_self` (기본값): 결과를 현재 브라우징 맥락에 보여줍니다.
+    - `_blank`: 결과를 새롭게 생성한 이름 없는 브라우징 맥락에 보여줍니다.
+    - `_parent`: 현재 페이지가 프레임 안에 존재하는 경우, 결과를 현재 브라우징 맥락의 부모에 보여줍니다. 부모가 없으면 `_self`와 동일합니다.
+    - `_top`: 결과를 최상위 브라우징 맥락에 보여줍니다. 최상위 브라우징 맥락이란 현재 맥락의 조상 중 부모가 없는 맥락입니다. 현재 맥락이 부모를 가지지 않으면 `_self`와 동일합니다.
 
-- `post`: 양식의 데이터를 HTTP 요청의 본문에 넣어서 서버로 전송합니다. 로그인 키처럼 공개해선 안되는 정보를 포함해야 할 때 사용하세요.
-- `get`: 양식의 데이터를 `action` URL 뒤의 쿼리 문자열로 붙여서 서버로 전송합니다. 검색 창처럼 [양식이 유발하는 부수효과가 없을 때](https://developer.mozilla.org/ko/docs/Glossary/Idempotent) 사용하세요.
-- `dialog`: 양식이 [`<dialog>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) 안에 있을 때, 양식을 제출하면 대화상자를 닫습니다.
+    버튼의 양식 소유자에 지정한 [`target`](./form#attr-target) 특성보다 우선합니다.
 
-버튼의 양식 소유자에 지정한 [`method`](./form#term-method) 특성보다 우선합니다.
+- : `name`
+  - 버튼의 이름입니다. 양식을 제출할 때 버튼의 [`value`](#term-value)와 쌍을 이뤄 데이터에 포함됩니다.
+- : `type`
 
-</dd>
+  - 버튼의 기본 동작입니다. 가능한 값은 다음과 같습니다.
 
-<Term>formnovalidate</Term>
-<dd>
+    - `submit`: 버튼이 양식의 데이터를 서버로 제출합니다. `<form>`과 연결된 버튼에 `type`을 지정하지 않았거나 유효하지 않은 값을 지정했을 때의 기본 값입니다.
+    - `reset`: [`<input type="reset">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/reset)처럼, 클릭했을 때 양식의 모든 컨트롤을 기본 값으로 초기화합니다. 초기화 여부를 따로 사용자에게 물어보지 않기 때문에 조심해야 합니다.
+    - `button`: 버튼이 기본 동작을 가지지 않습니다. 따라서 클릭해도 아무런 동작을 하지 않습니다. 대신, 클라이언트 사이드 스크립트에서 이벤트를 수신해서 원하는 동작을 하도록 설정할 수 있습니다.
 
-버튼이 (*양식 소유자*가 존재하고, `type="button"`을 지정하지 않은) 제출용 버튼일 때, 제출 시 양식의 데이터를 [검증](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation)하지 않음을 지정하는 불리언 특성입니다. 버튼의 양식 소유자에 지정한 [`novalidate`](./form#term-novalidate) 특성보다 우선합니다.
-
-</dd>
-
-<Term>formtarget</Term>
-<dd>
-
-버튼이 (*양식 소유자*가 존재하고, `type="button"`을 지정하지 않은) 제출용 버튼일 때, 제출 결과를 표시할 위치를 지정합니다. 가능한 값은 브라우징 맥락(탭, 창, <code>&lt;iframe&gt;</code>)의 이름입니다.
-
-다음의 키워드는 특별한 뜻을 가지고 있습니다.
-
-- `_self` (기본값): 결과를 현재 브라우징 맥락에 보여줍니다.
-- `_blank`: 결과를 새롭게 생성한 이름 없는 브라우징 맥락에 보여줍니다.
-- `_parent`: 현재 페이지가 프레임 안에 존재하는 경우, 결과를 현재 브라우징 맥락의 부모에 보여줍니다. 부모가 없으면 `_self`와 동일합니다.
-- `_top`: 결과를 최상위 브라우징 맥락에 보여줍니다. 최상위 브라우징 맥락이란 현재 맥락의 조상 중 부모가 없는 맥락입니다. 현재 맥락이 부모를 가지지 않으면 `_self`와 동일합니다.
-
-버튼의 양식 소유자에 지정한 [`target`](./form#attr-target) 특성보다 우선합니다.
-
-</dd>
-
-<Term>name</Term>
-<dd>
-
-버튼의 이름입니다. 양식을 제출할 때 버튼의 [`value`](#term-value)와 쌍을 이뤄 데이터에 포함됩니다.
-
-</dd>
-
-<Term>type</Term>
-<dd>
-
-버튼의 기본 동작입니다. 가능한 값은 다음과 같습니다.
-
-- `submit`: 버튼이 양식의 데이터를 서버로 제출합니다. `<form>`과 연결된 버튼에 `type`을 지정하지 않았거나 유효하지 않은 값을 지정했을 때의 기본 값입니다.
-- `reset`: [`<input type="reset">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/reset)처럼, 클릭했을 때 양식의 모든 컨트롤을 기본 값으로 초기화합니다. 초기화 여부를 따로 사용자에게 물어보지 않기 때문에 조심해야 합니다.
-- `button`: 버튼이 기본 동작을 가지지 않습니다. 따라서 클릭해도 아무런 동작을 하지 않습니다. 대신, 클라이언트 사이드 스크립트에서 이벤트를 수신해서 원하는 동작을 하도록 설정할 수 있습니다.
-
-</dd>
-
-<Term>value</Term>
-<dd>
-
-버튼의 값입니다. 양식을 제출할 때 버튼의 [`name`](#term-name)과 쌍을 이뤄 데이터에 포함됩니다.
-
-</dd>
-
-</dl>
+- : `value`
+  - 버튼의 값입니다. 양식을 제출할 때 버튼의 [`name`](#term-name)과 쌍을 이뤄 데이터에 포함됩니다.
 
 # 참고
 
@@ -177,4 +139,4 @@ button:active {
 
 # 브라우저 호환성
 
-<BrowserCompat data={bcd} />
+<BrowserCompat data={props.bcd} />

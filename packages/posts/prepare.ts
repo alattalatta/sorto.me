@@ -15,6 +15,7 @@ del('data/*.json')
   .then((parsedPosts) =>
     Promise.all([
       fs.writeFile(relative('data/index.json'), JSON.stringify(parsedPosts.map((parsedPost) => parsedPost.meta))),
+      fs.writeFile(relative('data/map.json'), JSON.stringify(parsedPosts.map((parsedPost) => parsedPost.meta.slug))),
       ...parsedPosts.map((parsedPost) =>
         fs.writeFile(relative('data', `${parsedPost.meta.slug}.json`), JSON.stringify(parsedPost)),
       ),

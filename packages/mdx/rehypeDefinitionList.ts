@@ -53,18 +53,32 @@ function bissectDefinitionList(node: List): readonly [term: ListItem, definision
     const term = pipe(
       O.fromNullable(fst),
       O.filter(isNodeParagraph),
-      O.chain((child) => head(child.children)),
-      O.filter(isNodeText),
-      O.filter((child) => child.value.startsWith(':')),
-      O.map((text) => text.value.slice(1).trim()),
-      O.map(
-        (text) =>
-          ({ type: 'listItem', children: [{ type: 'text', value: text } as any], data: { hName: 'dt' } } as ListItem),
+      O.filter((paragraph) =>
+        pipe(
+          head(paragraph.children),
+          O.filter(isNodeText),
+          O.filter((descendant) => descendant.value.startsWith(': ')),
+          O.isSome,
+        ),
       ),
+      O.map((paragraph) => {
+        const [text, ...otherChildren] = paragraph.children as [Text, ...PhrasingContent[]]
+        return {
+          type: 'listItem',
+          children: [
+            {
+              ...text,
+              value: text.value.slice(2),
+            },
+            ...otherChildren,
+          ],
+          data: { hName: 'dt' },
+        } as ListItem
+      }),
       O.getOrElse<ListItem | null>(() => null),
     )
     if (!term) {
-      return []
+      continue
     }
 
     const definitions = pipe(
@@ -77,7 +91,7 @@ function bissectDefinitionList(node: List): readonly [term: ListItem, definision
       O.getOrElse<ListItem[] | null>(() => null),
     )
     if (!definitions) {
-      return []
+      continue
     }
 
     result.push([term, definitions])

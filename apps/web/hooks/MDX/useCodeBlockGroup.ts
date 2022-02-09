@@ -11,7 +11,7 @@ export function useCodeBlockGroup(name: string): Record<Lang, string[]> {
     setHTMLTexts(getSubLanguageBlocksText(name, 'html'))
     setScriptTexts(getSubLanguageBlocksText(name, 'js'))
     setStyleTexts(getSubLanguageBlocksText(name, 'css'))
-  }, [])
+  }, [name])
 
   return {
     css: styleTexts,
@@ -21,8 +21,8 @@ export function useCodeBlockGroup(name: string): Record<Lang, string[]> {
 }
 
 function getSubLanguageBlocksText(name: string, lang: Lang): string[] {
-  const dataIDSelector = `[data-codeblock-name=${name}]`
-  const selector = `code${dataIDSelector}[class~="language-${lang}"]`
+  const dataIDSelector = `[data-name=${name}]`
+  const selector = `pre${dataIDSelector} [class~="language-${lang}"]`
 
   return Array.from(document.querySelectorAll(selector))
     .map((block) => block.textContent)

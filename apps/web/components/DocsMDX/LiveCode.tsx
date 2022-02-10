@@ -22,6 +22,7 @@ const LiveCode: React.VFC<Props> = ({ className, codes: { css, html, js }, heigh
       .map((it) => `<script>${it}</script>`)
       .join('')
 
+    // [todo] window.addEventListener('message', updateSource)
     return `<html><head><link rel="stylesheet" href="/frame/frame.css">${styleElements}</head><body>${view}${scriptElements}</body></html>`
   }, [css, html, js])
 

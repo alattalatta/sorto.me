@@ -10,6 +10,7 @@ type Props = {
 
 const Root = styled('aside', {
   border: '1px solid #2c2c2c',
+  margin: '1.5em 0',
   padding: '1em',
   '@w2': {
     display: 'flex',
@@ -17,14 +18,22 @@ const Root = styled('aside', {
   },
 
   '& pre': {
-    borderLeft: 'none',
     cursor: 'pointer',
     margin: 0,
+    position: 'relative',
     '& + &': {
       marginTop: '0.25em',
     },
     '&:hover': {
-      background: '#ccc',
+      background: '#EDF9E9',
+    },
+    '&::after': {
+      content: '✔️',
+      display: 'none',
+      fontSize: '1.5em',
+      position: 'absolute',
+      top: '.25em',
+      right: '.25em',
     },
   },
   '& pre:not(.language-css)': {
@@ -112,7 +121,7 @@ const CSSDemo: React.FC<Props> = ({ children, height, selector }) => {
   return (
     <Root ref={rootRef} aria-label="데모">
       <Result codes={codes} height={height} />
-      <Codes css={{ [`& > pre:nth-child(${currentBlockIdx + 1})`]: { display: 'block' } }}>{children}</Codes>
+      <Codes css={{ [`& > pre:nth-child(${currentBlockIdx + 1})::after`]: { display: 'block' } }}>{children}</Codes>
     </Root>
   )
 }

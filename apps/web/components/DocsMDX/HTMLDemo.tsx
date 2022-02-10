@@ -5,6 +5,7 @@ import LiveCode from './LiveCode'
 
 const Root = styled('aside', {
   border: '1px solid #2c2c2c',
+  margin: '1.5em 0',
   padding: '1em',
   '@w2': {
     display: 'flex',

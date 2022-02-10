@@ -1,10 +1,10 @@
 import Slugger from 'github-slugger'
-import type { Root as HTMLRoot } from 'hast'
+import type { Root } from 'hast'
 import { toString } from 'hast-util-to-string'
 import type { Plugin } from 'unified'
 import { visit } from 'unist-util-visit'
 
-const rehypeTermID: Plugin<void[], HTMLRoot> = () => {
+const rehypeTermID: Plugin<void[], Root> = () => {
   const slugs = new Slugger()
 
   return (tree) => {

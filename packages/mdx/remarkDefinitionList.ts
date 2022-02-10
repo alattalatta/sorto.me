@@ -1,20 +1,11 @@
 import { head } from 'fp-ts/lib/Array'
 import * as O from 'fp-ts/lib/Option'
 import { pipe } from 'fp-ts/lib/function'
-import type {
-  BlockContent,
-  DefinitionContent,
-  List,
-  ListItem,
-  Paragraph,
-  PhrasingContent,
-  Root as MDRoot,
-  Text,
-} from 'mdast'
+import type { BlockContent, DefinitionContent, List, ListItem, Paragraph, PhrasingContent, Root, Text } from 'mdast'
 import type { Plugin } from 'unified'
 import { visit } from 'unist-util-visit'
 
-const rehypeDefinitionList: Plugin<void[], MDRoot> = () => {
+const remarkDefinitionList: Plugin<void[], Root> = () => {
   return (tree) => {
     visit(tree, 'list', (list) => {
       const bissectedDL = bissectDefinitionList(list)
@@ -30,7 +21,7 @@ const rehypeDefinitionList: Plugin<void[], MDRoot> = () => {
   }
 }
 
-export { rehypeDefinitionList }
+export { remarkDefinitionList }
 
 const isNodeList = (node: BlockContent | DefinitionContent): node is List => node.type === 'list'
 const isNodeParagraph = (node: BlockContent | DefinitionContent): node is Paragraph => node.type === 'paragraph'

@@ -1,7 +1,7 @@
 import * as O from 'fp-ts/lib/Option'
 import { fst, mapFst, mapSnd } from 'fp-ts/lib/ReadonlyTuple'
 import { flow, pipe } from 'fp-ts/lib/function'
-import type { Element, Properties, Root as HTMLRoot } from 'hast'
+import type { Element, Properties, Root } from 'hast'
 import type { Plugin } from 'unified'
 import findAncestor from 'unist-util-ancestor'
 import { visit } from 'unist-util-visit'
@@ -16,7 +16,7 @@ const parseMeta = (meta: string): Properties =>
     // preserve hidden, convert others as data attributes
     .reduce((acc, [key, value]) => ({ ...acc, [key === 'hidden' ? key : `data-${key}`]: value ?? true }), {})
 
-const rehypeCodeblockDataAttr: Plugin<void[], HTMLRoot> = () => {
+const rehypeCodeblockDataAttr: Plugin<void[], Root> = () => {
   return (tree) => {
     visit(tree, 'element', (node) => {
       pipe(

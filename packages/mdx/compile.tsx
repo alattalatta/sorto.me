@@ -5,8 +5,8 @@ import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
 
 import { rehypeCodeblockDataAttr } from './rehypeCodeblockDataAttr'
-import { rehypeDefinitionList } from './rehypeDefinitionList'
 import { rehypeTermID } from './rehypeTermID'
+import { remarkDefinitionList } from './remarkDefinitionList'
 
 async function compile(source: string): Promise<string> {
   const compiled = await compileMDX(source, {
@@ -21,7 +21,7 @@ async function compile(source: string): Promise<string> {
           behavior: 'wrap',
         }),
     ],
-    remarkPlugins: [remarkGfm, rehypeDefinitionList],
+    remarkPlugins: [remarkGfm, remarkDefinitionList],
   })
 
   return String(compiled)

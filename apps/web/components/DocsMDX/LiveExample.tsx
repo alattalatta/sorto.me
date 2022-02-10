@@ -2,7 +2,7 @@ import { styled } from '@app/ui'
 import React from 'react'
 
 import { NoScreen } from 'components/basics'
-import { useCodeBlockGroup } from 'hooks/MDX/useCodeBlockGroup'
+import { useCodeBlockGroup } from 'hooks/useCodeBlockGroup'
 
 import LiveCode from './LiveCode'
 

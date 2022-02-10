@@ -1,15 +1,12 @@
 import Head from 'next/head'
 import React from 'react'
 
-import Brand from 'components/Brand'
-import DocMenu from 'components/DocMenu'
 import DocSearchField from 'components/DocSearchField'
-import { getLayout } from 'components/Layout'
 import SearchResult from 'components/SearchResult'
 import { Container as BaseContainer } from 'components/basics'
 import { useSearchQuery } from 'hooks/useSearchQuery'
 import { styled } from 'utils/styler'
-import { Page } from 'utils/types'
+import type { Page } from 'utils/types'
 
 const Container = styled(BaseContainer, {
   '& gsc-control-cse': {
@@ -26,7 +23,7 @@ const DocSearch: Page = () => {
     <>
       <Head>
         <title key="title">{title}</title>
-        <meta key="og:title" property="og:title" content={title} />
+        <meta key="og:title" content={title} property="og:title" />
       </Head>
       <Container>
         <DocSearchField initialValue={searchQuery} />
@@ -35,6 +32,5 @@ const DocSearch: Page = () => {
     </>
   )
 }
-DocSearch.getLayout = getLayout(<DocMenu />, <Brand href="/docs" />)
 
 export default DocSearch

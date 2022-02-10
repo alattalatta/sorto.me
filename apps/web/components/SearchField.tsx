@@ -37,9 +37,9 @@ const Container = styled('form', {
 
 type Props = {
   initialValue?: string
+  onSubmit?: React.FormEventHandler<HTMLFormElement>
   placeholder?: string
   targetUrl: string
-  onSubmit?: React.FormEventHandler<HTMLFormElement>
 }
 const SearchField: React.VFC<Props> = ({ initialValue, placeholder, targetUrl, onSubmit }) => {
   return (

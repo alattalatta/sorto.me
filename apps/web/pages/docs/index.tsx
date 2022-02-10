@@ -2,8 +2,6 @@ import Head from 'next/head'
 import React from 'react'
 
 import DocIntroBody from 'components/DocIntroBody'
-import DocMenu from 'components/DocMenu'
-import { getLayout } from 'components/Layout'
 import type { Page } from 'utils/types'
 
 const DocIntro: Page = () => {
@@ -19,5 +17,4 @@ const DocIntro: Page = () => {
     </div>
   )
 }
-DocIntro.getLayout = getLayout(<DocMenu />)
 export default DocIntro

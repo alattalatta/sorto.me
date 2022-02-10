@@ -1,4 +1,6 @@
+import exclamation from './assets/exclamation.png'
 import external from './assets/external.svg'
+import forbidden from './assets/forbidden.png'
 import { styled } from './stitches'
 
 const Root = styled('div', {
@@ -52,9 +54,6 @@ const Root = styled('div', {
       verticalAlign: 'top',
     },
   },
-  '& * + p': {
-    marginTop: '1em',
-  },
   '& hr': {
     maxWidth: `${219 / 16}rem`,
     color: '#2c2c2c',
@@ -86,8 +85,9 @@ const Root = styled('div', {
       right: 0,
       bottom: '0.5em',
     },
-    '& > * + *': {
-      marginTop: '1em',
+
+    '& > *': {
+      margin: '1em 0',
     },
     '& cite': {
       color: '#777',
@@ -100,6 +100,47 @@ const Root = styled('div', {
       '&::before': {
         content: `'— '`,
       },
+    },
+  },
+  // callout
+  '& .callout': {
+    borderLeft: '.5em solid',
+    padding: '.5em .5em .5em 1em',
+    position: 'relative',
+    '&::before': {
+      background: `center right / ${16 / 14}em no-repeat`,
+      display: 'inline-block',
+      imageRendering: 'pixelated',
+      fontSize: `${14 / 16}em`,
+      fontWeight: 700,
+      paddingRight: `${20 / 14}em`,
+    },
+    '&.callout-note': {
+      background: '#F1FFFE',
+      borderLeftColor: '#43E4DA',
+      '&::before': {
+        content: '참고',
+      },
+    },
+    '&.callout-warn': {
+      background: '#FFFBDC',
+      borderLeftColor: '#FFE400',
+      '&::before': {
+        content: '주의',
+        backgroundImage: `url(${exclamation.src})`,
+      },
+    },
+    '&.callout-fatal': {
+      background: '#FEEBEB',
+      borderLeftColor: '#FF5858',
+      '&::before': {
+        content: '경고',
+        backgroundImage: `url(${forbidden.src})`,
+      },
+    },
+
+    '& > * + *': {
+      marginTop: '1em',
     },
   },
   // inline code
@@ -145,6 +186,10 @@ const Root = styled('div', {
   },
   '& dd': {
     margin: '.5em 0 .5em 3em',
+
+    '& > * + *': {
+      margin: '1em 0',
+    },
   },
   // table
   '& table': {

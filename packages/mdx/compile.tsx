@@ -6,6 +6,7 @@ import remarkGfm from 'remark-gfm'
 
 import { rehypeCodeblockDataAttr } from './rehypeCodeblockDataAttr'
 import { rehypeTermID } from './rehypeTermID'
+import { remarkCallout } from './remarkCallout'
 import { remarkDefinitionList } from './remarkDefinitionList'
 
 async function compile(source: string): Promise<string> {
@@ -21,7 +22,7 @@ async function compile(source: string): Promise<string> {
           behavior: 'wrap',
         }),
     ],
-    remarkPlugins: [remarkGfm, remarkDefinitionList],
+    remarkPlugins: [remarkGfm, remarkCallout, remarkDefinitionList],
   })
 
   return String(compiled)

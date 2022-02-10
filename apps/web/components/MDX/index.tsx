@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { Anchor } from '../basics'
-import * as Callout from './Callout'
 
 const Image: React.VFC<JSX.IntrinsicElements['img']> = ({ alt = '', ...props }) => {
   const [a, width, height] = alt.split(';')
@@ -16,5 +15,4 @@ export const MDX_COMPONENTS: Record<string, React.ReactNode> = Object.freeze({
   h2: 'h3',
   h3: 'h4',
   Anchor,
-  Callout,
 })

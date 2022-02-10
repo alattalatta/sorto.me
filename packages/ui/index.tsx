@@ -1,6 +1,5 @@
 export { css, styled } from './src/stitches'
 
-export { Callout } from './src/Callout'
 export { DocumentBody } from './src/DocumentBody'
 export { Footer } from './src/Footer'
 export { Post } from './src/Post'

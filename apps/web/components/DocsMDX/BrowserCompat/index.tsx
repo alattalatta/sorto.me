@@ -11,7 +11,6 @@ import { Anchor } from 'components/basics'
 import { getCompatData, getSubIdentifierKeys } from 'utils/docs/browserCompat'
 import { styled } from 'utils/styler'
 
-import * as Callout from '../../MDX/Callout'
 import CompatRow from './CompatRow'
 import { Cell } from './shared'
 
@@ -106,9 +105,9 @@ const BrowserCompat: React.VFC<{ children?: string; data?: { data: Identifier; n
 
   if (data === null) {
     return (
-      <Callout.Root color="alert" label="브라우저 호환성 데이터 없음">
+      <p>
         <code>{children}</code>의 호환성 데이터를 찾을 수 없습니다.
-      </Callout.Root>
+      </p>
     )
   }
 

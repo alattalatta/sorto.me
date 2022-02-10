@@ -1,16 +1,13 @@
-import { StatusBlock } from '@mdn/browser-compat-data/types'
+import type { StatusBlock } from '@mdn/browser-compat-data/types'
 import React from 'react'
 
 import { styled } from 'utils/styler'
 
 import { StatusIcon } from '../StatusIcon'
 
-const StatusIconsWrap = styled('div', {
+const StatusIconsWrap = styled('span', {
   minWidth: 1,
   minHeight: 1,
-  display: 'flex',
-  flexWrap: 'nowrap',
-  marginLeft: 'auto',
 })
 
 const SpecStatusIcons: React.VFC<{ status: StatusBlock | undefined }> = ({ status }) => {

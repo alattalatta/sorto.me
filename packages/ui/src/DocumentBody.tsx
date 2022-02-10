@@ -192,19 +192,20 @@ const Root = styled('div', {
     },
   },
   // table
-  '& table': {
+  '& table:not(.jsx)': {
     borderCollapse: 'collapse',
     borderTop: `${1 / 16}em solid #2c2c2c`,
     borderBottom: `${1 / 16}em solid #2c2c2c`,
-  },
-  '& th': {
-    background: '#f2f2f2',
-    border: `${1 / 16}em solid #2c2c2c`,
-    padding: '.5em 1em',
-  },
-  '& td': {
-    border: `${1 / 16}em solid #2c2c2c`,
-    padding: '.5em 1em',
+
+    '& th': {
+      background: '#f2f2f2',
+      border: `${1 / 16}em solid #2c2c2c`,
+      padding: '.5em 1em',
+    },
+    '& td': {
+      border: `${1 / 16}em solid #2c2c2c`,
+      padding: '.5em 1em',
+    },
   },
 })
 

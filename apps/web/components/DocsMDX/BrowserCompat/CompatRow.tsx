@@ -1,56 +1,12 @@
+import { styled } from '@app/ui'
 import type { BrowserNames, Identifier, SupportStatement } from '@mdn/browser-compat-data/types'
-import React, { useState } from 'react'
+import { Fragment, useState } from 'react'
 
 import { mapOver } from 'utils/array'
-import { getSubIdentifierKeys } from 'utils/docs/browserCompat'
-import { styled } from 'utils/styler'
+import { getSubIdentifierKeys, supportLabel } from 'utils/docs/browserCompat'
 
 import CompatCell from './CompatCell'
 import SpecStatusIcons from './SpecStatusIcons'
-import { Cell, DOUBLE_BORDER } from './shared'
-
-const BROWSER_KEYS: BrowserNames[] = [
-  'ie',
-  'safari',
-  'chrome',
-  'edge',
-  'firefox',
-  'safari_ios',
-  'webview_android',
-  'chrome_android',
-  'firefox_android',
-]
-
-const Row = styled('tr', {
-  '& td:nthChild(6)': DOUBLE_BORDER,
-})
-
-const RowHeaderCell = styled(Cell, {
-  width: 180,
-  height: 45,
-  padding: 8,
-})
-
-const RowNameWrap = styled('div', {
-  display: 'flex',
-  alignItems: 'center',
-  textAlign: 'left',
-})
-
-const SupportDetail = styled('div', {
-  maxWidth: 720,
-  display: 'flex',
-  alignItems: 'top',
-  marginRight: 'auto',
-  marginLeft: 'auto',
-})
-
-const SupportDetailDescriptions = styled('dd', {
-  marginLeft: 16,
-  '&[class]': {
-    marginTop: 0,
-  },
-})
 
 type Props = {
   data: Identifier
@@ -58,62 +14,99 @@ type Props = {
   recurse?: boolean
 }
 
+const Root = styled('details', {
+  '& + &': {
+    marginTop: '1em',
+  },
+  '& &': {
+    paddingLeft: '1em',
+  },
+})
+
+const Summary = styled('summary', {
+  cursor: 'pointer',
+  userSelect: 'none',
+})
+
+const Body = styled('div', {
+  marginLeft: `${4 / 16}em`,
+
+  // when children (recursive=true) body
+  'details > &': {
+    borderLeft: '2px solid #2c2c2c',
+    paddingLeft: '0.75em',
+  },
+})
+
+const TablesContainer = styled('div', {
+  display: 'flex',
+  overflowX: 'auto',
+  marginBottom: '0.5em',
+  '&::-webkit-scrollbar': {
+    background: '#C4C4C4',
+    height: 4,
+  },
+  '&::-webkit-scrollbar-thumb': {
+    background: '#2c2c2c',
+  },
+})
+
+const Table = styled('table', {
+  border: 'none',
+  borderCollapse: 'collapse',
+  marginBottom: `${12 / 16}em`,
+
+  '& + &': {
+    marginLeft: '1em',
+  },
+})
+
+const BrowserName = styled('th', {
+  width: `${80 / 14}em`,
+  minWidth: `${80 / 14}em`,
+  height: `${54 / 14}em`,
+  border: 'none',
+  fontSize: `${14 / 16}em`,
+  fontWeight: 400,
+  padding: `0 0 ${10 / 14}em`,
+  verticalAlign: 'bottom',
+  whiteSpace: 'pre-wrap',
+})
+
+const Children = styled('div', {
+  marginTop: '1em',
+})
+
+const DESKTOP_KEYS: [BrowserNames, string][] = [
+  ['ie', 'IE'],
+  ['edge', 'Edge'],
+  ['chrome', 'Chrome'],
+  ['safari', 'Safari'],
+  ['firefox', 'Firefox'],
+]
+const MOBILE_KEYS: [BrowserNames, string][] = [
+  ['safari_ios', 'iOS\nSafari'],
+  ['webview_android', 'Android\nWebView'],
+  ['chrome_android', 'Android\nChrome'],
+  ['firefox_android', 'Android\nFirefox'],
+  ['samsunginternet_android', 'Samsung\nInternet'],
+]
+
 const CompatRow: React.VFC<Props> = ({ data, name, recurse }) => {
-  const [supportDetail, setSupportDetail] = useState<SupportStatement | null>(null)
+  const [supportDetail, setSupportDetail] = useState<[BrowserNames, SupportStatement] | null>(null)
 
   const compat = data.__compat
-
   if (!compat) {
     return null
   }
 
-  const toggleSupportDetail = (value: SupportStatement): void => {
-    setSupportDetail(supportDetail === value ? null : value)
+  const toggleSupportDetail = (browserName: BrowserNames, value: SupportStatement): void => {
+    if (supportDetail && supportDetail[0] === browserName && supportDetail[1] === value) {
+      setSupportDetail(null)
+    } else {
+      setSupportDetail([browserName, value])
+    }
   }
-
-  const base = (
-    <>
-      <Row>
-        <RowHeaderCell border="doubleRight" scope="row">
-          <RowNameWrap>
-            {compat.description ? (
-              <span dangerouslySetInnerHTML={{ __html: compat.description }} />
-            ) : (
-              <code>{name}</code>
-            )}
-            <SpecStatusIcons status={compat.status} />
-          </RowNameWrap>
-        </RowHeaderCell>
-        {BROWSER_KEYS.map((key) => (
-          <CompatCell
-            key={key}
-            as="td"
-            data={compat.support[key]}
-            opened={compat.support[key] === supportDetail}
-            onClick={toggleSupportDetail}
-          />
-        ))}
-      </Row>
-      {supportDetail && (
-        <tr>
-          <td colSpan={10}>
-            <dl>
-              {mapOver(supportDetail, (support, index) => (
-                <SupportDetail key={index}>
-                  <CompatCell as="dt" data={support} type="standalone" />
-                  <SupportDetailDescriptions>
-                    {mapOver(support.notes, (note, subindex) => (
-                      <p key={subindex} dangerouslySetInnerHTML={{ __html: note || '특이사항 없음' }} />
-                    ))}
-                  </SupportDetailDescriptions>
-                </SupportDetail>
-              ))}
-            </dl>
-          </td>
-        </tr>
-      )}
-    </>
-  )
 
   const children = recurse
     ? getSubIdentifierKeys(data).map((key) => {
@@ -122,13 +115,88 @@ const CompatRow: React.VFC<Props> = ({ data, name, recurse }) => {
       })
     : null
 
-  return !children?.length ? (
-    base
-  ) : (
-    <>
-      {base}
-      {children}
-    </>
+  const supportDetailBrowserDisplayName =
+    supportDetail?.[0] &&
+    (DESKTOP_KEYS.find(([key]) => key === supportDetail[0])?.[1] ??
+      MOBILE_KEYS.find(([key]) => key === supportDetail[0])?.[1])
+
+  return (
+    <Root as={recurse ? 'details' : 'div'}>
+      {recurse && (
+        <Summary>
+          {compat.description ? <span dangerouslySetInnerHTML={{ __html: compat.description }} /> : <code>{name}</code>}
+          <SpecStatusIcons status={compat.status} />
+        </Summary>
+      )}
+      <Body>
+        <TablesContainer>
+          <Table className="jsx">
+            <thead>
+              <tr>
+                {DESKTOP_KEYS.map(([key, display]) => (
+                  <BrowserName key={key}>{display}</BrowserName>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                {DESKTOP_KEYS.map(([key]) => (
+                  <CompatCell
+                    key={key}
+                    browserName={key}
+                    data={compat.support[key]}
+                    opened={compat.support[key] === supportDetail}
+                    onClick={toggleSupportDetail}
+                  />
+                ))}
+              </tr>
+            </tbody>
+          </Table>
+          <Table className="jsx">
+            <thead>
+              <tr>
+                {MOBILE_KEYS.map(([key, display]) => (
+                  <BrowserName key={key}>{display}</BrowserName>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                {MOBILE_KEYS.map(([key]) => (
+                  <CompatCell
+                    key={key}
+                    browserName={key}
+                    data={compat.support[key]}
+                    opened={compat.support[key] === supportDetail}
+                    onClick={toggleSupportDetail}
+                  />
+                ))}
+              </tr>
+            </tbody>
+          </Table>
+        </TablesContainer>
+        {supportDetail && (
+          <dl>
+            {mapOver(supportDetail[1], (support, index) => (
+              <Fragment key={index}>
+                <div className="callout callout-note">
+                  <p>
+                    <b>
+                      {supportDetailBrowserDisplayName} {supportLabel(support)}
+                    </b>
+                    :
+                  </p>
+                  {mapOver(support.notes, (note, subindex) => (
+                    <p key={subindex} dangerouslySetInnerHTML={{ __html: note || '특이사항 없음' }} />
+                  ))}
+                </div>
+              </Fragment>
+            ))}
+          </dl>
+        )}
+        {children && <Children>{children}</Children>}
+      </Body>
+    </Root>
   )
 }
 

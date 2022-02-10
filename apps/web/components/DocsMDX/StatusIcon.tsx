@@ -1,4 +1,4 @@
-import type { StyleSheet } from 'utils/styler';
+import type { StyleSheet } from 'utils/styler'
 import { styled } from 'utils/styler'
 
 const Abbr = styled('abbr', {
@@ -39,7 +39,7 @@ export const StatusIcon: React.VFC<{ css?: StyleSheet; status: 'deprecated' | 'e
       )
     case 'nonStandard':
       return (
-        <Abbr css={css} title="표준 기능이 아님. 크로스 브라우저 지원이 미흡할 수 있습니다.">
+        <Abbr css={css} title="표준 기능이 아님. 브라우저 지원이 미흡할 수 있습니다.">
           <SVG aria-label="비표준" role="img" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
             <path d="M96.6,82.1,76.16,46.7,55.72,11.29a6.61,6.61,0,0,0-11.44,0L23.84,46.7,3.4,82.1A6.6,6.6,0,0,0,9.12,92H90.88A6.6,6.6,0,0,0,96.6,82.1ZM50,86.32A6.33,6.33,0,1,1,56.33,80,6.34,6.34,0,0,1,50,86.32Zm0-17S39.92,42.45,39.92,35.91,44.43,24.08,50,24.08s10.08,5.3,10.08,11.83S50,69.31,50,69.31Z" />
           </SVG>

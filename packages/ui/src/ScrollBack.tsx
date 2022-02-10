@@ -42,7 +42,7 @@ const ScrollBack: React.VFC<{ className?: string }> = ({ className }) => {
       type="button"
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
     >
-      <Arrow alt="" src={arrow} />
+      <Arrow alt="" src={arrow.src} />
       처음으로
     </Root>
   )

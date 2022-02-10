@@ -10,10 +10,6 @@ html {
   line-height: 1.4;
 }
 
-body {
-  margin: 0;
-}
-
 code, pre, output {
   font-family: 'Nanum Gothic Mono', '나눔고딕코딩', monospace;
 }

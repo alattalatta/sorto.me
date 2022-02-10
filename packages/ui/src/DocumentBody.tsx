@@ -160,7 +160,6 @@ const Root = styled('div', {
     fontSize: `${14 / 16}em`,
     lineHeight: 18 / 14,
     overflow: 'auto',
-    padding: '.5rem',
     '&[data-variant="good"]': {
       background: '#EDF9E9',
       borderLeftColor: '#94FF40',
@@ -171,6 +170,7 @@ const Root = styled('div', {
     },
     '& > code': {
       background: 'none !important',
+      padding: '.5rem !important',
     },
     '& .hljs-tag': {
       color: '#ed6a43',

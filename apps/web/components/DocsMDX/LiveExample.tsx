@@ -32,7 +32,7 @@ const LiveExample: React.VFC<Props> = ({ height = 240, name }) => {
     <figure>
       <NoScreen as="figcaption">실행 결과</NoScreen>
       <Container style={{ height: `${height}px` }}>
-        <LiveCode {...codes} height={height} />
+        <LiveCode codes={codes} height={height} />
       </Container>
     </figure>
   )

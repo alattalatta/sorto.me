@@ -45,7 +45,7 @@ const Root = styled('div', {
       content: `''`,
       width: '0.5em',
       height: '0.5em',
-      background: `url(${external}) no-repeat`,
+      background: `url(${external.src}) no-repeat`,
       backgroundSize: 'contain',
       display: 'inline-block',
       marginLeft: '0.125em',

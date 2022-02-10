@@ -56,7 +56,7 @@ const Callout: React.FC<Props> = ({ children, type }) => {
     <Root type={type}>
       <Caption>
         {caption}
-        {icon && <Icon alt="" src={icon} />}
+        {icon && <Icon alt="" src={icon.src} />}
       </Caption>
       <Body>{children}</Body>
     </Root>

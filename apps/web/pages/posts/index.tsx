@@ -9,7 +9,7 @@ import type { Page } from 'utils/types'
 
 type StaticProps = { posts: readonly PostMetadata[] }
 
-const Blog: Page<StaticProps> = ({ posts }) => {
+const PostsPage: Page<StaticProps> = ({ posts }) => {
   return (
     <>
       <Head>
@@ -21,7 +21,7 @@ const Blog: Page<StaticProps> = ({ posts }) => {
   )
 }
 
-export default Blog
+export default PostsPage
 
 export const getStaticProps: GetStaticProps<StaticProps> = () => {
   return {

@@ -1,6 +1,6 @@
 import { useMDXRenderer } from '@app/mdx'
 import type { PostMetadata } from '@app/posts'
-import { DocumentBody, FIXED_STRIP_HEIGHT, Footer, Post, ScrollBack, styled } from '@app/ui'
+import { DocumentBody, Footer, Post, ScrollBack, styled } from '@app/ui'
 import { motion as m } from 'framer-motion'
 import React from 'react'
 
@@ -16,8 +16,6 @@ type Props = {
 const Root = styled('article', {
   maxWidth: `${768 / 16}rem`,
   margin: '0 auto',
-  padding: `0 1rem ${FIXED_STRIP_HEIGHT}rem`,
-  paddingBottom: `calc(env(safe-area-inset-bottom) + ${FIXED_STRIP_HEIGHT}rem)`,
 })
 
 const Body = styled(m.div, {

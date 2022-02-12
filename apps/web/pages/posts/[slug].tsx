@@ -1,18 +1,19 @@
 import { compile } from '@app/mdx'
-import { Post } from '@app/posts'
+import type { Post } from '@app/posts'
 import type { PostMetadata } from '@app/posts'
 import postsIndex from '@app/posts/data/index.json'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import React from 'react'
 
+import { Layout } from 'components/Layout'
 import PostBody from 'components/PostBody'
 import type { Page } from 'utils/types'
 
 type StaticParam = { slug: string }
 type StaticProps = { compiledSource: string; meta: PostMetadata }
 
-const Post: Page<StaticProps> = ({ compiledSource, meta }) => {
+const PostPage: Page<StaticProps> = ({ compiledSource, meta }) => {
   return (
     <>
       <Head>
@@ -34,7 +35,9 @@ const Post: Page<StaticProps> = ({ compiledSource, meta }) => {
   )
 }
 
-export default Post
+PostPage.Layout = ({ children }) => <Layout topStrip={false}>{children}</Layout>
+
+export default PostPage
 
 export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({ params }) => {
   if (!params?.slug) {

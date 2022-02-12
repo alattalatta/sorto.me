@@ -1,6 +1,6 @@
 import type { DocMetadata } from '@app/docs'
 import { useMDXRenderer } from '@app/mdx'
-import { DocumentBody, Footer, ScrollBack, FIXED_STRIP_HEIGHT, styled, Title } from '@app/ui'
+import { DocumentBody, Footer, ScrollBack, styled, Title } from '@app/ui'
 import type { Identifier } from '@mdn/browser-compat-data/types'
 import { motion as m } from 'framer-motion'
 import React from 'react'
@@ -22,8 +22,7 @@ type Props = {
 const Root = styled('main', {
   maxWidth: `${982 / 16}rem`,
   margin: '0 auto',
-  padding: `0 1rem ${FIXED_STRIP_HEIGHT}rem`,
-  paddingBottom: `calc(env(safe-area-inset-bottom) + ${FIXED_STRIP_HEIGHT}rem)`,
+  padding: '0 1rem',
 })
 
 const Body = styled(m.div, {

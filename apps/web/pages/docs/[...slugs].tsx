@@ -10,7 +10,7 @@ import Head from 'next/head'
 import React from 'react'
 
 import DocBody from 'components/DocBody'
-import { DocLayout } from 'components/DocLayout'
+import { Layout } from 'components/Layout'
 import { getCompatData } from 'utils/docs/browserCompat'
 import type { Page } from 'utils/types'
 
@@ -44,7 +44,7 @@ const DocPage: Page<StaticProps> = ({ bcd, breadcrumbs, compiledSource, meta }) 
     </>
   )
 }
-DocPage.Layout = DocLayout
+DocPage.Layout = Layout
 
 export default DocPage
 

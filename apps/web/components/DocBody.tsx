@@ -19,25 +19,15 @@ type Props = {
   meta: DocMetadata
 }
 
-const Root = styled('main', {
-  maxWidth: `${982 / 16}rem`,
-  margin: '0 auto',
-  padding: '0 1rem',
-})
-
 const Body = styled(m.div, {
   marginTop: '1.5rem',
-})
-
-const ScrollBack982 = styled(ScrollBack, {
-  maxWidth: `${982 / 16}rem`,
 })
 
 const DocBody: React.VFC<Props> = ({ bcd, breadcrumbs, compiledSource, meta }) => {
   const Content = useMDXRenderer(compiledSource)
 
   return (
-    <Root>
+    <main>
       <Title breadcrumbs={breadcrumbs} title={meta.title} />
       <Body
         animate={{ opacity: 1, y: 0 }}
@@ -53,8 +43,7 @@ const DocBody: React.VFC<Props> = ({ bcd, breadcrumbs, compiledSource, meta }) =
         </DocumentBody>
       </Body>
       <Footer mdnSlug={meta.slug} updated={new Date(meta.updated)} />
-      <ScrollBack982 />
-    </Root>
+    </main>
   )
 }
 

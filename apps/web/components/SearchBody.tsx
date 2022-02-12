@@ -8,7 +8,7 @@ type Props = {
 const Root = styled('main', {
   maxWidth: `${768 / 16}rem`,
   margin: '0 auto',
-  padding: '1.5em 1em 1em',
+  padding: '1.5em 0 1em',
 
   '& .gsc-control-cse': {
     marginTop: '1.5em',

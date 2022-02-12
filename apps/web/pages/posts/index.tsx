@@ -4,6 +4,7 @@ import type { GetStaticProps } from 'next'
 import Head from 'next/head'
 import React from 'react'
 
+import { Layout } from 'components/Layout'
 import PostsBody from 'components/PostsBody'
 import type { Page } from 'utils/types'
 
@@ -20,6 +21,11 @@ const PostsPage: Page<StaticProps> = ({ posts }) => {
     </>
   )
 }
+PostsPage.Layout = ({ children }) => (
+  <Layout topStrip={false} width={768}>
+    {children}
+  </Layout>
+)
 
 export default PostsPage
 

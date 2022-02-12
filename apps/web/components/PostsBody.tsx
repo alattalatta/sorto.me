@@ -14,7 +14,7 @@ const Root = styled('main', {
   gap: '1.5rem',
   gridTemplateColumns: 'none',
   margin: 'auto',
-  padding: '1rem',
+  padding: '1rem 0',
   '@w2': {
     maxWidth: `${824 / 16}rem`,
     gridTemplateColumns: '1fr 1fr',

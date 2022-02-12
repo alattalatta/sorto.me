@@ -27,6 +27,10 @@ const DocSearch: Page = () => {
     </>
   )
 }
-DocSearch.Layout = ({ children }) => <Layout topStrip={false}>{children}</Layout>
+DocSearch.Layout = ({ children }) => (
+  <Layout topStrip={false} width={768}>
+    {children}
+  </Layout>
+)
 
 export default DocSearch

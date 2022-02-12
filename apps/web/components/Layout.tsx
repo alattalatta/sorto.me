@@ -12,6 +12,7 @@ type Props = {
 const Body = styled('div', {
   maxWidth: `${982 / 16}em`,
   margin: '0 auto',
+  padding: '0 1em',
   variants: {
     bottomStrip: {
       true: {
@@ -53,7 +54,7 @@ const Layout: React.FC<Props> = ({ children, bottomStrip = true, topStrip = true
           </TopStripBody>
         </FixedStrip>
       )}
-      <Body bottomStrip={bottomStrip} css={{ maxWidth}} topStrip={topStrip}>
+      <Body bottomStrip={bottomStrip} css={{ maxWidth }} topStrip={topStrip}>
         {children}
       </Body>
       {bottomStrip && <ScrollBack className={css({ maxWidth })()} />}

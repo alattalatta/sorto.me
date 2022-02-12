@@ -17,6 +17,7 @@
     "@mdn/browser-compat-data": "^4.1.7",
     "@mdn/dinocons": "^0.3.1",
     "@stitches/react": "^1.2.6",
+    "@swc/core": "^1.2.138",
     "clsx": "^1.1.1",
     "entities": "^3.0.1",
     "fp-ts": "^2.10.5",

@@ -1,5 +1,9 @@
 {
   "extends": "tsconfig/script.json",
-  "include": ["build.ts"],
-  "exclude": ["node_modules"]
+  "include": ["build.ts", "node_modules/@app/mdx/*.ts", "../mdx/*.ts"],
+  "ts-node": {
+    "moduleTypes": {
+      "*.ts": "cjs"
+    }
+  }
 }

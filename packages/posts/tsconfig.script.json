@@ -1,5 +1,9 @@
 {
   "extends": "tsconfig/script.json",
   "include": ["build.ts"],
-  "exclude": ["node_modules"]
+  "ts-node": {
+    "moduleTypes": {
+      "*.ts": "cjs"
+    }
+  }
 }

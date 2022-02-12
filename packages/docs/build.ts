@@ -1,6 +1,7 @@
 import { promises as fs } from 'fs'
 import path from 'path'
 
+import { compile } from '@app/mdx/compiler'
 import del from 'del'
 import klaw from 'klaw'
 
@@ -24,13 +25,16 @@ del('data/**/*.json')
       const parseAsync = parse(filePath)
 
       await fs.mkdir(relative('data', dirname), { recursive: true })
-      const parsedDoc = await parseAsync
+      const { content, meta } = await parseAsync
 
-      docsMeta.push(parsedDoc.meta)
+      docsMeta.push(meta)
 
       fs.writeFile(
         relative('data', dirname, path.basename(filePath).replace(/mdx$/i, 'json')),
-        JSON.stringify(parsedDoc),
+        JSON.stringify({
+          content: await compile(content),
+          meta,
+        }),
       )
     }
 

@@ -1,4 +1,5 @@
 import { compile as compileMDX } from '@mdx-js/mdx'
+import { minify } from '@swc/core'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeHighlight from 'rehype-highlight'
 import rehypeSlug from 'rehype-slug'
@@ -27,7 +28,7 @@ async function compile(source: string): Promise<string> {
     remarkPlugins: [remarkGfm, remarkCallout, remarkDefinitionList, remarkHeadingLevel, remarkImageDimensions],
   })
 
-  return String(compiled)
+  return String((await minify(`(()=>{${compiled}})()`, { compress: true, mangle: true })).code.slice(6, -4))
 }
 
 export { compile }

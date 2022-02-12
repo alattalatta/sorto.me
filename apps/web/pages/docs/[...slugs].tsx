@@ -2,10 +2,8 @@ import type { DocMetadata } from '@app/docs'
 import type { Doc } from '@app/docs'
 import docsIndex from '@app/docs/data/index.json'
 import docsMap from '@app/docs/data/slugMap.json'
-import { compile } from '@app/mdx'
 import browserCompatData from '@mdn/browser-compat-data'
 import type { Identifier } from '@mdn/browser-compat-data/types'
-import { minify } from '@swc/core'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import React from 'react'
@@ -57,8 +55,6 @@ export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({
   const { content, meta } = importDocData(params.slugs.join('/'))
 
   const bcd = makeBCDData(meta.bcd || null)
-  const compiled = await compile(content)
-  const minified = (await minify(`(()=>{${compiled}})()`, { compress: true, mangle: true })).code.slice(6, -4)
 
   return {
     props: {
@@ -75,7 +71,7 @@ export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({
           },
           { breadcrumbs: [], combinedPath: '' },
         ).breadcrumbs,
-      compiledSource: minified,
+      compiledSource: content,
       meta,
     },
   }

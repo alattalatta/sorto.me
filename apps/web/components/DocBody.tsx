@@ -1,6 +1,6 @@
 import type { DocMetadata } from '@app/docs'
 import { useMDXRenderer } from '@app/mdx'
-import { DocumentBody, Footer, ScrollBack, styled, Title } from '@app/ui'
+import { DocumentBody, Footer, styled, Title } from '@app/ui'
 import type { Identifier } from '@mdn/browser-compat-data/types'
 import { motion as m } from 'framer-motion'
 import React from 'react'

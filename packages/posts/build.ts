@@ -1,6 +1,7 @@
 import { promises as fs } from 'fs'
 import path from 'path'
 
+import { compile } from '@app/mdx/compiler'
 import del from 'del'
 
 import { parse } from './parse'
@@ -16,9 +17,12 @@ del('data/*.json')
     Promise.all([
       fs.writeFile(relative('data/index.json'), JSON.stringify(parsedPosts.map((parsedPost) => parsedPost.meta))),
       fs.writeFile(relative('data/map.json'), JSON.stringify(parsedPosts.map((parsedPost) => parsedPost.meta.slug))),
-      ...parsedPosts.map((parsedPost) =>
-        fs.writeFile(relative('data', `${parsedPost.meta.slug}.json`), JSON.stringify(parsedPost)),
-      ),
+      ...parsedPosts.map(async ({ content, meta }) => {
+        return fs.writeFile(
+          relative('data', `${meta.slug}.json`),
+          JSON.stringify({ content: await compile(content), meta }),
+        )
+      }),
     ]),
   )
   .then(() => console.log('Done compiling posts.'))

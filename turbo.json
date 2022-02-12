@@ -10,7 +10,8 @@
       "dependsOn": ["@app/docs#build", "@app/posts#build"]
     },
     "watch": {
-      "cache": false
+      "cache": false,
+      "dependsOn": ["^build"]
     },
     "test": {}
   }

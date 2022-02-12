@@ -1,8 +1,6 @@
-import { compile } from '@app/mdx'
 import type { Post } from '@app/posts'
 import type { PostMetadata } from '@app/posts'
 import postsIndex from '@app/posts/data/index.json'
-import { minify } from '@swc/core'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import React from 'react'
@@ -51,12 +49,9 @@ export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({
 
   const { content, meta } = importPostData(params.slug)
 
-  const compiled = await compile(content)
-  const minified = (await minify(`(()=>{${compiled}})()`, { compress: true, mangle: true })).code.slice(6, -4)
-
   return {
     props: {
-      compiledSource: minified,
+      compiledSource: content,
       meta,
     },
   }

@@ -8,6 +8,8 @@ import { rehypeCodeblockDataAttr } from './rehypeCodeblockDataAttr'
 import { rehypeTermID } from './rehypeTermID'
 import { remarkCallout } from './remarkCallout'
 import { remarkDefinitionList } from './remarkDefinitionList'
+import { remarkHeadingLevel } from './remarkHeadingLevel'
+import { remarkImageDimensions } from './remarkImageDimensions'
 
 async function compile(source: string): Promise<string> {
   const compiled = await compileMDX(source, {
@@ -22,7 +24,7 @@ async function compile(source: string): Promise<string> {
           behavior: 'wrap',
         }),
     ],
-    remarkPlugins: [remarkGfm, remarkCallout, remarkDefinitionList],
+    remarkPlugins: [remarkGfm, remarkCallout, remarkDefinitionList, remarkHeadingLevel, remarkImageDimensions],
   })
 
   return String(compiled)

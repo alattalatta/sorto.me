@@ -1,5 +1,5 @@
 import type { DocMetadata } from '@app/docs'
-import { Doc } from '@app/docs'
+import type { Doc } from '@app/docs'
 import docsIndex from '@app/docs/data/index.json'
 import docsMap from '@app/docs/data/slugMap.json'
 import { compile } from '@app/mdx'
@@ -10,6 +10,7 @@ import Head from 'next/head'
 import React from 'react'
 
 import DocBody from 'components/DocBody'
+import { DocLayout } from 'components/DocLayout'
 import { getCompatData } from 'utils/docs/browserCompat'
 import type { Page } from 'utils/types'
 
@@ -24,7 +25,7 @@ type StaticProps = {
   meta: DocMetadata
 }
 
-const Doc: Page<StaticProps> = ({ bcd, breadcrumbs, compiledSource, meta }) => {
+const DocPage: Page<StaticProps> = ({ bcd, breadcrumbs, compiledSource, meta }) => {
   return (
     <>
       <Head>
@@ -43,8 +44,9 @@ const Doc: Page<StaticProps> = ({ bcd, breadcrumbs, compiledSource, meta }) => {
     </>
   )
 }
+DocPage.Layout = DocLayout
 
-export default Doc
+export default DocPage
 
 export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({ params }) => {
   if (!params?.slugs) {

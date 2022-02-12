@@ -27,13 +27,6 @@ ol {
   margin: 0;
 }
 
-a {
-  color: var(--colors-linkblueDark);
-}
-a:hover {
-  color: var(--colors-linkblueDarkHover);
-}
-
 button {
   font-family: inherit;
 }

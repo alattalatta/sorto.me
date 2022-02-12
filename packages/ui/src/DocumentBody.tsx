@@ -22,10 +22,12 @@ const Root = styled('div', {
   },
   '& > h2': {
     fontSize: '2em',
-    padding: '0.25em 0',
+    margin: '.5em 0',
+    padding: '.25em 0',
   },
   '& > h3': {
     fontSize: '1.5em',
+    margin: `${16 / 24}em 0`,
   },
   '& > h4': {
     fontSize: '1em',

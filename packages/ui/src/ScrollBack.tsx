@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+import { FixedStrip } from './FixedStrip'
 import arrow from './assets/arrow-up.svg'
 import { styled } from './stitches'
 import { useScrollThreshold } from './useScrollThreshold'
@@ -8,22 +9,14 @@ const HEIGHT = 40 / 16
 
 const Root = styled('button', {
   width: '100%',
-  maxWidth: `${980 / 16}rem`,
-  height: `${HEIGHT}rem`,
-  background: '#2c2c2c',
+  height: '100%',
+  background: 'none',
   border: 'none',
   color: '#fff',
   cursor: 'pointer',
   fontSize: `${14 / 16}rem`,
-  margin: '0 auto',
+  margin: 0,
   padding: 0,
-  paddingBottom: 'env(safe-area-inset-bottom)',
-  position: 'fixed',
-  right: 0,
-  bottom: 0,
-  left: 0,
-  transition: 'transform 250ms ease',
-  zIndex: 5,
 })
 
 const Arrow = styled('img', {
@@ -36,15 +29,12 @@ const ScrollBack: React.VFC<{ className?: string }> = ({ className }) => {
   useScrollThreshold(400, setCrossed)
 
   return (
-    <Root
-      className={className}
-      css={{ transform: `translateY(${crossed ? 0 : '100%'})` }}
-      type="button"
-      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-    >
-      <Arrow alt="" src={arrow.src} />
-      처음으로
-    </Root>
+    <FixedStrip className={className} css={{ transform: `translateY(${crossed ? 0 : '100%'})` }} position="bottom">
+      <Root type="button" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+        <Arrow alt="" src={arrow.src} />
+        처음으로
+      </Root>
+    </FixedStrip>
   )
 }
 

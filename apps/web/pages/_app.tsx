@@ -1,27 +1,27 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
-import { Page } from 'utils/types'
+import type { Page } from 'utils/types'
 
 import 'styles/reset.css'
 
 function App({ Component, pageProps }: { Component: Page; pageProps: Record<string, unknown> }): JSX.Element {
   const router = useRouter()
 
-  const getLayout = Component.getLayout || ((a) => a)
+  const Layout = Component.Layout || (({ children }) => <>{children}</>)
 
-  return getLayout(
-    <>
+  return (
+    <Layout>
       <Head>
         <title key="title">Sorto.me</title>
-        <meta key="description" name="description" content="sorto.me" />
-        <meta key="og:type" property="og:type" content="website" />
-        <meta key="og:title" property="og:title" content="sorto.me" />
-        <meta key="og:description" property="og:description" content="sorto.me" />
-        <meta key="og:url" property="og:url" content={`https://sorto.me${router.asPath}`} />
+        <meta key="description" content="sorto.me" name="description" />
+        <meta key="og:type" content="website" property="og:type" />
+        <meta key="og:title" content="sorto.me" property="og:title" />
+        <meta key="og:description" content="sorto.me" property="og:description" />
+        <meta key="og:url" content={`https://sorto.me${router.asPath}`} property="og:url" />
       </Head>
       <Component {...pageProps} />
-    </>,
+    </Layout>
   )
 }
 

@@ -30,6 +30,11 @@ module.exports = (phase) =>
     async redirects() {
       return [
         {
+          source: '/docs',
+          destination: '/docs/Web',
+          permanent: false,
+        },
+        {
           source: '/post',
           destination: '/posts',
           permanent: true,

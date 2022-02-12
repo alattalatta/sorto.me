@@ -1,6 +1,7 @@
 import type { DocMetadata } from '@app/docs'
 import { Doc } from '@app/docs'
 import docsIndex from '@app/docs/data/index.json'
+import docsMap from '@app/docs/data/slugMap.json'
 import { compile } from '@app/mdx'
 import browserCompatData from '@mdn/browser-compat-data'
 import type { Identifier } from '@mdn/browser-compat-data/types'
@@ -18,11 +19,12 @@ type StaticProps = {
     data: Identifier
     name: string
   } | null
+  breadcrumbs: (readonly [title: string, path: string])[]
   compiledSource: string
   meta: DocMetadata
 }
 
-const Doc: Page<StaticProps> = ({ bcd, compiledSource, meta }) => {
+const Doc: Page<StaticProps> = ({ bcd, breadcrumbs, compiledSource, meta }) => {
   return (
     <>
       <Head>
@@ -37,7 +39,7 @@ const Doc: Page<StaticProps> = ({ bcd, compiledSource, meta }) => {
           rel="stylesheet"
         />
       </Head>
-      <DocBody bcd={bcd} compiledSource={compiledSource} meta={meta} />
+      <DocBody bcd={bcd} breadcrumbs={breadcrumbs} compiledSource={compiledSource} meta={meta} />
     </>
   )
 }
@@ -57,6 +59,18 @@ export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({
   return {
     props: {
       bcd,
+      breadcrumbs: meta.slug
+        .split('/')
+        .slice(0, -1) // exclude current doc path
+        .reduce<{ breadcrumbs: StaticProps['breadcrumbs']; combinedPath: string }>(
+          ({ breadcrumbs, combinedPath }, cur) => {
+            const path = `${combinedPath}/${cur}`
+            const title = docsMap[path.slice(1) /* remove leading slash */] || cur
+
+            return { breadcrumbs: [...breadcrumbs, [title, path]], combinedPath: path }
+          },
+          { breadcrumbs: [], combinedPath: '' },
+        ).breadcrumbs,
       compiledSource: compiled,
       meta,
     },

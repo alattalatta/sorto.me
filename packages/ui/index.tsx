@@ -5,5 +5,6 @@ export { Footer } from './src/Footer'
 export { Post } from './src/Post'
 export { HEIGHT as SCROLL_BACK_HEIGHT, ScrollBack } from './src/ScrollBack'
 export { Splash } from './src/Splash'
+export { Title } from './src/Title'
 
 export { useScrollThreshold } from './src/useScrollThreshold'

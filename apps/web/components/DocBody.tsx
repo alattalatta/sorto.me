@@ -3,7 +3,6 @@ import { useMDXRenderer } from '@lib/mdx'
 import { DocumentBody, Footer, styled, Title } from '@lib/ui'
 import type { Identifier } from '@mdn/browser-compat-data/types'
 import { motion as m } from 'framer-motion'
-import React from 'react'
 
 import { easeStandard } from 'utils/styler'
 

@@ -1,4 +1,4 @@
-export { css, styled } from './src/stitches'
+export * from './src/stitches'
 
 export { DocumentBody } from './src/DocumentBody'
 export { FixedStrip, HEIGHT as FIXED_STRIP_HEIGHT } from './src/FixedStrip'

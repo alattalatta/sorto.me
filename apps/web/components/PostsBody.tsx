@@ -1,6 +1,5 @@
 import type { PostMetadata } from '@contents/posts'
 import { Post, styled } from '@lib/ui'
-import React from 'react'
 
 import { Anchor } from './basics'
 

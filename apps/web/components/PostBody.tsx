@@ -2,7 +2,6 @@ import type { PostMetadata } from '@contents/posts'
 import { useMDXRenderer } from '@lib/mdx'
 import { DocumentBody, Footer, Post, ScrollBack, styled } from '@lib/ui'
 import { motion as m } from 'framer-motion'
-import React from 'react'
 
 import { easeStandard } from 'utils/styler'
 

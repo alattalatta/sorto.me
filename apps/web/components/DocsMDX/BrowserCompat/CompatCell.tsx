@@ -1,8 +1,7 @@
+import { styled } from '@lib/ui'
 import type { SimpleSupportStatement, SupportStatement } from '@mdn/browser-compat-data/types'
-import React from 'react'
 
 import { determineStatus, supportLabel } from 'utils/docs/browserCompat'
-import { styled } from 'utils/styler'
 
 const CompatCellBody = styled('td', {
   width: 80,
@@ -29,16 +28,9 @@ type Props = {
   browserName: string
   data: SupportStatement | undefined
   onClick?: (browserName: string, notes: SupportStatement) => void
-  opened?: boolean
 }
 
-const CompatCell: React.VFC<Props & Pick<React.ComponentPropsWithoutRef<typeof CompatCellBody>, 'support'>> = ({
-  browserName,
-  data,
-  opened,
-  onClick,
-  ...props
-}) => {
+const CompatCell: React.VFC<Props> = ({ browserName, data, onClick }) => {
   const hasNotes = Boolean(data && (Array.isArray(data) || data.notes))
   const label = `${supportLabel(data)}${hasNotes ? '*' : ''}`
 
@@ -46,7 +38,6 @@ const CompatCell: React.VFC<Props & Pick<React.ComponentPropsWithoutRef<typeof C
 
   return (
     <CompatCellBody
-      {...props}
       clickable={hasNotes}
       support={variantOf(head)}
       title={hasNotes ? '클릭해서 자세한 정보 확인' : undefined}

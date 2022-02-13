@@ -2,7 +2,6 @@ import type { PostMetadata } from '@contents/posts'
 import postIndex from '@contents/posts/data/index.json'
 import type { GetStaticProps } from 'next'
 import Head from 'next/head'
-import React from 'react'
 
 import { Layout } from 'components/Layout'
 import PostsBody from 'components/PostsBody'

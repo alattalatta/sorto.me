@@ -1,7 +1,5 @@
+import { styled } from '@lib/ui'
 import type { StatusBlock } from '@mdn/browser-compat-data/types'
-import React from 'react'
-
-import { styled } from 'utils/styler'
 
 import { StatusIcon } from '../StatusIcon'
 

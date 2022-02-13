@@ -116,7 +116,7 @@ const CSSDemo: React.FC<Props> = ({ children, height, selector }) => {
 
       return () => controller.abort()
     }
-  }, [])
+  }, [selector])
 
   return (
     <Root ref={rootRef} aria-label="데모">

@@ -30,7 +30,6 @@ importers:
       '@lib/ui': workspace:*
       '@mdn/browser-compat-data': ^4.1.7
       '@mdn/dinocons': ^0.3.1
-      '@stitches/react': ^1.2.6
       '@testing-library/jest-dom': ^5.16.2
       '@testing-library/react': ^12.0.0
       '@types/jest': ^27.0.1
@@ -50,7 +49,6 @@ importers:
       next: ^12.0.10
       next-transpile-modules: ^9.0.0
       prettier: ^2.5.1
-      qs: ^6.10.1
       react: ^17.0.2
       react-dom: ^17.0.2
       sass: ^1.35.1
@@ -65,14 +63,12 @@ importers:
       '@lib/ui': link:../../packages/@lib/ui
       '@mdn/browser-compat-data': 4.1.7
       '@mdn/dinocons': 0.3.5
-      '@stitches/react': 1.2.6_react@17.0.2
       clsx: 1.1.1
       entities: 3.0.1
       fp-ts: 2.11.8
       framer-motion: 4.1.17_react-dom@17.0.2+react@17.0.2
       gray-matter: 4.0.3
       next: 12.0.10_cd8b9c63f9a90da394e8e71ca45f370a
-      qs: 6.10.3
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     devDependencies:
@@ -3307,6 +3303,7 @@ packages:
     dependencies:
       function-bind: 1.1.1
       get-intrinsic: 1.1.1
+    dev: true
 
   /callsite/1.0.0:
     resolution: {integrity: sha1-KAOY5dZkvXQDi28JBRU+borxvCA=}
@@ -4844,6 +4841,7 @@ packages:
 
   /function-bind/1.1.1:
     resolution: {integrity: sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==}
+    dev: true
 
   /functional-red-black-tree/1.0.1:
     resolution: {integrity: sha1-GwqzvVU7Kg1jmdKcDj6gslIHgyc=}
@@ -4865,6 +4863,7 @@ packages:
       function-bind: 1.1.1
       has: 1.0.3
       has-symbols: 1.0.2
+    dev: true
 
   /get-package-type/0.1.0:
     resolution: {integrity: sha512-pjzuKtY64GYfWizNAJ0fr9VqttZkNiK2iS430LtIHzjBEr6bX8Am2zm4sW4Ro5wjWW5cAlRL1qAMTcXbjNAO2Q==}
@@ -5019,6 +5018,7 @@ packages:
   /has-symbols/1.0.2:
     resolution: {integrity: sha512-chXa79rL/UC2KlX17jo3vRGz0azaWEx5tGqZg5pO3NUyEJVB17dMruQlzCCOfUvElghKcm5194+BCRvi2Rv/Gw==}
     engines: {node: '>= 0.4'}
+    dev: true
 
   /has-tostringtag/1.0.0:
     resolution: {integrity: sha512-kFjcSNhnlGV1kyoGk7OXKSawH5JOb/LzUc5w9B02hOTO0dfFRjbHQKvg1d6cf3HbeUmtU9VbbV3qzZ2Teh97WQ==}
@@ -5037,6 +5037,7 @@ packages:
     engines: {node: '>= 0.4.0'}
     dependencies:
       function-bind: 1.1.1
+    dev: true
 
   /hast-util-has-property/2.0.0:
     resolution: {integrity: sha512-4Qf++8o5v14us4Muv3HRj+Er6wTNGA/N9uCaZMty4JWvyFKLdhULrv4KE1b65AthsSO9TXSZnjuxS8ecIyhb0w==}
@@ -7316,6 +7317,7 @@ packages:
 
   /object-inspect/1.12.0:
     resolution: {integrity: sha512-Ho2z80bVIvJloH+YzRmpZVQe87+qASmBUKZDWgx9cu+KDrX2ZDH/3tMy+gXbZETVGs2M8YdxObOh7XAtim9Y0g==}
+    dev: true
 
   /object-keys/1.1.1:
     resolution: {integrity: sha512-NuAESUOUMrlIXOfHKzD6bpPu3tYt3xvjNdRIQ+FeT0lNb4K8WR70CaDxhuNguS2XG+GjkyMwOzsN5ZktImfhLA==}
@@ -7771,13 +7773,6 @@ packages:
     dependencies:
       escape-goat: 2.1.1
     dev: true
-
-  /qs/6.10.3:
-    resolution: {integrity: sha512-wr7M2E0OFRfIfJZjKGieI8lBKb7fRCH4Fv5KNPEs7gJ8jadvotdsS08PzOKR7opXhZ/Xkjtt3WF9g38drmyRqQ==}
-    engines: {node: '>=0.6'}
-    dependencies:
-      side-channel: 1.0.4
-    dev: false
 
   /qs/6.9.6:
     resolution: {integrity: sha512-TIRk4aqYLNoJUbd+g2lEdz5kLWIuTMRagAXxl78Q0RiVjAOugHmeKNGdd3cwo/ktpf9aL9epCfFqWDEKysUlLQ==}
@@ -8341,6 +8336,7 @@ packages:
       call-bind: 1.0.2
       get-intrinsic: 1.1.1
       object-inspect: 1.12.0
+    dev: true
 
   /signal-exit/3.0.7:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}

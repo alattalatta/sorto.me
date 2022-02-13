@@ -141,13 +141,7 @@ const CompatRow: React.VFC<Props> = ({ data, name, recurse }) => {
             <tbody>
               <tr>
                 {DESKTOP_KEYS.map(([key]) => (
-                  <CompatCell
-                    key={key}
-                    browserName={key}
-                    data={compat.support[key]}
-                    opened={compat.support[key] === supportDetail}
-                    onClick={toggleSupportDetail}
-                  />
+                  <CompatCell key={key} browserName={key} data={compat.support[key]} onClick={toggleSupportDetail} />
                 ))}
               </tr>
             </tbody>
@@ -163,13 +157,7 @@ const CompatRow: React.VFC<Props> = ({ data, name, recurse }) => {
             <tbody>
               <tr>
                 {MOBILE_KEYS.map(([key]) => (
-                  <CompatCell
-                    key={key}
-                    browserName={key}
-                    data={compat.support[key]}
-                    opened={compat.support[key] === supportDetail}
-                    onClick={toggleSupportDetail}
-                  />
+                  <CompatCell key={key} browserName={key} data={compat.support[key]} onClick={toggleSupportDetail} />
                 ))}
               </tr>
             </tbody>

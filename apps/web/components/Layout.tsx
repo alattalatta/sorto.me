@@ -1,5 +1,4 @@
-import { css, FixedStrip, FIXED_STRIP_HEIGHT, ScrollBack } from '@lib/ui'
-import { styled } from '@stitches/react'
+import { css, styled, FixedStrip, FIXED_STRIP_HEIGHT, ScrollBack } from '@lib/ui'
 
 import { Anchor } from './basics'
 

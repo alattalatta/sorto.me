@@ -1,5 +1,4 @@
 import { styled } from '@lib/ui'
-import React from 'react'
 
 import { NoScreen } from 'components/basics'
 import { useCodeBlockGroup } from 'hooks/useCodeBlockGroup'

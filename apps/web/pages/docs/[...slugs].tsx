@@ -6,7 +6,6 @@ import browserCompatData from '@mdn/browser-compat-data'
 import type { Identifier } from '@mdn/browser-compat-data/types'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
-import React from 'react'
 
 import DocBody from 'components/DocBody'
 import { Layout } from 'components/Layout'

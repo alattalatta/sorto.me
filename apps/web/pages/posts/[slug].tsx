@@ -3,7 +3,6 @@ import type { PostMetadata } from '@contents/posts'
 import postsIndex from '@contents/posts/data/index.json'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
-import React from 'react'
 
 import { Layout } from 'components/Layout'
 import PostBody from 'components/PostBody'

@@ -1,6 +1,7 @@
 import { head } from 'fp-ts/lib/Array'
 import * as O from 'fp-ts/lib/Option'
 import { pipe } from 'fp-ts/lib/function'
+import Slugger from 'github-slugger'
 import type {
   BlockContent,
   DefinitionContent,
@@ -13,13 +14,16 @@ import type {
   TermDescription,
   DefinitionList,
 } from 'mdast'
+import { toString } from 'mdast-util-to-string'
 import type { Plugin } from 'unified'
 import { visit } from 'unist-util-visit'
 
 const remarkDefinitionList: Plugin<void[], Root> = () => {
+  const slugs = new Slugger()
+
   return (tree) => {
     visit(tree, 'list', (list, index, parent) => {
-      const bissectedDL = bissectDefinitionList(list)
+      const bissectedDL = bissectDefinitionList(list, slugs)
       if (bissectedDL.length === 0) {
         return
       }
@@ -43,7 +47,10 @@ const isNodeList = (node: BlockContent | DefinitionContent): node is List => nod
 const isNodeParagraph = (node: BlockContent | DefinitionContent): node is Paragraph => node.type === 'paragraph'
 const isNodeText = (node: PhrasingContent): node is Text => node.type === 'text'
 
-function bissectDefinitionList(node: List): readonly [term: Term, definisions: readonly TermDescription[]][] {
+function bissectDefinitionList(
+  node: List,
+  slugger: Slugger,
+): readonly [term: Term, definisions: readonly TermDescription[]][] {
   if (node.ordered) {
     return []
   }
@@ -75,10 +82,15 @@ function bissectDefinitionList(node: List): readonly [term: Term, definisions: r
           children: [
             {
               ...text,
-              value: text.value.slice(2),
+              value: text.value.slice(2), // exclude the leading ': '
             },
             ...otherChildren,
           ],
+          data: {
+            hProperties: {
+              id: slugger.slug(`term-${toString(otherChildren)}`),
+            },
+          },
           type: 'term',
         }
         return termNode

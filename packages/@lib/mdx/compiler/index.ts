@@ -1,16 +1,14 @@
 import { minify } from '@swc/core'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeHighlight from 'rehype-highlight'
-import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
 import { all } from 'remark-rehype'
 
 import { compile as compileMDX } from './lib/compile'
 import { rehypeCodeblockDataAttr } from './rehypeCodeblockDataAttr'
-import { rehypeTermID } from './rehypeTermID'
 import { remarkCallout } from './remarkCallout'
 import { remarkDefinitionList } from './remarkDefinitionList'
-import { remarkHeadingLevel } from './remarkHeadingLevel'
+import { remarkHeadingProcessor } from './remarkHeadingProcessor'
 import { remarkImageDimensions } from './remarkImageDimensions'
 
 async function compile(source: string): Promise<string> {
@@ -19,14 +17,12 @@ async function compile(source: string): Promise<string> {
     rehypePlugins: [
       rehypeHighlight,
       rehypeCodeblockDataAttr,
-      rehypeSlug,
-      rehypeTermID,
       () =>
         rehypeAutolinkHeadings({
           behavior: 'wrap',
         }),
     ],
-    remarkPlugins: [remarkGfm, remarkCallout, remarkDefinitionList, remarkHeadingLevel, remarkImageDimensions],
+    remarkPlugins: [remarkGfm, remarkCallout, remarkDefinitionList, remarkHeadingProcessor, remarkImageDimensions],
     remarkRehypeOptions: {
       handlers: {
         definitionList: (h, node) => h(node, 'dl', all(h, node)),

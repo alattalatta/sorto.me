@@ -200,9 +200,9 @@ importers:
       fp-ts: ^2.10.5
       github-slugger: ^1.4.0
       hast-util-to-string: ^2.0.0
+      mdast-util-to-string: ^3.1.0
       rehype-autolink-headings: ^6.1.1
       rehype-highlight: ^5.0.2
-      rehype-slug: ^5.0.1
       remark-gfm: ^3.0.1
       remark-mdx: ^2.0.0
       remark-parse: ^10.0.1
@@ -210,7 +210,6 @@ importers:
       tsconfig: workspace:*
       typescript: ^4.5.5
       unified: ^10.1.1
-      unist-util-ancestor: ^1.2.1
       unist-util-inspect: ^7.0.0
       unist-util-map: ^3.0.0
       unist-util-visit: ^4.1.0
@@ -218,15 +217,14 @@ importers:
       '@mdx-js/mdx': 2.0.0
       fp-ts: 2.11.8
       hast-util-to-string: 2.0.0
+      mdast-util-to-string: 3.1.0
       rehype-autolink-headings: 6.1.1
       rehype-highlight: 5.0.2
-      rehype-slug: 5.0.1
       remark-gfm: 3.0.1
       remark-mdx: 2.0.0
       remark-parse: 10.0.1
       remark-rehype: 10.1.0
       unified: 10.1.1
-      unist-util-ancestor: 1.2.1
       unist-util-inspect: 7.0.0
       unist-util-map: 3.0.0
       unist-util-visit: 4.1.0
@@ -4915,6 +4913,7 @@ packages:
 
   /github-slugger/1.4.0:
     resolution: {integrity: sha512-w0dzqw/nt51xMVmlaV1+JRzN+oCa1KfcgGEWhxUG16wbdA+Xnt/yoFO8Z8x/V82ZcZ0wy6ln9QDup5avbhiDhQ==}
+    dev: true
 
   /glob-parent/5.1.2:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
@@ -8043,18 +8042,6 @@ packages:
       unist-util-visit: 4.1.0
     dev: false
 
-  /rehype-slug/5.0.1:
-    resolution: {integrity: sha512-X5v3wV/meuOX9NFcGhJvUpEjIvQl2gDvjg3z40RVprYFt7q3th4qMmYLULiu3gXvbNX1ppx+oaa6JyY1W67pTA==}
-    dependencies:
-      '@types/hast': 2.3.4
-      github-slugger: 1.4.0
-      hast-util-has-property: 2.0.0
-      hast-util-heading-rank: 2.1.0
-      hast-util-to-string: 2.0.0
-      unified: 10.1.1
-      unist-util-visit: 4.1.0
-    dev: false
-
   /relateurl/0.2.7:
     resolution: {integrity: sha1-VNvzd+UUQKypCkzSdGANP/LYiKk=}
     engines: {node: '>= 0.10'}
@@ -9107,13 +9094,6 @@ packages:
     resolution: {integrity: sha512-GFxmfEAa0vi9i5sd0R2kcrI9ks0r82NasRq5QHh2ysGngrc6GiqD5CDf1FjPenY4vApmFASBIIlk/jj5J5YbmQ==}
     dependencies:
       '@types/unist': 2.0.6
-    dev: false
-
-  /unist-util-ancestor/1.2.1:
-    resolution: {integrity: sha512-vqa+LDyF1+PG4LHNyzwtPJsQgtrDvUUZoXwego0J9fr3dT8MyxjZGt/oiSql/xS5YPbE1a/Z6bZVyyeMRCmTSQ==}
-    dependencies:
-      '@types/unist': 2.0.6
-      unist-util-visit-parents: 5.1.0
     dev: false
 
   /unist-util-find-after/4.0.0:

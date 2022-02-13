@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import LiveCode from './LiveCode'
 
 const Root = styled('aside', {
-  border: '1px solid #2c2c2c',
+  border: '1px solid $fg',
   margin: '1.5rem 0',
   padding: '1rem',
   '@w2': {
@@ -21,7 +21,7 @@ const Root = styled('aside', {
 
 const Result = styled(LiveCode, {
   width: '100%',
-  border: '1px solid #2c2c2c',
+  border: '1px solid $fg',
   '@w2': {
     width: `${400 / 16}rem`,
     minWidth: `${400 / 16}rem`,
@@ -71,7 +71,7 @@ const LangButtonBar = styled('div', {
 
 const LangButton = styled('button', {
   height: `${44 / 16}rem`,
-  background: '#f2f2f2',
+  background: '$bgSuppl',
   border: 'none',
   flexGrow: 1,
   fontSize: `${14 / 16}rem`,

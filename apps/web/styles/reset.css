@@ -4,6 +4,7 @@
 }
 
 html {
+  color: var(--colors-fg);
   scroll-behavior: smooth;
 }
 

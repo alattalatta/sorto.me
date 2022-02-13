@@ -12,7 +12,7 @@ const Root = styled('button', {
   height: '100%',
   background: 'none',
   border: 'none',
-  color: '#fff',
+  color: '$bg',
   cursor: 'pointer',
   fontSize: `${14 / 16}rem`,
   margin: 0,

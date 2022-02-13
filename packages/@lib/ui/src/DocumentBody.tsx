@@ -33,7 +33,7 @@ const Root = styled('div', {
     fontSize: '1rem',
   },
   '& a': {
-    color: '#0CA79D',
+    color: '$highlight',
     textDecoration: 'none',
     '&:hover': {
       textDecoration: 'underline',
@@ -58,7 +58,7 @@ const Root = styled('div', {
   },
   '& hr': {
     maxWidth: `${219 / 16}rem`,
-    color: '#2c2c2c',
+    color: '$fg',
     margin: '3rem 0',
   },
   '& :is(i, em)': {
@@ -156,7 +156,7 @@ const Root = styled('div', {
   },
   // code block
   '& pre': {
-    background: '#f2f2f2',
+    background: '$bgSuppl',
     fontFamily: `'Nanum Gothic Coding', '나눔고딕코딩', monospace`,
     fontSize: `${14 / 16}rem`,
     overflow: 'auto',
@@ -189,16 +189,16 @@ const Root = styled('div', {
   // table
   '& table:not(.jsx)': {
     borderCollapse: 'collapse',
-    borderTop: `${1 / 16}rem solid #2c2c2c`,
-    borderBottom: `${1 / 16}rem solid #2c2c2c`,
+    borderTop: `${1 / 16}rem solid $fg`,
+    borderBottom: `${1 / 16}rem solid $fg`,
 
     '& th': {
-      background: '#f2f2f2',
-      border: `${1 / 16}rem solid #2c2c2c`,
+      background: '$bgSuppl',
+      border: `${1 / 16}rem solid $fg`,
       padding: '.5rem 1rem',
     },
     '& td': {
-      border: `${1 / 16}rem solid #2c2c2c`,
+      border: `${1 / 16}rem solid $fg`,
       padding: '.5rem 1rem',
     },
   },

@@ -3,7 +3,7 @@ import { styled } from './stitches'
 
 const Background = styled('div', {
   height: 2000,
-  background: 'linear-gradient(to bottom, #fff, #2c2c2c)',
+  background: 'linear-gradient(to bottom, $bg, $fg)',
 })
 
 const Fixture: React.VFC = () => {

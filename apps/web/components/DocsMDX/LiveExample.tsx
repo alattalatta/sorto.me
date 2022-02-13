@@ -10,7 +10,7 @@ type Props = {
 }
 
 const Container = styled('div', {
-  border: '1px solid #2c2c2c',
+  border: '1px solid $fg',
   boxSizing: 'content-box',
   overflow: 'hidden',
   padding: '1em',

@@ -19,7 +19,7 @@ type Props = {
 }
 
 const Body = styled(m.div, {
-  marginTop: '1.5rem',
+  marginTop: '2rem',
 })
 
 const DocBody: React.VFC<Props> = ({ bcd, breadcrumbs, compiledSource, meta }) => {

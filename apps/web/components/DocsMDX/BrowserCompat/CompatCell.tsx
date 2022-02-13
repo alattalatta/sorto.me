@@ -17,7 +17,7 @@ const CompatCellBody = styled('td', {
     },
     support: {
       yes: { backgroundColor: '#AFF677' },
-      no: { backgroundColor: '#C75040', color: '#fff' },
+      no: { backgroundColor: '#C75040', color: '$bg' },
       partial: { backgroundColor: '#FFCC47' },
       unknown: { backgroundColor: '#CCCCCC' },
     },

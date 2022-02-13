@@ -1,3 +1,4 @@
+import { Anchor } from './Anchor'
 import { styled } from './stitches'
 
 type Props = {
@@ -7,7 +8,7 @@ type Props = {
 
 const Root = styled('footer', {
   width: `${219 / 16}rem`,
-  borderTop: '1px solid #2c2c2c',
+  borderTop: '1px solid $fg',
   fontFamily: `Roboto, Pretendard, sans-serif`,
   marginTop: '5rem',
   padding: '1.5rem 0 0.5rem',
@@ -39,7 +40,7 @@ const MDN = styled('p', {
   margin: 0,
 
   '& a': {
-    color: '#0CA79D',
+    color: '$highlight',
     textDecoration: 'none',
   },
   '& a:hover': {
@@ -80,12 +81,12 @@ const Footer: React.VFC<Props> = ({ mdnSlug, updated }) => {
         {mdnSlug && (
           <MDN>
             based on{' '}
-            <a href={`https://developer.mozilla.org/en-US/${mdnSlug}`} target="_blank">
+            <Anchor href={`https://developer.mozilla.org/en-US/${mdnSlug}`} target="_blank">
               MDN
-            </a>{' '}
-            <a href={`https://developer.mozilla.org/en-US/${mdnSlug}/contributors.txt`} target="_blank">
+            </Anchor>{' '}
+            <Anchor href={`https://developer.mozilla.org/en-US/${mdnSlug}/contributors.txt`} target="_blank">
               (contributors)
-            </a>
+            </Anchor>
           </MDN>
         )}
       </Legal>

@@ -53,11 +53,10 @@ const NavBar: React.VFC = () => {
           문서
         </Item>
       </Link>
-      <Link href="/search">
-        <Item current={pathname.startsWith('/search')} href="/search">
-          검색
-        </Item>
-      </Link>
+      {/* gcse causes issue with React, so don't use client side routing here */}
+      <Item current={pathname.startsWith('/search')} href="/search">
+        검색
+      </Item>
     </Root>
   )
 }

@@ -9,7 +9,7 @@ type Props = {
 }
 
 const Root = styled('aside', {
-  border: '1px solid #2c2c2c',
+  border: '1px solid $fg',
   margin: '1.5em 0',
   padding: '1em',
   '@w2': {
@@ -43,7 +43,7 @@ const Root = styled('aside', {
 
 const Result = styled(LiveCode, {
   width: '100%',
-  border: '1px solid #2c2c2c',
+  border: '1px solid $fg',
   '@w2': {
     width: `${400 / 16}rem`,
     minWidth: `${400 / 16}rem`,

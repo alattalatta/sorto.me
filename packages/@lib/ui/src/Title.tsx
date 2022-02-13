@@ -17,7 +17,7 @@ const Breadcrumbs = styled('nav', {
 })
 
 const Crumb = styled('span', {
-  color: '#2c2c2c',
+  color: '$fg',
   '& + &::before': {
     content: '>',
     display: 'inline-block',
@@ -25,7 +25,7 @@ const Crumb = styled('span', {
   },
 
   '& a': {
-    color: '#0CA79D',
+    color: '$highlight',
     textDecoration: 'none',
     '&:hover': {
       textDecoration: 'underline',

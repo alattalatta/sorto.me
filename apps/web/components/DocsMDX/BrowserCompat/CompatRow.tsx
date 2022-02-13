@@ -33,7 +33,7 @@ const Body = styled('div', {
 
   // when children (recursive=true) body
   'details > &': {
-    borderLeft: '2px solid #2c2c2c',
+    borderLeft: '2px solid $fg',
     paddingLeft: '0.75rem',
   },
 })
@@ -47,7 +47,7 @@ const TablesContainer = styled('div', {
     height: 4,
   },
   '&::-webkit-scrollbar-thumb': {
-    background: '#2c2c2c',
+    background: '$fg',
   },
 })
 

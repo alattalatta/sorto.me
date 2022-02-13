@@ -21,6 +21,7 @@ const Root = styled('figure', {
       'code      result'
     `,
     gridTemplateColumns: `1fr ${400 / 16}rem`,
+    gridTemplateRows: `${44 / 16}rem 1fr`,
   },
 
   '$stx-keyword': '#18c498',
@@ -44,9 +45,6 @@ const Codes = styled('div', {
   flexDirection: 'column',
   flexGrow: 1,
   gridArea: 'code',
-  '@w2': {
-    flexDirection: 'column-reverse',
-  },
 
   '& pre': {
     background: '$bgSupplInv',

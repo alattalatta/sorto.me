@@ -22,7 +22,7 @@ const StripWrap = styled('div', {
 
 const Strip = styled('div', {
   height: HEIGHT,
-  background: `url(${color})`,
+  background: `url(${color.src})`,
   position: 'absolute',
   top: -OFFSET_TOP,
   left: -OFFSET_LEFT,

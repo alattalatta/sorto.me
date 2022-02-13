@@ -16,7 +16,7 @@ describe('Doc parser', () => {
       expect(parsed.meta).toEqual<DocMetadata>({
         bcd: 'foo.bar',
         description: 'aaa&amp;bbb',
-        slug: 'foo',
+        slug: 'mocks/foo',
         title: 'foobar',
         updated: (await statAsync).mtime.toISOString(),
       })
@@ -31,7 +31,7 @@ describe('Doc parser', () => {
       expect(parsed.content).toBe('')
       expect(parsed.meta).toEqual<DocMetadata>({
         description: null,
-        slug: '',
+        slug: 'mocks/minimal-data',
         title: 'title',
         updated: (await statAsync).mtime.toISOString(),
       })

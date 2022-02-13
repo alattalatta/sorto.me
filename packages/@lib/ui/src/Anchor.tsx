@@ -1,36 +1,14 @@
 import Link from 'next/link'
-import React, { forwardRef } from 'react'
+import { forwardRef } from 'react'
 
-import { styled } from 'utils/styler'
-
-const DisabledAnchor = styled('a', {
-  cursor: 'not-allowed',
-  opacity: 0.6,
-})
-
-const AnchorExternal = forwardRef<HTMLAnchorElement, Omit<JSX.IntrinsicElements['a'], 'ref'>>((props, ref) => (
-  <a ref={ref} {...props} target="_blank" rel="noreferrer noopener" />
-))
-
-type Props = {
-  disabled?: boolean
-} & Omit<JSX.IntrinsicElements['a'], 'ref'>
 /**
  * Automatic anchor.
  *
  * Applies client routing when given an internal link (relative href) which contains no fragment (to prevent inaccurate scroll position).
  * Otherwise, uses simple `<a>` tag.
  */
-const Anchor = forwardRef<HTMLAnchorElement, Props>(
-  ({ children, disabled, href = '', ...props }, ref: React.Ref<HTMLAnchorElement>) => {
-    if (disabled) {
-      return (
-        <DisabledAnchor ref={ref} title="사용 불가" aria-disabled={true} {...props}>
-          {children}
-        </DisabledAnchor>
-      )
-    }
-
+const Anchor = forwardRef<HTMLAnchorElement, Omit<JSX.IntrinsicElements['a'], 'ref'>>(
+  ({ children, href = '', ...props }, ref) => {
     // am I pointing to a specific fragment within this page?
     const fragmentOnly = href.startsWith('#')
     if (fragmentOnly) {
@@ -41,13 +19,13 @@ const Anchor = forwardRef<HTMLAnchorElement, Props>(
       )
     }
 
-    // am I pointing within Sorto.me?
+    // am I pointing within the app?
     const internal = /^[./]/.test(href)
     if (internal) {
       const fragment = href.includes('#')
       // server: no url to resolve against
       // fragment: do not use <Link> for better scroll position
-      if (!process.browser || fragment) {
+      if (typeof window === undefined || fragment) {
         return (
           <a ref={ref} href={href} {...props}>
             {children}
@@ -66,11 +44,11 @@ const Anchor = forwardRef<HTMLAnchorElement, Props>(
     }
 
     return (
-      <AnchorExternal ref={ref} href={href} {...props}>
+      <a ref={ref} href={href} rel="noreferrer noopener" target="_blank" {...props}>
         {children}
-      </AnchorExternal>
+      </a>
     )
   },
 )
 
-export default Anchor
+export { Anchor }

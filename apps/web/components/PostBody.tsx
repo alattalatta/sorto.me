@@ -1,11 +1,9 @@
 import type { PostMetadata } from '@contents/posts'
 import { useMDXRenderer } from '@lib/mdx'
-import { DocumentBody, Footer, Post, ScrollBack, styled } from '@lib/ui'
+import { Anchor, DocumentBody, Footer, Post, ScrollBack, styled } from '@lib/ui'
 import { motion as m } from 'framer-motion'
 
 import { easeStandard } from 'utils/styler'
-
-import { MDX_COMPONENTS } from './MDX'
 
 type Props = {
   compiledSource: string
@@ -41,7 +39,11 @@ const PostBody: React.VFC<Props> = ({ compiledSource, meta }) => {
         }}
       >
         <DocumentBody>
-          <Content components={MDX_COMPONENTS} />
+          <Content
+            components={{
+              a: Anchor,
+            }}
+          />
         </DocumentBody>
       </Body>
       <Footer updated={new Date(meta.updated)} />

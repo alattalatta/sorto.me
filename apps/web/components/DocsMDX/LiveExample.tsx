@@ -1,6 +1,5 @@
-import { styled } from '@lib/ui'
+import { NoScreen, styled } from '@lib/ui'
 
-import { NoScreen } from 'components/basics'
 import { useCodeBlockGroup } from 'hooks/useCodeBlockGroup'
 
 import LiveCode from './LiveCode'

@@ -1,7 +1,6 @@
 import type { PostMetadata } from '@contents/posts'
 import { Post, styled } from '@lib/ui'
-
-import { Anchor } from './basics'
+import Link from 'next/link'
 
 type Props = {
   posts: readonly PostMetadata[]
@@ -20,7 +19,7 @@ const Root = styled('main', {
   },
 })
 
-const AnchorNoStyle = styled(Anchor, {
+const AnchorNoStyle = styled('a', {
   color: 'inherit',
   textDecoration: 'none',
 })
@@ -33,14 +32,16 @@ const PostsBody: React.VFC<Props> = ({ posts }) => {
   return (
     <Root>
       {posts.map((post) => (
-        <AnchorNoStyle key={post.slug} href={`/posts/${post.slug}`}>
-          <PostFillHeight
-            image={post.image}
-            title={post.title}
-            // [todo] parse as Date
-            written={new Date(post.created)}
-          />
-        </AnchorNoStyle>
+        <Link key={post.slug} href={`/posts/${post.slug}`}>
+          <AnchorNoStyle href={`/posts/${post.slug}`}>
+            <PostFillHeight
+              image={post.image}
+              title={post.title}
+              // [todo] parse as Date
+              written={new Date(post.created)}
+            />
+          </AnchorNoStyle>
+        </Link>
       ))}
     </Root>
   )

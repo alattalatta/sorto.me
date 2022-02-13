@@ -1,8 +1,7 @@
-import { styled } from '@lib/ui'
+import { Anchor, styled } from '@lib/ui'
 import type { CompatData, Identifier } from '@mdn/browser-compat-data/types'
 import { useEffect, useState } from 'react'
 
-import { Anchor } from 'components/basics'
 import { getCompatData, getSubIdentifierKeys } from 'utils/docs/browserCompat'
 
 import CompatRow from './CompatRow'

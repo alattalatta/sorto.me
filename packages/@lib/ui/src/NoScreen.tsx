@@ -1,8 +1,6 @@
-import { styled } from 'utils/styler'
+import { styled } from './stitches';
 
-export { default as Anchor } from './Anchor'
-
-export const NoScreen = styled('span', {
+const NoScreen = styled('span', {
   clip: 'rect(1px, 1px, 1px, 1px)',
   height: 1,
   margin: 0,
@@ -11,3 +9,5 @@ export const NoScreen = styled('span', {
   width: 1,
   zIndex: -9,
 })
+
+export { NoScreen }

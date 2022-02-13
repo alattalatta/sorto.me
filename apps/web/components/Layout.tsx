@@ -1,6 +1,5 @@
 import { css, styled, FixedStrip, FIXED_STRIP_HEIGHT, ScrollBack } from '@lib/ui'
-
-import { Anchor } from './basics'
+import Link from 'next/link'
 
 type Props = {
   bottomStrip?: boolean
@@ -35,7 +34,7 @@ const TopStripBody = styled('div', {
   padding: '0 1.5em',
 })
 
-const Link = styled(Anchor, {
+const Anchor = styled('a', {
   color: 'inherit',
   textDecoration: 'none',
 })
@@ -48,8 +47,12 @@ const Layout: React.FC<Props> = ({ children, bottomStrip = true, topStrip = true
       {topStrip && (
         <FixedStrip css={{ maxWidth }} position="top">
           <TopStripBody>
-            <Link href="/">sorto.me</Link>
-            <Link href="/search">검색</Link>
+            <Link href="/">
+              <Anchor href="/">sorto.me</Anchor>
+            </Link>
+            <Link href="/search">
+              <Anchor href="/search">검색</Anchor>
+            </Link>
           </TopStripBody>
         </FixedStrip>
       )}

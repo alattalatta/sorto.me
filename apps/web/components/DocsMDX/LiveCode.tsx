@@ -1,3 +1,4 @@
+import { styled } from '@lib/ui'
 import { useMemo } from 'react'
 
 type Language = 'css' | 'html' | 'js'
@@ -7,6 +8,11 @@ type Props = {
   codes: Record<Language, readonly string[]>
   height?: number
 }
+
+const Result = styled('iframe', {
+  background: '#fff',
+  border: 'none',
+})
 
 const LiveCode: React.VFC<Props> = ({ className, codes: { css, html, js }, height }) => {
   const notFound = !(css.length || html.length || js.length) // when everything is empty
@@ -27,9 +33,9 @@ const LiveCode: React.VFC<Props> = ({ className, codes: { css, html, js }, heigh
   }, [css, html, js])
 
   return notFound ? (
-    <div className={className} style={{ height: height && `${height}px` }} />
+    <Result as="div" className={className} style={{ height: height && `${height}px` }} />
   ) : (
-    <iframe className={className} height={height} srcDoc={srcDoc} title="예제" />
+    <Result className={className} height={height} srcDoc={srcDoc} title="예제" />
   )
 }
 

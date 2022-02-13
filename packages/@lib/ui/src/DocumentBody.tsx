@@ -6,6 +6,12 @@ import { styled } from './stitches'
 const Root = styled('div', {
   lineHeight: 1.5,
   margin: '0 auto',
+
+  '$stx-comment': '#969896',
+  '$stx-keyword': '#008a67',
+  '$stx-string': '#0056d6',
+  '$stx-tag': '#d33c00',
+
   '& > *': {
     margin: '1rem 0',
   },
@@ -150,7 +156,7 @@ const Root = styled('div', {
     background: 'rgba(0, 0, 0, 0.05)',
     borderRadius: '0.25rem',
     display: 'inline-block',
-    // lineHeight: 1,
+    fontSize: '1rem',
     padding: '0 0.25rem',
     textDecorationLine: 'inherit',
   },

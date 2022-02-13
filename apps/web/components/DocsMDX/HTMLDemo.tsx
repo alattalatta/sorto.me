@@ -3,28 +3,38 @@ import { useEffect, useRef, useState } from 'react'
 
 import LiveCode from './LiveCode'
 
-const Root = styled('aside', {
-  border: '1px solid $fg',
+const Root = styled('figure', {
+  background: '$bgInv',
+  borderRadius: '.25rem',
+  display: 'grid',
+  gap: '.25rem',
+  gridTemplateAreas: `
+    'result'
+    'code'
+    'languages'
+  `,
   margin: '1.5rem 0',
   padding: '1rem',
   '@w2': {
-    display: 'flex',
-    alignItems: 'top',
+    gridTemplateAreas: `
+      'languages result'
+      'code      result'
+    `,
+    gridTemplateColumns: `1fr ${400 / 16}rem`,
   },
 
-  '& pre': {
-    borderLeft: 'none',
-    display: 'none',
-    margin: '0.25rem 0 0',
-  },
+  '$stx-keyword': '#18c498',
+  '$stx-string': '#257dff',
+  '$stx-tag': '#ff7037',
 })
 
 const Result = styled(LiveCode, {
   width: '100%',
-  border: '1px solid $fg',
+  height: '100%',
+  borderRadius: '.25rem .25rem 0 0',
+  gridArea: 'result',
   '@w2': {
-    width: `${400 / 16}rem`,
-    minWidth: `${400 / 16}rem`,
+    borderRadius: '0 .25rem .25rem 0',
   },
 })
 
@@ -33,11 +43,16 @@ const Codes = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   flexGrow: 1,
-  marginTop: '1rem',
+  gridArea: 'code',
   '@w2': {
     flexDirection: 'column-reverse',
-    marginTop: 0,
-    marginLeft: '0.5rem',
+  },
+
+  '& pre': {
+    background: '$bgSupplInv',
+    color: '$fgInv',
+    display: 'none',
+    margin: 0,
   },
 
   variants: {
@@ -63,21 +78,19 @@ const Codes = styled('div', {
 
 const LangButtonBar = styled('div', {
   display: 'flex',
-  marginTop: '0.25rem',
-  '@w2': {
-    marginTop: 0,
-  },
+  borderRadius: '0 0 .25rem .25rem',
+  gap: '.25rem',
+  gridArea: 'languages',
+  overflow: 'hidden',
 })
 
 const LangButton = styled('button', {
   height: `${44 / 16}rem`,
-  background: '$bgSuppl',
+  background: '$bgSupplInv',
   border: 'none',
+  color: '$fgInv',
   flexGrow: 1,
   fontSize: `${14 / 16}rem`,
-  '& + &': {
-    borderLeft: '1px solid #ccc',
-  },
 })
 
 const HTMLDemo: React.FC<{ height?: number }> = ({ children, height }) => {
@@ -109,15 +122,13 @@ const HTMLDemo: React.FC<{ height?: number }> = ({ children, height }) => {
 
   return (
     <Root ref={rootRef} aria-label="데모">
-      <Result codes={codes} height={height} />
-      <Codes language={currentLang}>
-        {children}
-        <LangButtonBar>
-          {Boolean(codes.html.length) && <LangButton onClick={() => setCurrentLang('html')}>HTML</LangButton>}
-          {Boolean(codes.css.length) && <LangButton onClick={() => setCurrentLang('css')}>CSS</LangButton>}
-          {Boolean(codes.js.length) && <LangButton onClick={() => setCurrentLang('js')}>JavaScript</LangButton>}
-        </LangButtonBar>
-      </Codes>
+      <Result codes={codes} css={{ minHeight: height }} />
+      <LangButtonBar>
+        {Boolean(codes.html.length) && <LangButton onClick={() => setCurrentLang('html')}>HTML</LangButton>}
+        {Boolean(codes.css.length) && <LangButton onClick={() => setCurrentLang('css')}>CSS</LangButton>}
+        {Boolean(codes.js.length) && <LangButton onClick={() => setCurrentLang('js')}>JavaScript</LangButton>}
+      </LangButtonBar>
+      <Codes language={currentLang}>{children}</Codes>
     </Root>
   )
 }

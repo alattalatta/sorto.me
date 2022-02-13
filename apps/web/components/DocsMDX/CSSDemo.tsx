@@ -8,24 +8,57 @@ type Props = {
   selector?: string
 }
 
-const Root = styled('aside', {
-  border: '1px solid $fg',
-  margin: '1.5em 0',
+const Root = styled('figure', {
+  background: '$bgInv',
+  borderRadius: '.25rem',
+  display: 'grid',
+  gap: '.25rem',
+  gridTemplateAreas: `
+    'result'
+    'code'
+  `,
+  margin: '1.5rem 0',
   padding: '1em',
   '@w2': {
-    display: 'flex',
-    alignItems: 'top',
+    gridTemplateAreas: `
+      'code result'
+    `,
+    gridTemplateColumns: `1fr ${400 / 16}rem`,
+  },
+
+  '$stx-keyword': '#18c498',
+  '$stx-string': '#257dff',
+  '$stx-tag': '#ff7037',
+})
+
+const Result = styled(LiveCode, {
+  width: '100%',
+  height: '100%',
+  borderRadius: '.25rem .25rem 0 0',
+  gridArea: 'result',
+  '@w2': {
+    borderRadius: '0 .25rem .25rem 0',
+  },
+})
+
+const Codes = styled('div', {
+  borderRadius: '0 0 .25rem .25rem',
+  minWidth: 0,
+  display: 'flex',
+  flexDirection: 'column',
+  overflow: 'hidden',
+  '@w2': {
+    borderRadius: '.25rem 0 0 .25rem',
   },
 
   '& pre': {
+    background: '$bgSupplInv',
+    color: '$fgInv',
     cursor: 'pointer',
     margin: 0,
     position: 'relative',
     '& + &': {
-      marginTop: '0.25em',
-    },
-    '&:hover': {
-      background: '#EDF9E9',
+      marginTop: '0.25rem',
     },
     '&::after': {
       content: '✔️',
@@ -38,27 +71,6 @@ const Root = styled('aside', {
   },
   '& pre:not(.language-css)': {
     display: 'none',
-  },
-})
-
-const Result = styled(LiveCode, {
-  width: '100%',
-  border: '1px solid $fg',
-  '@w2': {
-    width: `${400 / 16}rem`,
-    minWidth: `${400 / 16}rem`,
-  },
-})
-
-const Codes = styled('div', {
-  minWidth: 0,
-  display: 'flex',
-  flexDirection: 'column',
-  flexGrow: 1,
-  marginTop: '1em',
-  '@w2': {
-    marginTop: 0,
-    marginLeft: '0.5em',
   },
 })
 

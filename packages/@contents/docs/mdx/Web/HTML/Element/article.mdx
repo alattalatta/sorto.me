@@ -6,49 +6,51 @@ bcd: html.elements.article
 
 **HTML `<article>` 요소**는 문서, 페이지, 애플리케이션, 또는 사이트 안에서 독립적으로 배포 또는 재사용할 수 있는 구획을 나타냅니다. 게시판 글과 블로그 포스트, 매거진과 뉴스 기사, 사용자 댓글, 상품 카드, 대화형 위젯 등 무엇이나 가능합니다.
 
-<HTMLDemo>
+<HTMLDemo height={200}>
 
-```css
-.forecast {
-  background: #f0f0f0;
-  padding: 16px;
-}
-.day {
-  background: #fff;
-  margin: 4px 0;
-  padding: 4px;
-}
-h1 {
-  font-size: 18px;
-  margin-top: 0;
-  margin-bottom: 16px;
-}
-h2 {
-  font-size: 14px;
-}
-h2,
-p {
-  margin: 0.5em;
-}
-```
+  ```css
+  /* blah */
+  .forecast {
+    background: #f0f0f0;
+    padding: 16px;
+  }
+  .day {
+    background: #fff;
+    margin: 4px 0;
+    padding: 4px;
+  }
+  h1 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+  h2 {
+    font-size: 14px;
+  }
+  h2,
+  p {
+    margin: 0.5em;
+  }
+  ```
 
-```html
-<article class="forecast">
-  <h1>서울 예보 - 3일</h1>
-  <article class="day">
-    <h2>2021. 03. 01</h2>
-    <p>비</p>
+  ```html
+  <!-- blah -->
+  <article class="forecast">
+    <h1>서울 예보 - 3일</h1>
+    <article class="day">
+      <h2>2021. 03. 01</h2>
+      <p>비</p>
+    </article>
+    <article class="day">
+      <h2>2021. 03. 02</h2>
+      <p>소나기</p>
+    </article>
+    <article class="day">
+      <h2>2021. 03. 03</h2>
+      <p>호우</p>
+    </article>
   </article>
-  <article class="day">
-    <h2>2021. 03. 02</h2>
-    <p>소나기</p>
-  </article>
-  <article class="day">
-    <h2>2021. 03. 03</h2>
-    <p>호우</p>
-  </article>
-</article>
-```
+  ```
 
 </HTMLDemo>
 

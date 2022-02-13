@@ -10,8 +10,12 @@ const config = createStitches({
     colors: {
       fg: '#111',
       fgSuppl: '#1F2124',
+      fgInv: '$bg',
+      fgSupplInv: '$bgSuppl',
       bg: '#fff',
       bgSuppl: '#F2F5F8',
+      bgInv: '$fg',
+      bgSupplInv: '$fgSuppl',
       highlight: '#0CA79D',
     },
   },

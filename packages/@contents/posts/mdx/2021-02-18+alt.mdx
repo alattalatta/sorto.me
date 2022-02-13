@@ -56,6 +56,57 @@ HTML Living Standard는 이미지 대체 텍스트 가이드라인에 별도 섹
 </article>
 ```
 
+```css
+html,
+.body,
+.body[disabled],
+a + a,
+.attr[disabled=true] {
+  color: #222;
+  background: red;
+  background-image: none;
+  padding: var(--hi);
+}
+@media only screen and (min-width: 768px) {
+  html,
+  .body,
+  .body[disabled],
+  a + a,
+  .attr[disabled=true] {
+    color: #222;
+    background: red;
+    background-image: none;
+    padding: var(--hi);
+  }
+}
+```
+
+```tsx
+import React from 'react'
+
+const b = () => 3
+
+const a: React.VFC = () => {
+  Math.resolve(3 + 3);
+  return '2020';
+
+  return /blah\W+[a-z]123456/gi
+
+  const c = (
+    <html>
+      <body>
+      </body>
+    </html>
+  )
+}
+
+class CCC {
+  public static async opertunistic(): void {
+    return 3;
+  }
+}
+```
+
 ## 아이콘의 형태를 그대로 묘사하기
 
 체인 아이콘이 뭘까? 뭐 하자는 체인일까? 사실 공유 버튼이다.

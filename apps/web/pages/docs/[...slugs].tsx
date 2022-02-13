@@ -33,10 +33,6 @@ const DocPage: Page<StaticProps> = ({ bcd, breadcrumbs, compiledSource, meta }) 
         <meta key="og:title" content={`${meta.title} - Sorto.me Docs`} property="og:title" />
         {meta.description && <meta key="og:description" content={meta.description} name="og:description" />}
         <meta key="article:modified_time" content={meta.updated} property="article:modified_time" />
-        <link
-          href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/base16/github.min.css"
-          rel="stylesheet"
-        />
       </Head>
       <DocBody bcd={bcd} breadcrumbs={breadcrumbs} compiledSource={compiledSource} meta={meta} />
     </>

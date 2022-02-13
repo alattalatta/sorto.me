@@ -16,10 +16,10 @@ type Props = {
 
 const Root = styled('details', {
   '& + &': {
-    marginTop: '1em',
+    marginTop: '1rem',
   },
   '& &': {
-    paddingLeft: '1em',
+    paddingLeft: '1rem',
   },
 })
 
@@ -29,19 +29,19 @@ const Summary = styled('summary', {
 })
 
 const Body = styled('div', {
-  marginLeft: `${4 / 16}em`,
+  marginLeft: `${4 / 16}rem`,
 
   // when children (recursive=true) body
   'details > &': {
     borderLeft: '2px solid #2c2c2c',
-    paddingLeft: '0.75em',
+    paddingLeft: '0.75rem',
   },
 })
 
 const TablesContainer = styled('div', {
   display: 'flex',
   overflowX: 'auto',
-  marginBottom: '0.5em',
+  marginBottom: '0.5rem',
   '&::-webkit-scrollbar': {
     background: '#C4C4C4',
     height: 4,
@@ -54,27 +54,27 @@ const TablesContainer = styled('div', {
 const Table = styled('table', {
   border: 'none',
   borderCollapse: 'collapse',
-  marginBottom: `${12 / 16}em`,
+  marginBottom: `${12 / 16}rem`,
 
   '& + &': {
-    marginLeft: '1em',
+    marginLeft: '1rem',
   },
 })
 
 const BrowserName = styled('th', {
-  width: `${80 / 14}em`,
-  minWidth: `${80 / 14}em`,
-  height: `${54 / 14}em`,
+  width: `${80 / 16}rem`,
+  minWidth: `${80 / 16}rem`,
+  height: `${54 / 16}rem`,
   border: 'none',
-  fontSize: `${14 / 16}em`,
+  fontSize: `${14 / 16}rem`,
   fontWeight: 400,
-  padding: `0 0 ${10 / 14}em`,
+  padding: `0 0 ${10 / 16}rem`,
   verticalAlign: 'bottom',
   whiteSpace: 'pre-wrap',
 })
 
 const Children = styled('div', {
-  marginTop: '1em',
+  marginTop: '1rem',
 })
 
 const DESKTOP_KEYS: [BrowserNames, string][] = [

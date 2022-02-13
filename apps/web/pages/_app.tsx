@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import type { Page } from 'utils/types'
 
 import 'styles/reset.css'
+import 'styles/syntax.css'
 
 function App({ Component, pageProps }: { Component: Page; pageProps: Record<string, unknown> }): JSX.Element {
   const router = useRouter()

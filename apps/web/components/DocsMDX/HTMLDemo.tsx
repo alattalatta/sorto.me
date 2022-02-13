@@ -5,8 +5,8 @@ import LiveCode from './LiveCode'
 
 const Root = styled('aside', {
   border: '1px solid #2c2c2c',
-  margin: '1.5em 0',
-  padding: '1em',
+  margin: '1.5rem 0',
+  padding: '1rem',
   '@w2': {
     display: 'flex',
     alignItems: 'top',
@@ -15,7 +15,7 @@ const Root = styled('aside', {
   '& pre': {
     borderLeft: 'none',
     display: 'none',
-    margin: '0.25em 0 0',
+    margin: '0.25rem 0 0',
   },
 })
 
@@ -23,8 +23,8 @@ const Result = styled(LiveCode, {
   width: '100%',
   border: '1px solid #2c2c2c',
   '@w2': {
-    width: `${400 / 16}em`,
-    minWidth: `${400 / 16}em`,
+    width: `${400 / 16}rem`,
+    minWidth: `${400 / 16}rem`,
   },
 })
 
@@ -33,11 +33,11 @@ const Codes = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   flexGrow: 1,
-  marginTop: '1em',
+  marginTop: '1rem',
   '@w2': {
     flexDirection: 'column-reverse',
     marginTop: 0,
-    marginLeft: '0.5em',
+    marginLeft: '0.5rem',
   },
 
   variants: {
@@ -63,18 +63,18 @@ const Codes = styled('div', {
 
 const LangButtonBar = styled('div', {
   display: 'flex',
-  marginTop: '0.25em',
+  marginTop: '0.25rem',
   '@w2': {
     marginTop: 0,
   },
 })
 
 const LangButton = styled('button', {
-  height: `${44 / 14}em`,
+  height: `${44 / 16}rem`,
   background: '#f2f2f2',
   border: 'none',
   flexGrow: 1,
-  fontSize: `${14 / 16}em`,
+  fontSize: `${14 / 16}rem`,
   '& + &': {
     borderLeft: '1px solid #ccc',
   },

@@ -7,7 +7,7 @@ const Root = styled('div', {
   lineHeight: 1.5,
   margin: '0 auto',
   '& > *': {
-    margin: '1em 0',
+    margin: '1rem 0',
   },
   '& > :is(h2, h3, h4)': {
     fontFamily: `'Noto Serif KR', serif`,
@@ -21,16 +21,16 @@ const Root = styled('div', {
     },
   },
   '& > h2': {
-    fontSize: '2em',
-    margin: '.5em 0',
-    padding: '.25em 0',
+    fontSize: '2rem',
+    margin: '.5rem 0',
+    padding: '.25rem 0',
   },
   '& > h3': {
-    fontSize: '1.5em',
-    margin: `${16 / 24}em 0`,
+    fontSize: '1.5rem',
+    margin: `1rem 0`,
   },
   '& > h4': {
-    fontSize: '1em',
+    fontSize: '1rem',
   },
   '& a': {
     color: '#0CA79D',
@@ -47,19 +47,19 @@ const Root = styled('div', {
     },
     '&[target=_blank]::after': {
       content: `''`,
-      width: '0.5em',
-      height: '0.5em',
+      width: '0.5rem',
+      height: '0.5rem',
       background: `url(${external.src}) no-repeat`,
       backgroundSize: 'contain',
       display: 'inline-block',
-      marginLeft: '0.125em',
+      marginLeft: '0.125rem',
       verticalAlign: 'top',
     },
   },
   '& hr': {
     maxWidth: `${219 / 16}rem`,
     color: '#2c2c2c',
-    margin: '3em 0',
+    margin: '3rem 0',
   },
   '& :is(i, em)': {
     fontFamily: `'Noto Serif KR', serif`,
@@ -68,32 +68,32 @@ const Root = styled('div', {
   // blockquote
   '& blockquote': {
     fontFamily: `'Noto Serif KR', serif`,
-    fontSize: '1em',
+    fontSize: '1rem',
     fontWeight: 500,
-    padding: '1em',
+    padding: '1rem',
     position: 'relative',
     '&::before, &::after': {
-      fontSize: '1.5em',
+      fontSize: '1.5rem',
     },
     '&::before': {
       content: `'“'`,
       position: 'absolute',
-      top: '0.5em',
+      top: '0.5rem',
       left: 0,
     },
     '&::after': {
       content: `'”'`,
       position: 'absolute',
       right: 0,
-      bottom: '0.5em',
+      bottom: '0.5rem',
     },
 
     '& > *': {
-      margin: '1em 0',
+      margin: '1rem 0',
     },
     '& cite': {
       color: '#777',
-      fontSize: `${10 / 16}em`,
+      fontSize: `${10 / 16}rem`,
       fontStyle: 'normal',
       margin: 0,
       position: 'absolute',
@@ -106,16 +106,16 @@ const Root = styled('div', {
   },
   // callout
   '& .callout': {
-    borderLeft: '.5em solid',
-    padding: '.5em .5em .5em 1em',
+    borderLeft: '.5rem solid',
+    padding: '.5rem .5rem .5rem 1rem',
     position: 'relative',
     '&::before': {
-      background: `center right / ${16 / 14}em no-repeat`,
+      background: `center right / 1rem no-repeat`,
       display: 'inline-block',
       imageRendering: 'pixelated',
-      fontSize: `${14 / 16}em`,
+      fontSize: `${14 / 16}rem`,
       fontWeight: 700,
-      paddingRight: `${20 / 14}em`,
+      paddingRight: `${20 / 16}rem`,
     },
     '&.callout-note': {
       background: '#F1FFFE',
@@ -142,71 +142,64 @@ const Root = styled('div', {
     },
 
     '& > * + *': {
-      marginTop: '1em',
+      marginTop: '1rem',
     },
   },
   // inline code
   '& code:not(pre > code)': {
     background: 'rgba(0, 0, 0, 0.05)',
-    borderRadius: '0.25em',
+    borderRadius: '0.25rem',
     display: 'inline-block',
     // lineHeight: 1,
-    padding: '0 0.25em',
+    padding: '0 0.25rem',
     textDecorationLine: 'inherit',
   },
   // code block
   '& pre': {
     background: '#f2f2f2',
-    borderLeft: '.5rem solid #ccc',
     fontFamily: `'Nanum Gothic Coding', '나눔고딕코딩', monospace`,
-    fontSize: `${14 / 16}em`,
-    lineHeight: 18 / 14,
+    fontSize: `${14 / 16}rem`,
     overflow: 'auto',
+    padding: '1rem !important',
     '&[data-variant="good"]': {
-      background: '#EDF9E9',
-      borderLeftColor: '#94FF40',
+      border: '1px solid #43E4DA',
     },
     '&[data-variant="bad"]': {
-      background: '#FEEBEB',
-      borderLeftColor: '#FF5858',
+      border: '1px solid #FF5858',
     },
     '& > code': {
-      background: 'none !important',
-      padding: '.5rem !important',
-    },
-    '& .hljs-tag': {
-      color: '#ed6a43',
+      lineHeight: 18 / 14,
     },
   },
   // list
   '& li': {
-    margin: '.5em 0',
+    margin: '.5rem 0',
   },
   '& dt': {
     fontWeight: 700,
-    margin: '1.5em 0 .5em',
+    margin: '1.5rem 0 .5rem',
   },
   '& dd': {
-    margin: '.5em 0 .5em 3em',
+    margin: '.5rem 0 .5rem 3rem',
 
     '& > * + *': {
-      margin: '1em 0',
+      margin: '1rem 0',
     },
   },
   // table
   '& table:not(.jsx)': {
     borderCollapse: 'collapse',
-    borderTop: `${1 / 16}em solid #2c2c2c`,
-    borderBottom: `${1 / 16}em solid #2c2c2c`,
+    borderTop: `${1 / 16}rem solid #2c2c2c`,
+    borderBottom: `${1 / 16}rem solid #2c2c2c`,
 
     '& th': {
       background: '#f2f2f2',
-      border: `${1 / 16}em solid #2c2c2c`,
-      padding: '.5em 1em',
+      border: `${1 / 16}rem solid #2c2c2c`,
+      padding: '.5rem 1rem',
     },
     '& td': {
-      border: `${1 / 16}em solid #2c2c2c`,
-      padding: '.5em 1em',
+      border: `${1 / 16}rem solid #2c2c2c`,
+      padding: '.5rem 1rem',
     },
   },
 })

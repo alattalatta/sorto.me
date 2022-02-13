@@ -45,8 +45,8 @@ const Result = styled(LiveCode, {
   width: '100%',
   border: '1px solid #2c2c2c',
   '@w2': {
-    width: `${400 / 16}em`,
-    minWidth: `${400 / 16}em`,
+    width: `${400 / 16}rem`,
+    minWidth: `${400 / 16}rem`,
   },
 })
 

@@ -23,10 +23,6 @@ const PostPage: Page<StaticProps> = ({ compiledSource, meta }) => {
         {meta.image && <meta key="og:image" content={meta.image} property="og:image" />}
         <meta key="article:published_time" content={meta.created} property="article:published_time" />
         <meta key="article:modified_time" content={meta.updated} property="article:modified_time" />
-        <link
-          href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/base16/github.min.css"
-          rel="stylesheet"
-        />
       </Head>
       <PostBody compiledSource={compiledSource} meta={meta} />
     </>

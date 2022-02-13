@@ -11,7 +11,7 @@ const Heading = styled('h1', {
 })
 
 const Breadcrumbs = styled('nav', {
-  fontSize: `${12 / 16}em`,
+  fontSize: `${12 / 16}rem`,
   display: 'flex',
   marginTop: '.25em',
 })

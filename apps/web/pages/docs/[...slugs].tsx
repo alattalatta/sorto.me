@@ -27,7 +27,7 @@ const DocPage: Page<StaticProps> = ({ bcd, breadcrumbs, compiledSource, meta }) 
   return (
     <>
       <Head>
-        <title key="title">{meta.title} - Sorto.me Docs</title>
+        <title key="title">{meta.title} - sorto.me docs</title>
         {meta.description && <meta key="description" content={meta.description} name="description" />}
         <meta key="og:type" content="article" property="og:type" />
         <meta key="og:title" content={`${meta.title} - Sorto.me Docs`} property="og:title" />

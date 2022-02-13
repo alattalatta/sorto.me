@@ -19,7 +19,7 @@ function App({ Component, pageProps }: { Component: Page; pageProps: Record<stri
     <LazyMotion features={framerFeatures} strict={process.env.NODE_ENV !== 'production'}>
       <Layout>
         <Head>
-          <title key="title">Sorto.me</title>
+          <title key="title">sorto.me</title>
           <meta key="description" content="sorto.me" name="description" />
           <meta key="og:type" content="website" property="og:type" />
           <meta key="og:title" content="sorto.me" property="og:title" />

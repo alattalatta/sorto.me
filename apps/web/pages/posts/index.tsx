@@ -13,7 +13,7 @@ const PostsPage: Page<StaticProps> = ({ posts }) => {
   return (
     <>
       <Head>
-        <title key="title">Blog - sorto.me</title>
+        <title key="title">blog - sorto.me</title>
         <meta key="og:title" content="sorto.me - blog" property="og:title" />
       </Head>
       <PostsBody posts={posts} />

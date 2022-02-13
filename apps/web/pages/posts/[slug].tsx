@@ -15,7 +15,7 @@ const PostPage: Page<StaticProps> = ({ compiledSource, meta }) => {
   return (
     <>
       <Head>
-        <title key="title">{meta.title} - Sorto.me</title>
+        <title key="title">{meta.title} - sorto.me</title>
         {meta.description && <meta key="description" content={meta.description} name="description" />}
         <meta key="og:type" content="article" property="og:type" />
         <meta key="og:title" content={`${meta.title} - Sorto.me`} property="og:title" />

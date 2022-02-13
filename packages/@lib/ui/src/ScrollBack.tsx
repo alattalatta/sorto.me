@@ -29,7 +29,17 @@ const ScrollBack: React.VFC<{ className?: string }> = ({ className }) => {
   useScrollThreshold(400, setCrossed)
 
   return (
-    <FixedStrip className={className} css={{ transform: `translateY(${crossed ? 0 : '100%'})` }} position="bottom">
+    <FixedStrip
+      animate={crossed ? 'show' : 'hidden'}
+      className={className}
+      initial="hidden"
+      position="bottom"
+      transition={{
+        type: 'spring',
+        duration: 0.1,
+      }}
+      variants={{ hidden: { translateY: '100%' }, show: { translateY: 0 } }}
+    >
       <Root type="button" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
         <Arrow alt="" src={arrow.src} />
         처음으로

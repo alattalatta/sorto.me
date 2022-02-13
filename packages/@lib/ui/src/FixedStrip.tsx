@@ -1,8 +1,10 @@
+import { m } from 'framer-motion'
+
 import { styled } from './stitches'
 
 const HEIGHT = 40 / 16
 
-const FixedStrip = styled('div', {
+const FixedStrip = styled(m.div, {
   width: '100%',
   maxWidth: `${982 / 16}rem`,
   height: `${HEIGHT}rem`,

@@ -75,7 +75,7 @@ HTML 표준은 지원할 이미지 형식을 명시하지 않으므로, 사용�
 
 - : `crossorigin`
 
-  - CORS를 사용해 지정한 오디오 파일을 가져올지 나타내는 열거형 특성입니다. [CORS 활성화 리소스](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image)는 [`<canvas>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) 요소에 사용해도 캔버스가 오염(taint)되지 않습니다. 가능한 값은 다음과 같습니다.
+  - CORS를 사용해 지정한 오디오 파일을 가져올지 나타내는 열거형 특성입니다. [CORS 활성화 리소스](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image)는 [`<canvas>`](./canvas) 요소에 사용해도 캔버스가 오염(taint)되지 않습니다. 가능한 값은 다음과 같습니다.
 
     - : `anonymous`
       - 자격 증명 없이 교차 출처 요청을 전송합니다. 즉, `Origin` HTTP 헤더를 쿠키, 인증서, HTTP Basic 인증 없이 전송합니다. 서버에서 `Access-Control-Allow-Origin` HTTP 헤더를 지정하지 않아서 요청 출처 사이트에 자격 증명을 보내지 않는다면 캔버스 이미지가 오염되고, 사용처가 제한됩니다.

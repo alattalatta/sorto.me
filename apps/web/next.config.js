@@ -4,8 +4,6 @@ const internalDependencies = Object.keys(require('./package.json').dependencies)
   package.startsWith('@app/') || package.startsWith('@contents/') || package.startsWith('@lib/'),
 )
 
-console.log(internalDependencies)
-
 const withTM = require('next-transpile-modules')(internalDependencies)
 const { PHASE_DEVELOPMENT_SERVER } = require('next/constants')
 

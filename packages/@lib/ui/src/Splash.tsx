@@ -28,7 +28,7 @@ const Strip = styled('div', {
   left: -OFFSET_LEFT,
   transform: `rotate(${THETA}deg)`,
   transformOrigin: 'bottom left',
-  transition: 'transform 50ms ease-out',
+  transition: 'width 300ms ease-out',
 })
 
 const ContentsRoot = styled('div', {

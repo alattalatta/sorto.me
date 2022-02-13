@@ -1,7 +1,7 @@
 import type { PostMetadata } from '@contents/posts'
 import { useMDXRenderer } from '@lib/mdx'
 import { Anchor, DocumentBody, Footer, Post, ScrollBack, styled } from '@lib/ui'
-import { motion as m } from 'framer-motion'
+import { m } from 'framer-motion'
 
 import { easeStandard } from 'utils/styler'
 
@@ -32,7 +32,7 @@ const PostBody: React.VFC<Props> = ({ compiledSource, meta }) => {
         animate={{ opacity: 1, y: 0 }}
         initial={{ opacity: 0, y: 10 }}
         transition={{
-          delay: 0.2,
+          delay: 0.25,
           opacity: easeStandard(0.25),
           y: easeStandard(0.5),
         }}

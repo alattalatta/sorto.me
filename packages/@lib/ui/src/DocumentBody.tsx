@@ -157,7 +157,7 @@ const Root = styled('div', {
     borderRadius: '0.25rem',
     display: 'inline-block',
     fontFamily: '$mono',
-    fontSize: '1rem',
+    // fontSize: '1rem',
     padding: '0 0.25rem',
     textDecorationLine: 'inherit',
   },

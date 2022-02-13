@@ -1,3 +1,5 @@
+import { m } from 'framer-motion'
+
 import { styled } from './stitches'
 
 type Props = {
@@ -11,6 +13,8 @@ type Props = {
 const Root = styled('article', {
   display: 'flex',
   flexDirection: 'column',
+  position: 'relative',
+  zIndex: 1,
 })
 
 const Body = styled('div', {
@@ -18,29 +22,30 @@ const Body = styled('div', {
   alignItems: 'flex-end',
   flexGrow: 1,
   position: 'relative',
-  padding: `${120 / 16}rem 0 ${12 / 16}rem ${60 / 16}rem`,
+  padding: `${110 / 16}rem 0 ${22 / 16}rem ${60 / 16}rem`,
 })
 
 const ImageBox = styled('div', {
   width: `${168 / 16}rem`,
   height: '100%',
-  background: 'linear-gradient(359.41deg, #43E4DA 23.61%, #87F9A6 61.38%, #FCED70 100%)',
+  background: '#ccc center / cover',
   boxSizing: 'border-box',
-  padding: '.5rem .5rem 0 0',
   position: 'absolute',
   top: 0,
   left: 0,
-})
-
-const Image = styled('img', {
-  width: '100%',
-  height: '100%',
-  display: 'block',
-  objectFit: 'cover',
+  '&::before': {
+    content: '',
+    background: 'linear-gradient(359.41deg, #43E4DA 23.61%, #87F9A6 61.38%, #FCED70 100%)',
+    clipPath: 'polygon(0 0, 100% 0, 100% 100%, calc(100% - 0.5rem) 100%, calc(100% - 0.5rem) 0.5rem, 0 0.5rem, 0 0)',
+    display: 'block',
+    position: 'absolute',
+    inset: '-.5rem -.5rem .5rem .5rem',
+  },
 })
 
 const Title = styled('h1', {
   fontSize: '1.5rem',
+  fontWeight: 400,
   background: '#fff',
   margin: 0,
   padding: '.25rem .5rem',
@@ -60,12 +65,12 @@ const Post: React.VFC<Props> = ({ as = 'article', className, image, title, writt
   const month = written.getMonth() + 1
   const date = written.getDate()
 
+  const rootElem = as === 'article' ? m.article : m.header
+
   return (
-    <Root as={as} className={className}>
+    <Root as={rootElem} className={className} layoutId={title}>
       <Body>
-        <ImageBox>
-          <Image alt="" src={image} />
-        </ImageBox>
+        <ImageBox css={{ backgroundImage: `url(${image})` }} />
         <Title>{title}</Title>
       </Body>
       <Written dateTime={written.toISOString()}>

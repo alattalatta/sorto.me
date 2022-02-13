@@ -27,7 +27,7 @@ export default class TheDocument extends Document {
             rel="stylesheet"
           />
           <link
-            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css"
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css"
             rel="stylesheet"
           />
           <link href="/favicon-192x192.png" rel="icon" sizes="192x192" type="image/png" />

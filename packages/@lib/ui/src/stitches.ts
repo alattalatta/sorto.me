@@ -20,7 +20,7 @@ const config = createStitches({
     },
     fonts: {
       mono: `'Fira Code', 'Nanum Gothic Coding', '나눔고딕코딩', monospace`,
-      sans: `Pretendard Variable, sans-serif`,
+      sans: `Pretendard, sans-serif`,
       serif: `'Noto Serif KR', serif`,
     },
   },

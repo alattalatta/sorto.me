@@ -9,6 +9,7 @@ import { parse } from './parse'
 const relative = path.join.bind(null, __dirname)
 
 del('data/*.json')
+  .then(() => fs.mkdir(relative('data'), { recursive: true }))
   .then(() => fs.readdir(relative('mdx')))
   .then((paths) => paths.filter((it) => it.endsWith('.mdx')))
   .then((paths) => paths.reverse().map((it) => relative('mdx', it)))

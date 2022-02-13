@@ -6,10 +6,8 @@ import { all } from 'remark-rehype'
 
 import { compile as compileMDX } from './lib/compile'
 import { rehypeCodeblockDataAttr } from './rehypeCodeblockDataAttr'
-import { remarkCallout } from './remarkCallout'
 import { remarkDefinitionList } from './remarkDefinitionList'
-import { remarkHeadingProcessor } from './remarkHeadingProcessor'
-import { remarkImageDimensions } from './remarkImageDimensions'
+import { remarkPlugin } from './remarkPlugin'
 
 async function compile(source: string): Promise<string> {
   const compiled = await compileMDX(source, {
@@ -22,7 +20,7 @@ async function compile(source: string): Promise<string> {
           behavior: 'wrap',
         }),
     ],
-    remarkPlugins: [remarkGfm, remarkCallout, remarkDefinitionList, remarkHeadingProcessor, remarkImageDimensions],
+    remarkPlugins: [remarkGfm, remarkDefinitionList, remarkPlugin],
     remarkRehypeOptions: {
       handlers: {
         definitionList: (h, node) => h(node, 'dl', all(h, node)),
@@ -32,6 +30,8 @@ async function compile(source: string): Promise<string> {
     },
   })
 
+  // can't minify it directly since it's a function body without its function declaration, which is syntax error
+  //   wrap it in a function declaration so that swc can minify it
   return String((await minify(`(()=>{${compiled}})()`, { compress: true, mangle: true })).code.slice(6, -4))
 }
 

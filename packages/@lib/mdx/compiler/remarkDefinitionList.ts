@@ -2,21 +2,12 @@ import { head } from 'fp-ts/lib/Array'
 import * as O from 'fp-ts/lib/Option'
 import { pipe } from 'fp-ts/lib/function'
 import Slugger from 'github-slugger'
-import type {
-  BlockContent,
-  DefinitionContent,
-  List,
-  Paragraph,
-  PhrasingContent,
-  Root,
-  Text,
-  Term,
-  TermDescription,
-  DefinitionList,
-} from 'mdast'
+import type { List, PhrasingContent, Root, Text, Term, TermDescription, DefinitionList } from 'mdast'
 import { toString } from 'mdast-util-to-string'
 import type { Plugin } from 'unified'
 import { visit } from 'unist-util-visit'
+
+import { isNodeList, isNodeParagraph, isNodeText } from './remarkPlugin/refinements'
 
 const remarkDefinitionList: Plugin<void[], Root> = () => {
   const slugs = new Slugger()
@@ -42,10 +33,6 @@ const remarkDefinitionList: Plugin<void[], Root> = () => {
 }
 
 export { remarkDefinitionList }
-
-const isNodeList = (node: BlockContent | DefinitionContent): node is List => node.type === 'list'
-const isNodeParagraph = (node: BlockContent | DefinitionContent): node is Paragraph => node.type === 'paragraph'
-const isNodeText = (node: PhrasingContent): node is Text => node.type === 'text'
 
 function bissectDefinitionList(
   node: List,

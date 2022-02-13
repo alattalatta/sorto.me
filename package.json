@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "turbo run build",
+    "build": "turbo run build --scope='@app/web' --no-deps --include-dependencies",
     "dev": "turbo run dev",
     "watch": "nodemon -q",
     "turbo": "turbo"

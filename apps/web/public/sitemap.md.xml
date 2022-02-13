@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
   <loc>https://sorto.me/docs/Web</loc>
-  <lastmod>2022-02-07T16:22:46.160Z</lastmod>
+  <lastmod>2022-02-12T10:26:28.480Z</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/CSS</loc>
@@ -22,11 +22,11 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/CSS/font-family</loc>
-  <lastmod>2022-02-10T16:32:49.250Z</lastmod>
+  <lastmod>2022-02-13T08:56:34.530Z</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/CSS/font-weight</loc>
-  <lastmod>2022-02-10T16:32:49.250Z</lastmod>
+  <lastmod>2022-02-13T09:23:14.440Z</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/CSS/integer</loc>
@@ -70,7 +70,7 @@
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/article</loc>
-  <lastmod>2022-02-09T13:57:43.960Z</lastmod>
+  <lastmod>2022-02-13T08:46:48.800Z</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/docs/Web/HTML/Element/aside</loc>
@@ -374,7 +374,7 @@
 </url>
 <url>
   <loc>https://sorto.me/posts/2021-05-12+nominal</loc>
-  <lastmod>2022-02-07T09:21:27.110Z</lastmod>
+  <lastmod>2022-02-13T09:19:08.630Z</lastmod>
 </url>
 <url>
   <loc>https://sorto.me/posts/2021-03-16+variance</loc>
@@ -382,6 +382,6 @@
 </url>
 <url>
   <loc>https://sorto.me/posts/2021-02-18+alt</loc>
-  <lastmod>2022-02-07T14:28:52.100Z</lastmod>
+  <lastmod>2022-02-13T09:27:52.460Z</lastmod>
 </url>
 </urlset>

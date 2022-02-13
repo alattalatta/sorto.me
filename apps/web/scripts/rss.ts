@@ -33,9 +33,8 @@ export async function main(): Promise<void> {
     `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
 <channel>
-  <title>Sorto.me Blog</title>
+  <title>sorto.me</title>
   <link>https://sorto.me</link>
-  <description>웹 프엔 개발하기</description>
   <language>ko</language>
   <lastBuildDate>${new Date().toISOString()}</lastBuildDate>
 ${(await Promise.all(postEntriesAsync)).join('\n')}

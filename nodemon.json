@@ -1,5 +1,5 @@
 {
-  "exec": "pnpm turbo run build -- --scope=@contents* --no-deps --include-dependencies",
+  "exec": "rm -rf apps/web/.next/cache/webpack/server-development && pnpm turbo run build -- --scope=@contents* --no-deps --include-dependencies",
   "ext": "mdx",
   "watch": [
     "packages/@contents/docs/mdx",

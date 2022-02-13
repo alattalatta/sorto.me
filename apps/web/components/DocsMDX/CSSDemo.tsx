@@ -110,7 +110,8 @@ const CSSDemo: React.FC<Props> = ({ children, height, selector }) => {
       rootRef.current.querySelectorAll('code.language-css:not([hidden])').forEach((block, index) => {
         result.css.push(index === 0 ? selector.replace('$', block.textContent) : '')
 
-        block.addEventListener(
+        // add to pre, not code
+        block.parentElement.addEventListener(
           'click',
           () => {
             setCurrentBlockIdx(index)

@@ -1,4 +1,4 @@
-import { styled } from '@app/ui'
+import { styled } from '@lib/ui'
 import React from 'react'
 
 import { NoScreen } from 'components/basics'

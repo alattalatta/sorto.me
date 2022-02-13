@@ -1,4 +1,4 @@
-import { Input, styled } from '@app/ui'
+import { Input, styled } from '@lib/ui'
 import Head from 'next/head'
 
 type Props = {

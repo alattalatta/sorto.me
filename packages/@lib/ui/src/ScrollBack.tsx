@@ -31,7 +31,7 @@ const ScrollBack: React.VFC<{ className?: string }> = ({ className }) => {
   return (
     <FixedStrip className={className} css={{ transform: `translateY(${crossed ? 0 : '100%'})` }} position="bottom">
       <Root type="button" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-        <Arrow alt="" src={arrow.src} />
+        <Arrow alt="" src={arrow} />
         처음으로
       </Root>
     </FixedStrip>

@@ -1,6 +1,6 @@
-import { useMDXRenderer } from '@app/mdx'
-import type { PostMetadata } from '@app/posts'
-import { DocumentBody, Footer, Post, ScrollBack, styled } from '@app/ui'
+import type { PostMetadata } from '@contents/posts'
+import { useMDXRenderer } from '@lib/mdx'
+import { DocumentBody, Footer, Post, ScrollBack, styled } from '@lib/ui'
 import { motion as m } from 'framer-motion'
 import React from 'react'
 

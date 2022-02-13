@@ -1,5 +1,5 @@
 {
-  "name": "@app/ui",
+  "name": "@lib/ui",
   "version": "1.0.0",
   "private": true,
   "main": "./index.tsx",

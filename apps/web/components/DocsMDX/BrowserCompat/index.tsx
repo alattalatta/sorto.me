@@ -1,4 +1,4 @@
-import { styled } from '@app/ui'
+import { styled } from '@lib/ui'
 import type { CompatData, Identifier } from '@mdn/browser-compat-data/types'
 import { useEffect, useState } from 'react'
 

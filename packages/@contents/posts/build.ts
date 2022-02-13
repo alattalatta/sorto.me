@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs'
 import path from 'path'
 
-import { compile } from '@app/mdx/compiler'
+import { compile } from '@lib/mdx/compiler'
 import del from 'del'
 
 import { parse } from './parse'

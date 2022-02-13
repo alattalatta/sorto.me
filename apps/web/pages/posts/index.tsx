@@ -1,5 +1,5 @@
-import type { PostMetadata } from '@app/posts'
-import postIndex from '@app/posts/data/index.json'
+import type { PostMetadata } from '@contents/posts'
+import postIndex from '@contents/posts/data/index.json'
 import type { GetStaticProps } from 'next'
 import Head from 'next/head'
 import React from 'react'

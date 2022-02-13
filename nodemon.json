@@ -1,0 +1,9 @@
+{
+  "exec": "pnpm turbo run build -- --scope=@contents* --no-deps --include-dependencies",
+  "ext": "mdx",
+  "watch": [
+    "packages/@contents/docs/mdx",
+    "packages/@contents/posts/mdx"
+  ],
+  "q": true
+}

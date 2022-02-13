@@ -1,4 +1,4 @@
-import { Splash, styled } from '@app/ui'
+import { Splash, styled } from '@lib/ui'
 
 const Root = styled('main', {})
 

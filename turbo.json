@@ -7,11 +7,7 @@
     },
     "dev": {
       "cache": false,
-      "dependsOn": ["@app/docs#build", "@app/posts#build"]
-    },
-    "watch": {
-      "cache": false,
-      "dependsOn": ["^build"]
+      "dependsOn": ["@contents/docs#build", "@contents/posts#build"]
     },
     "test": {}
   }

@@ -58,18 +58,18 @@ var __toCommonJS = /* @__PURE__ */ ((cache) => {
   };
 })(typeof WeakMap !== "undefined" ? /* @__PURE__ */ new WeakMap() : 0);
 
-// ../../node_modules/.pnpm/is-buffer@2.0.5/node_modules/is-buffer/index.js
+// ../../../node_modules/.pnpm/is-buffer@2.0.5/node_modules/is-buffer/index.js
 var require_is_buffer = __commonJS({
-  "../../node_modules/.pnpm/is-buffer@2.0.5/node_modules/is-buffer/index.js"(exports, module2) {
+  "../../../node_modules/.pnpm/is-buffer@2.0.5/node_modules/is-buffer/index.js"(exports, module2) {
     module2.exports = function isBuffer2(obj) {
       return obj != null && obj.constructor != null && typeof obj.constructor.isBuffer === "function" && obj.constructor.isBuffer(obj);
     };
   }
 });
 
-// ../../node_modules/.pnpm/extend@3.0.2/node_modules/extend/index.js
+// ../../../node_modules/.pnpm/extend@3.0.2/node_modules/extend/index.js
 var require_extend = __commonJS({
-  "../../node_modules/.pnpm/extend@3.0.2/node_modules/extend/index.js"(exports, module2) {
+  "../../../node_modules/.pnpm/extend@3.0.2/node_modules/extend/index.js"(exports, module2) {
     "use strict";
     var hasOwn2 = Object.prototype.hasOwnProperty;
     var toStr = Object.prototype.toString;
@@ -158,9 +158,9 @@ var require_extend = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/acorn-jsx@5.3.2_acorn@8.7.0/node_modules/acorn-jsx/xhtml.js
+// ../../../node_modules/.pnpm/acorn-jsx@5.3.2_acorn@8.7.0/node_modules/acorn-jsx/xhtml.js
 var require_xhtml = __commonJS({
-  "../../node_modules/.pnpm/acorn-jsx@5.3.2_acorn@8.7.0/node_modules/acorn-jsx/xhtml.js"(exports, module2) {
+  "../../../node_modules/.pnpm/acorn-jsx@5.3.2_acorn@8.7.0/node_modules/acorn-jsx/xhtml.js"(exports, module2) {
     module2.exports = {
       quot: '"',
       amp: "&",
@@ -419,9 +419,9 @@ var require_xhtml = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/acorn@8.7.0/node_modules/acorn/dist/acorn.js
+// ../../../node_modules/.pnpm/acorn@8.7.0/node_modules/acorn/dist/acorn.js
 var require_acorn = __commonJS({
-  "../../node_modules/.pnpm/acorn@8.7.0/node_modules/acorn/dist/acorn.js"(exports, module2) {
+  "../../../node_modules/.pnpm/acorn@8.7.0/node_modules/acorn/dist/acorn.js"(exports, module2) {
     (function(global, factory2) {
       typeof exports === "object" && typeof module2 !== "undefined" ? factory2(exports) : typeof define === "function" && define.amd ? define(["exports"], factory2) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory2(global.acorn = {}));
     })(exports, function(exports2) {
@@ -5166,9 +5166,9 @@ var require_acorn = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/acorn-jsx@5.3.2_acorn@8.7.0/node_modules/acorn-jsx/index.js
+// ../../../node_modules/.pnpm/acorn-jsx@5.3.2_acorn@8.7.0/node_modules/acorn-jsx/index.js
 var require_acorn_jsx = __commonJS({
-  "../../node_modules/.pnpm/acorn-jsx@5.3.2_acorn@8.7.0/node_modules/acorn-jsx/index.js"(exports, module2) {
+  "../../../node_modules/.pnpm/acorn-jsx@5.3.2_acorn@8.7.0/node_modules/acorn-jsx/index.js"(exports, module2) {
     "use strict";
     var XHTMLEntities = require_xhtml();
     var hexNumber = /^[\da-fA-F]+$/;
@@ -5568,9 +5568,9 @@ var require_acorn_jsx = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/mdurl@1.0.1/node_modules/mdurl/encode.js
+// ../../../node_modules/.pnpm/mdurl@1.0.1/node_modules/mdurl/encode.js
 var require_encode = __commonJS({
-  "../../node_modules/.pnpm/mdurl@1.0.1/node_modules/mdurl/encode.js"(exports, module2) {
+  "../../../node_modules/.pnpm/mdurl@1.0.1/node_modules/mdurl/encode.js"(exports, module2) {
     "use strict";
     var encodeCache = {};
     function getEncodeCache(exclude) {
@@ -5637,9 +5637,9 @@ var require_encode = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/inline-style-parser@0.1.1/node_modules/inline-style-parser/index.js
+// ../../../node_modules/.pnpm/inline-style-parser@0.1.1/node_modules/inline-style-parser/index.js
 var require_inline_style_parser = __commonJS({
-  "../../node_modules/.pnpm/inline-style-parser@0.1.1/node_modules/inline-style-parser/index.js"(exports, module2) {
+  "../../../node_modules/.pnpm/inline-style-parser@0.1.1/node_modules/inline-style-parser/index.js"(exports, module2) {
     var COMMENT_REGEX = /\/\*[^*]*\*+([^/*][^*]*\*+)*\//g;
     var NEWLINE_REGEX = /\n/g;
     var WHITESPACE_REGEX = /^\s*/;
@@ -5780,9 +5780,9 @@ var require_inline_style_parser = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/style-to-object@0.3.0/node_modules/style-to-object/index.js
+// ../../../node_modules/.pnpm/style-to-object@0.3.0/node_modules/style-to-object/index.js
 var require_style_to_object = __commonJS({
-  "../../node_modules/.pnpm/style-to-object@0.3.0/node_modules/style-to-object/index.js"(exports, module2) {
+  "../../../node_modules/.pnpm/style-to-object@0.3.0/node_modules/style-to-object/index.js"(exports, module2) {
     var parse4 = require_inline_style_parser();
     function StyleToObject(style2, iterator) {
       var output = null;
@@ -5811,9 +5811,9 @@ var require_style_to_object = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/markdown-extensions@1.1.1/node_modules/markdown-extensions/markdown-extensions.json
+// ../../../node_modules/.pnpm/markdown-extensions@1.1.1/node_modules/markdown-extensions/markdown-extensions.json
 var require_markdown_extensions = __commonJS({
-  "../../node_modules/.pnpm/markdown-extensions@1.1.1/node_modules/markdown-extensions/markdown-extensions.json"(exports, module2) {
+  "../../../node_modules/.pnpm/markdown-extensions@1.1.1/node_modules/markdown-extensions/markdown-extensions.json"(exports, module2) {
     module2.exports = [
       "md",
       "markdown",
@@ -5827,17 +5827,17 @@ var require_markdown_extensions = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/markdown-extensions@1.1.1/node_modules/markdown-extensions/index.js
+// ../../../node_modules/.pnpm/markdown-extensions@1.1.1/node_modules/markdown-extensions/index.js
 var require_markdown_extensions2 = __commonJS({
-  "../../node_modules/.pnpm/markdown-extensions@1.1.1/node_modules/markdown-extensions/index.js"(exports, module2) {
+  "../../../node_modules/.pnpm/markdown-extensions@1.1.1/node_modules/markdown-extensions/index.js"(exports, module2) {
     "use strict";
     module2.exports = require_markdown_extensions();
   }
 });
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/lib/core.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/lib/core.js
 var require_core = __commonJS({
-  "../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/lib/core.js"(exports, module2) {
+  "../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/lib/core.js"(exports, module2) {
     var deepFreezeEs6 = { exports: {} };
     function deepFreeze(obj) {
       if (obj instanceof Map) {
@@ -7230,9 +7230,9 @@ var require_core = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/format@0.2.2/node_modules/format/format.js
+// ../../../node_modules/.pnpm/format@0.2.2/node_modules/format/format.js
 var require_format = __commonJS({
-  "../../node_modules/.pnpm/format@0.2.2/node_modules/format/format.js"(exports, module2) {
+  "../../../node_modules/.pnpm/format@0.2.2/node_modules/format/format.js"(exports, module2) {
     (function() {
       var namespace;
       if (typeof module2 !== "undefined") {
@@ -7328,16 +7328,16 @@ var require_format = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/github-slugger@1.4.0/node_modules/github-slugger/regex.js
+// ../../../node_modules/.pnpm/github-slugger@1.4.0/node_modules/github-slugger/regex.js
 var require_regex = __commonJS({
-  "../../node_modules/.pnpm/github-slugger@1.4.0/node_modules/github-slugger/regex.js"(exports, module2) {
+  "../../../node_modules/.pnpm/github-slugger@1.4.0/node_modules/github-slugger/regex.js"(exports, module2) {
     module2.exports = /[\0-\x1F!-,\.\/:-@\[-\^`\{-\xA9\xAB-\xB4\xB6-\xB9\xBB-\xBF\xD7\xF7\u02C2-\u02C5\u02D2-\u02DF\u02E5-\u02EB\u02ED\u02EF-\u02FF\u0375\u0378\u0379\u037E\u0380-\u0385\u0387\u038B\u038D\u03A2\u03F6\u0482\u0530\u0557\u0558\u055A-\u055F\u0589-\u0590\u05BE\u05C0\u05C3\u05C6\u05C8-\u05CF\u05EB-\u05EE\u05F3-\u060F\u061B-\u061F\u066A-\u066D\u06D4\u06DD\u06DE\u06E9\u06FD\u06FE\u0700-\u070F\u074B\u074C\u07B2-\u07BF\u07F6-\u07F9\u07FB\u07FC\u07FE\u07FF\u082E-\u083F\u085C-\u085F\u086B-\u089F\u08B5\u08BE-\u08D2\u08E2\u0964\u0965\u0970\u0984\u098D\u098E\u0991\u0992\u09A9\u09B1\u09B3-\u09B5\u09BA\u09BB\u09C5\u09C6\u09C9\u09CA\u09CF-\u09D6\u09D8-\u09DB\u09DE\u09E4\u09E5\u09F2-\u09FB\u09FD\u09FF\u0A00\u0A04\u0A0B-\u0A0E\u0A11\u0A12\u0A29\u0A31\u0A34\u0A37\u0A3A\u0A3B\u0A3D\u0A43-\u0A46\u0A49\u0A4A\u0A4E-\u0A50\u0A52-\u0A58\u0A5D\u0A5F-\u0A65\u0A76-\u0A80\u0A84\u0A8E\u0A92\u0AA9\u0AB1\u0AB4\u0ABA\u0ABB\u0AC6\u0ACA\u0ACE\u0ACF\u0AD1-\u0ADF\u0AE4\u0AE5\u0AF0-\u0AF8\u0B00\u0B04\u0B0D\u0B0E\u0B11\u0B12\u0B29\u0B31\u0B34\u0B3A\u0B3B\u0B45\u0B46\u0B49\u0B4A\u0B4E-\u0B55\u0B58-\u0B5B\u0B5E\u0B64\u0B65\u0B70\u0B72-\u0B81\u0B84\u0B8B-\u0B8D\u0B91\u0B96-\u0B98\u0B9B\u0B9D\u0BA0-\u0BA2\u0BA5-\u0BA7\u0BAB-\u0BAD\u0BBA-\u0BBD\u0BC3-\u0BC5\u0BC9\u0BCE\u0BCF\u0BD1-\u0BD6\u0BD8-\u0BE5\u0BF0-\u0BFF\u0C0D\u0C11\u0C29\u0C3A-\u0C3C\u0C45\u0C49\u0C4E-\u0C54\u0C57\u0C5B-\u0C5F\u0C64\u0C65\u0C70-\u0C7F\u0C84\u0C8D\u0C91\u0CA9\u0CB4\u0CBA\u0CBB\u0CC5\u0CC9\u0CCE-\u0CD4\u0CD7-\u0CDD\u0CDF\u0CE4\u0CE5\u0CF0\u0CF3-\u0CFF\u0D04\u0D0D\u0D11\u0D45\u0D49\u0D4F-\u0D53\u0D58-\u0D5E\u0D64\u0D65\u0D70-\u0D79\u0D80\u0D81\u0D84\u0D97-\u0D99\u0DB2\u0DBC\u0DBE\u0DBF\u0DC7-\u0DC9\u0DCB-\u0DCE\u0DD5\u0DD7\u0DE0-\u0DE5\u0DF0\u0DF1\u0DF4-\u0E00\u0E3B-\u0E3F\u0E4F\u0E5A-\u0E80\u0E83\u0E85\u0E8B\u0EA4\u0EA6\u0EBE\u0EBF\u0EC5\u0EC7\u0ECE\u0ECF\u0EDA\u0EDB\u0EE0-\u0EFF\u0F01-\u0F17\u0F1A-\u0F1F\u0F2A-\u0F34\u0F36\u0F38\u0F3A-\u0F3D\u0F48\u0F6D-\u0F70\u0F85\u0F98\u0FBD-\u0FC5\u0FC7-\u0FFF\u104A-\u104F\u109E\u109F\u10C6\u10C8-\u10CC\u10CE\u10CF\u10FB\u1249\u124E\u124F\u1257\u1259\u125E\u125F\u1289\u128E\u128F\u12B1\u12B6\u12B7\u12BF\u12C1\u12C6\u12C7\u12D7\u1311\u1316\u1317\u135B\u135C\u1360-\u137F\u1390-\u139F\u13F6\u13F7\u13FE-\u1400\u166D\u166E\u1680\u169B-\u169F\u16EB-\u16ED\u16F9-\u16FF\u170D\u1715-\u171F\u1735-\u173F\u1754-\u175F\u176D\u1771\u1774-\u177F\u17D4-\u17D6\u17D8-\u17DB\u17DE\u17DF\u17EA-\u180A\u180E\u180F\u181A-\u181F\u1879-\u187F\u18AB-\u18AF\u18F6-\u18FF\u191F\u192C-\u192F\u193C-\u1945\u196E\u196F\u1975-\u197F\u19AC-\u19AF\u19CA-\u19CF\u19DA-\u19FF\u1A1C-\u1A1F\u1A5F\u1A7D\u1A7E\u1A8A-\u1A8F\u1A9A-\u1AA6\u1AA8-\u1AAF\u1ABF-\u1AFF\u1B4C-\u1B4F\u1B5A-\u1B6A\u1B74-\u1B7F\u1BF4-\u1BFF\u1C38-\u1C3F\u1C4A-\u1C4C\u1C7E\u1C7F\u1C89-\u1C8F\u1CBB\u1CBC\u1CC0-\u1CCF\u1CD3\u1CFB-\u1CFF\u1DFA\u1F16\u1F17\u1F1E\u1F1F\u1F46\u1F47\u1F4E\u1F4F\u1F58\u1F5A\u1F5C\u1F5E\u1F7E\u1F7F\u1FB5\u1FBD\u1FBF-\u1FC1\u1FC5\u1FCD-\u1FCF\u1FD4\u1FD5\u1FDC-\u1FDF\u1FED-\u1FF1\u1FF5\u1FFD-\u203E\u2041-\u2053\u2055-\u2070\u2072-\u207E\u2080-\u208F\u209D-\u20CF\u20F1-\u2101\u2103-\u2106\u2108\u2109\u2114\u2116-\u2118\u211E-\u2123\u2125\u2127\u2129\u212E\u213A\u213B\u2140-\u2144\u214A-\u214D\u214F-\u215F\u2189-\u24B5\u24EA-\u2BFF\u2C2F\u2C5F\u2CE5-\u2CEA\u2CF4-\u2CFF\u2D26\u2D28-\u2D2C\u2D2E\u2D2F\u2D68-\u2D6E\u2D70-\u2D7E\u2D97-\u2D9F\u2DA7\u2DAF\u2DB7\u2DBF\u2DC7\u2DCF\u2DD7\u2DDF\u2E00-\u2E2E\u2E30-\u3004\u3008-\u3020\u3030\u3036\u3037\u303D-\u3040\u3097\u3098\u309B\u309C\u30A0\u30FB\u3100-\u3104\u3130\u318F-\u319F\u31BB-\u31EF\u3200-\u33FF\u4DB6-\u4DFF\u9FF0-\u9FFF\uA48D-\uA4CF\uA4FE\uA4FF\uA60D-\uA60F\uA62C-\uA63F\uA673\uA67E\uA6F2-\uA716\uA720\uA721\uA789\uA78A\uA7C0\uA7C1\uA7C7-\uA7F6\uA828-\uA83F\uA874-\uA87F\uA8C6-\uA8CF\uA8DA-\uA8DF\uA8F8-\uA8FA\uA8FC\uA92E\uA92F\uA954-\uA95F\uA97D-\uA97F\uA9C1-\uA9CE\uA9DA-\uA9DF\uA9FF\uAA37-\uAA3F\uAA4E\uAA4F\uAA5A-\uAA5F\uAA77-\uAA79\uAAC3-\uAADA\uAADE\uAADF\uAAF0\uAAF1\uAAF7-\uAB00\uAB07\uAB08\uAB0F\uAB10\uAB17-\uAB1F\uAB27\uAB2F\uAB5B\uAB68-\uAB6F\uABEB\uABEE\uABEF\uABFA-\uABFF\uD7A4-\uD7AF\uD7C7-\uD7CA\uD7FC-\uD7FF\uE000-\uF8FF\uFA6E\uFA6F\uFADA-\uFAFF\uFB07-\uFB12\uFB18-\uFB1C\uFB29\uFB37\uFB3D\uFB3F\uFB42\uFB45\uFBB2-\uFBD2\uFD3E-\uFD4F\uFD90\uFD91\uFDC8-\uFDEF\uFDFC-\uFDFF\uFE10-\uFE1F\uFE30-\uFE32\uFE35-\uFE4C\uFE50-\uFE6F\uFE75\uFEFD-\uFF0F\uFF1A-\uFF20\uFF3B-\uFF3E\uFF40\uFF5B-\uFF65\uFFBF-\uFFC1\uFFC8\uFFC9\uFFD0\uFFD1\uFFD8\uFFD9\uFFDD-\uFFFF]|\uD800[\uDC0C\uDC27\uDC3B\uDC3E\uDC4E\uDC4F\uDC5E-\uDC7F\uDCFB-\uDD3F\uDD75-\uDDFC\uDDFE-\uDE7F\uDE9D-\uDE9F\uDED1-\uDEDF\uDEE1-\uDEFF\uDF20-\uDF2C\uDF4B-\uDF4F\uDF7B-\uDF7F\uDF9E\uDF9F\uDFC4-\uDFC7\uDFD0\uDFD6-\uDFFF]|\uD801[\uDC9E\uDC9F\uDCAA-\uDCAF\uDCD4-\uDCD7\uDCFC-\uDCFF\uDD28-\uDD2F\uDD64-\uDDFF\uDF37-\uDF3F\uDF56-\uDF5F\uDF68-\uDFFF]|\uD802[\uDC06\uDC07\uDC09\uDC36\uDC39-\uDC3B\uDC3D\uDC3E\uDC56-\uDC5F\uDC77-\uDC7F\uDC9F-\uDCDF\uDCF3\uDCF6-\uDCFF\uDD16-\uDD1F\uDD3A-\uDD7F\uDDB8-\uDDBD\uDDC0-\uDDFF\uDE04\uDE07-\uDE0B\uDE14\uDE18\uDE36\uDE37\uDE3B-\uDE3E\uDE40-\uDE5F\uDE7D-\uDE7F\uDE9D-\uDEBF\uDEC8\uDEE7-\uDEFF\uDF36-\uDF3F\uDF56-\uDF5F\uDF73-\uDF7F\uDF92-\uDFFF]|\uD803[\uDC49-\uDC7F\uDCB3-\uDCBF\uDCF3-\uDCFF\uDD28-\uDD2F\uDD3A-\uDEFF\uDF1D-\uDF26\uDF28-\uDF2F\uDF51-\uDFDF\uDFF7-\uDFFF]|\uD804[\uDC47-\uDC65\uDC70-\uDC7E\uDCBB-\uDCCF\uDCE9-\uDCEF\uDCFA-\uDCFF\uDD35\uDD40-\uDD43\uDD47-\uDD4F\uDD74\uDD75\uDD77-\uDD7F\uDDC5-\uDDC8\uDDCD-\uDDCF\uDDDB\uDDDD-\uDDFF\uDE12\uDE38-\uDE3D\uDE3F-\uDE7F\uDE87\uDE89\uDE8E\uDE9E\uDEA9-\uDEAF\uDEEB-\uDEEF\uDEFA-\uDEFF\uDF04\uDF0D\uDF0E\uDF11\uDF12\uDF29\uDF31\uDF34\uDF3A\uDF45\uDF46\uDF49\uDF4A\uDF4E\uDF4F\uDF51-\uDF56\uDF58-\uDF5C\uDF64\uDF65\uDF6D-\uDF6F\uDF75-\uDFFF]|\uD805[\uDC4B-\uDC4F\uDC5A-\uDC5D\uDC60-\uDC7F\uDCC6\uDCC8-\uDCCF\uDCDA-\uDD7F\uDDB6\uDDB7\uDDC1-\uDDD7\uDDDE-\uDDFF\uDE41-\uDE43\uDE45-\uDE4F\uDE5A-\uDE7F\uDEB9-\uDEBF\uDECA-\uDEFF\uDF1B\uDF1C\uDF2C-\uDF2F\uDF3A-\uDFFF]|\uD806[\uDC3B-\uDC9F\uDCEA-\uDCFE\uDD00-\uDD9F\uDDA8\uDDA9\uDDD8\uDDD9\uDDE2\uDDE5-\uDDFF\uDE3F-\uDE46\uDE48-\uDE4F\uDE9A-\uDE9C\uDE9E-\uDEBF\uDEF9-\uDFFF]|\uD807[\uDC09\uDC37\uDC41-\uDC4F\uDC5A-\uDC71\uDC90\uDC91\uDCA8\uDCB7-\uDCFF\uDD07\uDD0A\uDD37-\uDD39\uDD3B\uDD3E\uDD48-\uDD4F\uDD5A-\uDD5F\uDD66\uDD69\uDD8F\uDD92\uDD99-\uDD9F\uDDAA-\uDEDF\uDEF7-\uDFFF]|\uD808[\uDF9A-\uDFFF]|\uD809[\uDC6F-\uDC7F\uDD44-\uDFFF]|[\uD80A\uD80B\uD80E-\uD810\uD812-\uD819\uD823-\uD82B\uD82D\uD82E\uD830-\uD833\uD837\uD839\uD83D-\uD83F\uD87B-\uD87D\uD87F-\uDB3F\uDB41-\uDBFF][\uDC00-\uDFFF]|\uD80D[\uDC2F-\uDFFF]|\uD811[\uDE47-\uDFFF]|\uD81A[\uDE39-\uDE3F\uDE5F\uDE6A-\uDECF\uDEEE\uDEEF\uDEF5-\uDEFF\uDF37-\uDF3F\uDF44-\uDF4F\uDF5A-\uDF62\uDF78-\uDF7C\uDF90-\uDFFF]|\uD81B[\uDC00-\uDE3F\uDE80-\uDEFF\uDF4B-\uDF4E\uDF88-\uDF8E\uDFA0-\uDFDF\uDFE2\uDFE4-\uDFFF]|\uD821[\uDFF8-\uDFFF]|\uD822[\uDEF3-\uDFFF]|\uD82C[\uDD1F-\uDD4F\uDD53-\uDD63\uDD68-\uDD6F\uDEFC-\uDFFF]|\uD82F[\uDC6B-\uDC6F\uDC7D-\uDC7F\uDC89-\uDC8F\uDC9A-\uDC9C\uDC9F-\uDFFF]|\uD834[\uDC00-\uDD64\uDD6A-\uDD6C\uDD73-\uDD7A\uDD83\uDD84\uDD8C-\uDDA9\uDDAE-\uDE41\uDE45-\uDFFF]|\uD835[\uDC55\uDC9D\uDCA0\uDCA1\uDCA3\uDCA4\uDCA7\uDCA8\uDCAD\uDCBA\uDCBC\uDCC4\uDD06\uDD0B\uDD0C\uDD15\uDD1D\uDD3A\uDD3F\uDD45\uDD47-\uDD49\uDD51\uDEA6\uDEA7\uDEC1\uDEDB\uDEFB\uDF15\uDF35\uDF4F\uDF6F\uDF89\uDFA9\uDFC3\uDFCC\uDFCD]|\uD836[\uDC00-\uDDFF\uDE37-\uDE3A\uDE6D-\uDE74\uDE76-\uDE83\uDE85-\uDE9A\uDEA0\uDEB0-\uDFFF]|\uD838[\uDC07\uDC19\uDC1A\uDC22\uDC25\uDC2B-\uDCFF\uDD2D-\uDD2F\uDD3E\uDD3F\uDD4A-\uDD4D\uDD4F-\uDEBF\uDEFA-\uDFFF]|\uD83A[\uDCC5-\uDCCF\uDCD7-\uDCFF\uDD4C-\uDD4F\uDD5A-\uDFFF]|\uD83B[\uDC00-\uDDFF\uDE04\uDE20\uDE23\uDE25\uDE26\uDE28\uDE33\uDE38\uDE3A\uDE3C-\uDE41\uDE43-\uDE46\uDE48\uDE4A\uDE4C\uDE50\uDE53\uDE55\uDE56\uDE58\uDE5A\uDE5C\uDE5E\uDE60\uDE63\uDE65\uDE66\uDE6B\uDE73\uDE78\uDE7D\uDE7F\uDE8A\uDE9C-\uDEA0\uDEA4\uDEAA\uDEBC-\uDFFF]|\uD83C[\uDC00-\uDD2F\uDD4A-\uDD4F\uDD6A-\uDD6F\uDD8A-\uDFFF]|\uD869[\uDED7-\uDEFF]|\uD86D[\uDF35-\uDF3F]|\uD86E[\uDC1E\uDC1F]|\uD873[\uDEA2-\uDEAF]|\uD87A[\uDFE1-\uDFFF]|\uD87E[\uDE1E-\uDFFF]|\uDB40[\uDC00-\uDCFF\uDDF0-\uDFFF]/g;
   }
 });
 
-// ../../node_modules/.pnpm/github-slugger@1.4.0/node_modules/github-slugger/index.js
+// ../../../node_modules/.pnpm/github-slugger@1.4.0/node_modules/github-slugger/index.js
 var require_github_slugger = __commonJS({
-  "../../node_modules/.pnpm/github-slugger@1.4.0/node_modules/github-slugger/index.js"(exports, module2) {
+  "../../../node_modules/.pnpm/github-slugger@1.4.0/node_modules/github-slugger/index.js"(exports, module2) {
     var regex2 = require_regex();
     module2.exports = BananaSlug;
     var own18 = Object.hasOwnProperty;
@@ -7372,9 +7372,9 @@ var require_github_slugger = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/function.js
+// ../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/function.js
 var require_function = __commonJS({
-  "../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/function.js"(exports) {
+  "../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/function.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.getEndomorphismMonoid = exports.not = exports.SK = exports.hole = exports.pipe = exports.untupled = exports.tupled = exports.absurd = exports.decrement = exports.increment = exports.tuple = exports.flow = exports.flip = exports.constVoid = exports.constUndefined = exports.constNull = exports.constFalse = exports.constTrue = exports.constant = exports.unsafeCoerce = exports.identity = exports.apply = exports.getRing = exports.getSemiring = exports.getMonoid = exports.getSemigroup = exports.getBooleanAlgebra = void 0;
@@ -7627,9 +7627,9 @@ var require_function = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Apply.js
+// ../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Apply.js
 var require_Apply = __commonJS({
-  "../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Apply.js"(exports) {
+  "../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Apply.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.sequenceS = exports.sequenceT = exports.getApplySemigroup = exports.apS = exports.apSecond = exports.apFirst = exports.ap = void 0;
@@ -7844,9 +7844,9 @@ var require_Apply = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Chain.js
+// ../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Chain.js
 var require_Chain = __commonJS({
-  "../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Chain.js"(exports) {
+  "../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Chain.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.bind = exports.chainFirst = void 0;
@@ -7878,9 +7878,9 @@ var require_Chain = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/internal.js
+// ../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/internal.js
 var require_internal = __commonJS({
-  "../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/internal.js"(exports) {
+  "../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/internal.js"(exports) {
     "use strict";
     var __spreadArray = exports && exports.__spreadArray || function(to, from) {
       for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
@@ -7944,9 +7944,9 @@ var require_internal = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/FromEither.js
+// ../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/FromEither.js
 var require_FromEither = __commonJS({
-  "../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/FromEither.js"(exports) {
+  "../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/FromEither.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -8046,9 +8046,9 @@ var require_FromEither = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Functor.js
+// ../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Functor.js
 var require_Functor = __commonJS({
-  "../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Functor.js"(exports) {
+  "../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Functor.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.getFunctorComposition = exports.bindTo = exports.flap = exports.map = void 0;
@@ -8096,9 +8096,9 @@ var require_Functor = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Eq.js
+// ../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Eq.js
 var require_Eq = __commonJS({
-  "../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Eq.js"(exports) {
+  "../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Eq.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.eqDate = exports.eqNumber = exports.eqString = exports.eqBoolean = exports.eq = exports.strictEqual = exports.getStructEq = exports.getTupleEq = exports.Contravariant = exports.getMonoid = exports.getSemigroup = exports.eqStrict = exports.URI = exports.contramap = exports.tuple = exports.struct = exports.fromEquals = void 0;
@@ -8192,9 +8192,9 @@ var require_Eq = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Ord.js
+// ../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Ord.js
 var require_Ord = __commonJS({
-  "../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Ord.js"(exports) {
+  "../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Ord.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ordDate = exports.ordNumber = exports.ordString = exports.ordBoolean = exports.ord = exports.getDualOrd = exports.getTupleOrd = exports.between = exports.clamp = exports.max = exports.min = exports.geq = exports.leq = exports.gt = exports.lt = exports.equals = exports.trivial = exports.Contravariant = exports.getMonoid = exports.getSemigroup = exports.URI = exports.contramap = exports.reverse = exports.tuple = exports.fromCompare = exports.equalsDefault = void 0;
@@ -8361,9 +8361,9 @@ var require_Ord = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Magma.js
+// ../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Magma.js
 var require_Magma = __commonJS({
-  "../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Magma.js"(exports) {
+  "../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Magma.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.concatAll = exports.endo = exports.filterSecond = exports.filterFirst = exports.reverse = void 0;
@@ -8418,9 +8418,9 @@ var require_Magma = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Semigroup.js
+// ../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Semigroup.js
 var require_Semigroup = __commonJS({
-  "../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Semigroup.js"(exports) {
+  "../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Semigroup.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -8579,9 +8579,9 @@ var require_Semigroup = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/ReadonlyNonEmptyArray.js
+// ../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/ReadonlyNonEmptyArray.js
 var require_ReadonlyNonEmptyArray = __commonJS({
-  "../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/ReadonlyNonEmptyArray.js"(exports) {
+  "../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/ReadonlyNonEmptyArray.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -9356,9 +9356,9 @@ var require_ReadonlyNonEmptyArray = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/NonEmptyArray.js
+// ../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/NonEmptyArray.js
 var require_NonEmptyArray = __commonJS({
-  "../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/NonEmptyArray.js"(exports) {
+  "../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/NonEmptyArray.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -10065,9 +10065,9 @@ var require_NonEmptyArray = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/number.js
+// ../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/number.js
 var require_number = __commonJS({
-  "../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/number.js"(exports) {
+  "../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/number.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.Field = exports.MonoidProduct = exports.MonoidSum = exports.SemigroupProduct = exports.SemigroupSum = exports.MagmaSub = exports.Show = exports.Bounded = exports.Ord = exports.Eq = exports.isNumber = void 0;
@@ -10139,9 +10139,9 @@ var require_number = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Separated.js
+// ../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Separated.js
 var require_Separated = __commonJS({
-  "../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Separated.js"(exports) {
+  "../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Separated.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.right = exports.left = exports.flap = exports.Functor = exports.Bifunctor = exports.URI = exports.bimap = exports.mapLeft = exports.map = exports.separated = void 0;
@@ -10200,9 +10200,9 @@ var require_Separated = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Witherable.js
+// ../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Witherable.js
 var require_Witherable = __commonJS({
-  "../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Witherable.js"(exports) {
+  "../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Witherable.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -10271,9 +10271,9 @@ var require_Witherable = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Zero.js
+// ../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Zero.js
 var require_Zero = __commonJS({
-  "../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Zero.js"(exports) {
+  "../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Zero.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.guard = void 0;
@@ -10286,9 +10286,9 @@ var require_Zero = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/ReadonlyArray.js
+// ../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/ReadonlyArray.js
 var require_ReadonlyArray = __commonJS({
-  "../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/ReadonlyArray.js"(exports) {
+  "../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/ReadonlyArray.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -11549,9 +11549,9 @@ var require_ReadonlyArray = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Array.js
+// ../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Array.js
 var require_Array = __commonJS({
-  "../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Array.js"(exports) {
+  "../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Array.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -12587,9 +12587,9 @@ var require_Array = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Applicative.js
+// ../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Applicative.js
 var require_Applicative = __commonJS({
-  "../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Applicative.js"(exports) {
+  "../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Applicative.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.getApplicativeComposition = exports.getApplicativeMonoid = void 0;
@@ -12623,9 +12623,9 @@ var require_Applicative = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Predicate.js
+// ../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Predicate.js
 var require_Predicate = __commonJS({
-  "../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Predicate.js"(exports) {
+  "../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Predicate.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.and = exports.or = exports.not = exports.Contravariant = exports.getMonoidAll = exports.getSemigroupAll = exports.getMonoidAny = exports.getSemigroupAny = exports.URI = exports.contramap = void 0;
@@ -12699,9 +12699,9 @@ var require_Predicate = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Option.js
+// ../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Option.js
 var require_Option = __commonJS({
-  "../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Option.js"(exports) {
+  "../../../node_modules/.pnpm/fp-ts@2.11.8/node_modules/fp-ts/lib/Option.js"(exports) {
     "use strict";
     var __createBinding = exports && exports.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0)
@@ -13244,24 +13244,24 @@ var require_Option = __commonJS({
   }
 });
 
-// compile/index.ts
-var compile_exports = {};
-__export(compile_exports, {
+// compiler/index.ts
+var compiler_exports = {};
+__export(compiler_exports, {
   compile: () => compile2
 });
 
-// ../../node_modules/.pnpm/bail@2.0.2/node_modules/bail/index.js
+// ../../../node_modules/.pnpm/bail@2.0.2/node_modules/bail/index.js
 function bail(error) {
   if (error) {
     throw error;
   }
 }
 
-// ../../node_modules/.pnpm/unified@10.1.1/node_modules/unified/lib/index.js
+// ../../../node_modules/.pnpm/unified@10.1.1/node_modules/unified/lib/index.js
 var import_is_buffer2 = __toESM(require_is_buffer(), 1);
 var import_extend = __toESM(require_extend(), 1);
 
-// ../../node_modules/.pnpm/is-plain-obj@4.0.0/node_modules/is-plain-obj/index.js
+// ../../../node_modules/.pnpm/is-plain-obj@4.0.0/node_modules/is-plain-obj/index.js
 function isPlainObject(value) {
   if (Object.prototype.toString.call(value) !== "[object Object]") {
     return false;
@@ -13270,7 +13270,7 @@ function isPlainObject(value) {
   return prototype === null || prototype === Object.prototype;
 }
 
-// ../../node_modules/.pnpm/trough@2.0.2/node_modules/trough/index.js
+// ../../../node_modules/.pnpm/trough@2.0.2/node_modules/trough/index.js
 function trough() {
   const fns = [];
   const pipeline = { run, use };
@@ -13349,10 +13349,10 @@ function wrap(middleware, callback) {
   }
 }
 
-// ../../node_modules/.pnpm/vfile@5.3.0/node_modules/vfile/lib/index.js
+// ../../../node_modules/.pnpm/vfile@5.3.0/node_modules/vfile/lib/index.js
 var import_is_buffer = __toESM(require_is_buffer(), 1);
 
-// ../../node_modules/.pnpm/unist-util-stringify-position@3.0.0/node_modules/unist-util-stringify-position/index.js
+// ../../../node_modules/.pnpm/unist-util-stringify-position@3.0.0/node_modules/unist-util-stringify-position/index.js
 var own = {}.hasOwnProperty;
 function stringifyPosition(value) {
   if (!value || typeof value !== "object") {
@@ -13379,7 +13379,7 @@ function index(value) {
   return value && typeof value === "number" ? value : 1;
 }
 
-// ../../node_modules/.pnpm/vfile-message@3.1.0/node_modules/vfile-message/index.js
+// ../../../node_modules/.pnpm/vfile-message@3.1.0/node_modules/vfile-message/index.js
 var VFileMessage = class extends Error {
   constructor(reason, place, origin) {
     var parts = [null, null];
@@ -13442,21 +13442,21 @@ VFileMessage.prototype.source = null;
 VFileMessage.prototype.ruleId = null;
 VFileMessage.prototype.position = null;
 
-// ../../node_modules/.pnpm/vfile@5.3.0/node_modules/vfile/lib/minpath.js
+// ../../../node_modules/.pnpm/vfile@5.3.0/node_modules/vfile/lib/minpath.js
 var import_path = __toESM(require("path"), 1);
 
-// ../../node_modules/.pnpm/vfile@5.3.0/node_modules/vfile/lib/minproc.js
+// ../../../node_modules/.pnpm/vfile@5.3.0/node_modules/vfile/lib/minproc.js
 var import_process = __toESM(require("process"), 1);
 
-// ../../node_modules/.pnpm/vfile@5.3.0/node_modules/vfile/lib/minurl.js
+// ../../../node_modules/.pnpm/vfile@5.3.0/node_modules/vfile/lib/minurl.js
 var import_url = require("url");
 
-// ../../node_modules/.pnpm/vfile@5.3.0/node_modules/vfile/lib/minurl.shared.js
+// ../../../node_modules/.pnpm/vfile@5.3.0/node_modules/vfile/lib/minurl.shared.js
 function isUrl(fileURLOrPath) {
   return fileURLOrPath !== null && typeof fileURLOrPath === "object" && fileURLOrPath.href && fileURLOrPath.origin;
 }
 
-// ../../node_modules/.pnpm/vfile@5.3.0/node_modules/vfile/lib/index.js
+// ../../../node_modules/.pnpm/vfile@5.3.0/node_modules/vfile/lib/index.js
 var order = ["history", "path", "basename", "stem", "extname", "dirname"];
 var VFile = class {
   constructor(value) {
@@ -13582,7 +13582,7 @@ function assertPath(path2, name2) {
   }
 }
 
-// ../../node_modules/.pnpm/unified@10.1.1/node_modules/unified/lib/index.js
+// ../../../node_modules/.pnpm/unified@10.1.1/node_modules/unified/lib/index.js
 var unified = base().freeze();
 var own2 = {}.hasOwnProperty;
 function base() {
@@ -13875,7 +13875,7 @@ function looksLikeAVFileValue(value) {
   return typeof value === "string" || (0, import_is_buffer2.default)(value);
 }
 
-// ../../node_modules/.pnpm/acorn@8.7.0/node_modules/acorn/dist/acorn.mjs
+// ../../../node_modules/.pnpm/acorn@8.7.0/node_modules/acorn/dist/acorn.mjs
 var reservedWords = {
   3: "abstract boolean byte char class double enum export extends final float goto implements import int interface long native package private protected public short static super synchronized throws transient volatile",
   5: "class enum extends super const export import",
@@ -18602,10 +18602,10 @@ Parser.acorn = {
   nonASCIIwhitespace
 };
 
-// ../../node_modules/.pnpm/micromark-extension-mdxjs@1.0.0/node_modules/micromark-extension-mdxjs/index.js
+// ../../../node_modules/.pnpm/micromark-extension-mdxjs@1.0.0/node_modules/micromark-extension-mdxjs/index.js
 var import_acorn_jsx = __toESM(require_acorn_jsx(), 1);
 
-// ../../node_modules/.pnpm/micromark-util-chunked@1.0.0/node_modules/micromark-util-chunked/index.js
+// ../../../node_modules/.pnpm/micromark-util-chunked@1.0.0/node_modules/micromark-util-chunked/index.js
 function splice(list3, start3, remove, items) {
   const end = list3.length;
   let chunkStart = 0;
@@ -18640,7 +18640,7 @@ function push(list3, items) {
   return items;
 }
 
-// ../../node_modules/.pnpm/micromark-util-combine-extensions@1.0.0/node_modules/micromark-util-combine-extensions/index.js
+// ../../../node_modules/.pnpm/micromark-util-combine-extensions@1.0.0/node_modules/micromark-util-combine-extensions/index.js
 var hasOwnProperty2 = {}.hasOwnProperty;
 function combineExtensions(extensions) {
   const all5 = {};
@@ -18675,10 +18675,10 @@ function constructs(existing, list3) {
   splice(existing, 0, 0, before);
 }
 
-// ../../node_modules/.pnpm/micromark-util-character@1.1.0/node_modules/micromark-util-character/lib/unicode-punctuation-regex.js
+// ../../../node_modules/.pnpm/micromark-util-character@1.1.0/node_modules/micromark-util-character/lib/unicode-punctuation-regex.js
 var unicodePunctuationRegex = /[!-/:-@[-`{-~\u00A1\u00A7\u00AB\u00B6\u00B7\u00BB\u00BF\u037E\u0387\u055A-\u055F\u0589\u058A\u05BE\u05C0\u05C3\u05C6\u05F3\u05F4\u0609\u060A\u060C\u060D\u061B\u061E\u061F\u066A-\u066D\u06D4\u0700-\u070D\u07F7-\u07F9\u0830-\u083E\u085E\u0964\u0965\u0970\u09FD\u0A76\u0AF0\u0C77\u0C84\u0DF4\u0E4F\u0E5A\u0E5B\u0F04-\u0F12\u0F14\u0F3A-\u0F3D\u0F85\u0FD0-\u0FD4\u0FD9\u0FDA\u104A-\u104F\u10FB\u1360-\u1368\u1400\u166E\u169B\u169C\u16EB-\u16ED\u1735\u1736\u17D4-\u17D6\u17D8-\u17DA\u1800-\u180A\u1944\u1945\u1A1E\u1A1F\u1AA0-\u1AA6\u1AA8-\u1AAD\u1B5A-\u1B60\u1BFC-\u1BFF\u1C3B-\u1C3F\u1C7E\u1C7F\u1CC0-\u1CC7\u1CD3\u2010-\u2027\u2030-\u2043\u2045-\u2051\u2053-\u205E\u207D\u207E\u208D\u208E\u2308-\u230B\u2329\u232A\u2768-\u2775\u27C5\u27C6\u27E6-\u27EF\u2983-\u2998\u29D8-\u29DB\u29FC\u29FD\u2CF9-\u2CFC\u2CFE\u2CFF\u2D70\u2E00-\u2E2E\u2E30-\u2E4F\u2E52\u3001-\u3003\u3008-\u3011\u3014-\u301F\u3030\u303D\u30A0\u30FB\uA4FE\uA4FF\uA60D-\uA60F\uA673\uA67E\uA6F2-\uA6F7\uA874-\uA877\uA8CE\uA8CF\uA8F8-\uA8FA\uA8FC\uA92E\uA92F\uA95F\uA9C1-\uA9CD\uA9DE\uA9DF\uAA5C-\uAA5F\uAADE\uAADF\uAAF0\uAAF1\uABEB\uFD3E\uFD3F\uFE10-\uFE19\uFE30-\uFE52\uFE54-\uFE61\uFE63\uFE68\uFE6A\uFE6B\uFF01-\uFF03\uFF05-\uFF0A\uFF0C-\uFF0F\uFF1A\uFF1B\uFF1F\uFF20\uFF3B-\uFF3D\uFF3F\uFF5B\uFF5D\uFF5F-\uFF65]/;
 
-// ../../node_modules/.pnpm/micromark-util-character@1.1.0/node_modules/micromark-util-character/index.js
+// ../../../node_modules/.pnpm/micromark-util-character@1.1.0/node_modules/micromark-util-character/index.js
 var asciiAlpha = regexCheck(/[A-Za-z]/);
 var asciiDigit = regexCheck(/\d/);
 var asciiHexDigit = regexCheck(/[\dA-Fa-f]/);
@@ -18706,7 +18706,7 @@ function regexCheck(regex2) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark-factory-space@1.0.0/node_modules/micromark-factory-space/index.js
+// ../../../node_modules/.pnpm/micromark-factory-space@1.0.0/node_modules/micromark-factory-space/index.js
 function factorySpace(effects, ok2, type, max) {
   const limit = max ? max - 1 : Number.POSITIVE_INFINITY;
   let size = 0;
@@ -18728,7 +18728,7 @@ function factorySpace(effects, ok2, type, max) {
   }
 }
 
-// ../../node_modules/.pnpm/unist-util-position-from-estree@1.1.1/node_modules/unist-util-position-from-estree/index.js
+// ../../../node_modules/.pnpm/unist-util-position-from-estree@1.1.1/node_modules/unist-util-position-from-estree/index.js
 function positionFromEstree(value) {
   const node = value || {};
   const loc = node.loc || {};
@@ -18749,12 +18749,12 @@ function positionFromEstree(value) {
   };
 }
 
-// ../../node_modules/.pnpm/estree-util-visit@1.1.0/node_modules/estree-util-visit/color.js
+// ../../../node_modules/.pnpm/estree-util-visit@1.1.0/node_modules/estree-util-visit/color.js
 function color(d) {
   return "\x1B[33m" + d + "\x1B[39m";
 }
 
-// ../../node_modules/.pnpm/estree-util-visit@1.1.0/node_modules/estree-util-visit/index.js
+// ../../../node_modules/.pnpm/estree-util-visit@1.1.0/node_modules/estree-util-visit/index.js
 var own3 = {}.hasOwnProperty;
 var CONTINUE = Symbol("continue");
 var SKIP = Symbol("skip");
@@ -18828,7 +18828,7 @@ function nodelike(value) {
   return Boolean(value && typeof value === "object" && typeof value.type === "string" && value.type.length > 0);
 }
 
-// ../../node_modules/.pnpm/micromark-util-events-to-acorn@1.0.4/node_modules/micromark-util-events-to-acorn/index.js
+// ../../../node_modules/.pnpm/micromark-util-events-to-acorn@1.0.4/node_modules/micromark-util-events-to-acorn/index.js
 var own4 = {}.hasOwnProperty;
 function eventsToAcorn(events, options) {
   const {
@@ -18975,7 +18975,7 @@ function empty2(value) {
   return /^\s*$/.test(value.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\/\/[^\r\n]*(\r\n|\n|\r)/g, ""));
 }
 
-// ../../node_modules/.pnpm/micromark-factory-mdx-expression@1.0.6/node_modules/micromark-factory-mdx-expression/index.js
+// ../../../node_modules/.pnpm/micromark-factory-mdx-expression@1.0.6/node_modules/micromark-factory-mdx-expression/index.js
 function factoryMdxExpression(effects, ok2, type, markerType, chunkType, acorn, acornOptions, addResult, spread, allowEmpty, allowLazy, startColumn) {
   const self2 = this;
   const eventStart = this.events.length + 3;
@@ -19086,7 +19086,7 @@ function factoryMdxExpression(effects, ok2, type, markerType, chunkType, acorn, 
   }
 }
 
-// ../../node_modules/.pnpm/micromark-extension-mdx-expression@1.0.3/node_modules/micromark-extension-mdx-expression/lib/syntax.js
+// ../../../node_modules/.pnpm/micromark-extension-mdx-expression@1.0.3/node_modules/micromark-extension-mdx-expression/lib/syntax.js
 function mdxExpression(options = {}) {
   const addResult = options.addResult;
   const acorn = options.acorn;
@@ -19139,11 +19139,11 @@ function mdxExpression(options = {}) {
   }
 }
 
-// ../../node_modules/.pnpm/estree-util-is-identifier-name@2.0.0/node_modules/estree-util-is-identifier-name/regex.js
+// ../../../node_modules/.pnpm/estree-util-is-identifier-name@2.0.0/node_modules/estree-util-is-identifier-name/regex.js
 var start = /[$A-Z_a-z\u00AA\u00B5\u00BA\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02C1\u02C6-\u02D1\u02E0-\u02E4\u02EC\u02EE\u0370-\u0374\u0376\u0377\u037A-\u037D\u037F\u0386\u0388-\u038A\u038C\u038E-\u03A1\u03A3-\u03F5\u03F7-\u0481\u048A-\u052F\u0531-\u0556\u0559\u0560-\u0588\u05D0-\u05EA\u05EF-\u05F2\u0620-\u064A\u066E\u066F\u0671-\u06D3\u06D5\u06E5\u06E6\u06EE\u06EF\u06FA-\u06FC\u06FF\u0710\u0712-\u072F\u074D-\u07A5\u07B1\u07CA-\u07EA\u07F4\u07F5\u07FA\u0800-\u0815\u081A\u0824\u0828\u0840-\u0858\u0860-\u086A\u08A0-\u08B4\u08B6-\u08C7\u0904-\u0939\u093D\u0950\u0958-\u0961\u0971-\u0980\u0985-\u098C\u098F\u0990\u0993-\u09A8\u09AA-\u09B0\u09B2\u09B6-\u09B9\u09BD\u09CE\u09DC\u09DD\u09DF-\u09E1\u09F0\u09F1\u09FC\u0A05-\u0A0A\u0A0F\u0A10\u0A13-\u0A28\u0A2A-\u0A30\u0A32\u0A33\u0A35\u0A36\u0A38\u0A39\u0A59-\u0A5C\u0A5E\u0A72-\u0A74\u0A85-\u0A8D\u0A8F-\u0A91\u0A93-\u0AA8\u0AAA-\u0AB0\u0AB2\u0AB3\u0AB5-\u0AB9\u0ABD\u0AD0\u0AE0\u0AE1\u0AF9\u0B05-\u0B0C\u0B0F\u0B10\u0B13-\u0B28\u0B2A-\u0B30\u0B32\u0B33\u0B35-\u0B39\u0B3D\u0B5C\u0B5D\u0B5F-\u0B61\u0B71\u0B83\u0B85-\u0B8A\u0B8E-\u0B90\u0B92-\u0B95\u0B99\u0B9A\u0B9C\u0B9E\u0B9F\u0BA3\u0BA4\u0BA8-\u0BAA\u0BAE-\u0BB9\u0BD0\u0C05-\u0C0C\u0C0E-\u0C10\u0C12-\u0C28\u0C2A-\u0C39\u0C3D\u0C58-\u0C5A\u0C60\u0C61\u0C80\u0C85-\u0C8C\u0C8E-\u0C90\u0C92-\u0CA8\u0CAA-\u0CB3\u0CB5-\u0CB9\u0CBD\u0CDE\u0CE0\u0CE1\u0CF1\u0CF2\u0D04-\u0D0C\u0D0E-\u0D10\u0D12-\u0D3A\u0D3D\u0D4E\u0D54-\u0D56\u0D5F-\u0D61\u0D7A-\u0D7F\u0D85-\u0D96\u0D9A-\u0DB1\u0DB3-\u0DBB\u0DBD\u0DC0-\u0DC6\u0E01-\u0E30\u0E32\u0E33\u0E40-\u0E46\u0E81\u0E82\u0E84\u0E86-\u0E8A\u0E8C-\u0EA3\u0EA5\u0EA7-\u0EB0\u0EB2\u0EB3\u0EBD\u0EC0-\u0EC4\u0EC6\u0EDC-\u0EDF\u0F00\u0F40-\u0F47\u0F49-\u0F6C\u0F88-\u0F8C\u1000-\u102A\u103F\u1050-\u1055\u105A-\u105D\u1061\u1065\u1066\u106E-\u1070\u1075-\u1081\u108E\u10A0-\u10C5\u10C7\u10CD\u10D0-\u10FA\u10FC-\u1248\u124A-\u124D\u1250-\u1256\u1258\u125A-\u125D\u1260-\u1288\u128A-\u128D\u1290-\u12B0\u12B2-\u12B5\u12B8-\u12BE\u12C0\u12C2-\u12C5\u12C8-\u12D6\u12D8-\u1310\u1312-\u1315\u1318-\u135A\u1380-\u138F\u13A0-\u13F5\u13F8-\u13FD\u1401-\u166C\u166F-\u167F\u1681-\u169A\u16A0-\u16EA\u16EE-\u16F8\u1700-\u170C\u170E-\u1711\u1720-\u1731\u1740-\u1751\u1760-\u176C\u176E-\u1770\u1780-\u17B3\u17D7\u17DC\u1820-\u1878\u1880-\u18A8\u18AA\u18B0-\u18F5\u1900-\u191E\u1950-\u196D\u1970-\u1974\u1980-\u19AB\u19B0-\u19C9\u1A00-\u1A16\u1A20-\u1A54\u1AA7\u1B05-\u1B33\u1B45-\u1B4B\u1B83-\u1BA0\u1BAE\u1BAF\u1BBA-\u1BE5\u1C00-\u1C23\u1C4D-\u1C4F\u1C5A-\u1C7D\u1C80-\u1C88\u1C90-\u1CBA\u1CBD-\u1CBF\u1CE9-\u1CEC\u1CEE-\u1CF3\u1CF5\u1CF6\u1CFA\u1D00-\u1DBF\u1E00-\u1F15\u1F18-\u1F1D\u1F20-\u1F45\u1F48-\u1F4D\u1F50-\u1F57\u1F59\u1F5B\u1F5D\u1F5F-\u1F7D\u1F80-\u1FB4\u1FB6-\u1FBC\u1FBE\u1FC2-\u1FC4\u1FC6-\u1FCC\u1FD0-\u1FD3\u1FD6-\u1FDB\u1FE0-\u1FEC\u1FF2-\u1FF4\u1FF6-\u1FFC\u2071\u207F\u2090-\u209C\u2102\u2107\u210A-\u2113\u2115\u2118-\u211D\u2124\u2126\u2128\u212A-\u2139\u213C-\u213F\u2145-\u2149\u214E\u2160-\u2188\u2C00-\u2C2E\u2C30-\u2C5E\u2C60-\u2CE4\u2CEB-\u2CEE\u2CF2\u2CF3\u2D00-\u2D25\u2D27\u2D2D\u2D30-\u2D67\u2D6F\u2D80-\u2D96\u2DA0-\u2DA6\u2DA8-\u2DAE\u2DB0-\u2DB6\u2DB8-\u2DBE\u2DC0-\u2DC6\u2DC8-\u2DCE\u2DD0-\u2DD6\u2DD8-\u2DDE\u3005-\u3007\u3021-\u3029\u3031-\u3035\u3038-\u303C\u3041-\u3096\u309B-\u309F\u30A1-\u30FA\u30FC-\u30FF\u3105-\u312F\u3131-\u318E\u31A0-\u31BF\u31F0-\u31FF\u3400-\u4DBF\u4E00-\u9FFC\uA000-\uA48C\uA4D0-\uA4FD\uA500-\uA60C\uA610-\uA61F\uA62A\uA62B\uA640-\uA66E\uA67F-\uA69D\uA6A0-\uA6EF\uA717-\uA71F\uA722-\uA788\uA78B-\uA7BF\uA7C2-\uA7CA\uA7F5-\uA801\uA803-\uA805\uA807-\uA80A\uA80C-\uA822\uA840-\uA873\uA882-\uA8B3\uA8F2-\uA8F7\uA8FB\uA8FD\uA8FE\uA90A-\uA925\uA930-\uA946\uA960-\uA97C\uA984-\uA9B2\uA9CF\uA9E0-\uA9E4\uA9E6-\uA9EF\uA9FA-\uA9FE\uAA00-\uAA28\uAA40-\uAA42\uAA44-\uAA4B\uAA60-\uAA76\uAA7A\uAA7E-\uAAAF\uAAB1\uAAB5\uAAB6\uAAB9-\uAABD\uAAC0\uAAC2\uAADB-\uAADD\uAAE0-\uAAEA\uAAF2-\uAAF4\uAB01-\uAB06\uAB09-\uAB0E\uAB11-\uAB16\uAB20-\uAB26\uAB28-\uAB2E\uAB30-\uAB5A\uAB5C-\uAB69\uAB70-\uABE2\uAC00-\uD7A3\uD7B0-\uD7C6\uD7CB-\uD7FB\uF900-\uFA6D\uFA70-\uFAD9\uFB00-\uFB06\uFB13-\uFB17\uFB1D\uFB1F-\uFB28\uFB2A-\uFB36\uFB38-\uFB3C\uFB3E\uFB40\uFB41\uFB43\uFB44\uFB46-\uFBB1\uFBD3-\uFD3D\uFD50-\uFD8F\uFD92-\uFDC7\uFDF0-\uFDFB\uFE70-\uFE74\uFE76-\uFEFC\uFF21-\uFF3A\uFF41-\uFF5A\uFF66-\uFFBE\uFFC2-\uFFC7\uFFCA-\uFFCF\uFFD2-\uFFD7\uFFDA-\uFFDC]/;
 var cont = /[\d\u00B7\u0300-\u036F\u0387\u0483-\u0487\u0591-\u05BD\u05BF\u05C1\u05C2\u05C4\u05C5\u05C7\u0610-\u061A\u064B-\u0669\u0670\u06D6-\u06DC\u06DF-\u06E4\u06E7\u06E8\u06EA-\u06ED\u06F0-\u06F9\u0711\u0730-\u074A\u07A6-\u07B0\u07C0-\u07C9\u07EB-\u07F3\u07FD\u0816-\u0819\u081B-\u0823\u0825-\u0827\u0829-\u082D\u0859-\u085B\u08D3-\u08E1\u08E3-\u0903\u093A-\u093C\u093E-\u094F\u0951-\u0957\u0962\u0963\u0966-\u096F\u0981-\u0983\u09BC\u09BE-\u09C4\u09C7\u09C8\u09CB-\u09CD\u09D7\u09E2\u09E3\u09E6-\u09EF\u09FE\u0A01-\u0A03\u0A3C\u0A3E-\u0A42\u0A47\u0A48\u0A4B-\u0A4D\u0A51\u0A66-\u0A71\u0A75\u0A81-\u0A83\u0ABC\u0ABE-\u0AC5\u0AC7-\u0AC9\u0ACB-\u0ACD\u0AE2\u0AE3\u0AE6-\u0AEF\u0AFA-\u0AFF\u0B01-\u0B03\u0B3C\u0B3E-\u0B44\u0B47\u0B48\u0B4B-\u0B4D\u0B55-\u0B57\u0B62\u0B63\u0B66-\u0B6F\u0B82\u0BBE-\u0BC2\u0BC6-\u0BC8\u0BCA-\u0BCD\u0BD7\u0BE6-\u0BEF\u0C00-\u0C04\u0C3E-\u0C44\u0C46-\u0C48\u0C4A-\u0C4D\u0C55\u0C56\u0C62\u0C63\u0C66-\u0C6F\u0C81-\u0C83\u0CBC\u0CBE-\u0CC4\u0CC6-\u0CC8\u0CCA-\u0CCD\u0CD5\u0CD6\u0CE2\u0CE3\u0CE6-\u0CEF\u0D00-\u0D03\u0D3B\u0D3C\u0D3E-\u0D44\u0D46-\u0D48\u0D4A-\u0D4D\u0D57\u0D62\u0D63\u0D66-\u0D6F\u0D81-\u0D83\u0DCA\u0DCF-\u0DD4\u0DD6\u0DD8-\u0DDF\u0DE6-\u0DEF\u0DF2\u0DF3\u0E31\u0E34-\u0E3A\u0E47-\u0E4E\u0E50-\u0E59\u0EB1\u0EB4-\u0EBC\u0EC8-\u0ECD\u0ED0-\u0ED9\u0F18\u0F19\u0F20-\u0F29\u0F35\u0F37\u0F39\u0F3E\u0F3F\u0F71-\u0F84\u0F86\u0F87\u0F8D-\u0F97\u0F99-\u0FBC\u0FC6\u102B-\u103E\u1040-\u1049\u1056-\u1059\u105E-\u1060\u1062-\u1064\u1067-\u106D\u1071-\u1074\u1082-\u108D\u108F-\u109D\u135D-\u135F\u1369-\u1371\u1712-\u1714\u1732-\u1734\u1752\u1753\u1772\u1773\u17B4-\u17D3\u17DD\u17E0-\u17E9\u180B-\u180D\u1810-\u1819\u18A9\u1920-\u192B\u1930-\u193B\u1946-\u194F\u19D0-\u19DA\u1A17-\u1A1B\u1A55-\u1A5E\u1A60-\u1A7C\u1A7F-\u1A89\u1A90-\u1A99\u1AB0-\u1ABD\u1ABF\u1AC0\u1B00-\u1B04\u1B34-\u1B44\u1B50-\u1B59\u1B6B-\u1B73\u1B80-\u1B82\u1BA1-\u1BAD\u1BB0-\u1BB9\u1BE6-\u1BF3\u1C24-\u1C37\u1C40-\u1C49\u1C50-\u1C59\u1CD0-\u1CD2\u1CD4-\u1CE8\u1CED\u1CF4\u1CF7-\u1CF9\u1DC0-\u1DF9\u1DFB-\u1DFF\u200C\u200D\u203F\u2040\u2054\u20D0-\u20DC\u20E1\u20E5-\u20F0\u2CEF-\u2CF1\u2D7F\u2DE0-\u2DFF\u302A-\u302F\u3099\u309A\uA620-\uA629\uA66F\uA674-\uA67D\uA69E\uA69F\uA6F0\uA6F1\uA802\uA806\uA80B\uA823-\uA827\uA82C\uA880\uA881\uA8B4-\uA8C5\uA8D0-\uA8D9\uA8E0-\uA8F1\uA8FF-\uA909\uA926-\uA92D\uA947-\uA953\uA980-\uA983\uA9B3-\uA9C0\uA9D0-\uA9D9\uA9E5\uA9F0-\uA9F9\uAA29-\uAA36\uAA43\uAA4C\uAA4D\uAA50-\uAA59\uAA7B-\uAA7D\uAAB0\uAAB2-\uAAB4\uAAB7\uAAB8\uAABE\uAABF\uAAC1\uAAEB-\uAAEF\uAAF5\uAAF6\uABE3-\uABEA\uABEC\uABED\uABF0-\uABF9\uFB1E\uFE00-\uFE0F\uFE20-\uFE2F\uFE33\uFE34\uFE4D-\uFE4F\uFF10-\uFF19\uFF3F]/;
 
-// ../../node_modules/.pnpm/estree-util-is-identifier-name@2.0.0/node_modules/estree-util-is-identifier-name/index.js
+// ../../../node_modules/.pnpm/estree-util-is-identifier-name@2.0.0/node_modules/estree-util-is-identifier-name/index.js
 function start2(code3) {
   return start.test(String.fromCharCode(code3));
 }
@@ -19160,7 +19160,7 @@ function name(name2) {
   return index2 > 0;
 }
 
-// ../../node_modules/.pnpm/micromark-extension-mdx-jsx@1.0.3/node_modules/micromark-extension-mdx-jsx/lib/factory-tag.js
+// ../../../node_modules/.pnpm/micromark-extension-mdx-jsx@1.0.3/node_modules/micromark-extension-mdx-jsx/lib/factory-tag.js
 var lazyLineEnd = {
   tokenize: tokenizeLazyLineEnd,
   partial: true
@@ -19518,7 +19518,7 @@ function serializeCharCode(code3) {
   return "U+" + code3.toString(16).toUpperCase().padStart(4, "0");
 }
 
-// ../../node_modules/.pnpm/micromark-extension-mdx-jsx@1.0.3/node_modules/micromark-extension-mdx-jsx/lib/jsx-text.js
+// ../../../node_modules/.pnpm/micromark-extension-mdx-jsx@1.0.3/node_modules/micromark-extension-mdx-jsx/lib/jsx-text.js
 function jsxText(acorn, acornOptions, addResult) {
   return {
     tokenize: tokenizeJsxText
@@ -19528,7 +19528,7 @@ function jsxText(acorn, acornOptions, addResult) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark-extension-mdx-jsx@1.0.3/node_modules/micromark-extension-mdx-jsx/lib/jsx-flow.js
+// ../../../node_modules/.pnpm/micromark-extension-mdx-jsx@1.0.3/node_modules/micromark-extension-mdx-jsx/lib/jsx-flow.js
 function jsxFlow(acorn, acornOptions, addResult) {
   return {
     tokenize: tokenizeJsxFlow,
@@ -19546,7 +19546,7 @@ function jsxFlow(acorn, acornOptions, addResult) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark-extension-mdx-jsx@1.0.3/node_modules/micromark-extension-mdx-jsx/lib/syntax.js
+// ../../../node_modules/.pnpm/micromark-extension-mdx-jsx@1.0.3/node_modules/micromark-extension-mdx-jsx/lib/syntax.js
 function mdxJsx(options = {}) {
   const acorn = options.acorn;
   let acornOptions;
@@ -19573,12 +19573,12 @@ function mdxJsx(options = {}) {
   };
 }
 
-// ../../node_modules/.pnpm/micromark-extension-mdx-md@1.0.0/node_modules/micromark-extension-mdx-md/index.js
+// ../../../node_modules/.pnpm/micromark-extension-mdx-md@1.0.0/node_modules/micromark-extension-mdx-md/index.js
 var mdxMd = {
   disable: { null: ["autolink", "codeIndented", "htmlFlow", "htmlText"] }
 };
 
-// ../../node_modules/.pnpm/micromark-util-classify-character@1.0.0/node_modules/micromark-util-classify-character/index.js
+// ../../../node_modules/.pnpm/micromark-util-classify-character@1.0.0/node_modules/micromark-util-classify-character/index.js
 function classifyCharacter(code3) {
   if (code3 === null || markdownLineEndingOrSpace(code3) || unicodeWhitespace(code3)) {
     return 1;
@@ -19588,7 +19588,7 @@ function classifyCharacter(code3) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark-util-resolve-all@1.0.0/node_modules/micromark-util-resolve-all/index.js
+// ../../../node_modules/.pnpm/micromark-util-resolve-all@1.0.0/node_modules/micromark-util-resolve-all/index.js
 function resolveAll(constructs2, events, context) {
   const called = [];
   let index2 = -1;
@@ -19602,7 +19602,7 @@ function resolveAll(constructs2, events, context) {
   return events;
 }
 
-// ../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/attention.js
+// ../../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/attention.js
 var attention = {
   name: "attention",
   tokenize: tokenizeAttention,
@@ -19728,7 +19728,7 @@ function movePoint(point3, offset2) {
   point3._bufferIndex += offset2;
 }
 
-// ../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/autolink.js
+// ../../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/autolink.js
 var autolink = {
   name: "autolink",
   tokenize: tokenizeAutolink
@@ -19819,7 +19819,7 @@ function tokenizeAutolink(effects, ok2, nok) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/blank-line.js
+// ../../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/blank-line.js
 var blankLine = {
   tokenize: tokenizeBlankLine,
   partial: true
@@ -19831,7 +19831,7 @@ function tokenizeBlankLine(effects, ok2, nok) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/block-quote.js
+// ../../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/block-quote.js
 var blockQuote = {
   name: "blockQuote",
   tokenize: tokenizeBlockQuoteStart,
@@ -19879,7 +19879,7 @@ function exit(effects) {
   effects.exit("blockQuote");
 }
 
-// ../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/character-escape.js
+// ../../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/character-escape.js
 var characterEscape = {
   name: "characterEscape",
   tokenize: tokenizeCharacterEscape
@@ -19905,7 +19905,7 @@ function tokenizeCharacterEscape(effects, ok2, nok) {
   }
 }
 
-// ../../node_modules/.pnpm/character-entities@2.0.1/node_modules/character-entities/index.js
+// ../../../node_modules/.pnpm/character-entities@2.0.1/node_modules/character-entities/index.js
 var characterEntities = {
   AEli: "\xC6",
   AElig: "\xC6",
@@ -22131,13 +22131,13 @@ var characterEntities = {
   zwnj: "\u200C"
 };
 
-// ../../node_modules/.pnpm/decode-named-character-reference@1.0.1/node_modules/decode-named-character-reference/index.js
+// ../../../node_modules/.pnpm/decode-named-character-reference@1.0.1/node_modules/decode-named-character-reference/index.js
 var own5 = {}.hasOwnProperty;
 function decodeNamedCharacterReference(value) {
   return own5.call(characterEntities, value) ? characterEntities[value] : false;
 }
 
-// ../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/character-reference.js
+// ../../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/character-reference.js
 var characterReference = {
   name: "characterReference",
   tokenize: tokenizeCharacterReference
@@ -22203,7 +22203,7 @@ function tokenizeCharacterReference(effects, ok2, nok) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/code-fenced.js
+// ../../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/code-fenced.js
 var codeFenced = {
   name: "codeFenced",
   tokenize: tokenizeCodeFenced,
@@ -22350,7 +22350,7 @@ function tokenizeCodeFenced(effects, ok2, nok) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/code-indented.js
+// ../../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/code-indented.js
 var codeIndented = {
   name: "codeIndented",
   tokenize: tokenizeCodeIndented
@@ -22414,7 +22414,7 @@ function tokenizeIndentedContent(effects, ok2, nok) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/code-text.js
+// ../../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/code-text.js
 var codeText = {
   name: "codeText",
   tokenize: tokenizeCodeText,
@@ -22529,7 +22529,7 @@ function tokenizeCodeText(effects, ok2, nok) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark-util-subtokenize@1.0.2/node_modules/micromark-util-subtokenize/index.js
+// ../../../node_modules/.pnpm/micromark-util-subtokenize@1.0.2/node_modules/micromark-util-subtokenize/index.js
 function subtokenize(events) {
   const jumps = {};
   let index2 = -1;
@@ -22667,7 +22667,7 @@ function subcontent(events, eventIndex) {
   return gaps;
 }
 
-// ../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/content.js
+// ../../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/content.js
 var content = {
   tokenize: tokenizeContent,
   resolve: resolveContent
@@ -22738,7 +22738,7 @@ function tokenizeContinuation(effects, ok2, nok) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark-factory-destination@1.0.0/node_modules/micromark-factory-destination/index.js
+// ../../../node_modules/.pnpm/micromark-factory-destination@1.0.0/node_modules/micromark-factory-destination/index.js
 function factoryDestination(effects, ok2, nok, type, literalType, literalMarkerType, rawType, stringType, max) {
   const limit = max || Number.POSITIVE_INFINITY;
   let balance = 0;
@@ -22838,7 +22838,7 @@ function factoryDestination(effects, ok2, nok, type, literalType, literalMarkerT
   }
 }
 
-// ../../node_modules/.pnpm/micromark-factory-label@1.0.2/node_modules/micromark-factory-label/index.js
+// ../../../node_modules/.pnpm/micromark-factory-label@1.0.2/node_modules/micromark-factory-label/index.js
 function factoryLabel(effects, ok2, nok, type, markerType, stringType) {
   const self2 = this;
   let size = 0;
@@ -22894,7 +22894,7 @@ function factoryLabel(effects, ok2, nok, type, markerType, stringType) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark-factory-title@1.0.2/node_modules/micromark-factory-title/index.js
+// ../../../node_modules/.pnpm/micromark-factory-title@1.0.2/node_modules/micromark-factory-title/index.js
 function factoryTitle(effects, ok2, nok, type, markerType, stringType) {
   let marker;
   return start3;
@@ -22953,7 +22953,7 @@ function factoryTitle(effects, ok2, nok, type, markerType, stringType) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark-factory-whitespace@1.0.0/node_modules/micromark-factory-whitespace/index.js
+// ../../../node_modules/.pnpm/micromark-factory-whitespace@1.0.0/node_modules/micromark-factory-whitespace/index.js
 function factoryWhitespace(effects, ok2) {
   let seen;
   return start3;
@@ -22972,12 +22972,12 @@ function factoryWhitespace(effects, ok2) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark-util-normalize-identifier@1.0.0/node_modules/micromark-util-normalize-identifier/index.js
+// ../../../node_modules/.pnpm/micromark-util-normalize-identifier@1.0.0/node_modules/micromark-util-normalize-identifier/index.js
 function normalizeIdentifier(value) {
   return value.replace(/[\t\n\r ]+/g, " ").replace(/^ | $/g, "").toLowerCase().toUpperCase();
 }
 
-// ../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/definition.js
+// ../../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/definition.js
 var definition = {
   name: "definition",
   tokenize: tokenizeDefinition
@@ -23031,7 +23031,7 @@ function tokenizeTitle(effects, ok2, nok) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/hard-break-escape.js
+// ../../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/hard-break-escape.js
 var hardBreakEscape = {
   name: "hardBreakEscape",
   tokenize: tokenizeHardBreakEscape
@@ -23054,7 +23054,7 @@ function tokenizeHardBreakEscape(effects, ok2, nok) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/heading-atx.js
+// ../../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/heading-atx.js
 var headingAtx = {
   name: "headingAtx",
   tokenize: tokenizeHeadingAtx,
@@ -23148,7 +23148,7 @@ function tokenizeHeadingAtx(effects, ok2, nok) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark-util-html-tag-name@1.0.0/node_modules/micromark-util-html-tag-name/index.js
+// ../../../node_modules/.pnpm/micromark-util-html-tag-name@1.0.0/node_modules/micromark-util-html-tag-name/index.js
 var htmlBlockNames = [
   "address",
   "article",
@@ -23215,7 +23215,7 @@ var htmlBlockNames = [
 ];
 var htmlRawNames = ["pre", "script", "style", "textarea"];
 
-// ../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/html-flow.js
+// ../../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/html-flow.js
 var htmlFlow = {
   name: "htmlFlow",
   tokenize: tokenizeHtmlFlow,
@@ -23571,7 +23571,7 @@ function tokenizeNextBlank(effects, ok2, nok) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/html-text.js
+// ../../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/html-text.js
 var htmlText = {
   name: "htmlText",
   tokenize: tokenizeHtmlText
@@ -23888,7 +23888,7 @@ function tokenizeHtmlText(effects, ok2, nok) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/label-end.js
+// ../../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/label-end.js
 var labelEnd = {
   name: "labelEnd",
   tokenize: tokenizeLabelEnd,
@@ -24087,7 +24087,7 @@ function tokenizeCollapsedReference(effects, ok2, nok) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/label-start-image.js
+// ../../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/label-start-image.js
 var labelStartImage = {
   name: "labelStartImage",
   tokenize: tokenizeLabelStartImage,
@@ -24118,7 +24118,7 @@ function tokenizeLabelStartImage(effects, ok2, nok) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/label-start-link.js
+// ../../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/label-start-link.js
 var labelStartLink = {
   name: "labelStartLink",
   tokenize: tokenizeLabelStartLink,
@@ -24140,7 +24140,7 @@ function tokenizeLabelStartLink(effects, ok2, nok) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/line-ending.js
+// ../../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/line-ending.js
 var lineEnding = {
   name: "lineEnding",
   tokenize: tokenizeLineEnding
@@ -24155,7 +24155,7 @@ function tokenizeLineEnding(effects, ok2) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/thematic-break.js
+// ../../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/thematic-break.js
 var thematicBreak = {
   name: "thematicBreak",
   tokenize: tokenizeThematicBreak
@@ -24194,7 +24194,7 @@ function tokenizeThematicBreak(effects, ok2, nok) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/list.js
+// ../../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/list.js
 var list = {
   name: "list",
   tokenize: tokenizeListStart,
@@ -24319,7 +24319,7 @@ function tokenizeListItemPrefixWhitespace(effects, ok2, nok) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/setext-underline.js
+// ../../../node_modules/.pnpm/micromark-core-commonmark@1.0.6/node_modules/micromark-core-commonmark/lib/setext-underline.js
 var setextUnderline = {
   name: "setextUnderline",
   tokenize: tokenizeSetextUnderline,
@@ -24402,7 +24402,7 @@ function tokenizeSetextUnderline(effects, ok2, nok) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark-extension-mdxjs-esm@1.0.2/node_modules/micromark-extension-mdxjs-esm/lib/syntax.js
+// ../../../node_modules/.pnpm/micromark-extension-mdxjs-esm@1.0.2/node_modules/micromark-extension-mdxjs-esm/lib/syntax.js
 var nextBlankConstruct2 = {
   tokenize: tokenizeNextBlank2,
   partial: true
@@ -24536,7 +24536,7 @@ function tokenizeNextBlank2(effects, ok2, nok) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark-extension-mdxjs@1.0.0/node_modules/micromark-extension-mdxjs/index.js
+// ../../../node_modules/.pnpm/micromark-extension-mdxjs@1.0.0/node_modules/micromark-extension-mdxjs/index.js
 function mdxjs(options) {
   const settings = Object.assign({
     acorn: Parser.extend((0, import_acorn_jsx.default)()),
@@ -24551,7 +24551,7 @@ function mdxjs(options) {
   ]);
 }
 
-// ../../node_modules/.pnpm/mdast-util-mdx-expression@1.2.0/node_modules/mdast-util-mdx-expression/index.js
+// ../../../node_modules/.pnpm/mdast-util-mdx-expression@1.2.0/node_modules/mdast-util-mdx-expression/index.js
 var mdxExpressionFromMarkdown = {
   enter: {
     mdxFlowExpression: enterMdxFlowExpression,
@@ -24600,7 +24600,7 @@ function handleMdxExpression(node) {
   return "{" + value + "}";
 }
 
-// ../../node_modules/.pnpm/ccount@2.0.1/node_modules/ccount/index.js
+// ../../../node_modules/.pnpm/ccount@2.0.1/node_modules/ccount/index.js
 function ccount(value, character) {
   const source2 = String(value);
   if (typeof character !== "string") {
@@ -24615,7 +24615,7 @@ function ccount(value, character) {
   return count;
 }
 
-// ../../node_modules/.pnpm/character-entities-legacy@3.0.0/node_modules/character-entities-legacy/index.js
+// ../../../node_modules/.pnpm/character-entities-legacy@3.0.0/node_modules/character-entities-legacy/index.js
 var characterEntitiesLegacy = [
   "AElig",
   "AMP",
@@ -24725,7 +24725,7 @@ var characterEntitiesLegacy = [
   "yuml"
 ];
 
-// ../../node_modules/.pnpm/character-reference-invalid@2.0.1/node_modules/character-reference-invalid/index.js
+// ../../../node_modules/.pnpm/character-reference-invalid@2.0.1/node_modules/character-reference-invalid/index.js
 var characterReferenceInvalid = {
   0: "\uFFFD",
   128: "\u20AC",
@@ -24757,30 +24757,30 @@ var characterReferenceInvalid = {
   159: "\u0178"
 };
 
-// ../../node_modules/.pnpm/is-decimal@2.0.1/node_modules/is-decimal/index.js
+// ../../../node_modules/.pnpm/is-decimal@2.0.1/node_modules/is-decimal/index.js
 function isDecimal(character) {
   const code3 = typeof character === "string" ? character.charCodeAt(0) : character;
   return code3 >= 48 && code3 <= 57;
 }
 
-// ../../node_modules/.pnpm/is-hexadecimal@2.0.1/node_modules/is-hexadecimal/index.js
+// ../../../node_modules/.pnpm/is-hexadecimal@2.0.1/node_modules/is-hexadecimal/index.js
 function isHexadecimal(character) {
   const code3 = typeof character === "string" ? character.charCodeAt(0) : character;
   return code3 >= 97 && code3 <= 102 || code3 >= 65 && code3 <= 70 || code3 >= 48 && code3 <= 57;
 }
 
-// ../../node_modules/.pnpm/is-alphabetical@2.0.1/node_modules/is-alphabetical/index.js
+// ../../../node_modules/.pnpm/is-alphabetical@2.0.1/node_modules/is-alphabetical/index.js
 function isAlphabetical(character) {
   const code3 = typeof character === "string" ? character.charCodeAt(0) : character;
   return code3 >= 97 && code3 <= 122 || code3 >= 65 && code3 <= 90;
 }
 
-// ../../node_modules/.pnpm/is-alphanumerical@2.0.1/node_modules/is-alphanumerical/index.js
+// ../../../node_modules/.pnpm/is-alphanumerical@2.0.1/node_modules/is-alphanumerical/index.js
 function isAlphanumerical(character) {
   return isAlphabetical(character) || isDecimal(character);
 }
 
-// ../../node_modules/.pnpm/parse-entities@4.0.0/node_modules/parse-entities/lib/index.js
+// ../../../node_modules/.pnpm/parse-entities@4.0.0/node_modules/parse-entities/lib/index.js
 var fromCharCode = String.fromCharCode;
 var messages = [
   "",
@@ -24993,7 +24993,7 @@ function disallowed(code3) {
   return code3 >= 1 && code3 <= 8 || code3 === 11 || code3 >= 13 && code3 <= 31 || code3 >= 127 && code3 <= 159 || code3 >= 64976 && code3 <= 65007 || (code3 & 65535) === 65535 || (code3 & 65535) === 65534;
 }
 
-// ../../node_modules/.pnpm/stringify-entities@4.0.2/node_modules/stringify-entities/lib/core.js
+// ../../../node_modules/.pnpm/stringify-entities@4.0.2/node_modules/stringify-entities/lib/core.js
 function core(value, options) {
   value = value.replace(options.subset ? charactersToExpression(options.subset) : /["&'<>`]/g, basic);
   if (options.subset || options.escapeOnly) {
@@ -25016,17 +25016,17 @@ function charactersToExpression(subset) {
   return new RegExp("(?:" + groups.join("|") + ")", "g");
 }
 
-// ../../node_modules/.pnpm/stringify-entities@4.0.2/node_modules/stringify-entities/lib/util/format-basic.js
+// ../../../node_modules/.pnpm/stringify-entities@4.0.2/node_modules/stringify-entities/lib/util/format-basic.js
 function formatBasic(code3) {
   return "&#x" + code3.toString(16).toUpperCase() + ";";
 }
 
-// ../../node_modules/.pnpm/stringify-entities@4.0.2/node_modules/stringify-entities/lib/index.js
+// ../../../node_modules/.pnpm/stringify-entities@4.0.2/node_modules/stringify-entities/lib/index.js
 function stringifyEntitiesLight(value, options) {
   return core(value, Object.assign({ format: formatBasic }, options));
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-markdown@1.3.0/node_modules/mdast-util-to-markdown/lib/util/track.js
+// ../../../node_modules/.pnpm/mdast-util-to-markdown@1.3.0/node_modules/mdast-util-to-markdown/lib/util/track.js
 function track(options_) {
   const options = options_ || {};
   const now = options.now || {};
@@ -25049,7 +25049,7 @@ function track(options_) {
   }
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-markdown@1.3.0/node_modules/mdast-util-to-markdown/lib/util/container-flow.js
+// ../../../node_modules/.pnpm/mdast-util-to-markdown@1.3.0/node_modules/mdast-util-to-markdown/lib/util/container-flow.js
 function containerFlow(parent, context, safeOptions) {
   const indexStack = context.indexStack;
   const children = parent.children || [];
@@ -25091,7 +25091,7 @@ function containerFlow(parent, context, safeOptions) {
   }
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-markdown@1.3.0/node_modules/mdast-util-to-markdown/lib/util/container-phrasing.js
+// ../../../node_modules/.pnpm/mdast-util-to-markdown@1.3.0/node_modules/mdast-util-to-markdown/lib/util/container-phrasing.js
 function containerPhrasing(parent, context, safeOptions) {
   const indexStack = context.indexStack;
   const children = parent.children || [];
@@ -25131,7 +25131,7 @@ function containerPhrasing(parent, context, safeOptions) {
   return results.join("");
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-markdown@1.3.0/node_modules/mdast-util-to-markdown/lib/util/indent-lines.js
+// ../../../node_modules/.pnpm/mdast-util-to-markdown@1.3.0/node_modules/mdast-util-to-markdown/lib/util/indent-lines.js
 var eol = /\r?\n|\r/g;
 function indentLines(value, map2) {
   const result = [];
@@ -25151,7 +25151,7 @@ function indentLines(value, map2) {
   }
 }
 
-// ../../node_modules/.pnpm/mdast-util-mdx-jsx@2.0.1/node_modules/mdast-util-mdx-jsx/lib/index.js
+// ../../../node_modules/.pnpm/mdast-util-mdx-jsx@2.0.1/node_modules/mdast-util-mdx-jsx/lib/index.js
 function mdxJsxFromMarkdown() {
   return {
     canContainEols: ["mdxJsxTextElement"],
@@ -25439,7 +25439,7 @@ function mdxJsxToMarkdown(options = {}) {
   }
 }
 
-// ../../node_modules/.pnpm/mdast-util-mdxjs-esm@1.2.0/node_modules/mdast-util-mdxjs-esm/index.js
+// ../../../node_modules/.pnpm/mdast-util-mdxjs-esm@1.2.0/node_modules/mdast-util-mdxjs-esm/index.js
 var mdxjsEsmFromMarkdown = {
   enter: { mdxjsEsm: enterMdxjsEsm },
   exit: { mdxjsEsm: exitMdxjsEsm, mdxjsEsmData: exitMdxjsEsmData }
@@ -25466,7 +25466,7 @@ function handleMdxjsEsm(node) {
   return node.value || "";
 }
 
-// ../../node_modules/.pnpm/mdast-util-mdx@2.0.0/node_modules/mdast-util-mdx/index.js
+// ../../../node_modules/.pnpm/mdast-util-mdx@2.0.0/node_modules/mdast-util-mdx/index.js
 function mdxFromMarkdown() {
   return [mdxExpressionFromMarkdown, mdxJsxFromMarkdown(), mdxjsEsmFromMarkdown];
 }
@@ -25480,7 +25480,7 @@ function mdxToMarkdown(options) {
   };
 }
 
-// ../../node_modules/.pnpm/remark-mdx@2.0.0/node_modules/remark-mdx/index.js
+// ../../../node_modules/.pnpm/remark-mdx@2.0.0/node_modules/remark-mdx/index.js
 function remarkMdx(options = {}) {
   const data2 = this.data();
   add("micromarkExtensions", mdxjs(options));
@@ -25492,7 +25492,7 @@ function remarkMdx(options = {}) {
   }
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-string@3.1.0/node_modules/mdast-util-to-string/index.js
+// ../../../node_modules/.pnpm/mdast-util-to-string@3.1.0/node_modules/mdast-util-to-string/index.js
 function toString2(node, options) {
   var { includeImageAlt = true } = options || {};
   return one(node, includeImageAlt);
@@ -25509,7 +25509,7 @@ function all(values, includeImageAlt) {
   return result.join("");
 }
 
-// ../../node_modules/.pnpm/micromark@3.0.10/node_modules/micromark/lib/initialize/content.js
+// ../../../node_modules/.pnpm/micromark@3.0.10/node_modules/micromark/lib/initialize/content.js
 var content2 = {
   tokenize: initializeContent
 };
@@ -25559,7 +25559,7 @@ function initializeContent(effects) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark@3.0.10/node_modules/micromark/lib/initialize/document.js
+// ../../../node_modules/.pnpm/micromark@3.0.10/node_modules/micromark/lib/initialize/document.js
 var document2 = {
   tokenize: initializeDocument
 };
@@ -25736,7 +25736,7 @@ function tokenizeContainer(effects, ok2, nok) {
   return factorySpace(effects, effects.attempt(this.parser.constructs.document, ok2, nok), "linePrefix", this.parser.constructs.disable.null.includes("codeIndented") ? void 0 : 4);
 }
 
-// ../../node_modules/.pnpm/micromark@3.0.10/node_modules/micromark/lib/initialize/flow.js
+// ../../../node_modules/.pnpm/micromark@3.0.10/node_modules/micromark/lib/initialize/flow.js
 var flow = {
   tokenize: initializeFlow
 };
@@ -25768,7 +25768,7 @@ function initializeFlow(effects) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark@3.0.10/node_modules/micromark/lib/initialize/text.js
+// ../../../node_modules/.pnpm/micromark@3.0.10/node_modules/micromark/lib/initialize/text.js
 var resolver = {
   resolveAll: createResolver()
 };
@@ -25901,7 +25901,7 @@ function resolveAllLineSuffixes(events, context) {
   return events;
 }
 
-// ../../node_modules/.pnpm/micromark@3.0.10/node_modules/micromark/lib/create-tokenizer.js
+// ../../../node_modules/.pnpm/micromark@3.0.10/node_modules/micromark/lib/create-tokenizer.js
 function createTokenizer(parser, initialize, from) {
   let point3 = Object.assign(from ? Object.assign({}, from) : {
     line: 1,
@@ -26187,7 +26187,7 @@ function serializeChunks(chunks, expandTabs) {
   return result.join("");
 }
 
-// ../../node_modules/.pnpm/micromark@3.0.10/node_modules/micromark/lib/constructs.js
+// ../../../node_modules/.pnpm/micromark@3.0.10/node_modules/micromark/lib/constructs.js
 var constructs_exports = {};
 __export(constructs_exports, {
   attentionMarkers: () => attentionMarkers,
@@ -26262,7 +26262,7 @@ var disable = {
   null: []
 };
 
-// ../../node_modules/.pnpm/micromark@3.0.10/node_modules/micromark/lib/parse.js
+// ../../../node_modules/.pnpm/micromark@3.0.10/node_modules/micromark/lib/parse.js
 function parse3(options = {}) {
   const constructs2 = combineExtensions([constructs_exports].concat(options.extensions || []));
   const parser = {
@@ -26284,7 +26284,7 @@ function parse3(options = {}) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark@3.0.10/node_modules/micromark/lib/preprocess.js
+// ../../../node_modules/.pnpm/micromark@3.0.10/node_modules/micromark/lib/preprocess.js
 var search = /[\0\t\n\r]/g;
 function preprocess() {
   let column = 1;
@@ -26366,14 +26366,14 @@ function preprocess() {
   }
 }
 
-// ../../node_modules/.pnpm/micromark@3.0.10/node_modules/micromark/lib/postprocess.js
+// ../../../node_modules/.pnpm/micromark@3.0.10/node_modules/micromark/lib/postprocess.js
 function postprocess(events) {
   while (!subtokenize(events)) {
   }
   return events;
 }
 
-// ../../node_modules/.pnpm/micromark-util-decode-numeric-character-reference@1.0.0/node_modules/micromark-util-decode-numeric-character-reference/index.js
+// ../../../node_modules/.pnpm/micromark-util-decode-numeric-character-reference@1.0.0/node_modules/micromark-util-decode-numeric-character-reference/index.js
 function decodeNumericCharacterReference(value, base2) {
   const code3 = Number.parseInt(value, base2);
   if (code3 < 9 || code3 === 11 || code3 > 13 && code3 < 32 || code3 > 126 && code3 < 160 || code3 > 55295 && code3 < 57344 || code3 > 64975 && code3 < 65008 || (code3 & 65535) === 65535 || (code3 & 65535) === 65534 || code3 > 1114111) {
@@ -26382,7 +26382,7 @@ function decodeNumericCharacterReference(value, base2) {
   return String.fromCharCode(code3);
 }
 
-// ../../node_modules/.pnpm/micromark-util-decode-string@1.0.2/node_modules/micromark-util-decode-string/index.js
+// ../../../node_modules/.pnpm/micromark-util-decode-string@1.0.2/node_modules/micromark-util-decode-string/index.js
 var characterEscapeOrReference = /\\([!-/:-@[-`{-~])|&(#(?:\d{1,7}|x[\da-f]{1,6})|[\da-z]{1,31});/gi;
 function decodeString(value) {
   return value.replace(characterEscapeOrReference, decode);
@@ -26400,7 +26400,7 @@ function decode($0, $1, $2) {
   return decodeNamedCharacterReference($2) || $0;
 }
 
-// ../../node_modules/.pnpm/mdast-util-from-markdown@1.2.0/node_modules/mdast-util-from-markdown/lib/index.js
+// ../../../node_modules/.pnpm/mdast-util-from-markdown@1.2.0/node_modules/mdast-util-from-markdown/lib/index.js
 var own6 = {}.hasOwnProperty;
 var fromMarkdown = function(value, encoding, options) {
   if (typeof encoding !== "string") {
@@ -27085,7 +27085,7 @@ function defaultOnError(left, right) {
   }
 }
 
-// ../../node_modules/.pnpm/remark-parse@10.0.1/node_modules/remark-parse/lib/index.js
+// ../../../node_modules/.pnpm/remark-parse@10.0.1/node_modules/remark-parse/lib/index.js
 function remarkParse(options) {
   const parser = (doc) => {
     const settings = this.data("settings");
@@ -27097,10 +27097,10 @@ function remarkParse(options) {
   Object.assign(this, { Parser: parser });
 }
 
-// ../../node_modules/.pnpm/remark-parse@10.0.1/node_modules/remark-parse/index.js
+// ../../../node_modules/.pnpm/remark-parse@10.0.1/node_modules/remark-parse/index.js
 var remark_parse_default = remarkParse;
 
-// ../../node_modules/.pnpm/unist-builder@3.0.0/node_modules/unist-builder/index.js
+// ../../../node_modules/.pnpm/unist-builder@3.0.0/node_modules/unist-builder/index.js
 var u = function(type, props, value) {
   var node = { type: String(type) };
   if ((value === void 0 || value === null) && (typeof props === "string" || Array.isArray(props))) {
@@ -27116,7 +27116,7 @@ var u = function(type, props, value) {
   return node;
 };
 
-// ../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/traverse.js
+// ../../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/traverse.js
 var own7 = {}.hasOwnProperty;
 function unknown(h, node) {
   const data2 = node.data || {};
@@ -27173,7 +27173,7 @@ function all2(h, parent) {
   return values;
 }
 
-// ../../node_modules/.pnpm/unist-util-is@5.1.1/node_modules/unist-util-is/index.js
+// ../../../node_modules/.pnpm/unist-util-is@5.1.1/node_modules/unist-util-is/index.js
 var convert = function(test) {
   if (test === void 0 || test === null) {
     return ok;
@@ -27232,12 +27232,12 @@ function ok() {
   return true;
 }
 
-// ../../node_modules/.pnpm/unist-util-visit-parents@5.1.0/node_modules/unist-util-visit-parents/color.js
+// ../../../node_modules/.pnpm/unist-util-visit-parents@5.1.0/node_modules/unist-util-visit-parents/color.js
 function color2(d) {
   return "\x1B[33m" + d + "\x1B[39m";
 }
 
-// ../../node_modules/.pnpm/unist-util-visit-parents@5.1.0/node_modules/unist-util-visit-parents/index.js
+// ../../../node_modules/.pnpm/unist-util-visit-parents@5.1.0/node_modules/unist-util-visit-parents/index.js
 var CONTINUE2 = true;
 var SKIP2 = "skip";
 var EXIT2 = false;
@@ -27296,7 +27296,7 @@ function toResult2(value) {
   return [value];
 }
 
-// ../../node_modules/.pnpm/unist-util-visit@4.1.0/node_modules/unist-util-visit/index.js
+// ../../../node_modules/.pnpm/unist-util-visit@4.1.0/node_modules/unist-util-visit/index.js
 var visit2 = function(tree, test, visitor, reverse) {
   if (typeof test === "function" && typeof visitor !== "function") {
     reverse = visitor;
@@ -27310,7 +27310,7 @@ var visit2 = function(tree, test, visitor, reverse) {
   }
 };
 
-// ../../node_modules/.pnpm/unist-util-position@4.0.1/node_modules/unist-util-position/index.js
+// ../../../node_modules/.pnpm/unist-util-position@4.0.1/node_modules/unist-util-position/index.js
 var pointStart = point2("start");
 var pointEnd = point2("end");
 function position2(node) {
@@ -27328,17 +27328,17 @@ function point2(type) {
   }
 }
 
-// ../../node_modules/.pnpm/unist-util-generated@2.0.0/node_modules/unist-util-generated/index.js
+// ../../../node_modules/.pnpm/unist-util-generated@2.0.0/node_modules/unist-util-generated/index.js
 function generated(node) {
   return !node || !node.position || !node.position.start || !node.position.start.line || !node.position.start.column || !node.position.end || !node.position.end.line || !node.position.end.column;
 }
 
-// ../../node_modules/.pnpm/unist-util-visit-parents@4.1.1/node_modules/unist-util-visit-parents/color.js
+// ../../../node_modules/.pnpm/unist-util-visit-parents@4.1.1/node_modules/unist-util-visit-parents/color.js
 function color3(d) {
   return "\x1B[33m" + d + "\x1B[39m";
 }
 
-// ../../node_modules/.pnpm/unist-util-visit-parents@4.1.1/node_modules/unist-util-visit-parents/index.js
+// ../../../node_modules/.pnpm/unist-util-visit-parents@4.1.1/node_modules/unist-util-visit-parents/index.js
 var CONTINUE3 = true;
 var SKIP3 = "skip";
 var EXIT3 = false;
@@ -27397,7 +27397,7 @@ function toResult3(value) {
   return [value];
 }
 
-// ../../node_modules/.pnpm/unist-util-visit@3.1.0/node_modules/unist-util-visit/index.js
+// ../../../node_modules/.pnpm/unist-util-visit@3.1.0/node_modules/unist-util-visit/index.js
 var visit3 = function(tree, test, visitor, reverse) {
   if (typeof test === "function" && typeof visitor !== "function") {
     reverse = visitor;
@@ -27411,7 +27411,7 @@ var visit3 = function(tree, test, visitor, reverse) {
   }
 };
 
-// ../../node_modules/.pnpm/mdast-util-definitions@5.1.0/node_modules/mdast-util-definitions/index.js
+// ../../../node_modules/.pnpm/mdast-util-definitions@5.1.0/node_modules/mdast-util-definitions/index.js
 var own8 = {}.hasOwnProperty;
 function definitions(node) {
   const cache = /* @__PURE__ */ Object.create(null);
@@ -27435,7 +27435,7 @@ function clean(value) {
   return String(value || "").toUpperCase();
 }
 
-// ../../node_modules/.pnpm/micromark-util-encode@1.0.1/node_modules/micromark-util-encode/index.js
+// ../../../node_modules/.pnpm/micromark-util-encode@1.0.1/node_modules/micromark-util-encode/index.js
 var characterReferences = { '"': "quot", "&": "amp", "<": "lt", ">": "gt" };
 function encode(value) {
   return value.replace(/["&<>]/g, replace2);
@@ -27444,7 +27444,7 @@ function encode(value) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark-util-sanitize-uri@1.0.0/node_modules/micromark-util-sanitize-uri/index.js
+// ../../../node_modules/.pnpm/micromark-util-sanitize-uri@1.0.0/node_modules/micromark-util-sanitize-uri/index.js
 function sanitizeUri(url, protocol) {
   const value = encode(normalizeUri(url || ""));
   if (!protocol) {
@@ -27497,7 +27497,7 @@ function normalizeUri(value) {
   return result.join("") + value.slice(start3);
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/wrap.js
+// ../../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/wrap.js
 function wrap2(nodes, loose) {
   const result = [];
   let index2 = -1;
@@ -27515,7 +27515,7 @@ function wrap2(nodes, loose) {
   return result;
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/footer.js
+// ../../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/footer.js
 function footer(h) {
   let index2 = -1;
   const listItems = [];
@@ -27602,17 +27602,17 @@ function footer(h) {
   };
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/blockquote.js
+// ../../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/blockquote.js
 function blockquote(h, node) {
   return h(node, "blockquote", wrap2(all2(h, node), true));
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/break.js
+// ../../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/break.js
 function hardBreak(h, node) {
   return [h(node, "br"), u("text", "\n")];
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/code.js
+// ../../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/code.js
 function code(h, node) {
   const value = node.value ? node.value + "\n" : "";
   const lang = node.lang && node.lang.match(/^[^ \t]+(?=[ \t]|$)/);
@@ -27627,17 +27627,17 @@ function code(h, node) {
   return h(node.position, "pre", [code3]);
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/delete.js
+// ../../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/delete.js
 function strikethrough(h, node) {
   return h(node, "del", all2(h, node));
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/emphasis.js
+// ../../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/emphasis.js
 function emphasis(h, node) {
   return h(node, "em", all2(h, node));
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/footnote-reference.js
+// ../../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/footnote-reference.js
 function footnoteReference(h, node) {
   const id = String(node.identifier);
   const safeId = sanitizeUri(id.toLowerCase());
@@ -27662,7 +27662,7 @@ function footnoteReference(h, node) {
   ]);
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/footnote.js
+// ../../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/footnote.js
 function footnote(h, node) {
   const footnoteById = h.footnoteById;
   let no = 1;
@@ -27682,20 +27682,20 @@ function footnote(h, node) {
   });
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/heading.js
+// ../../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/heading.js
 function heading(h, node) {
   return h(node, "h" + node.depth, all2(h, node));
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/html.js
+// ../../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/html.js
 function html(h, node) {
   return h.dangerous ? h.augment(node, u("raw", node.value)) : null;
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/image-reference.js
+// ../../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/image-reference.js
 var import_encode = __toESM(require_encode(), 1);
 
-// ../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/revert.js
+// ../../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/revert.js
 function revert(h, node) {
   const subtype = node.referenceType;
   let suffix = "]";
@@ -27723,7 +27723,7 @@ function revert(h, node) {
   return contents;
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/image-reference.js
+// ../../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/image-reference.js
 function imageReference(h, node) {
   const def = h.definition(node.identifier);
   if (!def) {
@@ -27736,7 +27736,7 @@ function imageReference(h, node) {
   return h(node, "img", props);
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/image.js
+// ../../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/image.js
 var import_encode2 = __toESM(require_encode(), 1);
 function image(h, node) {
   const props = { src: (0, import_encode2.default)(node.url), alt: node.alt };
@@ -27746,12 +27746,12 @@ function image(h, node) {
   return h(node, "img", props);
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/inline-code.js
+// ../../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/inline-code.js
 function inlineCode(h, node) {
   return h(node, "code", [u("text", node.value.replace(/\r?\n|\r/g, " "))]);
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/link-reference.js
+// ../../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/link-reference.js
 var import_encode3 = __toESM(require_encode(), 1);
 function linkReference(h, node) {
   const def = h.definition(node.identifier);
@@ -27765,7 +27765,7 @@ function linkReference(h, node) {
   return h(node, "a", props, all2(h, node));
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/link.js
+// ../../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/link.js
 var import_encode4 = __toESM(require_encode(), 1);
 function link(h, node) {
   const props = { href: (0, import_encode4.default)(node.url) };
@@ -27775,7 +27775,7 @@ function link(h, node) {
   return h(node, "a", props, all2(h, node));
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/list-item.js
+// ../../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/list-item.js
 function listItem(h, node, parent) {
   const result = all2(h, node);
   const loose = parent ? listLoose(parent) : listItemLoose(node);
@@ -27831,7 +27831,7 @@ function listItemLoose(node) {
   return spread === void 0 || spread === null ? node.children.length > 1 : spread;
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/list.js
+// ../../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/list.js
 function list2(h, node) {
   const props = {};
   const name2 = node.ordered ? "ol" : "ul";
@@ -27850,22 +27850,22 @@ function list2(h, node) {
   return h(node, name2, props, wrap2(items, true));
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/paragraph.js
+// ../../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/paragraph.js
 function paragraph(h, node) {
   return h(node, "p", all2(h, node));
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/root.js
+// ../../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/root.js
 function root(h, node) {
   return h.augment(node, u("root", wrap2(all2(h, node))));
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/strong.js
+// ../../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/strong.js
 function strong(h, node) {
   return h(node, "strong", all2(h, node));
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/table.js
+// ../../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/table.js
 function table(h, node) {
   const rows = node.children;
   let index2 = -1;
@@ -27889,17 +27889,17 @@ function table(h, node) {
   }, "tbody", wrap2(result.slice(1), true)) : []), true));
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/text.js
+// ../../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/text.js
 function text3(h, node) {
   return h.augment(node, u("text", String(node.value).replace(/[ \t]*(\r?\n|\r)[ \t]*/g, "$1")));
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/thematic-break.js
+// ../../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/thematic-break.js
 function thematicBreak2(h, node) {
   return h(node, "hr");
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/index.js
+// ../../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/handlers/index.js
 var handlers = {
   blockquote,
   break: hardBreak,
@@ -27932,7 +27932,7 @@ function ignore() {
   return null;
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/index.js
+// ../../../node_modules/.pnpm/mdast-util-to-hast@12.1.1/node_modules/mdast-util-to-hast/lib/index.js
 var own9 = {}.hasOwnProperty;
 function factory(tree, options) {
   const settings = options || {};
@@ -28009,7 +28009,7 @@ function toHast(tree, options) {
   return Array.isArray(node) ? { type: "root", children: node } : node;
 }
 
-// ../../node_modules/.pnpm/remark-rehype@10.1.0/node_modules/remark-rehype/lib/index.js
+// ../../../node_modules/.pnpm/remark-rehype@10.1.0/node_modules/remark-rehype/lib/index.js
 var remarkRehype = function(destination, options) {
   return destination && "run" in destination ? bridge(destination, options) : mutate(destination || options);
 };
@@ -28025,7 +28025,7 @@ function mutate(options) {
   return (node) => toHast(node, options);
 }
 
-// ../../node_modules/.pnpm/estree-walker@3.0.1/node_modules/estree-walker/src/walker.js
+// ../../../node_modules/.pnpm/estree-walker@3.0.1/node_modules/estree-walker/src/walker.js
 var WalkerBase = class {
   constructor() {
     this.should_skip = false;
@@ -28057,7 +28057,7 @@ var WalkerBase = class {
   }
 };
 
-// ../../node_modules/.pnpm/estree-walker@3.0.1/node_modules/estree-walker/src/sync.js
+// ../../../node_modules/.pnpm/estree-walker@3.0.1/node_modules/estree-walker/src/sync.js
 var SyncWalker = class extends WalkerBase {
   constructor(enter, leave) {
     super();
@@ -28131,13 +28131,13 @@ var SyncWalker = class extends WalkerBase {
   }
 };
 
-// ../../node_modules/.pnpm/estree-walker@3.0.1/node_modules/estree-walker/src/index.js
+// ../../../node_modules/.pnpm/estree-walker@3.0.1/node_modules/estree-walker/src/index.js
 function walk(ast, { enter, leave }) {
   const instance = new SyncWalker(enter, leave);
   return instance.visit(ast, null);
 }
 
-// ../../node_modules/.pnpm/estree-util-build-jsx@2.0.0/node_modules/estree-util-build-jsx/index.js
+// ../../../node_modules/.pnpm/estree-util-build-jsx@2.0.0/node_modules/estree-util-build-jsx/index.js
 var regex = /@(jsx|jsxFrag|jsxImportSource|jsxRuntime)\s+(\S+)/g;
 function buildJsx(tree, options = {}) {
   var automatic = options.runtime === "automatic";
@@ -28411,7 +28411,7 @@ function create(from, node) {
   return node;
 }
 
-// ../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/util/estree-util-create.js
+// ../../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/util/estree-util-create.js
 function create2(template, node) {
   const fields = ["start", "end", "loc", "range", "comments"];
   let index2 = -1;
@@ -28424,7 +28424,7 @@ function create2(template, node) {
   return node;
 }
 
-// ../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/util/estree-util-specifiers-to-declarations.js
+// ../../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/util/estree-util-specifiers-to-declarations.js
 function specifiersToDeclarations(specifiers, init) {
   let index2 = -1;
   const declarations = [];
@@ -28472,7 +28472,7 @@ function specifiersToDeclarations(specifiers, init) {
   return declarations;
 }
 
-// ../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/util/estree-util-to-id-or-member-expression.js
+// ../../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/util/estree-util-to-id-or-member-expression.js
 var toIdOrMemberExpression = toIdOrMemberExpressionFactory("Identifier", "MemberExpression", name);
 var toJsxIdOrMemberExpression = toIdOrMemberExpressionFactory("JSXIdentifier", "JSXMemberExpression", isJsxIdentifierName);
 function toIdOrMemberExpressionFactory(idType, memberType, isIdentifier) {
@@ -28514,7 +28514,7 @@ function jsxCont(code3) {
   return code3 === 45 || cont2(code3);
 }
 
-// ../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/plugin/recma-jsx-build.js
+// ../../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/plugin/recma-jsx-build.js
 function recmaJsxBuild(options = {}) {
   const { outputFormat } = options;
   return (tree) => {
@@ -28529,10 +28529,10 @@ function recmaJsxBuild(options = {}) {
   };
 }
 
-// ../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/plugin/recma-document.js
+// ../../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/plugin/recma-document.js
 var import_url2 = require("url");
 
-// ../../node_modules/.pnpm/is-reference@3.0.0/node_modules/is-reference/src/index.js
+// ../../../node_modules/.pnpm/is-reference@3.0.0/node_modules/is-reference/src/index.js
 function is_reference(node, parent) {
   if (node.type === "MemberExpression") {
     return !node.computed && is_reference(node.object, node);
@@ -28563,7 +28563,7 @@ function is_reference(node, parent) {
   return false;
 }
 
-// ../../node_modules/.pnpm/periscopic@3.0.4/node_modules/periscopic/src/index.js
+// ../../../node_modules/.pnpm/periscopic@3.0.4/node_modules/periscopic/src/index.js
 function analyze(expression) {
   const map2 = /* @__PURE__ */ new WeakMap();
   const globals = /* @__PURE__ */ new Map();
@@ -28725,7 +28725,7 @@ function extract_identifiers(param, nodes = []) {
   return nodes;
 }
 
-// ../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/util/estree-util-declaration-to-expression.js
+// ../../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/util/estree-util-declaration-to-expression.js
 function declarationToExpression(declaration) {
   if (declaration.type === "FunctionDeclaration") {
     return __spreadProps(__spreadValues({}, declaration), { type: "FunctionExpression" });
@@ -28736,13 +28736,13 @@ function declarationToExpression(declaration) {
   throw new Error("Cannot turn `" + declaration.type + "` into an expression");
 }
 
-// ../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/util/estree-util-is-declaration.js
+// ../../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/util/estree-util-is-declaration.js
 function isDeclaration(node) {
   const type = node && typeof node === "object" && node.type;
   return Boolean(type === "FunctionDeclaration" || type === "ClassDeclaration" || type === "VariableDeclaration");
 }
 
-// ../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/plugin/recma-document.js
+// ../../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/plugin/recma-document.js
 function recmaDocument(options = {}) {
   const {
     baseUrl,
@@ -29054,7 +29054,7 @@ function recmaDocument(options = {}) {
   }
 }
 
-// ../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/util/estree-util-to-binary-addition.js
+// ../../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/util/estree-util-to-binary-addition.js
 function toBinaryAddition(expressions) {
   let index2 = -1;
   let left;
@@ -29067,7 +29067,7 @@ function toBinaryAddition(expressions) {
   return left;
 }
 
-// ../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/plugin/recma-jsx-rewrite.js
+// ../../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/plugin/recma-jsx-rewrite.js
 var own10 = {}.hasOwnProperty;
 function recmaJsxRewrite(options = {}) {
   const { development: development2, providerImportSource, outputFormat } = options;
@@ -29403,7 +29403,7 @@ function inScope(scope, id) {
   return false;
 }
 
-// ../../node_modules/.pnpm/astring@1.8.1/node_modules/astring/dist/astring.mjs
+// ../../../node_modules/.pnpm/astring@1.8.1/node_modules/astring/dist/astring.mjs
 var { stringify } = JSON;
 if (!String.prototype.repeat) {
   throw new Error("String.prototype.repeat is undefined, see https://github.com/davidbonnet/astring#installation");
@@ -30387,7 +30387,7 @@ function generate(node, options) {
   return state.output;
 }
 
-// ../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/plugin/recma-stringify.js
+// ../../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/plugin/recma-stringify.js
 function recmaStringify(options = {}) {
   const { SourceMapGenerator } = options;
   Object.assign(this, { Compiler: compiler2 });
@@ -30519,7 +30519,7 @@ function encodeJsx(value) {
   return value.replace(/&(?=[#a-z])/gi, "&amp;");
 }
 
-// ../../node_modules/.pnpm/comma-separated-tokens@2.0.2/node_modules/comma-separated-tokens/index.js
+// ../../../node_modules/.pnpm/comma-separated-tokens@2.0.2/node_modules/comma-separated-tokens/index.js
 function stringify2(values, options) {
   var settings = options || {};
   if (values[values.length - 1] === "") {
@@ -30528,7 +30528,7 @@ function stringify2(values, options) {
   return values.join((settings.padRight ? " " : "") + "," + (settings.padLeft === false ? "" : " ")).trim();
 }
 
-// ../../node_modules/.pnpm/estree-util-attach-comments@2.0.0/node_modules/estree-util-attach-comments/index.js
+// ../../../node_modules/.pnpm/estree-util-attach-comments@2.0.0/node_modules/estree-util-attach-comments/index.js
 var push2 = [].push;
 function attachComments(tree, comments) {
   var list3 = (comments || []).concat().sort(compare);
@@ -30595,13 +30595,13 @@ function compare(left, right, compareEnd) {
   return NaN;
 }
 
-// ../../node_modules/.pnpm/hast-util-whitespace@2.0.0/node_modules/hast-util-whitespace/index.js
+// ../../../node_modules/.pnpm/hast-util-whitespace@2.0.0/node_modules/hast-util-whitespace/index.js
 function whitespace(thing) {
   var value = thing && typeof thing === "object" && thing.type === "text" ? thing.value || "" : thing;
   return typeof value === "string" && value.replace(/[ \t\n\f\r]/g, "") === "";
 }
 
-// ../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/util/schema.js
+// ../../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/util/schema.js
 var Schema = class {
   constructor(property, normal, space) {
     this.property = property;
@@ -30615,7 +30615,7 @@ Schema.prototype.property = {};
 Schema.prototype.normal = {};
 Schema.prototype.space = null;
 
-// ../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/util/merge.js
+// ../../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/util/merge.js
 function merge(definitions2, space) {
   const property = {};
   const normal = {};
@@ -30627,12 +30627,12 @@ function merge(definitions2, space) {
   return new Schema(property, normal, space);
 }
 
-// ../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/normalize.js
+// ../../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/normalize.js
 function normalize5(value) {
   return value.toLowerCase();
 }
 
-// ../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/util/info.js
+// ../../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/util/info.js
 var Info = class {
   constructor(property, attribute) {
     this.property = property;
@@ -30650,7 +30650,7 @@ Info.prototype.commaOrSpaceSeparated = false;
 Info.prototype.mustUseProperty = false;
 Info.prototype.defined = false;
 
-// ../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/util/types.js
+// ../../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/util/types.js
 var types_exports = {};
 __export(types_exports, {
   boolean: () => boolean,
@@ -30673,7 +30673,7 @@ function increment() {
   return 2 ** ++powers;
 }
 
-// ../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/util/defined-info.js
+// ../../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/util/defined-info.js
 var checks = Object.keys(types_exports);
 var DefinedInfo = class extends Info {
   constructor(property, attribute, mask, space) {
@@ -30695,7 +30695,7 @@ function mark(values, key, value) {
   }
 }
 
-// ../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/util/create.js
+// ../../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/util/create.js
 var own11 = {}.hasOwnProperty;
 function create3(definition2) {
   const property = {};
@@ -30716,7 +30716,7 @@ function create3(definition2) {
   return new Schema(property, normal, definition2.space);
 }
 
-// ../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/xlink.js
+// ../../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/xlink.js
 var xlink = create3({
   space: "xlink",
   transform(_, prop) {
@@ -30733,7 +30733,7 @@ var xlink = create3({
   }
 });
 
-// ../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/xml.js
+// ../../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/xml.js
 var xml = create3({
   space: "xml",
   transform(_, prop) {
@@ -30742,17 +30742,17 @@ var xml = create3({
   properties: { xmlLang: null, xmlBase: null, xmlSpace: null }
 });
 
-// ../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/util/case-sensitive-transform.js
+// ../../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/util/case-sensitive-transform.js
 function caseSensitiveTransform(attributes, attribute) {
   return attribute in attributes ? attributes[attribute] : attribute;
 }
 
-// ../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/util/case-insensitive-transform.js
+// ../../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/util/case-insensitive-transform.js
 function caseInsensitiveTransform(attributes, property) {
   return caseSensitiveTransform(attributes, property.toLowerCase());
 }
 
-// ../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/xmlns.js
+// ../../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/xmlns.js
 var xmlns = create3({
   space: "xmlns",
   attributes: { xmlnsxlink: "xmlns:xlink" },
@@ -30760,7 +30760,7 @@ var xmlns = create3({
   properties: { xmlns: null, xmlnsXLink: null }
 });
 
-// ../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/aria.js
+// ../../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/aria.js
 var aria = create3({
   transform(_, prop) {
     return prop === "role" ? prop : "aria-" + prop.slice(4).toLowerCase();
@@ -30818,7 +30818,7 @@ var aria = create3({
   }
 });
 
-// ../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/html.js
+// ../../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/html.js
 var html2 = create3({
   space: "html",
   attributes: {
@@ -31112,7 +31112,7 @@ var html2 = create3({
   }
 });
 
-// ../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/svg.js
+// ../../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/svg.js
 var svg = create3({
   space: "svg",
   attributes: {
@@ -31668,7 +31668,7 @@ var svg = create3({
   }
 });
 
-// ../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/find.js
+// ../../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/find.js
 var valid = /^data[-\w.:]+$/i;
 var dash = /-[a-z]/g;
 var cap = /[A-Z]/g;
@@ -31704,7 +31704,7 @@ function camelcase($0) {
   return $0.charAt(1).toUpperCase();
 }
 
-// ../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/hast-to-react.js
+// ../../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/lib/hast-to-react.js
 var hastToReact = {
   classId: "classID",
   dataType: "datatype",
@@ -31725,19 +31725,19 @@ var hastToReact = {
   xmlnsXLink: "xmlnsXlink"
 };
 
-// ../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/index.js
+// ../../../node_modules/.pnpm/property-information@6.1.1/node_modules/property-information/index.js
 var html3 = merge([xml, xlink, xmlns, aria, html2], "html");
 var svg2 = merge([xml, xlink, xmlns, aria, svg], "svg");
 
-// ../../node_modules/.pnpm/space-separated-tokens@2.0.1/node_modules/space-separated-tokens/index.js
+// ../../../node_modules/.pnpm/space-separated-tokens@2.0.1/node_modules/space-separated-tokens/index.js
 function stringify3(values) {
   return values.join(" ").trim();
 }
 
-// ../../node_modules/.pnpm/hast-util-to-estree@2.0.2/node_modules/hast-util-to-estree/index.js
+// ../../../node_modules/.pnpm/hast-util-to-estree@2.0.2/node_modules/hast-util-to-estree/index.js
 var import_style_to_object = __toESM(require_style_to_object(), 1);
 
-// ../../node_modules/.pnpm/zwitch@2.0.2/node_modules/zwitch/index.js
+// ../../../node_modules/.pnpm/zwitch@2.0.2/node_modules/zwitch/index.js
 var own12 = {}.hasOwnProperty;
 function zwitch(key, options) {
   var settings = options || {};
@@ -31757,7 +31757,7 @@ function zwitch(key, options) {
   return one4;
 }
 
-// ../../node_modules/.pnpm/hast-util-to-estree@2.0.2/node_modules/hast-util-to-estree/index.js
+// ../../../node_modules/.pnpm/hast-util-to-estree@2.0.2/node_modules/hast-util-to-estree/index.js
 var toReact = hastToReact;
 var own13 = {}.hasOwnProperty;
 var tableElements = /* @__PURE__ */ new Set([
@@ -32153,12 +32153,12 @@ function jsxIdentifierName(name2) {
   }
 }
 
-// ../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/plugin/rehype-recma.js
+// ../../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/plugin/rehype-recma.js
 function rehypeRecma() {
   return (tree) => toEstree(tree);
 }
 
-// ../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/plugin/rehype-remove-raw.js
+// ../../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/plugin/rehype-remove-raw.js
 function rehypeRemoveRaw() {
   return (tree) => {
     visit2(tree, "raw", (_, index2, parent) => {
@@ -32170,7 +32170,7 @@ function rehypeRemoveRaw() {
   };
 }
 
-// ../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/plugin/remark-mark-and-unravel.js
+// ../../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/plugin/remark-mark-and-unravel.js
 function remarkMarkAndUnravel() {
   return (tree) => {
     visit2(tree, (node, index2, parent_) => {
@@ -32213,7 +32213,7 @@ function remarkMarkAndUnravel() {
   };
 }
 
-// ../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/node-types.js
+// ../../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/node-types.js
 var nodeTypes = [
   "mdxFlowExpression",
   "mdxJsxFlowElement",
@@ -32222,11 +32222,11 @@ var nodeTypes = [
   "mdxjsEsm"
 ];
 
-// ../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/condition.js
+// ../../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/condition.js
 var import_process2 = __toESM(require("process"), 1);
 var development = import_process2.default.env.NODE_ENV === "development";
 
-// ../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/core.js
+// ../../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/core.js
 var removedOptions = [
   "filepath",
   "compilers",
@@ -32283,11 +32283,11 @@ function createProcessor(options = {}) {
   return pipeline;
 }
 
-// ../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/util/extnames.js
+// ../../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/util/extnames.js
 var import_markdown_extensions = __toESM(require_markdown_extensions2(), 1);
 var md = import_markdown_extensions.default.map((d) => "." + d);
 
-// ../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/util/resolve-file-and-options.js
+// ../../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/util/resolve-file-and-options.js
 function resolveFileAndOptions(vfileCompatible, options) {
   const file = looksLikeAVFile2(vfileCompatible) ? vfileCompatible : new VFile(vfileCompatible);
   const _a = options || {}, { format } = _a, rest = __objRest(_a, ["format"]);
@@ -32302,33 +32302,33 @@ function looksLikeAVFile2(value) {
   return Boolean(value && typeof value === "object" && "message" in value && "messages" in value);
 }
 
-// ../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/compile.js
+// ../../../node_modules/.pnpm/@mdx-js+mdx@2.0.0/node_modules/@mdx-js/mdx/lib/compile.js
 function compile(vfileCompatible, compileOptions) {
   const { file, options } = resolveFileAndOptions(vfileCompatible, compileOptions);
   return createProcessor(options).process(file);
 }
 
-// compile/index.ts
+// compiler/index.ts
 var import_core7 = require("@swc/core");
 
-// ../../node_modules/.pnpm/rehype-autolink-headings@6.1.1/node_modules/rehype-autolink-headings/lib/index.js
+// ../../../node_modules/.pnpm/rehype-autolink-headings@6.1.1/node_modules/rehype-autolink-headings/lib/index.js
 var import_extend2 = __toESM(require_extend(), 1);
 
-// ../../node_modules/.pnpm/hast-util-has-property@2.0.0/node_modules/hast-util-has-property/index.js
+// ../../../node_modules/.pnpm/hast-util-has-property@2.0.0/node_modules/hast-util-has-property/index.js
 var own14 = {}.hasOwnProperty;
 function hasProperty(node, name2) {
   var value = name2 && node && typeof node === "object" && node.type === "element" && node.properties && own14.call(node.properties, name2) && node.properties[name2];
   return value !== null && value !== void 0 && value !== false;
 }
 
-// ../../node_modules/.pnpm/hast-util-heading-rank@2.1.0/node_modules/hast-util-heading-rank/index.js
+// ../../../node_modules/.pnpm/hast-util-heading-rank@2.1.0/node_modules/hast-util-heading-rank/index.js
 function headingRank(node) {
   var name2 = node && node.type === "element" && node.tagName.toLowerCase() || "";
   var code3 = name2.length === 2 && name2.charCodeAt(0) === 104 ? name2.charCodeAt(1) : 0;
   return code3 > 48 && code3 < 55 ? code3 - 48 : null;
 }
 
-// ../../node_modules/.pnpm/hast-util-is-element@2.1.2/node_modules/hast-util-is-element/index.js
+// ../../../node_modules/.pnpm/hast-util-is-element@2.1.2/node_modules/hast-util-is-element/index.js
 var convertElement = function(test) {
   if (test === void 0 || test === null) {
     return element2;
@@ -32377,7 +32377,7 @@ function element2(node) {
   return Boolean(node && typeof node === "object" && node.type === "element" && typeof node.tagName === "string");
 }
 
-// ../../node_modules/.pnpm/rehype-autolink-headings@6.1.1/node_modules/rehype-autolink-headings/lib/index.js
+// ../../../node_modules/.pnpm/rehype-autolink-headings@6.1.1/node_modules/rehype-autolink-headings/lib/index.js
 var contentDefaults = {
   type: "element",
   tagName: "span",
@@ -32452,7 +32452,7 @@ function rehypeAutolinkHeadings(options = {}) {
   }
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/arduino.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/arduino.js
 function cPlusPlus(hljs) {
   const regex2 = hljs.regex;
   const C_LINE_COMMENT_MODE = hljs.COMMENT("//", "$", {
@@ -33356,7 +33356,7 @@ function arduino(hljs) {
   return ARDUINO;
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/bash.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/bash.js
 function bash(hljs) {
   const regex2 = hljs.regex;
   const VAR = {};
@@ -33717,7 +33717,7 @@ function bash(hljs) {
   };
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/c.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/c.js
 function c(hljs) {
   const regex2 = hljs.regex;
   const C_LINE_COMMENT_MODE = hljs.COMMENT("//", "$", {
@@ -33999,7 +33999,7 @@ function c(hljs) {
   };
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/cpp.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/cpp.js
 function cpp(hljs) {
   const regex2 = hljs.regex;
   const C_LINE_COMMENT_MODE = hljs.COMMENT("//", "$", {
@@ -34525,7 +34525,7 @@ function cpp(hljs) {
   };
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/csharp.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/csharp.js
 function csharp(hljs) {
   const BUILT_IN_KEYWORDS = [
     "bool",
@@ -34948,7 +34948,7 @@ function csharp(hljs) {
   };
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/css.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/css.js
 var MODES = (hljs) => {
   return {
     IMPORTANT: {
@@ -35606,7 +35606,7 @@ function css(hljs) {
   };
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/diff.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/diff.js
 function diff(hljs) {
   const regex2 = hljs.regex;
   return {
@@ -35649,7 +35649,7 @@ function diff(hljs) {
   };
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/go.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/go.js
 function go(hljs) {
   const LITERALS3 = [
     "true",
@@ -35782,7 +35782,7 @@ function go(hljs) {
   };
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/ini.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/ini.js
 function ini(hljs) {
   const regex2 = hljs.regex;
   const NUMBERS = {
@@ -35896,7 +35896,7 @@ function ini(hljs) {
   };
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/java.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/java.js
 var decimalDigits = "[0-9](_*[0-9])*";
 var frac = `\\.(${decimalDigits})`;
 var hexDigits = "[0-9a-fA-F](_*[0-9a-fA-F])*";
@@ -36133,7 +36133,7 @@ function java(hljs) {
   };
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/javascript.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/javascript.js
 var IDENT_RE = "[A-Za-z$_][0-9A-Za-z$_]*";
 var KEYWORDS = [
   "as",
@@ -36711,7 +36711,7 @@ function javascript(hljs) {
   };
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/json.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/json.js
 function json(hljs) {
   const ATTRIBUTE = {
     className: "attr",
@@ -36745,7 +36745,7 @@ function json(hljs) {
   };
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/kotlin.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/kotlin.js
 var decimalDigits2 = "[0-9](_*[0-9])*";
 var frac2 = `\\.(${decimalDigits2})`;
 var hexDigits2 = "[0-9a-fA-F](_*[0-9a-fA-F])*";
@@ -36979,7 +36979,7 @@ function kotlin(hljs) {
   };
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/less.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/less.js
 var MODES2 = (hljs) => {
   return {
     IMPORTANT: {
@@ -37694,7 +37694,7 @@ function less(hljs) {
   };
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/lua.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/lua.js
 function lua(hljs) {
   const OPENING_LONG_BRACKET = "\\[=*\\[";
   const CLOSING_LONG_BRACKET = "\\]=*\\]";
@@ -37749,7 +37749,7 @@ function lua(hljs) {
   };
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/makefile.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/makefile.js
 function makefile(hljs) {
   const VARIABLE = {
     className: "variable",
@@ -37822,7 +37822,7 @@ function makefile(hljs) {
   };
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/markdown.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/markdown.js
 function markdown(hljs) {
   const regex2 = hljs.regex;
   const INLINE_HTML = {
@@ -38036,7 +38036,7 @@ function markdown(hljs) {
   };
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/objectivec.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/objectivec.js
 function objectivec(hljs) {
   const API_CLASS = {
     className: "built_in",
@@ -38276,7 +38276,7 @@ function objectivec(hljs) {
   };
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/perl.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/perl.js
 function perl(hljs) {
   const regex2 = hljs.regex;
   const KEYWORDS3 = [
@@ -38701,7 +38701,7 @@ function perl(hljs) {
   };
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/php.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/php.js
 function php(hljs) {
   const regex2 = hljs.regex;
   const IDENT_RE_CORE = "[a-zA-Z0-9_\x7F-\xFF]*(?![A-Za-z0-9])(?![$]))";
@@ -39164,7 +39164,7 @@ function php(hljs) {
   };
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/php-template.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/php-template.js
 function phpTemplate(hljs) {
   return {
     name: "PHP template",
@@ -39208,7 +39208,7 @@ function phpTemplate(hljs) {
   };
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/plaintext.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/plaintext.js
 function plaintext(hljs) {
   return {
     name: "Plain text",
@@ -39220,7 +39220,7 @@ function plaintext(hljs) {
   };
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/python.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/python.js
 function python(hljs) {
   const regex2 = hljs.regex;
   const IDENT_RE3 = /[\p{XID_Start}_]\p{XID_Continue}*/u;
@@ -39607,7 +39607,7 @@ function python(hljs) {
   };
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/python-repl.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/python-repl.js
 function pythonRepl(hljs) {
   return {
     aliases: ["pycon"],
@@ -39634,7 +39634,7 @@ function pythonRepl(hljs) {
   };
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/r.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/r.js
 function r(hljs) {
   const regex2 = hljs.regex;
   const IDENT_RE3 = /(?:(?:[a-zA-Z]|\.[._a-zA-Z])[._a-zA-Z0-9]*)|\.(?!\d)/;
@@ -39775,7 +39775,7 @@ function r(hljs) {
   };
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/ruby.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/ruby.js
 function ruby(hljs) {
   const regex2 = hljs.regex;
   const RUBY_METHOD_RE = "([a-zA-Z_]\\w*[!?=]?|[-+~]@|<<|>>|=~|===?|<=>|[<>]=?|\\*\\*|[-/+%^&*~`|]|\\[\\]=?)";
@@ -40071,7 +40071,7 @@ function ruby(hljs) {
   };
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/rust.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/rust.js
 function rust(hljs) {
   const regex2 = hljs.regex;
   const FUNCTION_INVOKE = {
@@ -40370,7 +40370,7 @@ function rust(hljs) {
   };
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/scss.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/scss.js
 var MODES3 = (hljs) => {
   return {
     IMPORTANT: {
@@ -41014,7 +41014,7 @@ function scss(hljs) {
   };
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/shell.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/shell.js
 function shell(hljs) {
   return {
     name: "Shell Session",
@@ -41032,7 +41032,7 @@ function shell(hljs) {
   };
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/sql.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/sql.js
 function sql(hljs) {
   const regex2 = hljs.regex;
   const COMMENT_MODE = hljs.COMMENT("--", "$");
@@ -41664,7 +41664,7 @@ function sql(hljs) {
   };
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/swift.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/swift.js
 function source(re) {
   if (!re)
     return null;
@@ -42343,7 +42343,7 @@ function swift(hljs) {
   };
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/typescript.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/typescript.js
 var IDENT_RE2 = "[A-Za-z$_][0-9A-Za-z$_]*";
 var KEYWORDS2 = [
   "as",
@@ -43007,7 +43007,7 @@ function typescript(hljs) {
   return tsLanguage;
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/vbnet.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/vbnet.js
 function vbnet(hljs) {
   const regex2 = hljs.regex;
   const CHARACTER = {
@@ -43126,7 +43126,7 @@ function vbnet(hljs) {
   };
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/xml.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/xml.js
 function xml2(hljs) {
   const regex2 = hljs.regex;
   const TAG_NAME_RE = regex2.concat(/[A-Z_]/, regex2.optional(/[A-Z0-9_.-]*:/), /[A-Z0-9_.-]*/);
@@ -43324,7 +43324,7 @@ function xml2(hljs) {
   };
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/yaml.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/languages/yaml.js
 function yaml(hljs) {
   const LITERALS3 = "true false yes no null";
   const URI_CHARACTERS = "[\\w#;/?:@&=+$,.~*'()[\\]]+";
@@ -43497,11 +43497,11 @@ function yaml(hljs) {
   };
 }
 
-// ../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/core.js
+// ../../../node_modules/.pnpm/highlight.js@11.4.0/node_modules/highlight.js/es/core.js
 var import_core3 = __toESM(require_core(), 1);
 var core_default = import_core3.default;
 
-// ../../node_modules/.pnpm/fault@2.0.1/node_modules/fault/index.js
+// ../../../node_modules/.pnpm/fault@2.0.1/node_modules/fault/index.js
 var import_format = __toESM(require_format(), 1);
 var fault = Object.assign(create5(Error), {
   eval: create5(EvalError),
@@ -43520,7 +43520,7 @@ function create5(Constructor) {
   }
 }
 
-// ../../node_modules/.pnpm/lowlight@2.5.0/node_modules/lowlight/lib/core.js
+// ../../../node_modules/.pnpm/lowlight@2.5.0/node_modules/lowlight/lib/core.js
 var own15 = {}.hasOwnProperty;
 var defaultPrefix = "hljs-";
 function highlight(language2, value, options = {}) {
@@ -43665,7 +43665,7 @@ var lowlight = {
   registerAlias
 };
 
-// ../../node_modules/.pnpm/lowlight@2.5.0/node_modules/lowlight/lib/common.js
+// ../../../node_modules/.pnpm/lowlight@2.5.0/node_modules/lowlight/lib/common.js
 lowlight.registerLanguage("arduino", arduino);
 lowlight.registerLanguage("bash", bash);
 lowlight.registerLanguage("c", c);
@@ -43702,7 +43702,7 @@ lowlight.registerLanguage("vbnet", vbnet);
 lowlight.registerLanguage("xml", xml2);
 lowlight.registerLanguage("yaml", yaml);
 
-// ../../node_modules/.pnpm/unist-util-find-after@4.0.0/node_modules/unist-util-find-after/index.js
+// ../../../node_modules/.pnpm/unist-util-find-after@4.0.0/node_modules/unist-util-find-after/index.js
 var findAfter = function(parent, index2, test) {
   var is = convert(test);
   if (!parent || !parent.type || !parent.children) {
@@ -43726,7 +43726,7 @@ var findAfter = function(parent, index2, test) {
   return null;
 };
 
-// ../../node_modules/.pnpm/hast-util-to-text@3.1.1/node_modules/hast-util-to-text/index.js
+// ../../../node_modules/.pnpm/hast-util-to-text@3.1.1/node_modules/hast-util-to-text/index.js
 var searchLineFeeds = /\n/g;
 var searchTabOrSpaces = /[\t ]+/g;
 var br = convertElement("br");
@@ -43959,7 +43959,7 @@ function closedDialog(node) {
   return node.tagName === "dialog" && !(node.properties || {}).open;
 }
 
-// ../../node_modules/.pnpm/rehype-highlight@5.0.2/node_modules/rehype-highlight/lib/index.js
+// ../../../node_modules/.pnpm/rehype-highlight@5.0.2/node_modules/rehype-highlight/lib/index.js
 var own16 = {}.hasOwnProperty;
 function rehypeHighlight(options = {}) {
   const { aliases, languages, prefix, plainText, ignoreMissing, subset } = options;
@@ -44034,10 +44034,10 @@ function language(node) {
   }
 }
 
-// ../../node_modules/.pnpm/rehype-slug@5.0.1/node_modules/rehype-slug/index.js
+// ../../../node_modules/.pnpm/rehype-slug@5.0.1/node_modules/rehype-slug/index.js
 var import_github_slugger = __toESM(require_github_slugger(), 1);
 
-// ../../node_modules/.pnpm/hast-util-to-string@2.0.0/node_modules/hast-util-to-string/index.js
+// ../../../node_modules/.pnpm/hast-util-to-string@2.0.0/node_modules/hast-util-to-string/index.js
 function toString3(node) {
   if ("children" in node) {
     return all4(node);
@@ -44059,7 +44059,7 @@ function all4(node) {
   return result.join("");
 }
 
-// ../../node_modules/.pnpm/rehype-slug@5.0.1/node_modules/rehype-slug/index.js
+// ../../../node_modules/.pnpm/rehype-slug@5.0.1/node_modules/rehype-slug/index.js
 var slugs = new import_github_slugger.default();
 function rehypeSlug() {
   return (tree) => {
@@ -44072,7 +44072,7 @@ function rehypeSlug() {
   };
 }
 
-// ../../node_modules/.pnpm/micromark-extension-gfm-autolink-literal@1.0.3/node_modules/micromark-extension-gfm-autolink-literal/lib/syntax.js
+// ../../../node_modules/.pnpm/micromark-extension-gfm-autolink-literal@1.0.3/node_modules/micromark-extension-gfm-autolink-literal/lib/syntax.js
 var www = {
   tokenize: tokenizeWww,
   partial: true
@@ -44449,7 +44449,7 @@ function previousUnbalanced(events) {
   return result;
 }
 
-// ../../node_modules/.pnpm/micromark-extension-gfm-footnote@1.0.3/node_modules/micromark-extension-gfm-footnote/lib/syntax.js
+// ../../../node_modules/.pnpm/micromark-extension-gfm-footnote@1.0.3/node_modules/micromark-extension-gfm-footnote/lib/syntax.js
 var indent = {
   tokenize: tokenizeIndent2,
   partial: true
@@ -44725,7 +44725,7 @@ function tokenizeIndent2(effects, ok2, nok) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark-extension-gfm-strikethrough@1.0.4/node_modules/micromark-extension-gfm-strikethrough/lib/syntax.js
+// ../../../node_modules/.pnpm/micromark-extension-gfm-strikethrough@1.0.4/node_modules/micromark-extension-gfm-strikethrough/lib/syntax.js
 function gfmStrikethrough(options = {}) {
   let single = options.singleTilde;
   const tokenizer2 = {
@@ -44825,7 +44825,7 @@ function gfmStrikethrough(options = {}) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark-extension-gfm-table@1.0.5/node_modules/micromark-extension-gfm-table/lib/syntax.js
+// ../../../node_modules/.pnpm/micromark-extension-gfm-table@1.0.5/node_modules/micromark-extension-gfm-table/lib/syntax.js
 var gfmTable = {
   flow: {
     null: {
@@ -45210,7 +45210,7 @@ function tokenizeNextPrefixedOrBlank(effects, ok2, nok) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark-extension-gfm-task-list-item@1.0.3/node_modules/micromark-extension-gfm-task-list-item/lib/syntax.js
+// ../../../node_modules/.pnpm/micromark-extension-gfm-task-list-item@1.0.3/node_modules/micromark-extension-gfm-task-list-item/lib/syntax.js
 var tasklistCheck = {
   tokenize: tokenizeTasklistCheck
 };
@@ -45269,7 +45269,7 @@ function spaceThenNonSpace(effects, ok2, nok) {
   }
 }
 
-// ../../node_modules/.pnpm/micromark-extension-gfm@2.0.1/node_modules/micromark-extension-gfm/index.js
+// ../../../node_modules/.pnpm/micromark-extension-gfm@2.0.1/node_modules/micromark-extension-gfm/index.js
 function gfm(options) {
   return combineExtensions([
     gfmAutolinkLiteral,
@@ -45280,7 +45280,7 @@ function gfm(options) {
   ]);
 }
 
-// ../../node_modules/.pnpm/escape-string-regexp@5.0.0/node_modules/escape-string-regexp/index.js
+// ../../../node_modules/.pnpm/escape-string-regexp@5.0.0/node_modules/escape-string-regexp/index.js
 function escapeStringRegexp(string3) {
   if (typeof string3 !== "string") {
     throw new TypeError("Expected a string");
@@ -45288,7 +45288,7 @@ function escapeStringRegexp(string3) {
   return string3.replace(/[|\\{}()[\]^$+*?.]/g, "\\$&").replace(/-/g, "\\x2d");
 }
 
-// ../../node_modules/.pnpm/mdast-util-find-and-replace@2.1.0/node_modules/mdast-util-find-and-replace/index.js
+// ../../../node_modules/.pnpm/mdast-util-find-and-replace@2.1.0/node_modules/mdast-util-find-and-replace/index.js
 var own17 = {}.hasOwnProperty;
 var findAndReplace = function(tree, find2, replace2, options) {
   let settings;
@@ -45403,7 +45403,7 @@ function toFunction(replace2) {
   return typeof replace2 === "function" ? replace2 : () => replace2;
 }
 
-// ../../node_modules/.pnpm/mdast-util-gfm-autolink-literal@1.0.2/node_modules/mdast-util-gfm-autolink-literal/index.js
+// ../../../node_modules/.pnpm/mdast-util-gfm-autolink-literal@1.0.2/node_modules/mdast-util-gfm-autolink-literal/index.js
 var inConstruct = "phrasing";
 var notInConstruct = ["autolink", "link", "image", "label"];
 var gfmAutolinkLiteralFromMarkdown = {
@@ -45537,7 +45537,7 @@ function previous2(match, email) {
   return (match.index === 0 || unicodeWhitespace(code3) || unicodePunctuation(code3)) && (!email || code3 !== 47);
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-markdown@1.3.0/node_modules/mdast-util-to-markdown/lib/util/association.js
+// ../../../node_modules/.pnpm/mdast-util-to-markdown@1.3.0/node_modules/mdast-util-to-markdown/lib/util/association.js
 function association(node) {
   if (node.label || !node.identifier) {
     return node.label || "";
@@ -45545,7 +45545,7 @@ function association(node) {
   return decodeString(node.identifier);
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-markdown@1.3.0/node_modules/mdast-util-to-markdown/lib/util/pattern-compile.js
+// ../../../node_modules/.pnpm/mdast-util-to-markdown@1.3.0/node_modules/mdast-util-to-markdown/lib/util/pattern-compile.js
 function patternCompile(pattern) {
   if (!pattern._compiled) {
     const before = (pattern.atBreak ? "[\\r\\n][\\t ]*" : "") + (pattern.before ? "(?:" + pattern.before + ")" : "");
@@ -45554,7 +45554,7 @@ function patternCompile(pattern) {
   return pattern._compiled;
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-markdown@1.3.0/node_modules/mdast-util-to-markdown/lib/util/pattern-in-scope.js
+// ../../../node_modules/.pnpm/mdast-util-to-markdown@1.3.0/node_modules/mdast-util-to-markdown/lib/util/pattern-in-scope.js
 function patternInScope(stack, pattern) {
   return listInScope(stack, pattern.inConstruct, true) && !listInScope(stack, pattern.notInConstruct, false);
 }
@@ -45574,7 +45574,7 @@ function listInScope(stack, list3, none) {
   return false;
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-markdown@1.3.0/node_modules/mdast-util-to-markdown/lib/util/safe.js
+// ../../../node_modules/.pnpm/mdast-util-to-markdown@1.3.0/node_modules/mdast-util-to-markdown/lib/util/safe.js
 function safe(context, input, config) {
   const value = (config.before || "") + (input || "") + (config.after || "");
   const positions = [];
@@ -45656,7 +45656,7 @@ function escapeBackslashes(value, after) {
   return results.join("");
 }
 
-// ../../node_modules/.pnpm/mdast-util-gfm-footnote@1.0.1/node_modules/mdast-util-gfm-footnote/index.js
+// ../../../node_modules/.pnpm/mdast-util-gfm-footnote@1.0.1/node_modules/mdast-util-gfm-footnote/index.js
 function gfmFootnoteFromMarkdown() {
   return {
     enter: {
@@ -45750,7 +45750,7 @@ function gfmFootnoteToMarkdown() {
   }
 }
 
-// ../../node_modules/.pnpm/mdast-util-gfm-strikethrough@1.0.1/node_modules/mdast-util-gfm-strikethrough/index.js
+// ../../../node_modules/.pnpm/mdast-util-gfm-strikethrough@1.0.1/node_modules/mdast-util-gfm-strikethrough/index.js
 var gfmStrikethroughFromMarkdown = {
   canContainEols: ["delete"],
   enter: { strikethrough: enterStrikethrough },
@@ -45783,7 +45783,7 @@ function peekDelete() {
   return "~";
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-markdown@1.3.0/node_modules/mdast-util-to-markdown/lib/handle/inline-code.js
+// ../../../node_modules/.pnpm/mdast-util-to-markdown@1.3.0/node_modules/mdast-util-to-markdown/lib/handle/inline-code.js
 inlineCode2.peek = inlineCodePeek;
 function inlineCode2(node, _, context) {
   let value = node.value || "";
@@ -45815,7 +45815,7 @@ function inlineCodePeek() {
   return "`";
 }
 
-// ../../node_modules/.pnpm/markdown-table@3.0.2/node_modules/markdown-table/index.js
+// ../../../node_modules/.pnpm/markdown-table@3.0.2/node_modules/markdown-table/index.js
 function markdownTable(table2, options = {}) {
   const align = (options.align || []).concat();
   const stringLength = options.stringLength || defaultStringLength;
@@ -45948,7 +45948,7 @@ function toAlignment(value) {
   return code3 === 67 || code3 === 99 ? 99 : code3 === 76 || code3 === 108 ? 108 : code3 === 82 || code3 === 114 ? 114 : 0;
 }
 
-// ../../node_modules/.pnpm/mdast-util-gfm-table@1.0.3/node_modules/mdast-util-gfm-table/index.js
+// ../../../node_modules/.pnpm/mdast-util-gfm-table@1.0.3/node_modules/mdast-util-gfm-table/index.js
 var gfmTableFromMarkdown = {
   enter: {
     table: enterTable,
@@ -46078,7 +46078,7 @@ function gfmTableToMarkdown(options) {
   }
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-markdown@1.3.0/node_modules/mdast-util-to-markdown/lib/util/check-bullet.js
+// ../../../node_modules/.pnpm/mdast-util-to-markdown@1.3.0/node_modules/mdast-util-to-markdown/lib/util/check-bullet.js
 function checkBullet(context) {
   const marker = context.options.bullet || "*";
   if (marker !== "*" && marker !== "+" && marker !== "-") {
@@ -46087,7 +46087,7 @@ function checkBullet(context) {
   return marker;
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-markdown@1.3.0/node_modules/mdast-util-to-markdown/lib/util/check-list-item-indent.js
+// ../../../node_modules/.pnpm/mdast-util-to-markdown@1.3.0/node_modules/mdast-util-to-markdown/lib/util/check-list-item-indent.js
 function checkListItemIndent(context) {
   const style2 = context.options.listItemIndent || "tab";
   if (style2 === 1 || style2 === "1") {
@@ -46099,7 +46099,7 @@ function checkListItemIndent(context) {
   return style2;
 }
 
-// ../../node_modules/.pnpm/mdast-util-to-markdown@1.3.0/node_modules/mdast-util-to-markdown/lib/handle/list-item.js
+// ../../../node_modules/.pnpm/mdast-util-to-markdown@1.3.0/node_modules/mdast-util-to-markdown/lib/handle/list-item.js
 function listItem2(node, parent, context, safeOptions) {
   const listItemIndent = checkListItemIndent(context);
   let bullet = context.bulletCurrent || checkBullet(context);
@@ -46125,7 +46125,7 @@ function listItem2(node, parent, context, safeOptions) {
   }
 }
 
-// ../../node_modules/.pnpm/mdast-util-gfm-task-list-item@1.0.1/node_modules/mdast-util-gfm-task-list-item/index.js
+// ../../../node_modules/.pnpm/mdast-util-gfm-task-list-item@1.0.1/node_modules/mdast-util-gfm-task-list-item/index.js
 var gfmTaskListItemFromMarkdown = {
   exit: {
     taskListCheckValueChecked: exitCheck,
@@ -46187,7 +46187,7 @@ function listItemWithTaskListItem(node, parent, context, safeOptions) {
   }
 }
 
-// ../../node_modules/.pnpm/mdast-util-gfm@2.0.0/node_modules/mdast-util-gfm/index.js
+// ../../../node_modules/.pnpm/mdast-util-gfm@2.0.0/node_modules/mdast-util-gfm/index.js
 function gfmFromMarkdown() {
   return [
     gfmAutolinkLiteralFromMarkdown,
@@ -46209,7 +46209,7 @@ function gfmToMarkdown(options) {
   };
 }
 
-// ../../node_modules/.pnpm/remark-gfm@3.0.1/node_modules/remark-gfm/index.js
+// ../../../node_modules/.pnpm/remark-gfm@3.0.1/node_modules/remark-gfm/index.js
 function remarkGfm(options = {}) {
   const data2 = this.data();
   add("micromarkExtensions", gfm(options));
@@ -46221,7 +46221,7 @@ function remarkGfm(options = {}) {
   }
 }
 
-// ../../node_modules/.pnpm/unist-util-ancestor@1.2.1/node_modules/unist-util-ancestor/index.js
+// ../../../node_modules/.pnpm/unist-util-ancestor@1.2.1/node_modules/unist-util-ancestor/index.js
 function findAncestor(tree, nodesToFind) {
   if (!tree) {
     throw new Error("unist-util-ancestor requires a tree to search");
@@ -46254,7 +46254,7 @@ function findAncestor(tree, nodesToFind) {
   return ancestor;
 }
 
-// compile/rehypeCodeblockDataAttr.ts
+// compiler/rehypeCodeblockDataAttr.ts
 var parseMeta = (meta) => meta.split(" ").map((it) => it.split("=")).reduce((acc, [key, value]) => __spreadProps(__spreadValues({}, acc), { [key === "hidden" ? key : `data-${key}`]: value ?? true }), {});
 var rehypeCodeblockDataAttr = () => {
   return (tree) => {
@@ -46274,7 +46274,7 @@ var rehypeCodeblockDataAttr = () => {
   };
 };
 
-// compile/rehypeTermID.ts
+// compiler/rehypeTermID.ts
 var import_github_slugger2 = __toESM(require_github_slugger());
 var rehypeTermID = () => {
   const slugs2 = new import_github_slugger2.default();
@@ -46288,7 +46288,7 @@ var rehypeTermID = () => {
   };
 };
 
-// compile/remarkCallout.ts
+// compiler/remarkCallout.ts
 var import_Array = __toESM(require_Array());
 var O = __toESM(require_Option());
 var import_function = __toESM(require_function());
@@ -46317,7 +46317,7 @@ var remarkCallout = () => {
   };
 };
 
-// compile/remarkDefinitionList.ts
+// compiler/remarkDefinitionList.ts
 var import_Array2 = __toESM(require_Array());
 var O2 = __toESM(require_Option());
 var import_function2 = __toESM(require_function());
@@ -46374,7 +46374,7 @@ function bissectDefinitionList(node) {
   return result;
 }
 
-// compile/remarkHeadingLevel.ts
+// compiler/remarkHeadingLevel.ts
 var remarkHeadingLevel = () => {
   return (tree) => {
     visit2(tree, "heading", (heading2) => {
@@ -46383,7 +46383,7 @@ var remarkHeadingLevel = () => {
   };
 };
 
-// compile/remarkImageDimensions.ts
+// compiler/remarkImageDimensions.ts
 var remarkImageDimensions = () => {
   return (tree) => {
     visit2(tree, "image", (image2) => {
@@ -46399,7 +46399,7 @@ var remarkImageDimensions = () => {
   };
 };
 
-// compile/index.ts
+// compiler/index.ts
 async function compile2(source2) {
   const compiled = await compile(source2, {
     outputFormat: "function-body",
@@ -46416,7 +46416,7 @@ async function compile2(source2) {
   });
   return String((await (0, import_core7.minify)(`(()=>{${compiled}})()`, { compress: true, mangle: true })).code.slice(6, -4));
 }
-module.exports = __toCommonJS(compile_exports);
+module.exports = __toCommonJS(compiler_exports);
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   compile

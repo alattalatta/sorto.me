@@ -1,4 +1,4 @@
-import { styled } from '@app/ui'
+import { styled } from '@lib/ui'
 import { useEffect, useRef, useState } from 'react'
 
 import LiveCode from './LiveCode'

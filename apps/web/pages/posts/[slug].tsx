@@ -1,6 +1,6 @@
-import type { Post } from '@app/posts'
-import type { PostMetadata } from '@app/posts'
-import postsIndex from '@app/posts/data/index.json'
+import type { Post } from '@contents/posts'
+import type { PostMetadata } from '@contents/posts'
+import postsIndex from '@contents/posts/data/index.json'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import React from 'react'
@@ -42,7 +42,7 @@ PostPage.Layout = ({ children }) => (
 
 export default PostPage
 
-export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = ({ params }) => {
   if (!params?.slug) {
     throw new Error('Slug must exist')
   }
@@ -66,5 +66,5 @@ export const getStaticPaths: GetStaticPaths<StaticParam> = () => {
 
 function importPostData(slug: string): Post {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
-  return require(`@app/posts/data/${slug}.json`) as Post
+  return require(`@contents/posts/data/${slug}.json`) as Post
 }

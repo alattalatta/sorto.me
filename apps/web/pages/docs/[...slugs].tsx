@@ -1,7 +1,7 @@
-import type { DocMetadata } from '@app/docs'
-import type { Doc } from '@app/docs'
-import docsIndex from '@app/docs/data/index.json'
-import docsMap from '@app/docs/data/slugMap.json'
+import type { DocMetadata } from '@contents/docs'
+import type { Doc } from '@contents/docs'
+import docsIndex from '@contents/docs/data/index.json'
+import docsMap from '@contents/docs/data/slugMap.json'
 import browserCompatData from '@mdn/browser-compat-data'
 import type { Identifier } from '@mdn/browser-compat-data/types'
 import type { GetStaticPaths, GetStaticProps } from 'next'
@@ -47,7 +47,7 @@ DocPage.Layout = Layout
 
 export default DocPage
 
-export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = ({ params }) => {
   if (!params?.slugs) {
     throw new Error('Slugs must exist')
   }
@@ -105,5 +105,5 @@ function makeBCDData(bcdKey: string | null): { data: Identifier; name: string } 
 
 function importDocData(slug: string): Doc {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
-  return require(`@app/docs/data/${slug}.json`) as Doc
+  return require(`@contents/docs/data/${slug}.json`) as Doc
 }

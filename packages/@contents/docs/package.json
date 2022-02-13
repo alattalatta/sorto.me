@@ -1,5 +1,5 @@
 {
-  "name": "@app/docs",
+  "name": "@contents/docs",
   "version": "1.0.0",
   "private": true,
   "main": "./index.ts",
@@ -10,12 +10,12 @@
     "test": "jest"
   },
   "dependencies": {
-    "@app/functions": "workspace:*",
+    "@lib/functions": "workspace:*",
     "entities": "^3.0.1",
     "gray-matter": "^4.0.2"
   },
   "devDependencies": {
-    "@app/mdx": "workspace:*",
+    "@lib/mdx": "workspace:*",
     "@types/jest": "^27.0.1",
     "@types/klaw": "^3.0.3",
     "@types/node": "16",

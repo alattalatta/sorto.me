@@ -3,5 +3,5 @@
   "compilerOptions": {
     "baseUrl": ".",
   },
-  "include": ["next-env.d.ts", "."],
+  "include": ["next-env.d.ts", "support.d.ts", "."],
 }

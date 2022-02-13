@@ -1,4 +1,4 @@
-import { styled } from '@app/ui'
+import { styled } from '@lib/ui'
 import type { BrowserNames, Identifier, SupportStatement } from '@mdn/browser-compat-data/types'
 import { Fragment, useState } from 'react'
 

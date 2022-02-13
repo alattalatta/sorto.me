@@ -204,11 +204,15 @@ importers:
       rehype-highlight: ^5.0.2
       rehype-slug: ^5.0.1
       remark-gfm: ^3.0.1
+      remark-mdx: ^2.0.0
+      remark-parse: ^10.0.1
+      remark-rehype: ^10.1.0
       tsconfig: workspace:*
       typescript: ^4.5.5
       unified: ^10.1.1
       unist-util-ancestor: ^1.2.1
       unist-util-inspect: ^7.0.0
+      unist-util-map: ^3.0.0
       unist-util-visit: ^4.1.0
     dependencies:
       '@mdx-js/mdx': 2.0.0
@@ -218,9 +222,13 @@ importers:
       rehype-highlight: 5.0.2
       rehype-slug: 5.0.1
       remark-gfm: 3.0.1
+      remark-mdx: 2.0.0
+      remark-parse: 10.0.1
+      remark-rehype: 10.1.0
       unified: 10.1.1
       unist-util-ancestor: 1.2.1
       unist-util-inspect: 7.0.0
+      unist-util-map: 3.0.0
       unist-util-visit: 4.1.0
     devDependencies:
       '@swc/core': 1.2.138
@@ -9127,6 +9135,12 @@ packages:
 
   /unist-util-is/5.1.1:
     resolution: {integrity: sha512-F5CZ68eYzuSvJjGhCLPL3cYx45IxkqXSetCcRgUXtbcm50X2L9oOWQlfUfDdAf+6Pd27YDblBfdtmsThXmwpbQ==}
+    dev: false
+
+  /unist-util-map/3.0.0:
+    resolution: {integrity: sha512-kyPbOAlOPZpytdyquF1g6qYpAjkpMpSPtR7TAj4SOQWSJfQ/LN+IFI2oWBvkxzhsPKxiMKZcgpp5ihZLLvNl6g==}
+    dependencies:
+      '@types/unist': 2.0.6
     dev: false
 
   /unist-util-position-from-estree/1.1.1:

@@ -1,6 +1,5 @@
-import type { Element, Properties, Root } from 'hast'
+import type { Properties, Root } from 'hast'
 import type { Plugin } from 'unified'
-import findAncestor from 'unist-util-ancestor'
 import { visit } from 'unist-util-visit'
 
 const parseMeta = (meta: string): Properties =>
@@ -12,20 +11,22 @@ const parseMeta = (meta: string): Properties =>
 
 const rehypeCodeblockDataAttr: Plugin<void[], Root> = () => {
   return (tree) => {
-    visit(tree, 'element', (node) => {
+    visit(tree, 'element', (node, _, parent) => {
       if (node.tagName !== 'code') {
         return
       }
 
-      const ancestor = findAncestor(tree, [node]) as Element
-      if (ancestor.tagName !== 'pre') {
+      if (parent.tagName !== 'pre') {
         return
       }
 
-      ancestor.properties = {
+      parent.properties = {
         ...parseMeta((node.data?.meta as string) || ''),
         className: node.properties?.className,
       }
+
+      // there can't be a nested codeblock
+      return 'skip'
     })
   }
 }

@@ -5,6 +5,10 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**", ".next/**", "data/**"]
     },
+    "@lib/mdx#build": {
+      "dependsOn": ["^build"],
+      "outputs": ["compiler/index.js"]
+    },
     "dev": {
       "cache": false,
       "dependsOn": ["@contents/docs#build", "@contents/posts#build"]

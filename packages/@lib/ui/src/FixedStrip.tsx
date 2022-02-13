@@ -7,6 +7,7 @@ const FixedStrip = styled('div', {
   maxWidth: `${982 / 16}rem`,
   height: `${HEIGHT}rem`,
   background: '$fg',
+  boxSizing: 'content-box',
   color: '$bg',
   margin: '0 auto',
   padding: 0,

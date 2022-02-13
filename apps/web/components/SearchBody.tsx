@@ -13,6 +13,30 @@ const Root = styled('main', {
   '& .gsc-control-cse': {
     marginTop: '1.5rem',
     padding: 0,
+
+    '& .gsc-result': {
+      padding: '0.75rem 0',
+    },
+    '& .gs-title': {
+      color: '$highlight',
+      overflow: 'visible',
+      '&:hover': {
+        textDecoration: 'underline',
+      },
+    },
+    '& .gs-visibleUrl-breadcrumb': {
+      color: 'inherit',
+      marginTop: '.25em',
+    },
+    '& .gs-snippet': {
+      color: 'inherit',
+      fontSize: '1rem',
+      marginTop: '.25em',
+    },
+    '& b': {
+      background: '$bgSuppl',
+      textDecoration: 'underline',
+    },
   },
 })
 
@@ -36,9 +60,9 @@ const EmptyQueryBody = styled('form', {
 const SubmitButton = styled('button', {
   width: `${96 / 16}rem`,
   height: `${40 / 16}rem`,
-  background: '#2c2c2c',
+  background: '$fg',
   border: 'none',
-  color: '#fff',
+  color: '$bg',
   fontSize: '1em',
   padding: 0,
 })

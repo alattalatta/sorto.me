@@ -25,7 +25,6 @@ const ScrollBack768 = styled(ScrollBack, {
 
 const PostBody: React.VFC<Props> = ({ compiledSource, meta }) => {
   const Content = useMDXRenderer(compiledSource)
-
   return (
     <Root>
       <Post as="header" image={meta.image} title={meta.title} written={new Date(meta.created)} />

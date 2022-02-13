@@ -1,65 +1,19 @@
-import { css, styled, FixedStrip, FIXED_STRIP_HEIGHT, ScrollBack } from '@lib/ui'
-import Link from 'next/link'
+import { styled, FIXED_STRIP_HEIGHT, ScrollBack } from '@lib/ui'
 
-type Props = {
-  bottomStrip?: boolean
-  topStrip?: boolean
-  width?: number
-}
+import { NavBar } from './NavBar'
 
 const Body = styled('div', {
-  maxWidth: `${982 / 16}em`,
-  margin: '0 auto',
-  padding: '0 1em',
-  variants: {
-    bottomStrip: {
-      true: {
-        marginBottom: `${FIXED_STRIP_HEIGHT}em`,
-      },
-    },
-    topStrip: {
-      true: {
-        marginTop: `${FIXED_STRIP_HEIGHT + 1.5}em`,
-      },
-    },
-  },
+  maxWidth: `${982 / 16}rem`,
+  margin: `1.5rem auto ${FIXED_STRIP_HEIGHT}rem`,
+  padding: '0 1rem',
 })
 
-const TopStripBody = styled('div', {
-  height: '100%',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  fontWeight: 600,
-  padding: '0 1.5em',
-})
-
-const Anchor = styled('a', {
-  color: 'inherit',
-  textDecoration: 'none',
-})
-
-const Layout: React.FC<Props> = ({ children, bottomStrip = true, topStrip = true, width = 982 }) => {
-  const maxWidth = `${width / 16}em`
-
+const Layout: React.FC = ({ children }) => {
   return (
     <>
-      {topStrip && (
-        <FixedStrip css={{ maxWidth }} position="top">
-          <TopStripBody>
-            <Link href="/">
-              <Anchor href="/">sorto.me</Anchor>
-            </Link>
-            <Link href="/search">
-              <Anchor href="/search">검색</Anchor>
-            </Link>
-          </TopStripBody>
-        </FixedStrip>
-      )}
-      <Body bottomStrip={bottomStrip} css={{ maxWidth }} topStrip={topStrip}>
-        {children}
-      </Body>
-      {bottomStrip && <ScrollBack className={css({ maxWidth })()} />}
+      <NavBar />
+      <Body>{children}</Body>
+      <ScrollBack />
     </>
   )
 }

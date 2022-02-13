@@ -20,11 +20,7 @@ const PostsPage: Page<StaticProps> = ({ posts }) => {
     </>
   )
 }
-PostsPage.Layout = ({ children }) => (
-  <Layout topStrip={false} width={768}>
-    {children}
-  </Layout>
-)
+PostsPage.Layout = Layout
 
 export default PostsPage
 

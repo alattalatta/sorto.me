@@ -8,10 +8,10 @@ type Props = {
 const Root = styled('main', {
   maxWidth: `${768 / 16}rem`,
   margin: '0 auto',
-  padding: '1.5em 0 1em',
+  padding: '1.5rem 0 1rem',
 
   '& .gsc-control-cse': {
-    marginTop: '1.5em',
+    marginTop: '1.5rem',
     padding: 0,
   },
 })
@@ -28,13 +28,14 @@ const EmptyQueryBody = styled('form', {
   justifyContent: 'center',
   flexDirection: 'column',
   margin: 'auto',
+  paddingBottom: '1rem',
   position: 'fixed',
   inset: 0,
 })
 
 const SubmitButton = styled('button', {
-  width: `${96 / 16}em`,
-  height: `${40 / 16}em`,
+  width: `${96 / 16}rem`,
+  height: `${40 / 16}rem`,
   background: '#2c2c2c',
   border: 'none',
   color: '#fff',

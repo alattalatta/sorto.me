@@ -33,11 +33,7 @@ const PostPage: Page<StaticProps> = ({ compiledSource, meta }) => {
   )
 }
 
-PostPage.Layout = ({ children }) => (
-  <Layout topStrip={false} width={768}>
-    {children}
-  </Layout>
-)
+PostPage.Layout = Layout
 
 export default PostPage
 

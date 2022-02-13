@@ -5,7 +5,7 @@ export function useSearchQuery(): string | null {
 
   useEffect(() => {
     const q = new URLSearchParams(location.search).get('q')
-    setSearchQuery(decodeURIComponent(q))
+    q && setSearchQuery(decodeURIComponent(q))
   }, [])
 
   return searchQuery

@@ -164,17 +164,7 @@ TrueType과 OpenType 가변 글꼴은 "wght" 바리에이션을 사용해 가변
 ### CSS
 
 ```css name=variable
-/*
-Mutator Sans is created by LettError (https://github.com/LettError/mutatorSans)
-and is used here under the terms of its license:
-https://github.com/LettError/mutatorSans/blob/master/LICENSE
-*/
-
-@font-face {
-  src: url('https://mdn.mozillademos.org/files/16011/MutatorSans.ttf');
-  font-family: 'MutatorSans';
-  font-style: normal;
-}
+@import url(https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css);
 
 label {
   font: 1rem monospace;
@@ -188,7 +178,7 @@ label {
 
 .sample {
   text-transform: uppercase;
-  font: 1.5rem 'MutatorSans', sans-serif;
+  font: 1.5rem 'Pretendard Variable', sans-serif;
 }
 ```
 

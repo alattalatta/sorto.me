@@ -1,4 +1,4 @@
-import { Splash, styled } from '@lib/ui'
+import { Anchor, Splash, styled } from '@lib/ui'
 
 const Root = styled('main', {})
 
@@ -25,31 +25,31 @@ const IndexBody: React.VFC = () => {
         <section>
           <Label>library</Label>
           <Item>
-            <a href="https://www.npmjs.com/package/k-popo">k-popo</a>
+            <Anchor href="https://www.npmjs.com/package/k-popo">k-popo</Anchor>
           </Item>
         </section>
         <section>
           <Label>experiments</Label>
           <Item>
-            <a href="https://dialog98.sorto.me/">dialog98</a>
+            <Anchor href="https://dialog98.sorto.me/">dialog98</Anchor>
           </Item>
         </section>
         <section>
           <Label>enter</Label>
           <Item>
-            <a href="/posts">blog</a>
+            <Anchor href="/posts">blog</Anchor>
           </Item>
           <Item>
-            <a href="/docs/Web">docs</a>
+            <Anchor href="/docs/Web">docs</Anchor>
           </Item>
           <Item>
-            <a href="https://github.com/alattalatta">github</a>
+            <Anchor href="https://github.com/alattalatta">github</Anchor>
           </Item>
         </section>
         <section>
           <Label>contact</Label>
           <Item>
-            <a href="mailto:alattalatta@sorto.me">@sorto.me</a>
+            <Anchor href="mailto:alattalatta@sorto.me">@sorto.me</Anchor>
           </Item>
         </section>
       </Root>

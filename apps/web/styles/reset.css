@@ -4,43 +4,9 @@
 }
 
 html {
-  color: #2c2c2c;
   scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-}
-body.o {
-  overflow: hidden;
-}
-
-h1,
-h2,
-h3,
-h4,
-p,
-blockquote,
-figure,
-ul,
-ol {
-  margin: 0;
-}
-
-button {
-  font-family: inherit;
-}
-
-code {
-  font-family: var(--fonts-mono);
-}
-
-ul,
-ol {
-  padding-left: 30px;
-}
-
-i {
-  font-family: 'Noto Serif KR', serif;
-  font-style: normal;
 }

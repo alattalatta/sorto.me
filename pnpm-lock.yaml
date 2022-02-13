@@ -38,7 +38,6 @@ importers:
       '@types/react': ^17.0.39
       '@types/react-dom': ^17.0.8
       babel-jest: ^27.5.1
-      clsx: ^1.1.1
       entities: ^3.0.1
       fp-ts: ^2.10.5
       framer-motion: ^6.2.6
@@ -62,7 +61,6 @@ importers:
       '@lib/ui': link:../../packages/@lib/ui
       '@mdn/browser-compat-data': 4.1.7
       '@mdn/dinocons': 0.3.5
-      clsx: 1.1.1
       entities: 3.0.1
       fp-ts: 2.11.8
       framer-motion: 6.2.6_react-dom@17.0.2+react@17.0.2
@@ -3464,11 +3462,6 @@ packages:
     dependencies:
       mimic-response: 1.0.1
     dev: true
-
-  /clsx/1.1.1:
-    resolution: {integrity: sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA==}
-    engines: {node: '>=6'}
-    dev: false
 
   /co/4.6.0:
     resolution: {integrity: sha1-bqa989hTrlTMuOR7+gvz+QMfsYQ=}

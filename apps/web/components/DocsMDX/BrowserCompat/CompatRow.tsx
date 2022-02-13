@@ -3,7 +3,7 @@ import type { BrowserNames, Identifier, SupportStatement } from '@mdn/browser-co
 import { Fragment, useState } from 'react'
 
 import { mapOver } from 'utils/array'
-import { getSubIdentifierKeys, supportLabel } from 'utils/docs/browserCompat'
+import { getSubIdentifierKeys, supportLabel } from 'utils/docs'
 
 import CompatCell from './CompatCell'
 import SpecStatusIcons from './SpecStatusIcons'

@@ -9,7 +9,7 @@ import Head from 'next/head'
 
 import DocBody from 'components/DocBody'
 import { Layout } from 'components/Layout'
-import { getCompatData } from 'utils/docs/browserCompat'
+import { getCompatData } from 'utils/docs'
 import type { Page } from 'utils/types'
 
 type StaticParam = { slugs: string[] }

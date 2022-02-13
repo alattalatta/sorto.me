@@ -1,8 +1,7 @@
 import bcd from '@mdn/browser-compat-data'
-
-import { determineStatus, getCompatData, getSubIdentifierKeys, supportLabel } from '../browserCompat'
-
 import type { Identifier, SimpleSupportStatement } from '@mdn/browser-compat-data/types'
+
+import { determineStatus, getCompatData, getSubIdentifierKeys, supportLabel } from '../docs'
 
 describe('Docs utilities, browserCompat', () => {
   describe('getCompatData', () => {

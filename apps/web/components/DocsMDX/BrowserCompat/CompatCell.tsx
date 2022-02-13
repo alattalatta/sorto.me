@@ -1,7 +1,7 @@
 import { styled } from '@lib/ui'
 import type { SimpleSupportStatement, SupportStatement } from '@mdn/browser-compat-data/types'
 
-import { determineStatus, supportLabel } from 'utils/docs/browserCompat'
+import { determineStatus, supportLabel } from 'utils/docs'
 
 const CompatCellBody = styled('td', {
   width: 80,

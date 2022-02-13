@@ -2,8 +2,7 @@ import type { PostMetadata } from '@contents/posts'
 import { useMDXRenderer } from '@lib/mdx'
 import { Anchor, DocumentBody, Footer, Post, ScrollBack, styled } from '@lib/ui'
 import { m } from 'framer-motion'
-
-import { easeStandard } from 'utils/styler'
+import type { Easing, Tween } from 'framer-motion/types/types'
 
 type Props = {
   compiledSource: string
@@ -22,6 +21,17 @@ const Body = styled(m.div, {
 const ScrollBack768 = styled(ScrollBack, {
   maxWidth: `${768 / 16}rem`,
 })
+
+export const STANDARD_EASE: Easing = [0.4, 0, 0.2, 1]
+
+/** Returns a standard easing definition object. */
+export function easeStandard(duration: number): Tween {
+  return {
+    type: 'tween',
+    ease: STANDARD_EASE,
+    duration,
+  }
+}
 
 const PostBody: React.VFC<Props> = ({ compiledSource, meta }) => {
   const Content = useMDXRenderer(compiledSource)

@@ -6,7 +6,10 @@ import { getCompatData, getSubIdentifierKeys } from 'utils/docs/browserCompat'
 
 import CompatRow from './CompatRow'
 
-const Root = styled('figure', {})
+type Props = {
+  children?: string
+  data?: { data: Identifier; name: string } | null
+}
 
 const Caption = styled('figcaption', {
   color: '$base40',
@@ -15,10 +18,7 @@ const Caption = styled('figcaption', {
   textAlign: 'right',
 })
 
-const BrowserCompat: React.VFC<{ children?: string; data?: { data: Identifier; name: string } | null }> = ({
-  children,
-  data: dataProp,
-}) => {
+const BrowserCompat: React.VFC<Props> = ({ children, data: dataProp }) => {
   const [loadedData, setLoadedData] = useState<Identifier | undefined | null>(undefined)
 
   useEffect(() => {
@@ -57,7 +57,7 @@ const BrowserCompat: React.VFC<{ children?: string; data?: { data: Identifier; n
   }
 
   return (
-    <Root>
+    <figure>
       <CompatRow data={data} name={name} />
       {getSubIdentifierKeys(data).map((key) => (
         <CompatRow key={key} data={data[key]} name={key} recurse={true} />
@@ -65,7 +65,7 @@ const BrowserCompat: React.VFC<{ children?: string; data?: { data: Identifier; n
       <Caption>
         MDN <Anchor href="https://github.com/mdn/browser-compat-data">BCD</Anchor>에서 가져오는 데이터입니다.
       </Caption>
-    </Root>
+    </figure>
   )
 }
 

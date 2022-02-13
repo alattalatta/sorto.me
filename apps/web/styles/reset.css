@@ -5,6 +5,7 @@
 
 html {
   color: var(--colors-fg);
+  font-family: var(--fonts-sans);
   scroll-behavior: smooth;
 }
 

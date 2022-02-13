@@ -16,7 +16,7 @@ const Root = styled('div', {
     margin: '1rem 0',
   },
   '& > :is(h2, h3, h4)': {
-    fontFamily: `'Noto Serif KR', serif`,
+    fontFamily: '$serif',
     position: 'relative',
 
     '& a': {
@@ -68,12 +68,12 @@ const Root = styled('div', {
     margin: '3rem 0',
   },
   '& :is(i, em)': {
-    fontFamily: `'Noto Serif KR', serif`,
+    fontFamily: '$serif',
     fontStyle: 'normal',
   },
   // blockquote
   '& blockquote': {
-    fontFamily: `'Noto Serif KR', serif`,
+    fontFamily: '$serif',
     fontSize: '1rem',
     fontWeight: 500,
     padding: '1rem',
@@ -156,6 +156,7 @@ const Root = styled('div', {
     background: 'rgba(0, 0, 0, 0.05)',
     borderRadius: '0.25rem',
     display: 'inline-block',
+    fontFamily: '$mono',
     fontSize: '1rem',
     padding: '0 0.25rem',
     textDecorationLine: 'inherit',
@@ -163,7 +164,6 @@ const Root = styled('div', {
   // code block
   '& pre': {
     background: '$bgSuppl',
-    fontFamily: `'Nanum Gothic Coding', '나눔고딕코딩', monospace`,
     fontSize: `${14 / 16}rem`,
     overflow: 'auto',
     padding: '1rem !important',
@@ -174,6 +174,7 @@ const Root = styled('div', {
       border: '1px solid #FF5858',
     },
     '& > code': {
+      fontFamily: '$mono',
       lineHeight: 18 / 14,
     },
   },

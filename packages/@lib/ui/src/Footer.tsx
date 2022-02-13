@@ -9,7 +9,7 @@ type Props = {
 const Root = styled('footer', {
   width: `${219 / 16}rem`,
   borderTop: '1px solid $fg',
-  fontFamily: `Roboto, Pretendard, sans-serif`,
+  fontFamily: '$mono',
   marginTop: '5rem',
   padding: '1.5rem 0 0.5rem',
 })

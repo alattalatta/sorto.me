@@ -18,6 +18,11 @@ const config = createStitches({
       bgSupplInv: '$fgSuppl',
       highlight: '#0CA79D',
     },
+    fonts: {
+      mono: `'Fira Code', 'Nanum Gothic Coding', '나눔고딕코딩', monospace`,
+      sans: `Pretendard, sans-serif`,
+      serif: `'Noto Serif KR', serif`,
+    },
   },
 })
 

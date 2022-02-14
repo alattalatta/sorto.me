@@ -2,9 +2,7 @@ import { styled } from '@lib/ui'
 import type { BrowserNames, Identifier, SupportStatement } from '@mdn/browser-compat-data/types'
 import { Fragment, useState } from 'react'
 
-import { mapOver } from 'utils/array'
-import { getSubIdentifierKeys, supportLabel } from 'utils/docs'
-
+import { getSubIdentifierKeys, supportLabel, mapOver } from '../../utils'
 import CompatCell from './CompatCell'
 import SpecStatusIcons from './SpecStatusIcons'
 

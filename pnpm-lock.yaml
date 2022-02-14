@@ -26,6 +26,7 @@ importers:
       '@contents/docs': workspace:*
       '@contents/posts': workspace:*
       '@domain/blog': workspace:*
+      '@domain/docs': workspace:*
       '@domain/home': workspace:*
       '@lib/mdx': workspace:*
       '@lib/ui': workspace:*
@@ -55,6 +56,7 @@ importers:
       '@contents/docs': link:../../packages/@contents/docs
       '@contents/posts': link:../../packages/@contents/posts
       '@domain/blog': link:../../packages/@domain/blog
+      '@domain/docs': link:../../packages/@domain/docs
       '@domain/home': link:../../packages/@domain/home
       '@lib/mdx': link:../../packages/@lib/mdx
       '@lib/ui': link:../../packages/@lib/ui
@@ -169,6 +171,39 @@ importers:
       '@lib/functions': link:../../@lib/functions
       '@lib/mdx': link:../../@lib/mdx
       '@lib/ui': link:../../@lib/ui
+      '@stitches/react': 1.2.6_react@17.0.2
+      framer-motion: 6.2.6_react-dom@17.0.2+react@17.0.2
+      next: 12.0.10_react-dom@17.0.2+react@17.0.2
+    devDependencies:
+      '@types/react': 17.0.39
+      '@types/react-dom': 17.0.11
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      tsconfig: link:../../tsconfig
+      typescript: 4.5.5
+
+  packages/@domain/docs:
+    specifiers:
+      '@contents/docs': workspace:*
+      '@lib/functions': workspace:*
+      '@lib/mdx': workspace:*
+      '@lib/ui': workspace:*
+      '@mdn/browser-compat-data': ^4.1.7
+      '@stitches/react': ^1.2.6
+      '@types/react': ^17.0.39
+      '@types/react-dom': ^17.0.11
+      framer-motion: ^6.2.6
+      next: ^12.0.10
+      react: ^17.0.2
+      react-dom: ^17.0.2
+      tsconfig: workspace:*
+      typescript: ^4.5.5
+    dependencies:
+      '@contents/docs': link:../../@contents/docs
+      '@lib/functions': link:../../@lib/functions
+      '@lib/mdx': link:../../@lib/mdx
+      '@lib/ui': link:../../@lib/ui
+      '@mdn/browser-compat-data': 4.1.7
       '@stitches/react': 1.2.6_react@17.0.2
       framer-motion: 6.2.6_react-dom@17.0.2+react@17.0.2
       next: 12.0.10_react-dom@17.0.2+react@17.0.2

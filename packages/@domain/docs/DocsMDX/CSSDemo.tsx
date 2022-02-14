@@ -5,7 +5,7 @@ import LiveCode from './LiveCode'
 
 type Props = {
   height?: number
-  selector?: string
+  selector: string
 }
 
 const Root = styled('figure', {
@@ -89,7 +89,7 @@ const CSSDemo: React.FC<Props> = ({ children, height, selector }) => {
       setCodes({
         ...codes,
         css: Array.from(rootRef.current.querySelectorAll('code.language-css')).map((block, index) =>
-          index === currentBlockIdx ? selector.replace('$', block.textContent) : '',
+          index === currentBlockIdx ? selector.replace('$', block.textContent || '') : '',
         ),
       })
     }
@@ -108,10 +108,10 @@ const CSSDemo: React.FC<Props> = ({ children, height, selector }) => {
       }
 
       rootRef.current.querySelectorAll('code.language-css:not([hidden])').forEach((block, index) => {
-        result.css.push(index === 0 ? selector.replace('$', block.textContent) : '')
+        result.css.push(index === 0 ? selector.replace('$', block.textContent || '') : '')
 
         // add to pre, not code
-        block.parentElement.addEventListener(
+        block.parentElement?.addEventListener(
           'click',
           () => {
             setCurrentBlockIdx(index)
@@ -122,7 +122,7 @@ const CSSDemo: React.FC<Props> = ({ children, height, selector }) => {
 
       rootRef.current.querySelectorAll('code:not(.language-css), code.language-css[hidden]').forEach((block) => {
         const language = block.classList.value.match(/language-(\w+)/)?.[1] as 'html' | 'js'
-        result[language].push(block.textContent)
+        result[language].push(block.textContent || '')
       })
 
       setCodes(result)

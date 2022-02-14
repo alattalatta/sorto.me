@@ -1,4 +1,4 @@
-import { styled } from './stitches'
+import { styled } from '@lib/ui'
 
 type Props = {
   breadcrumbs: readonly (readonly [title: string, path: string])[]

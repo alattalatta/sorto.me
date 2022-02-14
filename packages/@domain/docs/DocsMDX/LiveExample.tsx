@@ -1,7 +1,6 @@
 import { NoScreen, styled } from '@lib/ui'
 
-import { useCodeBlockGroup } from 'hooks/useCodeBlockGroup'
-
+import { useCodeBlockGroup } from '../useCodeBlockGroup'
 import LiveCode from './LiveCode'
 
 type Props = {

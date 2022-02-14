@@ -13,6 +13,7 @@
     "@contents/docs": "workspace:*",
     "@contents/posts": "workspace:*",
     "@domain/blog": "workspace:*",
+    "@domain/docs": "workspace:*",
     "@domain/home": "workspace:*",
     "@lib/mdx": "workspace:*",
     "@lib/ui": "workspace:*",

@@ -1,48 +1,17 @@
-import type { DocMetadata } from '@contents/docs'
 import type { Doc } from '@contents/docs'
 import docsIndex from '@contents/docs/data/index.json'
 import docsMap from '@contents/docs/data/slugMap.json'
-import { Layout } from '@lib/ui'
+import type { DocPageProps } from '@domain/docs'
+import { DocPage, getCompatData } from '@domain/docs'
 import browserCompatData from '@mdn/browser-compat-data'
 import type { Identifier } from '@mdn/browser-compat-data/types'
 import type { GetStaticPaths, GetStaticProps } from 'next'
-import Head from 'next/head'
-
-import DocBody from 'components/DocBody'
-import { getCompatData } from 'utils/docs'
-import type { Page } from 'utils/types'
 
 type StaticParam = { slugs: string[] }
-type StaticProps = {
-  bcd: {
-    data: Identifier
-    name: string
-  } | null
-  breadcrumbs: (readonly [title: string, path: string])[]
-  compiledSource: string
-  meta: DocMetadata
-}
-
-const DocPage: Page<StaticProps> = ({ bcd, breadcrumbs, compiledSource, meta }) => {
-  return (
-    <>
-      <Head>
-        <title key="title">{meta.title} - sorto.me docs</title>
-        {meta.description && <meta key="description" content={meta.description} name="description" />}
-        <meta key="og:type" content="article" property="og:type" />
-        <meta key="og:title" content={`${meta.title} - Sorto.me Docs`} property="og:title" />
-        {meta.description && <meta key="og:description" content={meta.description} name="og:description" />}
-        <meta key="article:modified_time" content={meta.updated} property="article:modified_time" />
-      </Head>
-      <DocBody bcd={bcd} breadcrumbs={breadcrumbs} compiledSource={compiledSource} meta={meta} />
-    </>
-  )
-}
-DocPage.Layout = Layout
 
 export default DocPage
 
-export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = ({ params }) => {
+export const getStaticProps: GetStaticProps<DocPageProps, StaticParam> = ({ params }) => {
   if (!params?.slugs) {
     throw new Error('Slugs must exist')
   }
@@ -57,7 +26,7 @@ export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = ({ param
       breadcrumbs: meta.slug
         .split('/')
         .slice(0, -1) // exclude current doc path
-        .reduce<{ breadcrumbs: StaticProps['breadcrumbs']; combinedPath: string }>(
+        .reduce<{ breadcrumbs: DocPageProps['breadcrumbs']; combinedPath: string }>(
           ({ breadcrumbs, combinedPath }, cur) => {
             const path = `${combinedPath}/${cur}`
             const title = docsMap[path.slice(1) /* remove leading slash */] || cur

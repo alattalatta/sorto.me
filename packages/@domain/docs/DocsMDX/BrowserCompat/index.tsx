@@ -2,8 +2,7 @@ import { Anchor, styled } from '@lib/ui'
 import type { CompatData, Identifier } from '@mdn/browser-compat-data/types'
 import { useEffect, useState } from 'react'
 
-import { getCompatData, getSubIdentifierKeys } from 'utils/docs'
-
+import { getCompatData, getSubIdentifierKeys } from '../../utils'
 import CompatRow from './CompatRow'
 
 type Props = {

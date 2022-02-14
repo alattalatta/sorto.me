@@ -1,5 +1,5 @@
-import type { Identifier } from '@mdn/browser-compat-data/types'
 import { Anchor } from '@lib/ui'
+import type { Identifier } from '@mdn/browser-compat-data/types'
 
 type Props = {
   data: {

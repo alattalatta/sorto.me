@@ -5,7 +5,7 @@ import { visit } from 'unist-util-visit'
 
 import { callout } from './callout'
 import { headingDepthAndSlug } from './headingDepthAndSlug'
-import { imageDimension } from './imageDimension'
+import { imageCustomSize } from './imageCustomSize'
 
 const remarkPlugin: Plugin<void[], Root> = () => {
   const slugger = new Slugger()
@@ -20,7 +20,7 @@ const remarkPlugin: Plugin<void[], Root> = () => {
           headingDepthAndSlug(node, slugger)
           break
         case 'image':
-          imageDimension(node)
+          imageCustomSize(node)
           break
         default:
           return

@@ -6,6 +6,7 @@ import { Anchor, DocumentBody, Footer, ScrollBack, styled } from '@lib/ui'
 import { m } from 'framer-motion'
 import type { Easing, Tween } from 'framer-motion/types/types'
 import Head from 'next/head'
+import Image from 'next/image'
 
 import { Post } from './Post'
 
@@ -65,6 +66,7 @@ const PostPage: Page<Props> = ({ compiledSource, meta }) => {
             <Content
               components={{
                 a: Anchor,
+                img: Image,
               }}
             />
           </DocumentBody>

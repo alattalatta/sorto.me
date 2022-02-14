@@ -11,6 +11,7 @@
     "@mdx-js/mdx": "^2.0.0",
     "fp-ts": "^2.10.5",
     "hast-util-to-string": "^2.0.0",
+    "image-size": "^1.0.1",
     "mdast-util-to-string": "^3.1.0",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-highlight": "^5.0.2",

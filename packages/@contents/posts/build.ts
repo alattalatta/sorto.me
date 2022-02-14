@@ -7,7 +7,7 @@ import { copy } from 'fs-extra'
 
 import { parse } from './parse'
 
-const appPublic = path.resolve(__dirname, '../../../apps/web/public/gen/posts')
+const appPublic = path.resolve(__dirname, '../../../apps/web/public')
 const relative = path.join.bind(null, __dirname)
 
 del('data/*.json')

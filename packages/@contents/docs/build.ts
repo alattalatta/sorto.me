@@ -9,7 +9,7 @@ import klaw from 'klaw'
 import { parse } from './parse'
 import type { DocMetadata } from './types'
 
-const appPublic = path.resolve(__dirname, '../../../apps/web/public/gen/docs')
+const appPublic = path.resolve(__dirname, '../../../apps/web/public')
 const relative = path.join.bind(null, __dirname)
 
 del('data/**/*.json')

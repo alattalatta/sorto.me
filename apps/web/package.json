@@ -12,6 +12,7 @@
   "dependencies": {
     "@contents/docs": "workspace:*",
     "@contents/posts": "workspace:*",
+    "@domain/home": "workspace:*",
     "@lib/mdx": "workspace:*",
     "@lib/ui": "workspace:*",
     "@mdn/browser-compat-data": "^4.1.7",

@@ -1,8 +1,3 @@
-import IndexBody from 'components/IndexBody'
-import type { Page } from 'utils/types'
+import { HomePage } from '@domain/home'
 
-const Index: Page = () => {
-  return <IndexBody />
-}
-
-export default Index
+export default HomePage

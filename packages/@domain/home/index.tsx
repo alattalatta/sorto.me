@@ -1,6 +1,7 @@
-import { Anchor, Splash, styled } from '@lib/ui'
+import type { Page } from '@lib/ui'
+import { Anchor, styled } from '@lib/ui'
 
-const Root = styled('main', {})
+import { Splash } from './Splash'
 
 const Label = styled('h2', {
   fontSize: '1em',
@@ -17,10 +18,10 @@ const Item = styled('div', {
   },
 })
 
-const IndexBody: React.VFC = () => {
+const HomePage: Page = () => {
   return (
     <Splash>
-      <Root>
+      <main>
         <Label as="h1">alattalatta</Label>
         <section>
           <Label>library</Label>
@@ -52,9 +53,9 @@ const IndexBody: React.VFC = () => {
             <Anchor href="mailto:alattalatta@sorto.me">@sorto.me</Anchor>
           </Item>
         </section>
-      </Root>
+      </main>
     </Splash>
   )
 }
 
-export default IndexBody
+export { HomePage }

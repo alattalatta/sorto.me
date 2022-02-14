@@ -1,8 +1,8 @@
+import { throttle } from '@lib/functions'
+import { styled } from '@lib/ui'
 import { useEffect, useMemo, useState } from 'react'
 
-import color from './assets/the-color.svg'
-import { styled } from './stitches'
-import { throttle } from './throttle'
+import color from './the-color.svg'
 
 const THETA = 28.85
 const HEIGHT = 427

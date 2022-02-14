@@ -25,6 +25,7 @@ importers:
       '@babel/core': ^7.17.2
       '@contents/docs': workspace:*
       '@contents/posts': workspace:*
+      '@domain/home': workspace:*
       '@lib/mdx': workspace:*
       '@lib/ui': workspace:*
       '@mdn/browser-compat-data': ^4.1.7
@@ -52,6 +53,7 @@ importers:
     dependencies:
       '@contents/docs': link:../../packages/@contents/docs
       '@contents/posts': link:../../packages/@contents/posts
+      '@domain/home': link:../../packages/@domain/home
       '@lib/mdx': link:../../packages/@lib/mdx
       '@lib/ui': link:../../packages/@lib/ui
       '@mdn/browser-compat-data': 4.1.7
@@ -142,6 +144,31 @@ importers:
       nodemon: 2.0.15
       ts-jest: 27.1.3_1e2406a8ca2ae3dc934d01f9ee2aebbb
       ts-node: 10.5.0_247b6ed5e900a7cb1f087e65be0c3da9
+      tsconfig: link:../../tsconfig
+      typescript: 4.5.5
+
+  packages/@domain/home:
+    specifiers:
+      '@lib/functions': workspace:*
+      '@lib/ui': workspace:*
+      '@stitches/react': ^1.2.6
+      '@types/react': ^17.0.39
+      '@types/react-dom': ^17.0.11
+      framer-motion: ^6.2.6
+      react: ^17.0.2
+      react-dom: ^17.0.2
+      tsconfig: workspace:*
+      typescript: ^4.5.5
+    dependencies:
+      '@stitches/react': 1.2.6_react@17.0.2
+      framer-motion: 6.2.6_react-dom@17.0.2+react@17.0.2
+    devDependencies:
+      '@lib/functions': link:../../@lib/functions
+      '@lib/ui': link:../../@lib/ui
+      '@types/react': 17.0.39
+      '@types/react-dom': 17.0.11
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
       tsconfig: link:../../tsconfig
       typescript: 4.5.5
 

@@ -14,3 +14,5 @@ export { Splash } from './src/Splash'
 export { Title } from './src/Title'
 
 export { useScrollThreshold } from './src/useScrollThreshold'
+
+export type { Page } from './types'

@@ -1,6 +1,5 @@
+import { styled } from '@lib/ui'
 import { m } from 'framer-motion'
-
-import { styled } from './stitches'
 
 type Props = {
   as?: 'article' | 'header'

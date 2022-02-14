@@ -1,4 +1,4 @@
-import { styled } from './stitches';
+import { styled } from './stitches'
 
 const NoScreen = styled('span', {
   clip: 'rect(1px, 1px, 1px, 1px)',

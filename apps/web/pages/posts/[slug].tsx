@@ -1,44 +1,19 @@
 import type { Post } from '@contents/posts'
-import type { PostMetadata } from '@contents/posts'
 import postsIndex from '@contents/posts/data/index.json'
-import { Layout } from '@lib/ui'
+import { PostPage } from '@domain/blog'
+import type { PostPageProps } from '@domain/blog'
 import type { GetStaticPaths, GetStaticProps } from 'next'
-import Head from 'next/head'
 
-import PostBody from 'components/PostBody'
-import type { Page } from 'utils/types'
-
-type StaticParam = { slug: string }
-type StaticProps = { compiledSource: string; meta: PostMetadata }
-
-const PostPage: Page<StaticProps> = ({ compiledSource, meta }) => {
-  return (
-    <>
-      <Head>
-        <title key="title">{meta.title} - sorto.me</title>
-        {meta.description && <meta key="description" content={meta.description} name="description" />}
-        <meta key="og:type" content="article" property="og:type" />
-        <meta key="og:title" content={`${meta.title} - Sorto.me`} property="og:title" />
-        {meta.description && <meta key="og:description" content={meta.description} property="og:description" />}
-        {meta.image && <meta key="og:image" content={meta.image} property="og:image" />}
-        <meta key="article:published_time" content={meta.created} property="article:published_time" />
-        <meta key="article:modified_time" content={meta.updated} property="article:modified_time" />
-      </Head>
-      <PostBody compiledSource={compiledSource} meta={meta} />
-    </>
-  )
-}
-
-PostPage.Layout = Layout
+type Params = { slug: string }
 
 export default PostPage
 
-export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = ({ params }) => {
+export const getStaticProps: GetStaticProps<PostPageProps, Params> = async ({ params }) => {
   if (!params?.slug) {
     throw new Error('Slug must exist')
   }
 
-  const { content, meta } = importPostData(params.slug)
+  const { content, meta } = await importPostData(params.slug)
 
   return {
     props: {
@@ -48,14 +23,14 @@ export const getStaticProps: GetStaticProps<StaticProps, StaticParam> = ({ param
   }
 }
 
-export const getStaticPaths: GetStaticPaths<StaticParam> = () => {
+export const getStaticPaths: GetStaticPaths<Params> = () => {
   return {
     fallback: false,
     paths: postsIndex.map((post) => ({ params: { slug: post.slug } })),
   }
 }
 
-function importPostData(slug: string): Post {
+function importPostData(slug: string): Promise<Post> {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
-  return require(`@contents/posts/data/${slug}.json`) as Post
+  return import(`@contents/posts/data/${slug}.json`) as Promise<Post>
 }

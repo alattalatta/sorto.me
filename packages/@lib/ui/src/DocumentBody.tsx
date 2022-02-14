@@ -71,6 +71,9 @@ const Root = styled('div', {
     fontFamily: '$serif',
     fontStyle: 'normal',
   },
+  '& img': {
+    maxWidth: '100%',
+  },
   // blockquote
   '& blockquote': {
     fontFamily: '$serif',

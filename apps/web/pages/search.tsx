@@ -1,7 +1,7 @@
+import { Layout } from '@lib/ui'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 
-import { Layout } from 'components/Layout'
 import { SearchBody } from 'components/SearchBody'
 import { useSearchQuery } from 'hooks/useSearchQuery'
 import type { Page } from 'utils/types'

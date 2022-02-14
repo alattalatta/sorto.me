@@ -1,10 +1,10 @@
 import type { Post } from '@contents/posts'
 import type { PostMetadata } from '@contents/posts'
 import postsIndex from '@contents/posts/data/index.json'
+import { Layout } from '@lib/ui'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 
-import { Layout } from 'components/Layout'
 import PostBody from 'components/PostBody'
 import type { Page } from 'utils/types'
 

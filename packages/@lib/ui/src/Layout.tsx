@@ -1,6 +1,7 @@
-import { styled, FIXED_STRIP_HEIGHT, ScrollBack } from '@lib/ui'
-
+import { HEIGHT as FIXED_STRIP_HEIGHT } from './FixedStrip'
 import { NavBar } from './NavBar'
+import { ScrollBack } from './ScrollBack'
+import { styled } from './stitches'
 
 const Body = styled('div', {
   maxWidth: `${982 / 16}rem`,

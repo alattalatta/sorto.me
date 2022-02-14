@@ -1,6 +1,7 @@
-import { styled } from '@lib/ui'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+
+import { styled } from './stitches'
 
 const Root = styled('nav', {
   maxWidth: `${982 / 16}rem`,

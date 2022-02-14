@@ -1,9 +1,9 @@
 import type { PostMetadata } from '@contents/posts'
 import postIndex from '@contents/posts/data/index.json'
+import { Layout } from '@lib/ui'
 import type { GetStaticProps } from 'next'
 import Head from 'next/head'
 
-import { Layout } from 'components/Layout'
 import PostsBody from 'components/PostsBody'
 import type { Page } from 'utils/types'
 

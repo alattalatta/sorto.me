@@ -16,6 +16,7 @@
     "@domain/docs": "workspace:*",
     "@domain/home": "workspace:*",
     "@domain/search": "workspace:*",
+    "@lib/functions": "workspace:*",
     "@lib/mdx": "workspace:*",
     "@lib/ui": "workspace:*",
     "@mdn/browser-compat-data": "^4.1.7",

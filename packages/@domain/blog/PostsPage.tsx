@@ -1,11 +1,13 @@
 import type { PostMetadata } from '@contents/posts'
 import type { Page } from '@lib/ui'
 import { Layout } from '@lib/ui'
-import { Post, styled } from '@lib/ui'
+import { styled } from '@lib/ui'
 import type { Variants } from 'framer-motion'
 import { m } from 'framer-motion'
 import Head from 'next/head'
 import Link from 'next/link'
+
+import { Post } from './Post'
 
 type Props = {
   posts: readonly PostMetadata[]

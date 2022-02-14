@@ -1,9 +1,9 @@
+import { useScrollThreshold } from '@lib/functions'
 import { useState } from 'react'
 
 import { FixedStrip } from './FixedStrip'
 import arrow from './assets/arrow-up.svg'
 import { styled } from './stitches'
-import { useScrollThreshold } from './useScrollThreshold'
 
 const HEIGHT = 40 / 16
 

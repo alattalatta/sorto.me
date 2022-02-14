@@ -29,6 +29,7 @@ importers:
       '@domain/docs': workspace:*
       '@domain/home': workspace:*
       '@domain/search': workspace:*
+      '@lib/functions': workspace:*
       '@lib/mdx': workspace:*
       '@lib/ui': workspace:*
       '@mdn/browser-compat-data': ^4.1.7
@@ -60,6 +61,7 @@ importers:
       '@domain/docs': link:../../packages/@domain/docs
       '@domain/home': link:../../packages/@domain/home
       '@domain/search': link:../../packages/@domain/search
+      '@lib/functions': link:../../packages/@lib/functions
       '@lib/mdx': link:../../packages/@lib/mdx
       '@lib/ui': link:../../packages/@lib/ui
       '@mdn/browser-compat-data': 4.1.7
@@ -273,14 +275,19 @@ importers:
     specifiers:
       '@types/jest': ^27.0.1
       '@types/node': '16'
+      '@types/react': ^17.0.39
       jest: ^27.5.1
       mock-fs: ^5.0.0
+      react: ^17.0.2
       ts-jest: ^27.1.3
       tsconfig: workspace:*
       typescript: ^4.5.5
+    dependencies:
+      react: 17.0.2
     devDependencies:
       '@types/jest': 27.4.0
       '@types/node': 16.11.22
+      '@types/react': 17.0.39
       jest: 27.5.1
       mock-fs: 5.1.2
       ts-jest: 27.1.3_1e2406a8ca2ae3dc934d01f9ee2aebbb
@@ -342,6 +349,7 @@ importers:
 
   packages/@lib/ui:
     specifiers:
+      '@lib/functions': workspace:*
       '@stitches/react': ^1.2.6
       '@testing-library/react': ^12.0.0
       '@types/jest': ^27.0.1
@@ -356,6 +364,7 @@ importers:
       tsconfig: workspace:*
       typescript: ^4.5.5
     dependencies:
+      '@lib/functions': link:../functions
       '@stitches/react': 1.2.6_react@17.0.2
       framer-motion: 6.2.6_react-dom@17.0.2+react@17.0.2
     devDependencies:

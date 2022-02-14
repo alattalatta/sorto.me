@@ -1,11 +1,12 @@
 import type { DocMetadata } from '@contents/docs'
 import { useMDXRenderer } from '@lib/mdx'
 import type { Page } from '@lib/ui'
-import { DocumentBody, Footer, Layout, styled, Title } from '@lib/ui'
+import { DocumentBody, Footer, Layout, styled } from '@lib/ui'
 import type { Identifier } from '@mdn/browser-compat-data/types'
 import Head from 'next/head'
 
 import { DOCS_MDX_COMPONENTS } from './DocsMDX'
+import { Title } from './Title'
 
 type Props = {
   bcd: {

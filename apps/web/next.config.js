@@ -1,8 +1,6 @@
 /* eslint-disable no-undef */
 /* eslint-disable @typescript-eslint/no-var-requires */
-const internalDependencies = Object.keys(require('./package.json').dependencies).filter((package) =>
-  package.startsWith('@app/') || package.startsWith('@contents/') || package.startsWith('@lib/'),
-)
+const internalDependencies = Object.keys(require('./package.json').dependencies).filter((package) => /^@(app|contents|domain|lib)\//.test(package))
 
 const withTM = require('next-transpile-modules')(internalDependencies)
 const { PHASE_DEVELOPMENT_SERVER } = require('next/constants')

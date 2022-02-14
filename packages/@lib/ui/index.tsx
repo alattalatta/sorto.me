@@ -8,11 +8,6 @@ export { Input } from './src/Input'
 export { Layout } from './src/Layout'
 export { NavBar } from './src/NavBar'
 export { NoScreen } from './src/NoScreen'
-export { Post } from './src/Post'
 export { ScrollBack } from './src/ScrollBack'
-export { Splash } from './src/Splash'
-export { Title } from './src/Title'
-
-export { useScrollThreshold } from './src/useScrollThreshold'
 
 export type { Page } from './types'

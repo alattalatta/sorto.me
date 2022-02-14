@@ -3,5 +3,5 @@
   "compilerOptions": {
     "baseUrl": ".",
   },
-  "include": ["next-env.d.ts", "support.d.ts", ".", "../../packages/@domain/docs/DocsMDX"],
+  "include": ["next-env.d.ts", "support.d.ts", "."],
 }

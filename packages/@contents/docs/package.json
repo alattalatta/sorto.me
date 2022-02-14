@@ -16,10 +16,12 @@
   },
   "devDependencies": {
     "@lib/mdx": "workspace:*",
+    "@types/fs-extra": "^9.0.13",
     "@types/jest": "^27.0.1",
     "@types/klaw": "^3.0.3",
     "@types/node": "16",
     "del": "^6.0.0",
+    "fs-extra": "^10.0.0",
     "jest": "^27.5.1",
     "klaw": "^4.0.1",
     "nodemon": "^2.0.15",

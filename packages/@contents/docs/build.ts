@@ -3,11 +3,13 @@ import path from 'path'
 
 import { compile } from '@lib/mdx/compiler'
 import del from 'del'
+import { copy } from 'fs-extra'
 import klaw from 'klaw'
 
 import { parse } from './parse'
 import type { DocMetadata } from './types'
 
+const appPublic = path.resolve(__dirname, '../../../apps/web/public/gen/docs')
 const relative = path.join.bind(null, __dirname)
 
 del('data/**/*.json')
@@ -46,5 +48,6 @@ del('data/**/*.json')
       ),
     ])
   })
+  .then(() => copy('public', appPublic))
   .then(() => console.log('Done compiling docs.'))
   .catch(console.error)

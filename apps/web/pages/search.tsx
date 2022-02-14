@@ -1,32 +1,3 @@
-import { Layout } from '@lib/ui'
-import Head from 'next/head'
-import { useEffect, useState } from 'react'
+import { SearchPage } from '@domain/search'
 
-import { SearchBody } from 'components/SearchBody'
-import { useSearchQuery } from 'hooks/useSearchQuery'
-import type { Page } from 'utils/types'
-
-const DocSearch: Page = () => {
-  const searchQuery = useSearchQuery()
-
-  const title = searchQuery ? `${searchQuery} 검색 결과 - sorto.me` : '검색 결과 - sorto.me'
-
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  return (
-    <>
-      <Head>
-        <title key="title">{title}</title>
-        <meta key="og:title" content={title} property="og:title" />
-      </Head>
-      {mounted && <SearchBody query={searchQuery} />}
-    </>
-  )
-}
-DocSearch.Layout = Layout
-
-export default DocSearch
+export default SearchPage

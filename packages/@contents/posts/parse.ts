@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs'
 import path from 'path'
 
-import { readLastModified } from '@lib/functions'
+import { readLastModified } from '@lib/functions/server'
 import { escapeUTF8 } from 'entities'
 import matter from 'gray-matter'
 

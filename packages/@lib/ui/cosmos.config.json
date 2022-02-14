@@ -1,6 +1,0 @@
-{
-  "webpack": {
-    "overridePath": "./webpack.override.js"
-  },
-  "port": 5555
-}

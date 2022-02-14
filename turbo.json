@@ -2,8 +2,11 @@
   "baseBranch": "origin/main",
   "pipeline": {
     "build": {
+      "dependsOn": ["^build"]
+    },
+    "@app/web#build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**", "data/**"]
+      "outputs": [".next/**", "public/rss.xml", "public/sitemap.md.xml", "public/gen/**"]
     },
     "@lib/mdx#build": {
       "dependsOn": ["^build"],

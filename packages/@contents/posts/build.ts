@@ -3,11 +3,9 @@ import path from 'path'
 
 import { compile } from '@lib/mdx/compiler'
 import del from 'del'
-import { copy } from 'fs-extra'
 
 import { parse } from './parse'
 
-const appPublic = path.resolve(__dirname, '../../../apps/web/public')
 const relative = path.join.bind(null, __dirname)
 
 del('data/*.json')
@@ -28,6 +26,5 @@ del('data/*.json')
       }),
     ]),
   )
-  .then(() => copy('public', appPublic))
   .then(() => console.log('Done compiling posts.'))
   .catch(console.error)

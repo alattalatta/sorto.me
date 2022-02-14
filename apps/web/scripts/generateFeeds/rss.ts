@@ -4,7 +4,7 @@ import path from 'path'
 import type { PostMetadata } from '@contents/posts'
 import postsIndex from '@contents/posts/data/index.json'
 
-const PROJECT_ROOT = path.resolve(__dirname, '..')
+const PROJECT_ROOT = path.resolve(__dirname, '../..')
 
 const SITE_URL = 'https://sorto.me'
 const RSS_PATH = path.join(PROJECT_ROOT, 'public/rss.xml')

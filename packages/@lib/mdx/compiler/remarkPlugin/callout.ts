@@ -1,6 +1,6 @@
 import { head } from 'fp-ts/lib/Array'
 import * as O from 'fp-ts/lib/Option'
-import { pipe } from 'fp-ts/lib/function'
+import { identity, pipe } from 'fp-ts/lib/function'
 import type { Blockquote } from 'mdast'
 
 import { isNodeParagraph, isNodeText } from './refinements'
@@ -11,7 +11,7 @@ function callout(blockquote: Blockquote): void {
     O.filter(isNodeParagraph),
     O.chain((paragraph) => head(paragraph.children)),
     O.filter(isNodeText),
-    O.getOrElse<Text | null>(() => null),
+    O.fold(() => null, identity),
   )
   if (!text) {
     return

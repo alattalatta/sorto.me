@@ -1,6 +1,6 @@
 import { head } from 'fp-ts/lib/Array'
 import * as O from 'fp-ts/lib/Option'
-import { pipe } from 'fp-ts/lib/function'
+import { identity, pipe } from 'fp-ts/lib/function'
 import Slugger from 'github-slugger'
 import type { List, PhrasingContent, Root, Text, Term, TermDescription, DefinitionList } from 'mdast'
 import { toString } from 'mdast-util-to-string'
@@ -82,7 +82,7 @@ function bissectDefinitionList(
         }
         return termNode
       }),
-      O.getOrElse<Term | null>(() => null),
+      O.fold(() => null, identity),
     )
     if (!term) {
       continue
@@ -98,7 +98,7 @@ function bissectDefinitionList(
           type: 'termDescription',
         })),
       ),
-      O.getOrElse<TermDescription[] | null>(() => null),
+      O.fold(() => null, identity),
     )
     if (!definitions) {
       continue

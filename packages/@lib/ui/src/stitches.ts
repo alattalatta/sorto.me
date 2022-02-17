@@ -3,8 +3,8 @@ import { createStitches } from '@stitches/react'
 
 const config = createStitches({
   media: {
-    w1: `(min-width: ${412 / 16}rem)`,
-    w2: `(min-width: ${769 / 16}rem)`,
+    w1: `(min-width: 25.75rem)`, // 412
+    w2: `(min-width: 48.0625rem)`, // 769
   },
   theme: {
     colors: {

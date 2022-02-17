@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "tnode": "ts-node --project tsconfig.script.json",
-    "dev": "PORT=3333 NODE_OPTIONS='--inspect' next",
+    "dev": "pnpm tnode ./scripts/copyImages/index.ts && PORT=3333 NODE_OPTIONS='--inspect' next",
     "build": "pnpm tnode ./scripts/copyImages/index.ts && next build && pnpm postbuild",
     "postbuild": "pnpm tnode ./scripts/generateFeeds/index.ts",
     "export": "next export",

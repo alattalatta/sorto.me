@@ -18,6 +18,10 @@ type Props = {
   meta: DocMetadata
 }
 
+const Root = styled('main', {
+  padding: '0 1rem',
+})
+
 const Body = styled('div', {
   marginTop: '2rem',
 })
@@ -35,7 +39,7 @@ const DocPage: Page<Props> = ({ bcd, breadcrumbs, compiledSource, meta }) => {
         {meta.description && <meta key="og:description" content={meta.description} name="og:description" />}
         <meta key="article:modified_time" content={meta.updated} property="article:modified_time" />
       </Head>
-      <main>
+      <Root>
         <Title breadcrumbs={breadcrumbs} title={meta.title} />
         <Body>
           <DocumentBody>
@@ -43,7 +47,7 @@ const DocPage: Page<Props> = ({ bcd, breadcrumbs, compiledSource, meta }) => {
           </DocumentBody>
         </Body>
         <Footer mdnSlug={meta.slug} updated={new Date(meta.updated)} />
-      </main>
+      </Root>
     </>
   )
 }

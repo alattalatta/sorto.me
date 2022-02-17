@@ -9,12 +9,14 @@ import Head from 'next/head'
 import Image from 'next/image'
 
 import { Post } from './Post'
+import { SideBySide } from './SideBySide'
 
 type Props = { compiledSource: string; meta: PostMetadata }
 
-const Root = styled('article', {
+const Root = styled('main', {
   maxWidth: `${768 / 16}rem`,
   margin: '0 auto',
+  padding: '0 1rem',
 })
 
 const Body = styled(m.div, {
@@ -67,6 +69,7 @@ const PostPage: Page<Props> = ({ compiledSource, meta }) => {
               components={{
                 a: Anchor,
                 img: Image,
+                SideBySide,
               }}
             />
           </DocumentBody>

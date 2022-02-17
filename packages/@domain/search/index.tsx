@@ -8,7 +8,7 @@ import { useSearchQuery } from './useSearchQuery'
 const Root = styled('main', {
   maxWidth: `${768 / 16}rem`,
   margin: '0 auto',
-  padding: '1.5rem 0 1rem',
+  padding: '1.5rem 1rem 1rem',
 
   '& .gsc-control-cse': {
     marginTop: '1.5rem',
@@ -52,7 +52,7 @@ const EmptyQueryBody = styled('form', {
   justifyContent: 'center',
   flexDirection: 'column',
   margin: 'auto',
-  paddingBottom: '1rem',
+  padding: '1rem',
   position: 'fixed',
   inset: 0,
 })

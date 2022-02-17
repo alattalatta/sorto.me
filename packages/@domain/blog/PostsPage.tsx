@@ -16,7 +16,7 @@ type Props = {
 const Root = styled(m.main, {
   maxWidth: `${768 / 16}rem`,
   margin: 'auto',
-  padding: '1rem 0',
+  padding: '1rem',
 })
 
 const rootVariants: Variants = {

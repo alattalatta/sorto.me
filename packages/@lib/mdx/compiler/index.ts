@@ -23,6 +23,7 @@ async function compile(source: string): Promise<string> {
     remarkPlugins: [remarkGfm, remarkDefinitionList, remarkPlugin],
     remarkRehypeOptions: {
       handlers: {
+        callout: (h, node) => h(node, 'div', { className: `callout callout-${node.severity}` }, all(h, node)),
         definitionList: (h, node) => h(node, 'dl', all(h, node)),
         term: (h, node) => h(node, 'dt', all(h, node)),
         termDescription: (h, node) => h(node, 'dd', all(h, node)),

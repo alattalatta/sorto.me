@@ -11,10 +11,10 @@ const remarkPlugin: Plugin<void[], Root> = () => {
   const slugger = new Slugger()
 
   return (tree) => {
-    visit(tree, (node) => {
+    visit(tree, (node, index, parent) => {
       switch (node.type) {
         case 'blockquote':
-          callout(node)
+          callout(node, index, parent)
           break
         case 'heading':
           headingDepthAndSlug(node, slugger)

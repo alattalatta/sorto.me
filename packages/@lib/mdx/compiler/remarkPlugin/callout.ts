@@ -1,11 +1,11 @@
 import { head } from 'fp-ts/lib/Array'
 import * as O from 'fp-ts/lib/Option'
 import { identity, pipe } from 'fp-ts/lib/function'
-import type { Blockquote } from 'mdast'
+import type { Blockquote, Callout, Parent } from 'mdast'
 
 import { isNodeParagraph, isNodeText } from './refinements'
 
-function callout(blockquote: Blockquote): void {
+function callout(blockquote: Blockquote, index: number, parent: Parent): void {
   const text = pipe(
     head(blockquote.children),
     O.filter(isNodeParagraph),
@@ -17,19 +17,19 @@ function callout(blockquote: Blockquote): void {
     return
   }
 
-  const calloutType = text.value.match(/^\[(note|warn|fatal)\]/)?.[1]
-  if (!calloutType) {
+  const severity = text.value.match(/^\[(note|warn|fatal)\]/)?.[1] as 'note' | 'warn' | 'fatal' | undefined
+  if (!severity) {
     return
   }
 
-  blockquote.data = {
-    ...blockquote.data,
-    hName: 'div',
-    hProperties: {
-      className: `callout callout-${calloutType}`,
-    },
+  text.value = text.value.slice(severity.length + 2).trim() // [ + severity + ]
+  const calloutNode: Callout = {
+    children: blockquote.children,
+    severity,
+    type: 'callout',
   }
-  text.value = text.value.slice(calloutType.length + 2).trim() // [ + calloutType + ]
+
+  parent.children[index] = calloutNode
 }
 
 export { callout }

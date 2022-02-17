@@ -2,6 +2,11 @@
 import type { Parent } from 'mdast'
 
 declare module 'mdast' {
+  export interface Callout extends Parent {
+    severity: 'note' | 'warn' | 'fatal'
+    type: 'callout'
+  }
+
   export interface Term extends Parent {
     type: 'term'
   }
@@ -16,6 +21,7 @@ declare module 'mdast' {
   }
 
   type BlockContentMap = {
+    callout: Callout
     definitionList: DefinitionList
     term: Term
     termDescription: TermDescription

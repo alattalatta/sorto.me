@@ -20,6 +20,6 @@
     "@mdn/browser-compat-data": "^4.1.7",
     "@stitches/react": "^1.2.6",
     "framer-motion": "^6.2.6",
-    "next": "^12.0.10"
+    "next": "^12.1.0"
   }
 }

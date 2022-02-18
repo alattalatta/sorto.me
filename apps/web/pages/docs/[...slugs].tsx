@@ -11,12 +11,12 @@ type StaticParam = { slugs: string[] }
 
 export default DocPage
 
-export const getStaticProps: GetStaticProps<DocPageProps, StaticParam> = ({ params }) => {
+export const getStaticProps: GetStaticProps<DocPageProps, StaticParam> = async ({ params }) => {
   if (!params?.slugs) {
     throw new Error('Slugs must exist')
   }
 
-  const { content, meta } = importDocData(params.slugs.join('/'))
+  const { content, meta } = await importDocData(params.slugs.join('/'))
 
   const bcd = makeBCDData(meta.bcd || null)
 
@@ -67,7 +67,6 @@ function makeBCDData(bcdKey: string | null): { data: Identifier; name: string } 
   }
 }
 
-function importDocData(slug: string): Doc {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  return require(`@contents/docs/data/${slug}.json`) as Doc
+function importDocData(slug: string): Promise<Doc> {
+  return import(`@contents/docs/data/${slug}.json`) as Promise<Doc>
 }

@@ -31,6 +31,5 @@ export const getStaticPaths: GetStaticPaths<Params> = () => {
 }
 
 function importPostData(slug: string): Promise<Post> {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
   return import(`@contents/posts/data/${slug}.json`) as Promise<Post>
 }

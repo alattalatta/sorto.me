@@ -2,7 +2,7 @@ import { promises as fs } from 'fs'
 import path from 'path'
 
 import { compile } from '@lib/mdx/compiler'
-import del from 'del'
+import { remove } from 'fs-extra'
 import klaw from 'klaw'
 
 import { parse } from './parse'
@@ -10,7 +10,7 @@ import type { DocMetadata } from './types'
 
 const relative = path.join.bind(null, __dirname)
 
-del('data/**/*.json')
+remove('data')
   .then(async () => {
     const docsMeta: DocMetadata[] = []
 

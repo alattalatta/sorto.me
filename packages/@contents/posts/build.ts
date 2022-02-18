@@ -2,13 +2,13 @@ import { promises as fs } from 'fs'
 import path from 'path'
 
 import { compile } from '@lib/mdx/compiler'
-import del from 'del'
+import { remove } from 'fs-extra'
 
 import { parse } from './parse'
 
 const relative = path.join.bind(null, __dirname)
 
-del('data/*.json')
+remove('data')
   .then(() => fs.mkdir(relative('data'), { recursive: true }))
   .then(() => fs.readdir(relative('mdx')))
   .then((paths) => paths.filter((it) => it.endsWith('.mdx')))

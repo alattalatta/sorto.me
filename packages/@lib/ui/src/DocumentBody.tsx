@@ -13,7 +13,7 @@ const Root = styled('div', {
   '$stx-tag': '#d33c00',
 
   '& > *': {
-    margin: '1rem 0',
+    margin: '1em 0', // intentional em usage
   },
   '& > :is(h2, h3, h4)': {
     fontFamily: '$serif',
@@ -28,12 +28,10 @@ const Root = styled('div', {
   },
   '& > h2': {
     fontSize: '2rem',
-    margin: '.5rem 0',
     padding: '.25rem 0',
   },
   '& > h3': {
     fontSize: '1.5rem',
-    margin: `1rem 0`,
   },
   '& > h4': {
     fontSize: '1rem',
@@ -70,6 +68,7 @@ const Root = styled('div', {
   '& :is(i, em)': {
     fontFamily: '$serif',
     fontStyle: 'normal',
+    fontWeight: 600,
   },
   '& img': {
     maxWidth: '100%',
@@ -116,6 +115,7 @@ const Root = styled('div', {
   // callout
   '& .callout': {
     borderLeft: '.5rem solid',
+    borderRadius: '.25rem',
     padding: '.5rem .5rem .5rem 1rem',
     position: 'relative',
     '&::before': {
@@ -167,6 +167,7 @@ const Root = styled('div', {
   // code block
   '& pre': {
     background: '$bgSuppl',
+    borderRadius: '.25rem',
     fontSize: `${14 / 16}rem`,
     overflow: 'auto',
     padding: '1rem !important',

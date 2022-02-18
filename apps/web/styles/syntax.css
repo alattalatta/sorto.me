@@ -3,7 +3,10 @@
 }
 
 .hljs-attribute,
-.hljs-keyword {
+.hljs-attr,
+.hljs-emphasis,
+.hljs-keyword,
+.hljs-link {
   color: var(--stx-keyword);
 }
 
@@ -14,6 +17,7 @@
 }
 
 .hljs-built_in,
+.hljs-bullet,
 .hljs-name,
 .hljs-number,
 .hljs-selector-tag,

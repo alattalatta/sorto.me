@@ -6,6 +6,7 @@
     "build": "turbo run build --scope='@app/web' --no-deps --include-dependencies",
     "build:contents": "pnpm clear-server-cache --filter @app/web && turbo run build --scope=@contents* --no-deps --include-dependencies",
     "dev": "turbo run dev",
+    "gen:docs": "pnpm gen --filter=@contents/docs",
     "watch": "nodemon -q",
     "turbo": "turbo"
   },

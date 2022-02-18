@@ -32,7 +32,8 @@ bcd: html.elements.meter
 - : `optimum`
   - 계량한 값이 최적의 상태인 경우를 지정합니다. `min`과 `max` 범위 내에 포함돼야 합니다. `low`와 `high` 특성을 함께 사용한 경우 어떤 범위가 최적의 범위인지 나타낼 수 있습니다. 예를 들어 `optimum` 특성 값이 `min`과 `low` 값의 사이라면 _낮은 값_ 범위를 최적의 범위로 취급합니다. `value`가 최적 범위 내인지 바깥인지에 따라 브라우저가 `<meter>`의 색을 다르게 표현할 수 있습니다.
 - : `form`
-  - `<meter>` 요소를 연결할 _양식 소유자_([`<form>`](./form) 요소)의 ID를 지정합니다. 같은 문서 상에 존재하는 `<form>`의 `id` 특성을 지정할 수 있습니다. 이 특성이 존재하지 않으면 `<meter>`의 양식 소유자는 가장 가까운 조상 `<form>`이 됩니다. (존재할 경우)
+
+  - 이 `<meter>`를 _양식 소유자_([`<form>`](./form) 요소)와 연결합니다. 같은 문서 상에 존재하는 `<form>`의 [`id`](/docs/Web/HTML/Global_attributes#term-id) 값을 지정하세요. 이 특성이 존재하지 않으면 `<meter>`의 양식 소유자는 가장 가까운 조상 `<form>`이 됩니다.
 
     `form` 특성은 [`<input type="number">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number)의 값처럼, `<meter>`가 양식에 관련된 값을 보여줄 때만 사용합니다.
 

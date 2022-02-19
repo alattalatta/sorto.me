@@ -34,7 +34,7 @@ const Root = styled('div', {
     fontSize: '1.5rem',
   },
   '& > h4': {
-    fontSize: '1rem',
+    fontSize: `${18 / 16}rem`,
   },
   '& a': {
     color: '$highlight',
@@ -160,7 +160,7 @@ const Root = styled('div', {
     borderRadius: '0.25rem',
     display: 'inline-block',
     fontFamily: '$mono',
-    // fontSize: '1rem',
+    lineHeight: 1.2,
     padding: '0 0.25rem',
     textDecorationLine: 'inherit',
   },
@@ -187,12 +187,16 @@ const Root = styled('div', {
     margin: '.5rem 0',
   },
   '& dt': {
+    fontSize: `${14 / 16}rem`,
     fontWeight: 700,
     margin: '1.5rem 0 .5rem',
   },
   '& dd': {
     margin: '.5rem 0 .5rem 3rem',
 
+    '& > *:first-child': {
+      marginTop: 0,
+    },
     '& > * + *': {
       margin: '1rem 0',
     },

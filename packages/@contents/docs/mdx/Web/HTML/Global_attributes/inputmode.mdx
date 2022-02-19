@@ -1,0 +1,42 @@
+---
+title: HTML inputmode 전역 특성
+description: HTML class 전역 특성은 사용자가 요소나 요소의 콘텐츠를 편집할 때 입력 가능한 데이터의 종류를 브라우저에 알려주는 열거형 특성입니다. 브라우저는 이 특성의 값을 사용해 화면에 노출할 가상 키보드의 레이아웃을 결정합니다.
+bcd: html.global_attributes.inputmode
+---
+
+HTML **`inputmode`** [전역 특성](.)은 사용자가 요소나 요소의 콘텐츠를 편집할 때 입력 가능한 데이터의 종류를 브라우저에 알려주는 열거형 특성입니다. 브라우저는 이 특성의 값을 사용해 화면에 노출할 가상 키보드의 레이아웃을 결정합니다.
+
+주로 [`<input>`](../Element/input) 요소에 사용하지만, [`contenteditable`](./contenteditable)이 `true`인 요소라면 모두 적용할 수 있습니다.
+
+`inputmode` 특성은 입력된 값에 대한 유효성 검증과는 관련이 없습니다. 즉 `inputmode`를 숫자 종류로 지정하더라도, 사용자가 가상 키보드 외의 방법으로 문자 등을 입력하는 것을 막을 수 없습니다. 입력 받을 데이터의 종류를 강제하려면 `<input>`에 올바른 [`type` 특성](../Element/input#term-type)을 지정하세요.
+
+# 값
+
+- : `none`
+  - 가상 키보드를 띄우지 않습니다. 웹 페이지에서 자체 입력 수단을 구현하는 경우 사용하세요.
+- : `text` (기본 값)
+  - 사용자의 현재 로케일에 맞는 표준 가상 키보드 레이아웃입니다.
+- : `decimal`
+  - 숫자 키패드와 함께 사용자의 현재 로케일에 맞는 소수점(보통 <kbd>.</kbd> 또는 <kbd>,</kbd>) 키를 제공합니다. 음의 부호(<kbd>-</kbd>) 키는 장치에 따라 있을 수도, 없을 수도 있습니다.
+- : `numeric`
+  - 숫자 키패드입니다. 음의 부호(<kbd>-</kbd>) 키는 장치에 따라 있을 수도, 없을 수도 있습니다.
+- : `tel`
+  - 전화번호 키패드입니다. 0~9의 숫자, 별표(<kbd>\*</kbd>)와 우물정(<kbd>#</kbd>) 키를 제공합니다. 전화번호 형식이 *필요*한 입력 칸이라면 이 특성 대신 [`<input type="tel">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/tel)을 사용하세요.
+- : `search`
+  - 검색 키워드 입력에 최적화된 키패드입니다. 정확한 레이아웃은 장치마다 다르지만, 일례로 엔터 키의 레이블이 "검색"이나 돋보기 아이콘으로 나타날 수 있습니다. 검색 키워드 입력이 *필요*한 입력 칸이라면 이 특성 대신 [`<input type="search">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/search)을 사용하세요.
+- : `email`
+  - 이메일 입력에 최적화된 키패드입니다. 정확한 레이아웃은 장치마다 다르지만, 일례로 더 쉽게 접근 가능한 <kbd>@</kbd> 키를 제공할 수 있습니다. 이메일 형식이 *필요*한 입력 칸이라면 이 특성 대신 [`<input type="email">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email)을 사용하세요.
+- : `url`
+  - URL 입력에 최적화된 키패드입니다. 정확한 레이아웃은 장치마다 다르지만, 일례로 더 쉽게 접근 가능한 <kbd>/</kbd> 키를 제공할 수 있습니다. URL 형식이 *필요*한 입력 칸이라면 이 특성 대신 [`<input type="url">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/url)을 사용하세요.
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/interaction.html#attr-inputmode)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 가상 키보드의 엔터 키 레이블을 지정할 수 있는 [`enterkeyhit`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/enterkeyhint) 전역 특성

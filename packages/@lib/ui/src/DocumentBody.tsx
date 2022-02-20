@@ -51,13 +51,13 @@ const Root = styled('div', {
     },
     '&[target=_blank]::after': {
       content: `''`,
-      width: '0.5rem',
-      height: '0.5rem',
+      width: '0.5em',
+      height: '0.5em',
       background: `url(${external.src}) no-repeat`,
       backgroundSize: 'contain',
       display: 'inline-block',
-      marginLeft: '0.125rem',
-      verticalAlign: 'top',
+      marginLeft: '0.125em',
+      verticalAlign: 'super',
     },
   },
   '& hr': {

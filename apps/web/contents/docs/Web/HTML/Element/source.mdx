@@ -1,0 +1,79 @@
+---
+title: 'HTML <source>: 미디어 소스 요소'
+description: HTML <source> 요소는 문서에서 추가한 텍스트 범위를 나타냅니다.
+bcd: html.elements.source
+---
+
+**HTML `<source>` 요소**는 [`<picture>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture), [`<audio>`](./audio), [`<video>`](./video) 요소에 다수의 미디어 리소스를 지정할 때 사용합니다. 주로 같은 미디어 콘텐츠를 다양한 파일 형식으로 제공해서, 브라우저마다 다른 미디어 지원 범위에 대응하기 위해 사용합니다.
+
+<HTMLDemo>
+
+```html
+<video controls width="125">
+  <source src="/gen/chestnut.webm" type="video/webm" />
+  <source src="/gen/chestnut.mp4" type="video/mp4" />
+
+  죄송합니다. 브라우저가 비디오를 지원하지 않습니다.
+</video>
+```
+
+</HTMLDemo>
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)을 포함합니다.
+
+- : `media`
+  - 리소스에 대한 [미디어 쿼리](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries)입니다.
+- : `sizes`
+
+  - 소스 이미지의 크기를 나타냅니다. 미디어 조건과 크기 값의 쌍의 목록으로, 쉼표로 구분합니다. 브라우저는 페이지 레이아웃 결정 전에 이 특성의 값을 사용해서 [`srcset`](#term-srcset)에 정의된 이미지 중 어느 것을 사용할지 결정합니다. `sizes`는 `srcset`에 너비 서술자를 제공한 경우에만 영향을 주며, 픽셀 밀도 서술자에는 동작하지 않는 점을 주의해야 합니다.
+
+    `sizes` 특성은 `<source>` 요소가 [`<picture>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture)의 자식 요소일 때만 효과가 있습니다.
+
+- : `src`
+  - 미디어를 가리키는 URL입니다. `<source>`가 [`<audio>`](./audio)와 [`<video>`](./video)의 자식 요소일 때만 사용하며, [`<picture>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture)의 자식 요소인 경우에는 무시합니다.
+- : `srcset`
+
+  - 사용자 에이전트가 사용할 수 있는 이미지 소스의 후보를 지정합니다. 한 개 이상의 항목을 가지는 쉼표 구분 목록으로, 각각의 항목은 다음 구성 요소로 이루어집니다.
+
+    1. 이미지의 URL.
+    2. 공백과 그 뒤를 잇는
+
+    - 너비 서술자(양의 정수와 바로 뒤의 `w` 문자). 너비 서술자의 값을 `sizes` 특성에 지정한 소스 크기로 나눠서 픽셀 밀도를 구합니다.
+    - 픽셀 밀도 서술자(양의 실수와 바로 뒤의 `x` 문자).
+
+    서술자를 포함하지 않은 경우 기본 값인 `1x`로 간주합니다.
+
+    `srcset` 특성에 너비와 픽셀 밀도 서술자를 동시에 사용하거나, 동일한 서술자를 두 번 이상 사용하는 건 유효하지 않습니다.
+
+    사용자 에이전트는 사용자의 개인 설정 또는 네트워크 대역폭 등 여러가지 조건에 따라 사용 가능한 소스 중 하나를 선택합니다.
+
+    `srcset` 특성은 `<source>` 요소가 [`<picture>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture)의 자식 요소일 때만 효과가 있습니다.
+
+- : `type`
+
+  - 리소스의 MIME 유형입니다. [`codecs` 매개변수](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/codecs_parameter)도 포함할 수 있습니다.
+
+    특성을 따로 지정하지 않은 경우, 사용자 에이전트는 미디어를 서버에서 불러온 후에 자신이 렌더링할 수 있는 파일 형식인지 확인하고, 렌더링 불가능한 형식이면 다음 `<source>` 요소를 확인합니다. 반면, 지정한 경우에는 이 값을 처리 가능한 형식의 목록과 대조합니다. 만약 알 수 없는 형식인 경우 아예 서버로 요청을 전송하지 않고 즉시 다음 `<source>` 요소를 확인합니다.
+
+    [`<picture>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture) 요소의 자식으로 사용한 `<source>`가 모두 처리 불가능한 이미지 형식인 경우 `<picture>` 안에 배치한 [`<img>`](./img)를 대신 보여줍니다.
+
+# 예제
+
+[`<audio>` 예제](./audio#예제)와 [`<video>` 예제](./video#예제)를 참고하세요.
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/embedded-content.html#the-source-element)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 오디오 삽입: [`<audio>`](./audio)
+- 비디오 삽입: [`<video>`](./video)
+
+{/* [todo] - 이미지 삽입: [`<picture>`](./picture) */}

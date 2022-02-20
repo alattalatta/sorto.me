@@ -98,13 +98,13 @@ bcd: html.elements.video
     > - `preload` 특성은 어디까지나 힌트 특성으로, 브라우저가 반드시 따라야 하는 것은 아닙니다.
 
 - : `src`
-  - 삽입할 비디오의 URL입니다. [HTTP 접근 제어](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)의 대상입니다. [`<source>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source) 요소를 사용하면 지정하지 않아도 됩니다.
+  - 삽입할 비디오의 URL입니다. [HTTP 접근 제어](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)의 대상입니다. [`<source>`](./source) 요소를 사용하면 지정하지 않아도 됩니다.
 - : `width`
   - 비디오를 표시할 영역의 너비입니다. 픽셀 단위이며, 단위 없는 정수 값을 지정해야 합니다.
 
 # 사용 일람
 
-브라우저가 지원하는 파일 유형과 비디오 코덱은 서로 다릅니다. [`<source>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source) 요소를 추가해서 다수의 소스를 제공하면 브라우저가 이해할 수 있는 첫 번째 소스를 자동으로 사용하므로 지원 범위를 넓힐 수 있습니다.
+브라우저가 지원하는 파일 유형과 비디오 코덱은 서로 다릅니다. [`<source>`](./source) 요소를 추가해서 다수의 소스를 제공하면 브라우저가 이해할 수 있는 첫 번째 소스를 자동으로 사용하므로 지원 범위를 넓힐 수 있습니다.
 
 ```html
 <audio controls>
@@ -152,7 +152,7 @@ elem.videoTracks.addEventListener('removetrack', (event) => {
 
 ## `<source>`를 사용한 `<video>`
 
-이 예제는 오디오 소스를 `<video>`에 직접 지정하지 않고, 내부의 `<source>` 요소 `src` 특성에 지정합니다. 항상 파일의 MIME 유형을 지정해서 브라우저가 재생 가능 여부를 알아내느라 시간을 낭비하지 않도록 하는 것이 좋습니다.
+이 예제는 오디오 소스를 `<video>`에 직접 지정하지 않고, 내부 [`<source>`](./source) 요소의 `src` 특성에 지정합니다. 항상 파일의 MIME 유형을 지정해서 브라우저가 재생 가능 여부를 알아내느라 시간을 낭비하지 않도록 하는 것이 좋습니다.
 
 ```html
 <video controls>
@@ -162,7 +162,7 @@ elem.videoTracks.addEventListener('removetrack', (event) => {
 
 ## 다수의 `<source>`를 사용한 `<video>`
 
-이 예제는 다수의 `<source>`를 사용해 소스를 제공합니다. 브라우저가 첫 소스 파일(WebM)을 재생할 수 있으면 그걸 불러오고, 그렇지 않으면 두 번째(MP4), 마지막으로 AVI를 불러옵니다.
+이 예제는 다수의 [`<source>`](./source)를 사용해 소스를 제공합니다. 브라우저가 첫 소스 파일(WebM)을 재생할 수 있으면 그걸 불러오고, 그렇지 않으면 두 번째(MP4), 마지막으로 AVI를 불러옵니다.
 
 ```html
 <video controls>
@@ -207,4 +207,4 @@ elem.videoTracks.addEventListener('removetrack', (event) => {
 # 같이 보기
 
 - 오디오 삽입: [`<audio>`](./audio)
-  {/* [todo] - 미디어 출처 추가: [<source>](./source) */}
+- 미디어 소스 추가: [`<source>`](./source)

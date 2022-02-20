@@ -4,7 +4,7 @@ description: HTML <audio> (오디오) 요소는 오디오 콘텐츠를 문서에
 bcd: html.elements.audio
 ---
 
-**HTML `<audio>` 요소**는 오디오 콘텐츠를 문서에 삽입할 때 사용합니다. `src` 특성과 [`<source>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source) 요소를 이용해서 하나 이상의 오디오 소스를 제공할 수 있고, 여러 개를 제공한 경우 브라우저가 제일 적합한 소스를 선택합니다. [`MediaStream`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream)을 사용해 미디어 스트림의 목적지로 지정할 수도 있습니다.
+**HTML `<audio>` 요소**는 오디오 콘텐츠를 문서에 삽입할 때 사용합니다. `src` 특성과 [`<source>`](./source) 요소를 이용해서 하나 이상의 오디오 소스를 제공할 수 있고, 여러 개를 제공한 경우 브라우저가 제일 적합한 소스를 선택합니다. [`MediaStream`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream)을 사용해 미디어 스트림의 목적지로 지정할 수도 있습니다.
 
 <HTMLDemo height={180}>
 
@@ -68,11 +68,11 @@ bcd: html.elements.audio
     > [note] `autoplay` 특성이 `preload`보다 우선합니다. `autoplay`를 지정한 경우 당연히 브라우저는 전체 오디오를 다운로드해야 합니다. - `preload` 특성은 어디까지나 힌트 특성으로, 브라우저가 반드시 따라야 하는 것은 아닙니다.
 
 - : `src`
-  - 삽입할 오디오의 URL입니다. [HTTP 접근 제어](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)의 대상입니다. [`<source>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source) 요소를 사용하면 지정하지 않아도 됩니다.
+  - 삽입할 오디오의 URL입니다. [HTTP 접근 제어](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)의 대상입니다. [`<source>`](./source) 요소를 사용하면 지정하지 않아도 됩니다.
 
 # 사용 일람
 
-브라우저가 지원하는 파일 유형과 오디오 코덱은 서로 다릅니다. [`<source>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source) 요소를 추가해서 다수의 소스를 제공하면 브라우저가 이해할 수 있는 첫 번째 소스를 자동으로 사용하므로 지원 범위를 넓힐 수 있습니다.
+브라우저가 지원하는 파일 유형과 오디오 코덱은 서로 다릅니다. [`<source>`](./source) 요소를 추가해서 다수의 소스를 제공하면 브라우저가 이해할 수 있는 첫 번째 소스를 자동으로 사용하므로 지원 범위를 넓힐 수 있습니다.
 
 ```html
 <audio controls>
@@ -124,7 +124,7 @@ elem.audioTrackList.addEventListener('removetrack', (event) => {
 
 ## `<source>`를 사용한 `<audio>`
 
-이 예제는 오디오 소스를 `<audio>`에 직접 지정하지 않고, 내부의 `<source>` 요소 `src` 특성에 지정합니다. 항상 파일의 MIME 유형을 지정해서 브라우저가 재생 가능 여부를 알아내느라 시간을 낭비하지 않도록 하는 것이 좋습니다.
+이 예제는 오디오 소스를 `<audio>`에 직접 지정하지 않고, 내부 [`<source>`](./source) 요소의 `src` 특성에 지정합니다. 항상 파일의 MIME 유형을 지정해서 브라우저가 재생 가능 여부를 알아내느라 시간을 낭비하지 않도록 하는 것이 좋습니다.
 
 ```html
 <audio controls>
@@ -134,7 +134,7 @@ elem.audioTrackList.addEventListener('removetrack', (event) => {
 
 ## 다수의 `<source>`를 사용한 `<audio>`
 
-이 예제는 다수의 `<source>`를 사용해 소스를 제공합니다. 브라우저가 첫 소스 파일(Opus)을 재생할 수 있으면 그걸 불러오고, 그렇지 않으면 두 번째(Vorbis), 마지막으로 MP3를 불러옵니다.
+이 예제는 다수의 [`<source>`](./source) 요소를 사용해 소스를 제공합니다. 브라우저가 첫 소스 파일(Opus)을 재생할 수 있으면 그걸 불러오고, 그렇지 않으면 두 번째(Vorbis), 마지막으로 MP3를 불러옵니다.
 
 ```html
 <audio controls>
@@ -179,5 +179,4 @@ elem.audioTrackList.addEventListener('removetrack', (event) => {
 # 같이 보기
 
 - 비디오 삽입: [`<video>`](./video)
-
-{/* - 미디어 출처 추가: [<source>](./source) */}
+- 미디어 소스 추가: [`<source>`](./source)

@@ -62,8 +62,9 @@ const Root = styled('div', {
   },
   '& hr': {
     maxWidth: `${219 / 16}rem`,
-    color: '$fg',
-    margin: '3rem 0',
+    border: 'none',
+    borderTop: '1px solid $fg',
+    margin: '5rem 0 3rem',
   },
   '& :is(i, em)': {
     fontFamily: '$serif',

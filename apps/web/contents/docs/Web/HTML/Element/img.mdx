@@ -8,15 +8,15 @@ bcd: html.elements.img
 
 <HTMLDemo height={200}>
 
-  ```css
-  img {
-    width: 100%;
-  }
-  ```
+```css
+img {
+  width: 100%;
+}
+```
 
-  ```html
-  <img src="/docs/infrared-jeju.jpg" alt="적외선으로 촬영한 제주도의 오름" />
-  ```
+```html
+<img src="/docs/infrared-jeju.jpg" alt="적외선으로 촬영한 제주도의 오름" />
+```
 
 </HTMLDemo>
 
@@ -31,17 +31,15 @@ HTML 표준은 지원할 이미지 형식을 명시하지 않으므로, 사용�
 
 다음은 웹에서 많이 사용하는 이미지 형식 표입니다.
 
-{/* prettier-ignore-start */}
-| 준말 | MIME 유형 | 확장자 | 요약 |
-| ---- | --------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| APNG | `image/apng` | `.apng` | 무손실 애니메이션 시퀀스에 좋은 선택지입니다. AVIF와 WebP가 성능면에서 더 좋지만 지원하는 브라우저가 적습니다.<br />**지원**: Chrome, Edge, Firefox, Opera, Safari |
-| AVIF | `image/avif` | `.avif` | 고성능, 로열티 프리 이미지 형식으로서 이미지와 애니메이션 시퀀스 양쪽에 좋은 선택지입니다. PNG와 JPEG보다 훨씬 뛰어난 압축률을 지원하면서도 넓은 색상 범위, 애니메이션 프레임, 투명도 역시 지원합니다. AVIF를 사용할 땐 `<picture>` 요소 등을 사용해서, 더 넓은 브라우저 지원을 가진 대체 이미지를 지정해야 합니다.<br />**지원**: Chrome, Opera, Firefox (설정 필요, 애니메이션 등 고급 기능은 미구현) |
-| GIF | `image/gif` | `.gif` | 간단한 이미지와 애니메이션에 적합합니다. 무손실 인덱스드 이미지에는 PNG를, 애니메이션 시퀀스에는 WebP, AVIF, APNG를 대신 고려하세요.<br />**지원**: 모든 브라우저 |
-| JPEG | `image/jpeg` | `.jpg`, `.jpeg` 등 | 이미지의 손실 압축 저장에 적합하며 현재 제일 널리 쓰이고 있습니다. 이미지의 정확한 재현이 필요하면 PNG를, 정확한 재현에 더 높은 압축률까지 필요하면 WebP나 AVIF를 고려하세요.<br />**지원**: 모든 브라우저 |
-| PNG | `image/png` | `.png` | 정확한 재현이 중요할 때, 또는 투명도를 지원해야 할 때 JPEG보다 선호되는 형식입니다. WebP와 AVIF가 더 높은 압축률을 지원하지만 브라우저 지원이 넓지 않습니다.<br />**지원**: 모든 브라우저 |
-| SVG | `image/svg+xml` | `.svg` | 벡터 이미지 형식입니다. 사용자 인터페이스의 구성 요소, 아이콘, 다이어그램처럼 다양한 크기에서 정확하게 그려야 하는 이미지에 적합합니다.<br />**지원**: 모든 브라우저 |
-| WebP | `image/webp` | `.webp` | 이미지와 애니메이션 시퀀스 양쪽에 좋은 선택입니다. PNG와 JPEG보다 훨씬 뛰어난 압축률을 지원하면서도 넓은 색상 범위, 애니메이션 프레임, 투명도 역시 지원합니다. AVIF가 약간 더 높은 압축률을 가지고 있지만 브라우저 지원은 더 좁습니다.<br />**지원**: Chrome, Edge, Firefox, Opera, Safari |
-{/* prettier-ignore-end */}
+| 준말 | MIME 유형       | 확장자             | 요약                                                                                                                                                                                                                                                                                                                                                                                                    |
+| ---- | --------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| APNG | `image/apng`    | `.apng`            | 무손실 애니메이션 시퀀스에 좋은 선택지입니다. AVIF와 WebP가 성능면에서 더 좋지만 지원하는 브라우저가 적습니다.<br />**지원**: Chrome, Edge, Firefox, Opera, Safari                                                                                                                                                                                                                                      |
+| AVIF | `image/avif`    | `.avif`            | 고성능, 로열티 프리 이미지 형식으로서 이미지와 애니메이션 시퀀스 양쪽에 좋은 선택지입니다. PNG와 JPEG보다 훨씬 뛰어난 압축률을 지원하면서도 넓은 색상 범위, 애니메이션 프레임, 투명도 역시 지원합니다. AVIF를 사용할 땐 `<picture>` 요소 등을 사용해서, 더 넓은 브라우저 지원을 가진 대체 이미지를 지정해야 합니다.<br />**지원**: Chrome, Opera, Firefox (설정 필요, 애니메이션 등 고급 기능은 미구현) |
+| GIF  | `image/gif`     | `.gif`             | 간단한 이미지와 애니메이션에 적합합니다. 무손실 인덱스드 이미지에는 PNG를, 애니메이션 시퀀스에는 WebP, AVIF, APNG를 대신 고려하세요.<br />**지원**: 모든 브라우저                                                                                                                                                                                                                                       |
+| JPEG | `image/jpeg`    | `.jpg`, `.jpeg` 등 | 이미지의 손실 압축 저장에 적합하며 현재 제일 널리 쓰이고 있습니다. 이미지의 정확한 재현이 필요하면 PNG를, 정확한 재현에 더 높은 압축률까지 필요하면 WebP나 AVIF를 고려하세요.<br />**지원**: 모든 브라우저                                                                                                                                                                                              |
+| PNG  | `image/png`     | `.png`             | 정확한 재현이 중요할 때, 또는 투명도를 지원해야 할 때 JPEG보다 선호되는 형식입니다. WebP와 AVIF가 더 높은 압축률을 지원하지만 브라우저 지원이 넓지 않습니다.<br />**지원**: 모든 브라우저                                                                                                                                                                                                               |
+| SVG  | `image/svg+xml` | `.svg`             | 벡터 이미지 형식입니다. 사용자 인터페이스의 구성 요소, 아이콘, 다이어그램처럼 다양한 크기에서 정확하게 그려야 하는 이미지에 적합합니다.<br />**지원**: 모든 브라우저                                                                                                                                                                                                                                    |
+| WebP | `image/webp`    | `.webp`            | 이미지와 애니메이션 시퀀스 양쪽에 좋은 선택입니다. PNG와 JPEG보다 훨씬 뛰어난 압축률을 지원하면서도 넓은 색상 범위, 애니메이션 프레임, 투명도 역시 지원합니다. AVIF가 약간 더 높은 압축률을 가지고 있지만 브라우저 지원은 더 좁습니다.<br />**지원**: Chrome, Edge, Firefox, Opera, Safari                                                                                                              |
 
 > [note] PNG, JPEG, GIF처럼 과거에 개발한 이미지 형식은 WebP와 AVIF 등 신형 형식보다 성능이 낮지만, 구형 브라우저에서도 모두 지원합니다. 그러나 구형 브라우저의 시장 점유율이 상당히 낮아짐에 따라 신형 이미지 형식의 점유율은 점점 올라가고 있습니다.
 
@@ -67,11 +65,13 @@ HTML 표준은 지원할 이미지 형식을 명시하지 않으므로, 사용�
     > - 사용자가 대역폭 절약, 사생활 보호 등을 위해 이미지의 표시를 끔
     > - 유효하지 않거나 지원하지 않는 형식의 이미지
     >
-    > 이런 상황에서 브라우저는 이미지 대신 `alt`의 값을 대신 노출할 수 있습니다. 이 외에 여러가지 이유로, 가능하다면 항상 `alt` 특성을 지정하세요.
+    > 이런 상황에서 브라우저는 이미지 대신 `alt`의 값을 대신 노출할 수 있습니다. 이외에도 여러가지 이유가 있으니 가능하면 항상 `alt` 특성을 지정하세요.
 
-    `alt`를 완전히 제거하면 이미지가 콘텐츠의 중요한 부분이지만 동일한 텍스트를 제공할 수 없음을 의미합니다. 빈 문자열(`alt=""`)은 이미지가 콘텐츠의 중요한 부분이 아니며 (즉 장식 또는 추적용 픽셀) 비 시각적 브라우저는 이미지를 렌더링에서 완전히 제외할 수 있음을 나타냅니다. 또한 시각적 브라우저는 이미지가 잘못됐을 때 따로 표시("엑스박스")하지 않고 아예 숨깁니다.
+    `alt`를 완전히 제거하면 이미지가 콘텐츠의 중요한 부분이지만 동일한 텍스트를 제공할 방법이 없음을 의미합니다.
 
-    `alt`는 이미지를 복사해서 텍스트에 붙여 넣을 때나 이미지를 즐겨찾기에 추가할 때와 같이 다른 곳에서도 쓰입니다.
+    빈 문자열(`alt=""`)을 지정하면 이미지가 콘텐츠의 중요한 부분이 아닌 장식 또는 추적용 픽셀이므로 비 시각적 브라우저가 이미지를 렌더링에서 완전히 제외할 수 있음을 나타냅니다. 또한 시각적 브라우저라면 이미지가 잘못됐을 때 별도의 표시("엑스박스")를 하지 않고 아예 숨깁니다.
+
+    `alt`는 이미지를 복사해서 텍스트에 붙여 넣을 때나, 이미지를 즐겨찾기에 추가할 때 등 다른 용도로도 쓰입니다.
 
 - : `crossorigin`
 
@@ -146,8 +146,9 @@ HTML 표준은 지원할 이미지 형식을 명시하지 않으므로, 사용�
 
     1. 이미지의 URL.
     2. 공백과 그 뒤를 잇는
-      - 너비 서술자(양의 정수와 바로 뒤의 `w` 문자). 너비 서술자의 값을 `sizes` 특성에 지정한 소스 크기로 나눠서 픽셀 밀도를 구합니다.
-      - 픽셀 밀도 서술자(양의 실수와 바로 뒤의 `x` 문자).
+
+    - 너비 서술자(양의 정수와 바로 뒤의 `w` 문자). 너비 서술자의 값을 `sizes` 특성에 지정한 소스 크기로 나눠서 픽셀 밀도를 구합니다.
+    - 픽셀 밀도 서술자(양의 실수와 바로 뒤의 `x` 문자).
 
     서술자를 포함하지 않은 경우 기본 값인 `1x`로 간주합니다.
 
@@ -167,7 +168,7 @@ HTML 표준은 지원할 이미지 형식을 명시하지 않으므로, 사용�
 
 ## CSS 스타일링
 
-`<img>`는 [대체 요소](https://developer.mozilla.org/en-US/docs/Web/CSS/Replaced_element)로, [`display`](https://developer.mozilla.org/en-US/docs/Web/CSS/display)의 기본값이 `inline`이지만, 그 크기는 마치 `inline-block`처럼 삽입한 이미지의 내재된 높이와 너비가 결정합니다. `<img>`에는 [`border`](https://developer.mozilla.org/en-US/docs/Web/CSS/border), [`border-radius`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius), [`margin`](https://developer.mozilla.org/en-US/docs/Web/CSS/margin), [`padding`](https://developer.mozilla.org/en-US/docs/Web/CSS/padding), [`width`](https://developer.mozilla.org/en-US/docs/Web/CSS/width), [`height`](https://developer.mozilla.org/en-US/docs/Web/CSS/height) 등의 속성을 적용할 수 있습니다.
+`<img>`는 [대체 요소](https://developer.mozilla.org/en-US/docs/Web/CSS/Replaced_element)로, [`display`](https://developer.mozilla.org/en-US/docs/Web/CSS/display)의 기본값이 `inline`이지만, 그 크기는 마치 `inline-block`처럼 삽입한 이미지의 내재된 높이와 너비에 따라 결정됩니다. `<img>`에는 [`border`](https://developer.mozilla.org/en-US/docs/Web/CSS/border), [`border-radius`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius), [`margin`](https://developer.mozilla.org/en-US/docs/Web/CSS/margin), [`padding`](https://developer.mozilla.org/en-US/docs/Web/CSS/padding), [`width`](https://developer.mozilla.org/en-US/docs/Web/CSS/width), [`height`](https://developer.mozilla.org/en-US/docs/Web/CSS/height) 등의 속성을 적용할 수 있습니다.
 
 `<img>`는 기준선(baseline)을 갖지 않으므로 [`vertical-align`](https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align)`: baseline`이 적용된 인라인 서식 맥락 내에서는 이미지의 아래쪽 모서리를 텍스트 기준선에 배치합니다.
 
@@ -176,6 +177,34 @@ HTML 표준은 지원할 이미지 형식을 명시하지 않으므로, 사용�
 이미지는 고유 너비와 높이를 가질 수 있지만, 일부 유형의 이미지는 그렇지 않습니다. 예를 들어, SVG 요소는 루트 [`<svg>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg) 요소에 `width`와 `height` 특성이 없는 경우 고유 크기를 가지지 않습니다.
 
 {/* [todo] Examples */}
+
+# 접근성 고려사항
+
+## 유의미한 대체 설명 작성
+
+[`alt`](#term-alt) 특성의 값은 분명하고 간결하게 이미지의 내용을 설명해야 하며, 이미지의 존재 자체나 파일 이름 등을 나타내선 안됩니다. 이미지에 대응할 수 있는 텍스트가 없어서 `alt`를 의도적으로 누락한 경우에는 이미지가 표현하고자 하는 것을 설명할 수 있는 다른 방법을 고려하세요.
+
+### 좋지 않음
+
+```html variant=bad
+<img alt="image" src="penguin.jpg" />
+```
+
+### 좋음
+
+```html variant=good
+<img alt="일광욕 중인 황제펭귄." src="penguin.jpg" />
+```
+
+일부 스크린 리더에서는 `alt`가 없는 이미지를 파일 이름으로 읽을 수 있습니다. 파일 이름이 이미지의 콘텐츠를 설명하는 것이 아니라면 사용자에게 혼란을 줄 수 있습니다.
+
+## `title` 특성
+
+[`title` 전역 특성](../Global_attributes#term-title)은 `alt` 특성을 대체할 수 없습니다. `alt`와 `title`의 값을 동일하게 설정하는 것도 피하세요. 일부 스크린 리더에서 이미지를 같은 내용으로 두 번 읽을 수 있습니다.
+
+`title`을 `alt`에 대한 보충 정보로 사용해서도 안됩니다. 이미지에 캡션이 필요하면 [`<figure>`](./figure)와 [`<figcaption>`](./figcaption) 요소를 사용하세요.
+
+`title` 특성의 값은 사용자에게 보통 툴팁, 즉 마우스 커서가 이미지 위에 멈추면 잠시 후에 나타나는 형태로 보여집니다. 따라서 사용자가 추가 정보를 얻는 방법으로 사용될 수 있지만, 개발자는 사용자가 툴팁을 볼 수 있을 것이란 가정을 해선 안됩니다. 키보드나 터치 스크린만 사용하는 경우 툴팁을 볼 방법이 없습니다. 사용자에게 중요한 정보는 `title`에 제공하지 말고 [`<figcaption>`](./figcaption) 등 다른 방법으로 문서 본문에 포함하세요.
 
 # 명세
 

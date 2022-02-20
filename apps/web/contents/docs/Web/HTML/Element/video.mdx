@@ -6,7 +6,18 @@ bcd: html.elements.video
 
 **HTML `<video>` 요소**는 비디오 콘텐츠를 문서에 삽입할 때 사용합니다. 오디오 콘텐츠도 함께 사용할 수 있지만, [`<audio>`](./audio)가 좀 더 적합한 사용자 경험을 제공합니다.
 
-{/* [todo] Demo */}
+<HTMLDemo>
+
+```html
+<video controls width="125">
+  <source src="/gen/chestnut.webm" type="video/webm" />
+  <source src="/gen/chestnut.mp4" type="video/mp4" />
+
+  죄송합니다. 브라우저가 비디오를 지원하지 않습니다.
+</video>
+```
+
+</HTMLDemo>
 
 `<video></video>` 안의 내용은 미지원 브라우저에서 대체 콘텐츠로 보여집니다.
 
@@ -34,14 +45,16 @@ bcd: html.elements.video
     - `noremoteplayback`: 내장 컨트롤에서 원격 재생 컨트롤을 숨겨야 함을 나타냅니다.
 
 - : `crossorigin`
+
   - CORS를 사용해 지정한 비디오 파일을 가져올지 나타내는 열거형 특성입니다. [CORS 활성화 리소스](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image)는 [`<canvas>`](./canvas) 요소에 사용해도 캔버스가 오염(taint)되지 않습니다. 가능한 값은 다음과 같습니다.
-- : `anonymous`
-  - 자격 증명 없이 교차 출처 요청을 전송합니다. 즉, `Origin` HTTP 헤더를 쿠키, 인증서, HTTP Basic 인증 없이 전송합니다. 서버에서 `Access-Control-Allow-Origin` HTTP 헤더를 지정하지 않아서 요청 출처 사이트에 자격 증명을 보내지 않는다면 캔버스 이미지가 오염되고, 사용처가 제한됩니다.
-- : `user-credentials`
 
-  - 자격 증명과 함께 교차 출처 요청을 전송합니다. 즉, `Origin` HTTP 헤더를 쿠키, 인증서, 또는 HTTP Basic 인증과 함께 전송합니다. 서버에서 `Access-Control-Allow-Origin` HTTP 헤더를 지정하지 않아서 요청 출처 사이트에 자격 증명을 보내지 않는다면 캔버스 이미지가 오염되고, 사용처가 제한됩니다.
+    - : `anonymous`
+      - 자격 증명 없이 교차 출처 요청을 전송합니다. 즉, `Origin` HTTP 헤더를 쿠키, 인증서, HTTP Basic 인증 없이 전송합니다. 서버에서 `Access-Control-Allow-Origin` HTTP 헤더를 지정하지 않아서 요청 출처 사이트에 자격 증명을 보내지 않는다면 캔버스 이미지가 오염되고, 사용처가 제한됩니다.
+    - : `user-credentials`
 
-    특성이 존재하지 않으면 리소스를 CORS 요청 없이(`Origin` HTTP 헤더 없이) 가져오므로, `<canvas>`가 오염됩니다. 유효하지 않은 값의 경우 `anonymous` 깂을 사용한 것으로 간주합니다.
+      - 자격 증명과 함께 교차 출처 요청을 전송합니다. 즉, `Origin` HTTP 헤더를 쿠키, 인증서, 또는 HTTP Basic 인증과 함께 전송합니다. 서버에서 `Access-Control-Allow-Origin` HTTP 헤더를 지정하지 않아서 요청 출처 사이트에 자격 증명을 보내지 않는다면 캔버스 이미지가 오염되고, 사용처가 제한됩니다.
+
+        특성이 존재하지 않으면 리소스를 CORS 요청 없이(`Origin` HTTP 헤더 없이) 가져오므로, `<canvas>`가 오염됩니다. 유효하지 않은 값의 경우 `anonymous` 깂을 사용한 것으로 간주합니다.
 
 - : `disablepictureinpicture` <Experimental />
   - 브라우저가 컨텍스트 메뉴에 PIP 모드를 제안하지 않고, 자동으로 PIP를 요청하지도 않도록 지정하는 불리언 특성입니다.

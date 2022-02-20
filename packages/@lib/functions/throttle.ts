@@ -1,5 +1,3 @@
-// [todo] Move to functions
-
 type Options = {
   leading?: boolean
   trailing?: boolean

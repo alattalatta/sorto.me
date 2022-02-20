@@ -2,6 +2,7 @@ import type { LazyFeatureBundle } from 'framer-motion'
 import { LazyMotion } from 'framer-motion'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import Script from 'next/script'
 
 import type { Page } from '../utils/types'
 
@@ -28,6 +29,14 @@ function App({ Component, pageProps }: { Component: Page; pageProps: Record<stri
         </Head>
         <Component {...pageProps} />
       </Layout>
+      {process.env.NEXT_PUBLIC_ANALYTICS && (
+        <>
+          <Script src="https://www.googletagmanager.com/gtag/js?id=G-7F0E6D3XE2" />
+          <Script id="google-analytics">
+            {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${process.env.NEXT_PUBLIC_ANALYTICS_ID}');`}
+          </Script>
+        </>
+      )}
     </LazyMotion>
   )
 }

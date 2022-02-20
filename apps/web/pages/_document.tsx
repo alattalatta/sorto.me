@@ -33,16 +33,6 @@ export default class TheDocument extends Document {
           <link href="/favicon-192x192.png" rel="icon" sizes="192x192" type="image/png" />
           <link href="/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png" />
           <link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
-          {process.env.NEXT_PUBLIC_ANALYTICS && (
-            <>
-              <script async src="https://www.googletagmanager.com/gtag/js?id=G-7F0E6D3XE2" />
-              <script
-                dangerouslySetInnerHTML={{
-                  __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${process.env.NEXT_PUBLIC_ANALYTICS_ID}');`,
-                }}
-              />
-            </>
-          )}
         </Head>
         <body>
           <Main />

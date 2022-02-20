@@ -3,9 +3,9 @@ import type { Root } from 'mdast'
 import type { Plugin } from 'unified'
 import { visit } from 'unist-util-visit'
 
-import { callout } from './callout'
 import { headingDepthAndSlug } from './headingDepthAndSlug'
 import { imageCustomSize } from './imageCustomSize'
+import { notebox } from './notebox'
 
 const remarkPlugin: Plugin<void[], Root> = () => {
   const slugger = new Slugger()
@@ -14,7 +14,7 @@ const remarkPlugin: Plugin<void[], Root> = () => {
     visit(tree, (node, index, parent) => {
       switch (node.type) {
         case 'blockquote':
-          callout(node, index, parent)
+          notebox(node, index, parent)
           break
         case 'heading':
           headingDepthAndSlug(node, slugger)

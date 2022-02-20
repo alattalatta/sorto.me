@@ -12,19 +12,12 @@ import { remarkPlugin } from './remarkPlugin'
 async function compile(source: string): Promise<string> {
   const compiled = await compileMDX(source, {
     outputFormat: 'function-body',
-    rehypePlugins: [
-      rehypeHighlight,
-      rehypeCodeblockDataAttr,
-      () =>
-        rehypeAutolinkHeadings({
-          behavior: 'wrap',
-        }),
-    ],
+    rehypePlugins: [rehypeHighlight, rehypeCodeblockDataAttr, [rehypeAutolinkHeadings, { behavior: 'wrap' }]],
     remarkPlugins: [remarkGfm, remarkDefinitionList, remarkPlugin],
     remarkRehypeOptions: {
       handlers: {
-        callout: (h, node) => h(node, 'div', { className: `callout callout-${node.severity}` }, all(h, node)),
         definitionList: (h, node) => h(node, 'dl', all(h, node)),
+        notebox: (h, node) => h(node, 'div', { className: `notebox notebox-${node.severity}` }, all(h, node)),
         term: (h, node) => h(node, 'dt', all(h, node)),
         termDescription: (h, node) => h(node, 'dd', all(h, node)),
       },

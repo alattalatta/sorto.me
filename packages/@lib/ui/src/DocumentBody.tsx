@@ -112,8 +112,8 @@ const Root = styled('div', {
       },
     },
   },
-  // callout
-  '& .callout': {
+  // notebox
+  '& .notebox': {
     borderLeft: '.5rem solid',
     borderRadius: '.25rem',
     padding: '.5rem .5rem .5rem 1rem',
@@ -126,14 +126,14 @@ const Root = styled('div', {
       fontWeight: 700,
       paddingRight: `${20 / 16}rem`,
     },
-    '&.callout-note': {
+    '&.notebox-note': {
       background: '#F1FFFE',
       borderLeftColor: '#43E4DA',
       '&::before': {
         content: '참고',
       },
     },
-    '&.callout-warn': {
+    '&.notebox-warn': {
       background: '#FFFBDC',
       borderLeftColor: '#FFE400',
       '&::before': {
@@ -141,7 +141,7 @@ const Root = styled('div', {
         backgroundImage: `url(${exclamation.src})`,
       },
     },
-    '&.callout-fatal': {
+    '&.notebox-fatal': {
       background: '#FEEBEB',
       borderLeftColor: '#FF5858',
       '&::before': {

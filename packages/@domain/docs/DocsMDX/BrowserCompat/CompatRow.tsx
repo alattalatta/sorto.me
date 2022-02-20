@@ -165,7 +165,7 @@ const CompatRow: React.VFC<Props> = ({ data, name, recurse }) => {
           <dl>
             {mapOver(supportDetail[1], (support, index) => (
               <Fragment key={index}>
-                <div className="callout callout-note">
+                <div className="notebox notebox-note">
                   <p>
                     <b>
                       {supportDetailBrowserDisplayName} {supportLabel(support)}

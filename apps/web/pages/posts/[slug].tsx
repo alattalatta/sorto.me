@@ -1,8 +1,8 @@
-import type { Post } from '@contents/posts'
-import postsIndex from '@contents/posts/data/index.json'
 import { PostPage } from '@domain/blog'
-import type { PostPageProps } from '@domain/blog'
+import type { PostPageProps, Post } from '@domain/blog'
 import type { GetStaticPaths, GetStaticProps } from 'next'
+
+import postsIndex from '../../out/posts/index.json'
 
 type Params = { slug: string }
 
@@ -31,5 +31,5 @@ export const getStaticPaths: GetStaticPaths<Params> = () => {
 }
 
 function importPostData(slug: string): Promise<Post> {
-  return import(`@contents/posts/data/${slug}.json`) as Promise<Post>
+  return import(`../../out/posts/${slug}.json`) as Promise<Post>
 }

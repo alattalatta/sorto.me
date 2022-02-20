@@ -1,11 +1,11 @@
-import type { Doc } from '@contents/docs'
-import docsIndex from '@contents/docs/data/index.json'
-import docsMap from '@contents/docs/data/slugMap.json'
-import type { DocPageProps } from '@domain/docs'
+import type { Doc, DocPageProps } from '@domain/docs'
 import { DocPage, getCompatData } from '@domain/docs'
 import browserCompatData from '@mdn/browser-compat-data'
 import type { Identifier } from '@mdn/browser-compat-data/types'
 import type { GetStaticPaths, GetStaticProps } from 'next'
+
+import docsIndex from '../../out/docs/index.json'
+import docsMap from '../../out/docs/slugMap.json'
 
 type StaticParam = { slugs: string[] }
 
@@ -29,7 +29,7 @@ export const getStaticProps: GetStaticProps<DocPageProps, StaticParam> = async (
         .reduce<{ breadcrumbs: DocPageProps['breadcrumbs']; combinedPath: string }>(
           ({ breadcrumbs, combinedPath }, cur) => {
             const path = `${combinedPath}/${cur}`
-            const title = docsMap[path.slice(1) /* remove leading slash */] || cur
+            const title = (docsMap as Record<string, string>)[path.slice(1) /* remove leading slash */] || cur
 
             return { breadcrumbs: [...breadcrumbs, [title, path]], combinedPath: path }
           },
@@ -68,5 +68,5 @@ function makeBCDData(bcdKey: string | null): { data: Identifier; name: string } 
 }
 
 function importDocData(slug: string): Promise<Doc> {
-  return import(`@contents/docs/data/${slug}.json`) as Promise<Doc>
+  return import(`../../out/docs/${slug}.json`) as Promise<Doc>
 }

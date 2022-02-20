@@ -1,8 +1,9 @@
 import { promises as fs } from 'fs'
 import path from 'path'
 
-import type { PostMetadata } from '@contents/posts'
-import postsIndex from '@contents/posts/data/index.json'
+import type { PostMetadata } from '@domain/blog'
+
+import postsIndex from '../../out/posts/index.json'
 
 const PROJECT_ROOT = path.resolve(__dirname, '../..')
 

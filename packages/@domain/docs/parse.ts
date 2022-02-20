@@ -11,10 +11,9 @@ import type { Doc, DocMetadata } from './types'
  * Parses a MDX post file. Creation date is parsed from the file's name.
  *
  * @param filePath File's path.
- * @param source File's content as `Buffer`.
  */
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-async function parse(filePath: string): Promise<Doc> {
+async function parse(filePath: string, rootDir?: string): Promise<Doc> {
   const sourceAsync = fs.readFile(filePath)
   const lastModifiedAsync = readLastModified(filePath)
 
@@ -28,7 +27,7 @@ async function parse(filePath: string): Promise<Doc> {
     meta: {
       ...(data as DocMetadata),
       description: typeof description === 'string' ? escapeUTF8(description) : null,
-      slug: path.relative(__dirname, filePath).replace(/(^mdx\/)|(.mdx$)/gi, ''),
+      slug: path.relative(rootDir || __dirname, filePath).replace(/(^mdx\/)|(.mdx$)/gi, ''),
       updated: await lastModifiedAsync,
     } as DocMetadata,
   }

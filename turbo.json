@@ -6,15 +6,14 @@
     },
     "@app/web#build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "public/rss.xml", "public/sitemap.md.xml", "public/gen/**"]
+      "outputs": [".next/**", "out", "public/rss.xml", "public/sitemap.md.xml"]
     },
     "@lib/mdx#build": {
       "dependsOn": ["^build"],
       "outputs": ["compiler/index.js"]
     },
     "dev": {
-      "cache": false,
-      "dependsOn": ["@contents/docs#build", "@contents/posts#build"]
+      "cache": false
     },
     "test": {}
   }

@@ -1,4 +1,3 @@
-import type { PostMetadata } from '@contents/posts'
 import { useMDXRenderer } from '@lib/mdx'
 import type { Page } from '@lib/ui'
 import { Layout } from '@lib/ui'
@@ -10,6 +9,7 @@ import Image from 'next/image'
 
 import { Post } from './Post'
 import { SideBySide } from './SideBySide'
+import type { PostMetadata } from './types'
 
 type Props = { compiledSource: string; meta: PostMetadata }
 

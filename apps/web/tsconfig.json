@@ -1,7 +1,5 @@
 {
   "extends": "tsconfig/nextjs.json",
-  "compilerOptions": {
-    "baseUrl": ".",
-  },
-  "include": ["next-env.d.ts", "support.d.ts", "."],
+  "include": ["next-env.d.ts", "."],
+  "exclude": ["scripts/**/*.ts"]
 }

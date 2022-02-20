@@ -5,7 +5,7 @@
     "lib": ["esnext"],
     "module": "CommonJS",
     "isolatedModules": false,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "target": "ES6"
   }
 }

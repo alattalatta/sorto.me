@@ -1,9 +1,0 @@
-{
-  "extends": "tsconfig/script.json",
-  "include": ["build.ts", "node_modules/@lib/mdx/*.ts", "../mdx/*.ts"],
-  "ts-node": {
-    "moduleTypes": {
-      "*.ts": "cjs"
-    }
-  }
-}

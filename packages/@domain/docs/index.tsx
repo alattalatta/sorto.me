@@ -1,4 +1,3 @@
-import type { DocMetadata } from '@contents/docs'
 import { useMDXRenderer } from '@lib/mdx'
 import type { Page } from '@lib/ui'
 import { DocumentBody, Footer, Layout, styled } from '@lib/ui'
@@ -7,6 +6,7 @@ import Head from 'next/head'
 
 import { DOCS_MDX_COMPONENTS } from './DocsMDX'
 import { Title } from './Title'
+import type { DocMetadata } from './types'
 
 type Props = {
   bcd: {
@@ -53,6 +53,7 @@ const DocPage: Page<Props> = ({ bcd, breadcrumbs, compiledSource, meta }) => {
 }
 DocPage.Layout = Layout
 
+export type { Doc, DocMetadata } from './types'
 export type { Props as DocPageProps }
 export { DocPage }
 

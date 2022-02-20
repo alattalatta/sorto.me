@@ -3,12 +3,12 @@ import { LazyMotion } from 'framer-motion'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
-import type { Page } from 'utils/types'
+import type { Page } from '../utils/types'
 
-import 'styles/reset.css'
-import 'styles/syntax.css'
+import '../styles/reset.css'
+import '../styles/syntax.css'
 
-const framerFeatures: LazyFeatureBundle = () => import('utils/lazyFramer').then((module) => module.default)
+const framerFeatures: LazyFeatureBundle = () => import('../utils/lazyFramer').then((module) => module.default)
 
 function App({ Component, pageProps }: { Component: Page; pageProps: Record<string, unknown> }): JSX.Element {
   const router = useRouter()

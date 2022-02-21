@@ -10,7 +10,7 @@ title: HTML 요소 참고서
 
 # 문서 메타데이터
 
-메타데이터는 페이지의 각종 정보로서 스타일, 스크립트, (검색 엔진, 브라우저 등) 소프트웨어가 페이지를 렌더링 할 때 사용할 수 있는 데이터 등을 담습니다. 스타일과 스크립트 메타데이터는 페이지 안에 정의할 수도 있고 다른 파일을 가리키는 링크일 수도 있습니다.
+메타데이터는 페이지에 포함되는 각종 정보로서 스타일과 스크립트, 소프트웨어(검색 엔진, 브라우저 등)가 페이지를 렌더링할 때 읽을 수 있는 데이터를 담습니다. 스타일과 스크립트 메타데이터는 페이지 안에 정의할 수도 있고, 다른 파일에 정의한 후 그 파일을 가리키는 링크일 수도 있습니다.
 
 - [`<base>`](./Element/base)
 - [`<head>`](./Element/head)
@@ -25,7 +25,7 @@ title: HTML 요소 참고서
 
 # 콘텐츠 구획
 
-콘텐츠 구획 요소를 사용해서 문서의 콘텐츠를 논리적 구획으로 체계화할 수 있습니다. 헤더, 푸터, 탐색 영역 등으로 페이지의 큰 틀을 잡고, 헤딩 요소를 사용해 각 구획에 이름을 붙이세요.
+문서의 콘텐츠를 논리적인 구획으로 구조화할 수 있습니다. 헤더, 푸터, 탐색 영역 등으로 페이지의 큰 틀을 잡고, 헤딩 요소로 구획에 이름을 붙이세요.
 
 - [`<address>`](./Element/address)
 - [`<article>`](./Element/article)
@@ -40,7 +40,7 @@ title: HTML 요소 참고서
 
 # 텍스트 콘텐츠
 
-HTML 텍스트 콘텐츠 요소를 사용해서 여는 [`<body>`](./Element/body)와 닫는 `</body>` 사이에 콘텐츠의 블록과 구획을 정리할 수 있습니다. 콘텐츠의 목적과 구조 판별에 사용하므로 [접근성](https://developer.mozilla.org/ko/docs/Glossary/Accessibility)과 [SEO](https://developer.mozilla.org/ko/docs/Glossary/SEO)에 중요합니다.
+여는 [`<body>`](./Element/body)와 닫는 `</body>` 사이에 콘텐츠의 블록과 구획을 정리할 수 있습니다. 콘텐츠의 목적과 구조 판별에 사용하므로 [접근성](https://developer.mozilla.org/ko/docs/Glossary/Accessibility)과 [SEO](https://developer.mozilla.org/ko/docs/Glossary/SEO)에 중요합니다.
 
 - [`<blockquote>`](./Element/blockquote)
 - [`<dd>`](./Element/dd)
@@ -52,6 +52,7 @@ HTML 텍스트 콘텐츠 요소를 사용해서 여는 [`<body>`](./Element/body
 - [`<hr>`](./Element/hr)
 - [`<li>`](./Element/li)
 - [`<main>`](./Element/main)
+- `<menu>`
 - [`<ol>`](./Element/ol)
 - [`<p>`](./Element/p)
 - [`<pre>`](./Element/pre)
@@ -59,7 +60,7 @@ HTML 텍스트 콘텐츠 요소를 사용해서 여는 [`<body>`](./Element/body
 
 # 인라인 텍스트 시맨틱
 
-HTML 인라인 텍스트 시맨틱 요소를 사용해서 단어, 줄 등 임의의 텍스트 영역에 의미, 구조, 스타일을 지정할 수 있습니다.
+글자, 단어, 줄 등 임의의 텍스트 영역에 의미와 스타일, 구조를 부여할 수 있습니다.
 
 - [`<a>`](./Element/a)
 - [`<abbr>`](./Element/abbr)
@@ -104,7 +105,7 @@ HTML은 사진, 오디오, 비디오 등 다양한 멀티미디어 리소스를 
 
 # 콘텐츠 임베딩
 
-일반적인 멀티미디어 콘텐츠 외에도 다양한 종류의 다른 콘텐츠 역시 포함할 수 있습니다.
+일반적인 멀티미디어 콘텐츠 외에도 다양한 콘텐츠를 삽입할 수 있습니다.
 
 - `<embed>`
 - `<iframe>`
@@ -117,7 +118,7 @@ HTML은 사진, 오디오, 비디오 등 다양한 멀티미디어 리소스를 
 
 # 스크립트
 
-동적인 콘텐츠와 웹 어플리케이션을 위해, HTML은 스크립트 언어, 그 중에서도 주로 JavaScript를 지원합니다. 다음 요소에서 스크립트를 지원합니다.
+HTML은 동적인 콘텐츠와 웹 어플리케이션을 위해 스크립트 언어, 주로 JavaScript를 지원합니다.
 
 - [`<canvas>`](./Element/canvas)
 - [`<noscript>`](./Element/noscript)
@@ -125,14 +126,14 @@ HTML은 사진, 오디오, 비디오 등 다양한 멀티미디어 리소스를 
 
 # 편집 영역 표시
 
-편집 영역 표시 요소를 사용하면 텍스트에서 수정한 부분을 표시할 수 있습니다.
+텍스트에서 수정한 부분을 표시할 수 있습니다.
 
 - [`<del>`](./Element/del)
 - [`<ins>`](./Element/ins)
 
 # 표
 
-아래의 요소를 사용해 표를 구성할 수 있습니다.
+표를 구성할 수 있습니다.
 
 - `<caption>`
 - `<col>`
@@ -147,7 +148,7 @@ HTML은 사진, 오디오, 비디오 등 다양한 멀티미디어 리소스를 
 
 # 양식
 
-HTML은 여러가지 입력 가능한 요소를 제공합니다. 이 요소들을 서로 조합하면 사용자가 내용을 채운 후 웹사이트나 어플리케이션에 제출할 수 있습니다.
+사용자가 내용을 채운 후 웹 사이트나 애플리케이션에 제출할 수 있는 양식을 생성할 수 있습니다. 
 
 - [`<button>`](./Element/button)
 - [`<datalist>`](./Element/datalist)
@@ -163,3 +164,11 @@ HTML은 여러가지 입력 가능한 요소를 제공합니다. 이 요소들�
 - [`<progress>`](./Element/progress)
 - [`<select>`](./Element/select)
 - [`<textarea>`](./Element/textarea)
+
+# 대화형 요소
+
+대화형 사용자 인터페이스를 구성할 때 도움이 되는 요소입니다.
+
+- `<details>`
+- `<dialog>`
+- `<summary>`

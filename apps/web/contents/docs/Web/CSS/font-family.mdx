@@ -4,44 +4,48 @@ description: CSS font-family 속성은 선택한 요소에 적용할 글꼴 가�
 bcd: css.properties.font-family
 ---
 
-**CSS `font-family` 속성**은 선택한 요소에 적용할 글꼴 가족(활자 가족)을 지정합니다.
+CSS **`font-family`** 속성은 선택한 요소에 적용할 글꼴 가족(활자 가족)을 지정합니다.
 
 <CSSDemo selector="pre{$}">
-  ```css
-  font-family: sans-serif;
-  ```
 
-  ```css
-  font-family: 'Do Hyeon', sans-serif;
-  ```
+```css
+font-family: sans-serif;
+```
 
-  ```css
-  font-family: serif;
-  ```
+```css
+font-family: 'Do Hyeon', sans-serif;
+```
 
-  ```css
-  font-family: monospace;
-  ```
+```css
+font-family: serif;
+```
 
-  ```css hidden
+```css
+font-family: monospace;
+```
+
+```css hidden
+pre {
   text-align: center;
-  ```
+}
+```
 
-  ```html
-  <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet" />
-  ```
+```html
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet" />
+```
 
-  ```html
-  <pre>
-  내 그대를 생각함은
-  항상 그대가 앉아 있는 배경에서
-  해가 지고 바람이 부는 일처럼 사소한 일 일것이나
-  언젠가 그대가
-  한없이 괴로움 속을 헤매일 때에
-  오랫동안 전해 오던 그 사소함으로
-  그대를 불러보리라
-  </pre>
-  ```
+```html
+<pre>
+내 그대를 생각함은
+항상 그대가 앉아 있는 배경에서
+해가 지고 바람이 부는 일처럼 사소한 일 일것이나
+언젠가 그대가
+한없이 괴로움 속을 헤매일 때에
+오랫동안 전해 오던 그 사소함으로
+그대를 불러보리라
+</pre>
+```
+
 </CSSDemo>
 
 `font-family`의 값은 쉼표로 구분하는 목록으로, 브라우저는 그 중에서 사용자의 컴퓨터에 이미 설치된, 또는 [`@font-face`](./@font-face) @규칙을 통해 다운로드 받을 수 있는 가장 앞쪽 글꼴 가족을 선택합니다.

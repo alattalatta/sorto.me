@@ -88,9 +88,13 @@ const CSSDemo: React.FC<Props> = ({ children, height, selector }) => {
     if (rootRef.current) {
       setCodes({
         ...codes,
-        css: Array.from(rootRef.current.querySelectorAll('code.language-css')).map((block, index) =>
-          index === currentBlockIdx ? selector.replace('$', block.textContent || '') : '',
-        ),
+        css: Array.from(rootRef.current.querySelectorAll('pre.language-css')).map((block, index) => {
+          if (block.attributes.getNamedItem('hidden')) {
+            return block.textContent || ''
+          }
+
+          return index === currentBlockIdx ? selector.replace('$', block.textContent || '') : ''
+        }),
       })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -107,11 +111,10 @@ const CSSDemo: React.FC<Props> = ({ children, height, selector }) => {
         js: [],
       }
 
-      rootRef.current.querySelectorAll('code.language-css:not([hidden])').forEach((block, index) => {
+      rootRef.current.querySelectorAll('pre.language-css:not([hidden])').forEach((block, index) => {
         result.css.push(index === 0 ? selector.replace('$', block.textContent || '') : '')
 
-        // add to pre, not code
-        block.parentElement?.addEventListener(
+        block.addEventListener(
           'click',
           () => {
             setCurrentBlockIdx(index)
@@ -120,7 +123,7 @@ const CSSDemo: React.FC<Props> = ({ children, height, selector }) => {
         )
       })
 
-      rootRef.current.querySelectorAll('code:not(.language-css), code.language-css[hidden]').forEach((block) => {
+      rootRef.current.querySelectorAll('pre:not(.language-css), pre.language-css[hidden]').forEach((block) => {
         const language = block.classList.value.match(/language-(\w+)/)?.[1] as 'html' | 'js'
         result[language].push(block.textContent || '')
       })

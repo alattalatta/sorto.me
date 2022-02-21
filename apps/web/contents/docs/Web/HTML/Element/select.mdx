@@ -1,0 +1,99 @@
+---
+title: 'HTML <select>: 선택 요소'
+description: HTML <select> 요소는 여러 선택지 중 하나 이상을 선택할 수 있는 메뉴를 제공합니다.
+bcd: html.elements.select
+---
+
+**HTML `<select>` 요소**는 여러 선택지 중 하나 이상을 선택할 수 있는 메뉴를 제공합니다.
+
+<HTMLDemo height={180}>
+
+```html
+<label for="pet-select">애완동물:</label>
+<select name="pets" id="pet-select">
+  <option value="" disabled selected>--선택해주세요--</option>
+  <option value="dog">개</option>
+  <option value="cat">고양이</option>
+  <option value="hamster">햄스터</option>
+  <option value="parrot">족제비</option>
+  <option value="spider">거미</option>
+  <option value="goldfish">금붕어</option>
+</select>
+```
+
+</HTMLDemo>
+
+접근성을 위해서 [`id`](../Global_attributes#term-id) 속성을 지정한 후 [`<label>`](./label) 요소와 연결하고, 선택한 선택지를 서버로 제출할 때 사용할 이름은 [`name`](#term-name) 특성으로 지정하는 모습을 위 예제에서 볼 수 있습니다. 각각의 선택지는 `<select>` 안의 [`<option>`](./option)으로 정의합니다.
+
+`<option>` 요소는 서버 제출 시 전송할 값을 [`value`](./option#term-value) 특성에 담고 있어야 합니다. `value`를 생략하는 경우 `<option>` 안의 텍스트를 전송합니다. `<option>`에 [`selected`](./option#term-selected) 특성을 지정하면 페이지를 불러올 때 해당 선택지를 자동으로 선택합니다.
+
+`<select>` 요소에는 지정할 경우 컨트롤의 동작을 바꿀 수 있는 특성이 몇가지 있습니다. [`multiple`](#term-multiple)을 지정하면 사용자가 복수의 선택지를 선택할 수 있고, [`size`](#term-size)로는 한 번에 보여줄 선택지의 수를 설정할 수 있습니다. 일반적인 양식 입력 칸이 받는 `required`, `disabled`, `autofocus` 등 또한 사용 가능합니다.
+
+`<option>`을 [`<optgroup>`](./optgroup)으로 묶으면 드롭다운 메뉴에 그룹을 생성할 수 있습니다.
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)을 포함합니다.
+
+- : `autocomplete`
+  - 사용자 에이전트의 자동완성 기능에 제공하는 힌트입니다. [HTML `autocomplete` 특성 문서](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete)을 참고하세요.
+- : `autofocus`
+  - 페이지를 불러오는 순간 이 요소로 포커스를 이동해야 하는지 지정하는 불리언 특성입니다. 문서에서 하나의 요소만 `autofocus`를 지정할 수 있습니다.
+- : `disabled`
+  - 지정할 경우 사용자와의 상호작용을 막는 불리언 특성입니다.
+- : `form`
+
+  - 이 컨트롤을 _양식 소유자_([`<form>`](./form) 요소)와 연결합니다. 같은 문서 상에 존재하는 `<form>`의 [`id`](../Global_attributes#term-id) 값을 지정하세요. 이 특성이 존재하지 않으면 컨트롤의 양식 소유자는 가장 가까운 조상 `<form>`이 됩니다.
+
+    `form` 특성을 사용하면 `<input>`이 `<form>`의 자손이 아니어도 연결할 수 있으며, `form` 특성이 가리키는 `<form>`이 조상 `<form>`보다 우선합니다.
+
+- : `multiple`
+  - 지정할 경우 사용자가 복수의 선택지를 선택할 수 있습니다. 불리언 특성입니다. 지정하지 않을 경우 하나의 선택지만 선택할 수 있습니다. `multiple` 사용 시, 많은 브라우저에서는 드롭다운 메뉴 대신 스크롤 가능한 선택지 리스트로 `<select>`를 렌더링합니다.
+- : `name`
+  - 컨트롤의 이름을 지정합니다.
+- : `required`
+  - 지정하면 사용자가 빈 문자열이 아닌 `value`를 가진 `<option>`을 선택해야 합니다. 불리언 특성입니다.
+- : `size`
+  - `multiple` 특성 등의 이유로 컨트롤이 스크롤 가능한 선택지 리스트로 렌더링되는 경우, 한 번에 몇 개의 선택지를 보여줘야 하는지 지정합니다.
+
+# CSS 스타일링
+
+CSS로 `<select>` 요소에 스타일을 입히는 일은 어렵기로 악명 높습니다.
+
+박스 모델, 나타나는 글꼴 등 컨트롤의 일부 모습은 수정할 수 있고, [`appearance`](https://developer.mozilla.org/en-US/docs/Web/CSS/appearance) 속성을 사용해서 기본 시스템 스타일을 제거할 수도 있습니다. 그러나 이 방법들은 브라우저마다 다른 결과를 낳을 수 있습니다. `<select>`를 다른 양식 요소와 가로 방향으로 나란히 놓는 것도 어렵습니다. `<select>`의 내부 구조는 복잡하고 조정하기 어려우므로, 완전한 통제가 필요하면 외부 라이브러리를 고려하거나, 다른 요소와 JavaScript, WAI-ARIA를 조합해 직접 드롭다운 메뉴를 구현해야 합니다.
+
+# 예제
+
+## 복수 선택과 선택지 그룹
+
+```html name=multiple
+<label>Please choose one or more pets:
+  <select name="pets" multiple size="4">
+    <optgroup label="4-legged pets">
+      <option value="dog">Dog</option>
+      <option value="cat">Cat</option>
+      <option value="hamster" disabled>Hamster</option>
+    </optgroup>
+    <optgroup label="Flying pets">
+      <option value="parrot">Parrot</option>
+      <option value="macaw">Macaw</option>
+      <option value="albatross">Albatross</option>
+    </optgroup>
+  </select>
+</label>
+```
+
+<LiveExample name="multiple" />
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/form-elements.html#the-select-element)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 선택지: [`<option>`](./option)
+- 선택지 그룹: [`<optgroup>`](./optgroup)

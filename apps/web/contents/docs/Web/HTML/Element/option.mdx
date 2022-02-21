@@ -4,18 +4,20 @@ description: HTML <option> (선택지) 요소는 <select> 요소 내의 선택�
 bcd: html.elements.option
 ---
 
-**HTML `<option>` 요소**는 [`<select>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select), [`<optgroup>`](./optgroup), [`<datalist>`](./datalist) 요소 내의 선택지를 나타냅니다.
+**HTML `<option>` 요소**는 [`<select>`](./select), [`<optgroup>`](./optgroup), [`<datalist>`](./datalist) 요소 내의 선택지를 나타냅니다.
 
 <HTMLDemo height={40}>
 
 ```html
-<label for="dino">공룡 선택:</label>
-<select id="dino">
-  <option value="">--선택하세요--</option>
-  <option value="velociraptor">벨로키랍토르</option>
-  <option value="brachiosaurus">브라키오사우루스</option>
-  <option value="stegosaurus">스테고사우루스</option>
-  <option value="tyrannosaurus">티라노사우루스</option>
+<label for="pet-select">애완동물:</label>
+<select name="pets" id="pet-select">
+  <option value="" disabled selected>--선택해주세요--</option>
+  <option value="dog">개</option>
+  <option value="cat">고양이</option>
+  <option value="hamster">햄스터</option>
+  <option value="parrot">족제비</option>
+  <option value="spider">거미</option>
+  <option value="goldfish">금붕어</option>
 </select>
 ```
 
@@ -26,13 +28,13 @@ bcd: html.elements.option
 [전역 특성](/docs/Web/HTML/Global_attributes)을 포함합니다.
 
 - : `disabled`
-  - 이 선택지를 고를 수 없도록 하는 불리언 특성입니다. [`<optgroup>`](./optgroup)에 속한 경우, 이 특성 없이도 `<optgroup>`의 [`disabled`](./optgroup#term-disabled) 특성으로 인해 비활성화될 수 있습니다.
+  - 이 선택지를 고를 수 없도록 하는 불리언 특성입니다. [`<optgroup>`](./optgroup)에 속한 경우, 이 특성을 지정하지 않았더라도 `<optgroup>`의 [`disabled`](./optgroup#term-disabled)로 인해 `<option>`이 비활성화될 수 있습니다.
 - : `label`
-  - 사용자에게 보여줄 선택지의 이름입니다. 따로 지정하지 않을 경우 요소의 텍스트 내용을 보여줍니다.
+  - 사용자에게 보여줄 선택지 레이블입니다. 따로 지정하지 않을 경우 요소의 텍스트 내용을 보여줍니다.
 - : `selected`
-  - 이 선택지를 처음에 선택해놓도록 지정하는 불리언 특성입니다. [`multiple`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#attr-multiple) 특성을 지정하지 않은 [`<select>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) 요소에 속하는 선택지들의 경우 하나의 선택지만 `selected` 특성을 가질 수 있습니다.
+  - 이 선택지를 처음에 선택해놓도록 지정하는 불리언 특성입니다. [`multiple`](./select#term-multiple) 특성을 지정하지 않은 [`<select>`](./select) 요소에 속하는 `<option>`의 경우, 선택지 중 하나만 `selected` 특성을 가질 수 있습니다.
 - : `value`
-  - 이 선택지를 선택한 상태로 양식 제출 시 실제로 전송할 값입니다. 따로 지정하지 않을 경우 요소의 텍스트 내용을 전송합니다.
+  - 이 선택지를 선택한 상태로 양식 제출 시 서버에 실제로 전송할 값입니다. 따로 지정하지 않을 경우 요소의 텍스트 내용을 전송합니다.
 
 # 명세
 
@@ -44,5 +46,5 @@ bcd: html.elements.option
 
 # 같이 보기
 
-- 부모 요소 [`<datalist>`](./datalist), [`<select>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select)
+- 부모 요소 [`<datalist>`](./datalist), [`<select>`](./select)
 - 선택지 그룹을 나타내는 [`<optgroup>`](./optgroup)

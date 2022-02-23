@@ -1,0 +1,56 @@
+---
+title: 'HTML <menu>: 메뉴 요소'
+description: HTML <menu> 요소는 <ul>의 시맨틱 대체 요소입니다. <ul>과 마찬가지로 비정렬 리스트지만, 각각의 항목<li>은 사용자가 활성화할 수 있는 링크 또는 명령을 나타냅니다.
+bcd: html.elements.menu
+---
+
+**HTML `<menu>` 요소**는 [`<ul>`](./ul)의 시맨틱 대체 요소입니다. `<ul>`과 마찬가지로 비정렬 리스트지만, 각각의 항목([`<li>`](./li))은 사용자가 활성화할 수 있는 링크 또는 명령을 나타냅니다.
+
+<HTMLDemo height={120}>
+
+```html
+<menu>
+  <li><button>복사</button></li>
+  <li><button>잘라내기</button></li>
+  <li><button>붙여넣기</button></li>
+</menu>
+```
+
+```css
+menu {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  flex-grow: 1;
+}
+
+button {
+  width: 100%;
+}
+```
+
+</HTMLDemo>
+
+> [note]
+> 이전 명세에서의 `<menu>`는 웹 페이지의 컨텍스트 메뉴(우클릭 메뉴)를 수정할 수 있었으나, 지금은 폐기된 기능이며 명세에서도 제거됐습니다.
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)만 포함합니다.
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/grouping-content.html#the-menu-element)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 정렬 목록: [`<ol>`](./ol)
+- 비정렬 목록: [`<ul>`](./ul)
+- 목록 항목: [`<li>`](./li)

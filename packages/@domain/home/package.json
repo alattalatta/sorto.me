@@ -15,7 +15,7 @@
   "dependencies": {
     "@lib/functions": "workspace:*",
     "@lib/ui": "workspace:*",
-    "@stitches/react": "^1.2.6",
+    "@stitches/react": "^1.2.7",
     "framer-motion": "^6.2.8"
   }
 }

@@ -25,7 +25,7 @@ const Anchor = forwardRef<HTMLAnchorElement, Omit<JSX.IntrinsicElements['a'], 'r
       const fragment = href.includes('#')
       // server: no url to resolve against
       // fragment: do not use <Link> for better scroll position
-      if (!!typeof window || fragment) {
+      if (typeof window === 'undefined' || fragment) {
         return (
           <a ref={ref} href={href} {...props}>
             {children}

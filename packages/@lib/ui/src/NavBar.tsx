@@ -39,20 +39,16 @@ const NavBar: React.VFC = () => {
 
   return (
     <Root>
-      <Link href="/">
-        <Item current={pathname === '/'} href="/">
-          sorto.me
-        </Item>
+      <Link href="/" passHref>
+        <Item current={pathname === '/'}>sorto.me</Item>
       </Link>
-      <Link href="/posts">
-        <Item css={{ marginLeft: 'auto !important' }} current={pathname.startsWith('/posts')} href="/posts">
+      <Link href="/posts" passHref>
+        <Item css={{ marginLeft: 'auto !important' }} current={pathname.startsWith('/posts')}>
           블로그
         </Item>
       </Link>
-      <Link href="/docs/Web">
-        <Item current={pathname.startsWith('/docs')} href="/docs/Web">
-          문서
-        </Item>
+      <Link href="/docs/Web" passHref>
+        <Item current={pathname.startsWith('/docs')}>문서</Item>
       </Link>
       {/* gcse causes issue with React, so don't use client side routing here */}
       <Item current={pathname.startsWith('/search')} href="/search">

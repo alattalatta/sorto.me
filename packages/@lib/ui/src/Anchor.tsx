@@ -50,5 +50,6 @@ const Anchor = forwardRef<HTMLAnchorElement, Omit<JSX.IntrinsicElements['a'], 'r
     )
   },
 )
+Anchor.displayName = 'Anchor'
 
 export { Anchor }

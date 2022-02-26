@@ -55,8 +55,8 @@ const PostsPage: Page<Props> = ({ posts }) => {
       </Head>
       <Root animate="show" initial="hidden" variants={rootVariants}>
         {posts.map((post) => (
-          <Link key={post.slug} href={`/posts/${post.slug}`}>
-            <PostWrap href={`/posts/${post.slug}`} variants={postWrapVariants}>
+          <Link key={post.slug} href={`/posts/${post.slug}`} passHref>
+            <PostWrap variants={postWrapVariants}>
               <PostFillHeight
                 image={post.image}
                 title={post.title}

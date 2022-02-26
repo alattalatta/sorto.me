@@ -1,7 +1,7 @@
 import { styled } from '@lib/ui'
 import type { StatusBlock } from '@mdn/browser-compat-data/types'
 
-import { StatusIcon } from '../StatusIcon'
+import { Deprecated, Experimental, NonStandard } from '../StatusIcon'
 
 const StatusIconsWrap = styled('span', {
   minWidth: 1,
@@ -15,9 +15,9 @@ const SpecStatusIcons: React.VFC<{ status: StatusBlock | undefined }> = ({ statu
 
   return (
     <StatusIconsWrap>
-      {!status.standard_track && <StatusIcon status="nonStandard" />}
-      {status.deprecated && <StatusIcon status="deprecated" />}
-      {status.experimental && <StatusIcon status="experimental" />}
+      {!status.standard_track && <NonStandard />}
+      {status.deprecated && <Deprecated />}
+      {status.experimental && <Experimental />}
     </StatusIconsWrap>
   )
 }

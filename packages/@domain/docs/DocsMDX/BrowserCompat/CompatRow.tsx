@@ -3,6 +3,7 @@ import type { BrowserNames, Identifier, SupportStatement } from '@mdn/browser-co
 import { Fragment, useState } from 'react'
 
 import { getSubIdentifierKeys, supportLabel, mapOver } from '../../utils'
+import { NonStandard } from '../StatusIcon'
 import CompatCell from './CompatCell'
 import SpecStatusIcons from './SpecStatusIcons'
 
@@ -165,17 +166,34 @@ const CompatRow: React.VFC<Props> = ({ data, name, recurse }) => {
           <dl>
             {mapOver(supportDetail[1], (support, index) => (
               <Fragment key={index}>
-                <div className="notebox notebox-note">
-                  <p>
-                    <b>
-                      {supportDetailBrowserDisplayName} {supportLabel(support)}
-                    </b>
-                    :
-                  </p>
-                  {mapOver(support.notes, (note, subindex) => (
-                    <p key={subindex} dangerouslySetInnerHTML={{ __html: note || '특이사항 없음' }} />
+                <dt>
+                  {supportDetailBrowserDisplayName} {supportLabel(support)}
+                </dt>
+                {support.flags &&
+                  mapOver(support.flags, (flag) => (
+                    <dd>
+                      <code>{flag.name}</code> 플래그를{' '}
+                      {flag.value_to_set && (
+                        <>
+                          <code>{flag.value_to_set}</code> 값으로
+                        </>
+                      )}{' '}
+                      설정해야 합니다.
+                    </dd>
                   ))}
-                </div>
+                {support.alternative_name && (
+                  <dd>
+                    <NonStandard /> 다른 이름 사용: <code>{support.alternative_name}</code>
+                  </dd>
+                )}
+                {support.prefix && (
+                  <dd>
+                    <NonStandard /> 공급자 프리픽스 필요: <code>{support.prefix}</code>
+                  </dd>
+                )}
+                {mapOver(support.notes, (note, subindex) => (
+                  <dd key={subindex} dangerouslySetInnerHTML={{ __html: note || '특이사항 없음.' }} />
+                ))}
               </Fragment>
             ))}
           </dl>

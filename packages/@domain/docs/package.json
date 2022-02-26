@@ -27,6 +27,7 @@
     "entities": "^3.0.1",
     "framer-motion": "^6.2.8",
     "gray-matter": "^4.0.2",
+    "k-popo": "^1.1.1",
     "next": "^12.1.0"
   }
 }

@@ -8,8 +8,25 @@ bcd: html.elements.article
 
 <HTMLDemo height={200}>
 
+  ```html
+  <article class="forecast">
+    <h1>서울 예보 - 3일</h1>
+    <article class="day">
+      <h2>2021. 03. 01</h2>
+      <p>비</p>
+    </article>
+    <article class="day">
+      <h2>2021. 03. 02</h2>
+      <p>소나기</p>
+    </article>
+    <article class="day">
+      <h2>2021. 03. 03</h2>
+      <p>호우</p>
+    </article>
+  </article>
+  ```
+
   ```css
-  /* blah */
   .forecast {
     background: #f0f0f0;
     padding: 16px;
@@ -31,25 +48,6 @@ bcd: html.elements.article
   p {
     margin: 0.5em;
   }
-  ```
-
-  ```html
-  <!-- blah -->
-  <article class="forecast">
-    <h1>서울 예보 - 3일</h1>
-    <article class="day">
-      <h2>2021. 03. 01</h2>
-      <p>비</p>
-    </article>
-    <article class="day">
-      <h2>2021. 03. 02</h2>
-      <p>소나기</p>
-    </article>
-    <article class="day">
-      <h2>2021. 03. 03</h2>
-      <p>호우</p>
-    </article>
-  </article>
   ```
 
 </HTMLDemo>

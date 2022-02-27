@@ -1,0 +1,61 @@
+---
+title: 'HTML <picture>: 이미지 소스 컨테이너 요소'
+description: HTML <picture> 요소는 다양한 장치와 화면에 맞춰서 여러 종류의 이미지 중 하나를 제공해야 할 때 사용합니다.
+bcd: html.elements.picture
+---
+
+**HTML `<picture>` 요소**는 다양한 장치와 화면에 맞춰서 여러 종류의 이미지 중 하나를 제공해야 할 때 사용합니다.
+
+`<picture>`의 자식 요소로는 이미지를 실제로 표시할 [`<img>`](./img) 요소 하나와, 장치/화면에 따라 제공할 대체 이미지를 나타내는 0개 이상의 [`<source>`](./source) 요소를 사용해야 합니다.
+
+브라우저는 각각의 자식 `<source>` 요소를 확인한 후 현재 상황에 제일 적합한 이미지를 선택합니다. 선택한 이미지는 자식 `<img>` 요소가 차지한 영역에 나타납니다. 적합한 이미지가 없거나, 브라우저가 `<picture>` 요소를 지원하지 않는 경우, `<img>` 요소의 [`src` 특성](./img#term-src)에 지정한 이미지를 보여줍니다.
+
+<HTMLDemo height={300}>
+
+```html
+<!-- 브라우저 화면 크기를 줄이면서 확인하세요 -->
+<picture>
+  <source srcset="/gen/plumbing.jpg" media="(min-width: 400px)" />
+  <img src="/gen/building.jpg" alt="" />
+</picture>
+```
+
+```css
+img {
+  width: 100%;
+}
+```
+
+</HTMLDemo>
+
+제일 적합한 이미지는 `<source>`의 [`srcset`](./source#term-srcset), [`media`](./source#term-media), [`type`](./source#term-type) 특성의 값, 현재 레이아웃 및 장치의 능력(이미지 형식 지원 여부 등)에 따라 선택됩니다.
+
+`<picture>`의 자식 `<img>`는 두 가지 역할을 수행합니다.
+
+- 이미지의 표시 크기 등 특성을 결정합니다.
+- `<source>` 중 그 무엇도 사용 가능한 이미지를 제공하지 않는 경우 표시할 대체 이미지를 지정합니다.
+
+`<picture>`는 다음과 같은 경우에 사용할 수 있습니다.
+
+- 아트 디렉션. 장치에 따라서 잘라내거나 수정한 이미지를 표시합니다. 예를 들어, 많은 세부 묘사를 가진 이미지를 작은 화면에서는 더 단순한 버전으로 대신 보여줄 수 있습니다.
+- 대체 이미지 형식. 장치가 특정 이미지 형식을 지원하지 않는 경우에 대비해 다른 형식도 제공합니다. 예를 들어, 신형 이미지 형식인 [AVIF](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types#avif_image)와 [WEBP](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types#webp_image)는 많은 장점을 가지고 있지만 브라우저 지원 범위가 더 좁습니다.
+- 데이터 대역폭 절약 및 페이지 로드 속도 향상. 사용자의 화면에 맞춰 더 작은 이미지를 표시할 수 있습니다.
+
+Retina 디스플레이처럼 고해상도 화면을 위한 고해상도 이미지를 제공할 땐 `<img>`의 [`srcset` 특성](./img#term-srcset)을 대신 사용하세요. `media` 조건을 직접 작성하지 않아도 되고, 브라우저가 데이터 절약 모드에서 일부러 더 낮은 해상도를 선택할 수도 있습니다.
+
+# 특성
+
+[전역 특성](../Global_attributes)만 포함합니다.
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/embedded-content.html#the-picture-element)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 이미지: [`<img>`](./img)
+- 이미지 소스: [`<source>`](./source)

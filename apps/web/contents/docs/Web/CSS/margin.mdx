@@ -1,0 +1,148 @@
+---
+title: 'CSS margin: 바깥 여백 단축 속성'
+description: CSS margin 속성은 요소의 네 방향 바깥 여백을 동시에 설정합니다.
+bcd: css.properties.margin
+---
+CSS **`margin`** 속성은 요소의 네 방향 바깥 여백을 동시에 설정합니다. `margin-top`, `margin-right`, `margin-bottom`, `margin-left`의 단축 속성입니다.
+
+<CSSDemo height={200} selector="#target{$}">
+
+```css
+margin: 10px;
+```
+
+```css
+margin: 5% 0;
+```
+
+```css
+margin: -20px 0 0;
+```
+
+```css
+margin: 10px 30px 50px;
+```
+
+```css
+margin: 50px 30px 10px 10px;
+```
+
+```css hidden
+.aside {
+  height: 40px;
+  border: 8px solid darkseagreen;
+}
+
+#target {
+  height: 40px;
+  border: 8px solid aquamarine;
+}
+```
+
+```html
+<div class="aside"></div>
+<div id="target"></div>
+<div class="aside"></div>
+```
+
+</CSSDemo>
+
+# 구문
+
+```css
+/* <length>, <percentage>, auto 값 */
+margin: 10px; /* 모든 방향 */
+margin: 4px 10%; /* 위+아래 왼쪽+오른쪽 */
+margin: 0 auto 50%; /* 위 왼쪽+오른쪽 아래 */
+margin: 2.4em 3em 3em 3em; /* 위 오른쪽 아래 왼쪽 */
+
+/* 전역 값 */
+margin: inherit;
+margin: initial;
+margin: revert;
+margin: unset;
+```
+
+`margin` 속성에는 한 개에서 네 개까지의 값을 사용합니다. 각각의 값은 [`<length>`](https://developer.mozilla.org/ko/docs/Web/CSS/length), [`<percentage>`](https://developer.mozilla.org/ko/docs/Web/CSS/percentage), 또는 `auto` 키워드입니다. 0보다 작은 값을 지정하면 요소가 더 멀어지지 않고 더 가까워집니다.
+
+- 값을 **한 개** 지정하면 네 방향 여백 모두에 적용됩니다.
+- 값을 **두 개** 지정하면 첫 번째 값은 위와 아래, 두 번째 값은 왼쪽과 오른쪽 여백에 적용됩니다.
+- 값을 **세 개** 지정하면 첫 번째 값은 위, 두 번째 값은 왼쪽과 오른쪽, 세 번째 값은 아래 여백에 적용됩니다.
+- 값을 **네 개** 지정하면 각각 위, 오른쪽, 아래, 왼쪽 여백에 적용됩니다. (시계 방향)
+
+## 값
+
+- : [`<length>`](https://developer.mozilla.org/ko/docs/Web/CSS/length)
+  - 바깥 여백의 크기를 고정된 수치로 지정합니다.
+- : [`<percentage>`](https://developer.mozilla.org/ko/docs/Web/CSS/percentage)
+  - 바깥 여백의 크기를 [컨테이닝 블록](https://developer.mozilla.org/ko/docs/Web/CSS/Containing_block)의 *너비*에 대한 백분율로 지정합니다.
+- : `auto`
+  - 브라우저가 바깥 여백을 적합한 크기로 설정합니다. 이 키워드를 활용하면 특정 레이아웃에서 요소를 가운데에 정렬할 수 있습니다.
+
+# 설명
+
+`margin`은 요소의 네 방향 바깥 여백을 동시에 설정할 때 사용합니다. 바깥 여백은 요소의 바깥에 여백을 생성합니다. 반대로, [`padding`](https://developer.mozilla.org/en-US/docs/Web/CSS/padding)은 요소의 안쪽에 여백을 생성합니다.
+
+위쪽과 아래쪽 바깥 여백은 [`<span>`](/docs/Web/HTML/Element/span)과 [`<code>`](/docs/Web/HTML/Element/code) 등 [비대체 인라인 요소](https://developer.mozilla.org/ko/docs/Web/CSS/Replaced_element)에는 효과가 없습니다. (단, 비대체 인라인 요소의 [`display`](https://developer.mozilla.org/en-US/docs/Web/CSS/display)의 값을 바꿔 블록 요소 등으로 설정하는 경우 여백이 생성됩니다.)
+
+## 가로방향 가운데 정렬
+
+모던 브라우저에서는 부모에 [`display: flex`](https://developer.mozilla.org/en-US/docs/Web/CSS/display)와 [`justify-content: center`](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)를 설정해서 자식을 가운데에 정렬할 수 있습니다.
+
+그러나 부모에 두 스타일을 적용하기 어렵거나, Flexible Box Layout을 지원하지 않는 구형 브라우저를 지원해야 하는 경우 정렬할 요소에 `margin: 0 auto`를 설정하는 것으로 정렬할 수도 있습니다.
+
+## 여백 상쇄
+
+위쪽 요소의 아래 여백과 아래 요소의 위 여백은 부모 레이아웃에 따라서 하나의 여백으로 합쳐질 수 있습니다. 합쳐진 여백의 높이는 합쳐지기 전 두 여백 중 더 큰 쪽의 높이와 같습니다. [여백 상쇄 정복하기](https://developer.mozilla.org/ko/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing)를 참고하세요.
+
+# 예제
+
+## 기본 사용법
+
+### HTML
+
+```html name=basic
+<div class="container">
+  <div class="center">중앙에 위치합니다.</div>
+  <div class="outside">0보다 작은 여백은 부모의 바깥으로 나갑니다.</div>
+</div>
+```
+
+### CSS
+
+```css name=basic
+.container {
+  width: 75%;
+  border: 1px solid black;
+  margin: auto;
+}
+
+.center {
+  width: 66%;
+  background: lime;
+  margin: auto;
+}
+
+.outside {
+  width: 66%;
+  background: cyan;
+  margin: 3rem 0 0 -3rem;
+}
+```
+
+### 결과
+
+<LiveExample height={150} name="basic" />
+
+# 명세
+
+- [CSS Box Model Module Level 3](https://drafts.csswg.org/css-box/#margin)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- [CSS 기본 박스 모델 소개](https://developer.mozilla.org/ko/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model)
+- [여백 상쇄 정복하기](https://developer.mozilla.org/ko/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing)

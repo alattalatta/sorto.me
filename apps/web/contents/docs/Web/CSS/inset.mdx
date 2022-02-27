@@ -4,7 +4,7 @@ description: CSS inset 속성은 top, right, bottom, left의 단축 속성입니
 bcd: css.properties.inset
 ---
 
-CSS **`inset`** 속성은 `top`, `right`, `bottom`, `left`의 단축 속성입니다. `margin` 단축 속성과 같은 구문으로 사용할 수 있습니다.
+CSS **`inset`** 속성은 `top`, `right`, `bottom`, `left`의 단축 속성입니다. [`margin`](./margin) 단축 속성과 같은 구문으로 사용할 수 있습니다.
 
 `inset`은 CSS _Logical_ Properties 명세에 속하지만 _논리_ 오프셋은 정의하지 않습니다. `inset`은 요소의 쓰기 모드, 쓰기 방향, 텍스트 방향에 관계 없이 항상 물리적 오프셋을 정의합니다.
 
@@ -49,17 +49,11 @@ inset: 20%;
 # 구문
 
 ```css
-/* <length> 값 */
+/* <length>, <percentage> 값 */
 inset: 10px; /* 모든 방향 */
-inset: 4px 8px; /* top/bottom left/right */
-inset: 5px 15px 10px; /* top left/right bottom */
-inset: 2.4em 3em 3em 3em; /* top right bottom left */
-
-/* 컨테이닝 블록 너비(left/right)와 높이(top/bottom)의 <percentage> */
-inset: 10% 5% 5% 5%;
-
-/* 키워드 값 */
-inset: auto;
+inset: 4px 8px; /* 위+아래 왼쪽+오른쪽 */
+inset: 5px 15px 10px; /* 위 왼쪽+오른쪽 아래 */
+inset: 2.4em 3em 3em 3em; /* 위 오른쪽 아래 왼쪽 */
 
 /* 전역 값 */
 inset: inherit;
@@ -68,7 +62,12 @@ inset: revert;
 inset: unset;
 ```
 
-{/* [todo] 값 */}
+`inset` 속성에는 한 개에서 네 개까지의 값을 사용합니다. 각각의 값은 [`<length>`](https://developer.mozilla.org/ko/docs/Web/CSS/length) 또는 [`<percentage>`](https://developer.mozilla.org/ko/docs/Web/CSS/percentage)입니다.
+
+- 값을 **한 개** 지정하면 네 방향 오프셋 모두에 적용됩니다.
+- 값을 **두 개** 지정하면 첫 번째 값은 위와 아래, 두 번째 값은 왼쪽과 오른쪽 오프셋에 적용됩니다.
+- 값을 **세 개** 지정하면 첫 번째 값은 위, 두 번째 값은 왼쪽과 오른쪽, 세 번째 값은 아래 오프셋에 적용됩니다.
+- 값을 **네 개** 지정하면 각각 위, 오른쪽, 아래, 왼쪽 오프셋에 적용됩니다. (시계 방향)
 
 # 명세
 

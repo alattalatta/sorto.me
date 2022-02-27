@@ -1,5 +1,6 @@
 import { styled } from '@lib/ui'
 import type { BrowserNames, Identifier, SupportStatement } from '@mdn/browser-compat-data/types'
+import { resolve } from 'k-popo'
 import { Fragment, useState } from 'react'
 
 import { getSubIdentifierKeys, supportLabel, mapOver } from '../../utils'
@@ -172,13 +173,16 @@ const CompatRow: React.VFC<Props> = ({ data, name, recurse }) => {
                 {support.flags &&
                   mapOver(support.flags, (flag) => (
                     <dd>
-                      <code>{flag.name}</code> 플래그를{' '}
-                      {flag.value_to_set && (
-                        <>
-                          <code>{flag.value_to_set}</code> 값으로
-                        </>
-                      )}{' '}
-                      설정해야 합니다.
+                      <p>
+                        <code>{flag.name}</code> 플래그를{' '}
+                        {flag.value_to_set && (
+                          <>
+                            <code>{flag.value_to_set}</code>
+                            {resolve('(으)로', flag.value_to_set)?.[1]}
+                          </>
+                        )}{' '}
+                        설정해야 합니다.
+                      </p>
                     </dd>
                   ))}
                 {support.alternative_name && (
@@ -192,7 +196,9 @@ const CompatRow: React.VFC<Props> = ({ data, name, recurse }) => {
                   </dd>
                 )}
                 {mapOver(support.notes, (note, subindex) => (
-                  <dd key={subindex} dangerouslySetInnerHTML={{ __html: note || '특이사항 없음.' }} />
+                  <dd key={subindex}>
+                    <p dangerouslySetInnerHTML={{ __html: note || '특이사항 없음.' }} />
+                  </dd>
                 ))}
               </Fragment>
             ))}

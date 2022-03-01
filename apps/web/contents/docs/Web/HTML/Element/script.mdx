@@ -42,7 +42,7 @@ bcd: html.elements.script
 
 - : `integrity`
 
-  - 가져온 리소스에 변형이 존재하는지 검사할 때 사용자 에이전트가 사용할 값입니다. [하위 자원 무결성](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity) 문서를 참고하세요.
+  - 가져온 리소스에 변형이 존재하는지 검사할 때 사용자 에이전트가 사용할 값입니다. [하위 리소스 무결성](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity) 문서를 참고하세요.
 
 - : `nomodule`
   - ES2015 모듈을 지원하는 브라우저에서 실행해선 안될 스크립트임을 나타내는 불리언 특성입니다. JavaScript 모듈을 지원하지 않는 오래된 브라우저에서 실행할 대체 스크립트로 사용할 수 있습니다.
@@ -59,7 +59,7 @@ bcd: html.elements.script
     - `same-origin`: 동일 출처 요청에는 리퍼러를 전송하고, 교차 출처 요청에는 전송하지 않습니다.
     - `strict-origin`: 보안 수준이 동일(HTTPS→HTTPS)할 땐 문서의 출처를 리퍼러로 전송하고, 더 낮을(HTTPS→HTTP) 땐 전송하지 않습니다.
     - `strict-origin-when-cross-origin` (기본 값): 동일 출처 요청에는 전체 URL을 전송합니다. 교차 출처 요청에 대해서는 보안 수준이 동일(HTTPS→HTTPS)할 땐 문서의 출처를 리퍼러로 전송하고, 더 낮을(HTTPS→HTTP) 땐 전송하지 않습니다.
-    - `unsafe-url`: 리퍼러가 항상 출처, 경로, 쿼리 문자열을 포함합니다. 프래그먼트, 비밀번호, 사용자 이름은 포함하지 않습니다. **안전하지 않은 값입니다.** TLS로 보호받는 자원에서 보호 없는 출처로 정보가 누출될 수 있습니다.
+    - `unsafe-url`: 리퍼러가 항상 출처, 경로, 쿼리 문자열을 포함합니다. 프래그먼트, 비밀번호, 사용자 이름은 포함하지 않습니다. **안전하지 않은 값입니다.** TLS로 보호받는 리소스에서 보호 없는 출처로 정보가 누출될 수 있습니다.
 
     > [note]
     > 빈 문자열 값은 기본 값이자, `referrerpolicy`를 지원하지 않는 브라우저에서의 대체 값입니다. `<script>` 요소에 `referrerpolicy`를 명시하지 않은 경우 상위에서 설정한 리퍼러 정책, 예컨대 문서나 도메인의 정책을 따라갑니다. 상위 정책도 존재하지 않을 때의 빈 문자열은 `strict-origin-when-cross-origin`으로 취급합니다.

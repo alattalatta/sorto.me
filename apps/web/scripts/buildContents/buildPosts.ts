@@ -4,6 +4,8 @@ import path from 'path'
 import { parse } from '@domain/blog/parse'
 import { compile } from '@lib/mdx/compiler'
 
+import { minify } from './minify'
+
 const packageRoot = path.resolve.bind(null, __dirname, '../..')
 
 export async function main(): Promise<void> {
@@ -19,14 +21,10 @@ export async function main(): Promise<void> {
           packageRoot('out/posts/index.json'),
           JSON.stringify(parsedPosts.map((parsedPost) => parsedPost.meta)),
         ),
-        fs.writeFile(
-          packageRoot('out/posts/map.json'),
-          JSON.stringify(parsedPosts.map((parsedPost) => parsedPost.meta.slug)),
-        ),
         ...parsedPosts.map(async ({ content, meta }) => {
           return fs.writeFile(
             packageRoot('out/posts', `${meta.slug}.json`),
-            JSON.stringify({ content: await compile(content), meta }),
+            JSON.stringify({ content: await compile(content).then(minify), meta }),
           )
         }),
       ]),

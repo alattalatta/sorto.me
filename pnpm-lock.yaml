@@ -31,6 +31,7 @@ importers:
       '@lib/ui': workspace:*
       '@mdn/browser-compat-data': ^4.1.10
       '@next/bundle-analyzer': ^12.1.0
+      '@swc/core': ^1.2.147
       '@testing-library/jest-dom': ^5.16.2
       '@testing-library/react': ^12.1.3
       '@types/fs-extra': ^9.0.13
@@ -70,6 +71,7 @@ importers:
       react-dom: 17.0.2_react@17.0.2
     devDependencies:
       '@next/bundle-analyzer': 12.1.0
+      '@swc/core': 1.2.147
       '@testing-library/jest-dom': 5.16.2
       '@testing-library/react': 12.1.3_react-dom@17.0.2+react@17.0.2
       '@types/fs-extra': 9.0.13
@@ -85,7 +87,7 @@ importers:
       mock-fs: 5.1.2
       next-transpile-modules: 9.0.0
       ts-jest: 27.1.3_60149d457e34ffba7d4e845dde6a1263
-      ts-node: 10.6.0_c28b97715751fb918e65755b8175bfaa
+      ts-node: 10.6.0_76c3e9032c542d74a83597e4fb4bfda2
       tsconfig: link:../../packages/tsconfig
       typescript: 4.6.2
 
@@ -249,7 +251,6 @@ importers:
   packages/@lib/mdx:
     specifiers:
       '@mdx-js/mdx': ^2.0.0
-      '@swc/core': ^1.2.147
       '@types/github-slugger': ^1.3.0
       '@types/hast': ^2.3.4
       '@types/mdast': ^3.0.10
@@ -290,7 +291,6 @@ importers:
       unist-util-map: 3.0.0
       unist-util-visit: 4.1.0
     devDependencies:
-      '@swc/core': 1.2.147
       '@types/github-slugger': 1.3.0
       '@types/hast': 2.3.4
       '@types/mdast': 3.0.10
@@ -3938,7 +3938,7 @@ packages:
       pretty-format: 27.5.1
       slash: 3.0.0
       strip-json-comments: 3.1.1
-      ts-node: 10.6.0_c28b97715751fb918e65755b8175bfaa
+      ts-node: 10.6.0_76c3e9032c542d74a83597e4fb4bfda2
     transitivePeerDependencies:
       - bufferutil
       - canvas
@@ -6120,7 +6120,7 @@ packages:
       yargs-parser: 20.2.9
     dev: true
 
-  /ts-node/10.6.0_c28b97715751fb918e65755b8175bfaa:
+  /ts-node/10.6.0_76c3e9032c542d74a83597e4fb4bfda2:
     resolution: {integrity: sha512-CJen6+dfOXolxudBQXnVjRVvYTmTWbyz7cn+xq2XTsvnaXbHqr4gXSCNbS2Jj8yTZMuGwUoBESLaOkLascVVvg==}
     hasBin: true
     peerDependencies:
@@ -6135,6 +6135,7 @@ packages:
         optional: true
     dependencies:
       '@cspotcode/source-map-support': 0.7.0
+      '@swc/core': 1.2.147
       '@tsconfig/node10': 1.0.8
       '@tsconfig/node12': 1.0.9
       '@tsconfig/node14': 1.0.1

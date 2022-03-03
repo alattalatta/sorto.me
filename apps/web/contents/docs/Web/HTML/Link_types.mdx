@@ -1,0 +1,257 @@
+---
+title: HTML 링크 유형
+description: HTML에서의 링크 유형은 문서와 <a>, <area>, <form>, <link> 요소로 링크된 리소스 사이의 관계를 나타냅니다.
+bcd: html.elements.link.rel
+---
+
+HTML에서의 **링크 유형**은 문서와 [`<a>`](./Element/a), [`<area>`](./Element/area), [`<form>`](./form), [`<link>`](./link) 요소로 링크된 리소스 사이의 관계를 나타냅니다.
+
+<table>
+  <thead>
+    <tr>
+      <th>링크 유형</th>
+      <th>설명</th>
+      <th>사용 가능</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`alternate`</td>
+      <td>
+        - [`rel="stylesheet"`](./Element/link#term-rel)인 `<link>` 요소인 경우, [대체 스타일 시트](https://developer.mozilla.org/en-US/docs/Web/CSS/Alternative_style_sheets)를 정의하는 링크입니다. 이 경우 [`title` 특성](./Element/link#term-title)도 지정해야 합니다.
+        - [`type`](./Element/link#term-type)이 `application/rss+xml` 또는 `application/atom+xml`인 경우 신디케이션 피드를 정의하는 링크입니다. 페이지 내에서 처음으로 나타난 링크가 기본 피드를 나타냅니다.
+        - 이외의 경우에는 링크가 대체 페이지를 정의합니다.
+          - [`media`](./Element/link#term-media) 특성을 지정한 경우, 다른 장치(휴대기기 등)를 위한 페이지
+          - [`hreflang`](./Element/link#term-hreflang) 특성을 지정한 경우, 다른 언어로 된 페이지
+          - [`type`](./Element/link#term-type) 특성을 지정한 경우, 다른 형식(PDF 등)의 페이지
+          - 위의 조합
+      </td>
+      <td>
+        [`<a>`](./Element/a), [`<area>`](./Element/area), [`<link>`](./link)
+      </td>
+    </tr>
+    <tr>
+      <td>`author`</td>
+      <td>
+        저자를 설명하거나 저자의 연락처를 제공하는 페이지로의 링크를 정의합니다.
+
+        > [note]
+        > `mailto:` 하이퍼링크에 사용할 수도 있지만, 공개 페이지에서 `mailto:`를 사용할 경우 크롤러 로봇들이 메일 주소를 수집한 후 막대한 양의 스팸 메일을 전송할 수 있습니다. 이런 경우에는 연락 양식 페이지로 안내하는 편이 더 좋습니다.
+      </td>
+      <td>
+        [`<a>`](./Element/a), [`<area>`](./Element/area), [`<link>`](./link)
+      </td>
+    </tr>
+    <tr>
+      <td>`bookmark`</td>
+      <td>
+        가장 가까운 조상 [`<article>`](./Element/article)이 설명하는 퍼머링크를 정의합니다. 조상 `<article>`이 없는 경우에는 자신이 속한 가장 가까운 [구획](./Element/Heading_Elements)이 설명하는 퍼머링크를 정의합니다.
+
+        여러 글을 정리해 모아놓은 페이지에서 각각의 글로 향하는 링크를 나타낼 때 사용할 수 있습니다.
+      </td>
+      <td>
+        [`<a>`](./Element/a), [`<area>`](./Element/area)
+      </td>
+    </tr>
+    <tr>
+      <td>`canonical`</td>
+      <td>
+        `canonical` 링크 요소를 사용하면 다수의 페이지 중에서 하나를 *공식*(canonical) 페이지로 가리키도록 하여 중복 콘텐츠 문제를 방지할 수 있습니다.
+      </td>
+      <td>
+        [`<link>`](./link)
+      </td>
+    </tr>
+    <tr>
+      <td>`dns-prefetch` <Experimental /></td>
+      <td>이 리소스가 필요할 것이므로, 사용자가 페이지의 링크를 클릭하기 전에 미리 리소스에 대한 DNS 룩업과 프로토콜 핸드셰이킹을 수행하도록 브라우저에게 알려줍니다.</td>
+      <td>
+        [`<link>`](./link)
+      </td>
+    </tr>
+    <tr>
+      <td>`external`</td>
+      <td>페이지 외부로 향하는 링크, 즉 클릭하면 웹 사이트를 나가게 되는 링크를 정의합니다.</td>
+      <td>
+        [`<a>`](./Element/a), [`<area>`](./Element/area), [`<form>`](./form)
+      </td>
+    </tr>
+    <tr>
+      <td>`help`</td>
+      <td>
+        - `<a>` 또는 `<area>` 요소인 경우, 부모 요소에 대한 도움말을 제공하는 리소스의 링크를 정의합니다.
+        - `<link>` 요소인 경우, 전체 페이지에 대한 도움말을 제공하는 리소스의 링크를 정의합니다.
+      </td>
+      <td>
+        [`<a>`](./Element/a), [`<area>`](./Element/area), [`<form>`](./form), [`<link>`](./link)
+      </td>
+    </tr>
+    <tr>
+      <td>`icon`</td>
+      <td>
+        사용자 인터페이스에서 현재 페이지를 나타낼 리소스를 정의합니다. 보통 시/청각적 아이콘의 형태입니다. 브라우저에서는 *파비콘*이라는 이름으로도 불립니다.
+
+        복수의 `<link rel="icon">` 요소가 존재하면, 브라우저는 각각의 [`media`](./Element/link#term-media), [`type`](./Element/link#term-type), [`sizes`](./Element/link#term-sizes) 특성 값을 사용해 제일 적합한 아이콘을 선택합니다. 여러 아이콘이 동등하게 적합하다면 제일 마지막 아이콘을 선택합니다. 세 특성의 값에 따라 가장 적합한 아이콘을 선택했으나, 지원하지 않는 이미지 형식 등의 이유로 사용 불가능한 경우에는 다음으로 적합한 아이콘을 선택합니다.
+      </td>
+      <td>
+        [`<link>`](./link)
+      </td>
+    </tr>
+    <tr>
+      <td>`license`</td>
+      <td>
+        문서의 라이선스 정보로 향하는 링크를 정의합니다. [`<head>`](./Element/head) 요소 안에 배치한 것이 아니면, 표준 명세는 전체 문서에 대한 라이선스와 일부 부분에 대한 라이선스 링크를 구분하지 않으며, 페이지의 다른 데이터만이 두 경우를 설명할 수 있습니다.
+      </td>
+      <td>
+        [`<a>`](./Element/a), [`<area>`](./Element/area), [`<form>`](./form), [`<link>`](./link)
+      </td>
+    </tr>
+    <tr>
+      <td>`manifest`</td>
+      <td>[웹 앱 매니페스트](https://developer.mozilla.org/en-US/docs/Web/Manifest) 파일을 가리키는 링크를 정의합니다.</td>
+      <td>
+        [`<link>`](./link)
+      </td>
+    </tr>
+    <tr>
+      <td>`modulepreload`</td>
+      <td>모듈 스크립트의 초기화를 빠른 시점에 높은 우선순위로 시작합니다.</td>
+      <td>
+        [`<link>`](./link)
+      </td>
+    </tr>
+    <tr>
+      <td>`next`</td>
+      <td>게시판의 다음 글처럼, 현재 페이지의 "다음 리소스"를 가리키는 링크를 정의합니다.</td>
+      <td>
+        [`<a>`](./Element/a), [`<area>`](./Element/area), [`<form>`](./form), [`<link>`](./link)
+      </td>
+    </tr>
+    <tr>
+      <td>`nofollow`</td>
+      <td>
+        저자의 추천을 받는 링크가 아님을 나타냅니다. 예컨대 저자와 직접 관련이 없거나, 나쁜 예제로 링크한 것이거나, 광고 등 상업적 관계의 링크일 때 사용합니다. 일부 검색 엔진은 인기도 랭킹을 계산할 때 이 유형을 참고할 수 있습니다.
+      </td>
+      <td>
+        [`<a>`](./Element/a), [`<area>`](./Element/area), [`<form>`](./form)
+      </td>
+    </tr>
+    <tr>
+      <td>`noopener`</td>
+      <td>
+        새로 열리는 브라우징 맥락의 [`window.opener`](https://developer.mozilla.org/en-US/docs/Web/API/Window/opener) 속성을 `null`로 설정해서, 현재 문서로 접근하지 못하도록 합니다.
+
+        신뢰할 수 없는 링크를 열 때, `Referer` HTTP 헤더는 제공하면서 목적지 페이지가 현재 문서를 조작하는 것을 막을 수 있습니다.
+
+        `noopener`를 사용할 경우, `_top`, `_self`, `_parent`를 제외한 `target`은 모두 `_blank`로 취급되어 새 창/탭을 엽니다.
+      </td>
+      <td>
+        [`<a>`](./Element/a), [`<area>`](./Element/area), [`<form>`](./form)
+      </td>
+    </tr>
+    <tr>
+      <td>`noreferrer`</td>
+      <td>링크된 페이지로 탐색할 때, 브라우저가 현재 페이지의 주소 등의 정보를 HTTP `Referer` 헤더로 보내지 않도록 합니다.</td>
+      <td>
+        [`<a>`](./Element/a), [`<area>`](./Element/area), [`<form>`](./form)
+      </td>
+    </tr>
+    <tr>
+      <td>`opener` <Experimental /></td>
+      <td>`target="_blank"`가 암묵적으로 지정하는 `rel="noopener"`를 재정의합니다. (관련된 [HTML 명세 논의](https://github.com/whatwg/html/issues/4078), [WebKit 변경점](https://trac.webkit.org/changeset/237144/webkit/), [Firefox 버그 논의](https://bugzilla.mozilla.org/show_bug.cgi?id=1503681)를 참고하세요.)</td>
+      <td>
+        [`<a>`](./Element/a), [`<area>`](./Element/area), [`<form>`](./form)
+      </td>
+    </tr>
+    <tr>
+      <td>`pingback`</td>
+      <td>
+        사용자가 이 웹 페이지를 인용하고자 할 때 호출할 외부 리소스 URI를 정의합니다. 호출 시 사용할 프로토콜은 [Pingback 1.0 명세](https://www.hixie.ch/specs/pingback/pingback)가 정의합니다.
+
+        > [note] `X-Pingback` HTTP 헤더가 존재하면 그 값이 `<link>` 요소보다 우선합니다.
+      </td>
+      <td>
+        [`<link>`](./link)
+      </td>
+    </tr>
+    <tr>
+      <td>`preconnect` <Experimental /></td>
+      <td>
+        브라우저가 지정한 웹 사이트에 미리 연결할 수 있도록 알려줍니다. 개인정보를 전송하거나 내용을 다운로드하지는 않습니다. 이후에 해당 링크를 따라갈 일이 생기면, 연결이 미리 생성돼있으므로 더 빠르게 데이터를 받을 수 있습니다.
+      </td>
+      <td>
+        [`<link>`](./link)
+      </td>
+    </tr>
+    <tr>
+      <td>`prefetch`</td>
+      <td>
+        사용자가 요청할 가능성이 높은 리소스를 미리 불러올 수 있도록 브라우저에게 알려줍니다.
+      </td>
+      <td>
+        [`<link>`](./link)
+      </td>
+    </tr>
+    <tr>
+      <td>`preload`</td>
+      <td>
+        현재 탐색에서 짧은 시간 내에 사용할 리소스를 브라우저가 다운로드할 수 있도록 알려줍니다. [`preload` 링크 유형 문서](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/preload)에서 더 알아보세요.
+      </td>
+      <td>
+        [`<link>`](./link)
+      </td>
+    </tr>
+    <tr>
+      <td>`prerender`</td>
+      <td>
+        링크한 리소스를 미리 불러오고 렌더링까지 끝마치도록 브라우저에게 알려줍니다. 이후에 해당 링크로 탐색할 일이 생기면, 미리 렌더링한 결과를 빠르게 보여줄 수 있습니다.
+      </td>
+      <td>
+        [`<link>`](./link)
+      </td>
+    </tr>
+    <tr>
+      <td>`prev`</td>
+      <td>게시판의 이전 글처럼, 현재 페이지의 "이전 리소스"를 가리키는 링크를 정의합니다.</td>
+      <td>
+        [`<a>`](./Element/a), [`<area>`](./Element/area), [`<form>`](./form), [`<link>`](./link)
+      </td>
+    </tr>
+    <tr>
+      <td>`search`</td>
+      <td>
+        현재 문서, 사이트, 또는 사이트의 리소스들을 검색하기 위한 문서로의 링크를 정의합니다.
+      </td>
+      <td>
+        [`<a>`](./Element/a), [`<area>`](./Element/area), [`<form>`](./form), [`<link>`](./link)
+      </td>
+    </tr>
+    <tr>
+      <td>`stylesheet`</td>
+      <td>
+        스타일 시트로 사용할 외부 리소스를 정의합니다. [`type`](./Element/link#term-type)을 지정하지 않으면 `text/css`로 간주합니다.
+
+        `alternate` 키워드와 함께 사용하면 대체 스타일 시트를 정의합니다. 이 경우 [`title` 특성](./Element/link#term-title)도 지정해야 하며, 그 값은 빈 문자열일 수 없습니다.
+      </td>
+      <td>
+        [`<link>`](./link)
+      </td>
+    </tr>
+    <tr>
+      <td>`tag`</td>
+      <td>현재 문서에 적용된 태그를 설명하는 페이지 링크를 정의합니다.</td>
+      <td>
+        [`<a>`](./Element/a), [`<area>`](./Element/area)
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/links.html#linkTypes)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />

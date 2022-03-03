@@ -75,7 +75,7 @@ bcd: html.elements.link
 
 - : `crossorigin`
 
-  - 지정한 리소스를 가져올 때 [CORS](https://developer.mozilla.org/en-US/docs/Glossary/CORS)를 사용해야 하는지 나타내는 열거형 특성입니다. [CORS 활성화 리소스](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image)는 [`<canvas>`](./canvas) 요소에 사용해도 캔버스가 *오염*(taint)되지 않습니다. 가능한 값은 다음과 같습니다.
+  - 지정한 리소스를 가져올 때 [CORS](https://developer.mozilla.org/en-US/docs/Glossary/CORS)를 사용해야 하는지 나타내는 열거형 특성입니다. [CORS 활성화 리소스](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image)는 [`<canvas>`](./canvas) 요소에 사용해도 캔버스가 _오염_(taint)되지 않습니다. 가능한 값은 다음과 같습니다.
 
     - : `anonymous`
       - 자격 증명 없이 교차 출처 요청을 전송합니다. 즉, [`Origin`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin) 헤더를 포함해 요청하지만 쿠키, X.509 인증서, HTTP Basic 인증은 전송하지 않습니다. 서버에서 `Access-Control-Allow-Origin` 헤더를 설정하지 않아 요청 출처가 인증 정보를 받지 못하면 리소스는 오염되고, 사용처가 제한됩니다.
@@ -93,8 +93,7 @@ bcd: html.elements.link
 - : `href`
   - 연결할 리소스의 [URL](https://developer.mozilla.org/ko/docs/Glossary/URL)입니다. 절대 URL과 상대 URL 모두 지정할 수 있습니다.
 - : `hreflang`
-  - `href`로 연결한 링크의 인간 언어를 지정합니다. 별도의 기능은 없습니다. 전역 [`lang`](../Global_attributes#term-lang) 특성과 같은 값을
-    사용합니다.
+  - `href`로 연결한 링크의 인간 언어를 지정합니다. 별도의 기능은 없습니다. 전역 [`lang`](../Global_attributes#term-lang) 특성과 같은 값을 사용합니다.
 - : `imagesize`
   - `as="image" rel="preload"` 전용 특성입니다. [_Sizes_](https://html.spec.whatwg.org/multipage/images.html#sizes-attributes) 특성으로, [`<img>`](./img) 요소에 사용할 이미지 리소스를 미리 불러올 때 그 `sizes` 특성으로 이 값을 사용합니다.
 - : `imagesrcset`
@@ -119,7 +118,7 @@ bcd: html.elements.link
     - `unsafe-url`: 리퍼러가 항상 출처, 경로, 쿼리 문자열을 포함합니다. 프래그먼트, 비밀번호, 사용자 이름은 포함하지 않습니다. **안전하지 않은 값입니다.** TLS로 보호받는리소스에서 보호 없는 출처로 정보가 누출될 수 있습니다.
 
 - : `rel`
-  - 연결하는 리소스와 현재 문서 사이의 관계를 명시합니다. 공백으로 구분한 [링크 유형 값](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types)의 목록이어야 합니다.
+  - 연결하는 리소스와 현재 문서 사이의 관계를 명시합니다. 공백으로 구분한 [링크 유형 값](../Link_types)의 목록이어야 합니다.
 - : `sizes`
 
   - 리소스가 담고 있는 아이콘의 크기를 지정합니다. [`rel`](#term-rel)의 값이 `icon`이거나, 비표준 아이콘 값인 `apple-touch-icon` 등일 때만 지정해야 합니다. 가능한 값은 다음과 같습니다.

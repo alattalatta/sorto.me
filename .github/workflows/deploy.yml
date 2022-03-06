@@ -1,0 +1,36 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v2.2.1
+        with:
+          version: 6.31.0
+          run_install: true
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14.x
+          cache: pnpm
+
+      - run: pnpm turbo run test
+      - run: pnpm prebuild --filter '@app/web'
+
+      - uses: amondnet/vercel-action@v20
+        with:
+          github-token: ${{ secrets.GH_TOKEN }}
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.ORG_ID }}
+          vercel-project-id: ${{ secrets.PROJECT_ID }}
+          vercel-args: '--prod'

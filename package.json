@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build": "turbo run build --scope='@app/web' --no-deps --include-dependencies",
+    "prebuild": "turbo run prebuild --scope='@app/web' --no-deps --include-dependencies",
     "dev": "turbo run dev",
     "turbo": "turbo"
   },

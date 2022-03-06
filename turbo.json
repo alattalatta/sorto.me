@@ -4,9 +4,13 @@
     "build": {
       "dependsOn": ["^build"]
     },
+    "prebuild": {
+      "dependsOn": ["^build"],
+      "outputs": ["out/**", "public/rss.xml", "public/sitemap.md.xml"]
+    },
     "@app/web#build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "out", "public/rss.xml", "public/sitemap.md.xml"]
+      "outputs": [".next/**"]
     },
     "@lib/mdx#build": {
       "dependsOn": ["^build"],

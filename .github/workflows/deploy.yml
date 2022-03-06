@@ -25,7 +25,7 @@ jobs:
           cache: pnpm
 
       - run: pnpm turbo run test
-      - run: pnpm prebuild --filter '@app/web'
+      - run: pnpm prebuild
 
       - uses: amondnet/vercel-action@v20
         with:

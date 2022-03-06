@@ -5,6 +5,7 @@
   "scripts": {
     "tnode": "ts-node --project tsconfig.script.json",
     "prebuild": "pnpm tnode ./scripts/buildContents/index.ts && pnpm tnode ./scripts/generateFeeds/index.ts",
+    "dev": "next dev",
     "build": "next build",
     "export": "next export"
   },

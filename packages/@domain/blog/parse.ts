@@ -32,7 +32,7 @@ async function parse(filePath: string): Promise<Post> {
       description: typeof description === 'string' ? escapeUTF8(description) : null,
       image: typeof data.image === 'string' ? data.image : '/images/default.jpg',
       slug: path.basename(filePath).replace('.mdx', ''),
-      updated: await lastModifiedAsync,
+      updated: (await lastModifiedAsync).toISOString(),
     } as PostMetadata,
   }
 }

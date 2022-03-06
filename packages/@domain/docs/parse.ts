@@ -28,7 +28,7 @@ async function parse(filePath: string, rootDir?: string): Promise<Doc> {
       ...(data as DocMetadata),
       description: typeof description === 'string' ? escapeUTF8(description) : null,
       slug: path.relative(rootDir || __dirname, filePath).replace(/(^mdx\/)|(.mdx$)/gi, ''),
-      updated: await lastModifiedAsync,
+      updated: (await lastModifiedAsync).toISOString(),
     } as DocMetadata,
   }
 }

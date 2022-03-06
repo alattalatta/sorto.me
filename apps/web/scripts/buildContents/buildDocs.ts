@@ -11,6 +11,7 @@ import { minify } from './minify'
 const packageRoot = path.resolve.bind(null, __dirname, '../..')
 
 export async function main(): Promise<void> {
+  const mainPromises: Promise<unknown>[] = []
   const docsMeta: DocMetadata[] = []
 
   for await (const { path: filePath, stats } of klaw(packageRoot('contents/docs'))) {
@@ -24,19 +25,25 @@ export async function main(): Promise<void> {
     const parseAsync = parse(filePath, packageRoot('contents/docs'))
 
     await fs.mkdir(packageRoot('out/docs', dirname), { recursive: true })
-    const { content, meta } = await parseAsync
 
-    docsMeta.push(meta)
-
-    fs.writeFile(
-      packageRoot('out/docs', dirname, path.basename(filePath).replace(/mdx$/i, 'json')),
-      JSON.stringify({
-        content: await compile(content).then(minify),
-        meta,
-      }),
+    mainPromises.push(
+      fs
+        .mkdir(packageRoot('out/docs', dirname), { recursive: true })
+        .then(() => parseAsync)
+        .then(async ({ content, meta }) => {
+          docsMeta.push(meta)
+          return fs.writeFile(
+            packageRoot('out/docs', dirname, path.basename(filePath).replace(/mdx$/i, 'json')),
+            JSON.stringify({
+              content: await compile(content).then(minify),
+              meta,
+            }),
+          )
+        }),
     )
   }
 
+  await Promise.all(mainPromises)
   await Promise.all([
     fs.writeFile(packageRoot('out/docs/index.json'), JSON.stringify(docsMeta)),
     fs.writeFile(

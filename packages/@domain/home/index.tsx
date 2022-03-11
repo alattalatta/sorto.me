@@ -1,57 +1,55 @@
 import type { Page } from '@lib/ui'
-import { Anchor, styled } from '@lib/ui'
+import { Anchor } from '@lib/ui'
 
 import { Splash } from './Splash'
-
-const Label = styled('h2', {
-  fontSize: '1em',
-  margin: 0,
-})
-
-const Item = styled('div', {
-  '* + &': {
-    marginTop: `${10 / 16}rem`,
-  },
-  '& a': {
-    color: 'inherit',
-    textDecoration: 'none',
-  },
-})
+import * as styles from './index.css'
 
 const HomePage: Page = () => {
   return (
     <Splash>
       <main>
-        <Label as="h1">alattalatta</Label>
+        <h1 className={styles.label}>alattalatta</h1>
         <section>
-          <Label>library</Label>
-          <Item>
-            <Anchor href="https://www.npmjs.com/package/k-popo">k-popo</Anchor>
-          </Item>
+          <h2 className={styles.label}>library</h2>
+          <div className={styles.item}>
+            <Anchor className={styles.anchor} href="https://www.npmjs.com/package/k-popo">
+              k-popo
+            </Anchor>
+          </div>
         </section>
         <section>
-          <Label>experiments</Label>
-          <Item>
-            <Anchor href="https://dialog98.sorto.me/">dialog98</Anchor>
-          </Item>
+          <h2 className={styles.label}>experiments</h2>
+          <div className={styles.item}>
+            <Anchor className={styles.anchor} href="https://dialog98.sorto.me/">
+              dialog98
+            </Anchor>
+          </div>
         </section>
         <section>
-          <Label>enter</Label>
-          <Item>
-            <Anchor href="/posts">blog</Anchor>
-          </Item>
-          <Item>
-            <Anchor href="/docs/Web">docs</Anchor>
-          </Item>
-          <Item>
-            <Anchor href="https://github.com/alattalatta">github</Anchor>
-          </Item>
+          <h2 className={styles.label}>enter</h2>
+          <div className={styles.item}>
+            <Anchor className={styles.anchor} href="/posts">
+              blog
+            </Anchor>
+          </div>
+          <div className={styles.item}>
+            <Anchor className={styles.anchor} href="/docs/Web">
+              docs
+            </Anchor>
+          </div>
+          <div className={styles.item}>
+            <Anchor className={styles.anchor} href="https://github.com/alattalatta">
+              github
+            </Anchor>
+          </div>
         </section>
         <section>
-          <Label>contact</Label>
-          <Item>
-            <Anchor href="mailto:alattalatta@sorto.me">@sorto.me</Anchor>
-          </Item>
+          <h2 className={styles.label}>contact</h2>
+          <div className={styles.item}>
+            <Anchor className={styles.anchor} href="mailto:alattalatta@sorto.me">
+              @sorto.me
+            </Anchor>
+          </div>
         </section>
       </main>
     </Splash>

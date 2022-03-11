@@ -1,45 +1,9 @@
 import { throttle } from '@lib/functions'
-import { styled } from '@lib/ui'
 import { useEffect, useMemo, useState } from 'react'
 
-import color from './the-color.svg'
+import * as styles from './Splash.css'
 
 const THETA = 28.85
-const HEIGHT = 427
-const OFFSET_TOP = 338
-const OFFSET_LEFT = 50
-
-const StripRoot = styled('div', {
-  overflow: 'hidden',
-  position: 'fixed',
-  inset: 0,
-})
-
-const StripWrap = styled('div', {
-  height: '100%',
-  position: 'relative',
-})
-
-const Strip = styled('div', {
-  height: HEIGHT,
-  background: `url(${color.src})`,
-  position: 'absolute',
-  top: -OFFSET_TOP,
-  left: -OFFSET_LEFT,
-  transform: `rotate(${THETA}deg)`,
-  transformOrigin: 'bottom left',
-  transition: 'width 300ms ease-out',
-})
-
-const ContentsRoot = styled('div', {
-  fontSize: 36,
-  marginLeft: 'min(99px, 10vw)',
-  position: 'absolute',
-  top: 380,
-  transform: 'rotate(-15deg)',
-  transformOrigin: 'top left',
-  zIndex: 1,
-})
 
 const Splash: React.FC = ({ children }) => {
   const [width, setWidth] = useState(0)
@@ -74,12 +38,12 @@ const Splash: React.FC = ({ children }) => {
 
   return (
     <>
-      <StripRoot>
-        <StripWrap>
-          <Strip css={{ width, transform: `translateX(-${scroll / 5}px) rotate(28.85deg)` }} />
-        </StripWrap>
-      </StripRoot>
-      {children && <ContentsRoot>{children}</ContentsRoot>}
+      <div className={styles.stripRoot}>
+        <div className={styles.stripWrap}>
+          <div className={styles.strip} style={{ width, transform: `translateX(-${scroll / 5}px) rotate(28.85deg)` }} />
+        </div>
+      </div>
+      {children && <div className={styles.contentsRoot}>{children}</div>}
     </>
   )
 }

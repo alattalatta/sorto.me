@@ -9,7 +9,12 @@ const palette = {
   gray5: '#2F3235',
   gray6: '#11181C',
   highlight: '#0CA79D',
-}
+} as const
+
+const media = {
+  w1: `(min-width: 25.75rem)`, // 412
+  w2: `(min-width: 48.0625rem)`, // 769
+} as const
 
 const [theme, vars] = createTheme({
   colors: {
@@ -36,4 +41,4 @@ const [theme, vars] = createTheme({
   },
 })
 
-export { theme, vars }
+export { media, theme, vars }

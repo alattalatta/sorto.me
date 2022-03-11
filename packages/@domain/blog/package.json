@@ -23,7 +23,7 @@
     "@lib/functions": "workspace:*",
     "@lib/mdx": "workspace:*",
     "@lib/ui": "workspace:*",
-    "@stitches/react": "^1.2.7",
+    "clsx": "^1.1.1",
     "entities": "^3.0.1",
     "framer-motion": "^6.2.8",
     "gray-matter": "^4.0.2",

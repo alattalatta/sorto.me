@@ -1,7 +1,7 @@
 import { useMDXRenderer } from '@lib/mdx'
 import type { Page } from '@lib/ui'
 import { Layout } from '@lib/ui'
-import { Anchor, Footer, ScrollBack, styled } from '@lib/ui'
+import { Anchor, Footer, ScrollBack } from '@lib/ui'
 import * as documentBody from '@lib/ui/documentBody.css'
 import { m } from 'framer-motion'
 import type { Easing, Tween } from 'framer-motion/types/types'
@@ -9,24 +9,11 @@ import Head from 'next/head'
 import Image from 'next/image'
 
 import { Post } from './Post'
+import * as styles from './PostPage.css'
 import { SideBySide } from './SideBySide'
 import type { PostMetadata } from './types'
 
 type Props = { compiledSource: string; meta: PostMetadata }
-
-const Root = styled('main', {
-  maxWidth: `${768 / 16}rem`,
-  margin: '0 auto',
-  padding: '0 1rem',
-})
-
-const Body = styled(m.div, {
-  marginTop: '1.5rem',
-})
-
-const ScrollBack768 = styled(ScrollBack, {
-  maxWidth: `${768 / 16}rem`,
-})
 
 export const STANDARD_EASE: Easing = [0.4, 0, 0.2, 1]
 
@@ -54,10 +41,11 @@ const PostPage: Page<Props> = ({ compiledSource, meta }) => {
         <meta key="article:published_time" content={meta.created} property="article:published_time" />
         <meta key="article:modified_time" content={meta.updated} property="article:modified_time" />
       </Head>
-      <Root>
+      <main className={styles.root}>
         <Post as="header" image={meta.image} title={meta.title} written={new Date(meta.created)} />
-        <Body
+        <m.div
           animate={{ opacity: 1, y: 0 }}
+          className={styles.body}
           initial={{ opacity: 0, y: 10 }}
           transition={{
             delay: 0.25,
@@ -74,10 +62,10 @@ const PostPage: Page<Props> = ({ compiledSource, meta }) => {
               }}
             />
           </div>
-        </Body>
+        </m.div>
         <Footer updated={new Date(meta.updated)} />
-        <ScrollBack768 />
-      </Root>
+        <ScrollBack className={styles.width768} />
+      </main>
     </>
   )
 }

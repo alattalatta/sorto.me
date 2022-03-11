@@ -1,0 +1,79 @@
+---
+title: 'HTML <summary>: 상세 정보 레이블 요소'
+description: HTML <summary> 요소는 <details>가 생성하는 위젯의 내용에 대한 설명이나 범례 등을 제공합니다. <summary> 요소를 클릭하면 부모 <details>가 열림과 닫힘 상태 사이를 전환합니다.
+bcd: html.elements.summary
+---
+
+**HTML `<summary>` 요소**는 [`<details>`](./details)가 생성하는 위젯의 내용에 대한 설명이나 범례 등을 제공합니다. `<summary>` 요소를 클릭하면 부모 `<details>`가 열림과 닫힘 상태 사이를 전환합니다.
+
+<HTMLDemo height={120}>
+
+```html
+<details>
+  <summary>사과의 효능</summary>
+  아침에 사과 한 개면...
+</details>
+```
+
+```css
+details {
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  padding: 0.5em 0.5em 0;
+}
+
+summary {
+  font-weight: bold;
+  margin: -0.5em -0.5em 0;
+  padding: 0.5em;
+}
+
+details[open] {
+  padding: 0.5em;
+}
+
+details[open] summary {
+  border-bottom: 1px solid #aaa;
+  margin-bottom: 0.5em;
+}
+```
+
+</HTMLDemo>
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)만 포함합니다.
+
+# 사용 일람
+
+`<summary>` 요소의 내용으로는 [헤딩 콘텐츠](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#heading_content), 일반 텍스트, 그리고 [`<p>`](./p) 요소 안에 배치할 수 있는 모든 요소를 사용할 수 있습니다.
+
+`<summary>` 요소는 [`<details>`](./details)의 첫 번째 자식으로 배치해야 합니다.
+
+## 기본 레이블
+
+`<details>` 요소의 첫 번째 자식이 `<summary>`가 아니라면, 사용자 에이전트는 위젯 레이블로 기본 문자열("세부정보" 등)을 사용합니다.
+
+## 기본 스타일
+
+HTML 명세에 따르면 `<summary>` 요소의 기본 스타일은 [`display: list-item`](https://developer.mozilla.org/en-US/docs/Web/CSS/display)을 포함해야 합니다. 따라서 [CSS `list-style-type` 속성](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type)을 사용해서 레이블 옆의 삼각형을 바꾸거나 제거할 수 있습니다.
+
+`<summary>`에 `display: block`을 적용해도 삼각형이 사라집니다.
+
+기본 스타일의 브라우저 지원 범위는 아직 넓지 않습니다. [브라우저 호환성](#브라우저-호환성)의 `display: list-item`을 참고하세요.
+
+# 예제
+
+[`<details>` 요소의 예제](./details#예제)를 확인하세요.
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/interactive-elements.html#the-summary-element)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 위젯 본체: [`<details>`](./details)

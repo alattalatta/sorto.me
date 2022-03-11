@@ -1,10 +1,10 @@
 ---
 title: 'HTML <details>: 상세 정보 공개 요소'
-description: HTML <details> 요소는 열기 전까지 내용을 숨기는 공개 위젯을 생성합니다. 내용의 요약, 또는 레이블을 <summary> 요소로 제공해야 합니다.
+description: HTML <details> 요소는 열기 전까지 상세 내용을 숨기는 위젯을 생성합니다. 내용의 요약 또는 레이블을 <summary> 요소로 제공해야 합니다.
 bcd: html.elements.details
 ---
 
-**HTML `<details>` 요소**는 열기 전까지 내용을 숨기는 *공개 위젯*을 생성합니다. 내용의 요약, 또는 레이블을 [`<summary>`](./summary) 요소로 제공해야 합니다.
+**HTML `<details>` 요소**는 열기 전까지 상세 내용을 숨기는 위젯을 생성합니다. 내용의 요약 또는 레이블을 [`<summary>`](./summary) 요소로 제공해야 합니다.
 
 `<details>`가 생성하는 위젯은 열림과 닫힘 상태를 구분하기 위한 작은 삼각형과 그 옆의 레이블로 화면에 나타납니다. `<summary>` 요소의 콘텐츠가 위젯의 레이블로 사용됩니다.
 
@@ -147,7 +147,7 @@ details[open] > summary {
 
 ## 위젯 스타일링
 
-위젯 레이블 옆의 삼각형도 CSS로 직접 바꿀 수 있지만, 많은 브라우저에서 지원하지는 않습니다. 정확한 지원 범위는 [CSS `list-style-type`의 브라우저 지원](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type#browser_compatibility) 중 `disclosure-closed`와 `disclosure-open`을 참고하세요.
+위젯 레이블 옆의 삼각형도 CSS로 직접 바꿀 수 있지만, 많은 브라우저에서 지원하지는 않습니다. 정확한 지원 범위는 [`<summary>`의 브라우저 호환성 표](./summary#브라우저-호환성)에서 `display: list-item`을 참고하세요.
 
 `<summary>` 요소는 [`list-style-type`](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type), [`list-style-image`](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-image) 등을 포함해 [`list-style`](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style) 단축속성을 지원합니다. 따라서 `<summary>`에 `list-style: none`을 적용하면 위젯에서 삼각형을 아예 제거할 수 있습니다.
 

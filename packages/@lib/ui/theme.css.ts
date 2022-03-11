@@ -30,9 +30,9 @@ const [theme, vars] = createTheme({
     fgi0: palette.gray0,
     fgi1: palette.gray1,
     fgi2: palette.gray2,
-    bgi2: palette.gray3,
-    bgi1: palette.gray4,
-    bgi0: palette.gray5,
+    bgi2: palette.gray4,
+    bgi1: palette.gray5,
+    bgi0: palette.gray6,
   },
   fonts: {
     mono: `'Fira Code', 'Nanum Gothic Coding', '나눔고딕코딩', monospace`,

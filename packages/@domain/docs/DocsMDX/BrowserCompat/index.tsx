@@ -1,21 +1,15 @@
-import { Anchor, styled } from '@lib/ui'
+import { Anchor } from '@lib/ui'
 import type { CompatData, Identifier } from '@mdn/browser-compat-data/types'
 import { useEffect, useState } from 'react'
 
 import { getCompatData, getSubIdentifierKeys } from '../../utils'
 import CompatRow from './CompatRow'
+import * as styles from './index.css'
 
 type Props = {
   children?: string
   data?: { data: Identifier; name: string } | null
 }
-
-const Caption = styled('figcaption', {
-  color: '$base40',
-  fontSize: 12,
-  marginTop: 16,
-  textAlign: 'right',
-})
 
 const BrowserCompat: React.VFC<Props> = ({ children, data: dataProp }) => {
   const [loadedData, setLoadedData] = useState<Identifier | undefined | null>(undefined)
@@ -61,9 +55,9 @@ const BrowserCompat: React.VFC<Props> = ({ children, data: dataProp }) => {
       {getSubIdentifierKeys(data).map((key) => (
         <CompatRow key={key} data={data[key]} name={key} recurse={true} />
       ))}
-      <Caption>
+      <figcaption className={styles.caption}>
         MDN <Anchor href="https://github.com/mdn/browser-compat-data">BCD</Anchor>에서 가져오는 데이터입니다.
-      </Caption>
+      </figcaption>
     </figure>
   )
 }

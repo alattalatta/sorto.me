@@ -1,6 +1,7 @@
-import { styled } from '@lib/ui'
-import { useEffect, useRef, useState } from 'react'
+import clsx from 'clsx'
+import { Children, cloneElement, isValidElement, useEffect, useRef, useState } from 'react'
 
+import * as styles from './CSSDemo.css'
 import LiveCode from './LiveCode'
 
 type Props = {
@@ -8,73 +9,7 @@ type Props = {
   selector: string
 }
 
-const Root = styled('figure', {
-  background: '$bgInv',
-  borderRadius: '.25rem',
-  display: 'grid',
-  gap: '.25rem',
-  gridTemplateAreas: `
-    'result'
-    'code'
-  `,
-  margin: '1.5rem 0',
-  padding: '1em',
-  '@w2': {
-    gridTemplateAreas: `
-      'code result'
-    `,
-    gridTemplateColumns: `1fr ${400 / 16}rem`,
-  },
-
-  '$stx-keyword': '#18c498',
-  '$stx-string': '#257dff',
-  '$stx-tag': '#ff7037',
-})
-
-const Result = styled(LiveCode, {
-  width: '100%',
-  height: '100%',
-  borderRadius: '.25rem .25rem 0 0',
-  gridArea: 'result',
-  '@w2': {
-    borderRadius: '0 .25rem .25rem 0',
-  },
-})
-
-const Codes = styled('div', {
-  borderRadius: '0 0 .25rem .25rem',
-  minWidth: 0,
-  display: 'flex',
-  flexDirection: 'column',
-  overflow: 'hidden',
-  '@w2': {
-    borderRadius: '.25rem 0 0 .25rem',
-  },
-
-  '& pre': {
-    background: '$bgSupplInv',
-    color: '$fgInv',
-    cursor: 'pointer',
-    margin: 0,
-    position: 'relative',
-    '& + &': {
-      marginTop: '0.25rem',
-    },
-    '&::after': {
-      content: '✔️',
-      display: 'none',
-      fontSize: '1.5em',
-      position: 'absolute',
-      top: '.25em',
-      right: '.25em',
-    },
-  },
-  '& pre:not(.language-css)': {
-    display: 'none',
-  },
-})
-
-const CSSDemo: React.FC<Props> = ({ children, height, selector }) => {
+const CSSDemo: React.FC<Props> = ({ children: childrenProp, height, selector }) => {
   const rootRef = useRef<HTMLElement>(null)
 
   const [currentBlockIdx, setCurrentBlockIdx] = useState(0)
@@ -134,11 +69,27 @@ const CSSDemo: React.FC<Props> = ({ children, height, selector }) => {
     }
   }, [selector])
 
+  const children = Children.map(childrenProp, (child, index) => {
+    if (isValidElement(child)) {
+      const {
+        props: { className, ...props },
+      } = child
+      const hidden = !className.includes('language-css')
+
+      return cloneElement(child, {
+        className: clsx(className, currentBlockIdx === index && 'selected'),
+        hidden,
+        ...props,
+      })
+    }
+    return child
+  })
+
   return (
-    <Root ref={rootRef} aria-label="데모">
-      <Result codes={codes} height={height} />
-      <Codes css={{ [`& > pre:nth-child(${currentBlockIdx + 1})::after`]: { display: 'block' } }}>{children}</Codes>
-    </Root>
+    <figure ref={rootRef} aria-label="데모" className={styles.root}>
+      <LiveCode className={styles.result} codes={codes} minHeight={height} />
+      <div className={styles.codes}>{children}</div>
+    </figure>
   )
 }
 

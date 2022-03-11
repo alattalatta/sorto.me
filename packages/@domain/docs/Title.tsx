@@ -1,51 +1,27 @@
-import { styled } from '@lib/ui'
+import { Anchor } from '@lib/ui'
+
+import * as styles from './Title.css'
 
 type Props = {
   breadcrumbs: readonly (readonly [title: string, path: string])[]
   title: string
 }
 
-const Heading = styled('h1', {
-  fontSize: '2em',
-  margin: 0,
-})
-
-const Breadcrumbs = styled('nav', {
-  fontSize: `${12 / 16}rem`,
-  display: 'flex',
-  marginTop: '.25em',
-})
-
-const Crumb = styled('span', {
-  color: '$fg',
-  '& + &::before': {
-    content: '>',
-    display: 'inline-block',
-    margin: '0 0.5ch',
-  },
-
-  '& a': {
-    color: '$highlight',
-    textDecoration: 'none',
-    '&:hover': {
-      textDecoration: 'underline',
-    },
-  },
-})
-
 const Title: React.VFC<Props> = ({ breadcrumbs, title }) => {
   return (
     <div>
-      <Heading>{title}</Heading>
-      <Breadcrumbs>
+      <h1 className={styles.heading}>{title}</h1>
+      <nav className={styles.breadcrumbs}>
         {breadcrumbs.map(([currentTitle, currentPath]) => {
           return (
-            <Crumb key={currentPath}>
-              <a href={`/docs${currentPath}`}>{currentTitle}</a>
-            </Crumb>
+            <span key={currentPath} className={styles.crumb}>
+              <Anchor className={styles.crumbAnchor} href={`/docs${currentPath}`}>
+                {currentTitle}
+              </Anchor>
+            </span>
           )
         })}
-      </Breadcrumbs>
+      </nav>
     </div>
   )
 }

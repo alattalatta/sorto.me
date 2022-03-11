@@ -1,72 +1,11 @@
 import type { Page } from '@lib/ui'
-import { Layout, styled } from '@lib/ui'
+import { Layout } from '@lib/ui'
 import * as input from '@lib/ui/input.css'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 
+import * as styles from './index.css'
 import { useSearchQuery } from './useSearchQuery'
-
-const Root = styled('main', {
-  maxWidth: `${768 / 16}rem`,
-  margin: '0 auto',
-  padding: '1.5rem 1rem 1rem',
-
-  '& .gsc-control-cse': {
-    marginTop: '1.5rem',
-    padding: 0,
-
-    '& .gsc-result': {
-      padding: '0.75rem 0',
-    },
-    '& .gs-title': {
-      color: '$highlight',
-      overflow: 'visible',
-      '&:hover': {
-        textDecoration: 'underline',
-      },
-    },
-    '& .gs-visibleUrl-breadcrumb': {
-      color: 'inherit',
-      marginTop: '.25em',
-    },
-    '& .gs-snippet': {
-      color: 'inherit',
-      fontSize: '1rem',
-      marginTop: '.25em',
-    },
-    '& b': {
-      background: '$bgSuppl',
-      textDecoration: 'underline',
-    },
-  },
-})
-
-const SearchBox = styled('form', {
-  display: 'flex',
-  alignItems: 'center',
-})
-
-const EmptyQueryBody = styled('form', {
-  maxWidth: `${768 / 16}rem`,
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  flexDirection: 'column',
-  margin: 'auto',
-  padding: '1rem',
-  position: 'fixed',
-  inset: 0,
-})
-
-const SubmitButton = styled('button', {
-  width: `${96 / 16}rem`,
-  height: `${40 / 16}rem`,
-  background: '$fg',
-  border: 'none',
-  color: '$bg',
-  fontSize: '1em',
-  padding: 0,
-})
 
 const SearchPage: Page = () => {
   const searchQuery = useSearchQuery()
@@ -86,29 +25,29 @@ const SearchPage: Page = () => {
         <meta key="og:title" content={title} property="og:title" />
       </Head>
       {mounted && (
-        <Root>
+        <main className={styles.root}>
           {searchQuery ? (
             <>
-              <SearchBox>
+              <form className={styles.searchBox} method="get">
                 <input className={input.root} defaultValue={searchQuery} name="q" type="search" />
-                <SubmitButton css={{ marginLeft: '.5em' }} type="submit">
+                <button className={styles.submitButton} style={{ marginLeft: '.5em' }} type="submit">
                   검색
-                </SubmitButton>
-              </SearchBox>
+                </button>
+              </form>
               <div className="gcse-searchresults-only" />
               <Head>
                 <script key="gcse" async src="https://cse.google.com/cse.js?cx=2583b4522ab9cd371" />
               </Head>
             </>
           ) : (
-            <EmptyQueryBody method="get">
+            <form className={styles.emptyQueryBody} method="get">
               <input className={input.root} name="q" type="search" />
-              <SubmitButton css={{ marginTop: '1em' }} type="submit">
+              <button className={styles.submitButton} style={{ marginTop: '1em' }} type="submit">
                 검색
-              </SubmitButton>
-            </EmptyQueryBody>
+              </button>
+            </form>
           )}
-        </Root>
+        </main>
       )}
     </>
   )

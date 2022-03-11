@@ -1,52 +1,10 @@
 import { Anchor } from './Anchor'
-import { styled } from './stitches'
+import * as styles from './Footer.css'
 
 type Props = {
   mdnSlug?: string
   updated: Date
 }
-
-const Root = styled('footer', {
-  width: `${219 / 16}rem`,
-  borderTop: '1px solid $fg',
-  fontFamily: '$sans',
-  marginTop: '5rem',
-  padding: '1.5rem 0 0.5rem',
-})
-
-const Updated = styled('p', {
-  fontSize: `${14 / 16}rem`,
-  margin: 0,
-})
-
-const Author = styled('p', {
-  fontSize: '1.5rem',
-  fontWeight: 700,
-  margin: 0,
-})
-
-const Legal = styled('small', {
-  display: 'block',
-  fontSize: `${10 / 16}rem`,
-  fontStyle: 'italic',
-})
-
-const License = styled('p', {
-  fontWeight: 500,
-  margin: 0,
-})
-
-const MDN = styled('p', {
-  margin: 0,
-
-  '& a': {
-    color: '$highlight',
-    textDecoration: 'none',
-  },
-  '& a:hover': {
-    textDecoration: 'underline',
-  },
-})
 
 const HOUR = 1000 * 60 * 60
 const DAY = HOUR * 24
@@ -71,15 +29,15 @@ const Footer: React.VFC<Props> = ({ mdnSlug, updated }) => {
   })()
 
   return (
-    <Root>
-      <Updated>
+    <footer className={styles.root}>
+      <p className={styles.updated}>
         마지막 업데이트: <time dateTime={updated.toISOString()}>{updatedFormatted}</time>
-      </Updated>
-      <Author>sorto.me</Author>
-      <Legal>
-        <License>CC BY-SA 4.0</License>
+      </p>
+      <p className={styles.author}>sorto.me</p>
+      <small className={styles.legal}>
+        <p className={styles.license}>CC BY-SA 4.0</p>
         {mdnSlug && (
-          <MDN>
+          <p className={styles.mdn}>
             based on{' '}
             <Anchor href={`https://developer.mozilla.org/en-US/${mdnSlug}`} target="_blank">
               MDN
@@ -87,10 +45,10 @@ const Footer: React.VFC<Props> = ({ mdnSlug, updated }) => {
             <Anchor href={`https://developer.mozilla.org/en-US/${mdnSlug}/contributors.txt`} target="_blank">
               (contributors)
             </Anchor>
-          </MDN>
+          </p>
         )}
-      </Legal>
-    </Root>
+      </small>
+    </footer>
   )
 }
 

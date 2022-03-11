@@ -1,7 +1,8 @@
 import { useMDXRenderer } from '@lib/mdx'
 import type { Page } from '@lib/ui'
 import { Layout } from '@lib/ui'
-import { Anchor, DocumentBody, Footer, ScrollBack, styled } from '@lib/ui'
+import { Anchor, Footer, ScrollBack, styled } from '@lib/ui'
+import * as documentBody from '@lib/ui/documentBody.css'
 import { m } from 'framer-motion'
 import type { Easing, Tween } from 'framer-motion/types/types'
 import Head from 'next/head'
@@ -64,7 +65,7 @@ const PostPage: Page<Props> = ({ compiledSource, meta }) => {
             y: easeStandard(0.5),
           }}
         >
-          <DocumentBody>
+          <div className={documentBody.root}>
             <Content
               components={{
                 a: Anchor,
@@ -72,7 +73,7 @@ const PostPage: Page<Props> = ({ compiledSource, meta }) => {
                 SideBySide,
               }}
             />
-          </DocumentBody>
+          </div>
         </Body>
         <Footer updated={new Date(meta.updated)} />
         <ScrollBack768 />

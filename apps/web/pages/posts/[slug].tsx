@@ -3,6 +3,7 @@ import type { PostPageProps, Post } from '@domain/blog'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 
 import postsIndex from '../../out/posts/index.json'
+import '../../styles/document-body.css'
 
 type Params = { slug: string }
 

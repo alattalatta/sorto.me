@@ -1,5 +1,6 @@
 import type { Page } from '@lib/ui'
-import { Input, Layout, styled } from '@lib/ui'
+import { Layout, styled } from '@lib/ui'
+import * as input from '@lib/ui/input.css'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 
@@ -89,7 +90,7 @@ const SearchPage: Page = () => {
           {searchQuery ? (
             <>
               <SearchBox>
-                <Input defaultValue={searchQuery} name="q" type="search" />
+                <input className={input.root} defaultValue={searchQuery} name="q" type="search" />
                 <SubmitButton css={{ marginLeft: '.5em' }} type="submit">
                   검색
                 </SubmitButton>
@@ -101,7 +102,7 @@ const SearchPage: Page = () => {
             </>
           ) : (
             <EmptyQueryBody method="get">
-              <Input name="q" type="search" />
+              <input className={input.root} name="q" type="search" />
               <SubmitButton css={{ marginTop: '1em' }} type="submit">
                 검색
               </SubmitButton>

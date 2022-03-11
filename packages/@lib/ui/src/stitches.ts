@@ -1,4 +1,3 @@
-import type { CSS } from '@stitches/react'
 import { createStitches } from '@stitches/react'
 
 const config = createStitches({
@@ -26,5 +25,11 @@ const config = createStitches({
   },
 })
 
-export const { css, getCssText, styled } = config
-export type StyleSheet = CSS<typeof config>
+/** @deprecated */
+export const css = config.css
+
+/** @deprecated */
+export const getCssText = config.getCssText
+
+/** @deprecated */
+export const styled = config.styled

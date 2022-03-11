@@ -1,60 +1,33 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-import { styled } from './stitches'
-
-const Root = styled('nav', {
-  maxWidth: `${982 / 16}rem`,
-  height: '3rem',
-  display: 'flex',
-  alignItems: 'center',
-  fontSize: `${14 / 16}rem`,
-  margin: '0 auto',
-  padding: '0 1rem',
-  position: 'relative',
-  zIndex: 1,
-})
-
-const Item = styled('a', {
-  color: 'inherit',
-  fontWeight: 700,
-  textDecoration: 'none',
-  '&:hover': {
-    textDecoration: 'underline',
-  },
-  '& + &': {
-    marginLeft: '2rem',
-  },
-  variants: {
-    current: {
-      true: {
-        opacity: 0.6,
-      },
-    },
-  },
-})
+import * as styles from './NavBar.css'
 
 const NavBar: React.VFC = () => {
   const pathname = useRouter().pathname
 
   return (
-    <Root>
+    <nav className={styles.root}>
       <Link href="/" passHref>
-        <Item current={pathname === '/'}>sorto.me</Item>
+        <a className={styles.item({ current: pathname === '/' })}>sorto.me</a>
       </Link>
       <Link href="/posts" passHref>
-        <Item css={{ marginLeft: 'auto !important' }} current={pathname.startsWith('/posts')}>
+        <a
+          className={styles.item({ current: pathname.startsWith('/posts') })}
+          style={{ marginLeft: 'auto !important' }}
+        >
           블로그
-        </Item>
+        </a>
       </Link>
       <Link href="/docs/Web" passHref>
-        <Item current={pathname.startsWith('/docs')}>문서</Item>
+        <a className={styles.item({ current: pathname.startsWith('/docs') })}>문서</a>
       </Link>
       {/* gcse causes issue with React, so don't use client side routing here */}
-      <Item current={pathname.startsWith('/search')} href="/search">
+      {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+      <a className={styles.item({ current: pathname.startsWith('/search') })} href="/search">
         검색
-      </Item>
-    </Root>
+      </a>
+    </nav>
   )
 }
 

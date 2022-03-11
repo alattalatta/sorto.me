@@ -1,27 +1,10 @@
 import { useScrollThreshold } from '@lib/functions'
+import clsx from 'clsx'
+import { m } from 'framer-motion'
 import { useState } from 'react'
 
-import { FixedStrip } from './FixedStrip'
-import arrow from './assets/arrow-up.svg'
-import { styled } from './stitches'
-
-const HEIGHT = 40 / 16
-
-const Root = styled('button', {
-  width: '100%',
-  height: '100%',
-  background: 'none',
-  border: 'none',
-  color: '$bg',
-  cursor: 'pointer',
-  fontSize: `${14 / 16}rem`,
-  margin: 0,
-  padding: 0,
-})
-
-const Arrow = styled('img', {
-  marginRight: '.25rem',
-})
+import arrow from '../assets/arrow-up.svg'
+import * as styles from './ScrollBack.css'
 
 const ScrollBack: React.VFC<{ className?: string }> = ({ className }) => {
   const [crossed, setCrossed] = useState(false)
@@ -29,23 +12,28 @@ const ScrollBack: React.VFC<{ className?: string }> = ({ className }) => {
   useScrollThreshold(400, setCrossed)
 
   return (
-    <FixedStrip
+    <m.div
       animate={crossed ? 'show' : 'hidden'}
-      className={className}
+      className={clsx(
+        styles.root({
+          position: 'bottom',
+        }),
+        className,
+      )}
       initial="hidden"
-      position="bottom"
       transition={{
         type: 'spring',
         duration: 0.1,
       }}
       variants={{ hidden: { translateY: '100%' }, show: { translateY: 0 } }}
     >
-      <Root type="button" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-        <Arrow alt="" src={arrow.src} />
+      <button className={styles.button} type="button" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img alt="" className={styles.arrow} src={arrow.src} />
         처음으로
-      </Root>
-    </FixedStrip>
+      </button>
+    </m.div>
   )
 }
 
-export { HEIGHT, ScrollBack }
+export { ScrollBack }

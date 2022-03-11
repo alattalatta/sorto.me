@@ -1,4 +1,5 @@
-import { NoScreen, styled } from '@lib/ui'
+import { styled } from '@lib/ui'
+import * as noScreen from '@lib/ui/noScreen.css'
 
 import { useCodeBlockGroup } from '../useCodeBlockGroup'
 import LiveCode from './LiveCode'
@@ -27,7 +28,7 @@ const LiveExample: React.VFC<Props> = ({ height = 240, name }) => {
 
   return (
     <figure>
-      <NoScreen as="figcaption">실행 결과</NoScreen>
+      <figcaption className={noScreen.root}>실행 결과</figcaption>
       <Container style={{ height: `${height}px` }}>
         <LiveCode codes={codes} height={height} />
       </Container>

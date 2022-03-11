@@ -1,6 +1,7 @@
 import { useMDXRenderer } from '@lib/mdx'
 import type { Page } from '@lib/ui'
-import { DocumentBody, Footer, Layout, styled } from '@lib/ui'
+import { Footer, Layout, styled } from '@lib/ui'
+import * as documentBody from '@lib/ui/documentBody.css'
 import type { Identifier } from '@mdn/browser-compat-data/types'
 import Head from 'next/head'
 
@@ -42,9 +43,9 @@ const DocPage: Page<Props> = ({ bcd, breadcrumbs, compiledSource, meta }) => {
       <Root>
         <Title breadcrumbs={breadcrumbs} title={meta.title} />
         <Body>
-          <DocumentBody>
+          <div className={documentBody.root}>
             <Content bcd={bcd} components={DOCS_MDX_COMPONENTS} />
-          </DocumentBody>
+          </div>
         </Body>
         <Footer mdnSlug={meta.slug} updated={new Date(meta.updated)} />
       </Root>

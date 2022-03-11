@@ -1,0 +1,211 @@
+---
+title: 'HTML <details>: 상세 정보 공개 요소'
+description: HTML <details> 요소는 열기 전까지 내용을 숨기는 공개 위젯을 생성합니다. 내용의 요약, 또는 레이블을 <summary> 요소로 제공해야 합니다.
+bcd: html.elements.details
+---
+
+**HTML `<details>` 요소**는 열기 전까지 내용을 숨기는 *공개 위젯*을 생성합니다. 내용의 요약, 또는 레이블을 [`<summary>`](./summary) 요소로 제공해야 합니다.
+
+`<details>`가 생성하는 위젯은 열림과 닫힘 상태를 구분하기 위한 작은 삼각형과 그 옆의 레이블로 화면에 나타납니다. `<summary>` 요소의 콘텐츠가 위젯의 레이블로 사용됩니다.
+
+<HTMLDemo height={120}>
+
+```html
+<details>
+  <summary>사과의 효능</summary>
+  아침에 사과 한 개면...
+</details>
+```
+
+```css
+details {
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  padding: 0.5em 0.5em 0;
+}
+
+summary {
+  font-weight: bold;
+  margin: -0.5em -0.5em 0;
+  padding: 0.5em;
+}
+
+details[open] {
+  padding: 0.5em;
+}
+
+details[open] summary {
+  border-bottom: 1px solid #aaa;
+  margin-bottom: 0.5em;
+}
+```
+
+</HTMLDemo>
+
+닫힌 `<details>`는 삼각형과 [`<summary>`](./summary) 레이블만 표시합니다. (`<summary>`를 제공하지 않은 경우 사용자 에이전트가 정의한 문자열을 대신 보여줍니다.)
+
+사용자가 위젯을 클릭하거나, 위젯으로 포커스를 이동한 후 스페이스 바를 눌러 활성화하면 열림 상태로 전환되며 내용을 드러냅니다.
+
+코드에서 `<details>`에 [`open` 특성](#term-open)을 추가하거나 제거하는 것으로도 위젯을 열거나 닫을 수 있습니다. CSS를 사용하면 위젯의 외형을 바꿀 수도 있지만, 안타깝게도 두 상태 사이에 트랜지션을 적용할 방법은 아직 없습니다.
+
+표준을 완전하게 준수하는 구현체에서는 `<summary>` 요소에 CSS [`display: list-item`](https://developer.mozilla.org/en-US/docs/Web/CSS/display)을 적용하고, [`list-style-type: disclosure-open`](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type)(또는 `disclosure-close`)으로 삼각형을 표시합니다. 아래의 [CSS 스타일링 예제](#CSS-스타일링)에서 CSS 적용법에 대해 더 알아보세요.
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)을 포함합니다.
+
+- : `open`
+  - 불리언 특성입니다. 상세 정보, 즉 `<details>` 요소의 콘텐츠가 지금 보여져야 하는지 나타냅니다. 이 특성이 존재하면 상세 정보가 보이고, 아니면 숨겨집니다. 기본 값은 특성이 존재하지 않는 것, 즉 상세 정보가 숨겨진 상태입니다.
+
+# 이벤트
+
+HTML 요소가 지원하는 일반적인 이벤트에 더해, `<details>`는 [`toggle`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDetailsElement/toggle_event) 이벤트도 지원합니다. `toggle` 이벤트는 `<details>`의 상태가 바뀐 후에 발생하지만, 브라우저가 이벤트를 발송하기도 전에 상태가 여러 번 바뀐 경우에는 마지막에만 한 번 발생합니다.
+
+다음과 같이 `toggle` 이벤트를 수신할 수 있습니다.
+
+```js
+details.addEventListener('toggle', (event) => {
+  if (details.open) {
+    // 요소가 열릴 때
+  } else {
+    // 요소가 닫힐 때
+  }
+})
+```
+
+# 예제
+
+## 열려있는 상태의 위젯 만들기
+
+[`open` 특성](#term-open)을 지정하면 위젯이 처음부터 열린 상태로 나타납니다.
+
+```html name=open
+<details open>
+  <summary>시스템 요구사항</summary>
+  <ul>
+    <li>64비트 프로세서와 운영체제</li>
+    <li>16GB RAM</li>
+    <li>4GB VRAM</li>
+    <li>200GB 저장 공간</li>
+  </ul>
+</details>
+```
+
+<LiveExample height={160} name="open" />
+
+## CSS 스타일링
+
+시스템 요구사항 예제에 스타일을 적용해서 탭 인터페이스처럼 보이도록 하는 예제입니다.
+
+### HTML
+
+```html name=css
+<details>
+  <summary>시스템 요구사항</summary>
+  <ul>
+    <li>64비트 프로세서와 운영체제</li>
+    <li>16GB RAM</li>
+    <li>4GB VRAM</li>
+    <li>200GB 저장 공간</li>
+  </ul>
+</details>
+```
+
+### CSS
+
+[`[open]` 선택자](https://developer.mozilla.org/ko/docs/Web/CSS/Attribute_selectors)로 열린 상태의 `<details>`를 선택할 수 있습니다.
+
+```css name=css
+details {
+  width: 620px;
+  font-size: 16px;
+}
+
+details > summary {
+  width: 15em;
+  background-color: #ddd;
+  box-shadow: 3px 3px 4px black;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+details > ul {
+  background-color: #ddd;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 3px 3px 4px black;
+  margin: 0;
+}
+
+details[open] > summary {
+  background-color: #ccf;
+}
+```
+
+### 결과
+
+<LiveExample height={160} name="css" />
+
+## 위젯 스타일링
+
+위젯 레이블 옆의 삼각형도 CSS로 직접 바꿀 수 있지만, 많은 브라우저에서 지원하지는 않습니다. 정확한 지원 범위는 [CSS `list-style-type`의 브라우저 지원](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type#browser_compatibility) 중 `disclosure-closed`와 `disclosure-open`을 참고하세요.
+
+`<summary>` 요소는 [`list-style-type`](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type), [`list-style-image`](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-image) 등을 포함해 [`list-style`](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style) 단축속성을 지원합니다. 따라서 `<summary>`에 `list-style: none`을 적용하면 위젯에서 삼각형을 아예 제거할 수 있습니다.
+
+### HTML
+
+```html name=list-style
+<details>
+  <summary>시스템 요구사항</summary>
+  <ul>
+    <li>64비트 프로세서와 운영체제</li>
+    <li>16GB RAM</li>
+    <li>4GB VRAM</li>
+    <li>200GB 저장 공간</li>
+  </ul>
+</details>
+```
+
+### CSS
+
+```css name=list-style
+details {
+  width: 620px;
+  font-size: 16px;
+}
+
+details > summary {
+  width: 15em;
+  background-color: #ddd;
+  box-shadow: 3px 3px 4px black;
+  cursor: pointer;
+  list-style: none;
+  padding: 0 4px;
+}
+
+details > ul {
+  background-color: #ddd;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 3px 3px 4px black;
+  margin: 0;
+}
+
+details[open] > summary {
+  background-color: #ccf;
+}
+```
+
+### 결과
+
+<LiveExample height={160} name="list-style" />
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/interactive-elements.html#the-details-element)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 위젯 레이블: [`<summary>`](./summary)

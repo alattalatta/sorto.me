@@ -1,36 +1,23 @@
-import { NoScreen, styled } from '@lib/ui'
+import * as noScreen from '@lib/ui/noScreen.css'
 
 import { useCodeBlockGroup } from '../useCodeBlockGroup'
 import LiveCode from './LiveCode'
+import * as styles from './LiveExample.css'
 
 type Props = {
   height?: number
   name: string
 }
 
-const Container = styled('div', {
-  border: '1px solid $fg',
-  boxSizing: 'content-box',
-  overflow: 'hidden',
-  padding: '1em',
-  position: 'relative',
-
-  '& iframe': {
-    width: '100%',
-    border: 'none',
-    display: 'block',
-  },
-})
-
 const LiveExample: React.VFC<Props> = ({ height = 240, name }) => {
   const codes = useCodeBlockGroup(name)
 
   return (
     <figure>
-      <NoScreen as="figcaption">실행 결과</NoScreen>
-      <Container style={{ height: `${height}px` }}>
+      <figcaption className={noScreen.root}>실행 결과</figcaption>
+      <div className={styles.root} style={{ height: `${height}px` }}>
         <LiveCode codes={codes} height={height} />
-      </Container>
+      </div>
     </figure>
   )
 }

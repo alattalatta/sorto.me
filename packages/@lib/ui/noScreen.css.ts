@@ -1,6 +1,6 @@
-import { styled } from './stitches'
+import { style } from '@vanilla-extract/css'
 
-const NoScreen = styled('span', {
+export const root = style({
   clip: 'rect(1px, 1px, 1px, 1px)',
   height: 1,
   margin: 0,
@@ -9,5 +9,3 @@ const NoScreen = styled('span', {
   width: 1,
   zIndex: -9,
 })
-
-export { NoScreen }

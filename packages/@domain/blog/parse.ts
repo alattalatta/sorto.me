@@ -11,9 +11,7 @@ import type { Post, PostMetadata } from './types'
  * Parses a MDX post file. Creation date is parsed from the file's name.
  *
  * @param filePath File's path.
- * @param source File's content as `Buffer`.
  */
-// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 async function parse(filePath: string): Promise<Post> {
   const sourceAsync = fs.readFile(filePath)
   const lastModifiedAsync = readLastModified(filePath)

@@ -6,6 +6,7 @@ import type { GetStaticPaths, GetStaticProps } from 'next'
 
 import docsIndex from '../../out/docs/index.json'
 import docsMap from '../../out/docs/slugMap.json'
+import '../../styles/document-body.css'
 
 type StaticParam = { slugs: string[] }
 

@@ -1,5 +1,7 @@
-import { styled } from '@lib/ui'
+import clsx from 'clsx'
 import { useMemo } from 'react'
+
+import * as styles from './LiveCode.css'
 
 type Language = 'css' | 'html' | 'js'
 
@@ -7,14 +9,10 @@ type Props = {
   className?: string
   codes: Record<Language, readonly string[]>
   height?: number
+  minHeight?: number
 }
 
-const Result = styled('iframe', {
-  background: '#fff',
-  border: 'none',
-})
-
-const LiveCode: React.VFC<Props> = ({ className, codes: { css, html, js }, height }) => {
+const LiveCode: React.VFC<Props> = ({ className, codes: { css, html, js }, height, minHeight }) => {
   const notFound = !(css.length || html.length || js.length) // when everything is empty
 
   const srcDoc = useMemo(() => {
@@ -33,9 +31,14 @@ const LiveCode: React.VFC<Props> = ({ className, codes: { css, html, js }, heigh
   }, [css, html, js])
 
   return notFound ? (
-    <Result as="div" className={className} style={{ height: height && `${height}px` }} />
+    <div className={clsx(styles.root, className)} style={{ height: height, minHeight: minHeight }} />
   ) : (
-    <Result className={className} height={height} srcDoc={srcDoc} title="예제" />
+    <iframe
+      className={clsx(styles.root, className)}
+      srcDoc={srcDoc}
+      style={{ height: height, minHeight: minHeight }}
+      title="예제"
+    />
   )
 }
 

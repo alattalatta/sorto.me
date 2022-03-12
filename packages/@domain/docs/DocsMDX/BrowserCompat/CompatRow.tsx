@@ -1,4 +1,3 @@
-import { styled } from '@lib/ui'
 import type { BrowserNames, Identifier, SupportStatement } from '@mdn/browser-compat-data/types'
 import { resolve } from 'k-popo'
 import { Fragment, useState } from 'react'
@@ -6,6 +5,7 @@ import { Fragment, useState } from 'react'
 import { getSubIdentifierKeys, supportLabel, mapOver } from '../../utils'
 import { NonStandard } from '../StatusIcon'
 import CompatCell from './CompatCell'
+import * as styles from './CompatRow.css'
 import SpecStatusIcons from './SpecStatusIcons'
 
 type Props = {
@@ -13,69 +13,6 @@ type Props = {
   name: string
   recurse?: boolean
 }
-
-const Root = styled('details', {
-  '& + &': {
-    marginTop: '1rem',
-  },
-  '& &': {
-    paddingLeft: '1rem',
-  },
-})
-
-const Summary = styled('summary', {
-  cursor: 'pointer',
-  userSelect: 'none',
-})
-
-const Body = styled('div', {
-  marginLeft: `${4 / 16}rem`,
-
-  // when children (recursive=true) body
-  'details > &': {
-    borderLeft: '2px solid $fg',
-    paddingLeft: '0.75rem',
-  },
-})
-
-const TablesContainer = styled('div', {
-  display: 'flex',
-  overflowX: 'auto',
-  marginBottom: '0.5rem',
-  '&::-webkit-scrollbar': {
-    background: '#C4C4C4',
-    height: 4,
-  },
-  '&::-webkit-scrollbar-thumb': {
-    background: '$fg',
-  },
-})
-
-const Table = styled('table', {
-  border: 'none',
-  borderCollapse: 'collapse',
-  marginBottom: `${12 / 16}rem`,
-
-  '& + &': {
-    marginLeft: '1rem',
-  },
-})
-
-const BrowserName = styled('th', {
-  width: `${80 / 16}rem`,
-  minWidth: `${80 / 16}rem`,
-  height: `${54 / 16}rem`,
-  border: 'none',
-  fontSize: `${14 / 16}rem`,
-  fontWeight: 400,
-  padding: `0 0 ${10 / 16}rem`,
-  verticalAlign: 'bottom',
-  whiteSpace: 'pre-wrap',
-})
-
-const Children = styled('div', {
-  marginTop: '1rem',
-})
 
 const DESKTOP_KEYS: [BrowserNames, string][] = [
   ['ie', 'IE'],
@@ -120,21 +57,25 @@ const CompatRow: React.VFC<Props> = ({ data, name, recurse }) => {
     (DESKTOP_KEYS.find(([key]) => key === supportDetail[0])?.[1] ??
       MOBILE_KEYS.find(([key]) => key === supportDetail[0])?.[1])
 
+  const Root = recurse ? 'details' : 'div'
+
   return (
-    <Root as={recurse ? 'details' : 'div'}>
+    <Root className={styles.root}>
       {recurse && (
-        <Summary>
+        <summary className={styles.summary}>
           {compat.description ? <span dangerouslySetInnerHTML={{ __html: compat.description }} /> : <code>{name}</code>}
           <SpecStatusIcons status={compat.status} />
-        </Summary>
+        </summary>
       )}
-      <Body>
-        <TablesContainer>
-          <Table className="jsx">
+      <div className={styles.body}>
+        <div className={styles.tableContainer}>
+          <table className={`${styles.table} jsx`}>
             <thead>
               <tr>
                 {DESKTOP_KEYS.map(([key, display]) => (
-                  <BrowserName key={key}>{display}</BrowserName>
+                  <th key={key} className={styles.browserName}>
+                    {display}
+                  </th>
                 ))}
               </tr>
             </thead>
@@ -145,12 +86,14 @@ const CompatRow: React.VFC<Props> = ({ data, name, recurse }) => {
                 ))}
               </tr>
             </tbody>
-          </Table>
-          <Table className="jsx">
+          </table>
+          <table className={`${styles.table} jsx`}>
             <thead>
               <tr>
                 {MOBILE_KEYS.map(([key, display]) => (
-                  <BrowserName key={key}>{display}</BrowserName>
+                  <th key={key} className={styles.browserName}>
+                    {display}
+                  </th>
                 ))}
               </tr>
             </thead>
@@ -161,8 +104,8 @@ const CompatRow: React.VFC<Props> = ({ data, name, recurse }) => {
                 ))}
               </tr>
             </tbody>
-          </Table>
-        </TablesContainer>
+          </table>
+        </div>
         {supportDetail && (
           <dl>
             {mapOver(supportDetail[1], (support, index) => (
@@ -204,8 +147,8 @@ const CompatRow: React.VFC<Props> = ({ data, name, recurse }) => {
             ))}
           </dl>
         )}
-        {children && <Children>{children}</Children>}
-      </Body>
+        {children && <div className={styles.childrenWrap}>{children}</div>}
+      </div>
     </Root>
   )
 }

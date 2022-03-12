@@ -1,11 +1,13 @@
 import { useMDXRenderer } from '@lib/mdx'
 import type { Page } from '@lib/ui'
-import { DocumentBody, Footer, Layout, styled } from '@lib/ui'
+import { Footer, Layout } from '@lib/ui'
+import * as documentBody from '@lib/ui/documentBody.css'
 import type { Identifier } from '@mdn/browser-compat-data/types'
 import Head from 'next/head'
 
 import { DOCS_MDX_COMPONENTS } from './DocsMDX'
 import { Title } from './Title'
+import * as styles from './index.css'
 import type { DocMetadata } from './types'
 
 type Props = {
@@ -17,14 +19,6 @@ type Props = {
   compiledSource: string
   meta: DocMetadata
 }
-
-const Root = styled('main', {
-  padding: '0 1rem',
-})
-
-const Body = styled('div', {
-  marginTop: '2rem',
-})
 
 const DocPage: Page<Props> = ({ bcd, breadcrumbs, compiledSource, meta }) => {
   const Content = useMDXRenderer(compiledSource)
@@ -39,15 +33,15 @@ const DocPage: Page<Props> = ({ bcd, breadcrumbs, compiledSource, meta }) => {
         {meta.description && <meta key="og:description" content={meta.description} name="og:description" />}
         <meta key="article:modified_time" content={meta.updated} property="article:modified_time" />
       </Head>
-      <Root>
+      <main className={styles.root}>
         <Title breadcrumbs={breadcrumbs} title={meta.title} />
-        <Body>
-          <DocumentBody>
+        <div className={styles.body}>
+          <div className={documentBody.root}>
             <Content bcd={bcd} components={DOCS_MDX_COMPONENTS} />
-          </DocumentBody>
-        </Body>
+          </div>
+        </div>
         <Footer mdnSlug={meta.slug} updated={new Date(meta.updated)} />
-      </Root>
+      </main>
     </>
   )
 }

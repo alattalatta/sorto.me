@@ -1,5 +1,3 @@
-export * from './src/stitches'
-
 export { Anchor } from './src/Anchor'
 export { Footer } from './src/Footer'
 export { Layout } from './src/Layout'

@@ -212,7 +212,6 @@ importers:
     specifiers:
       '@lib/functions': workspace:*
       '@lib/ui': workspace:*
-      '@stitches/react': ^1.2.7
       '@types/react': ^17.0.39
       '@types/react-dom': ^17.0.13
       '@vanilla-extract/css': ^1.6.8
@@ -225,7 +224,6 @@ importers:
     dependencies:
       '@lib/functions': link:../../@lib/functions
       '@lib/ui': link:../../@lib/ui
-      '@stitches/react': 1.2.7_react@17.0.2
       '@vanilla-extract/css': 1.6.8
       framer-motion: 6.2.8_react-dom@17.0.2+react@17.0.2
       next: 12.1.0_react-dom@17.0.2+react@17.0.2
@@ -318,7 +316,6 @@ importers:
   packages/@lib/ui:
     specifiers:
       '@lib/functions': workspace:*
-      '@stitches/react': ^1.2.7
       '@testing-library/react': ^12.1.3
       '@types/jest': ^27.4.1
       '@types/react': ^17.0.39
@@ -336,7 +333,6 @@ importers:
       typescript: ^4.6.2
     dependencies:
       '@lib/functions': link:../functions
-      '@stitches/react': 1.2.7_react@17.0.2
       '@vanilla-extract/css': 1.6.8
       clsx: 1.1.1
       framer-motion: 6.2.8_react-dom@17.0.2+react@17.0.2
@@ -1248,14 +1244,6 @@ packages:
     dependencies:
       '@sinonjs/commons': 1.8.3
     dev: true
-
-  /@stitches/react/1.2.7_react@17.0.2:
-    resolution: {integrity: sha512-6AxpUag7OW55ANzRnuy7R15FEyQeZ66fytVo3BBilFIU0mfo3t49CAMcEAL/A1SbhSj/FCdWkn/XrbjGBTJTzg==}
-    peerDependencies:
-      react: '>= 16.3.0'
-    dependencies:
-      react: 17.0.2
-    dev: false
 
   /@swc/core-android-arm-eabi/1.2.148:
     resolution: {integrity: sha512-lCPV+CvF3cKc2mq0si0dI2AP+1y0p/b9ASn0vWpdhdLUoAht25M68BYUHKMDmywuOeFnAvPdWoQF/ayD+Uk2NQ==}

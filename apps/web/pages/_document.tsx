@@ -1,22 +1,6 @@
-import { getCssText } from '@lib/ui'
-import type { DocumentContext, DocumentInitialProps } from 'next/document'
 import Document, { Head, Html, Main, NextScript } from 'next/document'
 
 export default class TheDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
-    const initialProps = await Document.getInitialProps(ctx)
-
-    return {
-      ...initialProps,
-      styles: (
-        <>
-          {initialProps.styles}
-          <style dangerouslySetInnerHTML={{ __html: getCssText() }} id="stitches" />
-        </>
-      ),
-    }
-  }
-
   render(): JSX.Element {
     return (
       <Html lang="ko">

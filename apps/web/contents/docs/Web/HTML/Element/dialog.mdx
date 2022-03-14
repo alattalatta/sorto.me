@@ -1,0 +1,77 @@
+---
+title: 'HTML <dialog>: 대화상자 요소'
+description: HTML <dialog> (대화상자) 요소는 대화상자와 경고창 등 상호작용 가능한 컴포넌트를 나타냅니다.
+bcd: html.elements.dialog
+---
+
+**HTML `<dialog>` 요소**는 대화상자와 경고창 등 상호작용 가능한 컴포넌트를 나타냅니다.
+
+<HTMLDemo height={180}>
+
+```html
+<button id="dialog-opener" type="button">장바구니 열기</button>
+
+<dialog id="dialog">
+  <ul>
+    <li>사과</li>
+    <li>옥수수</li>
+    <li>파인애플</li>
+  </ul>
+  <button id="dialog-closer" type="button">닫기</button>
+</dialog>
+```
+
+```css
+dialog {
+  width: 200px;
+  border: 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px #0008;
+}
+
+dialog::backdrop {
+  background: #fff8;
+}
+
+ul {
+  margin: 0;
+}
+```
+
+```js
+document.getElementById('dialog-opener').addEventListener('click', function() {
+  document.getElementById('dialog').showModal()
+})
+
+document.getElementById('dialog-closer').addEventListener('click', function() {
+  document.getElementById('dialog').close()
+})
+```
+
+</HTMLDemo>
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)을 포함합니다.
+
+> [warn] `<dialog>`에 [`tabindex`](../Global_attributes#term-tabindex)를 사용하면 안됩니다.
+
+- : `open`
+  - 불리언 특성입니다. 대화상자가 열려서 상호작용 가능한 상태인지 나타냅니다.
+
+# 접근성 고려사항
+
+[일부 보조 기술은 아직도 `<dialog>` 요소를 완전히 지원하지 않습니다.](https://www.scottohara.me/blog/2019/03/05/open-dialog.html#incoming-dialog) 따라서 사용자들이 대화상자의 내용을 읽지 못하거나, 제대로 사용하지 못할 수 있습니다. 따라서 지원 상황이 개선되기 전에는 서드파티 라이브러리를 사용하는 편이 좋을 수도 있습니다.
+
+# 사용 일람
+
+- [`<form>`](./form) 요소에 [`method="dialog"` 특성](./form#term-method)을 지정하면 양식 제출과 함께 대화상자가 닫힙니다. 이때 [대화상자 DOM 객체의 `returnValue` 속성](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/returnValue) 속성은 양식을 제출할 때 사용한 [`<button>`](./button)의 [`value` 특성](./button#term-value) 값으로 설정됩니다.
+- [`HTMLModalDialog.showModal()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal)로 `<dialog>`를 열었을 때 배경을 어둡거나 흐리게 만들어야 할 땐 CSS [`::backdrop`](https://developer.mozilla.org/en-US/docs/Web/CSS/::backdrop) 의사 요소를 사용하세요.
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />

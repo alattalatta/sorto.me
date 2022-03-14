@@ -66,7 +66,7 @@ button:active {
 
     - `post`: 양식의 데이터를 HTTP 요청의 본문에 넣어서 서버로 전송합니다. 로그인 키처럼 공개해선 안되는 정보를 포함해야 할 때 사용하세요.
     - `get`: 양식의 데이터를 `action` URL 뒤의 쿼리 문자열로 붙여서 서버로 전송합니다. 검색 창처럼 [양식이 유발하는 부수효과가 없을 때](https://developer.mozilla.org/ko/docs/Glossary/Idempotent) 사용하세요.
-    - `dialog`: 양식이 [`<dialog>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) 안에 있을 때, 양식을 제출하면 대화상자를 닫습니다.
+    - `dialog`: 양식이 [`<dialog>`](./dialog) 안에 있을 때, 양식을 제출하면 대화상자를 닫습니다.
 
     버튼의 양식 소유자에 지정한 [`method`](./form#term-method) 특성보다 우선합니다.
 

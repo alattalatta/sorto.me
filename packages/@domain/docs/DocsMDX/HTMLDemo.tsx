@@ -35,7 +35,7 @@ const HTMLDemo: React.FC<{ height?: number }> = ({ children: childrenProp, heigh
       const {
         props: { className, ...props },
       } = child
-      const hidden = !className.includes(currentLang)
+      const hidden = !className.includes(`language-${currentLang}`)
 
       return cloneElement(child, {
         className,

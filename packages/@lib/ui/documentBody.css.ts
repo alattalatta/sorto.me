@@ -10,8 +10,8 @@ export const root = style({
   margin: '0 auto',
   vars: {
     [commentColor]: '#969896',
-    [keywordColor]: '#008a67',
+    [keywordColor]: '#d33c00',
     [stringLiteralColor]: '#0056d6',
-    [tagColor]: '#d33c00',
+    [tagColor]: '#008a67',
   },
 })

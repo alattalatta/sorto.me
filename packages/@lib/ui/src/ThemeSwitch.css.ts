@@ -40,6 +40,10 @@ export const switchi = style({
     left: `${2 / 16}rem`,
   },
   selectors: {
+    [':focus + &']: {
+      outline: `${2 / 16}rem solid ${colors.fg0}`,
+      outlineOffset: `${2 / 16}rem`,
+    },
     [`${checkbox}:checked + &::after`]: {
       left: 'auto',
       right: `${2 / 16}rem`,

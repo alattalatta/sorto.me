@@ -1,4 +1,4 @@
-import { media, vars } from '@lib/ui/theme.css'
+import { colors, media } from '@lib/ui/theme.css'
 import { globalStyle, style } from '@vanilla-extract/css'
 
 export const root = style({
@@ -37,7 +37,7 @@ globalStyle(`${wrap} > :last-child`, {
 })
 
 export const caption = style({
-  color: vars.colors.mid,
+  color: colors.fg3,
   fontSize: `${14 / 16}rem`,
   marginTop: '.5rem',
   textAlign: 'center',

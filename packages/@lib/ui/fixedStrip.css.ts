@@ -1,6 +1,6 @@
 import { recipe } from '@vanilla-extract/recipes'
 
-import { vars } from './theme.css'
+import { colors } from './theme.css'
 
 export const FIXED_STRIP_HEIGHT = 40
 
@@ -9,9 +9,9 @@ export const root = recipe({
     width: '100%',
     maxWidth: `${982 / 16}rem`,
     height: `${FIXED_STRIP_HEIGHT / 16}rem`,
-    background: vars.colors.bgi0,
+    background: colors.bgi0,
     boxSizing: 'content-box',
-    color: vars.colors.fgi0,
+    color: colors.fgi0,
     margin: '0 auto',
     padding: 0,
     position: 'fixed',

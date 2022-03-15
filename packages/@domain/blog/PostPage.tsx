@@ -64,7 +64,6 @@ const PostPage: Page<Props> = ({ compiledSource, meta }) => {
           </div>
         </m.div>
         <Footer updated={new Date(meta.updated)} />
-        <ScrollBack className={styles.width768} />
       </main>
     </>
   )

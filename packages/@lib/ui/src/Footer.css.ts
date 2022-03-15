@@ -1,10 +1,10 @@
 import { globalStyle, style } from '@vanilla-extract/css'
 
-import { vars } from '../theme.css'
+import { colors } from '../theme.css'
 
 export const root = style({
   width: `${219 / 16}rem`,
-  borderTop: `1px solid ${vars.colors.fg0}`,
+  borderTop: `1px solid ${colors.fg0}`,
   marginTop: '5rem',
   padding: '1.5rem 0 0.5rem',
 })
@@ -36,7 +36,7 @@ export const mdn = style({
 })
 
 globalStyle(`${mdn} a`, {
-  color: vars.colors.highlight,
+  color: colors.highlight,
   textDecoration: 'none',
 })
 

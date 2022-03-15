@@ -16,6 +16,9 @@ const rehypeCodeblockDataAttr: Plugin<void[], Root> = () => {
         return
       }
 
+      if (parent?.type !== 'element') {
+        return
+      }
       if (parent.tagName !== 'pre') {
         return
       }

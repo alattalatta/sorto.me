@@ -1,4 +1,4 @@
-import { vars } from '@lib/ui/theme.css'
+import { colors } from '@lib/ui/theme.css'
 import { globalStyle, style } from '@vanilla-extract/css'
 
 export const heading = style({
@@ -22,7 +22,7 @@ globalStyle(`${crumb} + ${crumb}::before`, {
 })
 
 export const crumbAnchor = style({
-  color: vars.colors.highlight,
+  color: colors.highlight,
   textDecoration: 'none',
   ':hover': {
     textDecoration: 'underline',

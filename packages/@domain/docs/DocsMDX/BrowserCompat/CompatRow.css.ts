@@ -1,4 +1,4 @@
-import { vars } from '@lib/ui/theme.css'
+import { colors } from '@lib/ui/theme.css'
 import { style } from '@vanilla-extract/css'
 
 export const root = style({
@@ -22,7 +22,7 @@ export const body = style({
   selectors: {
     // when children (recursive=true) body
     'details > &': {
-      borderLeft: `2px solid ${vars.colors.fg0}`,
+      borderLeft: `2px solid ${colors.fg0}`,
       paddingLeft: '0.75rem',
     },
   },
@@ -33,11 +33,11 @@ export const tableContainer = style({
   overflowX: 'auto',
   marginBottom: '0.5rem',
   '::-webkit-scrollbar': {
-    background: vars.colors.mid,
+    background: colors.fg3,
     height: 4,
   },
   '::-webkit-scrollbar-thumb': {
-    background: vars.colors.fg0,
+    background: colors.fg0,
   },
 })
 

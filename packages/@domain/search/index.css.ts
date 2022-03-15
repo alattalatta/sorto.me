@@ -1,4 +1,4 @@
-import { vars } from '@lib/ui/theme.css'
+import { colors } from '@lib/ui/theme.css'
 import { style } from '@vanilla-extract/css'
 
 export const root = style({
@@ -27,9 +27,9 @@ export const emptyQueryBody = style({
 export const submitButton = style({
   width: `${96 / 16}rem`,
   height: `${40 / 16}rem`,
-  background: vars.colors.fg0,
+  background: colors.fg0,
   border: 'none',
-  color: vars.colors.bg0,
+  color: colors.bg0,
   fontSize: '1em',
   padding: 0,
 })

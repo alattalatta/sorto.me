@@ -1,9 +1,8 @@
-import { tagColor, stringLiteralColor, keywordColor } from '@lib/ui/documentBody.css'
-import { media, vars } from '@lib/ui/theme.css'
+import { colors, media } from '@lib/ui/theme.css'
 import { globalStyle, style } from '@vanilla-extract/css'
 
 export const root = style({
-  background: vars.colors.bgi0,
+  background: colors.bg1,
   borderRadius: '.25rem',
   display: 'grid',
   gap: '.25rem',
@@ -23,11 +22,6 @@ export const root = style({
       gridTemplateColumns: `1fr ${400 / 16}rem`,
       gridTemplateRows: `${44 / 16}rem 1fr`,
     },
-  },
-  vars: {
-    [tagColor]: '#18c498',
-    [stringLiteralColor]: '#257dff',
-    [keywordColor]: '#ff7037',
   },
 })
 
@@ -51,8 +45,8 @@ export const codes = style({
 })
 
 globalStyle(`${codes} pre`, {
-  background: vars.colors.bgi1,
-  color: vars.colors.fgi0,
+  background: colors.bg0,
+  color: colors.fg0,
   margin: 0,
 })
 
@@ -66,9 +60,13 @@ export const langButtonsBar = style({
 
 export const langButton = style({
   height: `${44 / 16}rem`,
-  background: vars.colors.bgi1,
+  background: colors.bg0,
   border: 'none',
-  color: vars.colors.fgi0,
+  color: colors.fg0,
+  cursor: 'pointer',
   flexGrow: 1,
   fontSize: `${14 / 16}rem`,
+  ':hover': {
+    background: colors.notebg,
+  },
 })

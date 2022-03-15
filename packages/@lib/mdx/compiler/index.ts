@@ -5,13 +5,19 @@ import { all } from 'remark-rehype'
 
 import { compile as compileMDX } from './lib/compile'
 import { rehypeCodeblockDataAttr } from './rehypeCodeblockDataAttr'
+import { rehypeWrapTable } from './rehypeWrapTable'
 import { remarkDefinitionList } from './remarkDefinitionList'
 import { remarkPlugin } from './remarkPlugin'
 
 async function compile(source: string): Promise<string> {
   const compiled = await compileMDX(source, {
     outputFormat: 'function-body',
-    rehypePlugins: [rehypeHighlight, rehypeCodeblockDataAttr, [rehypeAutolinkHeadings, { behavior: 'wrap' }]],
+    rehypePlugins: [
+      rehypeHighlight,
+      rehypeCodeblockDataAttr,
+      rehypeWrapTable,
+      [rehypeAutolinkHeadings, { behavior: 'wrap' }],
+    ],
     remarkPlugins: [remarkGfm, remarkDefinitionList, remarkPlugin],
     remarkRehypeOptions: {
       handlers: {

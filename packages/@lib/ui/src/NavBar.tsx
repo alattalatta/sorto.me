@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import * as styles from './NavBar.css'
+import { ThemeSwitch } from './ThemeSwitch'
 
 const NavBar: React.VFC = () => {
   const pathname = useRouter().pathname
@@ -12,12 +13,7 @@ const NavBar: React.VFC = () => {
         <a className={styles.item({ current: pathname === '/' })}>sorto.me</a>
       </Link>
       <Link href="/posts" passHref>
-        <a
-          className={styles.item({ current: pathname.startsWith('/posts') })}
-          style={{ marginLeft: 'auto !important' }}
-        >
-          블로그
-        </a>
+        <a className={styles.item({ current: pathname.startsWith('/posts') })}>블로그</a>
       </Link>
       <Link href="/docs/Web" passHref>
         <a className={styles.item({ current: pathname.startsWith('/docs') })}>문서</a>
@@ -27,6 +23,9 @@ const NavBar: React.VFC = () => {
       <a className={styles.item({ current: pathname.startsWith('/search') })} href="/search">
         검색
       </a>
+      <span className={styles.alignRight}>
+        <ThemeSwitch />
+      </span>
     </nav>
   )
 }

@@ -35,3 +35,7 @@ export const item = recipe({
     },
   },
 })
+
+export const alignRight = style({
+  marginLeft: 'auto',
+})

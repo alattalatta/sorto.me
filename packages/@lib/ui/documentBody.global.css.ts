@@ -5,6 +5,7 @@ import external from './assets/external.svg'
 import forbidden from './assets/forbidden.png'
 import { root } from './documentBody.css'
 import { colors, fonts } from './theme.css'
+import { theme as lightTheme } from './theme/light.css'
 
 globalStyle(`${root} > *`, {
   margin: '1em 0', // intentional em
@@ -214,11 +215,15 @@ globalStyle(`${root} img`, {
 })
 
 globalStyle(`${root} code:not(pre > code)`, {
-  background: '#80808033',
+  background: '#80808022',
   borderRadius: '0.25rem',
   display: 'inline-block',
   fontFamily: fonts.mono,
   lineHeight: 1.2,
   padding: '0 0.25rem',
   textDecorationLine: 'inherit',
+})
+
+globalStyle(`${lightTheme} ${root} a > code`, {
+  filter: 'brightness(0.7)',
 })

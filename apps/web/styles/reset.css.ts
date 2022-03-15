@@ -6,9 +6,9 @@ globalStyle('*', {
   textUnderlinePosition: 'under',
 })
 
-globalStyle('*:focus', {
+globalStyle('*:focus-visible', {
   borderRadius: '0.5rem',
-  outline: `${2 / 16}rem solid ${colors.fg0}`,
+  outline: `${2 / 16}rem solid ${colors.fg1}`,
   outlineOffset: `${2 / 16}rem`,
 })
 

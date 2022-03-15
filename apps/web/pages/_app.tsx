@@ -1,6 +1,9 @@
-import { theme } from '@lib/ui/theme.css'
+import { fontsTheme } from '@lib/ui/theme.css'
+import { theme as darkTheme } from '@lib/ui/theme/dark.css'
+import { theme as lightTheme } from '@lib/ui/theme/light.css'
 import type { LazyFeatureBundle } from 'framer-motion'
 import { LazyMotion } from 'framer-motion'
+import { ThemeProvider } from 'next-themes'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Script from 'next/script'
@@ -18,19 +21,21 @@ function App({ Component, pageProps }: { Component: Page; pageProps: Record<stri
 
   return (
     <LazyMotion features={framerFeatures} strict={process.env.NODE_ENV !== 'production'}>
-      <div className={theme}>
-        <Layout>
-          <Head>
-            <title key="title">sorto.me</title>
-            <meta key="description" content="sorto.me" name="description" />
-            <meta key="og:type" content="website" property="og:type" />
-            <meta key="og:title" content="sorto.me" property="og:title" />
-            <meta key="og:description" content="sorto.me" property="og:description" />
-            <meta key="og:url" content={`https://sorto.me${router.asPath}`} property="og:url" />
-          </Head>
-          <Component {...pageProps} />
-        </Layout>
-      </div>
+      <ThemeProvider attribute="class" value={{ dark: darkTheme, light: lightTheme }}>
+        <div className={fontsTheme}>
+          <Layout>
+            <Head>
+              <title key="title">sorto.me</title>
+              <meta key="description" content="sorto.me" name="description" />
+              <meta key="og:type" content="website" property="og:type" />
+              <meta key="og:title" content="sorto.me" property="og:title" />
+              <meta key="og:description" content="sorto.me" property="og:description" />
+              <meta key="og:url" content={`https://sorto.me${router.asPath}`} property="og:url" />
+            </Head>
+            <Component {...pageProps} />
+          </Layout>
+        </div>
+      </ThemeProvider>
       {process.env.NEXT_PUBLIC_ANALYTICS && (
         <>
           <Script src="https://www.googletagmanager.com/gtag/js?id=G-7F0E6D3XE2" />

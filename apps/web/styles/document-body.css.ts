@@ -3,7 +3,7 @@ import { globalStyle } from '@vanilla-extract/css'
 
 import '@lib/ui/documentBody.global.css'
 
-globalStyle('.hljs-comment', {
+globalStyle('.hljs-comment, .hljs-meta', {
   color: vars.commentColor,
 })
 

@@ -1,11 +1,11 @@
-import { vars } from '@lib/ui/theme.css'
+import { colors } from '@lib/ui/theme.css'
 import { style } from '@vanilla-extract/css'
 
 export const root = style({
   cursor: 'help',
   padding: 2,
   ':hover': {
-    background: vars.colors.mid,
+    background: colors.fg3,
   },
 })
 

@@ -1,9 +1,9 @@
-import { vars as documentBodyVars } from '@lib/ui/documentBody.css'
-import { media, vars } from '@lib/ui/theme.css'
+import { vars } from '@lib/ui/documentBody.css'
+import { colors, media } from '@lib/ui/theme.css'
 import { globalStyle, style } from '@vanilla-extract/css'
 
 export const root = style({
-  background: vars.colors.bgi0,
+  background: colors.bgi0,
   borderRadius: '.25rem',
   display: 'grid',
   gap: '.25rem',
@@ -22,9 +22,9 @@ export const root = style({
     },
   },
   vars: {
-    [documentBodyVars.tagColor]: '#18c498',
-    [documentBodyVars.stringLiteralColor]: '#257dff',
-    [documentBodyVars.keywordColor]: '#ff7037',
+    [vars.tagColor]: '#18c498',
+    [vars.stringLiteralColor]: '#257dff',
+    [vars.keywordColor]: '#ff7037',
   },
 })
 
@@ -53,8 +53,8 @@ export const codes = style({
 })
 
 globalStyle(`${codes} pre`, {
-  background: vars.colors.bgi1,
-  color: vars.colors.fgi0,
+  background: colors.bgi1,
+  color: colors.fgi0,
   cursor: 'pointer',
   margin: 0,
   position: 'relative',

@@ -4,7 +4,7 @@ import exclamation from './assets/exclamation.png'
 import external from './assets/external.svg'
 import forbidden from './assets/forbidden.png'
 import { root } from './documentBody.css'
-import { vars } from './theme.css'
+import { colors, fonts } from './theme.css'
 
 globalStyle(`${root} > *`, {
   margin: '1em 0', // intentional em
@@ -12,7 +12,7 @@ globalStyle(`${root} > *`, {
 
 // headings
 globalStyle(`${root} > :is(h2, h3, h4)`, {
-  fontFamily: vars.fonts.serif,
+  fontFamily: fonts.serif,
   position: 'relative',
 })
 globalStyle(`${root} > :is(h2, h3, h4) a`, {
@@ -37,7 +37,7 @@ globalStyle(`${root} > h4`, {
 
 // anchors
 globalStyle(`${root} a`, {
-  color: vars.colors.highlight,
+  color: colors.highlight,
   textDecoration: 'none',
 })
 globalStyle(`${root} a:hover`, {
@@ -63,7 +63,7 @@ globalStyle(`${root} a[target=_blank]::after`, {
 
 // blockquotes
 globalStyle(`${root} blockquote`, {
-  fontFamily: vars.fonts.serif,
+  fontFamily: fonts.serif,
   fontSize: '1rem',
   fontWeight: 500,
   padding: '1rem',
@@ -88,7 +88,7 @@ globalStyle(`${root} blockquote > *`, {
   margin: '1rem 0',
 })
 globalStyle(`${root} blockquote > cite`, {
-  color: '#777',
+  color: colors.fg3,
   fontSize: `${10 / 16}rem`,
   fontStyle: 'normal',
   margin: 0,
@@ -102,6 +102,7 @@ globalStyle(`${root} blockquote > cite::before`, {
 
 // noteboxes
 globalStyle(`${root} .notebox`, {
+  color: colors.fg0,
   borderLeft: '.5rem solid',
   borderRadius: '.25rem',
   padding: '.5rem .5rem .5rem 1rem',
@@ -116,23 +117,23 @@ globalStyle(`${root} .notebox::before`, {
   paddingRight: `${20 / 16}rem`,
 })
 globalStyle(`${root} .notebox-note`, {
-  background: '#F1FFFE',
-  borderLeftColor: '#43E4DA',
+  background: colors.notebg,
+  borderLeftColor: colors.note,
 })
 globalStyle(`${root} .notebox-note::before`, {
   content: '참고',
 })
 globalStyle(`${root} .notebox-warn`, {
-  background: '#FFFBDC',
-  borderLeftColor: '#FFE400',
+  background: colors.warnbg,
+  borderLeftColor: colors.warn,
 })
 globalStyle(`${root} .notebox-warn::before`, {
   content: '주의',
   backgroundImage: `url(${exclamation.src})`,
 })
 globalStyle(`${root} .notebox-fatal`, {
-  background: '#FEEBEB',
-  borderLeftColor: '#FF5858',
+  background: colors.fatalbg,
+  borderLeftColor: colors.fatal,
 })
 globalStyle(`${root} .notebox-fatal::before`, {
   content: '경고',
@@ -144,20 +145,20 @@ globalStyle(`${root} .notebox > * + *`, {
 
 // code blocks
 globalStyle(`${root} pre`, {
-  background: vars.colors.bg1,
+  background: colors.bg1,
   borderRadius: '.25rem',
   fontSize: `${14 / 16}rem`,
   overflow: 'auto',
   padding: '1rem !important',
 })
 globalStyle(`${root} pre[data-variant="good"]`, {
-  border: '1px solid #43E4DA',
+  border: `1px solid ${colors.note}`,
 })
 globalStyle(`${root} pre[data-variant="bad"]`, {
-  border: '1px solid #FF5858',
+  border: `1px solid ${colors.fatal}`,
 })
 globalStyle(`${root} > code`, {
-  fontFamily: vars.fonts.mono,
+  fontFamily: fonts.mono,
   lineHeight: 18 / 14,
 })
 
@@ -180,18 +181,18 @@ globalStyle(`${root} dd > * + *`, {
 })
 
 // table
+globalStyle(`${root} .table-wrap`, {
+  overflowX: 'auto',
+})
 globalStyle(`${root} table:not(.jsx)`, {
   borderCollapse: 'collapse',
-  borderTop: `${1 / 16}rem solid ${vars.colors.fg0}`,
-  borderBottom: `${1 / 16}rem solid ${vars.colors.fg0}`,
+  border: `${1 / 16}rem solid ${colors.bg2}`,
 })
 globalStyle(`${root} table:not(.jsx) th`, {
-  background: vars.colors.bg1,
-  border: `${1 / 16}rem solid $${vars.colors.fg0}`,
-  padding: '.5rem 1rem',
+  background: colors.bg1,
 })
-globalStyle(`${root} table:not(.jsx) td`, {
-  border: `${1 / 16}rem solid ${vars.colors.fg0}`,
+globalStyle(`${root} table:not(.jsx) :is(th, td)`, {
+  border: `${1 / 16}rem solid ${colors.bg2}`,
   padding: '.5rem 1rem',
 })
 
@@ -199,12 +200,12 @@ globalStyle(`${root} table:not(.jsx) td`, {
 globalStyle(`${root} hr`, {
   maxWidth: `${219 / 16}rem`,
   border: 'none',
-  borderTop: `1px solid ${vars.colors.fg0}`,
+  borderTop: `1px solid ${colors.fg0}`,
   margin: '5rem 0 3rem',
 })
 
 globalStyle(`${root} :is(i, em)`, {
-  fontFamily: vars.fonts.serif,
+  fontFamily: fonts.serif,
   fontStyle: 'normal',
   fontWeight: 600,
 })
@@ -214,10 +215,10 @@ globalStyle(`${root} img`, {
 })
 
 globalStyle(`${root} code:not(pre > code)`, {
-  background: 'rgba(0, 0, 0, 0.05)',
+  background: '#80808033',
   borderRadius: '0.25rem',
   display: 'inline-block',
-  fontFamily: vars.fonts.mono,
+  fontFamily: fonts.mono,
   lineHeight: 1.2,
   padding: '0 0.25rem',
   textDecorationLine: 'inherit',

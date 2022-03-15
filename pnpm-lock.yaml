@@ -50,6 +50,7 @@ importers:
       klaw: ^4.0.1
       mock-fs: ^5.0.0
       next: ^12.1.0
+      next-themes: ^0.1.1
       next-transpile-modules: ^9.0.0
       react: ^17.0.2
       react-dom: ^17.0.2
@@ -71,6 +72,7 @@ importers:
       fp-ts: 2.11.8
       framer-motion: 6.2.8_react-dom@17.0.2+react@17.0.2
       next: 12.1.0_react-dom@17.0.2+react@17.0.2
+      next-themes: 0.1.1_caa633a00319350dbda42996613fe26c
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     devDependencies:
@@ -5471,6 +5473,18 @@ packages:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: true
 
+  /next-themes/0.1.1_caa633a00319350dbda42996613fe26c:
+    resolution: {integrity: sha512-Iqxt6rhS/KfK/iHJ0tfFjTcdLEAI0AgwFuAFrMwLOPK5e+MI3I+fzyvBoS+VaOS+NldUiazurhgwYhrfV0VXsQ==}
+    peerDependencies:
+      next: '>=11.1.1'
+      react: '*'
+      react-dom: '*'
+    dependencies:
+      next: 12.1.0_react-dom@17.0.2+react@17.0.2
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+    dev: false
+
   /next-transpile-modules/9.0.0:
     resolution: {integrity: sha512-VCNFOazIAnXn1hvgYYSTYMnoWgKgwlYh4lm1pKbSfiB3kj5ZYLcKVhfh3jkPOg1cnd9DP+pte9yCUocdPEUBTQ==}
     dependencies:
@@ -6492,7 +6506,7 @@ packages:
       '@types/jest': 27.4.1
       bs-logger: 0.2.6
       fast-json-stable-stringify: 2.1.0
-      jest: 27.5.1
+      jest: 27.5.1_ts-node@10.7.0
       jest-util: 27.5.1
       json5: 2.2.0
       lodash.memoize: 4.1.2

@@ -1,4 +1,4 @@
-import { vars } from '@lib/ui/theme.css'
+import { colors } from '@lib/ui/theme.css'
 import { globalStyle } from '@vanilla-extract/css'
 
 globalStyle('main .gsc-control-cse', {
@@ -11,7 +11,7 @@ globalStyle('main .gsc-control-cse .gsc-result', {
 })
 
 globalStyle('main .gsc-control-cse .gs-title', {
-  color: vars.colors.highlight,
+  color: colors.highlight,
   overflow: 'visible',
 })
 globalStyle('main .gsc-control-cse .gs-title:hover', {
@@ -30,7 +30,7 @@ globalStyle('main .gsc-control-cse .gs-snippet', {
 })
 
 globalStyle('main .gsc-control-cse b', {
-  background: vars.colors.bg1,
+  background: colors.bg1,
   color: 'inherit !important',
   textDecoration: 'underline',
 })

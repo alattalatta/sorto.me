@@ -1,4 +1,4 @@
-import { vars } from '@lib/ui/theme.css'
+import { fonts, colors } from '@lib/ui/theme.css'
 import { globalStyle } from '@vanilla-extract/css'
 
 globalStyle('*', {
@@ -7,13 +7,12 @@ globalStyle('*', {
 })
 
 globalStyle('html', {
-  color: vars.colors.fg0,
-  fontFamily: vars.fonts.sans,
-  scrollBehavior: 'smooth',
+  color: colors.fg0,
+  fontFamily: fonts.sans,
 })
 
 globalStyle('body', {
-  background: vars.colors.bg0,
+  background: colors.bg0,
   fontSize: '100%',
   margin: 0,
   overflowX: 'hidden',

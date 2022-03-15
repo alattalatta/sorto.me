@@ -1,4 +1,4 @@
-import { vars } from '@lib/ui/theme.css'
+import { colors } from '@lib/ui/theme.css'
 import { style } from '@vanilla-extract/css'
 
 export const root = style({
@@ -37,7 +37,7 @@ export const imageBox = style({
 export const title = style({
   fontSize: '1.5rem',
   fontWeight: 400,
-  background: vars.colors.bg0,
+  background: colors.bg0,
   margin: 0,
   padding: '.25rem .5rem',
   position: 'relative',

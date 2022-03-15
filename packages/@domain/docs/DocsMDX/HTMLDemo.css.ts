@@ -1,4 +1,4 @@
-import { tagColor, stringLiteralColor, keywordColor } from '@lib/ui/documentBody.css'
+import { vars as documentBodyVars } from '@lib/ui/documentBody.css'
 import { media, vars } from '@lib/ui/theme.css'
 import { globalStyle, style } from '@vanilla-extract/css'
 
@@ -25,9 +25,9 @@ export const root = style({
     },
   },
   vars: {
-    [tagColor]: '#18c498',
-    [stringLiteralColor]: '#257dff',
-    [keywordColor]: '#ff7037',
+    [documentBodyVars.tagColor]: '#18c498',
+    [documentBodyVars.stringLiteralColor]: '#257dff',
+    [documentBodyVars.keywordColor]: '#ff7037',
   },
 })
 

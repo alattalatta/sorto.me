@@ -1,5 +1,4 @@
 import { createVar, style } from '@vanilla-extract/css'
-import { recipe } from '@vanilla-extract/recipes'
 
 import { colors } from '../theme.css'
 
@@ -53,24 +52,4 @@ export const switchi = style({
       transform: 'translateX(-50%)',
     },
   },
-  // variants: {
-  //   state: {
-  //     off: {
-  //       '::after': {
-  //         left: `${2 / 16}rem`,
-  //       },
-  //     },
-  //     on: {
-  //       '::after': {
-  //         right: `${2 / 16}rem`,
-  //       },
-  //     },
-  //     indeterminate: {
-  //       '::after': {
-  //         left: '50%',
-  //         transform: 'translateX(-50%)',
-  //       },
-  //     },
-  //   },
-  // },
 })

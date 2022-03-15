@@ -1,12 +1,11 @@
-import { vars } from '@lib/ui/documentBody.css'
 import { colors, media } from '@lib/ui/theme.css'
 import { globalStyle, style } from '@vanilla-extract/css'
 
 export const root = style({
-  background: colors.bgi0,
+  background: colors.bg1,
   borderRadius: '.25rem',
   display: 'grid',
-  gap: '.25rem',
+  gap: '.5rem',
   gridTemplateAreas: `
     'result'
     'code'
@@ -20,11 +19,6 @@ export const root = style({
       `,
       gridTemplateColumns: `1fr ${400 / 16}rem`,
     },
-  },
-  vars: {
-    [vars.tagColor]: '#18c498',
-    [vars.stringLiteralColor]: '#257dff',
-    [vars.keywordColor]: '#ff7037',
   },
 })
 
@@ -53,11 +47,14 @@ export const codes = style({
 })
 
 globalStyle(`${codes} pre`, {
-  background: colors.bgi1,
-  color: colors.fgi0,
+  background: colors.bg0,
+  color: colors.fg0,
   cursor: 'pointer',
   margin: 0,
   position: 'relative',
+})
+globalStyle(`${codes} pre:hover`, {
+  background: colors.notebg,
 })
 globalStyle(`${codes} pre + pre`, {
   marginTop: '0.25rem',

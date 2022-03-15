@@ -22,9 +22,7 @@ const theme = createTheme(contract, {
   bgi1: palette.gray6,
   bgi0: palette.gray7,
 
-  // notebg: '#43e4da1a',
-  // warnbg: '#FFFACD',
-  // fatalbg: '#FFDDDD',
+  highlight: '#0CA79D',
 })
 
 export { theme }

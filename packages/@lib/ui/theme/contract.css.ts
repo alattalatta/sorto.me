@@ -7,10 +7,8 @@ const palette = {
   gray3: '#C1C8CD',
   gray4: '#889096',
   gray5: '#5D6266',
-  gray6: '#2F3235',
+  gray6: '#202528',
   gray7: '#11181C',
-
-  highlight: '#0CA79D',
 
   note: '#43E4DA',
   warn: '#FFE400',
@@ -40,6 +38,8 @@ const contract = createThemeContract({
   bgi2: '',
   bgi1: '',
   bgi0: '',
+
+  highlight: '',
 })
 
 export { contract, palette }

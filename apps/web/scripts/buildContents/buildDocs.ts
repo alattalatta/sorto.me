@@ -52,5 +52,5 @@ export async function main(): Promise<void> {
     ),
   ])
 
-  console.log('Done compiling docs.')
+  console.log(`Done compiling ${docsMeta.length} docs.`)
 }

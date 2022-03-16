@@ -26,7 +26,7 @@ async function parse(filePath: string): Promise<Post> {
     content,
     meta: {
       ...data,
-      created: fileName.split('+')[0],
+      created: fileName.split('--')[0],
       description: typeof description === 'string' ? escapeUTF8(description) : null,
       image: typeof data.image === 'string' ? data.image : '/images/default.jpg',
       slug: path.basename(filePath).replace('.mdx', ''),

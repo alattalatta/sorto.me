@@ -1,13 +1,31 @@
 import { PostPage } from '@domain/blog'
-import type { PostPageProps, Post } from '@domain/blog'
+import type { PostPageProps, Post, PostMetadata } from '@domain/blog'
+import type { Page } from '@lib/ui'
 import type { GetStaticPaths, GetStaticProps } from 'next'
+import useSWR from 'swr'
 
 import postsIndex from '../../out/posts/index.json'
+
 import '../../styles/document-body.css'
 
 type Params = { slug: string }
 
-export default PostPage
+const PostPageWrap: Page<PostPageProps> = ({ compiledSource, meta, ...props }) => {
+  const { data } = useSWR<{ compiledSource: string; meta: PostMetadata }>(
+    `/api/post?slug=${meta.slug}`,
+    (key: string) => fetch(key).then((res) => res.json()),
+    {
+      fallbackData: { compiledSource, meta },
+      refreshInterval: 2000,
+      isPaused: () => process.env.NODE_ENV === 'production',
+    },
+  )
+
+  return <PostPage {...props} {...data} />
+}
+PostPageWrap.Layout = PostPage.Layout
+
+export default PostPageWrap
 
 export const getStaticProps: GetStaticProps<PostPageProps, Params> = async ({ params }) => {
   if (!params?.slug) {

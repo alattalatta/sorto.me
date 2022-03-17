@@ -1,8 +1,10 @@
-import type { Doc, DocPageProps } from '@domain/docs'
+import type { Doc, DocMetadata, DocPageProps } from '@domain/docs'
 import { DocPage, getCompatData } from '@domain/docs'
+import type { Page } from '@lib/ui'
 import browserCompatData from '@mdn/browser-compat-data'
 import type { Identifier } from '@mdn/browser-compat-data/types'
 import type { GetStaticPaths, GetStaticProps } from 'next'
+import useSWR from 'swr'
 
 import docsIndex from '../../out/docs/index.json'
 import docsMap from '../../out/docs/slugMap.json'
@@ -10,7 +12,22 @@ import '../../styles/document-body.css'
 
 type StaticParam = { slugs: string[] }
 
-export default DocPage
+const DocPageWrap: Page<DocPageProps> = ({ compiledSource, meta, ...props }) => {
+  const { data } = useSWR<{ compiledSource: string; meta: DocMetadata }>(
+    `/api/doc?slug=${meta.slug}`,
+    (key: string) => fetch(key).then((res) => res.json()),
+    {
+      fallbackData: { compiledSource, meta },
+      refreshInterval: 2000,
+      isPaused: () => process.env.NODE_ENV === 'production',
+    },
+  )
+
+  return <DocPage {...props} {...data} />
+}
+DocPageWrap.Layout = DocPage.Layout
+
+export default DocPageWrap
 
 export const getStaticProps: GetStaticProps<DocPageProps, StaticParam> = async ({ params }) => {
   if (!params?.slugs) {

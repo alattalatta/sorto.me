@@ -60,6 +60,7 @@ importers:
       next-transpile-modules: ^9.0.0
       react: ^17.0.2
       react-dom: ^17.0.2
+      swr: ^1.2.2
       ts-jest: ^27.1.3
       ts-node: ^10.7.0
       tsconfig: workspace:*
@@ -81,6 +82,7 @@ importers:
       next-themes: 0.1.1_caa633a00319350dbda42996613fe26c
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
+      swr: 1.2.2_react@17.0.2
     devDependencies:
       '@next/bundle-analyzer': 12.1.0
       '@swc/core': 1.2.156
@@ -6363,6 +6365,14 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
+  /swr/1.2.2_react@17.0.2:
+    resolution: {integrity: sha512-ky0BskS/V47GpW8d6RU7CPsr6J8cr7mQD6+do5eky3bM0IyJaoi3vO8UhvrzJaObuTlGhPl2szodeB2dUd76Xw==}
+    peerDependencies:
+      react: ^16.11.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 17.0.2
+    dev: false
+
   /symbol-tree/3.2.4:
     resolution: {integrity: sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==}
     dev: true
@@ -6498,7 +6508,7 @@ packages:
       '@types/jest': 27.4.1
       bs-logger: 0.2.6
       fast-json-stable-stringify: 2.1.0
-      jest: 27.5.1
+      jest: 27.5.1_ts-node@10.7.0
       jest-util: 27.5.1
       json5: 2.2.0
       lodash.memoize: 4.1.2

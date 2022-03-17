@@ -1,4 +1,4 @@
 {
   "extends": "tsconfig/library.json",
-  "include": ["mdast.d.ts", "."]
+  "include": ["."]
 }

@@ -1,10 +1,12 @@
-import type { Root } from 'hast'
+import type { Element, Root } from 'hast'
 import type { Plugin } from 'unified'
 import { visit } from 'unist-util-visit'
 
 const rehypeWrapTable: Plugin<void[], Root> = () => {
   return (tree) => {
-    visit(tree, 'element', (node, index, parent) => {
+    // TS is too slow to dig this deeper
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    ;(visit as any)(tree, 'element', (node: Element, index: number, parent: Element) => {
       if (node.tagName !== 'table') {
         return
       }
@@ -31,7 +33,7 @@ const rehypeWrapTable: Plugin<void[], Root> = () => {
 
       // there can't be a nested table
       return 'skip'
-    })
+    })()
   }
 }
 

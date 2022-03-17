@@ -1,8 +1,10 @@
+/// <reference types="../mdast" />
+
 import { head } from 'fp-ts/lib/Array'
 import * as O from 'fp-ts/lib/Option'
 import { identity, pipe } from 'fp-ts/lib/function'
 import Slugger from 'github-slugger'
-import type { List, PhrasingContent, Root, Text, Term, TermDescription, DefinitionList } from 'mdast'
+import type { List, Parent, PhrasingContent, Root, Text, Term, TermDescription, DefinitionList } from 'mdast'
 import { toString } from 'mdast-util-to-string'
 import type { Plugin } from 'unified'
 import { visit } from 'unist-util-visit'
@@ -13,9 +15,11 @@ const remarkDefinitionList: Plugin<void[], Root> = () => {
   const slugs = new Slugger()
 
   return (tree) => {
-    visit(tree, 'list', (list, index, parent) => {
+    // TS is too slow to dig this deeper
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    ;(visit as any)(tree, 'list', (list: List, index: number, parent: Parent | null) => {
       const bissectedDL = bissectDefinitionList(list, slugs)
-      if (bissectedDL.length === 0) {
+      if (index === null || !parent || bissectedDL.length === 0) {
         return
       }
 
@@ -27,7 +31,7 @@ const remarkDefinitionList: Plugin<void[], Root> = () => {
       }
 
       parent.children[index] = definitionList
-    })
+    })()
   }
 }
 

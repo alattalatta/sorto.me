@@ -20,7 +20,7 @@ declare module 'mdast' {
     type: 'definitionList'
   }
 
-  type BlockContentMap = {
+  interface BlockContentMap {
     definitionList: DefinitionList
     notebox: Notebox
     term: Term

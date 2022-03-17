@@ -22,7 +22,7 @@
     "@lib/functions": "workspace:*",
     "@lib/mdx": "workspace:*",
     "@lib/ui": "workspace:*",
-    "@mdn/browser-compat-data": "^4.1.11",
+    "@mdn/browser-compat-data": "^4.1.12",
     "@vanilla-extract/css": "^1.6.8",
     "@vanilla-extract/recipes": "^0.2.3",
     "clsx": "^1.1.1",

@@ -29,7 +29,7 @@ function notebox(blockquote: Blockquote, index: number, parent: Parent): void {
     type: 'notebox',
   }
 
-  parent.children[index] = noteboxNode
+  parent.children[index] = noteboxNode // TS is too slow to dig this deeper
 }
 
 export { notebox }

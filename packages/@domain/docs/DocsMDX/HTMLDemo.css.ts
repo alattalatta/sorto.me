@@ -2,6 +2,7 @@ import { colors, media } from '@lib/ui/theme.css'
 import { globalStyle, style } from '@vanilla-extract/css'
 
 export const root = style({
+  maxHeight: '20rem',
   background: colors.bg1,
   borderRadius: '.25rem',
   display: 'grid',
@@ -42,6 +43,7 @@ export const codes = style({
   flexDirection: 'column',
   flexGrow: 1,
   gridArea: 'code',
+  overflow: 'auto',
 })
 
 globalStyle(`${codes} pre`, {

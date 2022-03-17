@@ -27,7 +27,7 @@ const remarkPlugin: Plugin<void[], Root> = () => {
         default:
           return
       }
-    })()
+    })
   }
 }
 

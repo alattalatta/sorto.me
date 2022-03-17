@@ -33,7 +33,7 @@ const rehypeWrapTable: Plugin<void[], Root> = () => {
 
       // there can't be a nested table
       return 'skip'
-    })()
+    })
   }
 }
 

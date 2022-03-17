@@ -32,7 +32,7 @@ const rehypeCodeblockDataAttr: Plugin<void[], Root> = () => {
 
       // there can't be a nested codeblock
       return 'skip'
-    })()
+    })
   }
 }
 

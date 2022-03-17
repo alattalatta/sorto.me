@@ -31,7 +31,7 @@ const remarkDefinitionList: Plugin<void[], Root> = () => {
       }
 
       parent.children[index] = definitionList
-    })()
+    })
   }
 }
 

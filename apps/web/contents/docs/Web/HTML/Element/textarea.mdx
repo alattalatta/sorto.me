@@ -1,10 +1,10 @@
 ---
 title: 'HTML <textarea>: 입력 영역 요소'
-description: HTML <textarea> 요소는 여러 줄의 평문을 편집할 수 있는 컨트롤을 제공합니다. 사용자가 자유 형식의 긴 글을 입력할 수 있어야 하는 리뷰나 피드백 양식 입력 칸에 유용합니다.
+description: HTML <textarea> 요소는 여러 줄의 평문을 편집할 수 있는 컨트롤을 제공합니다. 사용자가 자유 형식의 긴 글을 입력할 수 있어야 하는 리뷰나 피드백 입력 칸에 유용합니다.
 bcd: html.elements.textarea
 ---
 
-**HTML `<textarea>` 요소**는 여러 줄의 평문을 편집할 수 있는 컨트롤을 제공합니다. 사용자가 자유 형식의 긴 글을 입력할 수 있어야 하는 리뷰나 피드백 양식 입력 칸에 유용합니다.
+**HTML `<textarea>` 요소**는 여러 줄의 평문을 편집할 수 있는 컨트롤을 제공합니다. 사용자가 자유 형식의 긴 글을 입력할 수 있어야 하는 리뷰나 피드백 입력 칸에 유용합니다.
 
 <HTMLDemo height={160}>
 
@@ -27,12 +27,12 @@ label {
 
 위 예제에서 `<textarea>`의 주요 사용법을 볼 수 있습니다.
 
-- [`id` 전역 특성](../Global_attributes#term-id)을 지정하고 [`<label>`](./label) 요소와 연결해 접근성을 확보합니다.
-- 서버에 양식을 제출할 때 데이터의 이름으로 사용할 값을 [`name`](#term-name) 특성에 지정합니다.
-- [`rows`](#term-rows)와 [`cols`](#term-cols) 특성으로 `<textarea>`의 크기를 설정할 수 있습니다.
-- 기본적으로 입력되어있는 내용은 여는 태그와 닫는 태그의 사이에 배치합니다. `<textarea>`에는 `value` 특성을 사용할 수 없습니다.
+- [`id` 특성](../Global_attributes#term-id)을 지정하고 [`<label>`](./label) 요소에 연결해 접근성을 확보합니다.
+- 서버에 양식을 제출할 때 데이터의 이름으로 사용할 값을 [`name` 특성](#term-name)에 지정합니다.
+- [`rows`](#term-rows)와 [`cols` 특성](#term-cols)으로 `<textarea>`의 크기를 설정할 수 있습니다.
+- 기본 입력 값의 내용을 여는 태그와 닫는 태그의 사이에 배치합니다. [`<input>`](./input)과 달리, `<textarea>`에는 [`value` 특성](./input#term-value)을 사용할 수 없습니다.
 
-일반적인 양식 입력 칸이 받는 `autocomplete`, `autofocus`, `disabled`, `placeholder`, `readonly`, `required`도 사용 가능합니다.
+일반적인 양식 입력 칸이 받는 `autocomplete`, `autofocus`, `disabled`, `placeholder`, `readonly`, `required` 특성도 사용 가능합니다.
 
 # 특성
 
@@ -83,15 +83,15 @@ label {
 
 # CSS 스타일링
 
-`<textarea>`는 [대체 요소](https://developer.mozilla.org/ko/docs/Web/CSS/Replaced_element)로, 마치 래스터 이미지처럼 내재된 크기를 가지고 있습니다. 기본 스타일에서 [`display`](https://developer.mozilla.org/en-US/docs/Web/CSS/display)의 값은 `inline-block`입니다. 다른 양식 요소와 비교하면 `<textarea>`는 스타일 적용이 수월한 편으로, 박스 모델과 글꼴, 색상 등을 평범한 CSS로 바꿀 수 있습니다.
+`<textarea>`는 [대체 요소](https://developer.mozilla.org/ko/docs/Web/CSS/Replaced_element)로, 마치 래스터 이미지처럼 요소가 내재된 크기를 가지고 있습니다. 기본 스타일에서 `<textarea>`의 [`display`](https://developer.mozilla.org/en-US/docs/Web/CSS/display) 값은 `inline-block`입니다. 다른 양식 요소와 비교하면 `<textarea>`는 스타일 적용이 수월한 편으로 박스 모델과 글꼴, 색상 등을 평범한 CSS로 바꿀 수 있습니다.
 
 ## 불분명한 기준선
 
-HTML 명세는 `<textarea>`의 기준선(baseline)이 어디인지 명시하지 않았으므로 브라우저마다 서로 다른 위치를 기준선으로 삼았습니다. 따라서 `<textarea>`에 지정한 [`vertical-align: baseline`](https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align)의 동작을 정확히 예측할 수 없습니다. 사용을 지양하세요.
+HTML 명세는 `<textarea>`의 기준선(baseline)이 어디인지 명시하지 않았으므로 브라우저마다 서로 다른 위치를 기준선으로 삼았습니다. 따라서 `<textarea>`에 [`vertical-align: baseline`](https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align)을 사용했을 때의 동작은 분명하지 않습니다. 사용을 지양하세요.
 
 ## 크기 조절 가능 여부 설정
 
-대부분의 브라우저에서는 `<textarea>`의 오른쪽 아래 꼭지점을 드래그해서 크기를 바꿀 수 있습니다. 크기 조절 기능은 CSS [`resize`](https://developer.mozilla.org/en-US/docs/Web/CSS/resize) 속성으로 설정할 수 있습니다.
+대부분의 브라우저에서는 `<textarea>`의 오른쪽 아래 꼭지점을 드래그해서 크기를 바꿀 수 있습니다. 크기 조절 기능은 CSS [`resize` 속성](https://developer.mozilla.org/en-US/docs/Web/CSS/resize)으로 설정할 수 있습니다.
 
 ```css
 textarea {

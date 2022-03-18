@@ -1,10 +1,10 @@
 ---
 title: 'HTML <samp>: 출력 본보기 요소'
-description: HTML <samp> (출력 본보기, sample) 요소는 컴퓨터 프로그램의 출력 본보기 및 인용한 출력 결과를 나타냅니다.
+description: HTML <samp> (출력 본보기, sample) 요소는 컴퓨터 프로그램의 출력 본보기 및 다른 곳에서 인용한 프로그램 출력 결과를 나타냅니다.
 bcd: html.elements.samp
 ---
 
-**HTML `<samp>` 요소**는 컴퓨터 프로그램의 출력 본보기 및 인용한 출력 결과를 나타냅니다.
+**HTML `<samp>` 요소**는 컴퓨터 프로그램의 출력 본보기 및 다른 곳에서 인용한 프로그램 출력 결과를 나타냅니다.
 
 <HTMLDemo height={160}>
 
@@ -29,7 +29,7 @@ bcd: html.elements.samp
 
 ## 사용자의 입력을 포함한 출력
 
-`<samp>` 안에 [`<kbd>`](./kbd) 요소를 중첩하면 사용자의 입력이 화면에 보이는 상황을 나타낼 수 있습니다.
+`<samp>` 안에 [`<kbd>`](./kbd) 요소를 중첩하면 사용자의 입력이 화면에 보이는 상황을 나타낼 수 있습니다. 다음 코드 조각은 사용자가 터미널에 입력한 명령어를 `<kbd>` 요소로 나타내는 마크업 예제입니다. 
 
 ```html name=kbd
 <pre><samp><span class="prompt">alattalatta@Home: $</span> <kbd>md5 -s "Hello World!"</kbd>
@@ -38,7 +38,7 @@ MD5 ("Hello World") = b10a8db164e0754105b7a99be72e3fe5
 <span class="prompt">alattalatta@Home: $</span> █</samp></pre>
 ```
 
-사용자가 터미널에 입력한 명령어를 `<kbd>`를 사용해서 나타냈습니다. 적당한 스타일을 추가한 결과를 확인해보세요.
+적당한 스타일을 추가한 결과를 확인해보세요.
 
 ```css name=kbd
 .prompt {

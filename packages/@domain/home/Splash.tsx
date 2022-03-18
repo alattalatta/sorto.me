@@ -2,6 +2,7 @@ import { throttle } from '@lib/functions'
 import { useEffect, useMemo, useState } from 'react'
 
 import * as styles from './Splash.css'
+import theColor from './the-color.svg'
 
 const THETA = 28.85
 
@@ -40,7 +41,13 @@ const Splash: React.FC = ({ children }) => {
     <>
       <div className={styles.stripRoot}>
         <div className={styles.stripWrap}>
-          <div className={styles.strip} style={{ width, transform: `translateX(-${scroll / 5}px) rotate(28.85deg)` }} />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            alt=""
+            className={styles.strip}
+            src={theColor.src}
+            style={{ width, transform: `translateX(-${scroll / 5}px) rotate(28.85deg)` }}
+          />
         </div>
       </div>
       {children && <div className={styles.contentsRoot}>{children}</div>}

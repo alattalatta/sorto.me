@@ -1,7 +1,5 @@
 import { style } from '@vanilla-extract/css'
 
-import color from './the-color.svg'
-
 const THETA = 28.85
 const HEIGHT = 427
 const OFFSET_TOP = 338
@@ -20,7 +18,6 @@ export const stripWrap = style({
 
 export const strip = style({
   height: HEIGHT,
-  background: `url(${color.src})`,
   position: 'absolute',
   top: -OFFSET_TOP,
   left: -OFFSET_LEFT,

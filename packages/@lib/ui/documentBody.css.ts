@@ -10,8 +10,9 @@ const vars = {
 }
 
 const root = style({
-  lineHeight: 1.5,
+  lineHeight: 1.75,
   margin: '0 auto',
+  wordBreak: 'keep-all',
   vars: {
     [vars.commentColor]: '#969896',
     [vars.keywordColor]: '#c53800',

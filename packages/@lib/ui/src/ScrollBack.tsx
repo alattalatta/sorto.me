@@ -3,7 +3,6 @@ import clsx from 'clsx'
 import { m } from 'framer-motion'
 import { useState } from 'react'
 
-import arrow from '../assets/arrow-up.svg'
 import * as styles from './ScrollBack.css'
 
 const ScrollBack: React.VFC<{ className?: string }> = ({ className }) => {
@@ -28,8 +27,9 @@ const ScrollBack: React.VFC<{ className?: string }> = ({ className }) => {
       variants={{ hidden: { translateY: '100%' }, show: { translateY: 0 } }}
     >
       <button className={styles.button} type="button" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img alt="" className={styles.arrow} src={arrow.src} />
+        <svg className={styles.arrow} height="10" viewBox="0 0 10 10" width="10" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 0L10 5.71429H8.66666L5.5 2.09525V10H4.5V2.09525L1.33334 5.71429H0L5 0Z" />
+        </svg>
         처음으로
       </button>
     </m.div>

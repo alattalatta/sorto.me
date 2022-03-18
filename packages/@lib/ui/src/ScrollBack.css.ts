@@ -15,5 +15,8 @@ export const button = style({
 })
 
 export const arrow = style({
+  width: `${10 / 16}rem`,
+  height: `${10 / 16}rem`,
+  fill: 'currentcolor',
   marginRight: '.25rem',
 })

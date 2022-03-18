@@ -1,0 +1,75 @@
+---
+title: 'HTML <thead>: 표 헤더 요소'
+description: HTML <thead> 요소는 표에서 열의 헤더를 구성하는 행을 정의합니다.
+bcd: html.elements.thead
+---
+
+**HTML `<thead>` 요소**는 표에서 열의 헤더를 구성하는 행을 정의합니다.
+
+<HTMLDemo height={180}>
+
+```html
+<table>
+  <thead>
+    <tr>
+      <th>종류</th>
+      <th>품목</th>
+      <th>원산지</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="3">과일</th>
+      <td>사과</td>
+      <td rowspan="2">국산</td>
+    </tr>
+    <tr>
+      <td>배</td>
+    </tr>
+    <tr>
+      <td>파인애플</td>
+      <td>수입산</td>
+    </tr>
+    <tr>
+      <th>곡물</th>
+      <td>쌀</td>
+      <td>국산</td>
+    </tr>
+    <tr>
+      <th>해산물</th>
+      <td>고등어</td>
+      <td>원양산</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+```css
+th,
+td {
+  border: 1px solid #777;
+  padding: 8px;
+}
+
+th {
+  background: #efefef;
+}
+```
+
+</HTMLDemo>
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)만 포함합니다.
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/tables.html#the-thead-element)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 표 컨테이너: [`<table>`](./table)

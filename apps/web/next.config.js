@@ -49,22 +49,22 @@ const nextConfig = (phase) => ({
       {
         source: '/posts/2021-02-18\\+alt',
         destination: '/posts/2021-02-18--alt',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/posts/2021-03-16\\+variance',
         destination: '/posts/2021-03-16--variance',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/posts/2021-05-12\\+nominal',
         destination: '/posts/2021-05-12--nominal',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/posts/2022-02-20\\+markdown',
         destination: '/posts/2022-02-20--markdown',
-        permanent: false,
+        permanent: true,
       }
     ]
   },

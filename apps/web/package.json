@@ -13,6 +13,7 @@
   "dependencies": {
     "@domain/blog": "workspace:*",
     "@domain/docs": "workspace:*",
+    "@domain/error": "workspace:*",
     "@domain/home": "workspace:*",
     "@domain/search": "workspace:*",
     "@lib/functions": "workspace:*",
@@ -43,6 +44,7 @@
     "@types/react": "^17.0.40",
     "@types/react-dom": "^17.0.13",
     "@vanilla-extract/next-plugin": "^2.0.1",
+    "babel-loader": "^8.2.3",
     "fs-extra": "^10.0.1",
     "jest": "^27.5.1",
     "klaw": "^4.0.1",

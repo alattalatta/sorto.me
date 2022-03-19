@@ -31,6 +31,7 @@ importers:
       '@babel/core': ^7.17.7
       '@domain/blog': workspace:*
       '@domain/docs': workspace:*
+      '@domain/error': workspace:*
       '@domain/home': workspace:*
       '@domain/search': workspace:*
       '@lib/functions': workspace:*
@@ -50,6 +51,7 @@ importers:
       '@types/react-dom': ^17.0.13
       '@vanilla-extract/css': ^1.6.8
       '@vanilla-extract/next-plugin': ^2.0.1
+      babel-loader: ^8.2.3
       fp-ts: ^2.11.9
       framer-motion: ^6.2.8
       fs-extra: ^10.0.1
@@ -70,6 +72,7 @@ importers:
     dependencies:
       '@domain/blog': link:../../packages/@domain/blog
       '@domain/docs': link:../../packages/@domain/docs
+      '@domain/error': link:../../packages/@domain/error
       '@domain/home': link:../../packages/@domain/home
       '@domain/search': link:../../packages/@domain/search
       '@lib/functions': link:../../packages/@lib/functions
@@ -99,6 +102,7 @@ importers:
       '@types/react': 17.0.40
       '@types/react-dom': 17.0.13
       '@vanilla-extract/next-plugin': 2.0.1_next@12.1.0+webpack@5.70.0
+      babel-loader: 8.2.3_c57fa08b67e0055c44c6192257d88d4e
       fs-extra: 10.0.1
       jest: 27.5.1_ts-node@10.7.0
       klaw: 4.0.1
@@ -194,6 +198,27 @@ importers:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       ts-jest: 27.1.3_60149d457e34ffba7d4e845dde6a1263
+      tsconfig: link:../../tsconfig
+      typescript: 4.6.2
+
+  packages/@domain/error:
+    specifiers:
+      '@lib/ui': workspace:*
+      '@types/react': ^17.0.40
+      '@types/react-dom': ^17.0.13
+      '@vanilla-extract/css': ^1.6.8
+      react: ^17.0.2
+      react-dom: ^17.0.2
+      tsconfig: workspace:*
+      typescript: ^4.6.2
+    dependencies:
+      '@lib/ui': link:../../@lib/ui
+      '@vanilla-extract/css': 1.6.8
+    devDependencies:
+      '@types/react': 17.0.40
+      '@types/react-dom': 17.0.13
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
       tsconfig: link:../../tsconfig
       typescript: 4.6.2
 
@@ -527,7 +552,7 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0
     dependencies:
-      '@babel/compat-data': 7.17.7
+      '@babel/compat-data': 7.16.8
       '@babel/core': 7.17.7
       '@babel/helper-validator-option': 7.16.7
       browserslist: 4.19.1
@@ -3318,25 +3343,6 @@ packages:
       - supports-color
     dev: true
 
-  /babel-jest/27.5.1_@babel+core@7.17.7:
-    resolution: {integrity: sha512-cdQ5dXjGRd0IBRATiQ4mZGlGlRE8kJpjPOixdNRdT+m3UcNqmYWN6rK6nvtXYfY3D76cb8s/O1Ss8ea24PIwcg==}
-    engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
-    peerDependencies:
-      '@babel/core': ^7.8.0
-    dependencies:
-      '@babel/core': 7.17.7
-      '@jest/transform': 27.5.1
-      '@jest/types': 27.5.1
-      '@types/babel__core': 7.1.18
-      babel-plugin-istanbul: 6.1.1
-      babel-preset-jest: 27.5.1_@babel+core@7.17.7
-      chalk: 4.1.2
-      graceful-fs: 4.2.9
-      slash: 3.0.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /babel-loader/8.2.3_c57fa08b67e0055c44c6192257d88d4e:
     resolution: {integrity: sha512-n4Zeta8NC3QAsuyiizu0GkmRcQ6clkV9WFUnUf1iXP//IeSKbWjofW3UHyZVwlOB4y039YQKefawyTn64Zwbuw==}
     engines: {node: '>= 8.9'}
@@ -3350,7 +3356,6 @@ packages:
       make-dir: 3.1.0
       schema-utils: 2.7.1
       webpack: 5.70.0_@swc+core@1.2.156
-    dev: false
 
   /babel-plugin-dynamic-import-node/2.3.3:
     resolution: {integrity: sha512-jZVI+s9Zg3IqA/kdi0i6UDCybUI3aSBLnglhYbSSjKlV7yF1F/5LWv8MakQmvYpnbJDS6fcBL2KzHSxNCMtWSQ==}
@@ -3466,17 +3471,6 @@ packages:
       '@babel/core': 7.17.2
       babel-plugin-jest-hoist: 27.5.1
       babel-preset-current-node-syntax: 1.0.1_@babel+core@7.17.2
-    dev: true
-
-  /babel-preset-jest/27.5.1_@babel+core@7.17.7:
-    resolution: {integrity: sha512-Nptf2FzlPCWYuJg41HBqXVT8ym6bXOevuCTbhxlUpjwtysGaIWFvDEjp4y+G7fl13FgOdjs7P/DmErqH7da0Ag==}
-    engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
-    peerDependencies:
-      '@babel/core': ^7.0.0
-    dependencies:
-      '@babel/core': 7.17.7
-      babel-plugin-jest-hoist: 27.5.1
-      babel-preset-current-node-syntax: 1.0.1_@babel+core@7.17.7
     dev: true
 
   /bail/2.0.2:
@@ -3697,7 +3691,6 @@ packages:
 
   /commondir/1.0.1:
     resolution: {integrity: sha1-3dgA2gxmEnOTzKWVDqloo6rxJTs=}
-    dev: false
 
   /concat-map/0.0.1:
     resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
@@ -4700,7 +4693,6 @@ packages:
       commondir: 1.0.1
       make-dir: 3.1.0
       pkg-dir: 4.2.0
-    dev: false
 
   /find-up/2.1.0:
     resolution: {integrity: sha1-RdG35QbHF93UgndaK3eSCjwMV6c=}
@@ -5528,10 +5520,10 @@ packages:
       ts-node:
         optional: true
     dependencies:
-      '@babel/core': 7.17.7
+      '@babel/core': 7.17.2
       '@jest/test-sequencer': 27.5.1
       '@jest/types': 27.5.1
-      babel-jest: 27.5.1_@babel+core@7.17.7
+      babel-jest: 27.5.1_@babel+core@7.17.2
       chalk: 4.1.2
       ci-info: 3.3.0
       deepmerge: 4.2.2
@@ -6144,7 +6136,6 @@ packages:
       big.js: 5.2.2
       emojis-list: 3.0.0
       json5: 1.0.1
-    dev: false
 
   /loader-utils/2.0.2:
     resolution: {integrity: sha512-TM57VeHptv569d/GKh6TAYdzKblwDNiumOdkFnejjD0XwTH87K90w3O7AiJRqdQoXygvi1VQTJTLGhJl7WqA7A==}
@@ -7612,7 +7603,6 @@ packages:
       '@types/json-schema': 7.0.9
       ajv: 6.12.6
       ajv-keywords: 3.5.2_ajv@6.12.6
-    dev: false
 
   /schema-utils/3.1.1:
     resolution: {integrity: sha512-Y5PQxS4ITlC+EahLuXaY86TXfR7Dc5lw294alXOq86JAHCihAIZfqv8nNCWvaEJvaC51uN9hbLGeV0cFBdH+Fw==}
@@ -8089,7 +8079,7 @@ packages:
       '@types/jest': 27.4.1
       bs-logger: 0.2.6
       fast-json-stable-stringify: 2.1.0
-      jest: 27.5.1_ts-node@10.7.0
+      jest: 27.5.1
       jest-util: 27.5.1
       json5: 2.2.0
       lodash.memoize: 4.1.2

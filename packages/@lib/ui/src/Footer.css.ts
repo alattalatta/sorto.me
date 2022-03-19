@@ -3,7 +3,7 @@ import { globalStyle, style } from '@vanilla-extract/css'
 import { colors } from '../theme.css'
 
 export const root = style({
-  width: `${219 / 16}rem`,
+  width: `${228 / 16}rem`,
   borderTop: `1px solid ${colors.fg0}`,
   marginTop: '5rem',
   padding: '1.5rem 0 0.5rem',
@@ -17,7 +17,7 @@ export const updated = style({
 export const author = style({
   fontSize: '1.5rem',
   fontWeight: 700,
-  margin: 0,
+  margin: '0.5rem 0 0',
 })
 
 export const legal = style({

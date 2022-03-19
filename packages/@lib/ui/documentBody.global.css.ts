@@ -198,7 +198,7 @@ globalStyle(`${root} table:not(.jsx) :is(th, td)`, {
 
 // etc
 globalStyle(`${root} hr`, {
-  maxWidth: `${219 / 16}rem`,
+  maxWidth: `${228 / 16}rem`,
   border: 'none',
   borderTop: `1px solid ${colors.fg0}`,
   margin: '5rem 0 3rem',

@@ -3,22 +3,27 @@ const internalDependencies = Object.keys(require('./package.json').dependencies)
   /^@(app|contents|domain|lib)\//.test(package),
 )
 
-const withTM = require('next-transpile-modules')(internalDependencies)
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
-const { createVanillaExtractPlugin } = require('@vanilla-extract/next-plugin')
-const withVanillaExtract = createVanillaExtractPlugin()
+const withPWA = require('next-pwa')
+const withTM = require('next-transpile-modules')(internalDependencies)
+const withVanillaExtract = require('@vanilla-extract/next-plugin').createVanillaExtractPlugin()
 
 const { PHASE_DEVELOPMENT_SERVER } = require('next/constants')
 
 const pluginStack = (config) =>
-  [withVanillaExtract, withTM, withBundleAnalyzer].reduce((config, plugin) => plugin(config), config)
+  [withBundleAnalyzer, withVanillaExtract, withPWA, withTM].reduce((config, plugin) => plugin(config), config)
 
 /** @returns {import('next').NextConfig} */
 const nextConfig = (phase) => ({
   reactStrictMode: true,
   swcMinify: true,
+  pwa: {
+    dest: 'public',
+    disable: process.env.NODE_ENV !== 'production',
+    runtimeCaching: require('./cache')
+  },
   async headers() {
     if (phase === PHASE_DEVELOPMENT_SERVER) {
       return []

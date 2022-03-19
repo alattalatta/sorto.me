@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import { m } from 'framer-motion'
+import Image from 'next/image'
 
 import * as styles from './Post.css'
 
@@ -21,7 +22,9 @@ const Post: React.VFC<Props> = ({ as = 'article', className, image, title, writt
   return (
     <Root className={clsx(styles.root, className)} layoutId={title}>
       <div className={styles.body}>
-        <div className={styles.imageBox} style={{ backgroundImage: `url(${image})` }} />
+        <div className={styles.imageBox}>
+          <Image alt="" layout="fill" objectFit="cover" sizes="10.5rem" src={image} />
+        </div>
         <h1 className={styles.title}>{title}</h1>
       </div>
       <time className={styles.written} dateTime={written.toISOString()}>

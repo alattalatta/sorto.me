@@ -32,6 +32,7 @@ const Footer: React.VFC<Props> = ({ mdnSlug, updated }) => {
     <footer className={styles.root}>
       <p className={styles.updated}>
         마지막 업데이트: <time dateTime={updated.toISOString()}>{updatedFormatted}</time>
+        <br />이 페이지를 오프라인에서 볼 수 있습니다.
       </p>
       <p className={styles.author}>sorto.me</p>
       <small className={styles.legal}>

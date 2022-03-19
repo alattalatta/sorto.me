@@ -1,2 +1,9 @@
 public/rss.xml
 public/sitemap.md.xml
+
+public/fallback-*.js
+public/fallback-*.js.map
+public/sw.js
+public/sw.js.map
+public/workbox-*.js
+public/workbox-*.js.map

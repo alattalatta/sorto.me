@@ -1,8 +1,7 @@
 import { Anchor } from '@lib/ui'
-import type { CompatData, Identifier } from '@mdn/browser-compat-data/types'
-import { useEffect, useState } from 'react'
+import type { Identifier } from '@mdn/browser-compat-data/types'
 
-import { getCompatData, getSubIdentifierKeys } from '../../utils'
+import { getSubIdentifierKeys } from '../../utils'
 import CompatRow from './CompatRow'
 import * as styles from './index.css'
 
@@ -12,6 +11,8 @@ type Props = {
 }
 
 const BrowserCompat: React.VFC<Props> = ({ children, data: dataProp }) => {
+  /*
+  [note] memo later
   const [loadedData, setLoadedData] = useState<Identifier | undefined | null>(undefined)
 
   useEffect(() => {
@@ -22,8 +23,9 @@ const BrowserCompat: React.VFC<Props> = ({ children, data: dataProp }) => {
       })()
     }
   }, [children])
+  */
 
-  const data = dataProp?.data || loadedData
+  const data = dataProp?.data
   const name = (() => {
     if (dataProp?.name) {
       return dataProp.name

@@ -1,0 +1,84 @@
+---
+title: 'HTML <tbody>: 표 본문 요소'
+description: HTML <tbody> 요소는 표에서 본문을 구성하는 행들을 묶습니다.
+bcd: html.elements.tbody
+---
+
+**HTML `<thead>` 요소**는 표에서 본문을 구성하는 행들을 묶습니다.
+
+<HTMLDemo height={180}>
+
+```html
+<table>
+  <thead>
+    <tr>
+      <th>종류</th>
+      <th>품목</th>
+      <th>원산지</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="3">과일</th>
+      <td>사과</td>
+      <td rowspan="2">국산</td>
+    </tr>
+    <tr>
+      <td>배</td>
+    </tr>
+    <tr>
+      <td>파인애플</td>
+      <td>수입산</td>
+    </tr>
+    <tr>
+      <th>곡물</th>
+      <td>쌀</td>
+      <td>국산</td>
+    </tr>
+    <tr>
+      <th>해산물</th>
+      <td>고등어</td>
+      <td>원양산</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+```css
+th,
+td {
+  border: 1px solid #777;
+  padding: 8px;
+}
+
+th {
+  background: #efefef;
+}
+```
+
+</HTMLDemo>
+
+`<tbody>` 요소는 [`<thead>`](./thead), [`<tfoot>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tfoot)과 함께 표의 각 부분에 의미 정보를 부여합니다. 스크린 리더와 프린터 등에서 표를 출력할 때 이 정보를 활용할 수 있습니다.
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)만 포함합니다.
+
+# 사용 일람
+
+- 표의 헤더를 나타내기 위해 [`<thead>`](./thead) 요소를 사용할 경우, `<tbody>` 요소는 **반드시** `<thead>` 이후에 위치해야 합니다.
+- `<tbody>` 요소를 사용한 [`<table>`](./table)에는 `<tr>` 요소를 직접, 즉 `<tbody>`의 *형제* 요소로 사용할 수 없습니다. `<tbody>`를 사용할 경우, 헤더와 푸터에 속하지 않는 모든 행은 반드시 `<tbody>` 아래에 배치해야 합니다.
+- 필요하다면 하나의 표에 여러 개의 연속된 `<tbody>` 요소를 사용할 수 있습니다. CSS 등을 특정 행들에만 다르게 적용해야 할 때 활용할 수 있습니다.
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/tables.html#the-tbody-element)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 표 컨테이너: [`<table>`](./table)
+- 표 헤더: [`<thead>`](./thead)

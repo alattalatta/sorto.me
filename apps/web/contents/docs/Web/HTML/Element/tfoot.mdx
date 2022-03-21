@@ -1,0 +1,73 @@
+---
+title: 'HTML <tfoot>: 표 푸터 요소'
+description: HTML <tfoot> 요소는 표에서 열의 푸터를 구성하는 행들을 묶습니다.
+bcd: html.elements.tfoot
+---
+
+**HTML `<tfoot>` 요소**는 표에서 열의 푸터를 구성하는 행들을 묶습니다.
+
+<HTMLDemo height={180}>
+
+```html
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th scope="col">지출</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">식빵</th>
+      <td>3,000</td>
+    </tr>
+    <tr>
+      <th scope="row">커피</th>
+      <td>4,500</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th scope="row">합계</th>
+      <td>7,500</td>
+    </tr>
+  </tfoot>
+</table>
+```
+
+```css
+table {
+  border-collapse: collapse;
+}
+
+thead,
+tfoot {
+  background: #efefef;
+}
+
+th,
+td {
+  border: 1px solid #777;
+  padding: 8px;
+}
+```
+
+</HTMLDemo>
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)만 포함합니다.
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/tables.html#the-tfoot-element)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 표 컨테이너: [`<table>`](./table)
+- 표 본문: [`<tbody>`](./tbody)
+- 표 헤더: [`<thead>`](./thead)

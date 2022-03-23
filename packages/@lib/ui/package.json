@@ -10,9 +10,9 @@
   "devDependencies": {
     "@testing-library/react": "^12.1.4",
     "@types/jest": "^27.4.1",
-    "@types/react": "^17.0.40",
-    "@types/react-dom": "^17.0.13",
-    "@vanilla-extract/recipes": "^0.2.3",
+    "@types/react": "^17.0.42",
+    "@types/react-dom": "^17.0.14",
+    "@vanilla-extract/recipes": "^0.2.4",
     "jest": "^27.5.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

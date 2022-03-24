@@ -22,7 +22,7 @@ function notebox(blockquote: Blockquote, index: number, parent: Parent): void {
     return
   }
 
-  text.value = text.value.slice(severity.length + 2).trim() // [ + severity + ]
+  text.value = text.value.slice(severity.length + 2).trimStart() // [ + severity + ]
   const noteboxNode: Notebox = {
     children: blockquote.children,
     severity,

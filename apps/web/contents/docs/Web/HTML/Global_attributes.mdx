@@ -1,17 +1,14 @@
 ---
 title: HTML 전역 특성
-description: HTML 전역 특성(전역 속성)은 모든 HTML 요소가 지원하는 특성으로, 모든 요소에 사용할 수 있습니다. 그러나 일부 요소에서는 효과가 없을 수 있습니다.
+description: HTML 전역 특성(전역 속성)은 모든 HTML 요소가 지원하는 특성입니다. 그러나 일부 요소에서는 효과가 없을 수 있습니다.
 bcd: html.global_attributes
 ---
 
-**HTML 전역 특성**<small>(전역 속성)</small>은 모든 HTML 요소가 지원하는 특성으로, 모든 요소에 사용할 수 있습니다. 그러나 일부 요소에서는 효과가 없을 수 있습니다.
+**HTML 전역 특성**<small>(전역 속성)</small>은 모든 HTML 요소가 지원하는 특성입니다. 그러나 일부 요소에서는 효과가 없을 수 있습니다.
 
 전역 특성은 [모든 HTML 요소](./Element)에 지정할 수 있으며, 심지어 표준에 명시되지 않은 요소에도 지정할 수 있습니다. 비록 비표준 요소를 사용하는 순간 문서는 HTML 표준을 준수하지 않는 것이지만, 그렇다고 해도 모든 비표준 요소는 전역 특성을 허용해야 합니다. 예를 들어, `<foo>`라는 이름의 유효하지 않은 HTML 태그를 사용한 문서에서도, HTML 표준을 준수하는 브라우저라면 [`hidden`](#term-hidden) 특성을 지정한 `<foo hidden>...</foo>` 콘텐츠를 화면에 그리지 않습니다.
 
-기본 HTML 전역 특성 외에 다음과 같은 전역 특성도 존재합니다.
-
-- 접근성 향상을 위해 사용하는 다수의 [`aria-*`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA) 특성.
-- [이벤트 처리기](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Event_handlers) 특성: `onabort`, `onautocomplete`, `onautocompleteerror`, `onblur`, `oncancel`, `oncanplay`, `oncanplaythrough`, `onchange`, `onclick`, `onclose`, `oncontextmenu`, `oncuechange`, `ondblclick`, `ondrag`, `ondragend`, `ondragenter`, `ondragexit`, `ondragleave`, `ondragover`, `ondragstart`, `ondrop`, `ondurationchange`, `onemptied`, `onended`, `onerror`, `onfocus`, `oninput`, `oninvalid`, `onkeydown`, `onkeypress`, `onkeyup`, `onload`, `onloadeddata`, `onloadedmetadata`, `onloadstart`, `onmousedown`, `onmouseenter`, `onmouseleave`, `onmousemove`, `onmouseout`, `onmouseover`, `onmouseup`, `onmousewheel`, `onpause`, `onplay`, `onplaying`, `onprogress`, `onratechange`, `onreset`, `onresize`, `onscroll`, `onseeked`, `onseeking`, `onselect`, `onshow`, `onsort`, `onstalled`, `onsubmit`, `onsuspend`, `ontimeupdate`, `ontoggle`, `onvolumechange`, `onwaiting`.
+기본 HTML 전역 특성 외에도 접근성 향상을 위해 사용하는 다양한 [`aria-*`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA) 특성이 존재합니다.
 
 # 전역 특성 목록
 

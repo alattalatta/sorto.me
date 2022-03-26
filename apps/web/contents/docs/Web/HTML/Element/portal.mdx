@@ -35,9 +35,9 @@ bcd: html.elements.portal
 
 포탈에 표시되는 콘텐츠 미리보기는 상호작용할 수 없으므로 입력 이벤트와 포커스를 받지 않습니다. 따라서 포탈 내부 콘텐츠는 접근성 트리에 노출되지 않습니다.
 
-`<portal>`의 기본 레이블은 삽입한 페이지의 제목입니다. 제목이 따로 존재하지 않는다면 보여지는 영역의 텍스트를 이어붙여 레이블을 생성합니다. [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#attr-aria-label) 특성으로 기본 레이블을 재정의할 수 있습니다.
+`<portal>`의 기본 레이블은 삽입한 페이지의 제목입니다. 제목이 따로 존재하지 않는다면 보여지는 영역의 텍스트를 이어붙여 레이블을 생성합니다. [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label) 특성으로 기본 레이블을 재정의할 수 있습니다.
 
-프리렌더링만을 위해 사용한 `<portal>`은 `hidden` 전역 특성 또는 CSS [`display: none`](https://developer.mozilla.org/en-US/docs/Web/CSS/display)을 사용해 숨겨야 합니다.
+프리렌더링만을 위해 사용한 `<portal>`은 `hidden` 전역 특성 또는 CSS [`display: none`](/docs/Web/CSS/display)을 사용해 숨겨야 합니다.
 
 포탈 활성화 시 애니메이션을 적용한다면 [`prefers-reduced-motion`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion) 미디어 기능을 존중해야 합니다.
 

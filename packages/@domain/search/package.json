@@ -5,18 +5,18 @@
   "main": "./index.tsx",
   "types": "./index.tsx",
   "devDependencies": {
-    "@types/react": "^17.0.42",
+    "@types/react": "^17.0.43",
     "@types/react-dom": "^17.0.14",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "tsconfig": "workspace:*",
-    "typescript": "^4.6.2"
+    "typescript": "^4.6.3"
   },
   "dependencies": {
     "@lib/functions": "workspace:*",
     "@lib/ui": "workspace:*",
     "@vanilla-extract/css": "^1.6.8",
     "framer-motion": "^6.2.8",
-    "next": "^12.1.0"
+    "next": "^12.1.1"
   }
 }

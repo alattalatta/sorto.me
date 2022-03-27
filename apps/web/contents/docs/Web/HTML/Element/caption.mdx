@@ -1,10 +1,10 @@
 ---
-title: 'HTML <thead>: 표 헤더 요소'
-description: HTML <thead> 요소는 표에서 열의 헤더를 구성하는 행들을 묶습니다.
-bcd: html.elements.thead
+title: 'HTML <caption>: 표 설명 요소'
+description: HTML <caption> 요소는 표에 설명 또는 제목을 추가합니다.
+bcd: html.elements.caption
 ---
 
-**HTML `<thead>` 요소**는 표에서 열의 헤더를 구성하는 행들을 묶습니다.
+**HTML `<caption>` 요소**는 표에 설명 또는 제목을 추가합니다.
 
 <HTMLDemo height={180}>
 
@@ -63,9 +63,15 @@ th {
 
 [전역 특성](/docs/Web/HTML/Global_attributes)만 포함합니다.
 
+# 사용 일람
+
+`<caption>` 요소를 사용할 경우, 반드시 [`<table>`](./table)의 첫 번째 자식 요소로 배치해야 합니다. 위치를 아래로 바꾸고자 하면 `<table>`에 CSS [`caption-side`](https://developer.mozilla.org/en-US/docs/Web/CSS/caption-side) 속성을 설정하세요.
+
+`<table>`의 [`background-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/background-color)는 `<caption>`을 포함하지 않습니다. `<caption>`에 따로 `background-color`를 설정하세요.
+
 # 명세
 
-[HTML Living Standard](https://html.spec.whatwg.org/multipage/tables.html#the-thead-element)
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/tables.html#the-caption-element)
 
 # 브라우저 호환성
 
@@ -73,8 +79,8 @@ th {
 
 # 같이 보기
 
-- 표 제목/설명: [`<caption>`](./caption)
 - 표 컨테이너: [`<table>`](./table)
 - 표 본문: [`<tbody>`](./tbody)
 - 표 푸터: [`<tfoot>`](./tfoot)
+- 표 헤더: [`<thead>`](./thead)
 - 행: [`<tr>`](./tr)

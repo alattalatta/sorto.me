@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "@ava/typescript": "^3.0.1",
+    "@types/node": "16",
     "@types/react": "^17.0.43",
     "@types/react-dom": "^17.0.14",
     "ava": "^4.1.0",

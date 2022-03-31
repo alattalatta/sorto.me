@@ -1,11 +1,14 @@
 import { promises as fs } from 'fs'
 import path from 'path'
+import url from 'url'
 
 import { readLastModified } from '@lib/functions/server'
 import { escapeUTF8 } from 'entities'
 import matter from 'gray-matter'
 
 import type { Doc, DocMetadata } from './types'
+
+const __dirname = path.dirname(url.fileURLToPath(import.meta.url))
 
 /**
  * Parses a MDX post file. Creation date is parsed from the file's name.

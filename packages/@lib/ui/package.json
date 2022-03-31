@@ -5,13 +5,23 @@
   "main": "./index.tsx",
   "types": "./index.tsx",
   "type": "module",
+  "scripts": {
+    "test": "TS_NODE_PROJECT=tsconfig.json ava"
+  },
   "devDependencies": {
+    "@ava/typescript": "^3.0.1",
     "@testing-library/react": "^12.1.4",
+    "@types/jsdom-global": "^3.0.2",
+    "@types/node": "16",
     "@types/react": "^17.0.43",
     "@types/react-dom": "^17.0.14",
     "@vanilla-extract/recipes": "^0.2.4",
+    "ava": "^4.1.0",
+    "jsdom": "^19.0.0",
+    "jsdom-global": "^3.0.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "ts-node": "^10.7.0",
     "tsconfig": "workspace:*",
     "typescript": "^4.6.3"
   },
@@ -22,5 +32,17 @@
     "framer-motion": "^6.2.8",
     "next": "^12.1.1",
     "next-themes": "^0.1.1"
+  },
+  "ava": {
+    "extensions": {
+      "js": true,
+      "jsx": "module",
+      "ts": "module",
+      "tsx": "module"
+    },
+    "nodeArguments": [
+      "--experimental-specifier-resolution=node",
+      "--loader=ts-node/esm"
+    ]
   }
 }

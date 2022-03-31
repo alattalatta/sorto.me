@@ -34,6 +34,8 @@ const Anchor = forwardRef<HTMLAnchorElement, Omit<JSX.IntrinsicElements['a'], 'r
       }
 
       const resolvedURL = new URL(href, location.href)
+
+      console.log(Link)
       return (
         <Link href={resolvedURL}>
           <a ref={ref} href={href} {...props}>

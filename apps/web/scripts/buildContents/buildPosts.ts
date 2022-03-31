@@ -1,12 +1,13 @@
 import { promises as fs } from 'fs'
 import path from 'path'
+import url from 'url'
 
 import { parse } from '@domain/blog/parse'
 import { compile } from '@lib/mdx/compiler'
 
 import { minify } from './minify'
 
-const packageRoot = path.resolve.bind(null, __dirname, '../..')
+const packageRoot = path.resolve.bind(null, path.dirname(url.fileURLToPath(import.meta.url)), '../..')
 
 export async function main(): Promise<void> {
   await fs.mkdir(packageRoot('out/posts'), { recursive: true })

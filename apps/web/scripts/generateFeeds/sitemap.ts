@@ -1,5 +1,6 @@
 import { promises as fs } from 'fs'
 import path from 'path'
+import url from 'url'
 
 import type { PostMetadata } from '@domain/blog'
 import type { DocMetadata } from '@domain/docs'
@@ -7,7 +8,7 @@ import type { DocMetadata } from '@domain/docs'
 import docsIndex from '../../out/docs/index.json'
 import postsIndex from '../../out/posts/index.json'
 
-const PROJECT_ROOT = path.resolve(__dirname, '../..')
+const PROJECT_ROOT = path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), '../..')
 
 const SITE_URL = 'https://sorto.me'
 const SITEMAP_PATH = path.join(PROJECT_ROOT, 'public/sitemap.md.xml')

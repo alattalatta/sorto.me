@@ -1,5 +1,6 @@
 import { promises as fs } from 'fs'
 import path from 'path'
+import url from 'url'
 
 import type { DocMetadata } from '@domain/docs'
 import { parse } from '@domain/docs/parse'
@@ -8,7 +9,7 @@ import klaw from 'klaw'
 
 import { minify } from './minify'
 
-const packageRoot = path.resolve.bind(null, __dirname, '../..')
+const packageRoot = path.resolve.bind(null, path.dirname(url.fileURLToPath(import.meta.url)), '../..')
 
 export async function main(): Promise<void> {
   const mainPromises: Promise<unknown>[] = []

@@ -2,6 +2,7 @@
   "name": "@app/web",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "tnode": "ts-node --project tsconfig.script.json",
     "prebuild": "pnpm tnode ./scripts/buildContents/index.ts && pnpm tnode ./scripts/generateFeeds/index.ts",

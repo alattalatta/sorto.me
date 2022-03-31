@@ -4,6 +4,7 @@
   "private": true,
   "main": "./index.ts",
   "types": "./index.ts",
+  "type": "module",
   "scripts": {
     "build": "node build.js"
   },

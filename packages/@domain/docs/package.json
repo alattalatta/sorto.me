@@ -4,6 +4,7 @@
   "private": true,
   "main": "./index.tsx",
   "types": "./index.tsx",
+  "type": "module",
   "scripts": {
     "test": "jest"
   },

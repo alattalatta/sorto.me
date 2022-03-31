@@ -1,16 +1,23 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const internalDependencies = Object.keys(require('./package.json').dependencies).filter((package) =>
-  /^@(app|contents|domain|lib)\//.test(package),
+import bundleAnalyzer from '@next/bundle-analyzer'
+import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin'
+import withPWA from 'next-pwa'
+import tm from 'next-transpile-modules'
+import { readFile } from 'node:fs/promises'
+
+import cache from './cache.mjs'
+
+const packageInfo = JSON.parse(await readFile(new URL('./package.json', import.meta.url)))
+
+const internalDependencies = Object.keys(packageInfo.dependencies).filter((pack) =>
+  /^@(app|contents|domain|lib)\//.test(pack),
 )
 
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
+const withBundleAnalyzer = bundleAnalyzer({
+  // eslint-disable-next-line no-undef
   enabled: process.env.ANALYZE === 'true',
 })
-const withPWA = require('next-pwa')
-const withTM = require('next-transpile-modules')(internalDependencies)
-const withVanillaExtract = require('@vanilla-extract/next-plugin').createVanillaExtractPlugin()
-
-const { PHASE_DEVELOPMENT_SERVER } = require('next/constants')
+const withTM = tm(internalDependencies)
+const withVanillaExtract = createVanillaExtractPlugin()
 
 const pluginStack = (config) =>
   [withBundleAnalyzer, withVanillaExtract, withPWA, withTM].reduce((config, plugin) => plugin(config), config)
@@ -22,10 +29,10 @@ const nextConfig = (phase) => ({
   pwa: {
     dest: 'public',
     disable: process.env.NODE_ENV !== 'production',
-    runtimeCaching: require('./cache')
+    runtimeCaching: cache,
   },
   async headers() {
-    if (phase === PHASE_DEVELOPMENT_SERVER) {
+    if (phase === 'phase-development-server') {
       return []
     }
 
@@ -65,9 +72,15 @@ const nextConfig = (phase) => ({
         source: '/posts/2022-02-20\\+markdown',
         destination: '/posts/2022-02-20--markdown',
         permanent: true,
-      }
+      },
     ]
+  },
+  webpack(config) {
+    config.infrastructureLogging = {
+      level: 'error',
+    }
+    return config
   },
 })
 
-module.exports = (phase) => pluginStack(nextConfig(phase))
+export default (phase) => pluginStack(nextConfig(phase))

@@ -1,12 +1,13 @@
-import { promises as fs } from 'fs'
-import path from 'path'
-import url from 'url'
-
 import type { PostMetadata } from '@domain/blog'
+import { filePath } from '@lib/functions/server'
+import fs from 'node:fs/promises'
+import path from 'node:path'
 
 import postsIndex from '../../out/posts/index.json'
 
-const PROJECT_ROOT = path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), '../..')
+const __dirname = filePath(import.meta.url)
+
+const PROJECT_ROOT = path.resolve(__dirname, '../..')
 
 const SITE_URL = 'https://sorto.me'
 const RSS_PATH = path.join(PROJECT_ROOT, 'public/rss.xml')

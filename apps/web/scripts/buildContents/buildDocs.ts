@@ -1,29 +1,30 @@
-import { promises as fs } from 'fs'
-import path from 'path'
-import url from 'url'
-
 import type { DocMetadata } from '@domain/docs'
 import { parse } from '@domain/docs/parse'
+import { filePath } from '@lib/functions/server'
 import { compile } from '@lib/mdx/compiler'
 import klaw from 'klaw'
+import fs from 'node:fs/promises'
+import path from 'node:path'
 
 import { minify } from './minify'
 
-const packageRoot = path.resolve.bind(null, path.dirname(url.fileURLToPath(import.meta.url)), '../..')
+const __dirname = filePath(import.meta.url)
+
+const packageRoot = path.resolve.bind(null, __dirname, '../..')
 
 export async function main(): Promise<void> {
   const mainPromises: Promise<unknown>[] = []
   const docsMeta: DocMetadata[] = []
 
-  for await (const { path: filePath, stats } of klaw(packageRoot('contents/docs'))) {
-    if (stats.isDirectory() || !filePath.endsWith('.mdx')) {
+  for await (const { path: docPath, stats } of klaw(packageRoot('contents/docs'))) {
+    if (stats.isDirectory() || !docPath.endsWith('.mdx')) {
       continue
     }
 
-    const relPath = path.relative(packageRoot('contents/docs'), filePath)
+    const relPath = path.relative(packageRoot('contents/docs'), docPath)
     const dirname = path.dirname(relPath)
 
-    const parseAsync = parse(filePath, packageRoot('contents/docs'))
+    const parseAsync = parse(docPath, packageRoot('contents/docs'))
 
     await fs.mkdir(packageRoot('out/docs', dirname), { recursive: true })
 
@@ -34,7 +35,7 @@ export async function main(): Promise<void> {
         .then(async ({ content, meta }) => {
           docsMeta.push(meta)
           return fs.writeFile(
-            packageRoot('out/docs', dirname, path.basename(filePath).replace(/mdx$/i, 'json')),
+            packageRoot('out/docs', dirname, path.basename(docPath).replace(/mdx$/i, 'json')),
             JSON.stringify({
               content: await compile(content).then(minify),
               meta,

@@ -1,19 +1,18 @@
-import path from 'path'
-import url from 'url'
-
+import { filePath } from '@lib/functions/server'
 import test from 'ava'
+import path from 'node:path'
 
 import { parse } from './parse'
 
-const __dirname = path.dirname(url.fileURLToPath(import.meta.url))
+const __dirname = filePath(import.meta.url)
 
 test('can parse post', async (t) => {
-  const filePath = path.resolve(__dirname, 'mocks/2020-02-03--full.mdx')
+  const postPath = path.resolve(__dirname, 'mocks/2020-02-03--full.mdx')
 
   const {
     content,
     meta: { updated, ...meta },
-  } = await parse(filePath)
+  } = await parse(postPath)
 
   t.is(content.trim(), 'ccc')
   t.deepEqual(meta, {
@@ -26,12 +25,12 @@ test('can parse post', async (t) => {
 })
 
 test('can parse post with minimal data', async (t) => {
-  const filePath = path.resolve(__dirname, 'mocks/2020-02-04--minimal.mdx')
+  const postPath = path.resolve(__dirname, 'mocks/2020-02-04--minimal.mdx')
 
   const {
     content,
     meta: { updated, ...meta },
-  } = await parse(filePath)
+  } = await parse(postPath)
 
   t.is(content.trim(), '')
   t.deepEqual(meta, {

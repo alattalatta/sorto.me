@@ -1,24 +1,22 @@
-import { promises as fs } from 'fs'
-import path from 'path'
-import url from 'url'
-
-import { readLastModified } from '@lib/functions/server'
+import { filePath, readLastModified } from '@lib/functions/server'
 import { escapeUTF8 } from 'entities'
 import matter from 'gray-matter'
+import fs from 'node:fs/promises'
+import path from 'node:path'
 
 import type { Doc, DocMetadata } from './types'
 
-const __dirname = path.dirname(url.fileURLToPath(import.meta.url))
+const __dirname = filePath(import.meta.url)
 
 /**
  * Parses a MDX post file. Creation date is parsed from the file's name.
  *
- * @param filePath File's path.
+ * @param docPath File's path.
  */
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-async function parse(filePath: string, rootDir?: string): Promise<Doc> {
-  const sourceAsync = fs.readFile(filePath)
-  const lastModifiedAsync = readLastModified(filePath)
+async function parse(docPath: string, rootDir?: string): Promise<Doc> {
+  const sourceAsync = fs.readFile(docPath)
+  const lastModifiedAsync = readLastModified(docPath)
 
   const {
     content,
@@ -30,7 +28,7 @@ async function parse(filePath: string, rootDir?: string): Promise<Doc> {
     meta: {
       ...(data as DocMetadata),
       description: typeof description === 'string' ? escapeUTF8(description) : null,
-      slug: path.relative(rootDir || __dirname, filePath).replace(/(^mdx\/)|(.mdx$)/gi, ''),
+      slug: path.relative(rootDir || __dirname, docPath).replace(/(^mdx\/)|(.mdx$)/gi, ''),
       updated: (await lastModifiedAsync).toISOString(),
     } as DocMetadata,
   }

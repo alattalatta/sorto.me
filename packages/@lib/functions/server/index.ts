@@ -1,1 +1,2 @@
-export { readLastModified } from './file'
+export * from './file'
+export * from './meta'

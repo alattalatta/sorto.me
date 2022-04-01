@@ -1,8 +1,9 @@
+import fs from 'node:fs/promises'
+import path from 'node:path'
+
 import { parse } from '@domain/blog/parse'
 import { filePath } from '@lib/functions/server'
 import { compile } from '@lib/mdx/compiler'
-import fs from 'node:fs/promises'
-import path from 'node:path'
 
 import { minify } from './minify'
 

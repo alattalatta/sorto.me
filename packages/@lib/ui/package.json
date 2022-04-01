@@ -6,7 +6,7 @@
   "types": "./index.tsx",
   "type": "module",
   "scripts": {
-    "test": "TS_NODE_PROJECT=tsconfig.json ava"
+    "_test": "TS_NODE_PROJECT=tsconfig.json ava"
   },
   "devDependencies": {
     "@ava/typescript": "^3.0.1",

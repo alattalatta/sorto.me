@@ -29,7 +29,7 @@ img {
 
 HTML 표준은 지원할 이미지 형식을 명시하지 않으므로, 사용자 에이전트가 지원하는 형식이 서로 다릅니다.
 
-다음은 웹에서 많이 사용하는 이미지 형식 표입니다.
+다음은 웹에서 많이 사용하는 이미지 형식과 지원 브라우저를 나타낸 표입니다.
 
 | 준말 | MIME 유형       | 확장자             | 요약                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ---- | --------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -59,13 +59,13 @@ HTML 표준은 지원할 이미지 형식을 명시하지 않으므로, 사용�
 
   - 이미지의 대체 텍스트 설명을 지정합니다.
 
-    > [note] 브라우저는 이미지를 항상 표시할 수 없습니다. 다음과 같은 상황이 그 예시입니다.
+    > [note] 브라우저가 항상 이미지를 표시할 수는 없습니다.
     >
-    > - 시각 장애를 가진 사용자의 비 시각적 브라우저
-    > - 사용자가 대역폭 절약, 사생활 보호 등을 위해 이미지의 표시를 끔
-    > - 유효하지 않거나 지원하지 않는 형식의 이미지
+    > - 시각 장애를 가진 사용자가 이용하는 비 시각적 브라우저
+    > - 사용자가 대역폭 절약과 사생활 보호 등을 위해 이미지를 비활성화
+    > - 브라우저가 이미지 형식을 지원하지 않음
     >
-    > 이런 상황에서 브라우저는 이미지 대신 `alt`의 값을 대신 노출할 수 있습니다. 이외에도 여러가지 이유가 있으니 가능하면 항상 `alt` 특성을 지정하세요.
+    > 위와 같은 상황에서 브라우저는 이미지 대신 `alt`의 값을 노출할 수 있습니다. 이외에도 여러가지 이유가 있으니 되도록 항상 `alt` 특성을 지정하세요.
 
     `alt`를 완전히 제거하면 이미지가 콘텐츠의 중요한 부분이지만 동일한 텍스트를 제공할 방법이 없음을 의미합니다.
 
@@ -170,9 +170,9 @@ HTML 표준은 지원할 이미지 형식을 명시하지 않으므로, 사용�
 
 ## CSS 스타일링
 
-`<img>`는 [대체 요소](https://developer.mozilla.org/ko/docs/Web/CSS/Replaced_element)로, [`display`](/docs/Web/CSS/display)의 기본값은 `inline`이지만 요소의 크기는 마치 `inline-block`을 지정한듯, 삽입한 이미지의 내재된 높이와 너비에 따라 결정됩니다. `<img>`에는 [`border`](https://developer.mozilla.org/en-US/docs/Web/CSS/border), [`border-radius`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius), [`margin`](/docs/Web/CSS/margin), [`padding`](https://developer.mozilla.org/en-US/docs/Web/CSS/padding), [`width`](https://developer.mozilla.org/en-US/docs/Web/CSS/width), [`height`](https://developer.mozilla.org/en-US/docs/Web/CSS/height) 등의 속성을 적용할 수 있습니다.
+`<img>`는 [대체 요소](https://developer.mozilla.org/ko/docs/Web/CSS/Replaced_element)로, [`display`](/docs/Web/CSS/display)의 기본값은 `inline`이지만 삽입한 이미지의 내재된 높이와 너비에 따라 마치 `inline-block`을 지정한 것과 같이 요소의 크기가 결정됩니다. `<img>`에는 [`border`](https://developer.mozilla.org/en-US/docs/Web/CSS/border), [`border-radius`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius), [`margin`](/docs/Web/CSS/margin), [`padding`](https://developer.mozilla.org/en-US/docs/Web/CSS/padding), [`width`](https://developer.mozilla.org/en-US/docs/Web/CSS/width), [`height`](https://developer.mozilla.org/en-US/docs/Web/CSS/height) 등의 속성을 적용할 수 있습니다.
 
-`<img>`는 기준선(baseline)을 갖지 않으므로 [`vertical-align`](https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align)`: baseline`이 적용된 인라인 서식 맥락 내에서는 이미지의 아래쪽 모서리를 텍스트 기준선에 배치합니다.
+`<img>`는 기준선(baseline)을 갖지 않으므로 [`vertical-align: baseline`](https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align)이 적용된 인라인 서식 맥락 내에서는 이미지의 아래쪽 모서리를 텍스트 기준선에 배치합니다.
 
 요소 박스 내에서 이미지의 위치는 [`object-position`](https://developer.mozilla.org/en-US/docs/Web/CSS/object-position) 속성으로 바꿀 수 있습니다. 또한 [`object-fit`](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit) 속성을 통해 이미지 크기를 요소 크기에 맞출지, 요소 전체를 채울지 등을 지정할 수 있습니다.
 
@@ -204,13 +204,13 @@ HTML 표준은 지원할 이미지 형식을 명시하지 않으므로, 사용�
 - `(max-width: 480px) 480px`: 뷰포트 너비가 `480px` 이하인 경우, `480px`의 너비에 적합한 이미지를 표시합니다. 픽셀 밀도가 1일 때, `srcset`에 `480w`로 서술한 `thumbnail480.png`를 사용할 것입니다.
 - 그 외의 경우, `25vw`의 너비에 적합한 이미지를 표시합니다. 현재 뷰포트 너비의 25%(`25vw`)에 가장 적합한 이미지를 `srcset`에서 선택합니다.
 
-[`src` 특성](#term-src)은 [`srcset`](#term-srcset)과 `sizes`를 지원하지 않는 사용자 에이전트를 위해 지정해야 합니다. 모던 브라우저에서는 `srcset` 특성에 너비 서술자 `w`를 사용했으므로 `src`를 무시합니다.
+[`srcset`](#term-srcset)과 `sizes`를 지원하지 않는 사용자 에이전트를 위해서는 [`src` 특성](#term-src)도 지정해야 합니다. 모던 브라우저에서는 `srcset` 특성에 너비 서술자 `w`를 사용했으므로 `src`를 무시합니다.
 
 # 접근성 고려사항
 
 ## 유의미한 대체 설명 작성
 
-[`alt` 특성](#term-alt)의 값은 분명하고 간결하게 이미지의 내용을 설명해야 합니다. 이미지가 존재한다는 사실이나 파일 이름과 같은 값은 지정하지 말아야 합니다. 이미지에 대응 가능한 텍스트가 없어서 `alt`를 의도적으로 누락한 경우에는 이미지의 의도를 설명할 수 있는 다른 방법을 고려하세요.
+[`alt` 특성](#term-alt)의 값은 분명하고 간결하게 이미지의 내용을 설명해야 합니다. 이미지가 존재한다는 사실 그 자체나 파일 이름 등 내용을 설명하지 못하는 값을 사용하면 안됩니다. 이미지에 대응 가능한 텍스트가 없어서 `alt`를 의도적으로 누락한 경우에는 이미지의 의도를 설명할 수 있는 다른 방법을 고려하세요.
 
 ### 좋지 않음
 
@@ -224,15 +224,15 @@ HTML 표준은 지원할 이미지 형식을 명시하지 않으므로, 사용�
 <img alt="일광욕 중인 황제펭귄." src="penguin.jpg" />
 ```
 
-일부 스크린 리더에서는 `alt`가 없으면 파일 이름을 대신 읽을 수도 있는데, 파일 이름은 이미지의 콘텐츠와 관련이 없을 수도 있기 때문에 사용자에게 혼란을 줄 수 있습니다. 되도록 항상 `alt`를 지정하세요.
+일부 스크린 리더에서는 `alt`가 없으면 파일 이름을 대신 읽을 수도 있는데, 파일 이름은 이미지의 콘텐츠와 관련이 없을 수도 있기 때문에 사용자에게 혼란을 줄 수 있습니다. 되도록이면 항상 `alt`를 지정하세요.
 
-## `title` 특성
+## title 특성
 
-[`title` 전역 특성](../Global_attributes#term-title)은 `alt` 특성을 대체할 수 없습니다. `alt`와 `title`의 값을 동일하게 설정하는 것도 피하세요. 일부 스크린 리더에서 같은 내용으로 이미지를 두 번 읽을 수 있습니다.
+[`title` 전역 특성](../Global_attributes#term-title)은 [`alt` 특성](#term-alt)을 대체할 수 없습니다. `alt`와 `title`의 값을 동일하게 설정하는 것도 피하세요. 일부 스크린 리더에서 이미지를 같은 내용으로 두 번 표현할 수 있습니다.
 
-`title`을 `alt`에 대한 보충 정보로 사용해서도 안됩니다. 이미지에 캡션이 필요하면 [`<figure>`](./figure)와 [`<figcaption>`](./figcaption) 요소를 사용하세요.
+`title`을 `alt`에 대한 보충 정보로 사용해서도 안됩니다. 이미지에 설명이 필요하면 [`<figure>`](./figure)와 [`<figcaption>`](./figcaption) 요소를 사용하세요.
 
-`title` 특성의 값은 사용자에게 보통 툴팁, 즉 마우스 커서가 이미지 위에 멈추면 잠시 후에 나타나는 형태로 보여집니다. 따라서 사용자가 추가 정보를 얻는 방법으로 사용될 수 있지만, 개발자는 사용자가 툴팁을 볼 수 있을 것이란 가정을 해선 안됩니다. 키보드나 터치 스크린만 사용하는 경우 툴팁을 볼 방법이 없습니다. 사용자에게 중요한 정보는 `title`에 제공하지 말고 [`<figcaption>`](./figcaption) 등 다른 방법으로 문서 본문에 포함하세요.
+`title` 특성의 값은 보통 툴팁, 즉 마우스 커서가 이미지 위에 멈추면 잠시 후에 나타나는 형태로 보여집니다. 따라서 사용자가 추가 정보를 얻는 방법 중 하나로 사용할 수는 있지만, 개발자로서 사용자가 툴팁을 항상 볼 수 있을 것이라는 가정을 해선 안됩니다. 키보드나 터치 스크린만 사용하는 경우 툴팁을 볼 방법이 없습니다. 사용자에게 중요한 정보는 `title`에 제공하지 말고 `<figcaption>` 등 다른 방법으로 문서 본문에 포함하세요.
 
 # 명세
 

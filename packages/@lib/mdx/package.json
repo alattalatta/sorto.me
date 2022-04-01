@@ -4,12 +4,11 @@
   "private": true,
   "main": "./index.ts",
   "types": "./index.ts",
-  "scripts": {
-    "build": "node build.js"
-  },
+  "type": "module",
   "dependencies": {
     "@mdx-js/mdx": "^2.1.0",
     "fp-ts": "^2.11.9",
+    "github-slugger": "^1.4.0",
     "hast-util-to-string": "^2.0.0",
     "image-size": "^1.0.1",
     "mdast-util-to-string": "^3.1.0",
@@ -30,8 +29,6 @@
     "@types/mdast": "^3.0.10",
     "@types/react": "^17.0.43",
     "@types/react-dom": "^17.0.14",
-    "esbuild": "^0.14.28",
-    "github-slugger": "^1.4.0",
     "tsconfig": "workspace:*",
     "typescript": "^4.6.3"
   }

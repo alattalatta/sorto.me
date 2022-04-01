@@ -1,10 +1,13 @@
-import { promises as fs } from 'fs'
-import path from 'path'
+import fs from 'node:fs/promises'
+import path from 'node:path'
 
 import { parse } from '@domain/blog/parse'
+import { filePath } from '@lib/functions/server'
 import { compile } from '@lib/mdx/compiler'
 
 import { minify } from './minify'
+
+const __dirname = filePath(import.meta.url)
 
 const packageRoot = path.resolve.bind(null, __dirname, '../..')
 

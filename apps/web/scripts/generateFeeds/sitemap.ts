@@ -1,11 +1,13 @@
-import { promises as fs } from 'fs'
-import path from 'path'
-
 import type { PostMetadata } from '@domain/blog'
 import type { DocMetadata } from '@domain/docs'
+import { filePath } from '@lib/functions/server'
+import fs from 'node:fs/promises'
+import path from 'node:path'
 
 import docsIndex from '../../out/docs/index.json'
 import postsIndex from '../../out/posts/index.json'
+
+const __dirname = filePath(import.meta.url)
 
 const PROJECT_ROOT = path.resolve(__dirname, '../..')
 

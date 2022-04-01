@@ -1,34 +1,36 @@
-import path from 'path'
+import { filePath } from '@lib/functions/server'
+import test from 'ava'
+import path from 'node:path'
 
 import { parse } from './parse'
 
-describe('Doc parser', () => {
-  describe('parse', () => {
-    it('can parse all necessary data with encoded excerpt', async () => {
-      const mockFilePath = path.join(__dirname, 'mocks/foo.mdx')
+const __dirname = filePath(import.meta.url)
 
-      const parsed = await parse(mockFilePath)
+test('can parse a file, and encode html entities in description', async (t) => {
+  const docPath = path.join(__dirname, 'mocks/foo.mdx')
 
-      expect(parsed.content.trim()).toBe('zzz')
-      expect(parsed.meta).toMatchObject({
-        bcd: 'foo.bar',
-        description: 'aaa&amp;bbb',
-        slug: 'mocks/foo',
-        title: 'foobar',
-      })
-    })
+  const parsed = await parse(docPath)
+  const { updated, ...meta } = parsed.meta
 
-    it('can parse all necessary data from a minimal file', async () => {
-      const mockFilePath = path.join(__dirname, 'mocks/minimal-data.mdx')
+  t.is(parsed.content.trim(), 'zzz')
+  t.deepEqual(meta, {
+    bcd: 'foo.bar',
+    description: 'aaa&amp;bbb',
+    slug: 'mocks/foo',
+    title: 'foobar',
+  })
+})
 
-      const parsed = await parse(mockFilePath)
+test('can parse a minimal file', async (t) => {
+  const docPath = path.join(__dirname, 'mocks/minimal-data.mdx')
 
-      expect(parsed.content).toBe('')
-      expect(parsed.meta).toMatchObject({
-        description: null,
-        slug: 'mocks/minimal-data',
-        title: 'title',
-      })
-    })
+  const parsed = await parse(docPath)
+  const { updated, ...meta } = parsed.meta
+
+  t.is(parsed.content.trim(), '')
+  t.deepEqual(meta, {
+    description: null,
+    slug: 'mocks/minimal-data',
+    title: 'title',
   })
 })

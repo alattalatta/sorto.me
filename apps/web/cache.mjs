@@ -1,6 +1,6 @@
-const defaultCache = require('next-pwa/cache')
+import defaultCache from 'next-pwa/cache.js'
 
-module.exports = [
+const cache = [
   {
     urlPattern: /^https:\/\/cdn\.jsdelivr\.net\/gh\/orioncactus\/pretendard\/.*/i,
     handler: 'CacheFirst',
@@ -8,8 +8,10 @@ module.exports = [
       cacheName: 'pretendard-cdn',
       expiration: {
         maxAgeSeconds: 365 * 24 * 60 * 60,
-      }
-    }
+      },
+    },
   },
-  ...defaultCache
+  ...defaultCache,
 ]
+
+export default cache

@@ -1,4 +1,4 @@
-import execa from 'execa'
+import { execa } from 'execa'
 
 /**
  * Returns a file's last git commit datetime as a Date object.

@@ -1,10 +1,11 @@
+import fs from 'node:fs/promises'
+import path from 'node:path'
+
 import type { DocMetadata } from '@domain/docs'
 import { parse } from '@domain/docs/parse'
 import { filePath } from '@lib/functions/server'
 import { compile } from '@lib/mdx/compiler'
 import klaw from 'klaw'
-import fs from 'node:fs/promises'
-import path from 'node:path'
 
 import { minify } from './minify'
 

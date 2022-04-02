@@ -1,27 +1,58 @@
+import path from 'node:path'
+
 import { filePath } from '@lib/functions/server'
 import test from 'ava'
-import path from 'node:path'
 
 import { parse } from './parse'
 
 const __dirname = filePath(import.meta.url)
 
-test('can parse a file, and encode html entities in description', async (t) => {
-  const docPath = path.join(__dirname, 'mocks/foo.mdx')
+test('can parse a file with explicit description; encodes html entities of the description', async (t) => {
+  const docPath = path.join(__dirname, 'mocks/explicit-description.mdx')
 
   const parsed = await parse(docPath)
   const { updated, ...meta } = parsed.meta
 
   t.is(parsed.content.trim(), 'zzz')
   t.deepEqual(meta, {
-    bcd: 'foo.bar',
+    bcd: 'foo',
     description: 'aaa&amp;bbb',
-    slug: 'mocks/foo',
-    title: 'foobar',
+    slug: 'mocks/explicit-description',
+    title: 'foo',
   })
 })
 
-test('can parse a minimal file', async (t) => {
+test('can parse a file without explicit description; strip Markdown syntax and encodes html entities of extracted description', async (t) => {
+  const docPath = path.join(__dirname, 'mocks/implicit-description.mdx')
+
+  const parsed = await parse(docPath)
+  const { updated, ...meta } = parsed.meta
+
+  t.is(parsed.content.trim(), '# Should ignore this heading\n\n`<zzz>` **aa**')
+
+  t.deepEqual(meta, {
+    description: '\\&lt;zzz&gt; aa',
+    slug: 'mocks/implicit-description',
+    title: 'foo',
+  })
+})
+
+test('can parse a file with explicit null description', async (t) => {
+  const docPath = path.join(__dirname, 'mocks/explicit-null-description.mdx')
+
+  const parsed = await parse(docPath)
+  const { updated, ...meta } = parsed.meta
+
+  t.is(parsed.content.trim(), '`<zzz>` **aa**')
+
+  t.deepEqual(meta, {
+    description: null,
+    slug: 'mocks/explicit-null-description',
+    title: 'foo',
+  })
+})
+
+test('can parse a file with only a title; its description must be null', async (t) => {
   const docPath = path.join(__dirname, 'mocks/minimal-data.mdx')
 
   const parsed = await parse(docPath)

@@ -6,7 +6,7 @@
   "types": "./index.ts",
   "type": "module",
   "dependencies": {
-    "@mdx-js/mdx": "^2.1.0",
+    "@mdx-js/mdx": "^2.1.1",
     "fp-ts": "^2.11.9",
     "github-slugger": "^1.4.0",
     "hast-util-to-string": "^2.0.0",
@@ -15,7 +15,7 @@
     "rehype-autolink-headings": "^6.1.1",
     "rehype-highlight": "^5.0.2",
     "remark-gfm": "^3.0.1",
-    "remark-mdx": "^2.1.0",
+    "remark-mdx": "^2.1.1",
     "remark-parse": "^10.0.1",
     "remark-rehype": "^10.1.0",
     "unified": "^10.1.2",

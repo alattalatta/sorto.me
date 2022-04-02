@@ -28,7 +28,7 @@
     "@vanilla-extract/css": "^1.6.8",
     "@vanilla-extract/recipes": "^0.2.4",
     "clsx": "^1.1.1",
-    "entities": "^3.0.1",
+    "entities": "3",
     "framer-motion": "^6.2.8",
     "gray-matter": "^4.0.2",
     "k-popo": "^1.2.0",

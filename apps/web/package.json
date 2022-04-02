@@ -42,7 +42,7 @@
     "@types/node": "^16.11.26",
     "@types/react": "^17.0.43",
     "@types/react-dom": "^17.0.14",
-    "@vanilla-extract/next-plugin": "^2.0.1",
+    "@vanilla-extract/next-plugin": "^2.0.2",
     "babel-loader": "^8.2.4",
     "fs-extra": "^10.0.1",
     "klaw": "^4.0.1",
@@ -51,6 +51,6 @@
     "ts-node": "^10.7.0",
     "tsconfig": "workspace:*",
     "typescript": "^4.6.3",
-    "webpack": "5"
+    "webpack": "^5.71.0"
   }
 }

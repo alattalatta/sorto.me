@@ -32,7 +32,10 @@
     "framer-motion": "^6.2.8",
     "gray-matter": "^4.0.2",
     "k-popo": "^1.2.0",
-    "next": "^12.1.4"
+    "next": "^12.1.4",
+    "remark": "^14.0.2",
+    "strip-markdown": "^5.0.0",
+    "unist-util-select": "^4.0.1"
   },
   "ava": {
     "extensions": {

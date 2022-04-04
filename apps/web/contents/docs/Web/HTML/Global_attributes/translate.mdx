@@ -1,0 +1,38 @@
+---
+title: 'HTML translate 전역 특성'
+bcd: html.global_attributes.translate
+---
+
+HTML **`translate`** [전역 특성](.)은 페이지를 번역할 때 요소의 번역 가능한 특성 값과 자식 [`Text`](https://developer.mozilla.org/en-US/docs/Web/API/Text) 노드들을 번역해야 하는지, 아니면 그대로 둬야 하는지 지정하는 열거형 특성입니다.
+
+가능한 값은 다음과 같습니다.
+
+- : `yes` 또는 빈 문자열
+  - 페이지 번역 시 이 요소를 번역해야 함을 나타냅니다.
+- : `no`
+  - 페이지 번역 시 이 요소를 번역하지 말아야 함을 나타냅니다.
+
+모든 브라우저가 `translate` 특성을 인식하지는 않지만, Google 번역과 같은 자동 번역 시스템은 `translate` 값을 존중합니다. 인간 번역자가 사용하는 도구 역시 존중할 수 있습니다. 따라서 번역하지 않아야 하는 부분이 있으면 `translate="no"`를 지정하는 것을 잊지 마세요.
+
+> [note]
+> 번역 가능한 특성이란 다음과 같습니다.
+>
+> - [`<a>`](../Element/a), [`<area>`](../Element/area) 요소의 [`download` 특성](../Element/a#term-download)
+> - [`<area>`](../Element/area), [`<img>`](../Element/img), [`<input>`](../Element/input) 요소의 [`alt` 특성](../Element/img#term-alt)
+> - [`<iframe>`](../Element/iframe) 요소의 [`srcdoc` 특성](../Element/iframe#term-srcdoc) — 특성 값을 파싱해 재귀적으로 번역함
+> - [`<input>`](../Element/input), [`<textarea>`](../Element/textarea) 요소의 [`placeholder` 특성](../Element/input#term-placeholder)
+> - `<input type="button">`, `<input type="reset">` 요소의 [`value` 특성](../Element/input#term-value)
+> - [`<meta>`](../Element/meta) 요소의 [`name`](../Element/meta#term-name)이 알려진 번역 가능 메타데이터를 정의할 경우, 그 [`content` 특성](../Element/meta#term-content)
+> - [`<optgroup>`](../Element/optgroup), [`<option>`](../Element/option), [`<track>`](../Element/track) 요소의 [`label` 특성](../Element/optgroup#term-label)
+> - [`<th>`](../Element/th) 요소의 [`abbr` 특성](../Element/th#term-abbr)
+> - [`lang` 전역 특성](../Global_attributes#term-lang) — 번역 목표 언어로 치환
+> - [`style` 전역 특성](../Global_attributes#term-style) — 특성 값을 파싱해 [`content`](https://developer.mozilla.org/en-US/docs/Web/CSS/content) 속성의 값 등을 번역함
+> - [`title` 전역 특성](../Global_attributes#term-title)
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/dom.html#attr-translate)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />

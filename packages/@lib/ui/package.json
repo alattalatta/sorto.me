@@ -29,7 +29,7 @@
     "@lib/functions": "workspace:*",
     "@vanilla-extract/css": "^1.6.8",
     "clsx": "^1.1.1",
-    "framer-motion": "^6.2.8",
+    "framer-motion": "^6.2.9",
     "next": "^12.1.4",
     "next-themes": "^0.1.1"
   },

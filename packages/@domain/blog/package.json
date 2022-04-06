@@ -26,8 +26,8 @@
     "@lib/ui": "workspace:*",
     "@vanilla-extract/css": "^1.6.8",
     "clsx": "^1.1.1",
-    "entities": "3",
-    "framer-motion": "^6.2.8",
+    "entities": "^4.2.0",
+    "framer-motion": "^6.2.9",
     "gray-matter": "^4.0.2",
     "next": "^12.1.4"
   },

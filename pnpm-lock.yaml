@@ -305,7 +305,6 @@ importers:
       '@types/react-dom': ^17.0.14
       fp-ts: ^2.11.9
       github-slugger: ^1.4.0
-      hast-util-to-string: ^2.0.0
       image-size: ^1.0.1
       mdast-util-to-string: ^3.1.0
       rehype-autolink-headings: ^6.1.1
@@ -324,7 +323,6 @@ importers:
       '@mdx-js/mdx': 2.1.1
       fp-ts: 2.11.9
       github-slugger: 1.4.0
-      hast-util-to-string: 2.0.0
       image-size: 1.0.1
       mdast-util-to-string: 3.1.0
       rehype-autolink-headings: 6.1.1
@@ -4248,12 +4246,6 @@ packages:
       zwitch: 2.0.2
     transitivePeerDependencies:
       - supports-color
-    dev: false
-
-  /hast-util-to-string/2.0.0:
-    resolution: {integrity: sha512-02AQ3vLhuH3FisaMM+i/9sm4OXGSq1UhOOCpTLLQtHdL3tZt7qil69r8M8iDkZYyC0HCFylcYoP+8IO7ddta1A==}
-    dependencies:
-      '@types/hast': 2.3.4
     dev: false
 
   /hast-util-to-text/3.1.1:

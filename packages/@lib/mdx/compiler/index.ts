@@ -1,9 +1,9 @@
+import { compile as compileMDX } from '@mdx-js/mdx'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeHighlight from 'rehype-highlight'
 import remarkGfm from 'remark-gfm'
 import { all } from 'remark-rehype'
 
-import { compile as compileMDX } from './lib/compile'
 import { rehypeCodeblockDataAttr } from './rehypeCodeblockDataAttr'
 import { rehypeWrapTable } from './rehypeWrapTable'
 import { remarkDefinitionList } from './remarkDefinitionList'

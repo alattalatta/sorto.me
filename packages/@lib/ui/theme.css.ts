@@ -3,8 +3,10 @@ import { createTheme } from '@vanilla-extract/css'
 import { contract } from './theme/contract.css'
 
 const media = {
-  w1: `(min-width: 25.75rem)`, // 412
-  w2: `(min-width: 48.0625rem)`, // 769
+  /** 412 */
+  w1: `(min-width: 25.75rem)`,
+  /** 769 */
+  w2: `(min-width: 48.0625rem)`,
 } as const
 
 const [fontsTheme, fonts] = createTheme({

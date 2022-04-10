@@ -42,28 +42,30 @@ const PostPage: Page<Props> = ({ compiledSource, meta }) => {
         <meta key="article:modified_time" content={meta.updated} property="article:modified_time" />
       </Head>
       <main className={styles.root}>
-        <Post as="header" image={meta.image} title={meta.title} written={new Date(meta.created)} />
-        <m.div
-          animate={{ opacity: 1, y: 0 }}
-          className={styles.body}
-          initial={{ opacity: 0, y: 10 }}
-          transition={{
-            delay: 0.25,
-            opacity: easeStandard(0.25),
-            y: easeStandard(0.5),
-          }}
-        >
-          <div className={documentBody.root}>
-            <Content
-              components={{
-                a: Anchor,
-                img: Image,
-                SideBySide,
-              }}
-            />
-          </div>
-        </m.div>
-        <Footer updated={new Date(meta.updated)} />
+        <article>
+          <Post as="header" image={meta.image} title={meta.title} written={new Date(meta.created)} />
+          <m.div
+            animate={{ opacity: 1, y: 0 }}
+            className={styles.body}
+            initial={{ opacity: 0, y: 10 }}
+            transition={{
+              delay: 0.25,
+              opacity: easeStandard(0.25),
+              y: easeStandard(0.5),
+            }}
+          >
+            <div className={documentBody.root}>
+              <Content
+                components={{
+                  a: Anchor,
+                  img: Image,
+                  SideBySide,
+                }}
+              />
+            </div>
+          </m.div>
+          <Footer updated={new Date(meta.updated)} />
+        </article>
       </main>
     </>
   )

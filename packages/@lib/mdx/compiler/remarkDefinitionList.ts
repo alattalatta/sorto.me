@@ -9,7 +9,7 @@ import { toString } from 'mdast-util-to-string'
 import type { Plugin } from 'unified'
 import { visit } from 'unist-util-visit'
 
-import { isNodeList, isNodeParagraph, isNodeText } from './remarkPlugin/refinements'
+import { isNodeList, isNodeParagraph, isNodeText } from '../remarkPlugin/refinements'
 
 const remarkDefinitionList: Plugin<void[], Root> = () => {
   const slugs = new Slugger()

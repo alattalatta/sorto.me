@@ -4,10 +4,10 @@ import rehypeHighlight from 'rehype-highlight'
 import remarkGfm from 'remark-gfm'
 import { all } from 'remark-rehype'
 
+import { remarkPlugin } from '../remarkPlugin'
 import { rehypeCodeblockDataAttr } from './rehypeCodeblockDataAttr'
 import { rehypeWrapTable } from './rehypeWrapTable'
 import { remarkDefinitionList } from './remarkDefinitionList'
-import { remarkPlugin } from './remarkPlugin'
 
 async function compile(source: string): Promise<string> {
   const compiled = await compileMDX(source, {

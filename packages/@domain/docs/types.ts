@@ -3,7 +3,7 @@ type DocMetadata = {
   description: string | null
   slug: string
   title: string
-  toc: readonly string[]
+  toc: readonly (readonly [id: string, title: string])[]
   /**
    * ISO Datetime string representing a date which the doc file was last modified.
    */

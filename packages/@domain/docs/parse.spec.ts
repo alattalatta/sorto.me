@@ -35,7 +35,7 @@ test('can parse a file without explicit description; strip Markdown syntax and e
     description: '\\&lt;zzz&gt; aa',
     slug: 'mocks/implicit-description',
     title: 'foo',
-    toc: ['Should ignore this heading'],
+    toc: [['should-ignore-this-heading', 'Should ignore this heading']],
   })
 })
 
@@ -75,5 +75,10 @@ test('can extract a list of level 1 headings', async (t) => {
 
   const parsed = await parse(docPath)
 
-  t.deepEqual(parsed.meta.toc, ['First', 'Second', 'Third', 'Fourth'])
+  t.deepEqual(parsed.meta.toc, [
+    ['first', 'First'],
+    ['second', 'Second'],
+    ['third', 'Third'],
+    ['fourth', 'Fourth'],
+  ])
 })

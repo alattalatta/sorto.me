@@ -1,7 +1,8 @@
-import type { PostMetadata } from '@domain/blog'
-import { filePath } from '@lib/functions/server'
 import fs from 'node:fs/promises'
 import path from 'node:path'
+
+import type { PostMetadata } from '@domain/blog'
+import { filePath } from '@lib/functions/server'
 
 import postsIndex from '../../out/posts/index.json'
 

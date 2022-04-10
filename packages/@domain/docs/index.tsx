@@ -3,9 +3,11 @@ import type { Page } from '@lib/ui'
 import { Footer, Layout } from '@lib/ui'
 import * as documentBody from '@lib/ui/documentBody.css'
 import type { Identifier } from '@mdn/browser-compat-data/types'
+import clsx from 'clsx'
 import Head from 'next/head'
 
 import { DOCS_MDX_COMPONENTS } from './DocsMDX'
+import { TableOfContents } from './TableOfContents'
 import { Title } from './Title'
 import * as styles from './index.css'
 import type { DocMetadata } from './types'
@@ -33,14 +35,19 @@ const DocPage: Page<Props> = ({ bcd, breadcrumbs, compiledSource, meta }) => {
         {meta.description && <meta key="og:description" content={meta.description} name="og:description" />}
         <meta key="article:modified_time" content={meta.updated} property="article:modified_time" />
       </Head>
-      <main className={styles.root}>
-        <Title breadcrumbs={breadcrumbs} title={meta.title} />
-        <div className={styles.body}>
-          <div className={documentBody.root}>
+      <main className={styles.grid}>
+        {Boolean(meta.toc.length) && (
+          <div className={styles.toc}>
+            <TableOfContents data={meta.toc} title={meta.title} />
+          </div>
+        )}
+        <article className={styles.article}>
+          <Title breadcrumbs={breadcrumbs} title={meta.title} />
+          <div className={clsx(styles.articleBody, documentBody.root)}>
             <Content bcd={bcd} components={DOCS_MDX_COMPONENTS} />
           </div>
-        </div>
-        <Footer mdnSlug={meta.slug} updated={new Date(meta.updated)} />
+          <Footer mdnSlug={meta.slug} updated={new Date(meta.updated)} />
+        </article>
       </main>
     </>
   )

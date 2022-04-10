@@ -1,0 +1,1 @@
+export { extractTOC } from './toc'

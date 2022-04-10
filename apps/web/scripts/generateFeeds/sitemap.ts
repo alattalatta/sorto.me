@@ -1,8 +1,9 @@
+import fs from 'node:fs/promises'
+import path from 'node:path'
+
 import type { PostMetadata } from '@domain/blog'
 import type { DocMetadata } from '@domain/docs'
 import { filePath } from '@lib/functions/server'
-import fs from 'node:fs/promises'
-import path from 'node:path'
 
 import docsIndex from '../../out/docs/index.json'
 import postsIndex from '../../out/posts/index.json'
@@ -24,8 +25,9 @@ const buildEntryFor =
   }
 
 export async function main(): Promise<void> {
-  const docEntriesAsync = docsIndex.map(buildEntryFor('docs'))
-  const postEntriesAsync = postsIndex.map(buildEntryFor('posts'))
+  // [todo]
+  const docEntriesAsync = (docsIndex as unknown as readonly DocMetadata[]).map(buildEntryFor('docs'))
+  const postEntriesAsync = (postsIndex as unknown as readonly PostMetadata[]).map(buildEntryFor('posts'))
 
   try {
     await fs.unlink(SITEMAP_PATH)

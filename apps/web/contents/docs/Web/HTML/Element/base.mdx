@@ -1,12 +1,11 @@
 ---
 title: 'HTML <base>: 기준 URL 요소'
-description: HTML <base> (기준 URL) 요소는 문서 안의 모든 상대 URL이 사용할 기준 URL을 지정합니다.
 bcd: html.elements.base
 ---
 
 **HTML `<base>` 요소**는 문서 안의 모든 상대 URL이 사용할 기준 URL을 지정합니다. 문서에는 하나의 `<base>` 요소만 존재할 수 있습니다.
 
-문서의 기준 URL을 스크립트에서 접근해야 할 땐 [`Node.baseURI`](https://developer.mozilla.org/en-US/docs/Web/API/Node/baseURI)을 사용할 수 있습니다. 문서에 `<base>` 요소가 존재하지 않을 때 `baseURI`의 값은 [`location.href`](https://developer.mozilla.org/en-US/docs/Web/API/Location/href)입니다.
+스크립트에서 문서의 기준 URL을 알아내야 할 땐 [`Node.baseURI`](https://developer.mozilla.org/en-US/docs/Web/API/Node/baseURI)을 사용하세요. 문서에 `<base>` 요소가 존재하지 않을 때의 `baseURI` 속성의 값은 [`location.href`](https://developer.mozilla.org/en-US/docs/Web/API/Location/href)와 같습니다.
 
 ```html
 <head>
@@ -18,7 +17,7 @@ bcd: html.elements.base
 
 [전역 특성](/docs/Web/HTML/Global_attributes)을 포함합니다.
 
-> [note] 아래 특성 중 하나라도 지정할 경우, `<base>` 요소가 상대 URL을 사용한 다른 요소보다 먼저 나타나야 합니다.
+> [note] 아래 특성 중 하나라도 지정할 경우, 상대 URL을 사용한 다른 모든 요소보다 `<base>` 요소를 HTML 문서의 위에 배치해야 합니다.
 
 - : `href`
   - 문서 내의 상대 URL이 사용할 기준 URL입니다. 절대 및 상대 URL을 사용할 수 있습니다.
@@ -37,19 +36,26 @@ bcd: html.elements.base
 
 ## 다수의 `<base>` 요소
 
-`<base>` 요소가 여럿 존재하는 경우, 맨 처음 `target`과 맨 처음 `href` 특성을 제외한 나머지는 모두 무시합니다.
+`<base>` 요소가 여럿 존재하는 경우, 제일 처음으로 지정한 `target` 특성과 제일 처음으로 지정한 `href` 특성을 제외한 나머지는 모두 무시합니다.
+
+```html
+<base href="https://sorto.me/docs/Web"> <!-- 제일 처음으로 지정한 href 특성 -->
+<base target="_blank"> <!-- 제일 처음으로 지정한 target 특성 -->
+<base href="https://example.org" target="_self"> <!-- 무시함 -->
+
+```
 
 ## 페이지 내부 앵커
 
-`<a href="#some-id">`처럼 문서 프래그먼트를 가리키는 링크의 `href`도 `<base>`를 사용해 처리하므로, 기준 URL 뒤에 프래그먼트를 붙인 주소로 HTTP 요청을 전송합니다. 예를 들어,
+`<a href="#some-id">`처럼 문서 프래그먼트를 가리키는 링크의 `href`도 `<base>`의 기준 URL을 사용합니다. 따라서 기준 URL 뒤에 프래그먼트를 붙인 주소로 HTTP 요청을 전송합니다. 예를 들어,
 
-1. `<base href="https://example.com">`을 가정하고,
-2. `<a href="#anchor">앵커</a>`를 가정할 때,
-3. 2번의 링크는 `#anchor`가 아닌 `https://example.com/#anchor`를 가리킵니다.
+1. `<base href="https://example.com">`이고,
+2. `<a href="#anchor">앵커</a>`일 때,
+3. 2번의 링크는 `#anchor`가 아니라 `https://example.com/#anchor`를 가리킵니다.
 
 ## Open Graph
 
-[Open Graph](https://ogp.me/) 태그는 `<base>`를 인식하지 않으므로, 항상 온전한 형태의 절대 URL을 지정해야 합니다.
+[Open Graph](https://ogp.me/) 태그는 `<base>`를 인식하지 못하므로 항상 완전한 형태의 절대 URL을 지정해야 합니다.
 
 ```html variant=bad
 <base href="https://example.com/" /> <meta property="og:image" content="/thumbnail.jpg" />

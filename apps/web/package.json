@@ -6,6 +6,7 @@
   "scripts": {
     "tnode": "NODE_OPTIONS='--experimental-specifier-resolution=node' ts-node --project tsconfig.script.json",
     "prebuild": "pnpm tnode ./scripts/buildContents/index.ts && pnpm tnode ./scripts/generateFeeds/index.ts",
+    "foo": "pnpm tnode ./scripts/buildContents/foo.ts",
     "dev": "next dev",
     "build": "next build",
     "export": "next export",

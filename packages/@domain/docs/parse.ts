@@ -2,6 +2,7 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 
 import { filePath, readLastModified } from '@lib/functions/server'
+import { extractTOC } from '@lib/mdx/extractor'
 import { escapeUTF8 } from 'entities'
 import type { GrayMatterFile } from 'gray-matter'
 import matter from 'gray-matter'
@@ -52,12 +53,15 @@ async function parse(docPath: string, rootDir?: string): Promise<Doc> {
     return null
   })()
 
+  const toc = await extractTOC(content)
+
   return {
     content,
     meta: {
       ...(data as DocMetadata),
       description,
       slug: path.relative(rootDir || __dirname, docPath).replace(/(^mdx\/)|(.mdx$)/gi, ''),
+      toc,
       updated: (await lastModifiedAsync).toISOString(),
     } as DocMetadata,
   }

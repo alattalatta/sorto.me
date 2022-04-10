@@ -6,6 +6,7 @@
     "build": "turbo run build --scope='@app/web' --no-deps --include-dependencies",
     "prebuild": "turbo run prebuild --scope='@app/web' --no-deps --include-dependencies",
     "dev": "turbo run dev",
+    "test": "turbo run test",
     "turbo": "turbo"
   },
   "workspaces": [

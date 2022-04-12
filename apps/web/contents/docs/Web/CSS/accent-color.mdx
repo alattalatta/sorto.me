@@ -1,0 +1,98 @@
+---
+title: 'CSS accent-color: 양식 컨트롤 색'
+bcd: css.properties.accent-color
+---
+
+CSS **`accent-color`** 속성은 일부 요소가 생성하는 사용자 인터페이스 컨트롤의 강조색을 지정합니다.
+
+<CSSDemo selector="*{$}">
+
+```css
+accent-color: red;
+```
+
+```css
+accent-color: #43E4DA;
+```
+
+```css
+accent-color: #fff;
+```
+
+```css
+accent-color: #000;
+```
+
+```css hidden
+label {
+  display: block;
+}
+label + label {
+  margin-top: 1em;
+}
+```
+
+```html
+<form>
+  <label>
+    <input checked type="checkbox">
+    체크박스
+  </label>
+  <label>
+    <input checked type="radio">
+    라디오
+  </label>
+  <label>
+    <input checked type="range">
+    범위
+  </label>
+  <label>
+    <progress value="0.5"></progress>
+    진행도
+  </label>
+</form>
+```
+
+</CSSDemo>
+
+현재, `accent-color`를 지원하는 브라우저에서는 다음 요소의 강조색을 설정할 수 있습니다.
+
+- [`<input type="checkbox">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox)
+- [`<input type="radio">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio)
+- [`<input type="range">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range)
+- [`<progress>`](/docs/Web/HTML/Element/progress)
+
+# 구문
+
+```css
+/* 키워드 값 */
+accent-color: auto;
+
+/* <color> 값 */
+accent-color: red;
+accent-color: #5729e9;
+accent-color: rgb(0, 200, 0);
+accent-color: hsl(228, 4%, 24%);
+
+/* 전역 값 */
+accent-color: inherit;
+accent-color: initial;
+accent-color: revert;
+accent-color: revert-layer;
+accent-color: unset;
+```
+
+## 값
+
+- : `auto`
+  - 사용자 에이전트가 플랫폼에 설정된 강조색과 일치하는 색을 선택합니다.
+- : [`<color>`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value)
+  - 강조색으로 사용할 색을 지정합니다.
+
+# 명세
+
+[CSS Basic User Interface Module Level 4](https://drafts.csswg.org/css-ui/#widget-accent)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />

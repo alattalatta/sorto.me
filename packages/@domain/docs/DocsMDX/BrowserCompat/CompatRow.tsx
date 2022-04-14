@@ -29,7 +29,7 @@ const MOBILE_KEYS: [BrowserNames, string][] = [
   ['samsunginternet_android', 'Samsung\nInternet'],
 ]
 
-const CompatRow: React.VFC<Props> = ({ data, name, recurse }) => {
+const CompatRow: React.FC<Props> = ({ data, name, recurse }) => {
   const [supportDetail, setSupportDetail] = useState<[BrowserNames, SupportStatement] | null>(null)
 
   const compat = data.__compat

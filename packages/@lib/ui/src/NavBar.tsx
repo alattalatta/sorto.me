@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import * as styles from './NavBar.css'
 import { ThemeSwitch } from './ThemeSwitch'
 
-const NavBar: React.VFC = () => {
+const NavBar: React.FC = () => {
   const pathname = useRouter().pathname
 
   return (

@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'react'
 import * as noScreen from '../noScreen.css'
 import * as styles from './ThemeSwitch.css'
 
-const ThemeSwitch: React.VFC = () => {
+const ThemeSwitch: React.FC = () => {
   const { theme, setTheme } = useTheme()
   const mounted = useMounted()
   const inputRef = useRef<HTMLInputElement>(null)

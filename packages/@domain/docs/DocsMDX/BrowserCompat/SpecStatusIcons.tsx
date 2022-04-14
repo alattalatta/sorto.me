@@ -3,7 +3,7 @@ import type { StatusBlock } from '@mdn/browser-compat-data/types'
 import { Deprecated, Experimental, NonStandard } from '../StatusIcon'
 import * as styles from './SpecStatusIcons.css'
 
-const SpecStatusIcons: React.VFC<{ status: StatusBlock | undefined }> = ({ status }) => {
+const SpecStatusIcons: React.FC<{ status: StatusBlock | undefined }> = ({ status }) => {
   if (!status) {
     return null
   }

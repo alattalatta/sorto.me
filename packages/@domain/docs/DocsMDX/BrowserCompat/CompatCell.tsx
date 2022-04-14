@@ -10,7 +10,7 @@ type Props = {
   onClick?: (browserName: BrowserNames, notes: SupportStatement) => void
 }
 
-const CompatCell: React.VFC<Props> = ({ browserName, data, onClick }) => {
+const CompatCell: React.FC<Props> = ({ browserName, data, onClick }) => {
   const hasNotes = Boolean(data && (Array.isArray(data) || data.alternative_name || data.flags || data.notes))
 
   const head = Array.isArray(data) ? data[0] : data

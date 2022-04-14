@@ -1,7 +1,7 @@
 import { useMDXRenderer } from '@lib/mdx'
 import type { Page } from '@lib/ui'
 import { Layout } from '@lib/ui'
-import { Anchor, Footer, ScrollBack } from '@lib/ui'
+import { Anchor, Footer } from '@lib/ui'
 import * as documentBody from '@lib/ui/documentBody.css'
 import { m } from 'framer-motion'
 import type { Easing, Tween } from 'framer-motion/types/types'

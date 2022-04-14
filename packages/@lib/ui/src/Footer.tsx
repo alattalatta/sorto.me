@@ -12,7 +12,7 @@ const DAY = HOUR * 24
 const rtf = new Intl.RelativeTimeFormat('ko', { numeric: 'auto' })
 const atf = new Intl.DateTimeFormat('ko')
 
-const Footer: React.VFC<Props> = ({ mdnSlug, updated }) => {
+const Footer: React.FC<Props> = ({ mdnSlug, updated }) => {
   // use absolute when older than a week
   const useAbsoluteTime = Date.now() - updated.getTime() > DAY * 7
   const updatedFormatted = (() => {

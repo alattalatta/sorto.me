@@ -3,13 +3,14 @@ import runtime from 'react/jsx-runtime'
 
 type RendererProps = {
   [key: string]: unknown
-  components?: Record<string, React.ReactNode>
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  components?: Record<string, React.ComponentType<any>>
 }
 
-type EvaluatedSource = { default: React.VFC<RendererProps> }
+type EvaluatedSource = { default: React.FC<RendererProps> }
 
-function useMDXRenderer(compiledSource: string): React.VFC<RendererProps> {
-  const renderer: React.VFC<RendererProps> = useMemo(() => {
+function useMDXRenderer(compiledSource: string): React.FC<RendererProps> {
+  const renderer: React.FC<RendererProps> = useMemo(() => {
     const hydrateFn = Reflect.construct(Function, ['opts', compiledSource]) as (
       opts: Readonly<typeof runtime>,
       source: string,

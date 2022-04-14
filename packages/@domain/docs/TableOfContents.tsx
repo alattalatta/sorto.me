@@ -5,7 +5,7 @@ type Props = {
   title: string
 }
 
-const TableOfContents: React.VFC<Props> = ({ data, title: docTitle }) => {
+const TableOfContents: React.FC<Props> = ({ data, title: docTitle }) => {
   return (
     <aside aria-labelledby="toc-heading" className={styles.root}>
       <h2 className={styles.heading} id="toc-heading">

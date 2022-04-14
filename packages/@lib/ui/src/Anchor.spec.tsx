@@ -1,5 +1,3 @@
-// [todo] Can't test due to https://github.com/vercel/next.js/issues/34412
-
 import { cleanup, render } from '@testing-library/react'
 import test from 'ava'
 import jsdomGlobal from 'jsdom-global'
@@ -7,6 +5,8 @@ import jsdomGlobal from 'jsdom-global'
 import { Anchor } from './Anchor'
 
 jsdomGlobal(undefined, { url: 'http://example.org/' })
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+;(globalThis as any).IS_REACT_ACT_ENVIRONMENT = true
 
 test.afterEach.always(cleanup)
 
@@ -20,10 +20,10 @@ test.serial('should not have _blank target for a local origin URL', (t) => {
   t.not(target.getAttribute('target'), '_blank')
 })
 
-// test.serial('should not have _blank target for a relative URL', (t) => {
-//   const target = renderTarget(<Anchor href="../whatever">target</Anchor>)
-//   t.not(target.getAttribute('target'), '_blank')
-// })
+test.serial('should not have _blank target for a relative URL', (t) => {
+  const target = renderTarget(<Anchor href="../whatever">target</Anchor>)
+  t.not(target.getAttribute('target'), '_blank')
+})
 
 test.serial('should have _blank target for an external URL', (t) => {
   const target = renderTarget(<Anchor href="https://example.org/">target</Anchor>)

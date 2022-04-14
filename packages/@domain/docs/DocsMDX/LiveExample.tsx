@@ -9,7 +9,7 @@ type Props = {
   name: string
 }
 
-const LiveExample: React.VFC<Props> = ({ height = 240, name }) => {
+const LiveExample: React.FC<Props> = ({ height = 240, name }) => {
   const codes = useCodeBlockGroup(name)
 
   return (

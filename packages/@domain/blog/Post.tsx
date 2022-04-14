@@ -12,7 +12,7 @@ type Props = {
   written: Date
 }
 
-const Post: React.VFC<Props> = ({ as = 'article', className, image, title, written }) => {
+const Post: React.FC<Props> = ({ as = 'article', className, image, title, written }) => {
   const year = written.getFullYear()
   const month = written.getMonth() + 1
   const date = written.getDate()

@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 import * as styles from './ScrollBack.css'
 
-const ScrollBack: React.VFC<{ className?: string }> = ({ className }) => {
+const ScrollBack: React.FC<{ className?: string }> = ({ className }) => {
   const [crossed, setCrossed] = useState(false)
 
   useScrollThreshold(400, setCrossed)

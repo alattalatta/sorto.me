@@ -2,6 +2,7 @@ import * as styles from './SideBySide.css'
 
 type Props = {
   caption?: string
+  children: React.ReactNode
 }
 
 const SideBySide: React.FC<Props> = ({ caption, children }) => {

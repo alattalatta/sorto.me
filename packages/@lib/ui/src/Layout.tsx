@@ -2,7 +2,7 @@ import * as styles from './Layout.css'
 import { NavBar } from './NavBar'
 import { ScrollBack } from './ScrollBack'
 
-const Layout: React.FC = ({ children }) => {
+const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <>
       <NavBar />

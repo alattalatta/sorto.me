@@ -6,7 +6,7 @@ import theColor from './the-color.svg'
 
 const THETA = 28.85
 
-const Splash: React.FC = ({ children }) => {
+const Splash: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   const [width, setWidth] = useState(0)
   const [scroll, setScroll] = useState(0)
 

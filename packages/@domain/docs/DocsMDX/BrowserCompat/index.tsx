@@ -10,7 +10,7 @@ type Props = {
   data?: { data: Identifier; name: string } | null
 }
 
-const BrowserCompat: React.VFC<Props> = ({ children, data: dataProp }) => {
+const BrowserCompat: React.FC<Props> = ({ children, data: dataProp }) => {
   /*
   [note] memo later
   const [loadedData, setLoadedData] = useState<Identifier | undefined | null>(undefined)

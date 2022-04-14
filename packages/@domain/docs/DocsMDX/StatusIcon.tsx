@@ -2,7 +2,7 @@ import * as styles from './StatusIcon.css'
 
 type Props = Omit<JSX.IntrinsicElements['abbr'], 'ref'>
 
-export const Deprecated: React.VFC<Props> = (props) => {
+export const Deprecated: React.FC<Props> = (props) => {
   return (
     <abbr className={styles.root} title="표준 명세에서 폐기. 더 이상 사용하지 않는 것이 좋습니다." {...props}>
       <svg className={styles.svg} role="img" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -12,7 +12,7 @@ export const Deprecated: React.VFC<Props> = (props) => {
   )
 }
 
-export const Experimental: React.VFC<Props> = (props) => {
+export const Experimental: React.FC<Props> = (props) => {
   return (
     <abbr className={styles.root} title="실험적 기능. 동작이 바뀔 수 있습니다." {...props}>
       <svg className={styles.svg} role="img" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -22,7 +22,7 @@ export const Experimental: React.VFC<Props> = (props) => {
   )
 }
 
-export const NonStandard: React.VFC<Props> = (props) => {
+export const NonStandard: React.FC<Props> = (props) => {
   return (
     <abbr className={styles.root} title="표준 기능이 아님. 브라우저 지원이 미흡할 수 있습니다." {...props}>
       <svg className={styles.svg} role="img" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">

@@ -7,7 +7,7 @@ type Props = {
   title: string
 }
 
-const Title: React.VFC<Props> = ({ breadcrumbs, title }) => {
+const Title: React.FC<Props> = ({ breadcrumbs, title }) => {
   return (
     <div>
       <h1 className={styles.heading}>{title}</h1>

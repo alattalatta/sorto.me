@@ -5,6 +5,7 @@ import * as styles from './CSSDemo.css'
 import LiveCode from './LiveCode'
 
 type Props = {
+  children: React.ReactNode
   height?: number
   selector: string
 }

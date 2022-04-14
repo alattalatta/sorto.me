@@ -12,7 +12,7 @@ type Props = {
   minHeight?: number
 }
 
-const LiveCode: React.VFC<Props> = ({ className, codes: { css, html, js }, height, minHeight }) => {
+const LiveCode: React.FC<Props> = ({ className, codes: { css, html, js }, height, minHeight }) => {
   const notFound = !(css.length || html.length || js.length) // when everything is empty
 
   const srcDoc = useMemo(() => {

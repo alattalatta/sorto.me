@@ -1,3 +1,4 @@
+import type { Page } from '@lib/ui'
 import { theme as darkTheme } from '@lib/ui/theme/dark.css'
 import { theme as lightTheme } from '@lib/ui/theme/light.css'
 import type { LazyFeatureBundle } from 'framer-motion'
@@ -6,8 +7,6 @@ import { ThemeProvider } from 'next-themes'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Script from 'next/script'
-
-import type { Page } from '../utils/types'
 
 import '../styles/reset.css'
 

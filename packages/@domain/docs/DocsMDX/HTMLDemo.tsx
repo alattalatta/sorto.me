@@ -3,7 +3,12 @@ import { Children, cloneElement, isValidElement, useEffect, useRef, useState } f
 import * as styles from './HTMLDemo.css'
 import LiveCode from './LiveCode'
 
-const HTMLDemo: React.FC<{ height?: number }> = ({ children: childrenProp, height }) => {
+type Props = {
+  children: React.ReactNode
+  height?: number
+}
+
+const HTMLDemo: React.FC<Props> = ({ children: childrenProp, height }) => {
   const rootRef = useRef<HTMLElement>(null)
 
   const [currentLang, setCurrentLang] = useState<'css' | 'html' | 'js'>('html')

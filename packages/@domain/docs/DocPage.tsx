@@ -6,10 +6,10 @@ import type { Identifier } from '@mdn/browser-compat-data/types'
 import clsx from 'clsx'
 import Head from 'next/head'
 
+import * as styles from './DocPage.css'
 import { DOCS_MDX_COMPONENTS } from './DocsMDX'
 import { TableOfContents } from './TableOfContents'
 import { Title } from './Title'
-import * as styles from './index.css'
 import type { DocMetadata } from './types'
 
 type Props = {
@@ -57,5 +57,3 @@ DocPage.Layout = Layout
 export type { Doc, DocMetadata } from './types'
 export type { Props as DocPageProps }
 export { DocPage }
-
-export { getCompatData } from './utils'

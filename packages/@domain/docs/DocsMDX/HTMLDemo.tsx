@@ -33,7 +33,7 @@ const HTMLDemo: React.FC<Props> = ({ children: childrenProp, height }) => {
 
       setCodes(result)
     }
-  }, [])
+  }, [childrenProp])
 
   const children = Children.map(childrenProp, (child) => {
     if (isValidElement(child)) {

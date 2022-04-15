@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { useMemo } from 'react'
+import { useEffect, useReducer, useRef, useState } from 'react'
 
 import * as styles from './LiveCode.css'
 
@@ -13,34 +13,52 @@ type Props = {
 }
 
 const LiveCode: React.FC<Props> = ({ className, codes: { css, html, js }, height, minHeight }) => {
-  const notFound = !(css.length || html.length || js.length) // when everything is empty
+  const rootRef = useRef<HTMLIFrameElement>(null)
+  const initialSrc = useRef(serializeSrc(css, html, js)).current
 
-  const srcDoc = useMemo(() => {
-    const view = html.join('\n')
-    const styleElements = css
-      .filter(Boolean)
-      .map((it) => `<style>${it}</style>`)
-      .join('')
-    const scriptElements = js
-      .filter(Boolean)
-      .map((it) => `<script>${it}</script>`)
-      .join('')
+  const [loaded, setLoaded] = useReducer(() => true, false)
+  const [src, setSrc] = useState(initialSrc)
 
-    // [todo] window.addEventListener('message', updateSource)
-    return `<html><head><link rel="stylesheet" href="/frame/frame.css">${styleElements}</head><body>${view}${scriptElements}</body></html>`
+  useEffect(() => {
+    setSrc(serializeSrc(css, html, js))
   }, [css, html, js])
 
-  return notFound ? (
-    <div className={clsx(styles.root, className)} style={{ height: height, minHeight: minHeight }} />
-  ) : (
-    <iframe
-      className={clsx(styles.root, className)}
-      srcDoc={srcDoc}
-      style={{ height: height, minHeight: minHeight }}
-      title="예제"
-    />
+  useEffect(() => {
+    if (loaded && rootRef.current?.contentWindow) {
+      rootRef.current.contentWindow.postMessage(src)
+    }
+  }, [loaded, src])
+
+  return (
+    <div className={clsx(styles.root, className)} style={{ height: height, minHeight: minHeight }}>
+      <iframe
+        ref={rootRef}
+        className={styles.frame({ loading: !loaded })}
+        src="/frame"
+        title="예제"
+        onLoad={setLoaded}
+      />
+      <p className={styles.loadingMessage({ loading: !loaded })}>
+        <span className={styles.spinner} />
+        불러오는 중...
+      </p>
+    </div>
   )
 }
 
 export default LiveCode
 export type { Language }
+
+function serializeSrc(css: readonly string[], html: readonly string[], js: readonly string[]): string {
+  const view = html.join('')
+  const styleElements = css
+    .filter(Boolean)
+    .map((it) => `<style>${it}</style>`)
+    .join('')
+  const scriptElements = js
+    .filter(Boolean)
+    .map((it) => `<script>${it}</script>`)
+    .join('')
+
+  return `${styleElements}${view}${scriptElements}`
+}

@@ -3,7 +3,6 @@ import { keyframes, style } from '@vanilla-extract/css'
 import { recipe } from '@vanilla-extract/recipes'
 
 export const root = style({
-  background: colors.bg0,
   display: 'flex',
   position: 'relative',
 })

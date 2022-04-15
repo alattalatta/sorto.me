@@ -6,17 +6,18 @@ import * as styles from './LiveExample.css'
 
 type Props = {
   height?: number
+  light?: boolean
   name: string
 }
 
-const LiveExample: React.FC<Props> = ({ height = 240, name }) => {
+const LiveExample: React.FC<Props> = ({ height = 240, light, name }) => {
   const codes = useCodeBlockGroup(name)
 
   return (
-    <figure>
+    <figure className={styles.root}>
       <figcaption className={noScreen.root}>실행 결과</figcaption>
-      <div className={styles.root} style={{ height: `${height}px` }}>
-        <LiveCode codes={codes} height={height} />
+      <div className={styles.wrap} style={{ height: `${height}px` }}>
+        <LiveCode codes={codes} height={height} light={light} />
       </div>
     </figure>
   )

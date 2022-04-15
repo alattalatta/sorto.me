@@ -9,10 +9,11 @@ type Props = {
   className?: string
   codes: Record<Language, readonly string[]>
   height?: number
+  light?: boolean
   minHeight?: number
 }
 
-const LiveCode: React.FC<Props> = ({ className, codes: { css, html, js }, height, minHeight }) => {
+const LiveCode: React.FC<Props> = ({ className, codes: { css, html, js }, height, light, minHeight }) => {
   const rootRef = useRef<HTMLIFrameElement>(null)
   const initialSrc = useRef(serializeSrc(css, html, js)).current
 
@@ -34,7 +35,7 @@ const LiveCode: React.FC<Props> = ({ className, codes: { css, html, js }, height
       <iframe
         ref={rootRef}
         className={styles.frame({ loading: !loaded })}
-        src="/frame"
+        src={`/frame${light ? '?forceLightTheme' : ''}`}
         title="예제"
         onLoad={setLoaded}
       />

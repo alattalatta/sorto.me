@@ -1,7 +1,13 @@
 import type { Page } from '@lib/ui'
+import { theme } from '@lib/ui/theme/light.css'
+import clsx from 'clsx'
+import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
+import * as styles from './FramePage.css'
+
 const FramePage: Page = () => {
+  const query = useRouter().query
   const [src, setSrc] = useState('')
 
   useEffect(() => {
@@ -14,7 +20,9 @@ const FramePage: Page = () => {
     return () => window.removeEventListener('message', handleMessage)
   }, [])
 
-  return <div dangerouslySetInnerHTML={{ __html: src }} style={{ padding: '0.5rem' }} />
+  return (
+    <div dangerouslySetInnerHTML={{ __html: src }} className={clsx(styles.root, 'forceLightTheme' in query && theme)} />
+  )
 }
 
 export { FramePage }

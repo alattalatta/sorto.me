@@ -20,6 +20,13 @@ const FramePage: Page = () => {
     return () => window.removeEventListener('message', handleMessage)
   }, [])
 
+  useEffect(() => {
+    const script = document.getElementById('dynascript')
+    if (script && script.textContent) {
+      eval(script.textContent)
+    }
+  }, [src])
+
   return (
     <div dangerouslySetInnerHTML={{ __html: src }} className={clsx(styles.root, 'forceLightTheme' in query && theme)} />
   )

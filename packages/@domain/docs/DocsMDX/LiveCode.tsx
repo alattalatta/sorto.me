@@ -73,14 +73,11 @@ export type { Language }
 
 function serializeSrc(css: readonly string[], html: readonly string[], js: readonly string[]): string {
   const view = html.join('')
-  const styleElements = css
+  const styleElements = css.filter(Boolean).join('')
+  const scripts = js
     .filter(Boolean)
-    .map((it) => `<style>${it}</style>`)
-    .join('')
-  const scriptElements = js
-    .filter(Boolean)
-    .map((it) => `<script>${it}</script>`)
+    .map((it) => `;(() => {${it}})()`)
     .join('')
 
-  return `${styleElements}${view}${scriptElements}`
+  return `<style>${styleElements}</style>${view}<script id="dynascript">${scripts}</script>`
 }

@@ -28,7 +28,7 @@ export const loadingMessage = recipe({
     alignItems: 'center',
     fontSize: '0.75rem',
     margin: 0,
-    paddingLeft: '0.25rem',
+    paddingLeft: '1.25rem',
     position: 'absolute',
     right: '0.5rem',
     bottom: '0.5rem',
@@ -61,4 +61,6 @@ export const spinner = style({
   animation: `${spin} 1s linear infinite`,
   border: `1px solid ${colors.fg1}`,
   marginRight: '0.5rem',
+  position: 'absolute',
+  left: 0,
 })

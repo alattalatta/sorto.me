@@ -33,7 +33,6 @@ importers:
       '@domain/docs': workspace:*
       '@domain/error': workspace:*
       '@domain/home': workspace:*
-      '@domain/meta': workspace:*
       '@domain/search': workspace:*
       '@lib/functions': workspace:*
       '@lib/mdx': workspace:*
@@ -72,7 +71,6 @@ importers:
       '@domain/docs': link:../../packages/@domain/docs
       '@domain/error': link:../../packages/@domain/error
       '@domain/home': link:../../packages/@domain/home
-      '@domain/meta': link:../../packages/@domain/meta
       '@domain/search': link:../../packages/@domain/search
       '@lib/functions': link:../../packages/@lib/functions
       '@lib/mdx': link:../../packages/@lib/mdx
@@ -229,29 +227,6 @@ importers:
       typescript: 4.6.3
 
   packages/@domain/home:
-    specifiers:
-      '@lib/functions': workspace:*
-      '@lib/ui': workspace:*
-      '@types/react': ^18.0.5
-      '@types/react-dom': ^18.0.0
-      '@vanilla-extract/css': ^1.7.0
-      react: ^18.0.0
-      react-dom: ^18.0.0
-      tsconfig: workspace:*
-      typescript: ^4.6.3
-    dependencies:
-      '@lib/functions': link:../../@lib/functions
-      '@lib/ui': link:../../@lib/ui
-      '@vanilla-extract/css': 1.7.0
-    devDependencies:
-      '@types/react': 18.0.5
-      '@types/react-dom': 18.0.0
-      react: 18.0.0
-      react-dom: 18.0.0_react@18.0.0
-      tsconfig: link:../../tsconfig
-      typescript: 4.6.3
-
-  packages/@domain/meta:
     specifiers:
       '@lib/functions': workspace:*
       '@lib/ui': workspace:*

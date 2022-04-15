@@ -34,6 +34,13 @@ function App({ Component, pageProps }: { Component: Page; pageProps: Record<stri
       </ThemeProvider>
       {process.env.NEXT_PUBLIC_ANALYTICS && (
         <>
+          {Component.disableTracking && (
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `window['ga-disable-${process.env.NEXT_PUBLIC_ANALYTICS_ID}']=true`,
+              }}
+            />
+          )}
           <Script src="https://www.googletagmanager.com/gtag/js?id=G-7F0E6D3XE2" />
           <Script id="google-analytics">
             {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${process.env.NEXT_PUBLIC_ANALYTICS_ID}');`}

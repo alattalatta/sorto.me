@@ -24,5 +24,6 @@ const FramePage: Page = () => {
     <div dangerouslySetInnerHTML={{ __html: src }} className={clsx(styles.root, 'forceLightTheme' in query && theme)} />
   )
 }
+FramePage.disableTracking = true
 
 export { FramePage }

@@ -67,23 +67,23 @@ CSS로 `<select>` 요소에 스타일을 입히는 일은 어렵기로 악명 �
 ## 복수 선택과 선택지 그룹
 
 ```html name=multiple
-<label>Please choose one or more pets:
+<label>한 종류 이상의 반려동물을 선택하세요:
   <select name="pets" multiple size="4">
-    <optgroup label="4-legged pets">
-      <option value="dog">Dog</option>
-      <option value="cat">Cat</option>
-      <option value="hamster" disabled>Hamster</option>
+    <optgroup label="네발동물">
+      <option value="dog">개</option>
+      <option value="cat">고양이</option>
+      <option value="hamster" disabled>햄스터</option>
     </optgroup>
-    <optgroup label="Flying pets">
-      <option value="parrot">Parrot</option>
-      <option value="macaw">Macaw</option>
-      <option value="albatross">Albatross</option>
+    <optgroup label="조류">
+      <option value="parrot">앵무새</option>
+      <option value="macaw">닭</option>
+      <option value="albatross">알바트로스</option>
     </optgroup>
   </select>
 </label>
 ```
 
-<LiveExample name="multiple" />
+<LiveExample height={120} name="multiple" />
 
 # 명세
 

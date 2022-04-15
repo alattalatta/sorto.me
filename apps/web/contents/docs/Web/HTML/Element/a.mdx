@@ -91,7 +91,7 @@ bcd: html.elements.a
 <a href="https://sorto.me/">Sorto.me</a>
 ```
 
-<LiveExample name="absolute" height={20} />
+<LiveExample name="absolute" height={40} />
 
 ## 상대 주소로 연결
 
@@ -110,7 +110,7 @@ a + a {
 <a href="./base">상대 디렉토리 주소</a>
 ```
 
-<LiveExample name="relative" height={80} />
+<LiveExample name="relative" height={100} />
 
 ## 같은 페이지의 ID로 연결
 
@@ -118,7 +118,7 @@ a + a {
 <a href="#예제" target="_parent">예제로</a>
 ```
 
-<LiveExample name="fragment" height={20} />
+<LiveExample name="fragment" height={40} />
 
 > [note] [HTML 명세](https://html.spec.whatwg.org/multipage/browsing-the-web.html#scroll-to-the-fragment-identifier)에 나와있는 것과 같이, `href="#top"`"이나 `href="#"`을 사용하면 페이지 최상단으로 이동하는 링크를 만들 수 있습니다.
 
@@ -147,7 +147,9 @@ a + a {
 
 구문, 추가 기능, 기타 다른 자세한 정보는 [RFC 3966](https://tools.ietf.org/html/rfc3966)을 참고하세요.
 
-## [download](#term-download)를 사용해서 캔버스 그림을 저장하기
+## download 특성을 사용해서 캔버스 그림을 저장하기
+
+[`download`](#term-download) 특성을 지정해서 [`<canvas>`](./canvas)에 그린 이미지를 `my_painting.png`라는 이름으로 저장하는 예제입니다.
 
 ```html name=canvas
 <p>
@@ -166,6 +168,7 @@ ctx.fillStyle = 'hotpink'
 let isDrawing = false
 
 function draw(x, y) {
+  console.log(isDrawing, x, y)
   if (isDrawing) {
     ctx.beginPath()
     ctx.arc(x, y, 10, 0, Math.PI * 2)
@@ -194,7 +197,7 @@ a {
 }
 ```
 
-<LiveExample name="canvas" height={360} />
+<LiveExample name="canvas" height={390} />
 
 # 보안과 개인정보
 

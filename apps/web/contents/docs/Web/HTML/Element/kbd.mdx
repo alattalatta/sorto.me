@@ -6,7 +6,7 @@ bcd: html.elements.kbd
 
 **HTML `<kbd>` 요소**는 사용자가 키보드, 음성 인식, 그 외의 기타 텍스트 입력 장치를 사용해 입력하는 텍스트를 나타냅니다.
 
-<HTMLDemo height={70}>
+<HTMLDemo height={100}>
 
 ```html
 <p><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd>을 눌러서 페이지를 다시 불러올 수 있습니다.</p>
@@ -58,10 +58,11 @@ kbd kbd {
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 4px;
+  color: #333;
 }
 ```
 
-<LiveExample name="keystroke" height={60} />
+<LiveExample name="keystroke" height={80} />
 
 > [note] 모든 입력을 이렇게 `<kbd>` 중첩으로 표현해야 할 필요는 없습니다. 즉, `<kbd>Ctrl</kbd> + <kbd>C</kbd>`만 사용해도 완벽하게 유효합니다. 현재 사용 중인 스타일에 따라 중첩 여부를 결정하세요.
 
@@ -76,7 +77,7 @@ kbd kbd {
 </blockquote>
 ```
 
-<LiveExample name="echo" height={80} />
+<LiveExample name="echo" height={110} />
 
 ## 화면에 표시된 입력 옵션
 
@@ -106,7 +107,7 @@ kbd:not(.input) {
 }
 ```
 
-<LiveExample name="present" height={100} />
+<LiveExample name="present" height={110} />
 
 # 명세
 

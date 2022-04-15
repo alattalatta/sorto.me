@@ -1,3 +1,4 @@
+import { useMounted } from '@lib/functions'
 import clsx from 'clsx'
 import { Children, cloneElement, isValidElement, useEffect, useRef, useState } from 'react'
 
@@ -13,6 +14,7 @@ type Props = {
 const CSSDemo: React.FC<Props> = ({ children: childrenProp, height, selector }) => {
   const rootRef = useRef<HTMLElement>(null)
 
+  const mounted = useMounted()
   const [currentBlockIdx, setCurrentBlockIdx] = useState(0)
   const [codes, setCodes] = useState<Record<'css' | 'html' | 'js', string[]>>({
     css: [],
@@ -20,22 +22,7 @@ const CSSDemo: React.FC<Props> = ({ children: childrenProp, height, selector }) 
     js: [],
   })
 
-  useEffect(() => {
-    if (rootRef.current) {
-      setCodes({
-        ...codes,
-        css: Array.from(rootRef.current.querySelectorAll('pre.language-css')).map((block, index) => {
-          if (block.attributes.getNamedItem('hidden')) {
-            return block.textContent || ''
-          }
-
-          return index === currentBlockIdx ? selector.replace('$', block.textContent || '') : ''
-        }),
-      })
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentBlockIdx, selector])
-
+  // initializer effect
   useEffect(() => {
     if (rootRef.current) {
       const controller = new AbortController()
@@ -69,6 +56,23 @@ const CSSDemo: React.FC<Props> = ({ children: childrenProp, height, selector }) 
       return () => controller.abort()
     }
   }, [selector])
+
+  // interaction effect
+  useEffect(() => {
+    if (mounted && rootRef.current) {
+      setCodes({
+        ...codes,
+        css: Array.from(rootRef.current.querySelectorAll('pre.language-css')).map((block, index) => {
+          if (block.attributes.getNamedItem('hidden')) {
+            return block.textContent || ''
+          }
+
+          return index === currentBlockIdx ? selector.replace('$', block.textContent || '') : ''
+        }),
+      })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mounted, currentBlockIdx, selector])
 
   const children = Children.map(childrenProp, (child, index) => {
     if (isValidElement(child)) {

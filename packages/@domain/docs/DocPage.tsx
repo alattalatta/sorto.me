@@ -6,10 +6,10 @@ import type { Identifier } from '@mdn/browser-compat-data/types'
 import clsx from 'clsx'
 import Head from 'next/head'
 
+import * as styles from './DocPage.css'
 import { DOCS_MDX_COMPONENTS } from './DocsMDX'
 import { TableOfContents } from './TableOfContents'
 import { Title } from './Title'
-import * as styles from './index.css'
 import type { DocMetadata } from './types'
 
 type Props = {
@@ -28,10 +28,10 @@ const DocPage: Page<Props> = ({ bcd, breadcrumbs, compiledSource, meta }) => {
   return (
     <>
       <Head>
-        <title key="title">{meta.title} - sorto.me docs</title>
+        <title key="title">{`${meta.title} - sorto.me docs`}</title>
         {meta.description && <meta key="description" content={meta.description} name="description" />}
         <meta key="og:type" content="article" property="og:type" />
-        <meta key="og:title" content={`${meta.title} - Sorto.me Docs`} property="og:title" />
+        <meta key="og:title" content={`${meta.title} - sorto.me Docs`} property="og:title" />
         {meta.description && <meta key="og:description" content={meta.description} name="og:description" />}
         <meta key="article:modified_time" content={meta.updated} property="article:modified_time" />
       </Head>
@@ -57,5 +57,3 @@ DocPage.Layout = Layout
 export type { Doc, DocMetadata } from './types'
 export type { Props as DocPageProps }
 export { DocPage }
-
-export { getCompatData } from './utils'

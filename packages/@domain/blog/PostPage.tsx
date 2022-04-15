@@ -32,10 +32,10 @@ const PostPage: Page<Props> = ({ compiledSource, meta }) => {
   return (
     <>
       <Head>
-        <title key="title">{meta.title} - sorto.me</title>
+        <title key="title">{`${meta.title} - sorto.me`}</title>
         {meta.description && <meta key="description" content={meta.description} name="description" />}
         <meta key="og:type" content="article" property="og:type" />
-        <meta key="og:title" content={`${meta.title} - Sorto.me`} property="og:title" />
+        <meta key="og:title" content={`${meta.title} - sorto.me`} property="og:title" />
         {meta.description && <meta key="og:description" content={meta.description} property="og:description" />}
         {meta.image && <meta key="og:image" content={meta.image} property="og:image" />}
         <meta key="article:published_time" content={meta.created} property="article:published_time" />

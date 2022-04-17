@@ -167,7 +167,7 @@ globalStyle(`${root} li`, {
 })
 
 globalStyle(`${root} dt`, {
-  fontSize: `${14 / 16}rem`,
+  fontWeight: 700,
   margin: '1.5rem 0 .5rem',
 })
 

@@ -1,6 +1,6 @@
 import { createTheme } from '@vanilla-extract/css'
 
-import { contract } from './theme/contract.css'
+import { contract as colors } from './theme/colors.css'
 
 const media = {
   /** 412 */
@@ -15,4 +15,4 @@ const [fontsTheme, fonts] = createTheme({
   serif: `'Noto Serif KR', serif`,
 })
 
-export { contract as colors, fonts, fontsTheme, media }
+export { colors, fonts, fontsTheme, media }

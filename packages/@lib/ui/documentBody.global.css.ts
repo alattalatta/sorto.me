@@ -1,11 +1,9 @@
 import { globalStyle } from '@vanilla-extract/css'
 
-import exclamation from './assets/exclamation.png'
-import external from './assets/external.svg'
-import forbidden from './assets/forbidden.png'
 import { root } from './documentBody.css'
 import { colors, fonts } from './theme.css'
 import { theme as lightTheme } from './theme/light.css'
+import { icons } from './vars.css'
 
 globalStyle(`${root} > *`, {
   margin: '1em 0', // intentional em
@@ -55,7 +53,7 @@ globalStyle(`${root} a[target=_blank]::after`, {
   content: `''`,
   width: '0.5em',
   height: '0.5em',
-  background: `url(${external.src}) no-repeat`,
+  background: `${icons.external} no-repeat`,
   backgroundSize: 'contain',
   display: 'inline-block',
   marginLeft: '0.125em',
@@ -130,7 +128,7 @@ globalStyle(`${root} .notebox-warn`, {
 })
 globalStyle(`${root} .notebox-warn::before`, {
   content: '주의',
-  backgroundImage: `url(${exclamation.src})`,
+  backgroundImage: `${icons.warn}`,
 })
 globalStyle(`${root} .notebox-fatal`, {
   background: colors.fatalbg,
@@ -138,7 +136,7 @@ globalStyle(`${root} .notebox-fatal`, {
 })
 globalStyle(`${root} .notebox-fatal::before`, {
   content: '경고',
-  backgroundImage: `url(${forbidden.src})`,
+  backgroundImage: `${icons.fatal})`,
 })
 globalStyle(`${root} .notebox > * + *`, {
   marginTop: '1rem',

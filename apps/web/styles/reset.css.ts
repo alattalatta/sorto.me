@@ -1,4 +1,5 @@
 import { fonts, colors } from '@lib/ui/theme.css'
+import { icons } from '@lib/ui/vars.css'
 import { globalStyle } from '@vanilla-extract/css'
 
 globalStyle('*', {
@@ -15,6 +16,11 @@ globalStyle('*:focus-visible', {
 globalStyle('html', {
   color: colors.fg0,
   fontFamily: fonts.sans,
+  vars: {
+    [icons.external]: 'url(/assets/external.svg)',
+    [icons.fatal]: 'url(/assets/forbidden.png)',
+    [icons.warn]: 'url(/assets/exclamation.png)',
+  },
 })
 
 globalStyle('body', {

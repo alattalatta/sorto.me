@@ -1,6 +1,6 @@
 import { createTheme } from '@vanilla-extract/css'
 
-import { contract, palette } from './contract.css'
+import { contract, palette } from './colors.css'
 
 const theme = createTheme(contract, {
   ...palette,

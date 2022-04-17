@@ -1,0 +1,283 @@
+---
+title: 'CSS <color> 자료형: 색'
+bcd: css.types.color
+---
+
+CSS **`<color>`** 자료형은 색을 표현합니다. `<color>`는 자신과 그 뒤의 배경을 어떻게 [합성](https://www.w3.org/TR/2003/REC-SVG11-20030114/masking.html#SimpleAlphaBlending)해야 하는지 결정하는 [알파 채널](https://ko.wikipedia.org/wiki/알파_채널) *투명도 값*도 포함할 수 있습니다.
+
+`<color>`는 다음 방법 중 하나를 사용해서 정의할 수 있습니다.
+
+- 키워드(`blue`, `transparent`, ...). 현존하는 모든 키워드는 [sRGB 색 공간](https://ko.wikipedia.org/wiki/SRGB) 위의 색을 가리킵니다.
+- [RGB 큐브 좌표계](https://ko.wikipedia.org/wiki/RGB)("#16진수" 또는 `rgb()`, `rgba()` 함수 표기법) 사용. 이 방법은 항상 [sRGB 색 공간](https://ko.wikipedia.org/wiki/SRGB) 위의 색을 가리킵니다.
+- [HSL 실린더 좌표계](https://en.wikipedia.org/wiki/HSL_and_HSV)([`hsl()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hsl), [`hsla()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hsla) 함수 표기법) 사용. 이 방법은 항상 [sRGB 색 공간](https://ko.wikipedia.org/wiki/SRGB) 위의 색을 가리킵니다.
+- [HWB 실린더 좌표계](https://en.wikipedia.org/wiki/HWB_color_model)([`hwb()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hwb) 함수 표기법) 사용. 이 방법은 항상 [sRGB 색 공간](https://ko.wikipedia.org/wiki/SRGB) 위의 색을 가리킵니다.
+- [Lab 좌표계](https://en.wikipedia.org/wiki/CIELAB_color_space)([`lab()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/lab) 함수 표기법) 사용. 이 방법은 가시영역 내의 모든 색상을 가리킬 수 있습니다.
+- [LCH 실린더 좌표계](https://en.wikipedia.org/wiki/CIELAB_color_space#Cylindrical_model)([`lch()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/lch) 함수 표기법) 사용. 이 방법은 가시영역 내의 모든 색상을 가리킬 수 있습니다.
+- [`color()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color) 함수 표기법 사용. 사전에 정의된 색 공간과 사용자 지정 색 공간 위의 색을 가리킬 수 있습니다.
+
+# 구문
+
+`<color>` 자료형은 아래 구문들 중 하나로 지정합니다.
+
+> [note] `<color>` 값의 정의는 정확하지만, 실제로 출력되는 색상은 기기마다 (간혹 크게) 차이가 존재할 수 있습니다. 대부분의 출력 장치는 *캘리브레이션*이라고 부르는 색 보정 과정을 거치지 않으며, 장치가 사용 중인 색 프로필을 브라우저가 지원하지 않을 수도 있기 때문입니다.
+
+## 색 키워드
+
+색 키워드는 `red`, `blue`, `black`, `lightseagreen`처럼 하나의 색을 가리키는, 대소문자를 구별하지 않는 식별자입니다. 각각의 색 이름은 읽었을 때 일반적으로 연상되는 색을 가리키긴 하지만, 어떤 엄격한 명명 규칙을 따른 것은 전혀 아닙니다.
+
+[사용 가능한 키워드의 목록은 이 링크에서 확인하세요.](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color_keywords)
+
+## transparent 키워드
+
+`transparent` 키워드는 완전히 투명한 색을 나타냅니다. 따라서 `transparent`를 적용한 항목 뒤의 배경을 온전히 볼 수 있습니다. 기술적으로 `transparent`는 `rgb(0 0 0 / 0%)`의 단축어입니다.
+
+> [note] > `transparent`를 [`<gradient>`](https://developer.mozilla.org/en-US/docs/Web/CSS/gradient)를 포함한 위치에서 사용했을 때 예상하기 힘든 결과를 낳는 일을 방지하기 위해, 현 CSS 명세는 `transparent` 색을 계산할 때 [알파 채널을 곱한 색 공간](https://www.w3.org/TR/css-color-4/#interpolation-alpha) 위에서 계산하도록 명시하고 있습니다. 그러나 구형 브라우저에서는 `transparent`가 알파 값 0의 검은 색으로 나타날 수 있는 점을 주의하세요.
+
+## currentColor 키워드
+
+`currentColor` 키워드는 요소의 [CSS `color` 속성](https://developer.mozilla.org/en-US/docs/Web/CSS/color)이 가진 값을 나타냅니다. 이 키워드를 사용하면 기본 값에서는 `color`의 영향을 받지 않는 속성들의 색도 `color`의 값으로 맞출 수 있습니다.
+
+`currentColor`를 `color` 속성의 값으로 사용한 경우에는 부모에게서 상속하는 `color` 값을 가리키게 됩니다.
+
+### 예제
+
+```html name=currentColor
+<div class="box">
+  파란 색 텍스트입니다.
+  <div class="hr"></div>
+  위의 가로줄과 주위 테두리의 색도 파란 색이어야 합니다.
+</div>
+```
+
+```css name=currentColor
+.box {
+  color: blue;
+  border: 1px dashed currentColor;
+}
+
+.hr {
+  background: currentColor;
+  height: 9px;
+}
+```
+
+<LiveExample height={120} light name="currentColor" />
+
+## RGB 색
+
+RGB 색 모델은 적색, 녹색, 청색 값으로 [sRGB 색 공간](https://ko.wikipedia.org/wiki/SRGB) 위의 색을 정의합니다. 선택적으로 알파 값이 색의 투명도를 나타냅니다.
+
+### 구문
+
+RGB 색은 16진수(`#`으로 시작)나 함수 표기법(`rgb()`, `rgba()`)으로 표현합니다.
+
+> [note] CSS Color Module Level 4에서 `rgba()`가 `rgb()`의 별칭이 됐습니다. Level 4 표준을 준수하는 브라우저에서는 `rgba()`와 `rgb()`가 같은 매개변수를 받고 동일하게 동작합니다.
+
+- : 16진수 표기법: `#RRGGBB`, `#RRGGBBAA`
+
+  - `R`(적), `G`(녹), `B`(청), `A`(알파)를 16진수 문자(`0–9`, `A–F`)로 표기합니다. `A`는 선택 사항입니다. 예를 들어, `#ff0000`은 `#ff0000ff`와 같습니다.
+
+- : 16진수 표기법: `#RGB`, `#RGBA`
+
+  - `R`(적), `G`(녹), `B`(청), `A`(알파)를 16진수 문자(`0–9`, `A–F`)로 표기합니다. `A`는 선택 사항입니다. 3글자 표기법(`#RGB`)은 6글자 표기법(`#RRGGBB`)의 단축 표기법입니다. 예를 들어, `#f09`는 `#ff0099`와 같은 색입니다. 마찬가지로 4글자 표기법(`#RGBA`)은 8글자 표기법(`#RRGGBBAA`)의 단축 표기법입니다. 예를 들어, `#0f38`은 `#00ff3388`과 같습니다.
+
+- : 함수 표기법: `rgb(R, G, B)`, `rgba(R, G, B)`, `rgb(R, G, B, A)`, `rgba(R, G, B, A)`
+
+  - `R`(적), `G`(녹), `B`(청)를 [`<number>`](./number) 또는 [`<percentage>`](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage)로 표기하며, 숫자 `255`는 `100%`와 같습니다. `A`(알파)는 `<percentage>` 또는 0 이상 1 이하의 `<number>`로 숫자 `1`은 `100%`(불투명)와 같습니다.
+
+- : 함수 표기법: `rgb(R G B)`, `rgba(R G B)`, `rgb(R G B / A)`, `rgba(R G B / A)`
+  - CSS Color Module Level 4부터 함수 표기법의 매개변수를 공백으로 구분할 수 있습니다.
+
+## HSL 색
+
+HSL 색 모델은 색상, 채도, 명도 값으로 [sRGB 색 공간](https://ko.wikipedia.org/wiki/SRGB) 위의 색을 정의합니다. 선택적으로 알파 값이 색의 투명도를 나타냅니다.
+
+많은 디자이너는 색상, 채도, 명도를 구별해 조정할 수 있는 HSL을 RGB보다 직관적으로 받아들입니다. 특히 HSL을 활용하면 한 색상의 여러 색조를 만들기 쉽습니다. 그러나 HSL을 사용하면 [인지적으로 균일하지 못한](https://en.wikipedia.org/wiki/Color_difference#Tolerance) 색상이 나타날 수 있습니다. 예를 들어, `hsl(240 100% 50%)`와 `hsl(60 100% 50%)`의 수치 상 명도는 같지만, 실제 색을 비교하면 전자가 후자의 색보다 훨씬 어둡게 보입니다.
+
+### 구문
+
+HSL 색은 `hsl()`과 `hsla()` 함수 표기법으로 표현합니다.
+
+> [note] CSS Color Module Level 4에서 `hsla()`가 `hsl()`의 별칭이 됐습니다. Level 4 표준을 준수하는 브라우저에서는 `hsla()`와 `hsl()`이 같은 매개변수를 받고 동일하게 동작합니다.
+
+- : 함수 표기법: `hsl(H, S, L)`, `hsla(H, S, L)`, `hsl(H, S, L, A)`, `hsla(H, S, L, A)`
+
+  - `H`(색상)는 색상환 위의 각도입니다. [CSS Color Module Level 4](https://drafts.csswg.org/css-color/#the-hsl-notation) 명세에 따라 `deg`, `rad`, `grad`, `turn` 단위를 사용한 [`<angle>`](https://developer.mozilla.org/en-US/docs/Web/CSS/angle), 또는 [CSS Color Module Level 3](https://drafts.csswg.org/css-color-3/#hsl-color) 명세에 따라 단위 없는 [`<number>`](./number)를 지정할 수 있으며, `<number>`를 사용하면 도 단위(`deg`)로 해석합니다. 색상환의 정의에 따르면 적색=`0deg`=`360deg`고, 다른 모든 색은 원 위에 균일하게 위치합니다. 예컨대 녹색=`120deg`, 청색=`240deg`입니다. `<angle>` 자료형이므로 0도 ~ 360도를 벗어나면 원을 한 바퀴 돌게 됩니다. 따라서 `-120deg`=`240deg`, `480deg`=`120deg`, `-1turn`=`1turn`입니다.
+
+    `S`(채도)와 `L`(명도)은 [`<percentage>`](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage)입니다. **채도** `100%`는 완전한 유채색, `0%`는 완전한 무채색(회색)입니다. **명도** `100%`는 백색, `0%`는 흑색, `50%`는 중간 회색입니다.
+
+    `A`(알파)는 `<percentage>` 또는 0 이상 1 이하의 `<number>`로 숫자 `1`은 `100%`(불투명)와 같습니다.
+
+- 함수 표기법: `hsl(H S L)`, `hsla(H S L)`, `hsl(H S L / A)`, `hsla(H S L / A)`
+  - : CSS Color Module Level 4부터 함수 표기법의 매개변수를 공백으로 구분할 수 있습니다.
+
+## HWB 색
+
+HWB 색 모델은 HSL처럼 색상, 백색, 흑색 값으로 [sRGB 색 공간](https://ko.wikipedia.org/wiki/SRGB) 위의 색을 정의합니다.
+
+HSL과 마찬가지로 RGB보다 HWB를 더 직관적으로 받아들이기 쉽습니다. 색상 매개변수는 HSL과 동일하고, 그 뒤에 백색과 흑색 매개변수를 [`<percentage>`](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage) 값으로 제공해야 합니다. 선택적으로 알파 값도 지정할 수 있습니다.
+
+> [note] HWB 색의 함수 표기법에는 별도의 `hwba()` 구문이 존재하지 않습니다.
+
+### 구문
+
+HWB 색은 `hwb()` 함수 표기법으로 표현합니다.
+
+> [warn] HWB 함수는 RGB와 HSL과는 달리 매개변수를 쉼표로 구분하는 구문이 존재하지 않습니다.
+
+- : 함수 표기법: `hwb(H W B)`, `hwb(H W B/A)`
+
+  - `H`(색상)는 색상환 위의 각도입니다. [CSS Color Module Level 4](https://drafts.csswg.org/css-color/#the-hsl-notation) 명세에 따라 `deg`, `rad`, `grad`, `turn` 단위를 사용한 [`<angle>`](https://developer.mozilla.org/en-US/docs/Web/CSS/angle), 또는 [CSS Color Module Level 3](https://drafts.csswg.org/css-color-3/#hsl-color) 명세에 따라 단위 없는 [`<number>`](./number)를 지정할 수 있으며, `<number>`를 사용하면 도 단위(`deg`)로 해석합니다. 색상환의 정의에 따르면 적색=`0deg`=`360deg`고, 다른 모든 색은 원 위에 균일하게 위치합니다. 예컨대 녹색=`120deg`, 청색=`240deg`입니다. `<angle>` 자료형이므로 0도 ~ 360도를 벗어나면 원을 한 바퀴 돌게 됩니다. 따라서 `-120deg`=`240deg`, `480deg`=`120deg`, `-1turn`=`1turn`입니다.
+
+    `W`(백색)와 `B`(흑색)는 [`<percentage>`](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage)입니다. 두 값을 혼합하면 최종 색이 되므로 완전한 검은색은 **흑색** `100%` 뿐만 아니라 **백색** `0%`도 필요합니다. 완전한 흰색 또한 흑색 `0%`와 백색 `100%`가 필요합니다. 흑색과 백색을 둘 다 `50%`로 지정하거나 둘 다 `100%`로 지정하면 중간 회색입니다.
+
+    `A`(알파)는 `<percentage>` 또는 0 이상 1 이하의 `<number>`로 숫자 `1`은 `100%`(불투명)와 같습니다.
+
+## 시스템 색
+
+[`forced-colors`](/en-US/docs/Web/CSS/@media/forced-colors) 미디어 쿼리로 감지 가능한 *색 강제 모드*에서는 사용 가능한 색이 사용자 정의 팔레트와 브라우저 정의 팔레트로 제한됩니다. 아래 목록의 키워드들로 이 **시스템 색** 팔레트를 사용할 수 있습니다. 시스템 색을 활용하면 제한된 팔레트에서도 페이지가 적절히 그려지도록 처리할 수 있습니다.
+
+> [note] 시스템 색 키워드는 대소문자를 구별하지 않습니다. 이 문서에서는 가독성을 위해 `CamelCase`로 작성했습니다.
+
+- : `ActiveText`
+  - 활성 링크의 색
+- : `ButtonBorder`
+  - UI 컨트롤의 기본 테두리 색
+- : `ButtonFace`
+  - UI 컨트롤의 배경색
+- : `ButtonText`
+  - UI 컨트롤의 전경색
+- : `Canvas`
+  - 애플리케이션 콘텐츠 또는 문서의 배경색
+- : `CanvasText`
+  - 애플리케이션 콘텐츠 또는 문서의 전경색
+- : `Field`
+  - 입력 칸의 배경색
+- : `FieldText`
+  - 입력 칸의 전경색
+- : `GrayText`
+  - 비활성 항목의 전경색 (e.g. 비활성 UI 컨트롤)
+- : `Highlight`
+  - 선택한 항목의 배경색
+- : `HighlightText`
+  - 선택한 항목의 전경색
+- : `LinkText`
+  - 방문한 적 없는 비활성 링크의 색
+- : `Mark`
+  - (HTML [`<mark>`](/docs/Web/HTML/Element/mark) 요소 등을 사용해) 마킹된 텍스트의 배경색
+- : `MarkText`
+  - (HTML [`<mark>`](/docs/Web/HTML/Element/mark) 요소 등을 사용해) 마킹된 텍스트의 전경색
+- : `VisitedText`
+  - 방문한 적 있는 링크의 색
+
+## Lab 색
+
+CSS Color Module Level 4에서 Lab 색 모델이 추가됐습니다. Lab 색은 특정 색 공간에 제한되지 않으며, 인간이 볼 수 있는 가시영역을 모두 표현할 수 있습니다.
+
+Lab 색은 [`lab()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/lab) 함수 표기법으로 표현합니다.
+
+## LCH 색
+
+CSS Color Module Level 4에서 LCH 색 모델이 추가됐습니다. LCH 색은 특정 색 공간에 제한되지 않으며, 인간이 볼 수 있는 가시영역을 모두 표현할 수 있습니다.
+
+LCH 색은 [`lch()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/lch) 함수 표기법으로 표현합니다.
+
+LCH는 Lab을 극형식(polar form)으로 나타낸 것으로 둘의 본질은 같습니다. 다만, LCH로는 크로마와 색상 값으로 원하는 색을 **지정**할 수 있으므로 *a\**와 *b\** 값을 **혼합**해야 하는 Lab 색보다 더 직관적입니다. 이 관점에서 LCH는 HSL과 비슷합니다.
+
+하지만 LCH(Lab)는 인지적으로 HSL보다 훨씬 더 균일합니다. 즉, LCH 색 모델은 사람이 인지하는 색의 "밝기"를 올바르게 나타낼 수 있습니다. 예컨대 HSL에서는 두 색, `hsl(60 100% 50%)`과 `hsl(240 100% 50%)`를 같은 명도(`50%`)로 나타내지만 LCH와 Lab에서는 전자(노랑)의 *L\**이 `97.6`, 후자(파랑)의 *L\**이 `29.6`으로 수치만 봐도 후자가 훨씬 어둡습니다. 따라서 LCH는 HSL과 달리 하나의 *L\** 팔레트를 완전히 다른 색들에 적용해도 기대하는 결과 범위 내의 색조 팔레트를 얻을 수 있습니다. 참고로 LCH와 HSL의 색상환의 형태는 같지만 서로 다른 색을 가리킵니다.
+
+{/*
+  color()는 CSS Color Module Level 5로 이동함
+*/}
+
+# 보간
+
+애니메이션과 [그레이디언트](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images/Using_CSS_gradients)에서, `<color>` 값의 보간은 적색, 청색, 녹색 값에 대해 독립적으로 이뤄집니다. 각각의 값은 부동소수점 실수로 보간됩니다. 갑자기 무채색이 나타나는 일을 방지하기 위해, 색 보간은 [알파 채널을 곱한 색 공간](https://www.w3.org/TR/css-color-4/#interpolation-alpha)에서 진행합니다. 애니메이션 내의 보간 속도는 [타이밍 함수](https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function)가 결정합니다.
+
+# 접근성 고려사항
+
+색을 구분하기 힘든 사용자도 존재하므로 [WCAG 2.1](https://www.w3.org/TR/WCAG/#use-of-color) 권고안은 특정 메시지나 동작, 결과를 색만으로 나타내지 않도록 안내하고 있습니다.
+
+# 예제
+
+## 다양한 RGB 구문
+
+이 예제는 하나의 색을 다양한 RGB 구문으로 지정하는 예제입니다.
+
+```css
+/* 모두 불투명한 핫핑크 */
+
+/* 16진수 */
+#f09
+#F09
+#ff0099
+#FF0099
+
+/* 함수 표기법 */
+rgb(255,0,153)
+rgb(255, 0, 153)
+rgb(255, 0, 153.0)
+rgb(100%,0%,60%)
+rgb(100%, 0%, 60%)
+rgb(100%, 0, 60%) /* 오류! <number>와 <percentage>를 혼합할 수 없음 */
+rgb(255 0 153)
+
+/* 알파 값을 포함한 16진수 */
+#f09f
+#F09F
+#ff0099ff
+#FF0099FF
+
+/* 알파 값을 포함한 함수 표기법 */
+rgb(255, 0, 153, 1)
+rgb(255, 0, 153, 100%)
+
+/* 공백 구분 매개변수 구문 */
+rgb(255 0 153 / 1)
+rgb(255 0 153 / 100%)
+
+/* 부동소수점 실수를 사용한 함수 표기법 */
+rgb(255, 0, 153.6, 1)
+rgb(2.55e2, 0e0, 1.53e2, 1e2%)
+```
+
+## 다양한 HSL 구문
+
+```css
+/* 모두 70% 불투명도의 라벤더색 */
+hsl(270,60%,70%)
+hsl(270, 60%, 70%)
+hsl(270 60% 70%)
+hsl(270deg, 60%, 70%)
+hsl(4.71239rad, 60%, 70%)
+hsl(.75turn, 60%, 70%)
+
+/* 모두 15% 불투명도의 라벤더색 */
+hsl(270, 60%, 50%, .15)
+hsl(270, 60%, 50%, 15%)
+hsl(270 60% 50% / .15)
+hsl(270 60% 50% / 15%)
+```
+
+## 다양한 HWB 구문
+
+```css
+/* 다양한 색조의 라임색 */
+hwb(90 10% 10%)
+hwb(90 50% 10%)
+hwb(90deg 10% 10%)
+hwb(1.5708rad 60% 0%)
+hwb(.25turn 0% 40%)
+
+/* 같은 라임색, 50% 불투명도 */
+hwb(90 10% 10% / 0.5)
+hwb(90 10% 10% / 50%)
+```
+
+# 명세
+
+[CSS Color Module Level 4](https://drafts.csswg.org/css-color/#color-syntax)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />

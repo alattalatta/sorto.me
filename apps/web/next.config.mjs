@@ -24,6 +24,9 @@ const pluginStack = (config) =>
 
 /** @returns {import('next').NextConfig} */
 const nextConfig = (phase) => ({
+  experimental: {
+    scrollRestoration: true // https://github.com/vercel/next.js/issues/20951
+  },
   reactStrictMode: true,
   swcMinify: true,
   pwa: {

@@ -1,0 +1,67 @@
+---
+title: 'HTML <input type="button">: 버튼 컨트롤'
+bcd: html.elements.input.input-button
+---
+
+**`button` 유형의 [`<input>`](../input) 요소**는 웹 페이지의 어디에나 배치할 수 있는 간단한 버튼으로 렌더링됩니다. 버튼의 기능은 이벤트 처리기(보통 클릭 이벤트)를 부착해 직접 구현할 수 있습니다.
+
+<HTMLDemo height={60}>
+
+```html
+<input type="button"
+       value="즐겨찾기에 추가">
+```
+
+```css
+input[type="button"] {
+  background: cornflowerblue;
+  border: none;
+  border-radius: 4px;
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 1em;
+  padding: 8px 20px;
+}
+
+input[type="button"]:hover {
+  background: dodgerblue;
+}
+
+input[type="button"]:active {
+  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6), inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+}
+```
+
+</HTMLDemo>
+
+> [note] `<input type="button">`은 여전히 완벽하게 유효한 HTML 요소지만, 나중에 추가된 [`<button>`](../button) 요소가 현재 버튼 생성에 선호되는 방법입니다. `<button>`의 레이블로는 임의의 HTML 코드를 사용할 수 있으므로 이미지도 사용할 수 있습니다.
+
+# 값
+
+`<input type="button">` 요소의 [`value` 특성](../input#term-value)은 버튼의 레이블로 사용할 [`DOMString`](https://developer.mozilla.org/en-US/docs/Web/API/DOMString)이어야 합니다.
+
+```html name=button-value
+<input type="button" value="클릭하세요!">
+```
+
+<LiveExample height={60} name="button-value" />
+
+`value`를 지정하지 않으면 빈 버튼을 생성합니다.
+
+```html name=button-valueless
+<input type="button">
+```
+
+<LiveExample height={60} name="button-valueless" />
+
+# 유효성 검증
+
+`<input type="button">`은 검증할 값을 가지지 않으므로 유효성 검증에 참여하지 않습니다.
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/input.html#button-state-(type=button))
+
+# 같이 보기
+
+- 대체 요소: [`<button>`](./button)

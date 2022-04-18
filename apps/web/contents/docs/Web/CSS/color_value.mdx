@@ -31,7 +31,7 @@ CSS **`<color>`** 자료형은 색을 표현합니다. `<color>`는 자신과 �
 
 `transparent` 키워드는 완전히 투명한 색을 나타냅니다. 따라서 `transparent`를 적용한 항목 뒤의 배경을 온전히 볼 수 있습니다. 기술적으로 `transparent`는 `rgb(0 0 0 / 0%)`의 단축어입니다.
 
-> [note] > `transparent`를 [`<gradient>`](https://developer.mozilla.org/en-US/docs/Web/CSS/gradient)를 포함한 위치에서 사용했을 때 예상하기 힘든 결과를 낳는 일을 방지하기 위해, 현 CSS 명세는 `transparent` 색을 계산할 때 [알파 채널을 곱한 색 공간](https://www.w3.org/TR/css-color-4/#interpolation-alpha) 위에서 계산하도록 명시하고 있습니다. 그러나 구형 브라우저에서는 `transparent`가 알파 값 0의 검은 색으로 나타날 수 있는 점을 주의하세요.
+> [note] [`<gradient>`](https://developer.mozilla.org/en-US/docs/Web/CSS/gradient)처럼 색의 보간이 필요한 곳에 `transparent`를 사용했을 때, 예상치 못한 무채색이 나타나는 일을 방지하기 위해서 현 CSS 명세는 `transparent` 색의 계산을 [알파 채널을 곱한 색 공간](https://www.w3.org/TR/css-color-4/#interpolation-alpha) 위에서 하도록 명시하고 있습니다. 그러나 구형 브라우저에서는 `transparent`가 알파 값 0의 검은색으로 나타날 수 있는 점을 주의하세요.
 
 ## currentColor 키워드
 
@@ -188,7 +188,7 @@ LCH는 Lab을 극형식(polar form)으로 나타낸 것으로 둘의 본질은 �
 
 ## color() 표기법
 
-CSS Color Module Level 4에서 [`color()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color) 함수가 추가됐습니다. `color()` 함수는 사전에 정의된 색 공간 뿐만 아니라 [`@color-profile`](https://developer.mozilla.org/en-US/docs/Web/CSS/@color-profile) 규칙으로 정의한 사용자 정의 색 공간 위 색 또한 표현할 수 있습니다.
+CSS Color Module Level 4에서 [`color()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color) 함수가 추가됐습니다. `color()` 함수는 사전에 정의된 색 공간뿐만 아니라 [`@color-profile`](https://developer.mozilla.org/en-US/docs/Web/CSS/@color-profile) 규칙으로 정의한 사용자 정의 색 공간 위의 색도 표현할 수 있습니다.
 
 # 보간
 

@@ -29,30 +29,173 @@ label {
 
 사용 가능한 값은 다음과 같습니다.
 
-| 유형             | 설명                                                                                                                                                                          | 미리보기                           |
-| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
-| `button`         | `value` 특성을 보여주는 것 외에는 기본 동작이 없는, 단순한 버튼입니다.                                                                                                        | <input type="button" />            |
-| `checkbox`       | 하나의 값을 선택하거나 선택하지 않을 수 있는 체크박스입니다.                                                                                                                  | <input type="checkbox" />          |
-| `color`          | 색을 지정하는 입력 칸입니다. 지원하는 브라우저에서는 색상 선택기를 보여줍니다.                                                                                                | <input type="color" />             |
-| `date`           | 시간 없는 날짜(연/월/일)를 입력하는 칸입니다. 지원하는 브라우저에서는 달력이나 날짜 휠을 보여줍니다.                                                                          | <input type="date" />              |
-| `datetime-local` | 시간을 포함한 날짜를 입력하는 칸입니다. 시간대는 입력할 수 없습니다. 지원하는 브라우저에서는 달력과 시계 등을 보여줍니다.                                                     | <input type="datetime-local" />    |
-| `email`          | 이메일을 입력하는 칸입니다. 텍스트 입력 칸과 동일한 모습이지만, 지원하는 브라우저에서 값 검증을, 동적 키보드 환경에서 관련 키보드를 보여줍니다.                               | <input type="email" />             |
-| `file`           | 사용자가 파일을 선택할 수 있는 칸입니다. [`accept`](#term-accept) 특성으로 선택 가능한 파일 유형을 지정할 수 있습니다.                                                        | <input type="file" />              |
-| `hidden`         | 사용자가 볼 수는 없지만, 값은 서버로 제출하는 숨겨진 칸입니다. 오른쪽에 미리보기가 있지만 보실 수 없겠네요!                                                                   | <input type="hidden" />            |
-| `image`          | 이미지를 보여주는 제출 버튼입니다. `src`로 보여줄 이미지를, `alt`로 대체 텍스트를 지정합니다.                                                                                 | <input type="image" alt='제출!' /> |
-| `month`          | 연/월을 입력하는 칸입니다.                                                                                                                                                    | <input type="month" />             |
-| `number`         | 숫자를 입력하는 칸입니다. 값을 조절할 수 있는 위아래 화살표, 그리고 지원할 경우 값 검증을 포함합니다. 동적 키보드 환경에서 숫자 키패드를 보여줍니다.                          | <input type="number" />            |
-| `password`       | 값을 볼 수 없는 텍스트 입력 칸입니다. 웹 사이트가 안전하지 않을 경우 경고를 표시합니다.                                                                                       | <input type="password" />          |
-| `radio`          | 같은 [`name`](#term-name)을 가진 다수의 선택지 중 하나를 선택할 수 있는 라디오 버튼입니다.                                                                                    | <input type="radio" />             |
-| `range`          | 정확하지 않아도 되는 숫자 입력 칸입니다. [`min`](#term-min)과 [`max`](#term-max) 특성으로 최소와 최대 값을 설정할 수 있습니다.                                                | <input type="range" />             |
-| `reset`          | 양식의 모든 값을 기본으로 초기화하는 버튼입니다.                                                                                                                              | <input type="reset" />             |
-| `search`         | 검색 문자열을 입력하는 칸입니다. 브라우저가 지원하는 경우 초기화 버튼을 포함할 수 있습니다. 동적 키보드 환경에서 엔터 키 대신 검색 아이콘을 보여줍니다.                       | <input type="search" />            |
-| `submit`         | 양식을 제출하는 버튼입니다.                                                                                                                                                   | <input type="submit" />            |
-| `tel`            | 전화번호를 입력하는 칸입니다. 동적 키보드 환경에서 전화번호 키패드를 보여줍니다.                                                                                              | <input type="tel" />               |
-| `text`           | 한 줄의 텍스트를 입력하는 칸입니다.                                                                                                                                           | <input type="text" />              |
-| `time`           | 시간을 입력하는 칸입니다. 시간대는 입력할 수 없습니다.                                                                                                                        | <input type="time" />              |
-| `url`            | URL을 입력하는 칸입니다. 텍스트 입력 칸과 모습은 동일하지만, 유효성 검증을 지원하는 브라우저에서는 값의 형식을 검증합니다. 동적 키보드 환경에서 최적화된 키보드를 보여줍니다. | <input type="url" />               |
-| `week`           | 연도의 주차를 입력하는 칸입니다. 시간대는 입력할 수 없습니다.                                                                                                                 | <input type="week" />              |
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>유형</th>
+        <th>설명</th>
+        <th>미리보기</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>[`button`](./input/button)</td>
+        <td>`value` 특성을 보여주는 것 외에는 기본 동작을 가지지 않는 단순한 버튼입니다.</td>
+        <td>
+          <input type="button" />
+        </td>
+      </tr>
+      <tr>
+        <td>`checkbox`</td>
+        <td>하나의 값을 선택하거나 선택하지 않을 수 있는 체크박스입니다.</td>
+        <td>
+          <input type="checkbox" />
+        </td>
+      </tr>
+      <tr>
+        <td>`color`</td>
+        <td>색을 입력하는 칸입니다. 브라우저가 지원할 경우 색 선택 창을 보여줍니다.</td>
+        <td>
+          <input type="color" />
+        </td>
+      </tr>
+      <tr>
+        <td>`date`</td>
+        <td>시간 없는 날짜(연/월/일)를 입력하는 칸입니다. 브라우저가 지원할 경우 달력이나 날짜 휠을 보여줍니다.</td>
+        <td>
+          <input type="date" />
+        </td>
+      </tr>
+      <tr>
+        <td>`datetime-local`</td>
+        <td>시간을 포함한 날짜를 입력하는 칸입니다. 시간대는 입력할 수 없습니다. 브라우저가 지원할 경우 달력과 시간 휠 등을 보여줍니다.</td>
+        <td>
+          <input type="datetime-local" />
+        </td>
+      </tr>
+      <tr>
+        <td>`email`</td>
+        <td>이메일을 입력하는 칸입니다. 텍스트 입력 칸과 동일한 모습이지만, 브라우저가 지원할 경우 값 형식 검증을 내장하며 동적 키보드 환경에서는 이메일 입력에 최적화된 키보드를 보여줍니다.</td>
+        <td>
+          <input type="email" />
+        </td>
+      </tr>
+      <tr>
+        <td>`file`</td>
+        <td>사용자가 파일을 선택할 수 있는 칸입니다. [`accept`](#term-accept) 특성으로 선택 가능한 파일 유형을 지정할 수 있습니다.</td>
+        <td>
+          <input type="file" />
+        </td>
+      </tr>
+      <tr>
+        <td>`hidden`</td>
+        <td>사용자가 볼 수는 없지만 자신의 값은 서버로 제출하는 숨겨진 입력 칸입니다. 오른쪽에 미리보기가 있지만 보이지가 않네요!</td>
+        <td>
+          <input type="hidden" />
+        </td>
+      </tr>
+      <tr>
+        <td>`image`</td>
+        <td>이미지를 보여주는 제출 버튼입니다. `src`에는 보여줄 이미지를, `alt`에는 이미지를 보여줄 수 없을 때 사용할 대체 텍스트를 지정합니다.</td>
+        <td>
+          <input type="image" />
+        </td>
+      </tr>
+      <tr>
+        <td>`month`</td>
+        <td>연도와 월을 입력하는 칸입니다. 브라우저가 지원할 경우 날짜 선택 창을 보여줍니다.</td>
+        <td>
+          <input type="month" />
+        </td>
+      </tr>
+      <tr>
+        <td>`number`</td>
+        <td>숫자를 입력하는 칸입니다. 브라우저가 지원할 경우 값을 조절할 수 있는 위아래 화살표를 보여주고 값 형식 검증을 내장하며, 동적 키보드 환경에서는 숫자 키패드를 보여줍니다.</td>
+        <td>
+          <input type="number" />
+        </td>
+      </tr>
+      <tr>
+        <td>`password`</td>
+        <td>값을 볼 수 없는 텍스트 입력 칸입니다. 웹 사이트가 안전하지 않을 경우 경고를 표시합니다.</td>
+        <td>
+          <input type="password" />
+        </td>
+      </tr>
+      <tr>
+        <td>`radio`</td>
+        <td>같은 [`name`](#term-name)의 여러 선택지 중 하나를 선택할 수 있는 라디오 버튼입니다.</td>
+        <td>
+          <input type="radio" />
+        </td>
+      </tr>
+      <tr>
+        <td>`range`</td>
+        <td>정확도가 중요하지 않은 숫자를 입력하는 칸입니다. [`min`](#term-min)과 [`max`](#term-max) 특성을 함께 사용해서 선택 가능한 최소/최대 범위를 설정할 수 있습니다.</td>
+        <td>
+          <input type="range" />
+        </td>
+      </tr>
+      <tr>
+        <td>`reset`</td>
+        <td>양식 내의 모든 컨트롤을 초기 설정 값으로 초기화하는 버튼입니다.</td>
+        <td>
+          <input type="reset" />
+        </td>
+      </tr>
+      <tr>
+        <td>`search`</td>
+        <td>검색 문자열을 입력하는 칸입니다. 브라우저가 지원할 경우 초기화 버튼을 보여주기도 합니다. 동적 키보드 환경에서는 엔터 키 대신 검색 아이콘을 보여줍니다.</td>
+        <td>
+          <input type="search" />
+        </td>
+      </tr>
+      <tr>
+        <td>`submit`</td>
+        <td>양식을 제출하는 버튼입니다.</td>
+        <td>
+          <input type="submit" />
+        </td>
+      </tr>
+      <tr>
+        <td>`tel`</td>
+        <td>전화번호를 입력하는 칸입니다. 동적 키보드 환경에서는 전화번호 키패드를 보여줍니다.</td>
+        <td>
+          <input type="tel" />
+        </td>
+      </tr>
+      <tr>
+        <td>`text`</td>
+        <td>한 줄의 텍스트를 입력하는 칸입니다.</td>
+        <td>
+          <input type="text" />
+        </td>
+      </tr>
+      <tr>
+        <td>`time`</td>
+        <td>시간을 입력하는 칸입니다. 시간대는 입력할 수 없습니다. 브라우저가 지원할 경우 시간 휠 등을 보여줍니다.</td>
+        <td>
+          <input type="time" />
+        </td>
+      </tr>
+      <tr>
+        <td>`url`</td>
+        <td>URL을 입력하는 칸입니다. 텍스트 입력 칸과 동일한 모습이지만, 브라우저가 지원할 경우 값 형식 검증을 내장하며 동적 키보드 환경에서는 URL 입력에 최적화된 키보드를 보여줍니다.</td>
+        <td>
+          <input type="url" />
+        </td>
+      </tr>
+      <tr>
+        <td>`week`</td>
+        <td>연도의 주차를 입력하는 칸입니다. 시간대는 입력할 수 없습니다. 브라우저가 지원할 경우 달력 등을 보여줍니다.</td>
+        <td>
+          <input type="week" />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 # 특성
 

@@ -21,10 +21,8 @@ const Anchor = forwardRef<HTMLAnchorElement, JSX.IntrinsicElements['a']>(({ chil
   // am I pointing within the app?
   const internal = /^[./]/.test(href)
   if (internal) {
-    const fragment = href.includes('#')
     // server: no url to resolve against
-    // fragment: do not use <Link> for better scroll position
-    if (typeof window === 'undefined' || fragment) {
+    if (typeof window === 'undefined') {
       return (
         <a ref={ref} href={href} {...props}>
           {children}

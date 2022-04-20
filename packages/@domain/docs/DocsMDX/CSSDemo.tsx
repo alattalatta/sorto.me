@@ -92,7 +92,7 @@ const CSSDemo: React.FC<Props> = ({ children: childrenProp, height, selector }) 
 
   return (
     <figure ref={rootRef} aria-label="데모" className={styles.root}>
-      <LiveCode className={styles.result} codes={codes} minHeight={height} />
+      <LiveCode className={styles.result} codes={codes} loading="eager" minHeight={height} />
       <div className={styles.codes}>{children}</div>
     </figure>
   )

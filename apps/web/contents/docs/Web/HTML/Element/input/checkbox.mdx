@@ -1,0 +1,202 @@
+---
+title: 'HTML <input type="checkbox">: 체크박스'
+bcd: html.elements.input.input-checkbox
+---
+
+**`checkbox` 유형의 [`<input>`](../input) 요소**는 활성화 시 체크를 표시하는 박스로 렌더링 합니다. 서류에서 동의할 때 체크 표시를 하는 빈칸과 비슷합니다. 정확한 외형은 운영 체제의 설정과 현재 구동 중인 브라우저에 따라 다릅니다. 체크박스는 보통 정사각형이며 모서리는 둥글 수도 있습니다. 체크박스는 양식에서 하나의 값을 선택하거나 선택하지 않을 수 있는 방법을 제공합니다.
+
+<HTMLDemo height={200}>
+
+```html
+<p>외형을 결정하세요:</p>
+<div>
+  <input type="checkbox" id="scales" name="scales" checked />
+  <label for="scales">비늘</label>
+</div>
+<div>
+  <input type="checkbox" id="horns" name="horns" />
+  <label for="horns">뿔</label>
+</div>
+```
+
+```css
+input[type='checkbox'] {
+  margin: 0.4rem;
+}
+```
+
+</HTMLDemo>
+
+> [note] [라디오 버튼](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio)은 체크박스와 비슷하지만, 한 가지 중요한 차이가 있습니다. 체크박스는 하나의 값을 선택 또는 해제할 수 있습니다. 반면 라디오 버튼은 다수가 하나의 그룹으로 묶이고, **그중에서 하나만** 선택할 수 있습니다. 즉, 다수의 체크박스는 모두 선택할 수 있지만, 다수의 라디오 버튼은 (한 그룹 안에서는) 하나만 선택할 수 있습니다.
+
+# 값
+
+`<input type="checkbox">` 요소의 [`value` 특성](../input#term-value)은 체크박스의 값을 나타내는 [`DOMString`](https://developer.mozilla.org/en-US/docs/Web/API/DOMString)이어야 합니다. 이 값은 클라이언트에는 노출되지 않고, 양식을 제출할 때 체크박스의 [`name`](../input#term-name)과 함께 서버로 전송됩니다. 아래의 예제 코드를 봐주세요.
+
+```html
+<form>
+  <div>
+    <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter" />
+    <label for="subscribeNews">뉴스레터 구독에 동의</label>
+  </div>
+  <div>
+    <button type="submit">제출</button>
+  </div>
+</form>
+```
+
+위 코드의 체크박스는 이름이 `subscribe`고, 값이 `newsletter`입니다. 체크박스를 체크한 후에 이 양식을 제출하면 서버로 제출되는 이름/값 쌍은 `subscribe=newsletter`입니다.
+
+`value` 특성을 생략하게 될 경우, 체크박스에서의 기본 값은 `on`이므로 위 예제에서라면 `subscribe=on`을 제출할 것입니다.
+
+> [note] 체크되지 않은 체크박스는 양식 제출 시 아무것도 제출하지 않습니다. 즉, 서버가 `name=unchecked`나 `name=off` 따위의 데이터를 수신하지 않습니다. 해제된 체크박스를 나타내는 기본 값을 서버로 전송해야 하는 경우라면, JavaScript 등으로 체크박스와 같은 `name`, 원하는 `value`를 지정한 [`<input type="hidden">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/hidden)을 생성할 수 있을 겁니다.
+
+# 추가 특성
+
+`checkbox` 유형은 모든 [`<input>`](../input) 요소가 공유하는 특성 외에도 아래의 특성을 추가로 지원합니다.
+
+- : `checked`
+  - 체크박스가 처음부터 체크된 상태로 나타나야 하는지 나타내는 불리언 특성입니다. 이 특성은 체크박스의 현재 상태는 반영하지 않으므로 사용자가 체크를 해제해도 `checked` 특성이 사라지진 않고, `checked`가 없는 체크박스를 체크해도 추가되지 않습니다. ([`HTMLInputElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement)의 `checked` IDL 특성만 현재 체크 상태를 반영합니다)
+- : `value`
+  - `value` 특성은 `<input>` 공용 특성이지만, [값](#값)에서 설명했듯 `checkbox` 유형에서는 그 동작이 약간 다릅니다. 양식을 제출할 때, 체크된 체크박스의 `value`만 제출 데이터에 포함되고 체크 해제된 체크박스의 `value`는 아예 누락됩니다. 또한 `value`를 지정하지 않은 경우의 기본 값은 문자열 `on`입니다.
+
+# 유효성 검증
+
+체크박스도 [유효성 검증](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Constraint_validation)을 지원하기는 하지만, 대부분의 [`ValidityState`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState) 속성은 항상 `false`입니다. 다만, [`required` 특성](../input#term-required)을 보유한 체크박스가 체크되지 않은 상태일 땐 `ValidityState.valueMissing`이 `true`입니다.
+
+# 예제
+
+가장 기본적인 사용법은 [값](#값)의 예제 코드로 확인할 수 있습니다.
+
+## 다수의 체크박스 처리하기
+
+실전에서는 대부분 다수의 체크박스를 한 번에 다뤄야 합니다. 만약 전혀 관련 없는 체크박스들이 여러 개일뿐이라면 [위에서 봤던](#값) 기본적인 체크박스를 여러 개로 늘리기만 하면 되지만, 서로 연관된 경우면 접근을 살짝 달리해야 합니다.
+
+여러 보기 중에서 사용자의 관심사를 원하는 만큼 선택할 수 있는 아래 코드를 봐주세요.
+
+```html name=multiple
+<fieldset>
+  <legend>관심사를 선택해주세요</legend>
+  <div>
+    <input type="checkbox" id="coding" name="interest" value="coding" />
+    <label for="coding">개발</label>
+  </div>
+  <div>
+    <input type="checkbox" id="music" name="interest" value="music" />
+    <label for="music">음악</label>
+  </div>
+</fieldset>
+```
+
+<LiveExample height={120} name="multiple" />
+
+위 예제를 보면 두 개의 체크박스에 모두 같은 `name`을 지정한 것을 확인할 수 있습니다. 두 개의 체크박스를 모두 선택한 상태로 양식을 제출하게 되면, 서버가 받을 이름/값 쌍은 `interest=coding&interest=music`입니다. 이름인 `interest`가 반복해서 나타나는 점을 주목하세요. 서버에서는 이 문자열을 파싱할 때 마지막이나 맨 처음 `interest` 하나만 취하지 않고, 모든 값을 받을 수 있도록 주의해야 합니다.
+
+Node.js의 기본 쿼리 문자열 분석 함수인 [`querystring.parse()`](https://nodejs.org/api/querystring.html#querystringparsestr-sep-eq-options)는 이런 데이터를 배열로 파싱할 수 있습니다.
+
+```js
+import { parse } from 'node:querystring'
+
+parse('interest=coding&interest=music') // { interest: [ 'coding', 'music' ] }
+```
+
+다른 언어에서의 예시로, Python의 [Flask](https://flask.palletsprojects.com/en/2.1.x/)도 기본적으로 이런 경우를 올바르게 처리할 수 있습니다. [`Request.args`](https://flask.palletsprojects.com/en/2.1.x/api/#flask.Request)를 사용하세요.
+
+```py
+request.args.getlist("interest") # [ "coding", "music" ]
+```
+
+## 처음부터 체크된 체크박스
+
+체크박스에 [`checked` 특성](#term-checked)을 추가하면 처음부터 체크된 상태로 나타나도록 할 수 있습니다.
+
+```html name=checked
+<fieldset>
+  <legend>관심사를 선택해주세요</legend>
+  <div>
+    <input type="checkbox" id="coding" name="interest" value="coding" checked />
+    <label for="coding">개발</label>
+  </div>
+  <div>
+    <input type="checkbox" id="music" name="interest" value="music" />
+    <label for="music">음악</label>
+  </div>
+</fieldset>
+```
+
+<LiveExample height={120} name="checked" />
+
+## 불확실한 상태의 체크박스
+
+체크박스에는 사실 체크된 상태와 체크되지 않은 상태 외에도 제 3의 상태인 **불확실** 상태가 존재합니다. 불확실한 체크박스는 항목을 체크했는지, 체크하지 않았는지 정확히 판단할 수 없을 때 사용할 수 있습니다. JavaScript에서 체크박스 요소의 [`HTMLInputElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement), `indeterminate` 속성을 `true`로 설정하면 그 체크박스는 불확실한 상태가 됩니다. (HTML 특성으로는 할 수 없습니다)
+
+```js
+checkbox.indeterminate = true
+```
+
+대부분의 브라우저에서, 불확실한 상태의 체크박스는 체크 표시 대신 하이픈이나 빼기 기호처럼 생긴 가로 줄을 그려서 표현합니다.
+
+불확실한 체크박스를 써야 하는 경우는 그렇게 많지 않지만, 그래도 활용해야 하는 경우 중 가장 흔한 것은 "자식" 체크박스를 여러 개 보유하는 "부모" 체크박스입니다. 자식들을 모두 체크하면 부모도 체크되고, 자식을 아무것도 체크하지 않으면 부모도 체크되지 않는다면, 일부 자식만 체크한 경우에는 부모를 불확실한 상태로 나타낼 수 있을 겁니다.
+
+아래에서 불확실한 체크박스의 활용 예제를 직접 볼 수 있습니다. 제작에 필요한 재료 중에서 보유한 항목을 체크해 표시하는 예제인데, 재료의 체크박스를 체크하거나 해제하게 되면 JavaScript 함수로 체크된 체크박스의 수를 확인해서...
+
+1. 아무것도 체크하지 않았으면 제작법 체크박스의 체크를 해제합니다.
+1. 체크한 항목의 수가 재료의 수와 같으면 제작법 체크박스를 체크합니다.
+1. 이외의 경우, 즉 체크한 항목의 수가 재료의 수보다 작으면 제작법 체크박스를 불확실한 상태로 만듭니다.
+
+```html name=indeterminate
+<fieldset>
+  <legend>필요한 재료</legend>
+  <input id="recipe" name="recipe" type="checkbox" />
+  <label for="recipe">마법 부여대</label>
+  <br />
+  <ul>
+    <li>
+      <input id="book" name="ingredients" type="checkbox" value="book" />
+      <label for="book">책</label>
+    </li>
+    <li>
+      <input id="diamonds" name="ingredients" type="checkbox" value="diamonds" />
+      <label for="diamonds">다이아몬드 (x2)</label>
+    </li>
+    <li>
+      <input id="obsidian" name="ingredients" type="checkbox" value="obsidian" />
+      <label for="obsidian">흑요석 (x4)</label>
+    </li>
+  </ul>
+</fieldset>
+```
+
+```js name=indeterminate
+const recipe = document.querySelector('#recipe')
+const ingredients = document.querySelectorAll('ul input')
+
+recipe.addEventListener('click', (e) => {
+  e.preventDefault()
+})
+
+for (const ingredient of ingredients) {
+  ingredient.addEventListener('click', updateDisplay)
+}
+
+function updateDisplay() {
+  const checkedCount = [...ingredients].filter((ingredient) => ingredient.checked).length
+
+  if (checkedCount === 0) {
+    recipe.checked = false
+    recipe.indeterminate = false
+  } else if (checkedCount < ingredients.length) {
+    recipe.checked = false
+    recipe.indeterminate = true
+  } else {
+    recipe.checked = true
+    recipe.indeterminate = false
+  }
+}
+```
+
+<LiveExample height={180} name="indeterminate" />
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/input.html#checkbox-state-(type=checkbox))

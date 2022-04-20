@@ -66,7 +66,11 @@ const LiveCode: React.FC<Props> = ({
   const loading = !eager && !loaded
 
   return (
-    <div ref={rootRef} className={clsx(styles.root, className)} style={{ height: height, minHeight: minHeight }}>
+    <div
+      ref={rootRef}
+      className={clsx(styles.root, className)}
+      style={{ height: height && `${height / 16}rem`, minHeight: minHeight && `${minHeight / 16}rem` }}
+    >
       {intersected && (
         <iframe
           ref={frameRef}

@@ -10,15 +10,25 @@ type Props = {
   codes: Record<Language, readonly string[]>
   height?: number
   light?: boolean
+  loading?: 'eager' | 'lazy'
   minHeight?: number
 }
 
-const LiveCode: React.FC<Props> = ({ className, codes: { css, html, js }, height, light, minHeight }) => {
+const LiveCode: React.FC<Props> = ({
+  className,
+  codes: { css, html, js },
+  height,
+  loading: loadingProp = 'lazy',
+  light,
+  minHeight,
+}) => {
+  const eager = loadingProp === 'eager'
+
   const rootRef = useRef<HTMLDivElement>(null)
   const frameRef = useRef<HTMLIFrameElement>(null)
   const initialSrc = useRef(serializeSrc(css, html, js)).current
 
-  const [intersected, setIntersected] = useReducer(() => true, false)
+  const [intersected, setIntersected] = useReducer(() => true, eager) // skip intersection check when eager
   const [loaded, setLoaded] = useReducer(() => true, false)
   const [src, setSrc] = useState(initialSrc)
 
@@ -27,6 +37,10 @@ const LiveCode: React.FC<Props> = ({ className, codes: { css, html, js }, height
   }, [css, html, js])
 
   useEffect(() => {
+    if (eager) {
+      return
+    }
+
     if (rootRef.current) {
       const observer = new IntersectionObserver(
         ([target]) => {
@@ -41,7 +55,7 @@ const LiveCode: React.FC<Props> = ({ className, codes: { css, html, js }, height
 
       return () => observer.disconnect()
     }
-  }, [])
+  }, [eager])
 
   useEffect(() => {
     if (loaded && frameRef.current?.contentWindow) {
@@ -49,18 +63,20 @@ const LiveCode: React.FC<Props> = ({ className, codes: { css, html, js }, height
     }
   }, [loaded, src])
 
+  const loading = !eager && !loaded
+
   return (
     <div ref={rootRef} className={clsx(styles.root, className)} style={{ height: height, minHeight: minHeight }}>
       {intersected && (
         <iframe
           ref={frameRef}
-          className={styles.frame({ loading: !loaded })}
+          className={styles.frame({ loading })}
           src={`/frame${light ? '?forceLightTheme' : ''}`}
           title="예제"
           onLoad={setLoaded}
         />
       )}
-      <p className={styles.loadingMessage({ loading: !loaded })}>
+      <p className={styles.loadingMessage({ loading })}>
         <span className={styles.spinner} />
         불러오는 중...
       </p>

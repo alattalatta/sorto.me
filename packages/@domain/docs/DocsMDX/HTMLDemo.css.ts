@@ -47,6 +47,7 @@ export const codes = style({
 })
 
 globalStyle(`${codes} pre`, {
+  minHeight: '100%',
   background: colors.bg0,
   color: colors.fg0,
   margin: 0,

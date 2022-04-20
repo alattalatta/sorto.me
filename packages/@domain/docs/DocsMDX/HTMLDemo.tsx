@@ -1,4 +1,4 @@
-import { Children, cloneElement, isValidElement, useEffect, useRef, useState } from 'react'
+import { Children, cloneElement, isValidElement, useEffect, useMemo, useRef, useState } from 'react'
 
 import * as styles from './HTMLDemo.css'
 import LiveCode from './LiveCode'
@@ -17,6 +17,8 @@ const HTMLDemo: React.FC<Props> = ({ children: childrenProp, height }) => {
     html: [],
     js: [],
   })
+
+  const containsMultipleLangs = useMemo(() => Object.values(codes).filter((v) => v.length > 0).length > 1, [codes])
 
   useEffect(() => {
     if (rootRef.current) {
@@ -54,24 +56,28 @@ const HTMLDemo: React.FC<Props> = ({ children: childrenProp, height }) => {
   return (
     <figure ref={rootRef} aria-label="데모" className={styles.root}>
       <LiveCode className={styles.result} codes={codes} loading="eager" minHeight={height} />
-      <div className={styles.langButtonsBar}>
-        {Boolean(codes.html.length) && (
-          <button className={styles.langButton} type="button" onClick={() => setCurrentLang('html')}>
-            HTML
-          </button>
-        )}
-        {Boolean(codes.css.length) && (
-          <button className={styles.langButton} type="button" onClick={() => setCurrentLang('css')}>
-            CSS
-          </button>
-        )}
-        {Boolean(codes.js.length) && (
-          <button className={styles.langButton} type="button" onClick={() => setCurrentLang('js')}>
-            JavaScript
-          </button>
-        )}
+      {containsMultipleLangs && (
+        <div className={styles.langButtonsBar}>
+          {codes.html.length > 0 && (
+            <button className={styles.langButton} type="button" onClick={() => setCurrentLang('html')}>
+              HTML
+            </button>
+          )}
+          {codes.css.length > 0 && (
+            <button className={styles.langButton} type="button" onClick={() => setCurrentLang('css')}>
+              CSS
+            </button>
+          )}
+          {codes.js.length > 0 && (
+            <button className={styles.langButton} type="button" onClick={() => setCurrentLang('js')}>
+              JavaScript
+            </button>
+          )}
+        </div>
+      )}
+      <div className={styles.codes} style={{ gridArea: containsMultipleLangs ? undefined : 'span 2' }}>
+        {children}
       </div>
-      <div className={styles.codes}>{children}</div>
     </figure>
   )
 }

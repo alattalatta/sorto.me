@@ -109,7 +109,6 @@ importers:
 
   packages/@domain/blog:
     specifiers:
-      '@ava/typescript': ^3.0.1
       '@lib/functions': workspace:*
       '@lib/mdx': workspace:*
       '@lib/ui': workspace:*
@@ -139,11 +138,10 @@ importers:
       gray-matter: 4.0.3
       next: 12.1.5_react-dom@18.0.0+react@18.0.0
     devDependencies:
-      '@ava/typescript': 3.0.1
       '@types/node': 16.11.27
       '@types/react': 18.0.5
       '@types/react-dom': 18.0.1
-      ava: 4.2.0_@ava+typescript@3.0.1
+      ava: 4.2.0
       react: 18.0.0
       react-dom: 18.0.0_react@18.0.0
       ts-node: 10.7.0_719e7c013adecafa50303831d1b06222
@@ -152,7 +150,6 @@ importers:
 
   packages/@domain/docs:
     specifiers:
-      '@ava/typescript': ^3.0.1
       '@lib/functions': workspace:*
       '@lib/mdx': workspace:*
       '@lib/ui': workspace:*
@@ -194,11 +191,10 @@ importers:
       strip-markdown: 5.0.0
       unist-util-select: 4.0.1
     devDependencies:
-      '@ava/typescript': 3.0.1
       '@types/node': 16.11.27
       '@types/react': 18.0.5
       '@types/react-dom': 18.0.1
-      ava: 4.2.0_@ava+typescript@3.0.1
+      ava: 4.2.0
       react: 18.0.0
       react-dom: 18.0.0_react@18.0.0
       ts-node: 10.7.0_719e7c013adecafa50303831d1b06222
@@ -348,7 +344,6 @@ importers:
 
   packages/@lib/ui:
     specifiers:
-      '@ava/typescript': ^3.0.1
       '@lib/functions': workspace:*
       '@testing-library/react': ^13.1.1
       '@types/jsdom-global': ^3.0.2
@@ -377,14 +372,13 @@ importers:
       next: 12.1.5_react-dom@18.0.0+react@18.0.0
       next-themes: 0.1.1_1cf2cc49e2c27648b440cc4e09213966
     devDependencies:
-      '@ava/typescript': 3.0.1
       '@testing-library/react': 13.1.1_react-dom@18.0.0+react@18.0.0
       '@types/jsdom-global': 3.0.2
       '@types/node': 16.11.27
       '@types/react': 18.0.5
       '@types/react-dom': 18.0.1
       '@vanilla-extract/recipes': 0.2.4_@vanilla-extract+css@1.7.0
-      ava: 4.2.0_@ava+typescript@3.0.1
+      ava: 4.2.0
       jsdom: 19.0.0
       jsdom-global: 3.0.2_jsdom@19.0.0
       react: 18.0.0
@@ -445,14 +439,6 @@ packages:
       jsonpointer: 5.0.0
       leven: 3.1.0
     dev: false
-
-  /@ava/typescript/3.0.1:
-    resolution: {integrity: sha512-/JXIUuKsvkaneaiA9ckk3ksFTqvu0mDNlChASrTe2BnDsvMbhQdPWyqQjJ9WRJWVhhs5TWn1/0Pp1G6Rv8Syrw==}
-    engines: {node: '>=12.22 <13 || >=14.17 <15 || >=16.4 <17 || >=17'}
-    dependencies:
-      escape-string-regexp: 5.0.0
-      execa: 5.1.1
-    dev: true
 
   /@babel/code-frame/7.16.7:
     resolution: {integrity: sha512-iAXqUn8IIeBTNd72xsFlgaXHkMBMt6y4HJp1tIaK465CWLT/fG1aqB7ykr95gHHmlBdGbFeWWfyB4NJJ0nmeIg==}
@@ -2754,7 +2740,7 @@ packages:
     engines: {node: '>= 4.0.0'}
     dev: false
 
-  /ava/4.2.0_@ava+typescript@3.0.1:
+  /ava/4.2.0:
     resolution: {integrity: sha512-96N/rH2ZlBjoh18CsjH3zfo/rzukkRoqNK7R/Z3MLRrqu6cRRf+i4Zwna7ZRYEIl55yF1BKh/nSPCZWqoXfPJA==}
     engines: {node: '>=12.22 <13 || >=14.17 <15 || >=16.4 <17 || >=17'}
     hasBin: true
@@ -2764,7 +2750,6 @@ packages:
       '@ava/typescript':
         optional: true
     dependencies:
-      '@ava/typescript': 3.0.1
       acorn: 8.7.0
       acorn-walk: 8.2.0
       ansi-styles: 6.1.0
@@ -3815,21 +3800,6 @@ packages:
     engines: {node: '>=0.8.x'}
     dev: true
 
-  /execa/5.1.1:
-    resolution: {integrity: sha512-8uSpZZocAZRBAPIEINJj3Lo9HyGitllczc27Eh5YYojjMFMn8yHMDMaUHE2Jqfq05D/wucwI4JGURyXt1vchyg==}
-    engines: {node: '>=10'}
-    dependencies:
-      cross-spawn: 7.0.3
-      get-stream: 6.0.1
-      human-signals: 2.1.0
-      is-stream: 2.0.1
-      merge-stream: 2.0.0
-      npm-run-path: 4.0.1
-      onetime: 5.1.2
-      signal-exit: 3.0.7
-      strip-final-newline: 2.0.0
-    dev: true
-
   /execa/6.1.0:
     resolution: {integrity: sha512-QVWlX2e50heYJcCPG0iWtf8r0xjEYfz/OYLGDYH+IyjWezzPNxz63qNFOu0l4YftGWuizFVZHHs8PrLU5p2IDA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
@@ -4068,6 +4038,7 @@ packages:
   /get-stream/6.0.1:
     resolution: {integrity: sha512-ts6Wi+2j3jQjqi70w5AlN8DFnkSwC+MqmxEzdEALB2qXZYV3X/b1CTfgPLGJNMeAWxdPfU8FO1ms3NUfaHCPYg==}
     engines: {node: '>=10'}
+    dev: false
 
   /get-symbol-description/1.0.0:
     resolution: {integrity: sha512-2EmdH1YvIQiZpltCNgkuiUnyukzxM/R6NDJX31Ke3BG1Nq5b0S2PhX59UKi9vZpPDQVdqn+1IcaAwnzTT5vCjw==}
@@ -4298,11 +4269,6 @@ packages:
       debug: 4.3.4
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /human-signals/2.1.0:
-    resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}
-    engines: {node: '>=10.17.0'}
     dev: true
 
   /human-signals/3.0.1:
@@ -4562,6 +4528,7 @@ packages:
   /is-stream/2.0.1:
     resolution: {integrity: sha512-hFoiJiTl63nn+kstHGBtewWSKnQLpyb155KHheA1l39uvtO9nWIop1p3udqPcUd/xbF1VLMO4n7OI6p7RbngDg==}
     engines: {node: '>=8'}
+    dev: false
 
   /is-stream/3.0.0:
     resolution: {integrity: sha512-LnQR4bZ9IADDRSkvpqMGvt/tEJWclzklNgSw48V5EAaAeDd6qGvN8ei6k5p0tvxSR171VmGyHuTiAOfxAbr8kA==}
@@ -5466,11 +5433,6 @@ packages:
       mime-db: 1.51.0
     dev: true
 
-  /mimic-fn/2.1.0:
-    resolution: {integrity: sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==}
-    engines: {node: '>=6'}
-    dev: true
-
   /mimic-fn/4.0.0:
     resolution: {integrity: sha512-vqiC06CuhBTUdZH+RYl8sFrL096vA45Ok5ISO6sE/Mr1jRbGH4Csnhi8f3wKVl7x8mO4Au7Ir9D3Oyv1VYMFJw==}
     engines: {node: '>=12'}
@@ -5675,13 +5637,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /npm-run-path/4.0.1:
-    resolution: {integrity: sha512-S48WzZW777zhNIrn7gxOlISNAqi9ZC/uQFnRdbeIHhZhCA6UqpkOT8T1G7BvfdgP4Er8gF4sUbaS0i7QvIfCWw==}
-    engines: {node: '>=8'}
-    dependencies:
-      path-key: 3.1.1
-    dev: true
-
   /npm-run-path/5.1.0:
     resolution: {integrity: sha512-sJOdmRGrY2sjNTRMbSvluQqg+8X7ZK61yvzBEIDhz4f8z1TZFYABsqjjCBd/0PUNE9M6QDgHJXQkGUEm7Q+l9Q==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
@@ -5757,13 +5712,6 @@ packages:
     resolution: {integrity: sha1-WDsap3WWHUsROsF9nFC6753Xa9E=}
     dependencies:
       wrappy: 1.0.2
-
-  /onetime/5.1.2:
-    resolution: {integrity: sha512-kbpaSSGJTWdAY5KPVeMOKXSrPtr8C8C7wodJbcsd51jRnmD+GZu8Y0VoU6Dm5Z4vWr0Ig/1NKuWRKf7j5aaYSg==}
-    engines: {node: '>=6'}
-    dependencies:
-      mimic-fn: 2.1.0
-    dev: true
 
   /onetime/6.0.0:
     resolution: {integrity: sha512-1FlR+gjXK7X+AsAHso35MnyN5KqGwJRi/31ft6x0M194ht7S+rWAvd7PHss9xSKMzE0asv1pyIHaJYq+BbacAQ==}
@@ -6642,11 +6590,6 @@ packages:
     resolution: {integrity: sha512-ZprKx+bBLXv067WTCALv8SSz5l2+XhpYCsVtSqlMnkAXMWDq+/ekVbl1ghqP9rUHTzv6sm/DwCOiYutU/yp1fw==}
     engines: {node: '>=10'}
     dev: false
-
-  /strip-final-newline/2.0.0:
-    resolution: {integrity: sha512-BrpvfNAE3dcvq7ll3xVumzjKjZQ5tI1sEUIKr3Uoks0XUl45St3FlatVqef9prk4jRDzhW6WZg+3bk93y6pLjA==}
-    engines: {node: '>=6'}
-    dev: true
 
   /strip-final-newline/3.0.0:
     resolution: {integrity: sha512-dOESqjYr96iWYylGObzd39EuNTa5VJxyvVAEm5Jnh7KGo75V43Hk1odPQkNDyXNmUR6k+gEiDVXnjB8HJ3crXw==}

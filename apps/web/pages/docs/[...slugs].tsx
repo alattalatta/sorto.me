@@ -23,7 +23,7 @@ const DocPageWrap: Page<DocPageProps> = ({ compiledSource, meta, ...props }) => 
     },
   )
 
-  return <DocPage {...props} {...data} />
+  return <DocPage {...props} compiledSource={data?.compiledSource || compiledSource} meta={data?.meta || meta} />
 }
 DocPageWrap.Layout = DocPage.Layout
 

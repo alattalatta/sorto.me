@@ -1,0 +1,72 @@
+---
+title: 'HTML <input type="color">: 색 선택'
+bcd: html.elements.input.input-color
+---
+
+**`color` 유형의 [`<input>`](../input) 요소**는 사용자가 색을 선택하거나 입력할 수 있는 컨트롤입니다.
+
+`<input type="color">`에는 16진수 형식(`#rrggbb`)의 알파 채널 없는 간단한 색만 입력할 수 있습니다. CSS의 [표준 색 이름, 함수 표기법, 알파 채널을 포함하는 16진수 색 코드 등](/docs/Web/CSS/color_value)은 지원하지 않습니다.
+
+실제 컨트롤의 외형은 브라우저와 플랫폼에 따라서 모습이 크게 달라질 수 있습니다. 입력받은 값의 형식 검증을 내장한 텍스트 입력 칸에 불과할 수도 있고, 플랫폼 표준 색 선택 도구를 제공할 수도 있고, 브라우저가 별도로 구현한 색 선택 도구일 수도 있습니다.
+
+<HTMLDemo height={200}>
+
+```html
+<p>색을 결정하세요:</p>
+<div>
+  <input type="color" id="head" name="head" value="#e66465" />
+  <label for="head">머리</label>
+</div>
+<div>
+  <input type="color" id="body" name="body" value="#f6b73c" />
+  <label for="body">몸통</label>
+</div>
+```
+
+```css
+input {
+  margin: 0.4rem;
+}
+```
+
+</HTMLDemo>
+
+# 값
+
+`<input type="color">` 요소의 [`value` 특성](../input#term-value)은 반드시 16진수 형식의 RGB 색을 나타내는 7글자 [`DOMString`](https://developer.mozilla.org/en-US/docs/Web/API/DOMString)이어야 합니다. `value` 특성은 대소문자를 구별하지 않으나, 실제로 저장되는 값은 항상 소문자를 사용합니다. `value` 특성 또는 사용자가 입력한 값이 비어있거나 유효하지 않은 경우에는 값을 `#000000`으로 취급하므로, `<input type="color">`의 값은 항상 7글자 16진수 RGB 색 코드인 것으로 취급할 수 있습니다.
+
+> [note] CSS 표준 색 이름이나 함수 표기법도 유효하지 않은 값입니다. 알파 채널을 포함하는 9글자 16진수 색 코드(e.g. `#009900aa`)도 잘못된 값이며 `#000000`으로 저장합니다.
+
+# 유효성 검증
+
+사용자 에이전트가 색 선택 칸의 값을 7글자 소문자 16진수 표기법으로 변환할 수 없으면 유효하지 않은 것으로 취급합니다.
+
+# 예제
+
+## 사전에 정의한 색 견본 제공하기
+
+브라우저가 지원하는 경우, [`<datalist>`](../datalist)와 [`<option>`](../option) 요소를 `<input type="color">`와 함께 사용하면 사전에 정의한 색 견본(스와치)을 제공할 수 있습니다.
+
+> [note] `<datalist>` 요소는 **제안**하는 값을 나타내며, 특정 값으로 입력을 **제한**하지 않습니다. `<input type="color">`에서도 마찬가지로, 사용자는 견본 색 외에도 색을 직접 선택할 수 있습니다.
+
+```html name=swatches
+<datalist id="list">
+  <option>#ff0000</option>
+  <option>#ee0000</option>
+  <option>#dd0000</option>
+  <option>#cc0000</option>
+  <option>#bb0000</option>
+</datalist>
+
+<input type="color" list="list" />
+```
+
+<LiveExample name="swatches" height={60} />
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/input.html#color-state-(type=color))
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />

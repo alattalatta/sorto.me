@@ -1,10 +1,9 @@
 ---
-title: 'HTML <datalist>: 데이터 리스트 요소'
-description: HTML <datalist> (데이터 리스트) 요소는 다른 컨트롤에서 제공할 수 있는 추천 선택지 목록을 나타냅니다. 각각의 선택지는 <option> 요소로 표현합니다.
+title: 'HTML <datalist>: 추천 값 목록 요소'
 bcd: html.elements.datalist
 ---
 
-**HTML `<datalist>` 요소**는 다른 컨트롤에서 제공할 수 있는 추천 선택지 목록을 나타냅니다. 각각의 선택지는 [`<option>`](./option) 요소로 표현합니다.
+**HTML `<datalist>` 요소**는 입력 컨트롤에서 사용자에게 제안할 값의 목록을 나타냅니다. 각각의 값은 [`<option>`](./option) 요소로 표현합니다.
 
 <HTMLDemo height={200}>
 
@@ -28,7 +27,9 @@ bcd: html.elements.datalist
 
 # 예제
 
-## `color` 선택지
+## 색 견본
+
+[`<input type="color">`](./input/color) 요소에 `<datalist>`를 제공하면 사용자가 색을 선택할 때 견본에서 선택할 수 있습니다.
 
 ```html name=color
 <datalist id="list">
@@ -45,6 +46,8 @@ bcd: html.elements.datalist
 <LiveExample name="color" height={60} />
 
 ## `range` 선택지
+
+[`<input type="range">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range) 요소에 `<datalist>`를 제공하면 범위 슬라이더가 해당 값에 스냅됩니다.
 
 ```html name=range
 <datalist id="list">

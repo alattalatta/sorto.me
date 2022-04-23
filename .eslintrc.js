@@ -3,7 +3,7 @@ require('@alattalatta/eslint-config/patch')
 module.exports = {
   root: true,
   extends: [
-    process.env.NODE_ENV === 'production' ? '@alattalatta/eslint-config/full' : '@alattalatta/eslint-config',
+    '@alattalatta/eslint-config/full',
     'plugin:@next/next/recommended',
     'plugin:@next/next/core-web-vitals',
   ],

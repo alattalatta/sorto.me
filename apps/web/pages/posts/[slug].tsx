@@ -21,7 +21,7 @@ const PostPageWrap: Page<PostPageProps> = ({ compiledSource, meta, ...props }) =
     },
   )
 
-  return <PostPage {...props} {...data} />
+  return <PostPage {...props} compiledSource={data?.compiledSource || compiledSource} meta={data?.meta || meta} />
 }
 PostPageWrap.Layout = PostPage.Layout
 

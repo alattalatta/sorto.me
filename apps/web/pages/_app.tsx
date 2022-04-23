@@ -32,7 +32,7 @@ function App({ Component, pageProps }: { Component: Page; pageProps: Record<stri
           <Component {...pageProps} />
         </Layout>
       </ThemeProvider>
-      {process.env.NEXT_PUBLIC_ANALYTICS && (
+      {process.env.NEXT_PUBLIC_ANALYTICS && process.env.NEXT_PUBLIC_ANALYTICS_ID && (
         <>
           {Component.disableTracking && (
             <script

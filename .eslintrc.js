@@ -3,7 +3,7 @@ require('@alattalatta/eslint-config/patch')
 module.exports = {
   root: true,
   extends: [
-    '@alattalatta/eslint-config/full',
+    '@alattalatta/eslint-config/react',
     'plugin:@next/next/recommended',
     'plugin:@next/next/core-web-vitals',
   ],
@@ -18,7 +18,7 @@ module.exports = {
       },
     },
     next: {
-      rootDir: 'apps/web',
+      rootDir: 'apps/main',
     },
   }
 }

@@ -14,8 +14,8 @@
     "packages/**"
   ],
   "devDependencies": {
-    "@alattalatta/eslint-config": "^0.5.1",
-    "@alattalatta/prettier-config": "^0.2.0",
+    "@alattalatta/eslint-config": "^1.0.0",
+    "@alattalatta/prettier-config": "^1.0.0",
     "@next/eslint-plugin-next": "^12.1.5",
     "eslint": "^8.14.0",
     "next": "^12.1.5",

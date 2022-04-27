@@ -8,7 +8,7 @@
       "dependsOn": ["^build"],
       "outputs": ["out/**", "public/rss.xml", "public/sitemap.md.xml"]
     },
-    "@app/web#build": {
+    "@app/main#build": {
       "dependsOn": ["^build"],
       "outputs": [".next/**"]
     },

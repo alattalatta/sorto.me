@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "turbo run build --scope='@app/web' --no-deps --include-dependencies",
-    "prebuild": "turbo run prebuild --scope='@app/web' --no-deps --include-dependencies",
+    "build": "turbo run build --scope='@app/main' --no-deps --include-dependencies",
+    "prebuild": "turbo run prebuild --scope='@app/main' --no-deps --include-dependencies",
     "dev": "turbo run dev",
     "test": "turbo run test",
     "turbo": "turbo"
@@ -14,14 +14,14 @@
     "packages/**"
   ],
   "devDependencies": {
-    "@alattalatta/eslint-config": "^0.5.1",
-    "@alattalatta/prettier-config": "^0.2.0",
+    "@alattalatta/eslint-config": "^1.0.0",
+    "@alattalatta/prettier-config": "^1.0.0",
     "@next/eslint-plugin-next": "^12.1.5",
     "eslint": "^8.14.0",
     "next": "^12.1.5",
     "prettier": "^2.6.2",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
     "turbo": "^1.2.5",
     "typescript": "^4.6.3"
   },

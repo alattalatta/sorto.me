@@ -31,6 +31,7 @@ export function getCompatData(compatData: CompatData, keys: string): Identifier 
   let res = compatData as unknown as Identifier
 
   for (const key of keys.split('.')) {
+    console.log(key)
     if (!res) {
       return null
     }
@@ -68,8 +69,7 @@ export function supportLabel(statement: SupportStatement | undefined): string {
 
   switch (status) {
     case 'removed': {
-      const versionAddedLabel = versionString(head.version_added)
-      return `${versionAddedLabel} ~ ${head.version_removed}`
+      return `${versionString(head.version_added)} ~ ${versionString(head.version_removed)}`
     }
     case 'unknown':
       return '?'
@@ -108,9 +108,13 @@ export function determineStatus(statement: SimpleSupportStatement): SupportStatu
   return 'added'
 }
 
-function versionString(version: VersionValue): string {
+function versionString(version: VersionValue | undefined): string {
   if (typeof version === 'string') {
     return version
+  }
+
+  if (version === undefined) {
+    return ''
   }
 
   return '?'

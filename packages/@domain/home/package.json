@@ -5,6 +5,9 @@
   "main": "./index.tsx",
   "types": "./index.tsx",
   "type": "module",
+  "scripts": {
+    "lint": "tsc --noEmit"
+  },
   "devDependencies": {
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.4",

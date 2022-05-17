@@ -6,7 +6,8 @@
   "types": "./index.tsx",
   "type": "module",
   "scripts": {
-    "test": "TS_NODE_PROJECT=tsconfig.json ava"
+    "test": "TS_NODE_PROJECT=tsconfig.json ava",
+    "lint": "tsc --noEmit"
   },
   "devDependencies": {
     "@testing-library/react": "^13.1.1",

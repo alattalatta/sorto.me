@@ -6,6 +6,9 @@
   "types": "./index.ts",
   "type": "module",
   "sideEffects": false,
+  "scripts": {
+    "lint": "tsc --noEmit"
+  },
   "devDependencies": {
     "@types/node": "16",
     "@types/react": "^18.0.9",

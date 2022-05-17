@@ -19,6 +19,7 @@
     "dev": {
       "cache": false
     },
-    "test": {}
+    "test": {},
+    "lint": {}
   }
 }

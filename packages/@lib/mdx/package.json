@@ -5,6 +5,9 @@
   "main": "./index.ts",
   "types": "./index.ts",
   "type": "module",
+  "scripts": {
+    "lint": "tsc --noEmit"
+  },
   "dependencies": {
     "@mdx-js/mdx": "^2.1.1",
     "fp-ts": "^2.12.1",

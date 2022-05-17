@@ -34,11 +34,11 @@ input[type="button"]:active {
 
 </HTMLDemo>
 
-> [note] `<input type="button">`은 여전히 완벽하게 유효한 HTML 요소지만, 나중에 추가된 [`<button>`](../button) 요소가 현재 버튼 생성에 선호되는 방법입니다. `<button>`의 레이블로는 임의의 HTML 코드를 사용할 수 있으므로 이미지도 사용할 수 있습니다.
+> [note] `<input type="button">`은 여전히 유효한 HTML 요소지만, 지금은 [`<button>`](../button) 요소가 버튼 생성에 선호됩니다. `<button>`의 레이블에는 임의의 HTML 코드를 사용할 수 있으므로 이미지 버튼도 쉽게 만들 수 있습니다.
 
 # 값
 
-`<input type="button">` 요소의 [`value` 특성](../input#term-value)은 버튼의 레이블로 사용할 [`DOMString`](https://developer.mozilla.org/en-US/docs/Web/API/DOMString)이어야 합니다.
+`<input type="button">` 요소의 [`value` 특성](../input#term-value)은 버튼의 레이블로 사용할 문자열이어야 합니다.
 
 ```html name=button-value
 <input type="button" value="클릭하세요!">

@@ -22,6 +22,7 @@ jobs:
           node-version: 14.x
           cache: pnpm
 
+      - run: pnpm turbo run lint
       - run: pnpm turbo run test
       - run: pnpm prebuild
 

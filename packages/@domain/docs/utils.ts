@@ -31,7 +31,6 @@ export function getCompatData(compatData: CompatData, keys: string): Identifier 
   let res = compatData as unknown as Identifier
 
   for (const key of keys.split('.')) {
-    console.log(key)
     if (!res) {
       return null
     }

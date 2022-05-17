@@ -9,13 +9,13 @@ bcd: html.elements.datalist
 
 ```html
 <label for="choice">맛을 고르세요.</label>
-<input id="choice" list="flavors" name="choice" />
+<input id="choice" list="flavors" name="choice">
 
 <datalist id="flavors">
-  <option value="딸기"></option>
-  <option value="바나나"></option>
-  <option value="초코"></option>
-  <option value="민트"></option>
+  <option>딸기</option>
+  <option>바나나</option>
+  <option>초코</option>
+  <option>민트</option>
 </datalist>
 ```
 
@@ -40,14 +40,46 @@ bcd: html.elements.datalist
   <option>#bb0000</option>
 </datalist>
 
-<input type="color" list="list" />
+<input type="color" list="list">
 ```
 
 <LiveExample name="color" height={60} />
 
-## `range` 선택지
+## 날짜와 시간
 
-[`<input type="range">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range) 요소에 `<datalist>`를 제공하면 범위 슬라이더가 해당 값에 스냅됩니다.
+[`<input>`](./input)의 [`month`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/month), [`week`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/week), [`date`](./input/date), [`time`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/datetime-local), [`datetime-local`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/datetime-local) 유형에 `<datalist>`를 제공하면 사용자가 간편하게 시간 또는 날짜를 선택할 수 있습니다.
+
+### 날짜
+
+```html name=datetime
+<datalist id="date">
+  <option value="1988-09-17">서울</option>
+  <option value="1992-07-25">바르셀로나</option>
+  <option value="1996-07-19">애틀랜타</option>
+</datalist>
+
+<datalist id="time">
+  <option value="08:00">빠르게</option>
+  <option value="09:00">평균</option>
+  <option value="10:00">여유롭게</option>
+</datalist>
+
+<div>
+  <label for="date-input">역대 올림픽 개최일을 입력하세요:</label>
+  <input id="date-input" type="date" list="date">
+</div>
+<br>
+<div>
+  <label for="time-input">출근 시간을 입력하세요:</label>
+  <input id="time-input" type="time" list="time">
+</div>
+```
+
+<LiveExample name="datetime" height={90} />
+
+## 슬라이더
+
+[`<input>`](./input)의 [`range`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range) 유형에 `<datalist>`를 제공하면 슬라이더가 선택지에 스냅됩니다.
 
 ```html name=range
 <datalist id="list">
@@ -60,7 +92,7 @@ bcd: html.elements.datalist
   <option>64</option>
 </datalist>
 
-<input type="range" list="list" />
+<input type="range" list="list">
 ```
 
 <LiveExample name="range" height={60} />
@@ -75,4 +107,5 @@ bcd: html.elements.datalist
 
 # 같이 보기
 
-- 데이터 리스트를 사용하는 컨트롤: [`<input>`](./input) 요소와 [`list`](./input#term-list) 특성.
+- 데이터 리스트를 사용하는 컨트롤: [`<input>`](./input)의 [`list` 특성](./input#term-list).
+- 제안할 값: [`<option>`](./option)

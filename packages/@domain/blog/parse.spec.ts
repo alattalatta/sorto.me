@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { filePath } from '@lib/functions/server'
 import test from 'ava'
 import path from 'node:path'

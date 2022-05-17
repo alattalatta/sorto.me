@@ -1,3 +1,5 @@
+const path = require('path')
+
 require('@alattalatta/eslint-config/patch')
 
 module.exports = {
@@ -18,7 +20,7 @@ module.exports = {
       },
     },
     next: {
-      rootDir: 'apps/main',
+      rootDir: path.join(__dirname, 'apps/main'),
     },
   }
 }

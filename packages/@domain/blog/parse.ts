@@ -18,7 +18,7 @@ async function parse(postPath: string): Promise<Post> {
 
   const {
     content,
-    data: { description, excerpt, ...data },
+    data: { description, ...data },
   } = matter(await sourceAsync)
   const fileName = path.basename(postPath)
 

@@ -6,7 +6,8 @@
   "types": "./index.tsx",
   "type": "module",
   "scripts": {
-    "test": "ava"
+    "test": "ava",
+    "lint": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/node": "16",

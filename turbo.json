@@ -1,12 +1,9 @@
 {
+  "$schema": "https://turborepo.org/schema.json",
   "baseBranch": "origin/main",
   "pipeline": {
     "build": {
-      "dependsOn": ["^build"]
-    },
-    "prebuild": {
-      "dependsOn": ["^build"],
-      "outputs": ["out/**", "public/rss.xml", "public/sitemap.md.xml"]
+      "dependsOn": ["^build", "prebuild"]
     },
     "@app/main#build": {
       "dependsOn": ["^build"],
@@ -16,9 +13,23 @@
       "dependsOn": ["^build"],
       "outputs": ["compiler/index.js"]
     },
+    "prebuild": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    },
+    "@app/main#prebuild": {
+      "dependsOn": ["^build"],
+      "inputs": ["contents/**"],
+      "outputs": ["out/**", "public/rss.xml", "public/sitemap.md.xml"]
+    },
     "dev": {
       "cache": false
     },
-    "test": {}
+    "test": {
+      "outputs": []
+    },
+    "lint": {
+      "outputs": []
+    }
   }
 }

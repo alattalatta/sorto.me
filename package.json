@@ -25,6 +25,5 @@
     "turbo": "^1.2.9",
     "typescript": "^4.6.4"
   },
-  "packageManager": "pnpm@6.32.3",
-  "prettier": "@alattalatta/prettier-config"
+  "packageManager": "pnpm@6.32.3"
 }

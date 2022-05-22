@@ -10,7 +10,7 @@
     "lint": "tsc --noEmit"
   },
   "devDependencies": {
-    "@testing-library/react": "^13.1.1",
+    "@testing-library/react": "^13.2.0",
     "@types/jsdom-global": "^3.0.2",
     "@types/node": "16",
     "@types/react": "^18.0.9",
@@ -21,7 +21,7 @@
     "jsdom-global": "^3.0.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "ts-node": "^10.7.0",
+    "ts-node": "^10.8.0",
     "tsconfig": "workspace:*",
     "typescript": "^4.6.4"
   },
@@ -31,7 +31,7 @@
     "clsx": "^1.1.1",
     "framer-motion": "^6.3.3",
     "next": "^12.1.6",
-    "next-themes": "^0.1.1"
+    "next-themes": "^0.2.0"
   },
   "ava": {
     "extensions": {

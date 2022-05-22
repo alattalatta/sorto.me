@@ -16,7 +16,7 @@
     "ava": "^4.2.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "ts-node": "^10.7.0",
+    "ts-node": "^10.8.0",
     "tsconfig": "workspace:*",
     "typescript": "^4.6.4"
   },

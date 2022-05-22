@@ -10,27 +10,27 @@ globalStyle(`${root} > *`, {
 })
 
 // headings
-globalStyle(`${root} > :is(h2, h3, h4)`, {
+globalStyle(`${root} :is(h2, h3, h4)`, {
   fontFamily: fonts.serif,
   position: 'relative',
 })
-globalStyle(`${root} > :is(h2, h3, h4) a`, {
+globalStyle(`${root} :is(h2, h3, h4) a`, {
   color: 'inherit',
 })
-globalStyle(`${root} > :is(h2, h3, h4) a::after`, {
+globalStyle(`${root} :is(h2, h3, h4) a::after`, {
   content: 'none',
 })
 
-globalStyle(`${root} > h2`, {
+globalStyle(`${root} h2`, {
   fontSize: '2rem',
   padding: '.25rem 0',
 })
 
-globalStyle(`${root} > h3`, {
+globalStyle(`${root} h3`, {
   fontSize: '1.5rem',
 })
 
-globalStyle(`${root} > h4`, {
+globalStyle(`${root} h4`, {
   fontSize: `${18 / 16}rem`,
 })
 

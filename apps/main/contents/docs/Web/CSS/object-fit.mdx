@@ -1,0 +1,84 @@
+---
+title: 'CSS object-fit: 대체 요소 콘텐츠 크기'
+bcd: css.properties.object-fit
+---
+
+CSS **`object-fit`** 속성은 [`<img>`](/docs/Web/HTML/Element/img), [`<video>`](/docs/Web/HTML/Element/video)와 같은 [대체 요소](https://developer.mozilla.org/en-US/docs/Web/CSS/Replaced_element)의 콘텐츠 크기를 요소 크기에 맞추는 방식을 설정합니다.
+
+대체 요소 콘텐츠의 위치는 [`object-position` 속성](https://developer.mozilla.org/en-US/docs/Web/CSS/object-position)으로 바꿀 수 있습니다.
+
+<CSSDemo selector="img{$}">
+
+```css
+object-fit: contain;
+```
+
+```css
+object-fit: cover;
+```
+
+```css
+object-fit: fill;
+```
+
+```css
+object-fit: none;
+```
+
+```css
+object-fit: scale-down;
+```
+
+```css hidden
+img {
+  width: 200px;
+  height: 200px;
+  border: 1px solid currentColor;
+}
+```
+
+```html
+<img src="/gen/building.jpg">
+```
+
+</CSSDemo>
+
+# 구문
+
+```css
+object-fit: contain;
+object-fit: cover;
+object-fit: fill;
+object-fit: none;
+object-fit: scale-down;
+
+/* 전역 값 */
+object-fit: inherit;
+object-fit: initial;
+object-fit: revert;
+object-fit: revert-layer;
+object-fit: unset;
+```
+
+`object-fit` 속성에는 다음 중 하나의 키워드 값을 사용합니다.
+
+## 값
+
+- : `contain`
+  - 대체 콘텐츠의 가로세로비는 유지하면서 크기를 조절해, 콘텐츠가 모두 보이는 크기로 요소를 채웁니다. 요소와 대체 콘텐츠의 가로세로비가 같지 않으면 콘텐츠의 상하 또는 좌우에 빈 공간(_레터박스_)이 생깁니다.
+- : `cover`
+  - 대체 콘텐츠의 가로세로비는 유지하면서 크기를 조절해, 요소에 빈 부분이 없도록 콘텐츠로 가득 채웁니다. 요소와 대체 콘텐츠의 가로세로비가 같지 않으면 콘텐츠가 요소에 맞춰 잘려 보입니다.
+- : `fill`
+  - 대체 콘텐츠의 크기를 조절해 요소에 빈 부분이 없도록 가득 채웁니다. 요소와 대체 콘텐츠의 가로세로비가 같지 않으면 콘텐츠를 늘립니다.
+- : `none`
+  - 대체 콘텐츠의 크기를 조절하지 않습니다.
+- : `scale-down`
+  - `contain`과 `none` 중, 콘텐츠가 더 작은 크기로 보이는 값을 지정한 것과 같습니다.
+
+# 명세
+
+[CSS Images Module Level 3](https://drafts.csswg.org/css-images/#the-object-fit)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />

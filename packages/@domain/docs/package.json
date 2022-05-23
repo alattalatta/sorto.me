@@ -16,7 +16,7 @@
     "ava": "^4.2.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "ts-node": "^10.7.0",
+    "ts-node": "^10.8.0",
     "tsconfig": "workspace:*",
     "typescript": "^4.6.4"
   },
@@ -24,7 +24,7 @@
     "@lib/functions": "workspace:*",
     "@lib/mdx": "workspace:*",
     "@lib/ui": "workspace:*",
-    "@mdn/browser-compat-data": "^4.2.0",
+    "@mdn/browser-compat-data": "^4.2.1",
     "@vanilla-extract/css": "^1.7.0",
     "@vanilla-extract/recipes": "^0.2.4",
     "clsx": "^1.1.1",

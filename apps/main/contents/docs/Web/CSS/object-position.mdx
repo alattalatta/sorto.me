@@ -1,0 +1,95 @@
+---
+title: 'CSS object-position: 대체 요소 콘텐츠 위치'
+bcd: css.properties.object-position
+---
+
+CSS **`object-position`** 속성은 [`<img>`](/docs/Web/HTML/Element/img), [`<video>`](/docs/Web/HTML/Element/video)와 같은 [대체 요소](https://developer.mozilla.org/en-US/docs/Web/CSS/Replaced_element)의 콘텐츠를 요소에 배치할 위치를 조절합니다.
+
+대체 요소 콘텐츠의 크기를 요소 크기에 맞추는 방식은 [`object-fit` 속성](./object-fit)으로 바꿀 수 있습니다.
+
+<CSSDemo selector="img{$}">
+
+```css
+object-position: center;
+```
+
+```css
+object-position: left;
+```
+
+```css
+object-position: right;
+```
+
+```css
+object-position: 20px -20px;
+```
+
+```css
+object-position: top 100px right 0;
+```
+
+```css hidden
+img {
+  width: 200px;
+  height: 200px;
+  border: 1px solid currentColor;
+  object-fit: scale-down;
+}
+```
+
+```html
+<img src="/gen/building.jpg">
+```
+
+</CSSDemo>
+
+# 구문
+
+```css
+/* 키워드 값 */
+object-position: top;
+object-position: bottom;
+object-position: left;
+object-position: right;
+object-position: center;
+
+/* <percentage> 값 */
+object-position: 25% 75%;
+
+/* <length> 값 */
+object-position: 0 0;
+object-position: 1cm 2cm;
+object-position: 10ch 8em;
+
+/* 모서리 오프셋 값 */
+object-position: bottom 10px right 20px;
+object-position: right 3em bottom 10px;
+object-position: top 0 right 10px;
+
+/* 전역 값 */
+object-position: inherit;
+object-position: initial;
+object-position: revert;
+object-position: revert-layer;
+object-position: unset;
+```
+
+`object-fit` 속성에는 다음 중 하나의 키워드 값을 사용합니다.
+
+## 값
+
+- : [`<position>`](https://developer.mozilla.org/en-US/docs/Web/CSS/position_value)
+  - 콘텐츠의 2차원 위치를 정의합니다. 상대와 절대 오프셋 모두 사용할 수 있습니다.
+
+# 명세
+
+[CSS Images Module Level 3](https://drafts.csswg.org/css-images/#the-object-position)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 대체 콘텐츠 크기: [`object-fit`](./object-fit)

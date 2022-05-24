@@ -1,0 +1,39 @@
+---
+title: 'HTML spellcheck 전역 특성: 입력 텍스트 맞춤법 검사 여부'
+bcd: html.global_attributes.spellcheck
+---
+
+HTML **`spellcheck`** [전역 특성](.)은 요소의 내용에 맞춤법 검사를 수행해야 하는지 지정하는 열거형 특성입니다.
+
+<HTMLDemo>
+
+```html
+<p contenteditable spellcheck="true">
+  이 택스트를 펀집하려고 하면 브라우저가 마춤법 검사를 할것입니다.
+</p>
+
+<p contenteditable spellcheck="false">
+  이 택스트는 펀집하려고 해도 브라우저가 마춤법 검사를 하지안을겁니다.
+</p>
+```
+
+</HTMLDemo>
+
+가능한 값은 다음과 같습니다.
+
+- : `true` 또는 빈 문자열
+  - 가능하다면, 이 요소에 맞춤법 검사를 수행해야 함을 나타냅니다.
+- : `false`
+  - 이 요소에 맞춤법 검사를 수행하지 말아야 함을 나타냅니다.
+
+`spellcheck` 특성을 명시하지 않았을 때의 기본 값은 요소 유형과 브라우저에 따라 다릅니다. 요소에 따라 기본 값이 부모의 `spellcheck` 동작을 상속하는 것일 수도 있는데, 이 경우에는 부모의 `spellcheck` 특성 값 또는 기본 값이 `true`여야 맞춤법 검사를 수행합니다.
+
+이 특성은 힌트일 뿐, 브라우저가 맞춤법 검사를 반드시 수행해야 할 의무는 없습니다. 브라우저가 맞춤법 검사를 지원하고 요소에 `spellcheck="true"`를 명시하더라도, 편집할 수 없는 요소에는 대개 맞춤법 검사를 수행하지 않습니다.
+
+# 명세
+
+[HTML Living Standard](https://html.spec.whatwg.org/multipage/dom.html#attr-spellcheck)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />

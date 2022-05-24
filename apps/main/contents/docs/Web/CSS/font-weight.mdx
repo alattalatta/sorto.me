@@ -1,10 +1,9 @@
 ---
 title: 'CSS font-weight: 글씨 굵기'
-description: CSS font-weight 속성은 글씨의 굵기(웨이트)를 설정합니다. 사용 가능한 굵기 값은 적용된 글꼴(font-family)에 따라 다릅니다.
 bcd: css.properties.font-weight
 ---
 
-CSS **`font-weight`** 속성은 글씨의 굵기(웨이트)를 설정합니다. 사용 가능한 굵기 값은 적용된 글꼴([`font-family`](./font-family))에 따라 다릅니다.
+CSS **`font-weight`** 속성은 글씨의 굵기(웨이트)를 설정합니다. 사용 가능한 굵기 값은 현재 글꼴([`font-family`](./font-family))에 따라 다릅니다.
 
 <CSSDemo selector="pre{$}">
 
@@ -59,10 +58,10 @@ font-weight: bolder;
 font-weight: 100;
 font-weight: 200;
 font-weight: 300;
-font-weight: 400; // normal
+font-weight: 400; /* normal과 같음 */
 font-weight: 500;
 font-weight: 600;
-font-weight: 700; // bold
+font-weight: 700; /* bold와 같음 */
 font-weight: 800;
 font-weight: 900;
 
@@ -93,7 +92,7 @@ CSS Fonts Level 4 명세는 지정 가능한 값을 1~1000의 정수로 확장�
 
 ## 대체 굵기
 
-주어진 굵기 값을 사용할 수 없는 경우, 다음의 규칙이 대신 사용할 굵기를 선택합니다.
+주어진 굵기 값을 사용할 수 없는 경우, 다음의 규칙을 통해 대신 사용할 굵기를 선택합니다.
 
 - 주어진 굵기가 400 이상 500 이하인 경우,
   - 주어진 값보다 크고, 500 이하의 가능한 굵기 중 가장 가까운 것을 선택합니다.

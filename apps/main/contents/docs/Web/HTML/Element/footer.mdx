@@ -1,6 +1,5 @@
 ---
 title: 'HTML <footer>: 꼬리말 요소'
-description: HTML <footer> (꼬리말) 요소는 가장 가까운 구획 콘텐츠나 구획 루트의 푸터(꼬리말 영역)를 나타냅니다.
 bcd: html.elements.footer
 ---
 
@@ -8,7 +7,7 @@ bcd: html.elements.footer
 
 <HTMLDemo height={200}>
 
-```
+```css
 footer {
   background: #333;
   color: #fff;
@@ -40,7 +39,7 @@ footer {
 
 # 접근성 고려사항
 
-Safari 13 미만에서는 [VoiceOver](https://support.apple.com/ko-kr/guide/voiceover/welcome/10)가 `<footer>`의 `contentinfo` [랜드마크 역할](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/WAI-ARIA_basics#signpostslandmarks)을 제대로 표현하지 않습니다. 구형 Safari 브라우저를 지원해야 하면 직접 `role="contentinfo"` 특성을 추가해서 랜드마크 역할이 제대로 표현되도록 해주세요.
+Safari 13 미만에서는 [VoiceOver](https://support.apple.com/ko-kr/guide/voiceover/welcome/10)가 `<footer>`의 `contentinfo` [랜드마크 역할](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/WAI-ARIA_basics#when_should_you_use_wai-aria)을 제대로 표현하지 못합니다. 구형 Safari를 지원해야 하면 `role="contentinfo"` 특성을 직접 추가해서 랜드마크 역할이 제대로 표현되도록 해주세요.
 
 - 관련 링크: [WebKit Bugzilla: 146930](https://bugs.webkit.org/show_bug.cgi?id=146930)
 

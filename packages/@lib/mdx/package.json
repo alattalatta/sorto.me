@@ -31,8 +31,8 @@
     "@types/hast": "^2.3.4",
     "@types/mdast": "^3.0.10",
     "@types/react": "^18.0.9",
-    "@types/react-dom": "^18.0.4",
+    "@types/react-dom": "^18.0.5",
     "tsconfig": "workspace:*",
-    "typescript": "^4.6.4"
+    "typescript": "^4.7.2"
   }
 }

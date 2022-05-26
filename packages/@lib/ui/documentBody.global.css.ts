@@ -10,14 +10,14 @@ globalStyle(`${root} > *`, {
 })
 
 // headings
-globalStyle(`${root} :is(h2, h3, h4)`, {
+globalStyle(`${root} :is(h2, h3, h4, h5)`, {
   fontFamily: fonts.serif,
   position: 'relative',
 })
-globalStyle(`${root} :is(h2, h3, h4) a`, {
+globalStyle(`${root} :is(h2, h3, h4, h5) a`, {
   color: 'inherit',
 })
-globalStyle(`${root} :is(h2, h3, h4) a::after`, {
+globalStyle(`${root} :is(h2, h3, h4, h5) a::after`, {
   content: 'none',
 })
 
@@ -32,6 +32,10 @@ globalStyle(`${root} h3`, {
 
 globalStyle(`${root} h4`, {
   fontSize: `${18 / 16}rem`,
+})
+
+globalStyle(`${root} h5`, {
+  fontSize: `1rem`,
 })
 
 // anchors

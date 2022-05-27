@@ -35,7 +35,7 @@
   "devDependencies": {
     "@babel/core": "^7.18.2",
     "@next/bundle-analyzer": "^12.1.6",
-    "@swc/core": "^1.2.192",
+    "@swc/core": "^1.2.194",
     "@testing-library/react": "^13.2.0",
     "@types/fs-extra": "^9.0.13",
     "@types/klaw": "^3.0.3",

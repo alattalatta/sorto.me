@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import * as styles from './NavBar.css'
-import { ThemeSwitch } from './ThemeSwitch'
+import { PrefMenu } from './PrefMenu'
 
 const NavBar: React.FC = () => {
   const pathname = useRouter().pathname
@@ -32,7 +32,7 @@ const NavBar: React.FC = () => {
         </a>
       </span>
       <span className={styles.alignRight}>
-        <ThemeSwitch />
+        <PrefMenu />
       </span>
     </nav>
   )

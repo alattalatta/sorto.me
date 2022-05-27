@@ -1,11 +1,16 @@
 import { useMounted } from '@lib/functions'
+import { CircleIcon, MoonIcon, SunIcon } from '@radix-ui/react-icons'
+import clsx from 'clsx'
 import { useTheme } from 'next-themes'
 import { useEffect, useRef } from 'react'
 
 import * as styles from './ThemeSwitch.css'
-import * as noScreen from './noScreen.css'
 
-const ThemeSwitch: React.FC = () => {
+interface Props {
+  className?: string
+}
+
+const ThemeSwitch: React.FC<Props> = ({ className }) => {
   const { theme, setTheme } = useTheme()
   const mounted = useMounted()
   const inputRef = useRef<HTMLInputElement>(null)
@@ -25,22 +30,34 @@ const ThemeSwitch: React.FC = () => {
   }
 
   return (
-    <label className={styles.root} title={`클릭하면 ${theme === 'light' ? '어두운' : '밝은'} 테마로 고정합니다.`}>
-      <svg className={styles.icon} viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-        <path d="M15.54 12.68A7.54 7.54 0 0 1 7.99 0a8.04 8.04 0 1 0 7.55 12.68Z" />
-      </svg>
-      <input
-        ref={inputRef}
-        checked={theme === 'light'}
-        className={`${noScreen.root} ${styles.checkbox}`}
-        type="checkbox"
-        onChange={(e) => (e.target.checked ? setTheme('light') : setTheme('dark'))}
-      />
-      <span className={styles.switchi} />
-      <svg className={styles.icon} viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="8" cy="8" r="8" />
-      </svg>
-    </label>
+    <button
+      className={clsx(styles.root, className)}
+      type="button"
+      onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+    >
+      <span aria-hidden>
+        {(() => {
+          switch (theme) {
+            case 'dark':
+              return '라이트 테마로 바꾸기'
+            case 'light':
+              return '다크 테마로 바꾸기'
+            default:
+              return '다크 테마로 고정하기'
+          }
+        })()}
+      </span>
+      {(() => {
+        switch (theme) {
+          case 'dark':
+            return <SunIcon className={styles.icon} />
+          case 'light':
+            return <MoonIcon className={styles.icon} />
+          default:
+            return <CircleIcon className={styles.icon} />
+        }
+      })()}
+    </button>
   )
 }
 

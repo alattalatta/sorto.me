@@ -27,6 +27,8 @@
   },
   "dependencies": {
     "@lib/functions": "workspace:*",
+    "@radix-ui/react-icons": "^1.1.1",
+    "@radix-ui/react-popover": "0.1.7-rc.27",
     "@vanilla-extract/css": "^1.7.0",
     "clsx": "^1.1.1",
     "framer-motion": "^6.3.4",

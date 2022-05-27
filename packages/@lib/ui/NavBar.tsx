@@ -9,20 +9,28 @@ const NavBar: React.FC = () => {
 
   return (
     <nav className={styles.root}>
-      <Link href="/" passHref>
-        <a className={styles.item({ current: pathname === '/' })}>sorto.me</a>
-      </Link>
-      <Link href="/posts" passHref>
-        <a className={styles.item({ current: pathname.startsWith('/posts') })}>블로그</a>
-      </Link>
-      <Link href="/docs/Web" passHref>
-        <a className={styles.item({ current: pathname.startsWith('/docs') })}>문서</a>
-      </Link>
-      {/* gcse causes issue with React, so don't use client side routing here */}
-      {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-      <a className={styles.item({ current: pathname.startsWith('/search') })} href="/search">
-        검색
-      </a>
+      <span className={styles.item({ current: pathname === '/' })}>
+        <Link href="/" passHref>
+          <a className={styles.anchor}>sorto.me</a>
+        </Link>
+      </span>
+      <span className={styles.item({ current: pathname.startsWith('/posts') })}>
+        <Link href="/posts" passHref>
+          <a className={styles.anchor}>블로그</a>
+        </Link>
+      </span>
+      <span className={styles.item({ current: pathname.startsWith('/docs') })}>
+        <Link href="/docs/Web" passHref>
+          <a className={styles.anchor}>문서</a>
+        </Link>
+      </span>
+      <span className={styles.item({ current: pathname.startsWith('/search') })}>
+        {/* gcse causes issue with React, so don't use client side routing here */}
+        {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+        <a className={styles.anchor} href="/search">
+          검색
+        </a>
+      </span>
       <span className={styles.alignRight}>
         <ThemeSwitch />
       </span>

@@ -3,8 +3,8 @@ import { recipe } from '@vanilla-extract/recipes'
 
 export const root = style({
   maxWidth: `${982 / 16}rem`,
-  height: '3rem',
-  display: 'flex',
+  display: 'grid',
+  gridTemplate: '3rem / 4rem repeat(3, 4rem) 1fr',
   alignItems: 'center',
   fontSize: `${14 / 16}rem`,
   margin: '0 auto',
@@ -15,15 +15,10 @@ export const root = style({
 
 export const item = recipe({
   base: {
-    color: 'inherit',
     fontWeight: 700,
-    textDecoration: 'none',
-    ':hover': {
-      textDecoration: 'underline',
-    },
     selectors: {
-      '& + &': {
-        marginLeft: '2rem',
+      '&:not(:first-of-type)': {
+        textAlign: 'right',
       },
     },
   },
@@ -33,6 +28,14 @@ export const item = recipe({
         opacity: 0.6,
       },
     },
+  },
+})
+
+export const anchor = style({
+  color: 'inherit',
+  textDecoration: 'none',
+  ':hover': {
+    textDecoration: 'underline',
   },
 })
 

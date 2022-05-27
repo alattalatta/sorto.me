@@ -1,7 +1,7 @@
-export { Anchor } from './src/Anchor'
-export { Footer } from './src/Footer'
-export { Layout } from './src/Layout'
-export { NavBar } from './src/NavBar'
-export { ScrollBack } from './src/ScrollBack'
+export { Anchor } from './Anchor'
+export { Footer } from './Footer'
+export { Layout } from './Layout'
+export { NavBar } from './NavBar'
+export { ScrollBack } from './ScrollBack'
 
 export type { Page } from './types'

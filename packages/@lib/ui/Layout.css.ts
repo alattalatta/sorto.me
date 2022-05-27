@@ -1,7 +1,7 @@
 import { keyframes, style } from '@vanilla-extract/css'
 
-import { FIXED_STRIP_HEIGHT } from '../fixedStrip.css'
-import { colors } from '../theme.css'
+import { FIXED_STRIP_HEIGHT } from './fixedStrip.css'
+import { colors } from './theme.css'
 
 export const body = style({
   maxWidth: `${982 / 16}rem`,

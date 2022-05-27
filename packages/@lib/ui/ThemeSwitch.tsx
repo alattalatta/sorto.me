@@ -2,7 +2,7 @@ import { useMounted } from '@lib/functions'
 import { useTheme } from 'next-themes'
 import { useEffect, useRef } from 'react'
 
-import * as noScreen from '../noScreen.css'
+import * as noScreen from './noScreen.css'
 import * as styles from './ThemeSwitch.css'
 
 const ThemeSwitch: React.FC = () => {

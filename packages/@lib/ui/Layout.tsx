@@ -1,8 +1,9 @@
 import { useEffect } from 'react'
-import { colors } from '../theme.css'
+
 import * as styles from './Layout.css'
 import { NavBar } from './NavBar'
 import { ScrollBack } from './ScrollBack'
+import { colors } from './theme.css'
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   // highlight fragment the hash points

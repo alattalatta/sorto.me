@@ -5,7 +5,7 @@ import jsdomGlobal from 'jsdom-global'
 import { Anchor } from './Anchor'
 
 jsdomGlobal(undefined, { url: 'http://example.org/' })
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
 ;(globalThis as any).IS_REACT_ACT_ENVIRONMENT = true
 
 test.afterEach.always(cleanup)

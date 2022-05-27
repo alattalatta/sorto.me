@@ -1,6 +1,6 @@
 import { createVar, style } from '@vanilla-extract/css'
 
-import { colors } from '../theme.css'
+import { colors } from './theme.css'
 
 export const vars = {
   switchPos: createVar(),

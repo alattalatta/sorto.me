@@ -1,6 +1,6 @@
 import { globalStyle, style } from '@vanilla-extract/css'
 
-import { colors } from '../theme.css'
+import { colors } from './theme.css'
 
 export const root = style({
   width: `${228 / 16}rem`,

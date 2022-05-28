@@ -4,6 +4,7 @@ import { style } from '@vanilla-extract/css'
 export const root = style({
   width: `${136 / 16}rem`,
   border: `${1 / 16}rem solid ${colors.bg2}`,
+  borderRadius: '0.25rem',
   color: colors.fg2,
   marginTop: '0.5rem',
   padding: `0 ${12 / 16}rem 1rem`,
@@ -22,12 +23,16 @@ export const heading = style({
 })
 
 export const docTitle = style({
-  background: colors.notebg,
+  display: ['block', '-webkit-box'],
+  maxHeight: `${(12 * 1.4 * 2) / 16}rem`,
   fontSize: `${12 / 16}rem`,
   fontStyle: 'normal',
   fontWeight: 700,
-  margin: `0 -${12 / 16}rem`,
-  padding: `${12 / 16}rem`,
+  lineHeight: 1.4,
+  margin: `${12 / 16}rem 0`,
+  overflow: 'hidden',
+  WebkitBoxOrient: 'vertical',
+  WebkitLineClamp: 2,
 })
 
 export const list = style({

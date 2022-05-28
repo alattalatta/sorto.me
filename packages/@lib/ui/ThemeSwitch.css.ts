@@ -9,7 +9,7 @@ export const root = style({
   display: 'flex',
   fontSize: '1em',
   alignItems: 'center',
-  padding: 0,
+  padding: '0.5rem',
   whiteSpace: 'nowrap',
 })
 

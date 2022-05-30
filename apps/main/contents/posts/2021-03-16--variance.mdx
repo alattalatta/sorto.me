@@ -116,6 +116,10 @@ viewAnimal = viewDog // Property 'name' is missing in type 'Animal' but required
 
 TypeScript는 공변과 반변을 나타내는 별도의 구문이나 키워드가 존재하지 않는다.
 
+> [note]
+> TypeScript 4.7부터 공변과 반변을 [`out`과 `in` 키워드](https://devblogs.microsoft.com/typescript/announcing-typescript-4-7-beta/#optional-variance-annotations-for-type-parameters)로 명시할 수 있다.
+> <small>(2022년 5월 30일 업데이트)</small>
+
 - 함수가 아닌 타입은 공변한다.
   - `type WithID<T> = T & { id: number }`
 - 제공한 타입을 반환하는 함수 타입 역시 공변한다.

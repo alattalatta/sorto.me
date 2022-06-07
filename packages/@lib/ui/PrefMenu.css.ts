@@ -14,12 +14,12 @@ export const trigger = style({
   verticalAlign: 'bottom',
 })
 
-const fade = keyframes({
+const fadeIn = keyframes({
   '0%': { opacity: 0 },
   '100%': { opacity: 1 },
 })
 
-const slideUpAndFade = keyframes({
+const subtleSlideUp = keyframes({
   '0%': { opacity: 0, transform: 'translateY(0.25rem)' },
   '100%': { opacity: 1, transform: 'translateY(0.5rem)' },
 })
@@ -33,12 +33,10 @@ export const body = style({
   padding: '0.5rem',
   selectors: {
     '&[data-state="open"]': {
+      animation: `${fadeIn} 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards`,
       '@media': {
         [media.motionNoPref]: {
-          animation: `${slideUpAndFade} 400ms cubic-bezier(0.16, 1, 0.3, 1) forwards`,
-        },
-        [media.motionReduced]: {
-          animation: `${fade} 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards`,
+          animation: `${subtleSlideUp} 400ms cubic-bezier(0.16, 1, 0.3, 1) forwards`,
         },
       },
     },

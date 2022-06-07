@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
+import { MainMenu } from './MainMenu'
 import * as styles from './NavBar.css'
 import { PrefMenu } from './PrefMenu'
 
@@ -9,7 +10,10 @@ const NavBar: React.FC = () => {
 
   return (
     <nav className={styles.root}>
-      <span className={styles.item({ current: pathname === '/' })}>
+      <span className={styles.mobileMenu}>
+        <MainMenu />
+      </span>
+      <span>
         <Link href="/" passHref>
           <a className={styles.anchor}>sorto.me</a>
         </Link>

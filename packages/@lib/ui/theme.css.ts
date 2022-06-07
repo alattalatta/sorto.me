@@ -7,6 +7,8 @@ const media = {
   w1: `(min-width: 25.75rem)`,
   /** 769 */
   w2: `(min-width: 48.0625rem)`,
+  motionNoPref: '(prefers-reduced-motion: no-preference)',
+  motionReduced: '(prefers-reduced-motion: reduce)',
 } as const
 
 const [fontsTheme, fonts] = createTheme({

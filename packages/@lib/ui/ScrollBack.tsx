@@ -17,6 +17,7 @@ const ScrollBack: React.FC<{ className?: string }> = ({ className }) => {
         styles.root({
           position: 'bottom',
         }),
+
         className,
       )}
       initial="hidden"

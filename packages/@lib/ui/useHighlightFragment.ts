@@ -1,11 +1,8 @@
 import { useEffect } from 'react'
-import { colors } from '../theme.css'
-import * as styles from './Layout.css'
-import { NavBar } from './NavBar'
-import { ScrollBack } from './ScrollBack'
 
-const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // highlight fragment the hash points
+import { colors } from './theme.css'
+
+function useHighlightFragment(): void {
   useEffect(() => {
     const highlightFragment = (): void => {
       const hash = decodeURIComponent(location.hash.slice(1))
@@ -56,14 +53,6 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       window.removeEventListener('hashchange', highlightFragment)
     }
   }, [])
-
-  return (
-    <>
-      <NavBar />
-      <div className={styles.body}>{children}</div>
-      <ScrollBack />
-    </>
-  )
 }
 
-export { Layout }
+export { useHighlightFragment }

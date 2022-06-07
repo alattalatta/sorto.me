@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css'
 
-export { root } from '../fixedStrip.css'
+export { root } from './fixedStrip.css'
 
 export const button = style({
   width: '100%',

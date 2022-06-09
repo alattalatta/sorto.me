@@ -1,8 +1,11 @@
+import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
 import { colors } from './theme.css'
 
 function useHighlightFragment(): void {
+  const router = useRouter()
+
   useEffect(() => {
     const highlightFragment = (): void => {
       const hash = decodeURIComponent(location.hash.slice(1))
@@ -45,10 +48,14 @@ function useHighlightFragment(): void {
     }
 
     // highlight on page load
-    const initialHighlight = window.setTimeout(highlightFragment, 1000)
+    const initialHighlight = window.setTimeout(highlightFragment, 750)
 
+    router.events.on('routeChangeComplete', highlightFragment)
     window.addEventListener('hashchange', highlightFragment)
+
     return () => {
+      router.events.off('routeChangeComplete', highlightFragment)
+
       window.clearTimeout(initialHighlight)
       window.removeEventListener('hashchange', highlightFragment)
     }

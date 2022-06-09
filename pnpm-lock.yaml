@@ -47,11 +47,11 @@ importers:
       '@types/node': '16'
       '@types/react': ^18.0.12
       '@types/react-dom': ^18.0.5
-      '@vanilla-extract/css': ^1.7.1
+      '@vanilla-extract/css': ^1.7.2
       '@vanilla-extract/next-plugin': ^2.0.2
       babel-loader: ^8.2.5
       fp-ts: ^2.12.1
-      framer-motion: ^6.3.10
+      framer-motion: ^6.3.11
       fs-extra: ^10.1.0
       klaw: ^4.0.1
       mock-fs: ^5.0.0
@@ -76,9 +76,9 @@ importers:
       '@lib/mdx': link:../../packages/@lib/mdx
       '@lib/ui': link:../../packages/@lib/ui
       '@mdn/browser-compat-data': 4.2.1
-      '@vanilla-extract/css': 1.7.1
+      '@vanilla-extract/css': 1.7.2
       fp-ts: 2.12.1
-      framer-motion: 6.3.10_ef5jwxihqo6n7gxfmzogljlgcm
+      framer-motion: 6.3.11_ef5jwxihqo6n7gxfmzogljlgcm
       next: 12.1.6_6j5eyi3us3liopewjenwniphpy
       next-pwa: 5.5.4_idl4vqmesota6h4kxqrovj2uhu
       next-themes: 0.2.0_2mgcgz5qhsdxw4fgpqzqeafmkq
@@ -115,11 +115,11 @@ importers:
       '@types/node': '16'
       '@types/react': ^18.0.12
       '@types/react-dom': ^18.0.5
-      '@vanilla-extract/css': ^1.7.1
+      '@vanilla-extract/css': ^1.7.2
       ava: ^4.3.0
       clsx: ^1.1.1
       entities: ^4.3.0
-      framer-motion: ^6.3.10
+      framer-motion: ^6.3.11
       gray-matter: ^4.0.2
       next: ^12.1.6
       react: ^18.1.0
@@ -131,10 +131,10 @@ importers:
       '@lib/functions': link:../../@lib/functions
       '@lib/mdx': link:../../@lib/mdx
       '@lib/ui': link:../../@lib/ui
-      '@vanilla-extract/css': 1.7.1
+      '@vanilla-extract/css': 1.7.2
       clsx: 1.1.1
       entities: 4.3.0
-      framer-motion: 6.3.10_ef5jwxihqo6n7gxfmzogljlgcm
+      framer-motion: 6.3.11_ef5jwxihqo6n7gxfmzogljlgcm
       gray-matter: 4.0.3
       next: 12.1.6_ef5jwxihqo6n7gxfmzogljlgcm
     devDependencies:
@@ -157,12 +157,12 @@ importers:
       '@types/node': '16'
       '@types/react': ^18.0.12
       '@types/react-dom': ^18.0.5
-      '@vanilla-extract/css': ^1.7.1
+      '@vanilla-extract/css': ^1.7.2
       '@vanilla-extract/recipes': ^0.2.5
       ava: ^4.3.0
       clsx: ^1.1.1
       entities: ^4.3.0
-      framer-motion: ^6.3.10
+      framer-motion: ^6.3.11
       gray-matter: ^4.0.2
       k-popo: ^1.2.0
       next: ^12.1.6
@@ -179,11 +179,11 @@ importers:
       '@lib/mdx': link:../../@lib/mdx
       '@lib/ui': link:../../@lib/ui
       '@mdn/browser-compat-data': 4.2.1
-      '@vanilla-extract/css': 1.7.1
-      '@vanilla-extract/recipes': 0.2.5_@vanilla-extract+css@1.7.1
+      '@vanilla-extract/css': 1.7.2
+      '@vanilla-extract/recipes': 0.2.5_@vanilla-extract+css@1.7.2
       clsx: 1.1.1
       entities: 4.3.0
-      framer-motion: 6.3.10_ef5jwxihqo6n7gxfmzogljlgcm
+      framer-motion: 6.3.11_ef5jwxihqo6n7gxfmzogljlgcm
       gray-matter: 4.0.3
       k-popo: 1.2.0
       next: 12.1.6_ef5jwxihqo6n7gxfmzogljlgcm
@@ -206,14 +206,14 @@ importers:
       '@lib/ui': workspace:*
       '@types/react': ^18.0.12
       '@types/react-dom': ^18.0.5
-      '@vanilla-extract/css': ^1.7.1
+      '@vanilla-extract/css': ^1.7.2
       react: ^18.1.0
       react-dom: ^18.1.0
       tsconfig: workspace:*
       typescript: ^4.7.3
     dependencies:
       '@lib/ui': link:../../@lib/ui
-      '@vanilla-extract/css': 1.7.1
+      '@vanilla-extract/css': 1.7.2
     devDependencies:
       '@types/react': 18.0.12
       '@types/react-dom': 18.0.5
@@ -228,7 +228,7 @@ importers:
       '@lib/ui': workspace:*
       '@types/react': ^18.0.12
       '@types/react-dom': ^18.0.5
-      '@vanilla-extract/css': ^1.7.1
+      '@vanilla-extract/css': ^1.7.2
       react: ^18.1.0
       react-dom: ^18.1.0
       tsconfig: workspace:*
@@ -236,7 +236,7 @@ importers:
     dependencies:
       '@lib/functions': link:../../@lib/functions
       '@lib/ui': link:../../@lib/ui
-      '@vanilla-extract/css': 1.7.1
+      '@vanilla-extract/css': 1.7.2
     devDependencies:
       '@types/react': 18.0.12
       '@types/react-dom': 18.0.5
@@ -251,8 +251,8 @@ importers:
       '@lib/ui': workspace:*
       '@types/react': ^18.0.12
       '@types/react-dom': ^18.0.5
-      '@vanilla-extract/css': ^1.7.1
-      framer-motion: ^6.3.10
+      '@vanilla-extract/css': ^1.7.2
+      framer-motion: ^6.3.11
       next: ^12.1.6
       react: ^18.1.0
       react-dom: ^18.1.0
@@ -261,8 +261,8 @@ importers:
     dependencies:
       '@lib/functions': link:../../@lib/functions
       '@lib/ui': link:../../@lib/ui
-      '@vanilla-extract/css': 1.7.1
-      framer-motion: 6.3.10_ef5jwxihqo6n7gxfmzogljlgcm
+      '@vanilla-extract/css': 1.7.2
+      framer-motion: 6.3.11_ef5jwxihqo6n7gxfmzogljlgcm
       next: 12.1.6_ef5jwxihqo6n7gxfmzogljlgcm
     devDependencies:
       '@types/react': 18.0.12
@@ -353,11 +353,11 @@ importers:
       '@types/node': '16'
       '@types/react': ^18.0.12
       '@types/react-dom': ^18.0.5
-      '@vanilla-extract/css': ^1.7.1
+      '@vanilla-extract/css': ^1.7.2
       '@vanilla-extract/recipes': ^0.2.5
       ava: ^4.3.0
       clsx: ^1.1.1
-      framer-motion: ^6.3.10
+      framer-motion: ^6.3.11
       jsdom: ^19.0.0
       jsdom-global: ^3.0.2
       next: ^12.1.6
@@ -372,9 +372,9 @@ importers:
       '@radix-ui/react-dialog': 0.1.8-rc.34_eurjwfem4ie5nnznw6gmhlbswe
       '@radix-ui/react-icons': 1.1.1_react@18.1.0
       '@radix-ui/react-popover': 0.1.7-rc.27_eurjwfem4ie5nnznw6gmhlbswe
-      '@vanilla-extract/css': 1.7.1
+      '@vanilla-extract/css': 1.7.2
       clsx: 1.1.1
-      framer-motion: 6.3.10_ef5jwxihqo6n7gxfmzogljlgcm
+      framer-motion: 6.3.11_ef5jwxihqo6n7gxfmzogljlgcm
       next: 12.1.6_ef5jwxihqo6n7gxfmzogljlgcm
       next-themes: 0.2.0_2mgcgz5qhsdxw4fgpqzqeafmkq
     devDependencies:
@@ -383,7 +383,7 @@ importers:
       '@types/node': 16.11.36
       '@types/react': 18.0.12
       '@types/react-dom': 18.0.5
-      '@vanilla-extract/recipes': 0.2.5_@vanilla-extract+css@1.7.1
+      '@vanilla-extract/recipes': 0.2.5_@vanilla-extract+css@1.7.2
       ava: 4.3.0
       jsdom: 19.0.0
       jsdom-global: 3.0.2_jsdom@19.0.0
@@ -2657,8 +2657,8 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@vanilla-extract/css/1.7.1:
-    resolution: {integrity: sha512-afeJXYd709hanseL3O7dV0BPGvcvMhCJ5HOvu8SaOs1Xa4teMA0UGxYoqIyKpwpqmkOcmMXvWEfeQEs3M3p0DQ==}
+  /@vanilla-extract/css/1.7.2:
+    resolution: {integrity: sha512-wRsV9sSD4qN6+dbS1ywExw5kEU4Fk/UipNKFsGwwUsHLyuPKK8BaZUmzfyAQex6POHYQboYv6Ajbqpvhx2KhfQ==}
     dependencies:
       '@emotion/hash': 0.8.0
       '@vanilla-extract/private': 1.0.3
@@ -2675,7 +2675,7 @@ packages:
   /@vanilla-extract/integration/3.0.1:
     resolution: {integrity: sha512-4G4WgkalVRIsJyDb/X08S0xcG2eDm1RJvqIgji0D7HvOSeyD+nvPEhbq8FAxs7MeVyyPDoCWsCKQvS3f9jz9UA==}
     dependencies:
-      '@vanilla-extract/css': 1.7.1
+      '@vanilla-extract/css': 1.7.2
       esbuild: 0.11.23
       eval: 0.1.6
       find-up: 5.0.0
@@ -2700,12 +2700,12 @@ packages:
   /@vanilla-extract/private/1.0.3:
     resolution: {integrity: sha512-17kVyLq3ePTKOkveHxXuIJZtGYs+cSoev7BlP+Lf4916qfDhk/HBjvlYDe8egrea7LNPHKwSZJK/bzZC+Q6AwQ==}
 
-  /@vanilla-extract/recipes/0.2.5_@vanilla-extract+css@1.7.1:
+  /@vanilla-extract/recipes/0.2.5_@vanilla-extract+css@1.7.2:
     resolution: {integrity: sha512-OWXUUiFJdswD3+Xg8f8avuw/vAHZRFS4oHqFeoV1TcO8cfbDQ0zmkreBHvyspoJU+qsyWK48yPHKSptqNRPy9Q==}
     peerDependencies:
       '@vanilla-extract/css': ^1.0.0
     dependencies:
-      '@vanilla-extract/css': 1.7.1
+      '@vanilla-extract/css': 1.7.2
 
   /@vanilla-extract/webpack-plugin/2.1.7_webpack@5.73.0:
     resolution: {integrity: sha512-6i8x2at+ASbYTZ+UoN0bkTNB0Kkg4nSVz2YF5Q5pcNupEl3F0p2hgW3+LO4Sd+gkjH3JKMeKI5ivhBE86yjR6A==}
@@ -4341,8 +4341,8 @@ packages:
     resolution: {integrity: sha512-oxvgqUYR6O9VkKXrxkJ0NOyU0FrE705MeqgBUMEPWyTu6Pwn768cJbHChw2XOBlgFLKfIHxjr2OOBFpv2mUGZw==}
     dev: false
 
-  /framer-motion/6.3.10_ef5jwxihqo6n7gxfmzogljlgcm:
-    resolution: {integrity: sha512-modFplFb1Fznsm0MrmRAJUC32UDA5jbGU9rDvkGzhAHksru2tnoKbU/Pa3orzdsJI0CJviG4NGBrmwGveU98Cg==}
+  /framer-motion/6.3.11_ef5jwxihqo6n7gxfmzogljlgcm:
+    resolution: {integrity: sha512-xQLk+ZSklNs5QNCUmdWPpKMOuWiB8ZETsvcIOWw8xvri9K3TamuifgCI/B6XpaEDR0/V2ZQF2Wm+gUAZrXo+rw==}
     peerDependencies:
       react: '>=16.8 || ^17.0.0 || ^18.0.0'
       react-dom: '>=16.8 || ^17.0.0 || ^18.0.0'

@@ -1,5 +1,3 @@
-/// <reference types="@lib/mdx/mdast" />
-
 import { parse } from '@domain/blog/parse'
 import { compile } from '@lib/mdx/compiler'
 import type { NextApiHandler } from 'next'

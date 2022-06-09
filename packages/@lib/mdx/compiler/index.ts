@@ -1,3 +1,6 @@
+/// <reference types="../mdast" />
+/// <reference types="../unist-util-visit" />
+
 import rehypeHighlight from '@mapbox/rehype-prism'
 import { compile as compileMDX } from '@mdx-js/mdx'
 import type { DefinitionList, Notebox, Term, TermDescription } from 'mdast'

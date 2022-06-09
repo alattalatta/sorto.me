@@ -5,7 +5,7 @@ bcd: html.elements.input.type_date
 
 **`date` 유형의 [`<input>`](../input) 요소**는 사용자가 날짜를 입력하거나 선택할 수 있는 컨트롤입니다.
 
-`<input type="date">`의 값은 연도와 월, 일을 포함하지만 시간은 포함하지 않습니다. 시간 입력도 필요하면 [`time`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time), [`datetime-local`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/datetime-local) 입력 유형을 사용하세요.
+`<input type="date">`의 값은 연도와 월, 일을 포함하지만 시간은 포함하지 않습니다. 시간 입력도 필요하면 [`time`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time) 입력 칸을 추가하거나, [`datetime-local`](./datetime-local) 유형을 사용하세요.
 
 실제 컨트롤의 외형은 브라우저와 플랫폼에 따라서 모습이 크게 달라질 수 있습니다. 입력받은 값의 형식 검증을 내장한 것을 제외하면 평범한 텍스트 입력 칸일 수도 있고, 쉬운 날짜 선택을 위해 브라우저가 제공하는 달력을 보여줄 수도 있습니다.
 
@@ -72,7 +72,7 @@ console.log(dateControl.valueAsNumber) // 1496275200000, JavaScript 타임스탬
 
 [`min`](#term-min)과 [`max` 특성](#term-max)으로 선택 가능한 날짜를 제한하는 경우 ([선택 가능한 날짜 범위 제한하기](#선택-가능한-날짜-범위-제한하기)를 참고하세요), `date` 유형을 지원하는 브라우저에서는 범위를 벗어난 값을 제출하려고 하면 오류를 표시합니다. 하지만 미지원 브라우저에서는 범위 검증을 하지 않으므로 사용자의 제출 값을 다시 확인할 필요가 있습니다.
 
-[`required` 특성](../input#term-required)으로 날짜를 반드시 입력하게 설정할 수 있습니다. 사용자가 날짜를 입력하지 않고 양식을 제출하려고 하면 브라우저가 오류를 표시합니다. 필수 입력 설정은 `datetime-local` 입력 칸이 텍스트 입력 칸으로 대체된 경우에도 동작합니다.
+[`required` 특성](../input#term-required)으로 날짜를 반드시 입력하게 설정할 수 있습니다. 사용자가 날짜를 입력하지 않고 양식을 제출하려고 하면 브라우저가 오류를 표시합니다. 필수 입력 설정은 `date` 입력 칸이 텍스트 입력 칸으로 대체된 경우에도 동작합니다.
 
 # 예제
 

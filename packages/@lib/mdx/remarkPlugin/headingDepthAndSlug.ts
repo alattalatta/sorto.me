@@ -7,7 +7,7 @@ function headingDepthAndSlug(heading: Heading, slugger: Slugger): void {
   heading.data = {
     ...heading.data,
     hProperties: {
-      ...(heading.data?.hProperties as unknown as object),
+      ...(heading.data?.hProperties as object),
       id: slugger.slug(toString(heading)),
     },
   }

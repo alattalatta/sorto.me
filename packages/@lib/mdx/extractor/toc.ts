@@ -15,8 +15,7 @@ const processor = unified()
   .use(() => (tree) => {
     const slugger = new Slugger()
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    ;(visit as any)(tree, 'heading', (node: Heading) => {
+    visit(tree, 'heading', (node: Heading) => {
       headingDepthAndSlug(node, slugger)
     })
   })
@@ -28,15 +27,19 @@ const processor = unified()
   })
   .use(function () {
     this.Compiler = (tree: Root) => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      return JSON.stringify(tree.children.map((node) => [(node.data as any).hProperties.id, toString(node)]))
+      return JSON.stringify(
+        tree.children.map((node) => {
+          const nodeData = node.data as { hProperties: Record<string, string> }
+          return [nodeData.hProperties.id, toString(node)]
+        }),
+      )
     }
   })
 
 async function extractTOC(source: string): Promise<readonly (readonly [string, string])[]> {
   const parsed = await processor.process(source)
 
-  return JSON.parse(parsed.toString())
+  return JSON.parse(parsed.toString()) as [string, string][]
 }
 
 export { extractTOC }

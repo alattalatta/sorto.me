@@ -3,10 +3,11 @@ import { createVar, globalStyle, style } from '@vanilla-extract/css'
 import { theme as darkTheme } from './theme/dark.css'
 
 const vars = {
-  commentColor: createVar(),
-  keywordColor: createVar(),
-  stringLiteralColor: createVar(),
-  tagColor: createVar(),
+  blue: createVar(),
+  faded: createVar(),
+  green: createVar(),
+  orange: createVar(),
+  yellow: createVar(),
 }
 
 const root = style({
@@ -14,19 +15,21 @@ const root = style({
   margin: '0 auto',
   wordBreak: 'keep-all',
   vars: {
-    [vars.commentColor]: '#969896',
-    [vars.keywordColor]: '#c53800',
-    [vars.stringLiteralColor]: '#0056d6',
-    [vars.tagColor]: '#008a67',
+    [vars.blue]: '#0056d6',
+    [vars.faded]: '#767676',
+    [vars.green]: '#008a67',
+    [vars.orange]: '#c53800',
+    [vars.yellow]: '#a78d00',
   },
 })
 
 globalStyle(`${darkTheme} ${root}`, {
   vars: {
-    [vars.commentColor]: '#969896',
-    [vars.keywordColor]: '#ff682d',
-    [vars.stringLiteralColor]: '#4c94ff',
-    [vars.tagColor]: '#27c19a',
+    [vars.blue]: '#4c94ff',
+    [vars.faded]: '#969896',
+    [vars.green]: '#27c19a',
+    [vars.orange]: '#ff682d',
+    [vars.yellow]: '#ceb424',
   },
 })
 

@@ -19,6 +19,6 @@
   "dependencies": {
     "@lib/functions": "workspace:*",
     "@lib/ui": "workspace:*",
-    "@vanilla-extract/css": "^1.7.1"
+    "@vanilla-extract/css": "^1.7.2"
   }
 }

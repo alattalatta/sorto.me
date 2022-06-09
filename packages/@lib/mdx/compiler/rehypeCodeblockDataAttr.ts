@@ -1,4 +1,4 @@
-import type { Element, Parent, Properties, Root } from 'hast'
+import type { Element, Properties, Root } from 'hast'
 import type { Plugin } from 'unified'
 import { visit } from 'unist-util-visit'
 
@@ -11,9 +11,7 @@ const parseMeta = (meta: string): Properties =>
 
 const rehypeCodeblockDataAttr: Plugin<void[], Root> = () => {
   return (tree) => {
-    // TS is too slow to dig this deeper
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    ;(visit as any)(tree, 'element', (node: Element, _: number, parent: Element) => {
+    visit(tree, 'element', (node: Element, _: number, parent: Element) => {
       if (node.tagName !== 'code') {
         return
       }

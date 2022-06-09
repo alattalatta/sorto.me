@@ -1,0 +1,10 @@
+{
+  "name": "@types/mapbox__rehype-prism",
+  "version": "1.0.0",
+  "private": true,
+  "types": "index.d.ts",
+  "devDependencies": {
+    "tsconfig": "workspace:*",
+    "unified": "^10.1.2"
+  }
+}

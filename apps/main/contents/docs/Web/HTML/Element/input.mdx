@@ -9,7 +9,13 @@ bcd: html.elements.input
 
 ```html
 <label for="name">이름 (2 ~ 8글자):</label>
-<input type="text" id="name" name="name" required minlength="2" maxlength="8" size="10" />
+<input type="text"
+       id="name"
+       name="name"
+       maxlength="8"
+       minlength="2"
+       required
+       size="10" />
 ```
 
 ```css
@@ -66,7 +72,7 @@ label {
         </td>
       </tr>
       <tr>
-        <td>`datetime-local`</td>
+        <td>[`datetime-local`](./input/datetime-local)</td>
         <td>시간을 포함한 날짜를 입력하는 칸입니다. 시간대는 입력할 수 없습니다. 브라우저가 지원할 경우 달력과 시간 휠 등을 보여줍니다.</td>
         <td>
           <input type="datetime-local" />

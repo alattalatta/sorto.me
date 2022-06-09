@@ -13,7 +13,11 @@ bcd: html.elements.input.type_date
 
 ```html
 <label for="date">날짜를 선택하세요:
-  <input type="date" id="date" min="2077-06-05" max="2077-06-20" value="2077-06-15"/>
+  <input type="date"
+         id="date"
+         max="2077-06-20"
+         min="2077-06-05"
+         value="2077-06-15"/>
 </label>
 ```
 
@@ -27,11 +31,11 @@ input {
 
 # 값
 
-`<input type="date">` 요소의 [`value` 특성](../input#term-value)은 반드시 [유효한 HTML 날짜 문자열](https://developer.mozilla.org/en-US/docs/Web/HTML/Date_and_time_formats#date_strings)([명세](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#dates))이어야 합니다.
+`date` 유형의 [`value` 특성](../input#term-value)은 반드시 [유효한 HTML 날짜 문자열](https://developer.mozilla.org/en-US/docs/Web/HTML/Date_and_time_formats#date_strings)([명세](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#dates))이어야 합니다.
 
-> [note] 사용자의 화면에 나타나는 날짜의 형식은 입력 칸이 실제로 저장하는 값과는 다른 형식을 사용합니다. 보여지는 날짜 형식은 사용자 브라우저의 로케일에 따라 달라지지만, 실제 저장 값과 `value` 특성은 항상 `yyyy-mm-dd` 형식을 사용합니다.
+> [note] 사용자의 화면에 나타나는 날짜의 형식은 `date` 입력 칸이 실제로 저장하는 값과는 다른 형식을 사용합니다. 사용자에게 보이는 날짜 형식은 브라우저의 로케일에 따라 달라지지만, 실제 저장 값과 `value` 특성은 항상 `yyyy-mm-dd` 형식을 사용합니다.
 
-JavaScript에서는 [`HTMLInputElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement)의 `value`와 `valueAsNumber`로 날짜 값을 가져올 수 있으며, `value`는 날짜 문자열을, `valueAsNumber`는 날짜의 타임스탬프를 반환합니다.
+JavaScript에서는 [`HTMLInputElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement)의 `value`와 `valueAsNumber`로 값을 가져올 수 있으며, `value`는 날짜 문자열, `valueAsNumber`는 타임스탬프를 반환합니다.
 
 ```js
 const dateControl = document.querySelector('input[type="date"]')
@@ -46,13 +50,13 @@ console.log(dateControl.valueAsNumber) // 1496275200000, JavaScript 타임스탬
 
 - : `max`
 
-  - 선택할 수 있는 날짜의 최대 한계입니다. 날짜 입력 칸에 입력한 값이 이 날짜 이후인 경우 [제약 검증](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Constraint_validation)에 실패합니다. `max` 특성의 형식은 반드시 `yyyy-mm-dd` 날짜 문자열이어야 합니다. 유효하지 않은 값을 입력하면 최대 한계를 지정하지 않은 것으로 취급합니다.
+  - 선택할 수 있는 날짜의 최대 한계입니다. 입력한 값이 이 날짜 이후인 경우 [제약 검증](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Constraint_validation)에 실패합니다. `max` 특성은 반드시 `yyyy-mm-dd` 형식의 날짜 문자열이어야 합니다. 유효하지 않은 값을 입력하면 최대 한계를 지정하지 않은 것으로 취급합니다.
 
     `max`와 `min` 특성을 모두 지정하는 경우, `max`는 `min`과 같거나 그 이후를 가리키는 날짜 문자열이어야 합니다.
 
 - : `min`
 
-  - 선택할 수 있는 날짜의 최소 한계입니다. 날짜 입력 칸에 입력한 값이 이 날짜 이전인 경우 [제약 검증](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Constraint_validation)에 실패합니다. `min` 특성의 형식은 반드시 `yyyy-mm-dd` 날짜 문자열이어야 합니다. 유효하지 않은 값을 입력하면 최소 한계를 지정하지 않은 것으로 취급합니다.
+  - 선택할 수 있는 날짜의 최소 한계입니다. 입력한 값이 이 날짜 이전인 경우 [제약 검증](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Constraint_validation)에 실패합니다. `min` 특성은 반드시 `yyyy-mm-dd` 형식의 날짜 문자열이어야 합니다. 유효하지 않은 값을 입력하면 최소 한계를 지정하지 않은 것으로 취급합니다.
 
     `max`와 `min` 특성을 모두 지정하는 경우, `min`은 `nax`와 같거나 그 이후를 가리키는 날짜 문자열이어야 합니다.
 
@@ -60,21 +64,21 @@ console.log(dateControl.valueAsNumber) // 1496275200000, JavaScript 타임스탬
 
   - 선택 가능한 값의 간격입니다. 숫자 또는 `any`를 지정할 수 있습니다. 간격의 기준 값은 `min` 특성이 존재하면 `min`, `value`가 존재하면 `value`, 둘 다 존재하지 않으면 `1970-01-01`입니다.
 
-    숫자를 지정할 경우, 수의 단위는 1일입니다. `step`의 기본 값은 `1`이므로 값의 기본 간격은 1일입니다. `any`를 지정할 경우, `<input type="date">`에서는 `1`을 입력한 것과 같습니다.
+    숫자를 지정할 경우, 수의 단위는 1일입니다. `step`의 기본 값은 `1`이므로 기본 간격은 1일입니다. `any`를 지정할 경우, `<input type="date">`에서는 `1`을 입력한 것과 같습니다.
 
 # 유효성 검증
 
-`<input type="date">`의 기본 설정에서는 입력된 값의 형식만 검증합니다. 브라우저 기본 인터페이스로는 유효한 값만 입력할 수 있다는 점은 좋지만 입력 칸을 비워두는 것은 가능하고, 날짜 입력 칸을 지원하지 않는 브라우저에서는 일반 텍스트 입력 칸으로 대체되므로 사용자가 2월 30일처럼 잘못된 날짜를 입력할 수 있습니다.
+`date` 유형의 기본 설정에서는 입력된 값의 형식만 검증합니다. 브라우저 기본 인터페이스로는 유효한 값만 입력할 수 있다는 점은 유용한 점이지만 입력 칸을 아예 비워두는 경우는 막지 않습니다. 또한 `date` 유형을 지원하지 않는 브라우저에서는 일반 텍스트 입력 칸으로 대체되므로 2월 30일처럼 잘못된 날짜를 입력하는 사용자를 막을 수 없습니다.
 
-[`min`](#term-min)과 [`max` 특성](#term-max)으로 선택 가능한 날짜를 제한하는 경우 ([선택 가능한 날짜 범위 제한하기](#선택-가능한-날짜-범위-제한하기)를 참고하세요), 날짜 입력 칸을 지원하는 브라우저에서는 범위를 벗어난 값을 제출하려고 하면 오류를 표시합니다. 하지만 미지원 브라우저에서는 범위 검증을 하지 않으므로 사용자의 제출 값을 다시 확인할 필요가 있습니다.
+[`min`](#term-min)과 [`max` 특성](#term-max)으로 선택 가능한 날짜를 제한하는 경우 ([선택 가능한 날짜 범위 제한하기](#선택-가능한-날짜-범위-제한하기)를 참고하세요), `date` 유형을 지원하는 브라우저에서는 범위를 벗어난 값을 제출하려고 하면 오류를 표시합니다. 하지만 미지원 브라우저에서는 범위 검증을 하지 않으므로 사용자의 제출 값을 다시 확인할 필요가 있습니다.
 
-[`required` 특성](../input#term-required)으로 날짜를 반드시 입력하게 설정할 수 있습니다. 사용자가 날짜를 입력하지 않고 양식을 제출하려고 하면 브라우저가 오류를 표시합니다. 필수 입력 설정은 날짜 입력 칸이 텍스트 입력 칸으로 대체된 경우에도 동작합니다.
+[`required` 특성](../input#term-required)으로 날짜를 반드시 입력하게 설정할 수 있습니다. 사용자가 날짜를 입력하지 않고 양식을 제출하려고 하면 브라우저가 오류를 표시합니다. 필수 입력 설정은 `datetime-local` 입력 칸이 텍스트 입력 칸으로 대체된 경우에도 동작합니다.
 
 # 예제
 
 ## 선택 가능한 날짜 범위 제한하기
 
-[`min`](#term-min)과 [`max` 특성](#term-max)을 지정하면 사용자가 선택할 수 있는 날짜를 특정 범위로 제한할 수 있습니다. 이 예제에서는 `2022-04-01`부터 `2022-04-30`까지의 날짜만 선택할 수 있도록 입력 범위를 제한합니다.
+[`min`](#term-min)과 [`max` 특성](#term-max)을 지정하면 사용자가 선택할 수 있는 날짜를 특정 범위로 제한할 수 있습니다. 이 예제에서는 2022년 4월 1일부터 2022년 4월 30일까지의 날짜만 선택할 수 있도록 입력 범위를 제한합니다.
 
 ```html name=range
 <label>일정을 추가할 날짜를 선택하세요.
@@ -88,7 +92,7 @@ console.log(dateControl.valueAsNumber) // 1496275200000, JavaScript 타임스탬
 
 브라우저가 `date` 입력 칸을 지원하지 않으면 `text` 입력 칸으로 우아하게 저하됩니다. 하지만 저하된 입력 칸은 사용자 인터페이스의 일관성을 깨고, 데이터 처리 방식에 차이를 만든다는 문제가 있습니다.
 
-더 심각한 문제도 있습니다. `date` 입력 칸이 지원되는 브라우저에서는 입력 칸의 값을 `yyyy-mm-dd` 형식으로 정규화합니다. 하지만 일반 텍스트 입력 칸에는 날짜 형식같은 것이 존재하지 않으므로 정규화할 수도 없는데, 사람들이 입력하는 날짜 형식은 다양합니다.
+더 심각한 문제도 있습니다. `date` 입력 칸이 지원되는 브라우저에서는 입력 칸의 값을 `yyyy-mm-dd` 형식으로 정규화합니다. 하지만 일반 텍스트 입력 칸에는 날짜 형식 제한같은 것이 존재하지 않으므로 정규화할 수도 없는데, 사람들이 입력하는 날짜 형식은 다양합니다.
 
 - `yyyymmdd`
 - `yymmdd`
@@ -108,7 +112,7 @@ console.log(dateControl.valueAsNumber) // 1496275200000, JavaScript 타임스탬
 </form>
 ```
 
-생년월일을 `####-##-##`의 형식(#은 0~9의 숫자)으로 입력하지 않고 제출을 시도하면 브라우저가 오류를 표시할 겁니다. 물론 이 방법은 형식만 제한할 수 있으므로 `9999-99-99`처럼 완전히 잘못된 값도 막을 수 없습니다.
+생년월일을 `####-##-##`의 형식(#은 0~9의 숫자)에서 벗어나게 입력한 채 제출을 시도하면 브라우저가 오류를 표시할 겁니다. 물론 이 방법은 형식만 제한할 수 있으므로 `9999-99-99`처럼 완전히 잘못된 값도 막을 수 없습니다.
 
 지금으로서는, 크로스 브라우저 날짜 입력이 필요하면 연/월/일을 각각 분리된 컨트롤에 입력하게 하거나 JavaScript 라이브러리를 쓰는 편이 좋습니다.
 

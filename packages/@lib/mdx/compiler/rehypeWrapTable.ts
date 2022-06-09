@@ -4,9 +4,7 @@ import { visit } from 'unist-util-visit'
 
 const rehypeWrapTable: Plugin<void[], Root> = () => {
   return (tree) => {
-    // TS is too slow to dig this deeper
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    ;(visit as any)(tree, 'element', (node: Element, index: number, parent: Element) => {
+    visit(tree, 'element', (node: Element, index: number, parent: Element) => {
       if (node.tagName !== 'table') {
         return
       }

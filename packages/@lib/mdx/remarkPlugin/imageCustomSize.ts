@@ -28,7 +28,7 @@ function imageCustomSize(image: Image): void {
   const height = width && intrinsicSize ? Math.round(width / intrinsicSize.aspectRatio) : undefined
 
   data.hProperties = {
-    ...((data.hProperties as object) || {}),
+    ...(data.hProperties as object),
     width,
     height,
   }

@@ -1,5 +1,3 @@
-/// <reference types="../mdast" />
-
 import { head } from 'fp-ts/lib/Array'
 import * as O from 'fp-ts/lib/Option'
 import { identity, pipe } from 'fp-ts/lib/function'
@@ -15,11 +13,9 @@ const remarkDefinitionList: Plugin<void[], Root> = () => {
   const slugs = new Slugger()
 
   return (tree) => {
-    // TS is too slow to dig this deeper
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    ;(visit as any)(tree, 'list', (list: List, index: number, parent: Parent | null) => {
+    visit(tree, 'list', (list: List, index: number, parent: Parent) => {
       const bissectedDL = bissectDefinitionList(list, slugs)
-      if (index === null || !parent || bissectedDL.length === 0) {
+      if (index === null || bissectedDL.length === 0) {
         return
       }
 

@@ -1,5 +1,5 @@
 import bcd from '@mdn/browser-compat-data'
-import type { Identifier, SimpleSupportStatement } from '@mdn/browser-compat-data/types'
+import type { Identifier, SimpleSupportStatement } from '@mdn/browser-compat-data'
 
 import { determineStatus, getCompatData, getSubIdentifierKeys, supportLabel } from '../docs'
 

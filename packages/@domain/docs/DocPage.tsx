@@ -2,7 +2,7 @@ import { useMDXRenderer } from '@lib/mdx'
 import type { Page } from '@lib/ui'
 import { Footer, Layout } from '@lib/ui'
 import * as documentBody from '@lib/ui/documentBody.css'
-import type { Identifier } from '@mdn/browser-compat-data/types'
+import type { Identifier } from '@mdn/browser-compat-data'
 import clsx from 'clsx'
 import Head from 'next/head'
 

@@ -4,7 +4,7 @@ import type {
   SimpleSupportStatement,
   SupportStatement,
   VersionValue,
-} from '@mdn/browser-compat-data/types'
+} from '@mdn/browser-compat-data'
 
 /**
  * Map over a value that can be either an array or a single value.

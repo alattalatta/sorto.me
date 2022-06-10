@@ -2,7 +2,7 @@ import type { Doc, DocMetadata, DocPageProps } from '@domain/docs'
 import { DocPage, getCompatData } from '@domain/docs'
 import type { Page } from '@lib/ui'
 import browserCompatData from '@mdn/browser-compat-data'
-import type { Identifier } from '@mdn/browser-compat-data/types'
+import type { Identifier } from '@mdn/browser-compat-data'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import useSWR from 'swr'
 

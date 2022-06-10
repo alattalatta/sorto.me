@@ -1,13 +1,13 @@
-import type { BrowserNames, SimpleSupportStatement, SupportStatement } from '@mdn/browser-compat-data/types'
+import type { BrowserName, SimpleSupportStatement, SupportStatement } from '@mdn/browser-compat-data'
 
 import { determineStatus, supportLabel } from '../../utils'
 import { NonStandard } from '../StatusIcon'
 import * as styles from './CompatCell.css'
 
 type Props = {
-  browserName: BrowserNames
+  browserName: BrowserName
   data: SupportStatement | undefined
-  onClick?: (browserName: BrowserNames, notes: SupportStatement) => void
+  onClick?: (browserName: BrowserName, notes: SupportStatement) => void
 }
 
 const CompatCell: React.FC<Props> = ({ browserName, data, onClick }) => {

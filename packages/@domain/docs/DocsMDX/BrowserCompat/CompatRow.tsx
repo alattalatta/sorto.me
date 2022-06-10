@@ -1,4 +1,4 @@
-import type { BrowserName, Identifier, SupportStatement } from '@mdn/browser-compat-data'
+import type { BrowserName, Identifier, SupportStatement } from '@mdn/browser-compat-data/types'
 import { resolve } from 'k-popo'
 import { Fragment, useState } from 'react'
 

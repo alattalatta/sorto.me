@@ -1,8 +1,9 @@
 import type { Doc, DocMetadata, DocPageProps } from '@domain/docs'
 import { DocPage, getCompatData } from '@domain/docs'
+import bcdCSS from '@lib/bcd/css'
+import bcdHTML from '@lib/bcd/html'
 import type { Page } from '@lib/ui'
-import browserCompatData from '@mdn/browser-compat-data'
-import type { Identifier } from '@mdn/browser-compat-data'
+import type { Identifier } from '@mdn/browser-compat-data/types'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import useSWR from 'swr'
 
@@ -36,23 +37,25 @@ export const getStaticProps: GetStaticProps<DocPageProps, StaticParam> = async (
 
   const { content, meta } = await importDocData(params.slugs.join('/'))
 
-  const bcd = makeBCDData(meta.bcd || null)
+  const bcdData = makeBCDData(meta.bcd || null)
+
+  const breadcrumbs = meta.slug
+    .split('/')
+    .slice(0, -1) // exclude current doc path
+    .reduce<{ combinedPath: string; crumbs: DocPageProps['breadcrumbs'] }>(
+      (acc, cur) => {
+        const path = `${acc.combinedPath}/${cur}`
+        const title = (docsMap as Record<string, string>)[path.slice(1) /* remove leading slash */] || cur
+
+        return { combinedPath: path, crumbs: [...acc.crumbs, [title, path]] }
+      },
+      { combinedPath: '', crumbs: [] },
+    )
 
   return {
     props: {
-      bcd,
-      breadcrumbs: meta.slug
-        .split('/')
-        .slice(0, -1) // exclude current doc path
-        .reduce<{ breadcrumbs: DocPageProps['breadcrumbs']; combinedPath: string }>(
-          ({ breadcrumbs, combinedPath }, cur) => {
-            const path = `${combinedPath}/${cur}`
-            const title = (docsMap as Record<string, string>)[path.slice(1) /* remove leading slash */] || cur
-
-            return { breadcrumbs: [...breadcrumbs, [title, path]], combinedPath: path }
-          },
-          { breadcrumbs: [], combinedPath: '' },
-        ).breadcrumbs,
+      bcd: bcdData,
+      breadcrumbs: breadcrumbs.crumbs,
       compiledSource: content,
       meta,
     },
@@ -71,12 +74,12 @@ function makeBCDData(bcdKey: string | null): { data: Identifier; name: string } 
     return null
   }
 
-  const data = getCompatData(browserCompatData, bcdKey)
+  const keys = bcdKey.split('.')
+  const data = getCompatData(keys[0] === 'css' ? bcdCSS : bcdHTML, keys.slice(1).join('.'))
   if (!data) {
     return null
   }
 
-  const keys = bcdKey.split('.')
   const name = keys[keys.length - 1]
 
   return {

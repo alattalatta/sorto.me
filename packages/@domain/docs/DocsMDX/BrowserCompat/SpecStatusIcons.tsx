@@ -1,4 +1,4 @@
-import type { StatusBlock } from '@mdn/browser-compat-data'
+import type { StatusBlock } from '@mdn/browser-compat-data/types'
 
 import { Deprecated, Experimental, NonStandard } from '../StatusIcon'
 import * as styles from './SpecStatusIcons.css'

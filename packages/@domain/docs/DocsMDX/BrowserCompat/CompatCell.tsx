@@ -1,4 +1,4 @@
-import type { BrowserName, SimpleSupportStatement, SupportStatement } from '@mdn/browser-compat-data'
+import type { BrowserName, SimpleSupportStatement, SupportStatement } from '@mdn/browser-compat-data/types'
 
 import { determineStatus, supportLabel } from '../../utils'
 import { NonStandard } from '../StatusIcon'

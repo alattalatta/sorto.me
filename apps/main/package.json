@@ -18,6 +18,7 @@
     "@domain/error": "workspace:*",
     "@domain/home": "workspace:*",
     "@domain/search": "workspace:*",
+    "@lib/bcd": "workspace:*",
     "@lib/functions": "workspace:*",
     "@lib/mdx": "workspace:*",
     "@lib/ui": "workspace:*",

@@ -1,5 +1,5 @@
 import { Anchor } from '@lib/ui'
-import type { Identifier } from '@mdn/browser-compat-data'
+import type { Identifier } from '@mdn/browser-compat-data/types'
 
 import { getSubIdentifierKeys } from '../../utils'
 import CompatRow from './CompatRow'
@@ -11,20 +11,6 @@ type Props = {
 }
 
 const BrowserCompat: React.FC<Props> = ({ children, data: dataProp }) => {
-  /*
-  [note] memo later
-  const [loadedData, setLoadedData] = useState<Identifier | undefined | null>(undefined)
-
-  useEffect(() => {
-    if (children) {
-      void (async () => {
-        const bcd = (await import('@mdn/browser-compat-data')) as unknown as CompatData
-        setLoadedData(getCompatData(bcd, children))
-      })()
-    }
-  }, [children])
-  */
-
   const data = dataProp?.data
   const name = (() => {
     if (dataProp?.name) {

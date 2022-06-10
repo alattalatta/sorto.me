@@ -1,5 +1,5 @@
 import { Anchor } from '@lib/ui'
-import type { Identifier } from '@mdn/browser-compat-data'
+import type { Identifier } from '@mdn/browser-compat-data/types'
 
 type Props = {
   children: React.ReactNode

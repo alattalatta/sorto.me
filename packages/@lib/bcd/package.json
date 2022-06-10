@@ -1,0 +1,21 @@
+{
+  "name": "@lib/bcd",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    "./css": "./css.json",
+    "./html": "./html.json"
+  },
+  "scripts": {
+    "build": "node ./build.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "16",
+    "tsconfig": "workspace:*"
+  },
+  "dependencies": {
+    "@mdn/browser-compat-data": "^5.0.3"
+  }
+}

@@ -24,7 +24,7 @@
     "@lib/bcd#prebuild": {
       "dependsOn": ["^build"],
       "inputs": ["package.json"],
-      "outputs": ["index.json"]
+      "outputs": ["css.json", "html.json"]
     },
     "dev": {
       "cache": false

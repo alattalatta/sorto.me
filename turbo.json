@@ -14,13 +14,17 @@
       "outputs": ["compiler/index.js"]
     },
     "prebuild": {
-      "dependsOn": ["^build"],
-      "outputs": []
+      "dependsOn": ["^build"]
     },
     "@app/main#prebuild": {
       "dependsOn": ["^build"],
-      "inputs": ["contents/**"],
+      "inputs": ["contents/**", "scripts/**"],
       "outputs": ["out/**", "public/rss.xml", "public/sitemap.md.xml"]
+    },
+    "@lib/bcd#prebuild": {
+      "dependsOn": ["^build"],
+      "inputs": ["package.json"],
+      "outputs": ["index.json"]
     },
     "dev": {
       "cache": false

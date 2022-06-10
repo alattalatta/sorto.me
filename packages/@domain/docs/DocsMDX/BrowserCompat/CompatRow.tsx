@@ -1,4 +1,4 @@
-import type { BrowserNames, Identifier, SupportStatement } from '@mdn/browser-compat-data/types'
+import type { BrowserName, Identifier, SupportStatement } from '@mdn/browser-compat-data/types'
 import { resolve } from 'k-popo'
 import { Fragment, useState } from 'react'
 
@@ -14,14 +14,14 @@ type Props = {
   recurse?: boolean
 }
 
-const DESKTOP_KEYS: [BrowserNames, string][] = [
+const DESKTOP_KEYS: [BrowserName, string][] = [
   ['ie', 'IE'],
   ['edge', 'Edge'],
   ['chrome', 'Chrome'],
   ['safari', 'Safari'],
   ['firefox', 'Firefox'],
 ]
-const MOBILE_KEYS: [BrowserNames, string][] = [
+const MOBILE_KEYS: [BrowserName, string][] = [
   ['safari_ios', 'iOS\nSafari'],
   ['webview_android', 'Android\nWebView'],
   ['chrome_android', 'Android\nChrome'],
@@ -30,14 +30,14 @@ const MOBILE_KEYS: [BrowserNames, string][] = [
 ]
 
 const CompatRow: React.FC<Props> = ({ data, name, recurse }) => {
-  const [supportDetail, setSupportDetail] = useState<[BrowserNames, SupportStatement] | null>(null)
+  const [supportDetail, setSupportDetail] = useState<[BrowserName, SupportStatement] | null>(null)
 
   const compat = data.__compat
   if (!compat) {
     return null
   }
 
-  const toggleSupportDetail = (browserName: BrowserNames, value: SupportStatement): void => {
+  const toggleSupportDetail = (browserName: BrowserName, value: SupportStatement): void => {
     if (supportDetail && supportDetail[0] === browserName && supportDetail[1] === value) {
       setSupportDetail(null)
     } else {

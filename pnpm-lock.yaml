@@ -34,10 +34,11 @@ importers:
       '@domain/error': workspace:*
       '@domain/home': workspace:*
       '@domain/search': workspace:*
+      '@lib/bcd': workspace:*
       '@lib/functions': workspace:*
       '@lib/mdx': workspace:*
       '@lib/ui': workspace:*
-      '@mdn/browser-compat-data': ^4.2.1
+      '@mdn/browser-compat-data': ^5.0.3
       '@next/bundle-analyzer': ^12.1.6
       '@swc/core': ^1.2.197
       '@testing-library/react': ^13.3.0
@@ -72,10 +73,11 @@ importers:
       '@domain/error': link:../../packages/@domain/error
       '@domain/home': link:../../packages/@domain/home
       '@domain/search': link:../../packages/@domain/search
+      '@lib/bcd': link:../../packages/@lib/bcd
       '@lib/functions': link:../../packages/@lib/functions
       '@lib/mdx': link:../../packages/@lib/mdx
       '@lib/ui': link:../../packages/@lib/ui
-      '@mdn/browser-compat-data': 4.2.1
+      '@mdn/browser-compat-data': 5.0.3
       '@vanilla-extract/css': 1.7.2
       fp-ts: 2.12.1
       framer-motion: 6.3.11_ef5jwxihqo6n7gxfmzogljlgcm
@@ -153,7 +155,7 @@ importers:
       '@lib/functions': workspace:*
       '@lib/mdx': workspace:*
       '@lib/ui': workspace:*
-      '@mdn/browser-compat-data': ^4.2.1
+      '@mdn/browser-compat-data': ^5.0.3
       '@types/node': '16'
       '@types/react': ^18.0.12
       '@types/react-dom': ^18.0.5
@@ -178,7 +180,7 @@ importers:
       '@lib/functions': link:../../@lib/functions
       '@lib/mdx': link:../../@lib/mdx
       '@lib/ui': link:../../@lib/ui
-      '@mdn/browser-compat-data': 4.2.1
+      '@mdn/browser-compat-data': 5.0.3
       '@vanilla-extract/css': 1.7.2
       '@vanilla-extract/recipes': 0.2.5_@vanilla-extract+css@1.7.2
       clsx: 1.1.1
@@ -271,6 +273,17 @@ importers:
       react-dom: 18.1.0_react@18.1.0
       tsconfig: link:../../tsconfig
       typescript: 4.7.3
+
+  packages/@lib/bcd:
+    specifiers:
+      '@mdn/browser-compat-data': ^5.0.3
+      '@types/node': '16'
+      tsconfig: workspace:*
+    dependencies:
+      '@mdn/browser-compat-data': 5.0.3
+    devDependencies:
+      '@types/node': 16.11.38
+      tsconfig: link:../../tsconfig
 
   packages/@lib/functions:
     specifiers:
@@ -1694,8 +1707,8 @@ packages:
       unist-util-visit: 2.0.3
     dev: false
 
-  /@mdn/browser-compat-data/4.2.1:
-    resolution: {integrity: sha512-EWUguj2kd7ldmrF9F+vI5hUOralPd+sdsUnYbRy33vZTuZkduC1shE9TtEMEjAQwyfyMb4ole5KtjF8MsnQOlA==}
+  /@mdn/browser-compat-data/5.0.3:
+    resolution: {integrity: sha512-u5E323ARwywaNGxDnxBSKoNYr9tbBqRbPiTevfB34KBvNwqGhYWx2Bp3vnxbS1QrcQWZSz7/m43tUujUOvmWeA==}
     dev: false
 
   /@mdx-js/mdx/2.1.1:

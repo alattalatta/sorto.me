@@ -33,7 +33,7 @@ async function parse(docPath: string, rootDir?: string): Promise<Doc> {
     data: { description: descFromMatter, ...data },
     excerpt,
   } = matter(await sourceAsync, {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment
     excerpt: ((file: GrayMatterFile<Buffer>) => (file.excerpt = file.content)) as any,
   })
 
@@ -43,7 +43,7 @@ async function parse(docPath: string, rootDir?: string): Promise<Doc> {
     }
 
     if (descFromMatter) {
-      return escapeUTF8(descFromMatter)
+      return escapeUTF8(descFromMatter as string)
     }
 
     if (excerpt) {

@@ -12,10 +12,10 @@
     "build": "node ./build.mjs"
   },
   "devDependencies": {
-    "@types/node": "16",
+    "@types/node": "16.11.39",
     "tsconfig": "workspace:*"
   },
   "dependencies": {
-    "@mdn/browser-compat-data": "^5.0.3"
+    "@mdn/browser-compat-data": "5.0.3"
   }
 }

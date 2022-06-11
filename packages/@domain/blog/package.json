@@ -10,26 +10,26 @@
     "lint": "tsc --noEmit"
   },
   "devDependencies": {
-    "@types/node": "16",
-    "@types/react": "^18.0.12",
-    "@types/react-dom": "^18.0.5",
-    "ava": "^4.3.0",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
-    "ts-node": "^10.8.1",
+    "@types/node": "16.11.39",
+    "@types/react": "18.0.12",
+    "@types/react-dom": "18.0.5",
+    "ava": "4.3.0",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
+    "ts-node": "10.8.1",
     "tsconfig": "workspace:*",
-    "typescript": "^4.7.3"
+    "typescript": "4.7.3"
   },
   "dependencies": {
     "@lib/functions": "workspace:*",
     "@lib/mdx": "workspace:*",
     "@lib/ui": "workspace:*",
-    "@vanilla-extract/css": "^1.7.2",
-    "clsx": "^1.1.1",
-    "entities": "^4.3.0",
-    "framer-motion": "^6.3.11",
-    "gray-matter": "^4.0.2",
-    "next": "^12.1.6"
+    "@vanilla-extract/css": "1.7.2",
+    "clsx": "1.1.1",
+    "entities": "4.3.0",
+    "framer-motion": "6.3.11",
+    "gray-matter": "4.0.3",
+    "next": "12.1.6"
   },
   "ava": {
     "extensions": {

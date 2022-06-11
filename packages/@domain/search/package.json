@@ -9,18 +9,18 @@
     "lint": "tsc --noEmit"
   },
   "devDependencies": {
-    "@types/react": "^18.0.12",
-    "@types/react-dom": "^18.0.5",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
+    "@types/react": "18.0.12",
+    "@types/react-dom": "18.0.5",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
     "tsconfig": "workspace:*",
-    "typescript": "^4.7.3"
+    "typescript": "4.7.3"
   },
   "dependencies": {
     "@lib/functions": "workspace:*",
     "@lib/ui": "workspace:*",
-    "@vanilla-extract/css": "^1.7.2",
-    "framer-motion": "^6.3.11",
-    "next": "^12.1.6"
+    "@vanilla-extract/css": "1.7.2",
+    "framer-motion": "6.3.11",
+    "next": "12.1.6"
   }
 }

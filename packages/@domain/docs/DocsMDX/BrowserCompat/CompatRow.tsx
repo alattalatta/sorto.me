@@ -46,10 +46,7 @@ const CompatRow: React.FC<Props> = ({ data, name, recurse }) => {
   }
 
   const children = recurse
-    ? getSubIdentifierKeys(data).map((key) => {
-        const childName = `${name}.${key}`
-        return <CompatRow key={childName} data={data[key]} name={childName} recurse={true} />
-      })
+    ? getSubIdentifierKeys(data).map((key) => <CompatRow key={key} data={data[key]} name={key} recurse={true} />)
     : null
 
   const supportDetailBrowserDisplayName =

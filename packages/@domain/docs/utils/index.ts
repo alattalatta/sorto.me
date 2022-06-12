@@ -1,5 +1,3 @@
-import bcdCSS from '@lib/bcd/css'
-import bcdHTML from '@lib/bcd/html'
 import type { Identifier, SimpleSupportStatement, SupportStatement, VersionValue } from '@mdn/browser-compat-data/types'
 
 /**
@@ -13,27 +11,6 @@ import type { Identifier, SimpleSupportStatement, SupportStatement, VersionValue
  */
 export function mapOver<T, U>(maybeArray: T | T[], fn: (val: T, index?: number) => U): U[] {
   return Array.isArray(maybeArray) ? maybeArray.map(fn) : [fn(maybeArray, 0)]
-}
-
-/**
- * Retrieve browser compatibility data from `@mdn/bcd`.
- *
- * @param keys Key for the data as an array.
- * @returns BCD `Identifier` when found, `null` when not found.
- * @example
- * const headerData = await getCompatData(['html', 'element', 'header'])
- */
-export function getCompatData(keys: string[]): Identifier | null {
-  let res = keys[0] === 'css' ? bcdCSS : bcdHTML
-
-  for (const key of keys.slice(1)) {
-    if (!res) {
-      return null
-    }
-    res = res[key]
-  }
-
-  return res
 }
 
 /**
@@ -102,6 +79,8 @@ export function determineStatus(statement: SimpleSupportStatement): SupportStatu
 
   return 'added'
 }
+
+export * from './getCompatData'
 
 function versionString(version: VersionValue | undefined): string {
   if (typeof version === 'string') {

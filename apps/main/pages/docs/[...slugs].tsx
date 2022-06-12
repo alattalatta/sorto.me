@@ -1,7 +1,5 @@
 import type { Doc, DocMetadata, DocPageProps } from '@domain/docs'
 import { DocPage, getCompatData } from '@domain/docs'
-import bcdCSS from '@lib/bcd/css'
-import bcdHTML from '@lib/bcd/html'
 import type { Page } from '@lib/ui'
 import type { Identifier } from '@mdn/browser-compat-data/types'
 import type { GetStaticPaths, GetStaticProps } from 'next'
@@ -75,7 +73,7 @@ function makeBCDData(bcdKey: string | null): { data: Identifier; name: string } 
   }
 
   const keys = bcdKey.split('.')
-  const data = getCompatData(keys[0] === 'css' ? bcdCSS : bcdHTML, keys.slice(1).join('.'))
+  const data = getCompatData(keys)
   if (!data) {
     return null
   }

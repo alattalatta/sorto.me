@@ -34,7 +34,6 @@ importers:
       '@domain/error': workspace:*
       '@domain/home': workspace:*
       '@domain/search': workspace:*
-      '@lib/bcd': workspace:*
       '@lib/functions': workspace:*
       '@lib/mdx': workspace:*
       '@lib/ui': workspace:*
@@ -73,7 +72,6 @@ importers:
       '@domain/error': link:../../packages/@domain/error
       '@domain/home': link:../../packages/@domain/home
       '@domain/search': link:../../packages/@domain/search
-      '@lib/bcd': link:../../packages/@lib/bcd
       '@lib/functions': link:../../packages/@lib/functions
       '@lib/mdx': link:../../packages/@lib/mdx
       '@lib/ui': link:../../packages/@lib/ui
@@ -152,6 +150,7 @@ importers:
 
   packages/@domain/docs:
     specifiers:
+      '@lib/bcd': workspace:*
       '@lib/functions': workspace:*
       '@lib/mdx': workspace:*
       '@lib/ui': workspace:*
@@ -177,6 +176,7 @@ importers:
       typescript: ^4.7.3
       unist-util-select: ^4.0.1
     dependencies:
+      '@lib/bcd': link:../../@lib/bcd
       '@lib/functions': link:../../@lib/functions
       '@lib/mdx': link:../../@lib/mdx
       '@lib/ui': link:../../@lib/ui

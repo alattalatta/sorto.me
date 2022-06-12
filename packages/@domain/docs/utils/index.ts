@@ -1,10 +1,4 @@
-import type {
-  CompatData,
-  Identifier,
-  SimpleSupportStatement,
-  SupportStatement,
-  VersionValue,
-} from '@mdn/browser-compat-data/types'
+import type { Identifier, SimpleSupportStatement, SupportStatement, VersionValue } from '@mdn/browser-compat-data/types'
 
 /**
  * Map over a value that can be either an array or a single value.
@@ -17,27 +11,6 @@ import type {
  */
 export function mapOver<T, U>(maybeArray: T | T[], fn: (val: T, index?: number) => U): U[] {
   return Array.isArray(maybeArray) ? maybeArray.map(fn) : [fn(maybeArray, 0)]
-}
-
-/**
- * Retrieve browser compatibility data from `@mdn/bcd`.
- *
- * @param keys Key for the data as an array.
- * @returns BCD `Identifier` when found, `null` when not found.
- * @example
- * const headerData = await getCompatData(['html', 'element', 'header'])
- */
-export function getCompatData(compatData: CompatData, keys: string): Identifier | null {
-  let res = compatData as unknown as Identifier
-
-  for (const key of keys.split('.')) {
-    if (!res) {
-      return null
-    }
-    res = res[key]
-  }
-
-  return res
 }
 
 /**
@@ -106,6 +79,8 @@ export function determineStatus(statement: SimpleSupportStatement): SupportStatu
 
   return 'added'
 }
+
+export * from './getCompatData'
 
 function versionString(version: VersionValue | undefined): string {
   if (typeof version === 'string') {

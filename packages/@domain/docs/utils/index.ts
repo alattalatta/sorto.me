@@ -1,10 +1,6 @@
-import type {
-  CompatData,
-  Identifier,
-  SimpleSupportStatement,
-  SupportStatement,
-  VersionValue,
-} from '@mdn/browser-compat-data/types'
+import bcdCSS from '@lib/bcd/css'
+import bcdHTML from '@lib/bcd/html'
+import type { Identifier, SimpleSupportStatement, SupportStatement, VersionValue } from '@mdn/browser-compat-data/types'
 
 /**
  * Map over a value that can be either an array or a single value.
@@ -27,10 +23,10 @@ export function mapOver<T, U>(maybeArray: T | T[], fn: (val: T, index?: number) 
  * @example
  * const headerData = await getCompatData(['html', 'element', 'header'])
  */
-export function getCompatData(compatData: CompatData, keys: string): Identifier | null {
-  let res = compatData as unknown as Identifier
+export function getCompatData(keys: string[]): Identifier | null {
+  let res = keys[0] === 'css' ? bcdCSS : bcdHTML
 
-  for (const key of keys.split('.')) {
+  for (const key of keys.slice(1)) {
     if (!res) {
       return null
     }

@@ -1,5 +1,5 @@
-import type { CompatData } from '@mdn/browser-compat-data/types'
+import type { Identifier } from '@mdn/browser-compat-data/types'
 
-declare const value: CompatData
+declare const value: Identifier
 
 export default value

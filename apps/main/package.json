@@ -35,7 +35,6 @@
   "devDependencies": {
     "@babel/core": "^7.18.5",
     "@next/bundle-analyzer": "^12.1.6",
-    "@swc/core": "^1.2.203",
     "@testing-library/react": "^13.3.0",
     "@types/mock-fs": "^4.13.0",
     "@types/node": "16",

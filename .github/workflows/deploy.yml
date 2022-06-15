@@ -26,6 +26,9 @@ jobs:
           node-version: '16'
           cache: 'pnpm'
 
+      - name: Remove development API routes
+        run: rm -r apps/main/pages/api
+
       - run: pnpm turbo run test
       - run: pnpm build --filter @apps/main^...
 

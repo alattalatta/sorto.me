@@ -25,9 +25,9 @@ jobs:
           node-version: '16'
           cache: 'pnpm'
 
+      - run: pnpm build --filter @apps/main^...
       - run: pnpm turbo run lint
       - run: pnpm turbo run test
-      - run: pnpm build --filter @apps/main^...
 
       - uses: amondnet/vercel-action@v25
         with:

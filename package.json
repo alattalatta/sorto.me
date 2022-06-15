@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "turbo run build --scope='@app/main' --no-deps --include-dependencies",
-    "prebuild": "turbo run prebuild --scope='@app/main' --no-deps --include-dependencies",
+    "build": "turbo run build --scope='@apps/main' --no-deps --include-dependencies",
+    "prebuild": "turbo run prebuild --scope='@apps/main' --no-deps --include-dependencies",
     "dev": "turbo run dev",
     "test": "turbo run test",
     "turbo": "turbo"

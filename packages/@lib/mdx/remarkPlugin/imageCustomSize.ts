@@ -1,11 +1,15 @@
 import path from 'path'
 
+import { filePath } from '@lib/functions/server'
 import * as O from 'fp-ts/lib/Option'
 import { identity, pipe } from 'fp-ts/lib/function'
 import sizeOf from 'image-size'
 import type { Image } from 'mdast'
 
-const publicPath = (subpath: string): string => path.join(process.cwd(), 'public', subpath)
+const __dirname = filePath(import.meta.url)
+const projectRoot = path.resolve(__dirname, '../../../..')
+
+const publicPath = (subpath: string): string => path.join(projectRoot, 'apps/main/public', subpath)
 
 function imageCustomSize(image: Image): void {
   const data = image.data || (image.data = {})

@@ -6,7 +6,9 @@
   "types": "./index.tsx",
   "type": "module",
   "scripts": {
+    "build": "pnpm tnode ./scripts/build.ts",
     "test": "ava --timeout=30s",
+    "tnode": "NODE_OPTIONS='--experimental-specifier-resolution=node' ts-node --project tsconfig.script.json",
     "lint": "tsc --noEmit"
   },
   "devDependencies": {

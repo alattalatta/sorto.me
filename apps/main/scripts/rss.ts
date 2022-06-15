@@ -2,13 +2,12 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 
 import type { PostMetadata } from '@domain/blog'
+import postsIndex from '@domain/blog/out/index.json'
 import { filePath } from '@lib/functions/server'
-
-import postsIndex from '../../out/posts/index.json'
 
 const __dirname = filePath(import.meta.url)
 
-const PROJECT_ROOT = path.resolve(__dirname, '../..')
+const PROJECT_ROOT = path.resolve(__dirname, '..')
 
 const SITE_URL = 'https://sorto.me'
 const RSS_PATH = path.join(PROJECT_ROOT, 'public/rss.xml')
@@ -18,7 +17,7 @@ const buildEntry = (metadata: PostMetadata): string => {
   <title>${metadata.title}</title>
   <link>${SITE_URL}/posts/${metadata.slug}?utm_medium=rss</link>
   <guid>${metadata.slug}</guid>
-  <description>${metadata.description}</description>
+  ${metadata.description ? `<description>${metadata.description}</description>` : ''}
   <pubDate>${metadata.created}</pubDate>
 </item>`
 }

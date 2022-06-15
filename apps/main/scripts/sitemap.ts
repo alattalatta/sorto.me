@@ -2,15 +2,14 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 
 import type { PostMetadata } from '@domain/blog'
+import postsIndex from '@domain/blog/out/index.json'
 import type { DocMetadata } from '@domain/docs'
+import docsIndex from '@domain/docs/out/index.json'
 import { filePath } from '@lib/functions/server'
-
-import docsIndex from '../../out/docs/index.json'
-import postsIndex from '../../out/posts/index.json'
 
 const __dirname = filePath(import.meta.url)
 
-const PROJECT_ROOT = path.resolve(__dirname, '../..')
+const PROJECT_ROOT = path.resolve(__dirname, '..')
 
 const SITE_URL = 'https://sorto.me'
 const SITEMAP_PATH = path.join(PROJECT_ROOT, 'public/sitemap.md.xml')

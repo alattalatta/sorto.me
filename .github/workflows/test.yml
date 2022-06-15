@@ -25,7 +25,10 @@ jobs:
           node-version: '16'
           cache: 'pnpm'
 
-      - run: pnpm prebuild
+      - name: Remove development API routes
+        run: rm -r apps/main/pages/api
+
+      - run: pnpm build --filter @apps/main^...
       - run: pnpm turbo run lint
       - run: pnpm turbo run test
 

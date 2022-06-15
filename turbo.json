@@ -5,29 +5,35 @@
     "build": {
       "dependsOn": ["^build", "prebuild"]
     },
-    "@app/main#build": {
+    "@apps/main#build": {
       "dependsOn": ["^build"],
       "outputs": [".next/**"]
+    },
+    "@domain/blog#build": {
+      "dependsOn": ["^build"],
+      "inputs": ["contents/**", "scripts/**"],
+      "outputs": ["out/**"]
+    },
+    "@domain/docs#build": {
+      "dependsOn": ["^build"],
+      "inputs": ["contents/**", "scripts/**"],
+      "outputs": ["out/**"]
     },
     "@lib/bcd#build": {
       "dependsOn": ["^build"],
       "inputs": ["package.json"],
       "outputs": ["css.json", "html.json"]
     },
-    "@lib/mdx#build": {
-      "dependsOn": ["^build"],
-      "outputs": ["compiler/index.js"]
+    "dev": {
+      "cache": false
     },
     "prebuild": {
       "dependsOn": ["^build"]
     },
-    "@app/main#prebuild": {
+    "@apps/main#prebuild": {
       "dependsOn": ["^build"],
-      "inputs": ["contents/**", "scripts/**"],
-      "outputs": ["out/**", "public/rss.xml", "public/sitemap.md.xml"]
-    },
-    "dev": {
-      "cache": false
+      "inputs": ["scripts/**"],
+      "outputs": ["public/rss.xml", "public/sitemap.md.xml"]
     },
     "test": {
       "outputs": []

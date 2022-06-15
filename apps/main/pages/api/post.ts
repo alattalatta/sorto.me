@@ -1,6 +1,10 @@
+import { createRequire } from 'node:module'
+
 import { parse } from '@domain/blog/parse'
 import { compile } from '@lib/mdx/compiler'
 import type { NextApiHandler } from 'next'
+
+const require = createRequire(import.meta.url)
 
 const handler: NextApiHandler = async (req, res) => {
   if (process.env.NODE_ENV === 'production') {
@@ -11,7 +15,7 @@ const handler: NextApiHandler = async (req, res) => {
     return void res.status(400).end()
   }
 
-  const contentsPath = `${process.cwd()}/contents/posts/${req.query.slug}.mdx`
+  const contentsPath = require.resolve(`@domain/blog/contents/${req.query.slug}.mdx`)
 
   try {
     const { content, meta } = await parse(contentsPath)

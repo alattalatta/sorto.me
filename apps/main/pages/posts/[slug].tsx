@@ -1,10 +1,12 @@
+import fs from 'node:fs/promises'
+import { createRequire } from 'node:module'
+
 import { PostPage } from '@domain/blog'
 import type { PostPageProps, Post, PostMetadata } from '@domain/blog'
+import postsIndex from '@domain/blog/out/index.json'
 import type { Page } from '@lib/ui'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import useSWR from 'swr'
-
-import postsIndex from '../../out/posts/index.json'
 
 import '../../styles/document-body.css'
 
@@ -49,6 +51,9 @@ export const getStaticPaths: GetStaticPaths<Params> = () => {
   }
 }
 
-function importPostData(slug: string): Promise<Post> {
-  return import(`../../out/posts/${slug}.json`) as Promise<Post>
+const require = createRequire(import.meta.url)
+
+async function importPostData(slug: string): Promise<Post> {
+  const origin = require.resolve(`@domain/blog/out/${slug}.json`)
+  return JSON.parse(await fs.readFile(origin, { encoding: 'utf-8' })) as Post
 }

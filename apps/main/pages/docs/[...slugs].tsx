@@ -1,12 +1,15 @@
+import fs from 'node:fs/promises'
+import { createRequire } from 'node:module'
+
 import type { Doc, DocMetadata, DocPageProps } from '@domain/docs'
 import { DocPage, getCompatData } from '@domain/docs'
+import docsIndex from '@domain/docs/out/index.json'
+import docsMap from '@domain/docs/out/slugMap.json'
 import type { Page } from '@lib/ui'
 import type { Identifier } from '@mdn/browser-compat-data/types'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import useSWR from 'swr'
 
-import docsIndex from '../../out/docs/index.json'
-import docsMap from '../../out/docs/slugMap.json'
 import '../../styles/document-body.css'
 
 type StaticParam = { slugs: string[] }
@@ -86,6 +89,9 @@ function makeBCDData(bcdKey: string | null): { data: Identifier; name: string } 
   }
 }
 
-function importDocData(slug: string): Promise<Doc> {
-  return import(`../../out/docs/${slug}.json`) as Promise<Doc>
+const require = createRequire(import.meta.url)
+
+async function importDocData(slug: string): Promise<Doc> {
+  const origin = require.resolve(`@domain/docs/out/${slug}.json`)
+  return JSON.parse(await fs.readFile(origin, { encoding: 'utf-8' })) as Doc
 }

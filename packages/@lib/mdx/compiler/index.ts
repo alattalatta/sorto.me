@@ -9,6 +9,7 @@ import remarkGfm from 'remark-gfm'
 import { all } from 'remark-rehype'
 
 import { remarkPlugin } from '../remarkPlugin'
+import { minify } from './minify'
 import { rehypeCodeblockDataAttr } from './rehypeCodeblockDataAttr'
 import { rehypeWrapTable } from './rehypeWrapTable'
 import { remarkDefinitionList } from './remarkDefinitionList'
@@ -33,7 +34,7 @@ async function compile(source: string): Promise<string> {
     },
   })
 
-  return compiled.toString()
+  return minify(String(compiled))
 }
 
 export { compile }

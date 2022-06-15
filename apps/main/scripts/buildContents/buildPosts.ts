@@ -5,8 +5,6 @@ import { parse } from '@domain/blog/parse'
 import { filePath } from '@lib/functions/server'
 import { compile } from '@lib/mdx/compiler'
 
-import { minify } from './minify'
-
 const __dirname = filePath(import.meta.url)
 
 const packageRoot = path.resolve.bind(null, __dirname, '../..')
@@ -25,7 +23,7 @@ export async function main(): Promise<void> {
     ...posts.map(async ({ content, meta }) => {
       return fs.writeFile(
         packageRoot('out/posts', `${meta.slug}.json`),
-        JSON.stringify({ content: await compile(content).then(minify), meta }),
+        JSON.stringify({ content: await compile(content), meta }),
       )
     }),
   ])

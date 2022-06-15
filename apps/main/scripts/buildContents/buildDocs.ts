@@ -7,8 +7,6 @@ import { filePath } from '@lib/functions/server'
 import { compile } from '@lib/mdx/compiler'
 import klaw from 'klaw'
 
-import { minify } from './minify'
-
 const __dirname = filePath(import.meta.url)
 
 const packageRoot = path.resolve.bind(null, __dirname, '../..')
@@ -38,7 +36,7 @@ export async function main(): Promise<void> {
           return fs.writeFile(
             packageRoot('out/docs', dirname, path.basename(docPath).replace(/mdx$/i, 'json')),
             JSON.stringify({
-              content: await compile(content).then(minify),
+              content: await compile(content),
               meta,
             }),
           )

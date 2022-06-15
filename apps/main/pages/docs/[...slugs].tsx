@@ -1,3 +1,6 @@
+import fs from 'node:fs/promises'
+import { createRequire } from 'node:module'
+
 import type { Doc, DocMetadata, DocPageProps } from '@domain/docs'
 import { DocPage, getCompatData } from '@domain/docs'
 import docsIndex from '@domain/docs/out/index.json'
@@ -86,6 +89,9 @@ function makeBCDData(bcdKey: string | null): { data: Identifier; name: string } 
   }
 }
 
-function importDocData(slug: string): Promise<Doc> {
-  return import(`../../out/docs/${slug}.json`) as Promise<Doc>
+const require = createRequire(import.meta.url)
+
+async function importDocData(slug: string): Promise<Doc> {
+  const origin = require.resolve(`@domain/docs/out/${slug}.json`)
+  return JSON.parse(await fs.readFile(origin, { encoding: 'utf-8' })) as Doc
 }

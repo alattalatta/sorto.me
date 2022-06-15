@@ -1,10 +1,9 @@
 import { PostPage } from '@domain/blog'
 import type { PostPageProps, Post, PostMetadata } from '@domain/blog'
+import postsIndex from '@domain/blog/out/index.json'
 import type { Page } from '@lib/ui'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import useSWR from 'swr'
-
-import postsIndex from '../../out/posts/index.json'
 
 import '../../styles/document-body.css'
 

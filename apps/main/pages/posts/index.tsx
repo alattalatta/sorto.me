@@ -1,8 +1,7 @@
 import { PostsPage } from '@domain/blog'
 import type { PostsPageProps } from '@domain/blog'
+import postIndex from '@domain/blog/out/index.json'
 import type { GetStaticProps } from 'next'
-
-import postIndex from '../../out/posts/index.json'
 
 export default PostsPage
 

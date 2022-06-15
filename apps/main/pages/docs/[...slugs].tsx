@@ -1,12 +1,12 @@
 import type { Doc, DocMetadata, DocPageProps } from '@domain/docs'
 import { DocPage, getCompatData } from '@domain/docs'
+import docsIndex from '@domain/docs/out/index.json'
+import docsMap from '@domain/docs/out/slugMap.json'
 import type { Page } from '@lib/ui'
 import type { Identifier } from '@mdn/browser-compat-data/types'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import useSWR from 'swr'
 
-import docsIndex from '../../out/docs/index.json'
-import docsMap from '../../out/docs/slugMap.json'
 import '../../styles/document-body.css'
 
 type StaticParam = { slugs: string[] }

@@ -79,7 +79,7 @@ label {
         </td>
       </tr>
       <tr>
-        <td>`email`</td>
+        <td>[`email`](./input/email)</td>
         <td>이메일을 입력하는 칸입니다. 텍스트 입력 칸과 동일한 모습이지만, 브라우저가 지원할 경우 값 형식 검증을 내장하며 동적 키보드 환경에서는 이메일 입력에 최적화된 키보드를 보여줍니다.</td>
         <td>
           <input type="email" />
@@ -213,7 +213,7 @@ label {
 | ---------------------------------------- | ------------------------------------------ | ------------------------------------------------------------- |
 | [`accept`](#term-accept)                 | `file`                                     | 업로드 컨트롤에서 선택 가능한 파일 유형                       |
 | [`alt`](#term-alt)                       | `image`                                    | 이미지를 보여줄 수 없을 때의 대체 텍스트                      |
-| [`autocomplete`](#term-autocomplete)     | 모두                                       | 양식 자동완성 기능 힌트                                       |
+| [`autocomplete`](#term-autocomplete)     | 대부분                                     | 양식 자동완성 기능 힌트                                       |
 | [`capture`](#term-capture)               | `file`                                     | 업로드 컨트롤에 미디어 캡처 선택 가능                         |
 | [`checked`](#term-checked)               | `checkbox`, `radio`                        | 컨트롤의 체크 여부                                            |
 | [`dirname`](#term-dirname)               | `search`, `text`                           | 양식 제출 시 값의 방향성 정보 필드의 이름                     |
@@ -227,16 +227,16 @@ label {
 | [`height`](#term-height)                 | `image`                                    | 이미지 높이                                                   |
 | [`list`](#term-list)                     | 대부분                                     | 자동완성 선택지로 사용할 [`<datalist>`](./datalist) 요소의 ID |
 | [`max`](#term-max)                       | 숫자 입력                                  | 최대 값                                                       |
-| [`maxlength`](#term-maxlength)           | `password`, `search`, `tel`, `text`, `url` | 값의 최대 길이                                                |
+| [`maxlength`](#term-maxlength)           | 텍스트 입력                                | 값의 최대 길이                                                |
 | [`min`](#term-min)                       | 숫자 입력                                  | 최소 값                                                       |
-| [`minlength`](#term-minlength)           | `password`, `search`, `tel`, `text`, `url` | 값의 최소 길이                                                |
+| [`minlength`](#term-minlength)           | 텍스트 입력                                | 값의 최소 길이                                                |
 | [`multiple`](#term-multiple)             | `email`, `file`                            | 다수의 값 허용 여부                                           |
 | [`name`](#term-name)                     | 모두                                       | 컨트롤의 이름, 양식 제출 시 이름/값 쌍의 이름으로 제출        |
-| [`pattern`](#term-pattern)               | `password`, `tel`, `text`                  | 값이 만족해야 하는 패턴 (정규표현식)                          |
-| [`placeholder`](#term-placeholder)       | `password`, `search`, `tel`, `text`, `url` | 입력한 값이 아직 없을 때 보여줄 텍스트                        |
+| [`pattern`](#term-pattern)               | 텍스트 입력                                | 값이 만족해야 하는 패턴 (정규표현식)                          |
+| [`placeholder`](#term-placeholder)       | 텍스트 입력과 `number`                     | 입력한 값이 아직 없을 때 보여줄 텍스트                        |
 | [`readonly`](#term-readonly)             | 대부분                                     | 값을 편집할 수 없음                                           |
 | [`required`](#term-required)             | 대부분                                     | 값을 반드시 지정해야 제출할 수 있음                           |
-| [`size`](#term-size)                     | `email`, `password`, `tel`, `text`         | 컨트롤의 크기                                                 |
+| [`size`](#term-size)                     | 텍스트 입력                                | 컨트롤의 크기                                                 |
 | [`type`](#term-type)                     | 모두                                       | 컨트롤의 유형                                                 |
 | [`value`](#term-value)                   | 모두                                       | 컨트롤의 초기 값                                              |
 | [`width`](#term-width)                   | `image`                                    | 이미지 너비                                                   |
@@ -249,7 +249,7 @@ label {
   - `image` 유형에만 사용할 수 있습니다. `image`의 [`src`](#term-src)가 없거나, 불러오지 못했을 때 대신 보여줄 대체 텍스트입니다.
 - : `autocomplete`
 
-  - 사용자 에이전트의 자동완성 기능에 제공하는 힌트입니다. [HTML `autocomplete` 특성 문서](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete)을 참고하세요.
+  - 사용자 에이전트의 자동완성 기능에 제공하는 힌트입니다. [HTML `autocomplete` 특성 문서](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete)를 참고하세요.
 
     `autocomplete` 특성은 숫자나 문자 값을 사용하는 `hidden`, `text`, `search`, `url`, `tel`, `email`, `date`, `month`, `week`, `time`, `datetime-local`, `number`, `range`, `color`, `password`에 유효하고, `checkbox`, `radio`, `file`, 버튼 유형에는 유효하지 않습니다.
 
@@ -346,7 +346,6 @@ label {
 - : `height`
   - `image` 유형에만 사용할 수 있습니다. 이미지의 높이를 지정합니다.
 - : `list`
-
   - 추천 선택지 목록을 나타내는 [`<datalist>`](./datalist) 요소의 ID를 지정합니다. `<input>`의 유형에 사용할 수 없는 선택지는 무시합니다. 추천 선택지는 어디까지나 추천으로, 사용자는 자신이 원하는 다른 값을 직접 입력할 수 있습니다.
 
     `text`, `search`, `url`, `tel`, `email`, `date`, `month`, `week`, `time`, `datetime-local`, `number`, `range`, `color` 유형에 사용할 수 있습니다.
@@ -355,33 +354,38 @@ label {
 
 - : `max`
 
-  - 유효한 최대 값을 지정합니다. 초과하는 값을 받은 경우 이 `<input>`은 [제약 검증](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Constraint_validation)을 통과하지 못합니다. `max` 특성에 숫자 외의 값을 지정하면 최대 값을 두지 않습니다.
+  - 유효한 최대 값을 지정합니다. 숫자 외의 값은 유효하지 않으며, 지정해도 최대 값을 설정하지 않습니다.
+  
+    초과하는 값을 받은 경우 `<input>`은 [제약 검증](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Constraint_validation)을 통과하지 못합니다.
 
     `date`, `month`, `week`, `time`, `datetime-local`, `number`, `range` 유형에 사용할 수 있습니다.
 
 - : `maxlength`
 
-  - 입력 값의 유효한 최대 문자(UTF-16 코드 유닛) 길이를 지정합니다. 0 이상의 정수만 지정할 수 있습니다. 유효하지 않은 값을 지정한 경우 무시합니다.
+  - 입력 값의 유효한 최대 문자 수(UTF-16 코드 유닛 기준)를 지정합니다. 0 이상의 정수만 지정할 수 있습니다. 유효하지 않은 값은 지정해도 최대 길이를 설정하지 않습니다.
 
-    입력한 텍스트의 길이가 이 값보다 길면 `<input>`이 [제약 검증](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Constraint_validation)을 통과하지 못합니다. 기본 상태에서 브라우저는 사용자가 이 특성의 값보다 길게 입력하지 못하도록 막습니다.
+    이 값보다 긴 길이의 텍스트를 받은 경우 `<input>`이 [제약 검증](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Constraint_validation)을 통과하지 못합니다. 기본 설정에서, 브라우저는 사용자가 입력하는 값의 길이를 이 특성의 값으로 제한합니다.
 
     `text`, `search`, `url`, `tel`, `email`, `password` 유형에 사용할 수 있습니다.
 
 - : `min`
 
-  - 유효한 최소 값을 지정합니다. 미달하는 값을 받은 경우 이 `<input>`은 [제약 검증](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Constraint_validation)을 통과하지 못합니다. `min` 특성에 숫자 외의 값을 지정하면 최소 값을 두지 않습니다.
+  - 유효한 최소 값을 지정합니다. 숫자 외의 값은 유효하지 않으며, 지정해도 최대 값을 설정하지 않습니다.
+  
+    미달하는 값을 받은 경우 `<input>`은 [제약 검증](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Constraint_validation)을 통과하지 못합니다.
 
     `date`, `month`, `week`, `time`, `datetime-local`, `number`, `range` 유형에 사용할 수 있습니다.
 
 - : `minlength`
 
-  - 입력 값의 유효한 최소 문자(UTF-16 코드 유닛) 길이를 지정합니다. 0 이상의 정수만 지정할 수 있습니다. 유효하지 않은 값을 지정한 경우 무시합니다.
+  - 입력 값의 유효한 최소 문자 수(UTF-16 코드 유닛 기준)를 지정합니다. 0 이상의 정수만 지정할 수 있습니다. 유효하지 않은 값은 지정해도 최대 길이를 설정하지 않습니다.
 
-    입력한 텍스트의 길이가 이 값보다 짧으면 `<input>`이 [제약 검증](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Constraint_validation)을 통과하지 못합니다.
+    이 값보다 짧은 길이의 텍스트를 받은 경우 `<input>`이 [제약 검증](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Constraint_validation)을 통과하지 못합니다.
 
     `text`, `search`, `url`, `tel`, `email`, `password` 유형에 사용할 수 있습니다.
 
-- : `multiple` -`email`과 `file` 유형에 사용할 수 있습니다. 이메일의 경우 다수의 주소를 쉼표로 구분해서, 파일의 경우 여러 파일을 한꺼번에 선택해서 등록할 수 있도록 지정하는 불리언 특성입니다.
+- : `multiple`
+  - `email`과 `file` 유형에 사용할 수 있습니다. 불리언 특성으로, 지정할 경우 `email`의 경우 여러 이메일 주소를 쉼표로 구분해서 입력할 수 있고, `file`의 경우 여러 파일을 한꺼번에 선택할 수 있습니다.
 
 - : `name`
 
@@ -394,41 +398,44 @@ label {
 
 - : `pattern`
 
-  - [제약 검증](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Constraint_validation)을 만족하려면 입력 값이 통과해야 하는 정규표현식을 지정합니다. JavaScript [`RegExp`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)가 인식할 수 있는 정규표현식이어야 하며, 양 끝의 슬래시는 지정하지 않아야 합니다. 정규표현식을 컴파일할 때 `u` 플래그를 지정하므로 패턴을 ASCII가 아닌 Unicode 코드 포인트로 취급합니다.
+  - [제약 검증](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Constraint_validation)을 만족하려면 입력 값이 일치해야 하는 정규표현식을 지정합니다. JavaScript [`RegExp`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)가 인식할 수 있는 정규표현식이어야 합니다. 정규표현식을 컴파일할 때 `u` 플래그를 지정하므로 패턴은 항상 Unicode 코드 포인트의 시퀀스로 취급합니다. 정규표현식을 열고 닫는 슬래시는 생략해야 합니다.
 
-    유효하지 않은 값을 지정한 경우 무시합니다.
+    유효하지 않은 값을 지정한 경우 무시합니다. `text`, `search`, `url`, `tel`, `email`, `password` 유형에 사용할 수 있습니다.
 
     > [note] `pattern` 특성을 사용할 땐 반드시 `<input>` 근처의 부가 설명으로 형식에 대한 도움말을 제공하세요. `<input>`에 [`aria-describedby` 특성](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby)을 추가해서 설명과 연결하면 접근성을 강화할 수 있습니다.
     >
-    > 여기에 더해서 [`title` 특성](../Global_attributes#term-title)으로 정확한 요구사항을 추가할 수도 있으며, 그러면 대부분의 브라우저에서 툴팁으로 보여줄 것입니다. 하지만 [`title` 특성은 접근성 문제가 있으므로](../Global_attributes/title#접근성-고려사항), 되도록 단독으로 사용하지 말아야 합니다.
+    > 여기에 더해서 [`title` 특성](../Global_attributes#term-title)으로 정확한 요구사항을 설명하면 대부분의 브라우저에서 툴팁으로 보여줄 것입니다. 하지만 [`title` 특성의 접근성 문제를 고려하면](../Global_attributes/title#접근성-고려사항) 일반 텍스트 설명 없는 `title`만 단독으로 사용하지는 말아야 합니다.
 
 - : `placeholder`
 
   - 사용자가 입력해야 하는 값을 간략하게 알려줄 텍스트를 지정합니다. 값이 개행 문자를 포함해서는 안됩니다. `placeholder`는 이 입력 칸의 설명을 제공하는 것이 아니라, 기대하는 데이터의 유형을 나타내야 합니다. 예컨대 레이블이 "이름"인 텍스트 입력 칸의 `placeholder`에 어울리는 값은 "김철수"입니다.
 
+    `text`, `search`, `url`, `tel`, `email`, `password`, `number` 유형에 사용할 수 있습니다.
+
     > [note] `placeholder`는 양식을 설명할 수 있는 다른 방법에 비해 적합하지 않으며 예상하지 못한 기술적 문제를 유발할 수 있습니다. 아래의 [레이블](#레이블)을 참고하세요.
 
 - : `readonly`
 
-  - 사용자가 값을 편집할 수 없도록 하는 불리언 특성입니다.
+  - 불리언 특성입니다. 지정하면 사용자가 값을 편집할 수 없습니다.
 
     `text`, `search`, `url`, `tel`, `email`, `date`, `month`, `week`, `time`, `datetime-local`, `number`, `password` 유형에 사용할 수 있습니다.
 
 - : `required`
 
-  - 양식을 제출하려면 사용자가 이 입력 칸을 반드시 지정해야 함을 나타내는 불리언 특성입니다.
+  - 불리언 특성입니다. 양식을 제출하려면 사용자가 반드시 이 `<input>`에 값을 입력해야 합니다.
 
     `text`, `search`, `url`, `tel`, `email`, `date`, `month`, `week`, `time`, `datetime-local`, `number`, `password`, `checkbox`, `radio`, `file` 유형에 사용할 수 있습니다.
 
 - : `size`
-  - `email`, `password`, `tel`, `text` 유형에 사용할 수 있습니다. 입력 칸을 얼마나 크게 보여줘야 하는지 지정합니다. 몇 가지 특이점을 제외하면 CSS [`width`](https://developer.mozilla.org/en-US/docs/Web/CSS/width)와 동일한 효과를 냅니다. `size`로 인한 실제 너비는 입력 칸의 유형에 따라 다른데, `password`와 `text`에서는 글자 수(CSS `em` 단위)에 기본 값이 20이며, 나머지 유형에서는 픽셀 값입니다. CSS `width`가 `size` 특성보다 우선합니다.
+  - 입력 칸의 크기를 한 번에 보여줄 글자의 수로 지정합니다. 0보다 큰 정수만 지정할 수 있으며 기본 값은 20입니다. 글꼴마다 글자의 너비가 다르고, 문자끼리의 너비도 서로 다르므로 이 특성으로는 정확한 너비를 설정할 수 없습니다. `size` 특성 대신 CSS [`width` 속성](https://developer.mozilla.org/en-US/docs/Web/CSS/width)을 사용하세요.
+
+    `email`, `password`, `tel`, `text` 유형에 사용할 수 있습니다. 
+
 - : `src`
   - `image` 유형에만 사용할 수 있습니다. 제출 버튼의 이미지로 사용할 파일의 URL을 지정합니다.
 - : `step`
 
-  - `number`, `range`, 날짜 및 시간 입력 유형에 사용할 수 있습니다. 가능한 값의 단계를 지정합니다.
-
-    지정하지 않을 경우,
+  - 입력 가능한 값의 간격입니다. 지정하지 않을 경우,
 
     - `number`와 `range` 유형에서의 기본 값은 1입니다.
     - `time` 유형에서의 기본 값은 기본 값은 1초입니다.
@@ -436,11 +443,13 @@ label {
     - `week` 유형에서의 기본 값은 1주입니다.
     - `month` 유형에서의 기본 값은 1월입니다.
 
-    `step` 특성의 값은 양의 실수여야 하며, 단계를 지정하지 않음을 뜻하는 키워드인 `any`도 지정할 수 있습니다.
+    `step` 특성의 값은 양의 실수여야 하며, 간격을 지정하지 않음을 뜻하는 키워드인 `any`도 지정할 수 있습니다.
 
     `any` 값을 명시하지 않은 경우, 단계에 일치하지 않는 값은 유효하지 않습니다. 예를 들어 `<input type="number">`에서는 모든 정수가 유효하지만, `step`의 기본 값이 1이므로 그 외의 실수(4.2 등)는 유효하지 않습니다. 4.2를 유효한 값으로 받으려면 `step`에 `any`를 명시하거나, 0.1과 0.2처럼 4.2에 도달할 수 있는 단계를 지정하거나, `min`을 -5.2처럼 .2로 끝나는 값을 지정해야 합니다.
 
     사용자가 입력한 값이 단계에서 벗어날 경우 유효하지 않은 입력 칸으로 취급하여 CSS `:invalid` 의사 클래스와 일치합니다.
+
+    `date`, `month`, `week`, `time`, `datetime-local`, `number`, `range` 유형에 사용할 수 있습니다.
 
 - : `type`
 
@@ -457,7 +466,7 @@ label {
 
 ## 레이블
 
-`<input>`의 용도를 설명하는 레이블은 접근성 요구사항입니다. `<input>`에 입력해야 하는 값을 [`<label>`](./label) 요소로 사용자에게 설명해 주세요.
+`<input>`의 용도를 설명하는 레이블은 접근성 필수사항입니다. `<input>`에 입력해야 하는 값을 [`<label>`](./label) 요소로 사용자에게 설명해 주세요.
 
 ### 연관 레이블
 

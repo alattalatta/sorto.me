@@ -27,19 +27,32 @@ const nextConfig = (phase) => ({
   experimental: {
     scrollRestoration: true // https://github.com/vercel/next.js/issues/20951
   },
-  reactStrictMode: true,
-  swcMinify: true,
   pwa: {
     dest: 'public',
     disable: process.env.NODE_ENV !== 'production',
     runtimeCaching: cache,
   },
+  reactStrictMode: true,
+  swcMinify: true,
   async headers() {
     if (phase === 'phase-development-server') {
-      return []
+      return [
+        {
+          source: '/:path*',
+          headers: [
+            { key: 'X-Frame-Options', value: 'sameorigin' }
+          ]
+        }
+      ]
     }
 
     return [
+      {
+        source: '/:path*',
+        headers: [
+          { key: 'X-Frame-Options', value: 'sameorigin' }
+        ]
+      },
       {
         source: '/assets/:path*',
         headers: [

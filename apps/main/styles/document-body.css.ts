@@ -20,6 +20,10 @@ globalStyle('.token.string', {
   color: vars.blue,
 })
 
+globalStyle('.token.escape', {
+  color: vars.orange,
+})
+
 // #region html
 globalStyle('.token.doctype, .token.doctype > .punctuation', {
   color: vars.faded,
@@ -76,14 +80,31 @@ globalStyle('.token.variable', {
 })
 
 globalStyle('.token.interpolation-punctuation', {
-  color: vars.orange
+  color: vars.orange,
 })
 
 globalStyle('.token.property-access', {
-  color: vars.yellow
+  color: vars.yellow,
 })
 
 globalStyle('.token.property-access.method', {
-  color: vars.green
+  color: vars.green,
 })
 // #endregion
+
+// #region regexp
+globalStyle('.language-regex', {
+  color: vars.faded,
+})
+
+globalStyle('.token.char-class, .token.char-class-punctuation', {
+  color: vars.blue,
+})
+
+globalStyle('.token.quantifier', {
+  color: vars.yellow,
+})
+
+globalStyle('.token.group', {
+  color: vars.green,
+})

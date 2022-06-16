@@ -16,7 +16,7 @@ const handler: NextApiHandler = async (req, res) => {
     return void res.status(400).end()
   }
 
-  const contentsRoot = path.dirname(require.resolve('@domain/docs/contents'))
+  const contentsRoot = path.join(path.dirname(require.resolve('@domain/docs')), 'contents')
   const contentsPath = require.resolve(`@domain/docs/contents/${req.query.slug}.mdx`)
 
   try {

@@ -3,6 +3,7 @@ import path from 'node:path'
 
 import { filePath } from '@lib/functions/server'
 import { compile } from '@lib/mdx/compiler'
+import { minify } from '@lib/mdx/minify'
 
 import { parse } from '../parse'
 
@@ -24,7 +25,7 @@ async function main(): Promise<void> {
     ...posts.map(async ({ content, meta }) => {
       return fs.writeFile(
         packageRoot('out', `${meta.slug}.json`),
-        JSON.stringify({ content: await compile(content), meta }),
+        JSON.stringify({ content: await compile(content).then(minify), meta }),
       )
     }),
   ])

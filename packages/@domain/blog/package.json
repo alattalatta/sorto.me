@@ -2,8 +2,8 @@
   "name": "@domain/blog",
   "version": "1.0.0",
   "private": true,
-  "main": "./index.tsx",
-  "types": "./index.tsx",
+  "main": "./index.ts",
+  "types": "./index.ts",
   "type": "module",
   "scripts": {
     "build": "pnpm tnode ./scripts/build.ts",

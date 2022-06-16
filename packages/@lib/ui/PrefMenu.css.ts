@@ -31,6 +31,7 @@ export const body = style({
   color: colors.fg0,
   fontSize: `${14 / 16}rem`,
   padding: '0.5rem',
+  zIndex: 99,
   selectors: {
     '&[data-state="open"]': {
       animation: `${fadeIn} 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards`,
@@ -41,4 +42,26 @@ export const body = style({
       },
     },
   },
+})
+
+export const themeButton = style({
+  width: '100%',
+  background: 'none',
+  border: 'none',
+  cursor: 'pointer',
+  display: 'flex',
+  fontSize: '1em',
+  alignItems: 'center',
+  padding: '0.5rem',
+  whiteSpace: 'nowrap',
+  ':hover': {
+    textDecoration: 'underline',
+  },
+})
+
+export const themeIcon = style({
+  width: `${15 / 14}em`,
+  height: `${15 / 14}em`,
+  fill: colors.fg0,
+  marginRight: '1ch',
 })

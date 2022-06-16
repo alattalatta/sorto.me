@@ -3,8 +3,8 @@ import { keyframes, style } from '@vanilla-extract/css'
 import { colors, media } from './theme.css'
 
 export const trigger = style({
-  width: '2.5rem',
-  height: '2.5rem',
+  width: '2.75rem',
+  height: '2.75rem',
   background: 'none',
   border: 'none',
   cursor: 'pointer',

@@ -4,8 +4,8 @@ import { recipe } from '@vanilla-extract/recipes'
 import { colors, media } from './theme.css'
 
 export const trigger = style({
-  width: '2.5rem',
-  height: '2.5rem',
+  width: '2.75rem',
+  height: '2.75rem',
   background: 'none',
   border: 'none',
   cursor: 'pointer',
@@ -35,7 +35,7 @@ export const overlay = style({
   backdropFilter: 'blur(10px)',
   position: 'fixed',
   inset: 0,
-  zIndex: 1,
+  zIndex: 9,
   '@media': {
     [media.motionNoPref]: {
       animation: `200ms cubic-bezier(0.16, 1, 0.3, 1) forwards`,
@@ -51,28 +51,34 @@ export const overlay = style({
   },
 })
 
-export const body = style({
+export const bodyRoot = style({
   width: '100%',
-  maxWidth: '20rem',
+  maxWidth: '24rem',
   animation: `${fadeIn} 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards`,
-  background: colors.bg0,
-  border: `1px solid ${colors.fg2}`,
-  borderRadius: '0.25rem',
-  color: colors.fg0,
-  display: 'flex',
-  flexDirection: 'column',
-  padding: '2rem',
+  padding: '0 2rem',
   position: 'fixed',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  zIndex: 1,
+  zIndex: 9,
   '@media': {
     [media.motionNoPref]: {
       animationDuration: '400ms',
       animationName: subtleExpansion,
     },
   },
+})
+
+export const bodyContainer = style({
+  width: '100%',
+  background: colors.bg0,
+  border: `1px solid ${colors.fg2}`,
+  borderRadius: '0.25rem',
+  color: colors.fg0,
+  display: 'flex',
+  flexDirection: 'column',
+  padding: '1rem 2rem 2rem',
+  position: 'relative',
 })
 
 export const title = style({

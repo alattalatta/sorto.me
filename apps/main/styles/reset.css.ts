@@ -13,13 +13,9 @@ globalStyle('*:focus-visible', {
   outlineOffset: `${2 / 16}rem`,
 })
 
-// both html and body's "overflow-x: hidden" are needed, as well as body's "position: relative"
-// I have no idea but without one, absolute-positioned out-of-viewport (x-axis) elements cause viewport to grow
-
 globalStyle('html', {
   color: colors.fg0,
   fontFamily: fonts.sans,
-  overflowX: 'hidden',
   vars: {
     [icons.external]: 'url(/assets/external.svg)',
     [icons.fatal]: 'url(/assets/forbidden.png)',
@@ -33,5 +29,4 @@ globalStyle('body', {
   fontSize: '100%',
   margin: 0,
   overflowX: 'hidden',
-  position: 'relative',
 })

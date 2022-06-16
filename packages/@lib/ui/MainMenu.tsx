@@ -34,34 +34,36 @@ const MainMenu: React.FC = () => {
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className={styles.overlay} />
-        <Dialog.Content className={styles.body}>
-          <Dialog.Title className={noScreen.root}>메뉴</Dialog.Title>
-          <span>
-            <Link href="/" passHref>
-              <a className={styles.item({ home: true })}>sorto.me</a>
-            </Link>
-          </span>
-          <span className={styles.itemWrap}>
-            <Link href="/posts" passHref>
-              <a className={styles.item({ current: pathname.startsWith('/posts') })}>블로그</a>
-            </Link>
-          </span>
-          <span className={styles.itemWrap}>
-            <Link href="/docs/Web" passHref>
-              <a className={styles.item({ current: pathname.startsWith('/docs') })}>문서</a>
-            </Link>
-          </span>
-          <span className={styles.itemWrap}>
-            {/* gcse causes issue with React, so don't use client side routing here */}
-            {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-            <a className={styles.item({ current: pathname.startsWith('/search') })} href="/search">
-              검색
-            </a>
-          </span>
-          <Dialog.Close className={styles.close}>
-            <Cross1Icon />
-            <span className={noScreen.root}>닫기</span>
-          </Dialog.Close>
+        <Dialog.Content className={styles.bodyRoot}>
+          <div className={styles.bodyContainer}>
+            <Dialog.Title className={noScreen.root}>메뉴</Dialog.Title>
+            <span>
+              <Link href="/" passHref>
+                <a className={styles.item({ home: true })}>sorto.me</a>
+              </Link>
+            </span>
+            <span className={styles.itemWrap}>
+              <Link href="/posts" passHref>
+                <a className={styles.item({ current: pathname.startsWith('/posts') })}>블로그</a>
+              </Link>
+            </span>
+            <span className={styles.itemWrap}>
+              <Link href="/docs/Web" passHref>
+                <a className={styles.item({ current: pathname.startsWith('/docs') })}>문서</a>
+              </Link>
+            </span>
+            <span className={styles.itemWrap}>
+              {/* gcse causes issue with React, so don't use client side routing here */}
+              {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+              <a className={styles.item({ current: pathname.startsWith('/search') })} href="/search">
+                검색
+              </a>
+            </span>
+            <Dialog.Close className={styles.close}>
+              <Cross1Icon />
+              <span className={noScreen.root}>닫기</span>
+            </Dialog.Close>
+          </div>
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>

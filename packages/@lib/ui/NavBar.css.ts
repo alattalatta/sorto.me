@@ -12,7 +12,7 @@ export const root = style({
   top: [0, 'env(safe-area-inset-top)'],
   right: 0,
   left: 0,
-  zIndex: 9,
+  zIndex: 5,
   '@media': {
     [media.w1]: {
       padding: '0.5rem 1rem',

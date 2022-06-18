@@ -9,12 +9,12 @@
     "lint": "tsc --noEmit"
   },
   "devDependencies": {
-    "@types/react": "^18.0.12",
+    "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tsconfig": "workspace:*",
-    "typescript": "^4.7.3"
+    "typescript": "^4.7.4"
   },
   "dependencies": {
     "@lib/ui": "workspace:*",

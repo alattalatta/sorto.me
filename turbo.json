@@ -21,7 +21,6 @@
     },
     "@lib/bcd#build": {
       "dependsOn": ["^build"],
-      "inputs": ["package.json"],
       "outputs": ["css.json", "html.json"]
     },
     "dev": {

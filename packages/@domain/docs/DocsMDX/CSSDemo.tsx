@@ -76,15 +76,14 @@ const CSSDemo: React.FC<Props> = ({ children: childrenProp, height, selector }) 
 
   const children = Children.map(childrenProp, (child, index) => {
     if (isValidElement(child)) {
-      const {
-        props: { className, ...props },
-      } = child
+      const { className, ...rest } = child.props as Record<string, unknown> & { className: string }
+
       const hidden = !className.includes('language-css')
 
       return cloneElement(child, {
         className: clsx(className, currentBlockIdx === index && 'selected'),
         hidden,
-        ...props,
+        ...rest,
       })
     }
     return child

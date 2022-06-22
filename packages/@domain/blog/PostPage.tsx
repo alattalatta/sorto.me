@@ -1,10 +1,9 @@
 import { useMDXRenderer } from '@lib/mdx'
 import type { Page } from '@lib/ui'
-import { Layout } from '@lib/ui'
-import { Anchor, Footer } from '@lib/ui'
+import { Layout, Anchor, Footer } from '@lib/ui'
 import * as documentBody from '@lib/ui/documentBody.css'
 import { m } from 'framer-motion'
-import type { Easing, Tween } from 'framer-motion/types/types'
+import type { Tween } from 'framer-motion'
 import Head from 'next/head'
 import Image from 'next/image'
 
@@ -15,13 +14,11 @@ import type { PostMetadata } from './types'
 
 type Props = { compiledSource: string; meta: PostMetadata }
 
-export const STANDARD_EASE: Easing = [0.4, 0, 0.2, 1]
-
 /** Returns a standard easing definition object. */
 export function easeStandard(duration: number): Tween {
   return {
     type: 'tween',
-    ease: STANDARD_EASE,
+    ease: [0.4, 0, 0.2, 1],
     duration,
   }
 }

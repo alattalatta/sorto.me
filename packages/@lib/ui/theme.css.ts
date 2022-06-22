@@ -18,7 +18,8 @@ const [fontsTheme, fonts] = createTheme({
 })
 
 const [timingsTheme, timings] = createTheme({
-  standard: 'cubic-bezier(0.4, 0, 0.2, 1)',
+  linearlock: 'cubic-bezier(.6, .05, .35, 1)',
+  swoosh: 'cubic-bezier(.16, 1, .3, 1)',
 })
 
 export { colors, fonts, fontsTheme, media, timings, timingsTheme }

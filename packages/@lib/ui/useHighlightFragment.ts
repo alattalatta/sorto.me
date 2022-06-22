@@ -1,10 +1,12 @@
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 import { colors, timings } from './theme.css'
 
 function useHighlightFragment(): void {
   const router = useRouter()
+
+  const timingFnCache = useRef<string>()
 
   useEffect(() => {
     const highlightFragment = (): void => {
@@ -31,7 +33,9 @@ function useHighlightFragment(): void {
         playingAnimation.cancel()
       }
 
-      const timing = getComputedStyle(target).getPropertyValue(timings.standard.slice(4, -1)).trim()
+      if (!timingFnCache.current) {
+        timingFnCache.current = getComputedStyle(target).getPropertyValue(timings.linearlock.slice(4, -1)).trim()
+      }
 
       target.animate(
         [
@@ -44,7 +48,7 @@ function useHighlightFragment(): void {
         ],
         {
           duration: 750,
-          easing: timing || 'ease',
+          easing: timingFnCache.current || 'ease',
         },
       )
     }

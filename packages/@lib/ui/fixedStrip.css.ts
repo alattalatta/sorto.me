@@ -17,7 +17,7 @@ export const root = recipe({
     position: 'fixed',
     right: 0,
     left: 0,
-    transition: `transform 250ms ${timings.standard}`,
+    transition: `transform 250ms ${timings.linearlock}`,
     zIndex: 5,
   },
   variants: {

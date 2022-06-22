@@ -1,6 +1,5 @@
 import { useScrollThreshold } from '@lib/functions'
 import clsx from 'clsx'
-import { m } from 'framer-motion'
 import { useState } from 'react'
 
 import * as styles from './ScrollBack.css'
@@ -11,21 +10,14 @@ const ScrollBack: React.FC<{ className?: string }> = ({ className }) => {
   useScrollThreshold(400, setCrossed)
 
   return (
-    <m.div
-      animate={crossed ? 'show' : 'hidden'}
+    <div
       className={clsx(
         styles.root({
+          show: crossed,
           position: 'bottom',
         }),
-
         className,
       )}
-      initial="hidden"
-      transition={{
-        type: 'spring',
-        duration: 0.1,
-      }}
-      variants={{ hidden: { translateY: '100%' }, show: { translateY: 0 } }}
     >
       <button className={styles.button} type="button" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
         <svg className={styles.arrow} height="10" viewBox="0 0 10 10" width="10" xmlns="http://www.w3.org/2000/svg">
@@ -33,7 +25,7 @@ const ScrollBack: React.FC<{ className?: string }> = ({ className }) => {
         </svg>
         처음으로
       </button>
-    </m.div>
+    </div>
   )
 }
 

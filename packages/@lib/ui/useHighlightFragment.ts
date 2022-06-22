@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
-import { colors } from './theme.css'
+import { colors, timings } from './theme.css'
 
 function useHighlightFragment(): void {
   const router = useRouter()
@@ -20,7 +20,7 @@ function useHighlightFragment(): void {
         }
 
         const anchor = element.querySelector('a a')
-        return anchor || element
+        return (anchor as HTMLElement | null) || element
       })()
       if (!target) {
         return
@@ -30,6 +30,8 @@ function useHighlightFragment(): void {
       if (playingAnimation) {
         playingAnimation.cancel()
       }
+
+      const timing = getComputedStyle(target).getPropertyValue(timings.standard.slice(4, -1)).trim()
 
       target.animate(
         [
@@ -41,8 +43,8 @@ function useHighlightFragment(): void {
           },
         ],
         {
-          duration: 1000,
-          easing: 'ease',
+          duration: 750,
+          easing: timing || 'ease',
         },
       )
     }
@@ -59,7 +61,7 @@ function useHighlightFragment(): void {
       window.clearTimeout(initialHighlight)
       window.removeEventListener('hashchange', highlightFragment)
     }
-  }, [])
+  }, [router.events])
 }
 
 export { useHighlightFragment }

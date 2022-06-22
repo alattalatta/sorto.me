@@ -1,5 +1,4 @@
 import clsx from 'clsx'
-import { m } from 'framer-motion'
 import Image from 'next/image'
 
 import * as styles from './Post.css'
@@ -17,10 +16,10 @@ const Post: React.FC<Props> = ({ as = 'article', className, image, title, writte
   const month = written.getMonth() + 1
   const date = written.getDate()
 
-  const Root = as === 'article' ? m.article : m.header
+  const Root = as === 'article' ? 'article' : 'header'
 
   return (
-    <Root className={clsx(styles.root, className)} layoutId={title}>
+    <Root className={clsx(styles.root, className)}>
       <div className={styles.body}>
         <div className={styles.imageBox}>
           <Image alt="" layout="fill" objectFit="cover" sizes="10.5rem" src={image} />

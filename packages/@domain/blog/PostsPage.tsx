@@ -1,7 +1,5 @@
 import type { Page } from '@lib/ui'
 import { Layout } from '@lib/ui'
-import type { Variants } from 'framer-motion'
-import { m } from 'framer-motion'
 import Head from 'next/head'
 import Link from 'next/link'
 
@@ -13,20 +11,6 @@ type Props = {
   posts: readonly PostMetadata[]
 }
 
-const rootVariants: Variants = {
-  show: {
-    transition: {
-      delayChildren: 0.25,
-      staggerChildren: 0.125,
-    },
-  },
-}
-
-const postWrapVariants: Variants = {
-  show: { opacity: 1 },
-  hidden: { opacity: 0 },
-}
-
 const PostsPage: Page<Props> = ({ posts }) => {
   return (
     <>
@@ -34,10 +18,10 @@ const PostsPage: Page<Props> = ({ posts }) => {
         <title key="title">blog - sorto.me</title>
         <meta key="og:title" content="sorto.me - blog" property="og:title" />
       </Head>
-      <m.main animate="show" className={styles.root} initial="hidden" variants={rootVariants}>
+      <main className={styles.root}>
         {posts.map((post) => (
           <Link key={post.slug} href={`/posts/${post.slug}`} passHref>
-            <m.a className={styles.postWrap} variants={postWrapVariants}>
+            <a className={styles.postWrap}>
               <Post
                 className={styles.fillHeight}
                 image={post.image}
@@ -45,10 +29,10 @@ const PostsPage: Page<Props> = ({ posts }) => {
                 // [todo] parse as Date
                 written={new Date(post.created)}
               />
-            </m.a>
+            </a>
           </Link>
         ))}
-      </m.main>
+      </main>
     </>
   )
 }

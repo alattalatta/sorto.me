@@ -1,10 +1,10 @@
-import { fontsTheme } from '@lib/ui/theme.css'
+import { fontsTheme, timingsTheme } from '@lib/ui/theme.css'
 import Document, { Head, Html, Main, NextScript } from 'next/document'
 
 export default class TheDocument extends Document {
   render(): JSX.Element {
     return (
-      <Html className={fontsTheme} lang="ko">
+      <Html className={`${fontsTheme} ${timingsTheme}`} lang="ko">
         <Head>
           <link href="https://fonts.gstatic.com" rel="preconnect" />
           <link

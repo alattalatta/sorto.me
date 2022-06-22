@@ -24,7 +24,6 @@
     "@mdn/browser-compat-data": "^5.1.2",
     "@vanilla-extract/css": "^1.7.2",
     "fp-ts": "^2.12.1",
-    "framer-motion": "^6.3.13",
     "next": "^12.1.6",
     "next-pwa": "^5.5.4",
     "next-themes": "^0.2.0",

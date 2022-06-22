@@ -20,7 +20,6 @@
     "@lib/functions": "workspace:*",
     "@lib/ui": "workspace:*",
     "@vanilla-extract/css": "^1.7.2",
-    "framer-motion": "^6.3.13",
     "next": "^12.1.6"
   }
 }

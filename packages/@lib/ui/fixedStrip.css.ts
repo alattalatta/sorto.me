@@ -1,6 +1,6 @@
 import { recipe } from '@vanilla-extract/recipes'
 
-import { colors } from './theme.css'
+import { colors, timings } from './theme.css'
 
 export const FIXED_STRIP_HEIGHT = 40
 
@@ -17,10 +17,18 @@ export const root = recipe({
     position: 'fixed',
     right: 0,
     left: 0,
-    transition: 'transform 250ms ease',
+    transition: `transform 250ms ${timings.standard}`,
     zIndex: 5,
   },
   variants: {
+    show: {
+      true: {
+        transform: 'translateY(0)',
+      },
+      false: {
+        transform: 'translateY(100%)',
+      },
+    },
     position: {
       top: {
         paddingTop: 'env(safe-area-inset-top)',

@@ -29,7 +29,7 @@ const PostPage: Page<Props> = ({ compiledSource, meta }) => {
       </Head>
       <main className={styles.root}>
         <article>
-          <Post as="header" image={meta.image} title={meta.title} written={new Date(meta.created)} />
+          <Post as="header" data={meta} />
           <div className={styles.body}>
             <div className={documentBody.root}>
               <Content

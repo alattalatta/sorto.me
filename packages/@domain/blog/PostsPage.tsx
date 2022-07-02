@@ -22,13 +22,7 @@ const PostsPage: Page<Props> = ({ posts }) => {
         {posts.map((post) => (
           <Link key={post.slug} href={`/posts/${post.slug}`} passHref>
             <a className={styles.postWrap}>
-              <Post
-                className={styles.fillHeight}
-                image={post.image}
-                title={post.title}
-                // [todo] parse as Date
-                written={new Date(post.created)}
-              />
+              <Post className={styles.fillHeight} data={post} />
             </a>
           </Link>
         ))}

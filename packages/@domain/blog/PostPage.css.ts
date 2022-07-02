@@ -1,4 +1,4 @@
-import { timings } from '@lib/ui/theme.css'
+import { media, timings } from '@lib/ui/theme.css'
 import { keyframes, style } from '@vanilla-extract/css'
 
 export const root = style({
@@ -19,9 +19,14 @@ const bodyIn = keyframes({
 })
 
 export const body = style({
-  animation: `${bodyIn} 0.25s ${timings.linearlock} 0.25s forwards`,
+  animation: `0.25s ${timings.linearlock} 0.25s forwards`,
   marginTop: '1.5rem',
   opacity: 0,
+  '@media': {
+    [media.motionNoPref]: {
+      animationName: bodyIn,
+    },
+  },
 })
 
 export const width768 = style({

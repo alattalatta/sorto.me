@@ -20,7 +20,7 @@ const Post: React.FC<Props> = ({ as = 'article', className, data: { created, ima
   const Root = as === 'article' ? 'article' : 'header'
 
   return (
-    <Flipped flipId={slug}>
+    <Flipped flipId={slug} shouldFlip={() => window.matchMedia('(prefers-reduced-motion: no-preference)').matches}>
       <Root className={clsx(styles.root, className)}>
         <div className={styles.body}>
           <div className={styles.imageBox}>

@@ -32,7 +32,7 @@
     "@radix-ui/react-popover": "0.1.7-rc.38",
     "@vanilla-extract/css": "^1.7.2",
     "clsx": "^1.1.1",
-    "next": "^12.1.6",
+    "next": "^12.2.0",
     "next-themes": "^0.2.0",
     "react-flip-toolkit": "^7.0.14"
   },

@@ -1,4 +1,5 @@
-import { style } from '@vanilla-extract/css'
+import { media, timings } from '@lib/ui/theme.css'
+import { keyframes, style } from '@vanilla-extract/css'
 
 export const root = style({
   maxWidth: `${768 / 16}rem`,
@@ -6,8 +7,26 @@ export const root = style({
   padding: '0 1rem',
 })
 
+const bodyIn = keyframes({
+  '0%': {
+    opacity: 0,
+    transform: 'translateY(1rem)',
+  },
+  '100%': {
+    opacity: 1,
+    transform: 'translateY(0)',
+  },
+})
+
 export const body = style({
+  animation: `0.25s ${timings.linearlock} 0.25s forwards`,
   marginTop: '1.5rem',
+  opacity: 0,
+  '@media': {
+    [media.motionNoPref]: {
+      animationName: bodyIn,
+    },
+  },
 })
 
 export const width768 = style({

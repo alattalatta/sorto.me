@@ -1,9 +1,7 @@
 import { useMDXRenderer } from '@lib/mdx'
 import type { Page } from '@lib/ui'
-import { Layout, Anchor, Footer } from '@lib/ui'
+import { Anchor, Footer, Layout } from '@lib/ui'
 import * as documentBody from '@lib/ui/documentBody.css'
-import { m } from 'framer-motion'
-import type { Tween } from 'framer-motion'
 import Head from 'next/head'
 import Image from 'next/image'
 
@@ -13,15 +11,6 @@ import { SideBySide } from './SideBySide'
 import type { PostMetadata } from './types'
 
 type Props = { compiledSource: string; meta: PostMetadata }
-
-/** Returns a standard easing definition object. */
-export function easeStandard(duration: number): Tween {
-  return {
-    type: 'tween',
-    ease: [0.4, 0, 0.2, 1],
-    duration,
-  }
-}
 
 const PostPage: Page<Props> = ({ compiledSource, meta }) => {
   const Content = useMDXRenderer(compiledSource)
@@ -40,17 +29,8 @@ const PostPage: Page<Props> = ({ compiledSource, meta }) => {
       </Head>
       <main className={styles.root}>
         <article>
-          <Post as="header" image={meta.image} title={meta.title} written={new Date(meta.created)} />
-          <m.div
-            animate={{ opacity: 1, y: 0 }}
-            className={styles.body}
-            initial={{ opacity: 0, y: 10 }}
-            transition={{
-              delay: 0.25,
-              opacity: easeStandard(0.25),
-              y: easeStandard(0.5),
-            }}
-          >
+          <Post as="header" data={meta} />
+          <div className={styles.body}>
             <div className={documentBody.root}>
               <Content
                 components={{
@@ -60,7 +40,7 @@ const PostPage: Page<Props> = ({ compiledSource, meta }) => {
                 }}
               />
             </div>
-          </m.div>
+          </div>
           <Footer updated={new Date(meta.updated)} />
         </article>
       </main>

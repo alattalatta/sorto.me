@@ -39,15 +39,13 @@ const HTMLDemo: React.FC<Props> = ({ children: childrenProp, height }) => {
 
   const children = Children.map(childrenProp, (child) => {
     if (isValidElement(child)) {
-      const {
-        props: { className, ...props },
-      } = child
+      const { className, ...rest } = child.props as Record<string, unknown> & { className: string }
       const hidden = !className.includes(`language-${currentLang}`)
 
       return cloneElement(child, {
         className,
         hidden,
-        ...props,
+        ...rest,
       })
     }
     return child

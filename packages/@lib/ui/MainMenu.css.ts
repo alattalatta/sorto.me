@@ -1,7 +1,7 @@
 import { keyframes, style } from '@vanilla-extract/css'
 import { recipe } from '@vanilla-extract/recipes'
 
-import { colors, media } from './theme.css'
+import { colors, media, timings } from './theme.css'
 
 export const trigger = style({
   width: '2.75rem',
@@ -38,7 +38,7 @@ export const overlay = style({
   zIndex: 9,
   '@media': {
     [media.motionNoPref]: {
-      animation: `200ms cubic-bezier(0.16, 1, 0.3, 1) forwards`,
+      animation: `200ms ${timings.swoosh} forwards`,
       selectors: {
         '&[data-state="open"]': {
           animationName: fadeIn,
@@ -54,7 +54,7 @@ export const overlay = style({
 export const bodyRoot = style({
   width: '100%',
   maxWidth: '24rem',
-  animation: `${fadeIn} 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards`,
+  animation: `${fadeIn} 200ms ${timings.swoosh} forwards`,
   padding: '0 2rem',
   position: 'fixed',
   top: '50%',

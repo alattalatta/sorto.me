@@ -1,6 +1,6 @@
 import { keyframes, style } from '@vanilla-extract/css'
 
-import { colors, media } from './theme.css'
+import { colors, media, timings } from './theme.css'
 
 export const trigger = style({
   width: '2.75rem',
@@ -34,10 +34,10 @@ export const body = style({
   zIndex: 99,
   selectors: {
     '&[data-state="open"]': {
-      animation: `${fadeIn} 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards`,
+      animation: `${fadeIn} 200ms ${timings.swoosh} forwards`,
       '@media': {
         [media.motionNoPref]: {
-          animation: `${subtleSlideUp} 400ms cubic-bezier(0.16, 1, 0.3, 1) forwards`,
+          animation: `${subtleSlideUp} 400ms ${timings.swoosh} forwards`,
         },
       },
     },

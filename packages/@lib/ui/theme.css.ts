@@ -17,4 +17,9 @@ const [fontsTheme, fonts] = createTheme({
   serif: `'Noto Serif KR', serif`,
 })
 
-export { colors, fonts, fontsTheme, media }
+const [timingsTheme, timings] = createTheme({
+  linearlock: 'cubic-bezier(.6, .05, .35, 1)',
+  swoosh: 'cubic-bezier(.16, 1, .3, 1)',
+})
+
+export { colors, fonts, fontsTheme, media, timings, timingsTheme }

@@ -1,0 +1,41 @@
+---
+title: 대체 요소
+---
+
+CSS의 범위를 벗어나는 외형을 가진 요소를 **대체 요소**라고 말합니다. 대체 요소는 외부 객체로서 CSS 서식 모델과 완전히 분리되어 있습니다.
+
+보다 간단히 말하자면, 대체 요소란 현재 문서 스타일로 그 내용에 영향을 줄 수 없는 요소라고 할 수 있습니다. 예를 들어 CSS로 대체 요소 내용의 위치는 조정할 수 있을지 몰라도, 내용 자체에 영향을 줄 수는 없습니다. [`<iframe>`](/docs/Web/HTML/Element/iframe) 등 일부 대체 요소는 부모 문서에서 완전히 독립된 자신만의 스타일 시트를 소유할 수도 있습니다.
+
+# 대체 요소 목록
+
+다음 네 요소는 자주 쓰이는 대체 요소입니다.
+
+- [`<embed>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed)
+- [`<iframe>`](/docs/Web/HTML/Element/iframe)
+- [`<img>`](/docs/Web/HTML/Element/img)
+- [`<video>`](/docs/Web/HTML/Element/video)
+
+어떤 요소들은 특정 조건에서만 대체 요소로 취급됩니다.
+
+- [`<audio>`](/docs/Web/HTML/Element/audio)
+- [`<canvas>`](/docs/Web/HTML/Element/canvas)
+- [`<object>`](/docs/Web/HTML/Element/object)
+- [`<option>`](/docs/Web/HTML/Element/option)
+
+HTML 명세는 [`<input>`](/docs/Web/HTML/Element/input) 요소 또한 대체 요소일 수 있다고 말하는데, `<input type="image">` 요소가 `<img>`와 비슷한 대체 요소라서 그렇습니다. 하지만 `type="image"`를 제외한 나머지 `<input>` 유형은 대체 요소가 아님 또한 명시하고 있습니다. (명세는 `<input>`의 플랫폼별 렌더링을 대체 요소로 정의하지 않고 "위젯"이라는 별도의 용어로 정의합니다)
+
+CSS [`content` 속성](https://developer.mozilla.org/en-US/docs/Web/CSS/content)을 통해 삽입된 객체는 HTML 마크업에 존재하지 않기 때문에 *익명* 대체 요소라고 부릅니다.
+
+# 대체 요소의 콘텐츠 객체 위치 조절하기
+
+[CSS Images](https://drafts.csswg.org/css-images/) 명세가 정의하는 특정 CSS 속성을 사용하면 대체 요소가 콘텐츠를 배치하는 방법을 바꿀 수 있습니다.
+
+- : [`object-fit`](./object-fit)
+  - 대체 요소의 콘텐츠 객체 크기를 요소 박스에 어떻게 맞출지 지정합니다.
+- : [`object-position`](./object-position)
+  - 대체 요소의 콘텐츠 객체를 요소 박스 내 어느 위치에 배치할지 지정합니다.
+
+## 같이 보기
+
+- [HTML 명세: 대체 요소](https://html.spec.whatwg.org/multipage/rendering.html#replaced-elements)
+

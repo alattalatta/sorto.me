@@ -78,6 +78,8 @@ font-family: fangsong;
 /* 전역 값 */
 font-family: inherit;
 font-family: initial;
+font-family: revert;
+font-family: revert-layer;
 font-family: unset;
 ```
 
@@ -88,12 +90,7 @@ font-family: unset;
 - : `<family-name>`
   - 글꼴 가족의 이름입니다. 위의 구문 예제에서는 "Nanum Gothic Coding"이 글꼴 가족의 이름입니다.
 - : `<generic-name>`
-
-  - 글꼴 범주명은 지정한 글꼴을 사용할 수 없더라도 스타일 시트 저작자의 의도를 보존할 수 있는 방법입니다. 범주명은 키워드 값으로서 따옴표로 감싸서는 안되며, 항상 목록의 마지막에 와야 합니다.
-
-    범주에 속하는 글꼴은 언어와 사용자의 환경에 따라 다를 수 있으며, 서로 다른 두 개의 범주명이 같은 글꼴로 표현될 수도 있습니다.
-
-    사용할 수 있는 값은 다음과 같습니다.
+  - `<generic-name>`은 세리프와 산세리프와 같이 글꼴의 범주명으로, 직접 지정한 글꼴들 중 무엇도 사용할 수 없는 경우에도 스타일을 어느정도 보존하기 위한 방안입니다. 범주명은 키워드 값으로서 따옴표로 감싸서는 안되며 항상 목록의 마지막에 와야 합니다. 사용할 수 있는 값은 다음과 같습니다.
 
     - : `serif`
       - <span style={{ fontFamily: 'serif' }}>
@@ -121,8 +118,8 @@ font-family: unset;
         </span>
     - : `system-ui`
       - <span style={{ fontFamily: 'system-ui' }}>
-          현재 사용자 플랫폼의 사용자 인터페이스 기본 글꼴을 사용합니다. 전세계의 활자 사용법에는 큰 차이가 있으므로,
-          `system-ui`는 위의 5개 범주로 깔끔하게 떨어질 수 없는 글꼴을 위해 제공됩니다.
+          사용자 플랫폼의 기본 인터페이스 글꼴을 사용합니다. 전세계의 활자 사용법에는 큰 차이가 있으므로,
+          `system-ui`는 위의 5개 범주로 깔끔하게 분류할 수 없는 글꼴을 위해 제공됩니다.
         </span>
     - : `ui-serif`
       - <span style={{ fontFamily: 'ui-serif' }}>사용자 인터페이스의 기본 세리프 글꼴을 사용합니다.</span>
@@ -143,6 +140,37 @@ font-family: unset;
       - <span style={{ fontFamily: 'fangsong' }}>
           중문 글꼴 중 명조와 해서를 혼합한 듯한 글꼴을 사용합니다. 보통 중국 공문에서 볼 수 있습니다.
         </span>
+
+### 유효한 글꼴 가족 이름
+
+글꼴 가족 이름은 한 개 이상의 문자열(따옴표로 감싸짐) 또는 식별자(따옴표 없음)로 지정해야 합니다. 그리고 식별자는 문장 부호나 숫자 등으로 시작할 수 없으므로, 글꼴 가족 이름을 따옴표로 감싸지 않은 경우 문장 부호와 숫자는 반드시 이스케이프를 해줘야 합니다.
+
+실수를 방지하기 위해, 하이픈을 제외한 문장 부호나 숫자, 공백을 포함한 글꼴 가족 이름을 지정할 땐 항상 따옴표로 감싸주는 것을 추천합니다.
+
+다음은 유효한 선언의 예시입니다.
+
+```css variant=good
+font-family: "Noto Sans KR", sans-serif;
+font-family: "Seoul 1980", sans-serif;
+```
+
+그리고 유효하긴 하지만 추천하지 않는 방법입니다. 따옴표로 감싸주세요.
+
+```css
+font-family: Noto Sans KR, sans-serif;
+```
+
+마지막으로 유효하지 않은 예제입니다.
+
+```css variant=bad
+font-family: Seoul 1980, sans-serif;
+font-family: Red/Black, sans-serif;
+font-family: "Lucida" Grande, sans-serif;
+font-family: Ahem!, sans-serif;
+font-family: test@foo, sans-serif;
+font-family: #POUND, sans-serif;
+font-family: Hawaii 5-0, sans-serif;
+```
 
 # 명세
 

@@ -11,10 +11,11 @@ const FramePage: Page = () => {
   const [src, setSrc] = useState('')
 
   useEffect(() => {
+    window.parent.postMessage(`${(query.id || '') as string}/ready`)
+
     const handleMessage = (event: MessageEvent<string>): void => {
       setSrc(event.data)
     }
-
     window.addEventListener('message', handleMessage)
 
     return () => window.removeEventListener('message', handleMessage)

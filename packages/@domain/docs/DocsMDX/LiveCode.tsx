@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { useEffect, useReducer, useRef, useState } from 'react'
+import { useEffect, useId, useReducer, useRef, useState } from 'react'
 
 import * as styles from './LiveCode.css'
 
@@ -24,6 +24,7 @@ const LiveCode: React.FC<Props> = ({
 }) => {
   const eager = loadingProp === 'eager'
 
+  const id = useId()
   const rootRef = useRef<HTMLDivElement>(null)
   const frameRef = useRef<HTMLIFrameElement>(null)
   const initialSrc = useRef(serializeSrc(css, html, js)).current
@@ -31,6 +32,18 @@ const LiveCode: React.FC<Props> = ({
   const [intersected, setIntersected] = useReducer(() => true, eager) // skip intersection check when eager
   const [loaded, setLoaded] = useReducer(() => true, false)
   const [src, setSrc] = useState(initialSrc)
+
+  useEffect(() => {
+    const handleReadyMesasge = (event: MessageEvent<string>): void => {
+      if (event.data === `${id}/ready`) {
+        setLoaded()
+      }
+    }
+
+    window.addEventListener('message', handleReadyMesasge)
+
+    return () => window.removeEventListener('message', handleReadyMesasge)
+  }, [id])
 
   useEffect(() => {
     setSrc(serializeSrc(css, html, js))
@@ -75,9 +88,8 @@ const LiveCode: React.FC<Props> = ({
         <iframe
           ref={frameRef}
           className={styles.frame({ loading })}
-          src={`/frame${light ? '?forceLightTheme' : ''}`}
+          src={`/frame?id=${id}${light ? '&forceLightTheme' : ''}`}
           title="예제"
-          onLoad={setLoaded}
         />
       )}
       <p className={styles.loadingMessage({ loading })}>

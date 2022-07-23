@@ -1,0 +1,161 @@
+---
+title: 'CSS font-style: 글씨 스타일'
+bcd: css.properties.font-style
+---
+
+CSS **`font-style`** 속성은 글씨의 스타일을 일반적인 모양과 이탤릭, 오블리크 중 하나로 설정합니다.
+
+<CSSDemo selector="pre{$}">
+
+```css
+font-style: normal;
+```
+
+```css
+font-style: italic;
+```
+
+```css
+font-style: oblique;
+```
+
+```css
+font-style: oblique 40deg;
+```
+
+```css hidden
+pre {
+  font-family: 'Recursive', serif;
+  text-align: center;
+}
+```
+
+```html
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Recursive&display=swap');
+</style>
+<pre>
+Almost before we knew it,
+we had left the ground.
+</pre>
+```
+
+</CSSDemo>
+
+영어 글꼴에서, 이탤릭은 보다 필기체에 가깝고 너비가 좁은 반면 오블리크는 단순히 일반 글씨를 기울인 모양입니다. 두 스타일 모두, 글꼴에 전용 스타일이 존재하지 않으면 일반 글꼴을 인위적으로 기울여 오블리크를 흉내냅니다. CSS [`font-systhesis` 속성](https://developer.mozilla.org/en-US/docs/Web/CSS/font-synthesis)으로 이 동작을 제어할 수 있습니다.
+
+# 구문
+
+```css
+font-style: normal;
+font-style: italic;
+font-style: oblique;
+font-style: oblique 10deg;
+
+/* 전역 값 */
+font-weight: inherit;
+font-weight: initial;
+font-weight: revert;
+font-weight: revert-layer;
+font-weight: unset;
+```
+
+`font-style`은 다음 값 중 하나를 사용해 지정할 수 있습니다. `oblique`를 사용한 경우 선택적으로 각도를 함께 지정할 수 있습니다.
+
+## 값
+
+- : `normal`
+  - 글꼴 가족에서 일반 글꼴을 사용합니다.
+- : `italic`
+  - 글꼴 가족에서 이탤릭 글꼴을 사용합니다. 이탤릭 전용 글꼴이 없으면 오블리크 글꼴을 사용하고, 둘 다 없으면 일반 글꼴을 인위적으로 기울입니다.
+- : `oblique`
+  - 글꼴 가족에서 오블리크 글꼴을 사용합니다. 오블리크 전용 글꼴이 없으면 이탤릭 글꼴을 사용하고, 둘 다 없으면 일반 글꼴을 인위적으로 기울입니다.
+- : `oblique <angle>`
+  - 글꼴 가족에서 오블리크 글꼴을 사용하고, 기울기를 직접 [`<angle>`](https://developer.mozilla.org/en-US/docs/Web/CSS/angle)로 지정합니다. 다수의 오블리크 전용 글꼴을 사용할 수 있으면 지정한 각도와 제일 가까운 글꼴을 선택합니다. 오블리크 전용 글꼴이 없으면 일반 글꼴을 인위적으로 기울입니다.
+
+    `-90deg` 이상, `90deg` 이하의 각도를 지정할 수 있습니다. 각도를 지정하지 않았을 때의 기본 값은 `14deg`입니다. 양의 각도는 문장의 끝을 향해, 음의 각도는 문장의 시작을 향해 기울어집니다.
+
+    다수의 오블리크 글꼴 중 하나를 선택할 땐, 일반적으로 14도 이상에서는 기울기가 큰 쪽을, 14도 미만에서는 작은 쪽을 선호합니다. [명세의 글꼴 선택 알고리즘](https://drafts.csswg.org/css-fonts-4/#font-matching-algorithm)에서 정확한 방법을 확인하세요.
+
+## 가변 글꼴
+
+가변 글꼴을 사용하면 오블리크 글꼴의 기울기를 세밀하게 제어할 수 있습니다.
+
+TrueType과 OpenType 가변 글꼴은 "slnt" 바리에이션을 사용해 오블리크 기울기를 구현하고, 1의 값을 가진 "ital" 바리에이션으로 이탤릭을 구현합니다. [`font-variation-settings`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variation-settings)를 참고하세요.
+
+> [note] 아래의 예제가 올바르게 동작하려면 브라우저가 CSS Fonts Level 4 명세의 `font-style: oblique <angle>` 구문을 지원해야 합니다.
+
+### HTML
+
+```html name=variable
+<header>
+  <input type="range" id="angle" name="angle" min="-90" max="90" />
+  <label for="angle">기울기</label>
+</header>
+<div class="container">
+  <p class="sample">
+    Almost before we knew it, we had left the ground.
+  </p>
+</div>
+```
+
+### CSS
+
+```css name=variable
+@import url(https://fonts.googleapis.com/css2?family=Recursive&display=swap);
+
+label {
+  font: 1rem monospace;
+  white-space: nowrap;
+}
+
+.container {
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.sample {
+  text-transform: uppercase;
+  font: 1.5rem 'Recursive', serif;
+}
+```
+
+### JavaScript
+
+```js name=variable
+const angleLabel = document.querySelector('label[for="angle"]')
+const angleInput = document.querySelector('#angle')
+const sampleText = document.querySelector('.sample')
+
+function update() {
+  const value = `oblique ${angleInput.value}deg`
+  
+  angleLabel.textContent = `font-style: ${value}`
+  sampleText.style.fontStyle = value
+}
+
+angleInput.addEventListener('input', update)
+
+update()
+```
+
+### 결과
+
+<LiveExample name="variable" height={160} />
+
+# 접근성 고려사항
+
+긴 텍스트에 `font-style: italic`이나 `oblique`를 지정하면 난독증 등 인지력 저하를 겪는 사용자가 읽기 어려울 수 있습니다.
+
+# 명세
+
+- [CSS Fonts Module Level 4](https://drafts.csswg.org/css-fonts/#font-style-prop)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 글꼴: [`font-family`](./font-family)
+- 글씨 굵기: [`font-weight`](./font-weight)

@@ -2,9 +2,9 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 
 import type { PostMetadata } from '@domain/blog'
-import postsIndex from '@domain/blog/out/index.json'
+import postsIndex from '@domain/blog/out/index.json' assert { type: 'json' }
 import type { DocMetadata } from '@domain/docs'
-import docsIndex from '@domain/docs/out/index.json'
+import docsIndex from '@domain/docs/out/index.json' assert { type: 'json' }
 import { filePath } from '@lib/functions/server'
 
 const __dirname = filePath(import.meta.url)

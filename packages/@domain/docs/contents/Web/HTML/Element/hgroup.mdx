@@ -1,18 +1,28 @@
 ---
 title: 'HTML <hgroup>: 제목 그룹 요소'
-description: HTML <hgroup> (제목 그룹) 요소는 문서 구획의 다단 헤딩을 나타내며, 다수의 <h1> - <h6> 요소를 묶을 때 사용합니다.
 bcd: html.elements.hgroup
 ---
 
-**HTML `<hgroup>` 요소**는 문서 구획의 다단 헤딩을 나타내며, 다수의 [`<h1> - <h6>`]('./Heading_Elements') 요소를 묶을 때 사용합니다.
+**HTML `<hgroup>` 요소**는 문서 구획의 다단 헤딩을 나타내며, 부제목 등을 나타내는 다수의 [`<p>`](./p) 요소를 하나의 [`<h1> - <h6>`]('./Heading_Elements') 요소와 함께 묶을 때 사용합니다.
 
 <HTMLDemo height={120}>
 
 ```html
 <hgroup>
-  <h1>HTML Living Standard</h1>
-  <h2>&lt;hgroup&gt; 요소</h2>
+  <h1>HTML &lt;hgroup&gt;: 제목 그룹 요소</h1>
+  <p>부제목을 나타내는 법</p>
 </hgroup>
+```
+
+```css
+hgroup {
+  border-left: 0.25rem solid maroon;
+  padding-left: 2rem;
+}
+
+h1 {
+  font-size: 2rem;
+}
 ```
 
 </HTMLDemo>
@@ -23,9 +33,13 @@ bcd: html.elements.hgroup
 
 # 사용 일람
 
-> [note] `<hgroup>` 요소는 [HTML 아웃라인 알고리즘](https://html.spec.whatwg.org/multipage/sections.html#outline)에서 하위 헤딩 요소가 불필요한 구획을 생성하는 일을 방지하기 위해, 다단 헤딩을 하나의 논리 헤딩으로 묶을 때 사용하는 요소입니다. 그러나 아웃라인 알고리즘을 구현하는 브라우저는 하나도 없습니다.
+`<hgroup>` 요소를 사용하면 헤딩을 부제나 태그라인 따위의 부가적인 내용과 함께 묶을 수 있습니다. 이때 헤딩을 제외한 나머지는 `<hgroup>` 내의 [`<p>`](./p) 요소로 나타냅니다.
 
-- `<hgroup>` 요소의 헤딩 단계는 자신에게 속한 헤딩들의 단계 중 제일 높은 단계를 따라갑니다.
+`<hgroup>` 자체는 문서의 아웃라인에 영향을 주지 않습니다. 아웃라인에 반영되는 건 그 안의 헤딩 요소입니다.
+
+# 접근성 고려사항
+
+접근성 차원에서, 지금은 `<hgroup>`이 특별히 포함하는 의미가 없습니다. 브라우저 접근성 API에 노출되는 건 그 내부의 헤딩과 문단 요소들 뿐입니다.
 
 # 명세
 

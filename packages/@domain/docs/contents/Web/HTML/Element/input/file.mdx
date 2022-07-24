@@ -1,0 +1,122 @@
+---
+title: 'HTML <input type="file">: 파일 선택'
+bcd: html.elements.input.type_file
+---
+
+**`file` 유형의 [`<input>`](../input) 요소**는 사용자가 기기의 저장소에서 파일을 선택할 수 있는 컨트롤입니다. 선택한 파일은 [양식 제출](https://developer.mozilla.org/en-US/docs/Learn/Forms)을 통해 서버로 업로드하거나, [File API](https://developer.mozilla.org/en-US/docs/Web/API/File_API/Using_files_from_web_applications)를 사용한 JavaScript로 조작할 수 있습니다.
+
+<HTMLDemo height={60}>
+
+```html
+<label for="profile">프로필 이미지를 선택하세요:
+  <input type="file"
+         id="profile"
+         accept="image/png, image/jpeg">
+</label>
+```
+
+</HTMLDemo>
+
+# 값
+
+`<input type="file">` 요소의 [`value` 특성](../input#term-value)은 문자열로, 사용자가 선택한 파일의 경로입니다. 아직 파일을 선택하지 않은 경우 빈 문자열(`""`)입니다. 다수의 파일을 선택한 경우에는 파일 리스트에서 첫 번째 파일의 경로만 나타냅니다. 나머지 파일은 요소 DOM, [`HTMLInputElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement)의 `files` 속성으로 식별할 수 있습니다.
+
+> [note] 파일의 경로라고는 하지만, 악의적인 사이트가 사용자의 파일 시스템 구조를 알아낼 수 없도록 실제 값은 항상 `C:\fakepath\` + 파일 이름으로 나타납니다.
+
+# 추가 특성
+
+`file` 유형은 모든 [`<input>`](../input) 요소가 공유하는 특성 외에도 아래의 특성을 추가로 지원합니다.
+
+- : `accept`
+
+  - 선택할 수 있는 파일의 유형을 지정합니다. [고유 파일 유형 한정자](#고유-파일-유형-한정자)의 쉼표 구분 리스트입니다. 파일을 식별하는 방법은 브라우저마다 다를 수 있으므로 원하는 유형을 가리키는 한정자를 자세하게 제공하는 것이 좋습니다.
+
+    예를 들어, Microsoft Word 파일은 다양한 방법으로 식별 가능하므로 Word 파일을 받아야 하는 `<input>`은 다음과 같이 정의할 수 있습니다.
+
+    ```html
+    <input type="file" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+    ```
+
+- : `capture`
+  - [`accept`](#term-accept) 특성이 이미지 또는 비디오를 허용하는 경우, `capture`는 이미지 또는 비디오를 촬영할 때 사용할 카메라를 지정합니다.
+
+    - `user`: 사용자를 마주보는 카메라와 마이크를 사용합니다.
+    - `environment`: 사용자 반대편을 바라보는 카메라와 마이크를 사용합니다.
+
+    `capture` 특성을 누락할 경우 사용자 에이전트가 자동으로 카메라를 선택합니다. 지정한 방향의 카메라를 사용할 수 없을 때도 사용자 에이전트의 선호 카메라로 대체됩니다.
+
+    > [note] 이전 명세에서는 `capture`가 파일 선택 화면 대신 카메라나 마이크처럼 장치의 미디어 캡처 기능을 요청하도록 지정하는 불리언 특성이었습니다.
+
+- : `multiple`
+  - 불리언 특성입니다. 지정하면 사용자가 여러 파일을 선택할 수 있습니다.
+
+## 비표준 특성
+
+- : `webkitdirectory` <NonStandard />
+  - 불리언 특성입니다. 지정하면 사용자가 파일 대신 디렉토리(폴더)만 선택할 수 있습니다. [`HTMLInputElement.webkitdirectory`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/webkitdirectory)에서 자세한 정보와 예제, 브라우저 호환성을 확인하세요. 이름과 달리 Firefox에서도 사용할 수 있지만, 아직 비표준 특성이므로 사용에 주의해야 합니다.
+
+# 고유 파일 유형 한정자
+
+고유 파일 유형 한정자는 사용자가 `<input type="file">`로 선택할 수 있는 파일 유형을 나타내는 문자열입니다. 각각의 고유 파일 유형 한정자는 다음과 같은 형태입니다.
+
+- 유효한 대소문자 미구분 파일 확장자. 마침표로 시작해야 합니다. 예시: `.jpg`, `.pdf`, `.docx`
+- 유효한 MIME 유형 문자열. 확장자를 포함해선 안됩니다.
+- `audio/*`, 즉 "아무 오디오 파일".
+- `video/*`, 즉 "아무 비디오 파일".
+- `image/*`, 즉 "아무 이미지 파일".
+
+고유 파일 유형 한정자는 [`accept`](#term-accept) 특성에 지정할 수 있으며, 쉼표로 구분해서 여러 유형을 허용할 수도 있습니다. 예를 들어 표준 이미지 형식 외에도 PDF 파일까지 받을 수 있는 `<input>`은 다음과 같이 작성할 수 있습니다.
+
+```html
+<input type="file" accept="image/*, .pdf">
+```
+
+# 예제
+
+## 여러 파일 받기
+
+[`multiple` 특성](#term-multiple)을 추가하면 다수의 파일을 선택할 수 있습니다.
+
+### HTML
+
+```html name=multiple
+<input id="file" type="file" multiple>
+<output id="output"></output>
+```
+
+### CSS
+
+```css name=multiple
+#output {
+  display: block;
+  white-space: pre-wrap;
+}
+```
+
+### JavaScript
+
+선택한 파일들의 이름을 출력하는 코드입니다.
+
+```js name=multiple
+const input = document.getElementById('file')
+const output = document.getElementById('output')
+
+document.getElementById('file').addEventListener('input', (event) => {
+  const files = event.target.files
+  output.textContent = Array.from(files).map(file => file.name).join('\n')
+})
+```
+
+### 결과
+
+플랫폼에서 다수의 파일을 선택하는 방법(<kbd>Shift</kbd>, <kbd>Ctrl</kbd>, <kbd>Cmd</kbd> 등을 누른 채 선택 등)을 그대로 사용해서 다수의 파일을 `<input type="file">`에 제공할 수 있습니다.
+
+<LiveExample height={120} name="multiple" />
+
+# 명세
+
+[HTML Living Standard](<https://html.spec.whatwg.org/multipage/input.html#file-upload-state-(type=file)>)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />

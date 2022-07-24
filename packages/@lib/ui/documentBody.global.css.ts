@@ -219,7 +219,6 @@ globalStyle(`${root} img`, {
 globalStyle(`${root} code:not(pre > code)`, {
   background: '#80808022',
   borderRadius: '0.25rem',
-  display: 'inline-block',
   fontFamily: fonts.mono,
   lineHeight: 1.2,
   padding: '0 0.25rem',
@@ -228,4 +227,13 @@ globalStyle(`${root} code:not(pre > code)`, {
 
 globalStyle(`${lightTheme} ${root} a > code`, {
   filter: 'brightness(0.7)',
+})
+
+globalStyle(`${root} kbd`, {
+  background: colors.bg1,
+  border: `${2 / 16}rem outset ${colors.bg3}`,
+  borderRadius: `${4 / 16}rem`,
+  margin: '0 0.25ch',
+  display: 'inline-block',
+  padding: `0 ${4 / 16}em`,
 })

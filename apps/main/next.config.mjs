@@ -25,6 +25,8 @@ const pluginStack = (config) =>
 /** @returns {import('next').NextConfig} */
 const nextConfig = (phase) => ({
   experimental: {
+    browsersListForSwc: true,
+    legacyBrowsers: false,
     scrollRestoration: true // https://github.com/vercel/next.js/issues/20951
   },
   pwa: {

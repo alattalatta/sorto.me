@@ -16,6 +16,6 @@
     "tsconfig": "workspace:*"
   },
   "dependencies": {
-    "@mdn/browser-compat-data": "^5.1.5"
+    "@mdn/browser-compat-data": "^5.1.6"
   }
 }

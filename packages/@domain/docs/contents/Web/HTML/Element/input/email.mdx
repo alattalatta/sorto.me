@@ -106,7 +106,7 @@ bcd: html.elements.input.type_email
 
 ## 패턴 검증
 
-"아무 이메일"보다 정교한 제한이 필요하면 값이 일치해야 할 정규표현식을 [`pattern` 특성](#term-pattern)에 지정할 수 있습니다. [`multiple` 특성](#term-multiple)을 지정했으면 쉼표로 구분한 각각의 이메일이 모두 정규표현식과 일치해야 합니다.
+"아무 이메일"보다 정교한 제한이 필요하면, [`pattern` 특성](#term-pattern)에 값이 일치해야 하는 정규표현식을 지정할 수 있습니다. [`multiple` 특성](#term-multiple)을 지정했으면 쉼표로 구분한 각각의 이메일이 모두 정규표현식과 일치해야 합니다.
 
 패턴 검증의 예를 들기 위해 "최고건설"의 IT 지원부서 연락 양식을 개발하는 상황을 가정하겠습니다. 사용자는 자신의 이메일 주소와 문제를 요약한 메시지를 양식으로 제출해야 합니다. 보안상, 이메일은 단순히 유효한 형식일 뿐만 아니라 사내 이메일 주소여야 합니다.
 
@@ -202,7 +202,7 @@ input:valid {
 
 ### 결과
 
-이메일을 하나만 입력해도, 쉼표로 구분해서 여러 개를 입력해도 유효한 상태([`:valid`](https://developer.mozilla.org/en-US/docs/Web/CSS/:valid))임을 볼 수 있습니다.
+이메일을 하나만 입력해도, 쉼표로 구분해서 여러 개를 입력해도, 모두 유효한 상태([`:valid`](https://developer.mozilla.org/en-US/docs/Web/CSS/:valid))임을 볼 수 있습니다.
 
 <LiveExample height={80} name="multiple" />
 

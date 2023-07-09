@@ -10,7 +10,7 @@
     "lint": "tsc --noEmit"
   },
   "devDependencies": {
-    "@types/node": "16",
+    "@types/node": "18",
     "@types/react": "^18.0.15",
     "mock-fs": "^5.0.0",
     "tsconfig": "workspace:*",

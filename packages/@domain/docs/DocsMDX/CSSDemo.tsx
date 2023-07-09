@@ -80,7 +80,8 @@ const CSSDemo: React.FC<Props> = ({ children: childrenProp, height, selector }) 
 
       const hidden = !className.includes('language-css')
 
-      return cloneElement(child, {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-explicit-any
+      return cloneElement(child as any, {
         className: clsx(className, currentBlockIdx === index && 'selected'),
         hidden,
         ...rest,

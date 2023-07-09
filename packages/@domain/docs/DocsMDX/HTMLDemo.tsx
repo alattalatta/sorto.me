@@ -42,7 +42,8 @@ const HTMLDemo: React.FC<Props> = ({ children: childrenProp, height }) => {
       const { className, ...rest } = child.props as Record<string, unknown> & { className: string }
       const hidden = !className.includes(`language-${currentLang}`)
 
-      return cloneElement(child, {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-explicit-any
+      return cloneElement(child as any, {
         className,
         hidden,
         ...rest,

@@ -16,7 +16,7 @@
     "@types/node": "16",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
-    "ava": "^4.3.1",
+    "ava": "^5.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "ts-node": "^10.9.1",

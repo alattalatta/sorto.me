@@ -1,0 +1,48 @@
+---
+import '@fontsource/nanum-myeongjo'
+
+interface Props {
+  description?: string
+  title?: string
+}
+
+const { description = 'sorto.me', title = 'sorto.me' } = Astro.props
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="Astro description" name="description" />
+    <meta content={Astro.generator} name="generator" />
+    <meta content="width=device-width" name="viewport" />
+    <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+    <!-- og -->
+    <title>{title}</title>
+    <meta content={title} property="og:title" />
+    <meta content={description} name="description" />
+    <meta content={description} property="og:description" />
+    <meta content="website" property="og:type" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    font-family: 'Nanum Myeongjo', serif;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  a {
+    color: #177cab;
+  }
+  a:hover,
+  a:focus {
+    color: #c72082;
+  }
+</style>

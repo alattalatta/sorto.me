@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^2.0.5",
+    "@fontsource/nanum-myeongjo": "^5.0.17",
     "astro": "^4.2.1"
   }
 }

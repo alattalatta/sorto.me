@@ -47,6 +47,9 @@ importers:
       '@astrojs/mdx':
         specifier: ^2.0.5
         version: 2.0.5(astro@4.2.1)
+      '@fontsource/nanum-myeongjo':
+        specifier: ^5.0.17
+        version: 5.0.17
       astro:
         specifier: ^4.2.1
         version: 4.2.1(typescript@5.3.3)
@@ -602,6 +605,10 @@ packages:
     resolution: {integrity: sha512-Ag+9YM4ocKQx9AarydN0KY2j0ErMHNIocPDrVo8zAE44xLTjEtz81OdR68/cydGtk6m6jDb5Za3r2useMzYmSw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
+
+  /@fontsource/nanum-myeongjo@5.0.17:
+    resolution: {integrity: sha512-kuTSPv0hgfurmZTPqDR3xtAM4IoKlBRgOwa9iuzFFvMje8w3ErS9kIApq32DObEhLJNoIg/DXPHIFOysFrdybg==}
+    dev: false
 
   /@humanwhocodes/config-array@0.11.10:
     resolution: {integrity: sha512-KVVjQmNUepDVGXNuoRRdmmEjruj0KfiGSbS8LVc12LMsWDQzRXJ0qdhN8L8uUigKpfEHRhlaQFY0ib1tnUbNeQ==}

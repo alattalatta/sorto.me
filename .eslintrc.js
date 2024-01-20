@@ -11,6 +11,12 @@ module.exports = {
         parser: '@typescript-eslint/parser',
         extraFileExtensions: ['.astro'],
       },
+      // https://github.com/ota-meshi/eslint-plugin-astro/issues/240
+      rules: {
+        '@typescript-eslint/no-unsafe-assignment': 'off',
+        '@typescript-eslint/no-unsafe-call': 'off',
+        '@typescript-eslint/no-unsafe-member-access': 'off',
+      },
     },
   ],
   parserOptions: {

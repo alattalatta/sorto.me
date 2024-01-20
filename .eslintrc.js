@@ -1,26 +1,27 @@
-const path = require('path')
-
 require('@alattalatta/eslint-config/patch')
 
 module.exports = {
   root: true,
-  extends: [
-    '@alattalatta/eslint-config/react',
-    'plugin:@next/next/recommended',
-    'plugin:@next/next/core-web-vitals',
+  extends: ['plugin:astro/recommended', '@alattalatta/eslint-config/react'],
+  overrides: [
+    {
+      files: ['*.astro'],
+      parser: 'astro-eslint-parser',
+      parserOptions: {
+        parser: '@typescript-eslint/parser',
+        extraFileExtensions: ['.astro'],
+      },
+    },
   ],
   parserOptions: {
-    project: ['./apps/**/tsconfig.json', './apps/**/tsconfig.script.json', './packages/**/tsconfig.json'],
+    project: true,
     tsconfigRootDir: __dirname,
   },
   settings: {
     'import/resolver': {
       typescript: {
-        project: ['./apps/**/tsconfig.json', './apps/**/tsconfig.script.json', './packages/**/tsconfig.json'],
+        project: true,
       },
     },
-    next: {
-      rootDir: path.join(__dirname, 'apps/main'),
-    },
-  }
+  },
 }

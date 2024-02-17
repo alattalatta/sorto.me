@@ -1,0 +1,101 @@
+---
+import Starry from 'components/Starry.tsx'
+
+interface Props {
+  links: readonly [group: string, readonly [label: string, href: string][]][]
+}
+
+const { links } = Astro.props
+---
+
+<nav class="root">
+  <div class="logo">
+    <a href="/">
+      <svg viewBox="0 0 650.5 188" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M116.5 4h10l75 180h30V4h2.5l90 180h10M279 4h30l75 180h2.5V4h30l75 180h2.5V4h2.5l75 180h75M4 184h75V4h2.5l75 180h10"
+          fill="none"
+          stroke="#FFCA87"
+          stroke-linecap="square"
+          stroke-width="8"></path>
+      </svg>
+      <!-- <img alt="ALATTA" src="/logo-small.svg" /> -->
+    </a>
+    <Starry client:load />
+  </div>
+  <div class="links">
+    <dl>
+      {
+        links.map(([group, items]) => (
+          <>
+            <dt>{group}</dt>
+            {items.map(([label, href]) => {
+              const external = !href.startsWith('/')
+
+              return (
+                <dd>
+                  <a href={href} {...(external ? { rel: 'noreferrer', target: '_blank' } : {})}>
+                    {label}
+                  </a>
+                </dd>
+              )
+            })}
+          </>
+        ))
+      }
+    </dl>
+  </div>
+</nav>
+
+<style>
+  .root {
+    height: 100dvh;
+    position: sticky;
+    top: 0;
+  }
+
+  .logo {
+    height: var(--tb-row-height);
+    background: var(--primary);
+    border-bottom: 1px solid currentColor;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+  }
+
+  svg {
+    height: 3rem;
+    display: block;
+  }
+
+  .links {
+    grid-row: body / span 2;
+    padding: 1.5rem 2rem;
+  }
+
+  dl {
+    display: flex;
+    flex-direction: column;
+
+    font-family: var(--display);
+    margin: 0;
+  }
+  dt {
+    font-weight: 400;
+  }
+  dd {
+    margin: 0;
+  }
+
+  dl > * + * {
+    margin-top: 0.5rem;
+  }
+  dl a {
+    display: inline-block;
+    padding: 0 1rem;
+    text-transform: lowercase;
+  }
+</style>

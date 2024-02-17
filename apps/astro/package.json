@@ -10,7 +10,14 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^2.0.5",
+    "@astrojs/react": "^3.0.9",
+    "@fontsource/nanum-gothic-coding": "^5.0.17",
     "@fontsource/nanum-myeongjo": "^5.0.17",
-    "astro": "^4.2.1"
+    "@fontsource/orbit": "^5.0.4",
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
+    "astro": "^4.2.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }

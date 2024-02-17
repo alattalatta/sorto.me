@@ -1,7 +1,8 @@
 ---
-title: "TypeScript: 공변과 반변, 그리고 객체 타입에서의 두 가지 함수 표기법"
+title: 'TypeScript: 공변과 반변, 그리고 객체 타입에서의 두 가지 함수 표기법'
+titleShort: 'TypeScript: 공변과 반변'
 description: TypeScript로 알아보는 공변과 반변, 그리고 객체 타이핑에서 주의해야 하는 점
-image: /gen/2021-03-16/variance.png
+image: ./cover.png
 ---
 
 객체의 키에 함수를 할당하는 법은 두 가지가 있다.
@@ -9,9 +10,13 @@ image: /gen/2021-03-16/variance.png
 ```ts
 const obj = {
   // 화살표 표기법
-  foo: () => { console.log(this) }, // Window
+  foo: () => {
+    console.log(this)
+  }, // Window
   // 속성 단축 표기법
-  bar() { console.log(this) },      // {foo: function, bar: function}
+  bar() {
+    console.log(this)
+  }, // {foo: function, bar: function}
 }
 ```
 
@@ -118,6 +123,7 @@ TypeScript는 공변과 반변을 나타내는 별도의 구문이나 키워드�
 
 > [note]
 > TypeScript 4.7부터 공변과 반변을 [`out`과 `in` 키워드](https://devblogs.microsoft.com/typescript/announcing-typescript-4-7-beta/#optional-variance-annotations-for-type-parameters)로 명시할 수 있다.
+>
 > <small>(2022년 5월 30일 업데이트)</small>
 
 - 함수가 아닌 타입은 공변한다.

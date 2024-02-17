@@ -1,5 +1,7 @@
 ---
 import '@fontsource/nanum-myeongjo'
+import '@fontsource/nanum-gothic-coding'
+import '@fontsource/orbit'
 
 interface Props {
   description?: string
@@ -30,8 +32,18 @@ const { description = 'sorto.me', title = 'sorto.me' } = Astro.props
 </html>
 
 <style is:global>
+  * {
+    box-sizing: border-box;
+  }
+
   :root {
-    font-family: 'Nanum Myeongjo', serif;
+    --primary: #282826;
+    color: var(--primary);
+
+    --display: 'Orbit', sans-serif;
+    --monospace: 'Nanum Gothic Coding', monospace;
+    --serif: 'Nanum Myeongjo', serif;
+    font-family: var(--serif);
   }
 
   body {

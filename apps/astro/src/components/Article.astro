@@ -1,0 +1,34 @@
+---
+import type { CollectionEntry } from 'astro:content'
+
+interface Props {
+  post: CollectionEntry<'posts'>
+}
+
+const { post } = Astro.props
+const { Content } = await post.render()
+---
+
+<article aria-labelledby="title">
+  <h1 id={post.slug}>{post.data.title}</h1>
+  <div>
+    <Content />
+  </div>
+</article>
+
+<style>
+  article {
+    display: grid;
+    grid-column: main / full-end;
+    grid-row: nav / footer;
+    grid-template-rows: subgrid;
+  }
+
+  h1 {
+    display: flex;
+    align-items: center;
+    grid-row: nav;
+
+    margin: 0;
+  }
+</style>

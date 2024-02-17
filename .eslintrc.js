@@ -11,11 +11,14 @@ module.exports = {
         parser: '@typescript-eslint/parser',
         extraFileExtensions: ['.astro'],
       },
-      // https://github.com/ota-meshi/eslint-plugin-astro/issues/240
       rules: {
+        // https://github.com/ota-meshi/eslint-plugin-astro/issues/240
         '@typescript-eslint/no-unsafe-assignment': 'off',
         '@typescript-eslint/no-unsafe-call': 'off',
         '@typescript-eslint/no-unsafe-member-access': 'off',
+        '@typescript-eslint/no-unsafe-return': 'off',
+        'react/jsx-key': 'off',
+        'react/self-closing-comp': 'off',
       },
     },
   ],

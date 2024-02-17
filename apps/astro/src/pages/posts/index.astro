@@ -1,25 +1,15 @@
 ---
-import type { GetStaticPaths } from 'astro'
 import { getCollection } from 'astro:content'
-import Article from 'components/Article.astro'
+import ArticleCard from 'components/ArticleCard.astro'
 import Footer from 'components/Footer.astro'
 import Nav from 'components/Nav.astro'
 import ContentGrid from 'layouts/ContentGrid2.astro'
 import Shell from 'layouts/Shell.astro'
 
-export const getStaticPaths = (async () => {
-  return (await getCollection('posts')).map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry },
-  }))
-}) satisfies GetStaticPaths
-
-const { entry } = Astro.props
-
 const posts = [...(await getCollection('posts'))].reverse()
 ---
 
-<Shell description={entry.data.description} title={entry.data.title}>
+<Shell title="sorto.me">
   <ContentGrid>
     <Nav
       links={[
@@ -38,8 +28,14 @@ const posts = [...(await getCollection('posts'))].reverse()
       slot="nav"
     />
     <main>
-      <Article post={entry} />
+      {posts.map((post) => <ArticleCard post={post} />)}
     </main>
     <Footer slot="footer" />
   </ContentGrid>
 </Shell>
+
+<style>
+  main {
+    padding: 2rem 1.5rem 4rem;
+  }
+</style>

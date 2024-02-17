@@ -1,86 +1,120 @@
 ---
-import Shell from '../layouts/Shell.astro'
+import Shell from 'layouts/Shell.astro'
 ---
 
 <Shell title="sorto.me">
   <main>
-    <figure>
-      <img alt="" src="logo.svg" />
-      <figcaption>ALATTA</figcaption>
-    </figure>
-    <nav>
-      <dl>
-        <dt>library</dt>
-        <dd>
-          <a href="https://www.npmjs.com/package/k-popo" rel="noreferrer" target="_blank">k-popo</a>
-        </dd>
-        <dt>experiment</dt>
-        <dd>
-          <a href="https://dialog98.sorto.me/" rel="noreferrer" target="_blank">dialog98</a>
-        </dd>
-        <dt>articles</dt>
-        <dd>
-          <a href="/posts">blog</a>
-          <a href="/docs/Web">docs</a>
-        </dd>
-        <dt>contact</dt>
-        <dd>
-          <a href="https://github.com/alattalatta" rel="noreferrer" target="_blank">github</a>
-          <a href="mailto:alattalatta@sorto.me">@sorto.me</a>
-        </dd>
-      </dl>
-    </nav>
+    <div>
+      <figure>
+        <picture>
+          <source media="(max-width: 414px)" srcset="/logo-small.svg" />
+          <img alt="ALATTA" class="mainimg" src="/logo.svg" />
+        </picture>
+        <figcaption>ALATTA</figcaption>
+      </figure>
+      <nav>
+        <dl>
+          <div>
+            <dt>library</dt>
+            <dd>
+              <a href="https://www.npmjs.com/package/k-popo" rel="noreferrer" target="_blank">k-popo</a>
+            </dd>
+          </div>
+          <div>
+            <dt>experiment</dt>
+            <dd>
+              <a href="https://dialog98.sorto.me/" rel="noreferrer" target="_blank">dialog98</a>
+            </dd>
+          </div>
+          <div>
+            <dt>contents</dt>
+            <dd>
+              <a href="/posts">blog</a>
+              <a href="/docs/Web">docs</a>
+            </dd>
+          </div>
+          <div>
+            <dt>contact</dt>
+            <dd>
+              <a href="https://github.com/alattalatta" rel="noreferrer" target="_blank">github</a>
+              <a href="mailto:alattalatta@sorto.me">@sorto.me</a>
+            </dd>
+          </div>
+        </dl>
+      </nav>
+    </div>
   </main>
 </Shell>
 
 <style>
   main {
-    height: 100vh;
-    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
 
-    display: grid;
-    grid-template-columns: minmax(1rem, 1fr) [main-start] minmax(auto, 768px) [main-end] minmax(1rem, 1fr);
-    grid-template-rows:
-      minmax(1rem, 1fr)
-      [splash-start] auto [splash-end]
-      2rem
-      [nav-start] auto [nav-end]
-      minmax(1rem, 1fr);
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    font-family: var(--display);
+    padding: 1rem;
+    position: relative;
   }
 
   figure {
-    grid-area: splash / main;
     margin: 0;
     text-align: right;
   }
+  img {
+    width: 100%;
+  }
+  .mainimg {
+    width: 40rem;
+    max-width: 100%;
+    display: block;
+  }
+  .mainimg-s {
+    display: none;
+  }
+  figcaption {
+    margin-top: 0.5rem;
+  }
 
   nav {
-    grid-area: nav / main;
+    width: 100%;
+    margin-top: 0.5rem;
   }
 
   dl {
+    display: grid;
+    grid-template-columns: [dt] max-content [dd] auto;
     margin: 0;
   }
-
+  dl > div {
+    display: grid;
+    grid-column: 1 / span 2;
+    grid-template-columns: subgrid;
+  }
   dt {
-    font-weight: 700;
+    font-weight: 400;
+    grid-column: dt;
   }
   dt ~ dt {
     margin-top: 1rem;
   }
-
   dd {
     width: min-content;
 
     display: flex;
     flex-direction: column;
+    grid-column: dd;
 
     margin: 0;
     white-space: nowrap;
   }
 
   a {
-    font-weight: 700;
     padding: 0.25rem 1rem;
   }
 </style>

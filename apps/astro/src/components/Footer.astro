@@ -1,0 +1,60 @@
+<footer>
+  <div class="logo">
+    <a href="/">
+      <img alt="ALATTA" src="/logo-small.svg" />
+    </a>
+  </div>
+  <div class="body">
+    <slot />
+    <img alt="" class="cc" src="/cc.svg" />
+    <small class="license">
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.ko" rel="noreferrer" target="_blank">CC BY-SA 4.0</a>
+      unless otherwise noted. See
+      <a href="https://github.com/alattalatta/sorto.me/blob/main/LICENSE.md" rel="noreferrer" target="_blank">LICENSE</a
+      >.
+    </small>
+  </div>
+</footer>
+
+<style>
+  footer {
+    height: 9rem;
+    border-top: 1px solid var(--primary);
+    display: flex;
+
+    padding: 2rem 4rem;
+  }
+
+  .logo {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .logo img {
+    height: 3rem;
+    display: block;
+  }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    margin-left: 4rem;
+  }
+
+  .cc {
+    height: 1rem;
+    display: block;
+  }
+  * + .cc {
+    margin-top: 0.5rem;
+  }
+
+  .license {
+    display: block;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+  }
+</style>

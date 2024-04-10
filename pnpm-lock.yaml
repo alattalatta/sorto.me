@@ -81,8 +81,8 @@ importers:
         specifier: ^5.5.4
         version: 5.5.4(@babel/core@7.18.9)(next@12.2.3)(webpack@5.73.0)
       next-themes:
-        specifier: ^0.2.0
-        version: 0.2.0(next@12.2.3)(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^0.3.0
+        version: 0.3.0(react-dom@18.2.0)(react@18.2.0)
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -525,8 +525,8 @@ importers:
         specifier: ^12.2.3
         version: 12.2.3(@babel/core@7.18.9)(react-dom@18.2.0)(react@18.2.0)
       next-themes:
-        specifier: ^0.2.0
-        version: 0.2.0(next@12.2.3)(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^0.3.0
+        version: 0.3.0(react-dom@18.2.0)(react@18.2.0)
       react-flip-toolkit:
         specifier: ^7.0.14
         version: 7.0.14(react-dom@18.2.0)(react@18.2.0)
@@ -7112,14 +7112,12 @@ packages:
       - webpack
     dev: false
 
-  /next-themes@0.2.0(next@12.2.3)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-myhpDL4vadBD9YDSHiewqvzorGzB03N84e+3LxCwHRlM/hiBOaW+UsKsQojQAzC7fdcJA0l2ppveXcYaVV+hxQ==}
+  /next-themes@0.3.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-/QHIrsYpd6Kfk7xakK4svpDI5mmXP0gfvCoJdGpZQ2TOrQZmsW0QxjaiLn8wbIKjtm4BTSqLoix4lxYYOnLJ/w==}
     peerDependencies:
-      next: '*'
-      react: '*'
-      react-dom: '*'
+      react: ^16.8 || ^17 || ^18
+      react-dom: ^16.8 || ^17 || ^18
     dependencies:
-      next: 12.2.3(@babel/core@7.18.9)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false

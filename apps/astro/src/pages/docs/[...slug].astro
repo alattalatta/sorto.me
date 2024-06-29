@@ -1,6 +1,16 @@
 ---
 import type { GetStaticPaths } from 'astro'
 import { getCollection } from 'astro:content'
+import ContentBody from 'components/ContentBody.astro'
+import Footer from 'components/Footer.astro'
+import Nav from 'components/Nav.astro'
+import PostGrid from 'components/PostGrid'
+import { escapeUTF8 } from 'entities'
+import Shell from 'layouts/Shell.astro'
+import type { Root } from 'mdast'
+import { remark } from 'remark'
+import stripMarkdown from 'strip-markdown'
+import { select } from 'unist-util-select'
 
 export const getStaticPaths = (async () => {
   return (await getCollection('docs')).map((entry) => ({
@@ -11,7 +21,62 @@ export const getStaticPaths = (async () => {
 
 const { entry } = Astro.props
 const { Content } = await entry.render()
+
+const processor = remark()
+  .use(() => (root: Root) => select('paragraph', root) || root.children[0] || root)
+  .use(stripMarkdown)
+
+const description = await (async () => {
+  if (entry.data.description) {
+    return entry.data.description
+  }
+
+  return escapeUTF8(await processor.process(entry.body as string).then((res) => String(res).trim()))
+})()
+
+const posts = [...(await getCollection('posts'))].reverse()
 ---
 
-<h1>{entry.data.title}</h1>
-<Content />
+<Shell description={description} title={entry.data.title}>
+  <PostGrid client:load>
+    <Nav
+      links={[
+        ['library', [['k-popo', 'https://www.npmjs.com/package/k-popo']]],
+        ['experiments', [['dialog98', 'https://dialog98.sorto.me/']]],
+        [
+          'blog',
+          [
+            ...posts.map<[string, string]>((post) => [post.data.titleShort || post.data.title, `/posts/${post.slug}`]),
+            ['(...more)', '/posts'],
+          ],
+        ],
+        ['docs', [['Web', '/docs/Web']]],
+        [
+          'contact',
+          [
+            ['github', 'https://github.com/alattalatta'],
+            ['@sorto.me', 'mailto:alattalatta@sorto.me'],
+          ],
+        ],
+      ]}
+      slot="nav"
+    />
+    <main>
+      <article aria-labelledby={entry.slug}>
+        <header>
+          <h1 id={entry.slug}>{entry.data.title}</h1>
+        </header>
+        <ContentBody content={Content} />
+      </article>
+    </main>
+    <Footer slot="footer" />
+  </PostGrid>
+</Shell>
+
+<style>
+  h1 {
+    font-size: 3em;
+    margin: 0;
+    padding: 2rem 3rem 1rem;
+  }
+</style>

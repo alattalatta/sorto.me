@@ -8,17 +8,17 @@
     "preview": "astro preview",
     "astro": "astro"
   },
-  "dependencies": {
-    "@astrojs/mdx": "^2.0.5",
-    "@astrojs/react": "^3.0.9",
+  "devDependencies": {
+    "@astrojs/mdx": "^3.1.2",
+    "@astrojs/react": "^3.6.0",
     "@fontsource/libre-barcode-128-text": "^5.0.17",
-    "@fontsource/nanum-gothic-coding": "^5.0.17",
-    "@fontsource/nanum-myeongjo": "^5.0.17",
-    "@fontsource/orbit": "^5.0.4",
-    "@types/react": "^18.2.48",
-    "@types/react-dom": "^18.2.18",
-    "astro": "^4.2.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "@fontsource/nanum-gothic-coding": "^5.0.18",
+    "@fontsource/nanum-myeongjo": "^5.0.18",
+    "@fontsource/orbit": "^5.0.6",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "astro": "^4.11.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   }
 }

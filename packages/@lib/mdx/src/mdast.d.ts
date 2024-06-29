@@ -1,3 +1,5 @@
+/// <reference types="mdast-util-directive" />
+
 import type { Parent } from 'mdast'
 
 declare module 'mdast' {

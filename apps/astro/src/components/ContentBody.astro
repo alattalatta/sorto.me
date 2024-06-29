@@ -19,35 +19,57 @@ const { content: Content } = Astro.props
     line-height: 1.5;
     padding: 1.5em 2em 2em;
   }
-  .body > :global(*:first-child) {
+  .body :global(p:first-child) {
     margin-top: 0;
   }
 
-  .body > :global(blockquote) {
+  .body :global(blockquote) {
     border-top: 1px solid var(--primary);
     border-bottom: 1px solid var(--primary);
     margin: 2em 1em;
     padding: 1em;
     position: relative;
   }
-  .body > :global(blockquote p:first-child) {
-    margin-top: 0;
-  }
-  .body > :global(blockquote cite) {
+  .body :global(blockquote cite) {
     font-size: 0.75em;
     font-style: normal;
   }
-  .body > :global(h2) {
+
+  .body :global(h2) {
     font-size: 1.5em;
   }
-  .body > :global(h3) {
+  .body :global(h3) {
     font-size: 1.25em;
   }
-  .body > :global(h4) {
+  .body :global(h4) {
     font-size: 1em;
   }
-  .body > :global(pre) {
+
+  .body :global(pre) {
     border-radius: 0.75em / 1.5em;
     padding: 1em;
+  }
+  .body :global(.codevar pre) {
+    margin: 0;
+  }
+  .body :global(.codevar-good pre) {
+    outline: 2px solid rgb(17, 188, 88);
+  }
+  .body :global(.codevar-bad pre) {
+    outline: 2px solid rgb(241, 73, 48);
+  }
+
+  .body :global(.notebox) {
+    margin: 0;
+    padding: 1em;
+    position: relative;
+  }
+  .body :global(.notebox-note) {
+    background: lemonchiffon;
+    border-left: 4px solid rgb(240, 192, 0);
+  }
+  .body :global(.notebox-warn) {
+    background: rgb(255, 204, 198);
+    border-left: 4px solid rgb(240, 14, 14);
   }
 </style>

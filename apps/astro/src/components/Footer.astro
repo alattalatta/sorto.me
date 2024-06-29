@@ -1,4 +1,4 @@
-<footer>
+<div class="root">
   <div class="logo">
     <a href="/">
       <img alt="ALATTA" src="/logo-small.svg" />
@@ -14,21 +14,32 @@
       >.
     </small>
   </div>
-</footer>
+</div>
 
-<style>
-  footer {
+<style lang="scss">
+  .root {
     height: 9rem;
     border-top: 1px solid var(--primary);
     display: flex;
-
+    gap: 4rem;
     padding: 2rem 4rem;
+
+    @media (max-width: 512px) {
+      height: auto;
+      flex-direction: column;
+      gap: 2rem;
+      padding: 2rem;
+    }
   }
 
   .logo {
     display: flex;
     align-items: flex-start;
     justify-content: center;
+
+    @media (max-width: 512px) {
+      justify-content: flex-start;
+    }
   }
   .logo img {
     height: 3rem;
@@ -40,8 +51,6 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-
-    margin-left: 4rem;
   }
 
   .cc {

@@ -22,11 +22,11 @@
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
-    "@types/github-slugger": "^2.0.0",
     "@types/hast": "^3.0.4",
     "@types/mdast": "^4.0.4",
     "@types/unist": "^3.0.2",
     "del-cli": "^5.1.0",
+    "mdast-util-directive": "^3.0.0",
     "mdast-util-to-hast": "^13.2.0",
     "tsconfig": "workspace:*",
     "typescript": "^5.5.2"

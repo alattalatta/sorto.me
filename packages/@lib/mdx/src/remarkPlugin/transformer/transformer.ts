@@ -22,6 +22,22 @@ const remarkPlugin: Plugin<void[], Root> = () => {
         case 'list':
           definitionList(slugger, node, index, parent)
           break
+        case 'containerDirective':
+          switch (node.name) {
+            case 'badcode': {
+              const data = node.data || (node.data = {})
+              data.hName = 'div'
+              data.hProperties = { className: 'codevar codevar-bad' }
+              break
+            }
+            case 'goodcode': {
+              const data = node.data || (node.data = {})
+              data.hName = 'div'
+              data.hProperties = { className: 'codevar codevar-good' }
+              break
+            }
+          }
+          break
         default:
           return
       }

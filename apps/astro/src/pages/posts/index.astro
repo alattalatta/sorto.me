@@ -3,19 +3,25 @@ import { getCollection } from 'astro:content'
 import ArticleCard from 'components/ArticleCard.astro'
 import Footer from 'components/Footer.astro'
 import Nav from 'components/Nav.astro'
-import ContentGrid from 'layouts/ContentGrid2.astro'
+import PostGrid from 'components/PostGrid'
 import Shell from 'layouts/Shell.astro'
 
 const posts = [...(await getCollection('posts'))].reverse()
 ---
 
 <Shell title="sorto.me">
-  <ContentGrid>
+  <PostGrid client:load>
     <Nav
       links={[
         ['library', [['k-popo', 'https://www.npmjs.com/package/k-popo']]],
         ['experiments', [['dialog98', 'https://dialog98.sorto.me/']]],
-        ['blog', posts.map((post) => [post.data.titleShort || post.data.title, `/posts/${post.slug}`])],
+        [
+          'blog',
+          [
+            ...posts.map<[string, string]>((post) => [post.data.titleShort || post.data.title, `/posts/${post.slug}`]),
+            ['(...more)', '/posts'],
+          ],
+        ],
         ['docs', [['Web', '/docs/Web']]],
         [
           'contact',
@@ -31,11 +37,14 @@ const posts = [...(await getCollection('posts'))].reverse()
       {posts.map((post) => <ArticleCard post={post} />)}
     </main>
     <Footer slot="footer" />
-  </ContentGrid>
+  </PostGrid>
 </Shell>
 
 <style>
   main {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
     padding: 2rem 1.5rem 4rem;
   }
 </style>

@@ -11,23 +11,28 @@ const { post } = Astro.props
 const href = `/posts/${post.slug}`
 ---
 
-<div aria-labelledby={post.slug}>
-  <a aria-hidden href={href}>
-    <Image alt="" class="thumbnail" loading="lazy" src={post.data.image} />
-  </a>
+<article aria-labelledby={post.slug}>
   <a href={href}>
+    <Image alt="" class="thumbnail" loading="lazy" src={post.data.image} />
     <h2 id={post.slug}>{post.data.title}</h2>
   </a>
   <p>{post.data.description}</p>
-</div>
+</article>
 
 <style>
-  .thumbnail {
-    width: 480px;
-    max-width: 100%;
-    height: 100%;
+  article {
+    width: fit-content;
+  }
 
-    aspect-ratio: 4 / 3;
-    border: 5px solid var(--primary);
+  a {
+    display: block;
+  }
+
+  .thumbnail {
+    width: 720px;
+    height: 180px;
+    border: 1px solid var(--primary);
+    display: block;
+    object-fit: cover;
   }
 </style>

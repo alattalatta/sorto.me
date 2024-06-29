@@ -8,7 +8,7 @@ interface Props {
 const { links } = Astro.props
 ---
 
-<nav class="root">
+<div class="root">
   <div class="logo">
     <a href="/">
       <svg viewBox="0 0 650.5 188" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
@@ -45,13 +45,11 @@ const { links } = Astro.props
       }
     </dl>
   </div>
-</nav>
+</div>
 
 <style>
   .root {
-    height: 100dvh;
-    position: sticky;
-    top: 0;
+    height: 100%;
   }
 
   .logo {

@@ -9,6 +9,7 @@
     "preview": "astro preview"
   },
   "devDependencies": {
+    "@astrojs/markdown-remark": "^5.1.1",
     "@astrojs/mdx": "^3.1.2",
     "@astrojs/react": "^3.6.0",
     "@fontsource/libre-barcode-128-text": "^5.0.17",
@@ -19,7 +20,13 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "astro": "^4.11.3",
+    "rehype-mdx-code-props": "^3.0.1",
+    "remark-directive": "^3.0.0",
+    "sass": "^1.77.6"
+  },
+  "dependencies": {
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-remove-scroll": "^2.5.10"
   }
 }

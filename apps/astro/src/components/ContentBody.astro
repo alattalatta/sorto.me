@@ -1,0 +1,53 @@
+---
+import type { AstroComponentFactory } from 'astro/runtime/server/index.js'
+
+interface Props {
+  content: AstroComponentFactory
+}
+
+const { content: Content } = Astro.props
+---
+
+<div class="body">
+  <Content components={{ h1: 'h2', h2: 'h3', h3: 'h4', h4: 'h5' }} />
+</div>
+
+<style>
+  .body {
+    font-family: var(--serif);
+    font-size: 1.2em;
+    line-height: 1.5;
+    padding: 1.5em 2em 2em;
+  }
+  .body > :global(*:first-child) {
+    margin-top: 0;
+  }
+
+  .body > :global(blockquote) {
+    border-top: 1px solid var(--primary);
+    border-bottom: 1px solid var(--primary);
+    margin: 2em 1em;
+    padding: 1em;
+    position: relative;
+  }
+  .body > :global(blockquote p:first-child) {
+    margin-top: 0;
+  }
+  .body > :global(blockquote cite) {
+    font-size: 0.75em;
+    font-style: normal;
+  }
+  .body > :global(h2) {
+    font-size: 1.5em;
+  }
+  .body > :global(h3) {
+    font-size: 1.25em;
+  }
+  .body > :global(h4) {
+    font-size: 1em;
+  }
+  .body > :global(pre) {
+    border-radius: 0.75em / 1.5em;
+    padding: 1em;
+  }
+</style>

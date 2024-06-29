@@ -11,6 +11,7 @@
   "dependencies": {
     "@astrojs/mdx": "^2.0.5",
     "@astrojs/react": "^3.0.9",
+    "@fontsource/libre-barcode-128-text": "^5.0.17",
     "@fontsource/nanum-gothic-coding": "^5.0.17",
     "@fontsource/nanum-myeongjo": "^5.0.17",
     "@fontsource/orbit": "^5.0.4",

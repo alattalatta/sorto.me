@@ -1,5 +1,8 @@
 ---
+import { Image } from 'astro:assets'
 import type { CollectionEntry } from 'astro:content'
+
+import ContentBody from './ContentBody.astro'
 
 interface Props {
   post: CollectionEntry<'posts'>
@@ -10,25 +13,47 @@ const { Content } = await post.render()
 ---
 
 <article aria-labelledby="title">
-  <h1 id={post.slug}>{post.data.title}</h1>
-  <div>
-    <Content />
-  </div>
+  <header>
+    <Image alt="" class="thumbnail" src={post.data.image} />
+    <hgroup>
+      <h1 id={post.slug}>{post.data.title}</h1>
+      <time>{post.slug.split('--')[0]}</time>
+    </hgroup>
+  </header>
+  <ContentBody content={Content} />
 </article>
 
 <style>
   article {
-    display: grid;
+    max-width: 1120px;
     grid-column: main / full-end;
     grid-row: nav / footer;
-    grid-template-rows: subgrid;
+  }
+
+  .thumbnail {
+    aspect-ratio: 4 / 1;
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  hgroup {
+    display: flex;
+    justify-content: flex-end;
   }
 
   h1 {
-    display: flex;
-    align-items: center;
-    grid-row: nav;
-
+    font: 400 1.25em var(--display);
+    font-weight: 400;
     margin: 0;
+    padding: 0 1em;
+  }
+
+  time {
+    font:
+      2em 'Libre Barcode 128 Text',
+      sans-serif;
+    flex-shrink: 0;
   }
 </style>

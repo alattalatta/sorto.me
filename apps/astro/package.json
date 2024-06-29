@@ -17,6 +17,7 @@
     "@fontsource/nanum-myeongjo": "^5.0.18",
     "@fontsource/orbit": "^5.0.6",
     "@lib/mdx": "workspace:*",
+    "@mdn/browser-compat-data": "^5.1.6",
     "@types/mdast": "^4.0.4",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",

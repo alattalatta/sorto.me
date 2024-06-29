@@ -78,6 +78,9 @@ importers:
       '@lib/mdx':
         specifier: workspace:*
         version: link:../../packages/@lib/mdx
+      '@mdn/browser-compat-data':
+        specifier: ^5.1.6
+        version: 5.5.35
       '@types/mdast':
         specifier: ^4.0.4
         version: 4.0.4

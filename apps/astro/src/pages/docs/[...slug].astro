@@ -1,7 +1,9 @@
 ---
+import bcd from '@mdn/browser-compat-data' with { type: 'json' }
+import type { CompatData, Identifier } from '@mdn/browser-compat-data'
 import type { GetStaticPaths } from 'astro'
 import { getCollection } from 'astro:content'
-import ContentBody from 'components/ContentBody.astro'
+import Doc from 'components/Doc.astro'
 import Footer from 'components/Footer.astro'
 import Nav from 'components/Nav.astro'
 import PostGrid from 'components/PostGrid'
@@ -12,6 +14,10 @@ import { remark } from 'remark'
 import stripMarkdown from 'strip-markdown'
 import { select } from 'unist-util-select'
 
+const processor = remark()
+  .use(() => (root: Root) => select('paragraph', root) || root.children[0] || root)
+  .use(stripMarkdown)
+
 export const getStaticPaths = (async () => {
   return (await getCollection('docs')).map((entry) => ({
     params: { slug: entry.id.replace('.mdx', '') },
@@ -20,11 +26,6 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths
 
 const { entry } = Astro.props
-const { Content } = await entry.render()
-
-const processor = remark()
-  .use(() => (root: Root) => select('paragraph', root) || root.children[0] || root)
-  .use(stripMarkdown)
 
 const description = await (async () => {
   if (entry.data.description) {
@@ -32,6 +33,24 @@ const description = await (async () => {
   }
 
   return escapeUTF8(await processor.process(entry.body as string).then((res) => String(res).trim()))
+})()
+
+const bcdData = (() => {
+  if (!entry.data.bcd) {
+    return null
+  }
+
+  const [category, ...identifiers] = entry.data.bcd.split('.')
+  return identifiers.reduce<Identifier | null>(
+    (prv, cur) => {
+      if (!prv) {
+        return null
+      }
+
+      return prv[cur]
+    },
+    bcd[category as Exclude<keyof CompatData, '__meta' | 'browsers'>]
+  )
 })()
 
 const posts = [...(await getCollection('posts'))].reverse()
@@ -62,21 +81,8 @@ const posts = [...(await getCollection('posts'))].reverse()
       slot="nav"
     />
     <main>
-      <article aria-labelledby={entry.slug}>
-        <header>
-          <h1 id={entry.slug}>{entry.data.title}</h1>
-        </header>
-        <ContentBody content={Content} />
-      </article>
+      <Doc bcd={bcdData} post={entry} />
     </main>
     <Footer slot="footer" />
   </PostGrid>
 </Shell>
-
-<style>
-  h1 {
-    font-size: 3em;
-    margin: 0;
-    padding: 2rem 3rem 1rem;
-  }
-</style>

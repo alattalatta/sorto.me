@@ -1,15 +1,16 @@
 ---
 import type { AstroComponentFactory } from 'astro/runtime/server/index.js'
 
-interface Props {
+type Props = {
+  components?: Record<string, unknown>
   content: AstroComponentFactory
-}
+} & Record<string, unknown>
 
-const { content: Content } = Astro.props
+const { content: Content, ...props } = Astro.props
 ---
 
 <div class="body">
-  <Content components={{ h1: 'h2', h2: 'h3', h3: 'h4', h4: 'h5' }} />
+  <Content {...props} components={{ ...props.components, h1: 'h2', h2: 'h3', h3: 'h4', h4: 'h5' }} />
 </div>
 
 <style>

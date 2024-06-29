@@ -1,0 +1,29 @@
+---
+import type { Identifier } from '@mdn/browser-compat-data'
+import type { CollectionEntry } from 'astro:content'
+
+import ContentBody from './ContentBody.astro'
+
+interface Props {
+  bcd: Identifier | null
+  post: CollectionEntry<'docs'>
+}
+
+const { bcd, post } = Astro.props
+const { Content } = await post.render()
+---
+
+<article aria-labelledby={post.slug}>
+  <header>
+    <h1 id={post.slug}>{post.data.title}</h1>
+  </header>
+  <ContentBody bcd={bcd} content={Content} />
+</article>
+
+<style>
+  h1 {
+    font-size: 3em;
+    margin: 0;
+    padding: 2rem 3rem 1rem;
+  }
+</style>

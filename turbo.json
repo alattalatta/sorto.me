@@ -1,8 +1,21 @@
 {
   "$schema": "https://turborepo.org/schema.json",
-  "pipeline": {
+  "tasks": {
+    "build": {
+      "dependsOn": [
+        "typecheck",
+        "^build"
+      ],
+      "outputs": [
+        "dist"
+      ]
+    },
     "dev": {
-      "cache": false
-    }
+      "cache": false,
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "typecheck": {}
   }
 }

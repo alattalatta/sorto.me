@@ -1,8 +1,8 @@
-/* eslint-disable @typescript-eslint/consistent-type-definitions */
 import type { Parent } from 'mdast'
 
 declare module 'mdast' {
   export interface Notebox extends Parent {
+    children: Array<BlockContent | DefinitionContent>;
     severity: 'note' | 'warn' | 'fatal'
     type: 'notebox'
   }
@@ -12,6 +12,7 @@ declare module 'mdast' {
   }
 
   export interface TermDescription extends Parent {
+    children: Array<BlockContent | DefinitionContent>;
     type: 'termDescription'
   }
 
@@ -20,6 +21,13 @@ declare module 'mdast' {
     type: 'definitionList'
   }
 
+
+  interface RootContentMap {
+    definitionList: DefinitionList
+    notebox: Notebox
+    term: Term
+    termDescription: TermDescription
+  }
   interface BlockContentMap {
     definitionList: DefinitionList
     notebox: Notebox

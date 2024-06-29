@@ -1,37 +1,27 @@
 import { head } from 'fp-ts/lib/Array'
 import * as O from 'fp-ts/lib/Option'
 import { identity, pipe } from 'fp-ts/lib/function'
-import Slugger from 'github-slugger'
-import type { List, Parent, PhrasingContent, Root, Text, Term, TermDescription, DefinitionList } from 'mdast'
+import type Slugger from 'github-slugger'
+import type { DefinitionList, List, Parent, PhrasingContent, RootContent, Term, TermDescription, Text } from 'mdast'
 import { toString } from 'mdast-util-to-string'
-import type { Plugin } from 'unified'
-import { visit } from 'unist-util-visit'
 
-import { isNodeList, isNodeParagraph, isNodeText } from '../remarkPlugin/refinements'
+import { isNodeList, isNodeParagraph, isNodeText } from './refinements'
 
-const remarkDefinitionList: Plugin<void[], Root> = () => {
-  const slugs = new Slugger()
-
-  return (tree) => {
-    visit(tree, 'list', (list: List, index: number, parent: Parent) => {
-      const bissectedDL = bissectDefinitionList(list, slugs)
-      if (index === null || bissectedDL.length === 0) {
-        return
-      }
-
-      const definitionList: DefinitionList = {
-        children: bissectedDL.reduce<(Term | TermDescription)[]>((curValue, [term, definitions]) => {
-          return [...curValue, term, ...definitions]
-        }, []),
-        type: 'definitionList',
-      }
-
-      parent.children[index] = definitionList
-    })
+export function definitionList(slugger: Slugger, list: List, index: number, parent: Parent): void {
+  const bissectedDL = bissectDefinitionList(list, slugger)
+  if (index === null || bissectedDL.length === 0) {
+    return
   }
-}
 
-export { remarkDefinitionList }
+  const defList: DefinitionList = {
+    children: bissectedDL.reduce<(Term | TermDescription)[]>((curValue, [term, definitions]) => {
+      return [...curValue, term, ...definitions]
+    }, []),
+    type: 'definitionList',
+  }
+
+  parent.children[index] = defList as unknown as RootContent
+}
 
 function bissectDefinitionList(
   node: List,

@@ -7,6 +7,7 @@ import react from '@astrojs/react'
 export default defineConfig({
   integrations: [
     mdx({
+      remarkPlugins: [],
       shikiConfig: {
         theme: 'catppuccin-latte',
       },

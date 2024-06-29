@@ -1,4 +1,8 @@
 {
   "extends": "tsconfig/library.json",
-  "include": ["."]
+  "include": ["src"],
+  "compilerOptions": {
+    "declaration": true,
+    "outDir": "dist"
+  }
 }

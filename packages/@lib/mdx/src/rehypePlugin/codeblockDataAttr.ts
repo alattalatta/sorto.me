@@ -9,7 +9,7 @@ const parseMeta = (meta: string): Properties =>
     // preserve hidden, convert others as data attributes
     .reduce((acc, [key, value]) => ({ ...acc, [key === 'hidden' ? key : `data-${key}`]: value ?? true }), {})
 
-const rehypeCodeblockDataAttr: Plugin<void[], Root> = () => {
+export const rehypeCodeblockDataAttr: Plugin<void[], Root> = () => {
   return (tree) => {
     visit(tree, 'element', (node: Element, _: number, parent: Element) => {
       if (node.tagName !== 'code') {
@@ -24,7 +24,7 @@ const rehypeCodeblockDataAttr: Plugin<void[], Root> = () => {
       }
 
       parent.properties = {
-        ...parseMeta((node.data?.meta as string) || ''),
+        ...parseMeta((node.data as Record<string, string> | undefined)?.meta || ''),
         className: node.properties?.className,
       }
 
@@ -33,5 +33,3 @@ const rehypeCodeblockDataAttr: Plugin<void[], Root> = () => {
     })
   }
 }
-
-export { rehypeCodeblockDataAttr }

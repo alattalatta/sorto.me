@@ -1,7 +1,7 @@
 import { head } from 'fp-ts/lib/Array'
 import * as O from 'fp-ts/lib/Option'
 import { identity, pipe } from 'fp-ts/lib/function'
-import type { Blockquote, Notebox, Parent } from 'mdast'
+import type { Blockquote, Notebox, Parent, RootContent } from 'mdast'
 
 import { isNodeParagraph, isNodeText } from './refinements'
 
@@ -29,7 +29,7 @@ function notebox(blockquote: Blockquote, index: number, parent: Parent): void {
     type: 'notebox',
   }
 
-  parent.children[index] = noteboxNode // TS is too slow to dig this deeper
+  parent.children[index] = noteboxNode as unknown as RootContent
 }
 
 export { notebox }

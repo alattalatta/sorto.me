@@ -2,10 +2,11 @@
 import type { Identifier } from '@mdn/browser-compat-data'
 import type { CollectionEntry } from 'astro:content'
 
+import BrowserCompat from './BrowserCompat'
 import ContentBody from './ContentBody.astro'
 
-interface Props {
-  bcd: Identifier | null
+type Props = {
+  bcd: { data: Identifier; key: string } | null
   post: CollectionEntry<'docs'>
 }
 
@@ -17,7 +18,13 @@ const { Content } = await post.render()
   <header>
     <h1 id={post.slug}>{post.data.title}</h1>
   </header>
-  <ContentBody bcd={bcd} content={Content} />
+  <ContentBody
+    bcd={bcd}
+    components={{
+      BrowserCompat,
+    }}
+    content={Content}
+  />
 </article>
 
 <style>

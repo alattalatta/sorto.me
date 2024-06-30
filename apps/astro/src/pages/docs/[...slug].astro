@@ -41,7 +41,7 @@ const bcdData = (() => {
   }
 
   const [category, ...identifiers] = entry.data.bcd.split('.')
-  return identifiers.reduce<Identifier | null>(
+  const data = identifiers.reduce<Identifier | null>(
     (prv, cur) => {
       if (!prv) {
         return null
@@ -51,6 +51,14 @@ const bcdData = (() => {
     },
     bcd[category as Exclude<keyof CompatData, '__meta' | 'browsers'>]
   )
+
+  if (data) {
+    return {
+      data,
+      key: identifiers.at(-1)!,
+    }
+  }
+  return null
 })()
 
 const posts = [...(await getCollection('posts'))].reverse()

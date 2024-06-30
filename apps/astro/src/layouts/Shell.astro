@@ -49,6 +49,7 @@ const { description = 'sorto.me', title = 'sorto.me' } = Astro.props
 
   body {
     margin: 0;
+    overflow-x: hidden;
   }
 
   a {
@@ -57,5 +58,15 @@ const { description = 'sorto.me', title = 'sorto.me' } = Astro.props
   a:hover,
   a:focus {
     color: #c72082;
+  }
+
+  .no-screen {
+    width: 1;
+    height: 1;
+    clip: rect(1px, 1px, 1px, 1px);
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    z-index: -9;
   }
 </style>

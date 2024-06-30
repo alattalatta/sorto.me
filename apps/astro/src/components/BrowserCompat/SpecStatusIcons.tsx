@@ -1,7 +1,6 @@
-import type { StatusBlock } from '@mdn/browser-compat-data/types'
+import type { StatusBlock } from '@mdn/browser-compat-data'
 
-import { Deprecated, Experimental, NonStandard } from '../StatusIcon'
-import * as styles from './SpecStatusIcons.css'
+import { Deprecated, Experimental, NonStandard } from './StatusIcon'
 
 const SpecStatusIcons: React.FC<{ status: StatusBlock | undefined }> = ({ status }) => {
   if (!status) {
@@ -9,7 +8,7 @@ const SpecStatusIcons: React.FC<{ status: StatusBlock | undefined }> = ({ status
   }
 
   return (
-    <span className={styles.minimal}>
+    <span>
       {!status.standard_track && <NonStandard />}
       {status.deprecated && <Deprecated />}
       {status.experimental && <Experimental />}

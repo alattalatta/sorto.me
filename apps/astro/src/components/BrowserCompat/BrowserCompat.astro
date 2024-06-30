@@ -1,0 +1,98 @@
+---
+import type { BrowserName, Identifier } from '@mdn/browser-compat-data'
+
+import CompatTable from './CompatTable'
+
+type Props = {
+  bcd: { data: Identifier; key: string } | null
+}
+
+const { bcd } = Astro.props
+
+const desktopBrowsers: [BrowserName, string][] = [
+  ['ie', 'IE'],
+  ['edge', 'Edge'],
+  ['chrome', 'Chrome'],
+  ['safari', 'Safari'],
+  ['firefox', 'Firefox'],
+]
+const mobileBrowsers: [BrowserName, string][] = [
+  ['safari_ios', 'iOS\nSafari'],
+  ['webview_android', 'Android\nWebView'],
+  ['chrome_android', 'Android\nChrome'],
+  ['firefox_android', 'Android\nFirefox'],
+  ['samsunginternet_android', 'Samsung\nInternet'],
+]
+const browsers = [...desktopBrowsers, ...mobileBrowsers]
+---
+
+{
+  bcd ? (
+    <figure>
+      <CompatTable className="bcd" client:idle {bcd} {browsers} />
+      <figcaption>
+        MDN{' '}
+        <a href="https://github.com/mdn/browser-compat-data" referrerpolicy="no-referrer">
+          <code>browser-compat-data</code>
+        </a>
+      </figcaption>
+    </figure>
+  ) : null
+}
+
+<style>
+  figure {
+    width: 100%;
+    margin-top: 2em !important;
+    overflow: auto;
+    position: relative;
+  }
+
+  figcaption {
+    font-size: 1em;
+    margin-top: 0.5em;
+  }
+</style>
+
+<style define:vars={{ desktops: desktopBrowsers.length }} is:global lang="scss">
+  .bcd {
+    border-collapse: collapse;
+    font-size: 0.75em;
+
+    th,
+    td {
+      border: 1px solid var(--primary);
+    }
+
+    :is(th, td):nth-child(6) {
+      border-right: 3px double black;
+    }
+
+    // browsers
+    thead th {
+      font: 1em var(--display);
+      padding: 0.5em 0;
+      vertical-align: bottom;
+    }
+
+    // feature names
+    tbody th {
+      width: 200px;
+      padding: 0.5em 1em;
+      text-align: left;
+    }
+
+    td {
+      font-family: var(--display);
+      vertical-align: top;
+    }
+
+    code {
+      background: #eff1f5;
+      border-radius: 4px;
+      color: #4c4f69;
+      display: inline-block;
+      padding: 0 0.15em;
+    }
+  }
+</style>

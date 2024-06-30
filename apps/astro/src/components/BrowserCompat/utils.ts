@@ -1,19 +1,14 @@
-import type { Identifier, SimpleSupportStatement, SupportStatement, VersionValue } from '@mdn/browser-compat-data/types'
+import type { Identifier, SimpleSupportStatement, SupportStatement, VersionValue } from '@mdn/browser-compat-data'
 
 /**
- * Map over a value that can be either an array or a single value.
+ * Get child identifier keys of a browser compatibility data.
  *
- * @param fn Mapping function to use.
- * @param maybeArray A value that _can_ be an array.
- * @returns
- * - When the value is an array, returns a result of `maybeArray.map(fn)`.
- * - Otherwise, returns a result of `[fn(maybeArray)]`. Note that it's returned as a single-element array.
+ * @param data The parent compatibility data's `Identifier` object.
+ * @returns All keys of `data` except `__compat`.
  */
-export function mapOver<T, U>(maybeArray: T | T[], fn: (val: T, index?: number) => U): U[] {
-  return Array.isArray(maybeArray) ? maybeArray.map(fn) : [fn(maybeArray, 0)]
+export function getSubIdentifierKeys(data: Identifier): string[] {
+  return Object.keys(data).filter((key) => key !== '__compat')
 }
-
-type SupportStatus = 'unknown' | 'yes' | 'no' | 'added' | 'removed'
 
 /**
  * Make a support status label for a browser support data.
@@ -31,18 +26,20 @@ export function supportLabel(statement: SupportStatement | undefined): string {
 
   switch (status) {
     case 'removed': {
-      return `${versionString(head.version_added)} ~ ${versionString(head.version_removed)}`
+      return `${versionString(head.version_added)}~${versionString(head.version_removed)}`
     }
     case 'unknown':
       return '?'
     case 'yes':
-      return '지원'
+      return '예'
     case 'no':
-      return '미지원'
+      return '-'
     case 'added':
       return versionString(head.version_added)
   }
 }
+
+type SupportStatus = 'unknown' | 'yes' | 'no' | 'added' | 'removed'
 
 /**
  * Determine the current status of a browser support data.
@@ -70,8 +67,6 @@ export function determineStatus(statement: SimpleSupportStatement): SupportStatu
   return 'added'
 }
 
-export * from './getCompatData'
-
 function versionString(version: VersionValue | undefined): string {
   if (typeof version === 'string') {
     return version
@@ -82,4 +77,8 @@ function versionString(version: VersionValue | undefined): string {
   }
 
   return '?'
+}
+
+export function hasSupportDetail(support: SupportStatement): boolean {
+  return Boolean(Array.isArray(support) || support.alternative_name || support.flags || support.notes)
 }

@@ -4,10 +4,10 @@ import type { BrowserName, Identifier } from '@mdn/browser-compat-data'
 import CompatTable from './CompatTable'
 
 type Props = {
-  bcd: { data: Identifier; key: string } | null
+  data: { data: Identifier; key: string } | null
 }
 
-const { bcd } = Astro.props
+const { data: bcd } = Astro.props
 
 const desktopBrowsers: [BrowserName, string][] = [
   ['ie', 'IE'],
@@ -42,9 +42,9 @@ const browsers = [...desktopBrowsers, ...mobileBrowsers]
 
 <style>
   figure {
-    width: 100%;
-    margin-top: 2em !important;
-    overflow: auto;
+    margin-top: 1em !important;
+    overflow: auto hidden;
+    padding-bottom: 0.5em;
     position: relative;
   }
 
@@ -62,6 +62,16 @@ const browsers = [...desktopBrowsers, ...mobileBrowsers]
     th,
     td {
       border: 1px solid var(--primary);
+      position: relative;
+
+      &::before,
+      &::after {
+        content: '';
+        mix-blend-mode: multiply;
+        inset: 0;
+        pointer-events: none;
+        position: absolute;
+      }
     }
 
     :is(th, td):nth-child(6) {
@@ -71,7 +81,7 @@ const browsers = [...desktopBrowsers, ...mobileBrowsers]
     // browsers
     thead th {
       font: 1em var(--display);
-      padding: 0.5em 0;
+      padding: 0.5em 0.25em;
       vertical-align: bottom;
     }
 
@@ -85,14 +95,6 @@ const browsers = [...desktopBrowsers, ...mobileBrowsers]
     td {
       font-family: var(--display);
       vertical-align: top;
-    }
-
-    code {
-      background: #eff1f5;
-      border-radius: 4px;
-      color: #4c4f69;
-      display: inline-block;
-      padding: 0 0.15em;
     }
   }
 </style>

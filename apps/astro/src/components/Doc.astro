@@ -27,10 +27,14 @@ const { Content } = await post.render()
   />
 </article>
 
-<style>
+<style lang="scss">
   h1 {
     font-size: 3em;
     margin: 0;
     padding: 2rem 3rem 1rem;
+
+    @media (max-width: 1088px) {
+      padding: 2rem 1rem 1rem;
+    }
   }
 </style>

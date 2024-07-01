@@ -1,3 +1,7 @@
+.row:hover :is(th, td)::before {
+  background: #f0f0f0;
+}
+
 .supportDetail {
   padding: 1em;
 

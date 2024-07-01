@@ -7,16 +7,18 @@ import { determineStatus, hasSupportDetail, supportLabel } from './utils'
 type Props = {
   browser: BrowserName
   data: SupportStatement
-  onClick?: (browser: BrowserName, notes: SupportStatement) => void
+  open: boolean
+  onClick?: (browser: BrowserName, data: SupportStatement) => void
 }
 
-const CompatCell: React.FC<Props> = ({ browser, data, onClick }) => {
+const CompatCell: React.FC<Props> = ({ browser, data, open, onClick }) => {
   const sup = hasSupportDetail(data)
   const head = Array.isArray(data) ? data[0] : data
 
   return (
-    <td className={styles.root} data-variant={variantOf(head)}>
+    <td className={styles.root} data-open={open} data-variant={variantOf(head)}>
       <button
+        aria-expanded={open}
         className={styles.cell}
         title={sup ? '특이사항 있음. 세부사항 열기/닫기' : '세부사항 열기/닫기'}
         type="button"

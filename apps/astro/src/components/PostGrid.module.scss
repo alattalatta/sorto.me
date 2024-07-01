@@ -3,10 +3,10 @@
 
   min-height: 100dvh;
   display: grid;
-  grid-template-columns: [nav] 20rem [body] 1fr;
+  grid-template-columns: [nav] 20rem [body] calc(100vw - 20rem);
 
   @media (max-width: 1088px) {
-    grid-template-columns: [nav] 2rem [body] 1fr;
+    grid-template-columns: [nav] 2rem [body] calc(100vw - 2rem);
   }
 }
 
@@ -36,11 +36,11 @@
     &:focus-within {
       transform: translateX(0);
     }
-
-    &:focus-within + .opener {
-      display: none;
-    }
   }
+}
+
+.navWrap:focus-within + .opener {
+  display: none;
 }
 
 .opener {
@@ -68,6 +68,5 @@
 
 .body {
   border-left: 1px solid currentColor;
-  display: grid;
   grid-column: body;
 }

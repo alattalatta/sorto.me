@@ -2,7 +2,7 @@ import type { BrowserName, Identifier, SupportStatement } from '@mdn/browser-com
 import { resolve } from 'k-popo'
 import { Fragment, useEffect, useRef, useState } from 'react'
 
-import CompatCells, { mapOver } from './CompatCells'
+import CompatCell from './CompatCell'
 import styles from './CompatRow.module.scss'
 import SpecStatusIcons from './SpecStatusIcons'
 import { NonStandard } from './StatusIcon'
@@ -55,7 +55,7 @@ const CompatRow: React.FC<Props> = ({ bcd: { data: bcd, key }, browsers, depth =
   return (
     <>
       {compat && (
-        <tr ref={$row} data-depth={depth}>
+        <tr ref={$row} className={styles.row} data-depth={depth}>
           <th>
             {compat?.description ? (
               <span dangerouslySetInnerHTML={{ __html: compat.description }} />
@@ -64,7 +64,15 @@ const CompatRow: React.FC<Props> = ({ bcd: { data: bcd, key }, browsers, depth =
             )}
             <SpecStatusIcons status={compat.status} />
           </th>
-          <CompatCells browsers={browsers} supportsMap={compat.support} onClick={setSupportDetail} />
+          {browsers.map(([browser]) => (
+            <CompatCell
+              key={browser}
+              browser={browser}
+              data={compat.support[browser]!}
+              open={supportDetail?.[0] === browser}
+              onClick={setSupportDetail}
+            />
+          ))}
         </tr>
       )}
       {supportDetailOpen && (
@@ -126,3 +134,16 @@ const CompatRow: React.FC<Props> = ({ bcd: { data: bcd, key }, browsers, depth =
 }
 
 export default CompatRow
+
+/**
+ * Map over a value that can be either an array or a single value.
+ *
+ * @param fn Mapping function to use.
+ * @param maybeArray A value that _can_ be an array.
+ * @returns
+ * - When the value is an array, returns a result of `maybeArray.map(fn)`.
+ * - Otherwise, returns a result of `[fn(maybeArray)]`. Note that it's returned as a single-element array.
+ */
+export function mapOver<T, U>(maybeArray: T | T[], fn: (val: T, index?: number) => U): U[] {
+  return Array.isArray(maybeArray) ? maybeArray.map(fn) : [fn(maybeArray, 0)]
+}

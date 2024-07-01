@@ -13,14 +13,19 @@ const { content: Content, ...props } = Astro.props
   <Content {...props} components={{ ...props.components, h1: 'h2', h2: 'h3', h3: 'h4', h4: 'h5' }} />
 </div>
 
-<style>
+<style lang="scss">
   .body {
     font-family: var(--serif);
     font-size: 1.2em;
     line-height: 1.5;
     padding: 2rem 3rem 3rem;
+
+    @media (max-width: 1088px) {
+      padding: 2rem 1rem 3rem;
+    }
   }
-  .body :global(p:first-child) {
+
+  .body :global(*:first-child) {
     margin-top: 0;
   }
 
@@ -36,6 +41,14 @@ const { content: Content, ...props } = Astro.props
     font-style: normal;
   }
 
+  .body :global(code:not(pre > code)) {
+    background: #9f9f9f27;
+    border-radius: 4px;
+    display: inline-block;
+    padding: 0 0.15em;
+    text-decoration: inherit;
+  }
+
   .body :global(figure) {
     margin: 1em 0;
   }
@@ -48,6 +61,13 @@ const { content: Content, ...props } = Astro.props
   }
   .body :global(h4) {
     font-size: 1em;
+  }
+
+  .body :global(p) {
+    margin: 0;
+  }
+  .body :global(* + p) {
+    margin-top: 1em;
   }
 
   .body :global(pre) {
@@ -65,7 +85,7 @@ const { content: Content, ...props } = Astro.props
   }
 
   .body :global(.notebox) {
-    margin: 0;
+    margin: 1em 0;
     padding: 1em;
     position: relative;
   }

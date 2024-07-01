@@ -9,7 +9,7 @@ export const DOCS_MDX_COMPONENTS = Object.freeze({
   img: Image,
   BrowserCompat: dynamic(() => import('./BrowserCompat')),
   CSSDemo: dynamic(() => import('./CSSDemo')),
-  HTMLDemo: dynamic(() => import('./HTMLDemo')),
+  HTMLDemo: dynamic(() => import('../../../../apps/astro/src/components/HTMLDemo')),
   LiveExample: dynamic(() => import('./LiveExample')),
   Spec: dynamic(() => import('./Spec')),
   Experimental,

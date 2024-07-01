@@ -1,0 +1,9 @@
+---
+import HTMLDemoImpl, { type HTMLDemoImplProps } from './HTMLDemoImpl'
+
+type Props = HTMLDemoImplProps
+---
+
+<HTMLDemoImpl client:idle {...Astro.props}>
+  <slot />
+</HTMLDemoImpl>

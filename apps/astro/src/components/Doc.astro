@@ -5,6 +5,7 @@ import type { CollectionEntry } from 'astro:content'
 import BrowserCompat from './BrowserCompat'
 import ContentBody from './ContentBody.astro'
 import LiveExample from './LiveExample'
+import HTMLDemo from './HTMLDemo/HTMLDemo.astro'
 
 type Props = {
   bcd: { data: Identifier; key: string } | null
@@ -23,6 +24,7 @@ const { Content } = await post.render()
     bcd={bcd}
     components={{
       BrowserCompat,
+      HTMLDemo,
       LiveExample,
     }}
     content={Content}

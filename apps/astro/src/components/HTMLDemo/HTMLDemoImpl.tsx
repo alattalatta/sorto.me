@@ -1,14 +1,14 @@
 import { Children, cloneElement, isValidElement, useEffect, useMemo, useRef, useState } from 'react'
 
-import * as styles from './HTMLDemo.css'
-import LiveCode from './LiveCode'
+import styles from './HTMLDemoImpl.module.scss'
+import LiveCode from '../LiveCode'
 
-type Props = {
+export type HTMLDemoImplProps = {
   children: React.ReactNode
   height?: number
 }
 
-const HTMLDemo: React.FC<Props> = ({ children: childrenProp, height }) => {
+const HTMLDemoImpl: React.FC<HTMLDemoImplProps> = ({ children, height }) => {
   const rootRef = useRef<HTMLElement>(null)
 
   const [currentLang, setCurrentLang] = useState<'css' | 'html' | 'js'>('html')
@@ -28,29 +28,18 @@ const HTMLDemo: React.FC<Props> = ({ children: childrenProp, height }) => {
         js: [],
       }
 
-      for (const block of rootRef.current.querySelectorAll('code')) {
-        const language = block.classList.value.match(/language-(\w+)/)?.[1] as 'css' | 'html' | 'js'
+      for (const block of rootRef.current.querySelectorAll('pre')) {
+        const language = block.dataset.language as 'css' | 'html' | 'js' | undefined
+        if (!language) {
+          continue
+        }
+
         result[language].push(block.textContent || '')
       }
 
       setCodes(result)
     }
-  }, [childrenProp])
-
-  const children = Children.map(childrenProp, (child) => {
-    if (isValidElement(child)) {
-      const { className, ...rest } = child.props as Record<string, unknown> & { className: string }
-      const hidden = !className.includes(`language-${currentLang}`)
-
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-explicit-any
-      return cloneElement(child as any, {
-        className,
-        hidden,
-        ...rest,
-      })
-    }
-    return child
-  })
+  }, [children])
 
   return (
     <figure ref={rootRef} aria-label="데모" className={styles.root}>
@@ -74,11 +63,15 @@ const HTMLDemo: React.FC<Props> = ({ children: childrenProp, height }) => {
           )}
         </div>
       )}
-      <div className={styles.codes} style={{ gridArea: containsMultipleLangs ? undefined : 'span 2' }}>
+      <div
+        className={styles.codes}
+        data-lang={currentLang}
+        style={{ gridArea: containsMultipleLangs ? undefined : 'span 2' }}
+      >
         {children}
       </div>
     </figure>
   )
 }
 
-export default HTMLDemo
+export default HTMLDemoImpl

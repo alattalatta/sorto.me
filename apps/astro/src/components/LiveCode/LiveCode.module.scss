@@ -1,0 +1,41 @@
+.root {
+  display: flex;
+  position: relative;
+}
+
+.frame {
+  width: 100%;
+  background: none;
+  border: none;
+  display: block;
+  transition: opacity 0.25s ease-out;
+
+  &[data-loading='true'] {
+    opacity: 0;
+  }
+
+  &[data-loading='false'] {
+    opacity: 1;
+  }
+}
+
+.loadingMessage {
+  color: #f8f8f2;
+  display: flex;
+  align-items: center;
+  font-size: 0.75rem;
+  margin: 0;
+  padding-left: 1.25rem;
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  transition: opacity 0.25s ease-out;
+
+  &[data-loading='true'] {
+    opacity: 1;
+  }
+
+  &[data-loading='false'] {
+    opacity: 0;
+  }
+}

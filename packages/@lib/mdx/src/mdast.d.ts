@@ -3,6 +3,11 @@
 import type { Parent } from 'mdast'
 
 declare module 'mdast' {
+  export interface Box extends Parent {
+    children: Array<BlockContent | DefinitionContent>;
+    type: 'box'
+  }
+
   export interface Notebox extends Parent {
     children: Array<BlockContent | DefinitionContent>;
     severity: 'note' | 'warn' | 'fatal'

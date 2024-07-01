@@ -74,13 +74,28 @@ const { content: Content, ...props } = Astro.props
     border-radius: 0.75em / 1.5em;
     padding: 1em;
   }
-  .body :global(.codevar pre) {
+  .body :global(.codewrap) {
+    margin: 1em 0;
+  }
+  .body :global(.codewrap::before) {
+    font: 0.75em var(--display);
+    margin-left: 1em;
+  }
+  .body :global(.codewrap pre) {
     margin: 0;
   }
-  .body :global(.codevar-good pre) {
+  .body :global(.codewrap[data-variant='good']::before) {
+    content: 'good';
+    color: rgb(17, 188, 88);
+  }
+  .body :global(.codewrap[data-variant='good'] pre) {
     outline: 2px solid rgb(17, 188, 88);
   }
-  .body :global(.codevar-bad pre) {
+  .body :global(.codewrap[data-variant='bad']::before) {
+    content: 'bad';
+    color: rgb(241, 73, 48);
+  }
+  .body :global(.codewrap[data-variant='bad'] pre) {
     outline: 2px solid rgb(241, 73, 48);
   }
 

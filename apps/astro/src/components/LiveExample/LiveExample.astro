@@ -1,0 +1,9 @@
+---
+import LiveExampleImpl, { type LiveExampleImplProps } from './LiveExampleImpl'
+
+type Props = LiveExampleImplProps
+---
+
+<div>
+  <LiveExampleImpl client:idle {...Astro.props} />
+</div>

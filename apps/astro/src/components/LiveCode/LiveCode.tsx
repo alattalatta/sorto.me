@@ -1,9 +1,8 @@
-import clsx from 'clsx'
 import { useEffect, useId, useReducer, useRef, useState } from 'react'
 
-import * as styles from './LiveCode.css'
+import styles from './LiveCode.module.scss'
 
-type Language = 'css' | 'html' | 'js'
+export type Language = 'css' | 'html' | 'js'
 
 type Props = {
   className?: string
@@ -81,18 +80,19 @@ const LiveCode: React.FC<Props> = ({
   return (
     <div
       ref={rootRef}
-      className={clsx(styles.root, className)}
+      className={`${styles.root} ${className}`}
       style={{ height: height && `${height / 16}rem`, minHeight: minHeight && `${minHeight / 16}rem` }}
     >
       {intersected && (
         <iframe
           ref={frameRef}
-          className={styles.frame({ loading })}
+          className={styles.frame}
+          data-loading={loading}
           src={`/frame?id=${id}${light ? '&forceLightTheme' : ''}`}
           title="예제"
         />
       )}
-      <p className={styles.loadingMessage({ loading })}>
+      <p className={styles.loadingMessage} data-loading={loading}>
         <span className={styles.spinner} />
         불러오는 중...
       </p>
@@ -101,7 +101,6 @@ const LiveCode: React.FC<Props> = ({
 }
 
 export default LiveCode
-export type { Language }
 
 function serializeSrc(css: readonly string[], html: readonly string[], js: readonly string[]): string {
   const view = html.join('')

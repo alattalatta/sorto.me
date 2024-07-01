@@ -1,21 +1,19 @@
-import * as noScreen from '@lib/ui/noScreen.css'
-
+import styles from './LiveExampleImpl.module.scss'
+import LiveCode from '../LiveCode'
 import { useCodeBlockGroup } from '../useCodeBlockGroup'
-import LiveCode from './LiveCode'
-import * as styles from './LiveExample.css'
 
-type Props = {
+export type LiveExampleImplProps = {
   height?: number
   light?: boolean
   name: string
 }
 
-const LiveExample: React.FC<Props> = ({ height = 240, light, name }) => {
+const LiveExampleImpl: React.FC<LiveExampleImplProps> = ({ height = 240, light, name }) => {
   const codes = useCodeBlockGroup(name)
 
   return (
     <figure className={styles.root}>
-      <figcaption className={noScreen.root}>실행 결과</figcaption>
+      <figcaption className="no-screen">실행 결과</figcaption>
       <div className={styles.wrap} style={{ height: `${height / 16}rem` }}>
         <LiveCode codes={codes} height={height} light={light} />
       </div>
@@ -23,4 +21,4 @@ const LiveExample: React.FC<Props> = ({ height = 240, light, name }) => {
   )
 }
 
-export default LiveExample
+export default LiveExampleImpl

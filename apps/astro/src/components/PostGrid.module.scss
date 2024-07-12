@@ -39,6 +39,9 @@
   }
 }
 
+.navWrap {
+  height: 100%;
+}
 .navWrap:focus-within + .opener {
   display: none;
 }

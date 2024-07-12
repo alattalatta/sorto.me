@@ -1,8 +1,8 @@
-All MDX files under `docs/` are derivated works from [MDN](https://developer.mozilla.org/), licensed under [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/) for prose contents and [CC0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) for code examples. See [https://github.com/mdn/content/blob/main/LICENSE.md](https://github.com/mdn/content/blob/main/LICENSE.md).
+All MDX files under `apps/main/src/content/docs/` are derivated works from [MDN](https://developer.mozilla.org/), licensed under [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/) for prose contents and [CC0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) for code examples. See [https://github.com/mdn/content/blob/main/LICENSE.md](https://github.com/mdn/content/blob/main/LICENSE.md).
 
 For a list of MDN contributors and a link to the work, please consult each page's license notice.
 
-Contents under `apps/main/contents` and `apps/main/public/gen` are licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) unless otherwise noted in itself or its neighboring `LICENSE.md`.
+Contents under `apps/main/src/content/posts/` and `apps/main/public` are licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) unless otherwise noted in itself or its neighboring `LICENSE.md`.
 
 ```
 By exercising the Licensed Rights (defined below), You accept and agree to be bound by the terms and conditions of this Creative Commons Attribution-ShareAlike 4.0 International Public License ("Public License"). To the extent this Public License may be interpreted as a contract, You are granted the Licensed Rights in consideration of Your acceptance of these terms and conditions, and the Licensor grants You such rights in consideration of benefits the Licensor receives from making the Licensed Material available under these terms and conditions.

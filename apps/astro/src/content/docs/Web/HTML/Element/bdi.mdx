@@ -6,9 +6,7 @@ bcd: html.elements.bdi
 
 **HTML `<bdi>` 요소**는 브라우저가 [유니코드 양방향 알고리즘](https://www.unicode.org/reports/tr9/)(BiDi)을 적용할 때, 이 요소의 콘텐츠를 주변 텍스트와 별도로 취급하도록 설정합니다. 웹사이트에서 동적으로 텍스트를 삽입하는데, 텍스트의 쓰기 방향은 알지 못할 때 유용합니다.
 
-<HTMLDemo height={190}>
-
-```html
+```html hidden name=demo
 <h1>세계 챔피언십 순위</h1>
 <ul>
   <li><bdi class="name">Evil Steven</bdi>: 1등</li>
@@ -19,13 +17,13 @@ bcd: html.elements.bdi
 </ul>
 ```
 
-```css
+```css hidden name=demo
 .name {
   color: crimson;
 }
 ```
 
-</HTMLDemo>
+<LiveExample height={220} lang="html" name="demo" />
 
 양방향 텍스트는 좌측에서 우측(LTR)으로 정렬하는 문자 시퀀스와, 우측에서 좌측(RTL)으로 정렬하는 문자 시퀀스가 함께 존재할 수 있는 텍스트로서, 대표적으로 영어 안에 배치한 아랍어 인용문이 있습니다. 브라우저는 양방향 알고리즘을 구현해 이런 상황을 처리합니다. 양방향 알고리즘에서, 각각의 문자는 암시적으로 방향성을 지닙니다. 예컨대 라틴 문자는 LTR, 아랍 문자는 RTL로 취급합니다. 공백이나 몇몇 문장 부호와 같은 일부 문자는 중립으로 취급해서, 주변 문자의 방향을 따라갑니다.
 
@@ -50,7 +48,7 @@ EMBEDDED-TEXT: 1등
 
 `EMBEDDED-TEXT`의 방향을 사전에 알고 있으면 `<span>`으로 감싸서 [`dir`](../Global_attributes#term-dir) 특성을 지정해 해결할 수 있는 문제입니다. 그러나, `EMBEDDED-TEXT`를 데이터베이스에서 읽어온다거나 사용자의 입력에서 가져와야 해서 방향을 알 수 없으면 `<bdi>`를 사용해 `EMBEDDED-TEXT`가 주변 텍스트의 방향성을 바꾸지 않도록 해야 합니다.
 
-CSS의 `[unicode-bidi](https://developer.mozilla.org/en-US/docs/Web/CSS/unicode-bidi): isolate` 선언을 `<span>` 등 기타 텍스트 형식 요소에 지정해도 같은 시각적 효과는 기대할 수 있지만, 이는 별도의 구문 의미가 없으며 브라우저는 CSS 스타일을 무시할 수 있으므로 HTML 저작자는 사용하지 말아야 하는 방법입니다.
+CSS의 [`unicode-bidi: isolate`](https://developer.mozilla.org/en-US/docs/Web/CSS/unicode-bidi) 선언을 `<span>` 등 기타 텍스트 형식 요소에 지정해도 같은 시각적 효과는 기대할 수 있지만, 이는 별도의 구문 의미가 없으며 브라우저는 CSS 스타일을 무시할 수 있으므로 HTML 저작자는 사용하지 말아야 하는 방법입니다.
 
 `<span dir="bidi">`도 `<bdi>`와 같은 효과를 갖지만 구문 의미가 보다 덜 분명합니다.
 

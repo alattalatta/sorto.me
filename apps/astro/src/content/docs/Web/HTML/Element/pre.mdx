@@ -6,15 +6,13 @@ bcd: html.elements.pre
 
 **HTML `<pre>` 요소**는 HTML 파일에 작성한 형태 그대로 나타내야 하는 사전 형식 지정 텍스트를 나타냅니다. 텍스트는 보통 고정폭 글꼴을 사용해 렌더링하는데, 요소 내의 공백 문자도 그대로 유지합니다.
 
-<HTMLDemo height={200}>
-
-```css
+```css hidden name=demo
 figure {
   margin: 0;
 }
 ```
 
-```html
+```html hidden name=demo
 <figure>
   <pre>
 앵무 ※ 두 마리
@@ -28,7 +26,7 @@ figure {
 </figure>
 ```
 
-</HTMLDemo>
+<LiveExample height={240} lang="html" name="demo" />
 
 # 특성
 
@@ -42,7 +40,7 @@ figure {
 
 [`<figure>`](./figure)와 [`<figcaption>`](./figcaption) 요소를 조합하고, [`id` 특성](/docs/Web/HTML/Global_attributes#term-id)과 ARIA `role`, `aria-labelledby` 특성으로 보충하면 스크린 리더가 `<pre>`를 이미지처럼 표현하도록 지정할 수 있습니다.
 
-```html name=accessibility
+```html hidden name=accessibility
 <figure role="img" aria-labelledby="cow-caption">
   <pre>
   _______________________

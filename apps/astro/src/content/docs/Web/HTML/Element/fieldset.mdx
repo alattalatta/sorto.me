@@ -6,9 +6,7 @@ bcd: html.elements.fieldset
 
 **HTML `<fieldset>` 요소**는 양식 내의 여러 컨트롤과 레이블을 그룹으로 묶기 위한 요소입니다.
 
-<HTMLDemo height={120}>
-
-```html
+```html hidden name=demo
 <form action="">
   <fieldset>
     <legend>좋아하는 맹수를 골라주세요</legend>
@@ -27,7 +25,7 @@ bcd: html.elements.fieldset
 </form>
 ```
 
-```css
+```css hidden name=demo
 legend {
   background: #dddd;
   color: #000;
@@ -35,7 +33,7 @@ legend {
 }
 ```
 
-</HTMLDemo>
+<LiveExample lang="html" name="demo" />
 
 위의 예제에서 볼 수 있듯, `<fieldset>` 요소는 HTML 양식의 일부를 묶을 수 있으며 안쪽의 [`<legend>`](./legend) 요소로 그룹에 이름을 붙일 수 있습니다.
 

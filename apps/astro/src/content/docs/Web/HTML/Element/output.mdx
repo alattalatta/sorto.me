@@ -29,24 +29,20 @@ bcd: html.elements.output
 
 이 예제에서는 0에서 100의 값을 지정 가능한 슬라이더 하나와, 사용자가 직접 숫자를 입력하는 칸 하나를 배치한 양식을 준비했습니다. 두 컨트롤의 값이 바뀔 때마다, 둘의 값을 더해서 `<output>` 요소에 출력합니다.
 
-### HTML
-
-```html name=basic
+```html hidden name=basic
 <form>
   <input type="range" id="b" name="b" value="50" /> + <input type="number" id="a" name="a" value="10" /> =
   <output name="result" for="a b">60</output>
 </form>
 ```
 
-### JavaScript
-
-```js name=basic
+```js hidden name=basic
 document.querySelector('form').addEventListener('input', function () {
   this.result.value = Number(this.a.value) + Number(this.b.value)
 })
 ```
 
-<LiveExample height={80} name="basic" />
+<LiveExample height={140} name="basic" />
 
 # 접근성 고려사항
 

@@ -6,16 +6,14 @@ bcd: html.elements.summary
 
 **HTML `<summary>` 요소**는 [`<details>`](./details)가 생성하는 위젯의 내용에 대한 설명이나 범례 등을 제공합니다. `<summary>` 요소를 클릭하면 부모 `<details>`가 열림과 닫힘 상태 사이를 전환합니다.
 
-<HTMLDemo height={120}>
-
-```html
+```html hidden name=demo
 <details>
   <summary>사과의 효능</summary>
   아침에 사과 한 개면...
 </details>
 ```
 
-```css
+```css hidden name=demo
 details {
   border: 1px solid #aaa;
   border-radius: 4px;
@@ -38,7 +36,7 @@ details[open] summary {
 }
 ```
 
-</HTMLDemo>
+<LiveExample height={180} lang="html" name="demo" />
 
 # 특성
 

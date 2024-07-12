@@ -19,11 +19,11 @@ const CompatRow: React.FC<Props> = ({ bcd: { data: bcd, key }, browsers, depth =
   const $row = useRef<HTMLTableRowElement | null>(null)
   const $supDetail = useRef<HTMLTableRowElement | null>(null)
 
-  const [supportDetail, setSupportDetailImpl] = useState<readonly [browser: string, support: SupportStatement] | null>(
-    null,
-  )
+  const [supportDetail, setSupportDetailImpl] = useState<
+    readonly [browser: string, support: SupportStatement | undefined] | null
+  >(null)
   const supportDetailOpen = !!supportDetail
-  const setSupportDetail = (browser: BrowserName, support: SupportStatement) => {
+  const setSupportDetail = (browser: BrowserName, support: SupportStatement | undefined) => {
     if (supportDetail && browser === supportDetail[0]) {
       return setSupportDetailImpl(null)
     }
@@ -83,35 +83,41 @@ const CompatRow: React.FC<Props> = ({ bcd: { data: bcd, key }, browsers, depth =
               {mapOver(supportDetail[1], (support, index) => (
                 <Fragment key={index}>
                   <dt>{supportLabel(support)}</dt>
-                  {support.flags &&
-                    mapOver(support.flags, (flag) => (
-                      <dd key={flag.name}>
-                        <code>{flag.name}</code> 플래그를{' '}
-                        {flag.value_to_set && (
-                          <>
-                            <code>{flag.value_to_set}</code>
-                            {resolve('(으)로', flag.value_to_set)?.[1]}
-                          </>
-                        )}{' '}
-                        설정해야 합니다.
-                      </dd>
-                    ))}
-                  {support.alternative_name && (
-                    <dd>
-                      <NonStandard /> 다른 이름 사용: <code>{support.alternative_name}</code>
-                    </dd>
+                  {support ? (
+                    <>
+                      {support.flags &&
+                        mapOver(support.flags, (flag) => (
+                          <dd key={flag.name}>
+                            <code>{flag.name}</code> 플래그를{' '}
+                            {flag.value_to_set && (
+                              <>
+                                <code>{flag.value_to_set}</code>
+                                {resolve('(으)로', flag.value_to_set)?.[1]}
+                              </>
+                            )}{' '}
+                            설정해야 합니다.
+                          </dd>
+                        ))}
+                      {support.alternative_name && (
+                        <dd>
+                          <NonStandard /> 다른 이름 사용: <code>{support.alternative_name}</code>
+                        </dd>
+                      )}
+                      {support.prefix && (
+                        <dd>
+                          <NonStandard /> 공급자 프리픽스 필요: <code>{support.prefix}</code>
+                        </dd>
+                      )}
+                      {!support.flags &&
+                        !support.alternative_name &&
+                        !support.prefix &&
+                        mapOver(support.notes, (note, subindex) => (
+                          <dd dangerouslySetInnerHTML={{ __html: note || '특이사항 없음.' }} key={subindex} />
+                        ))}
+                    </>
+                  ) : (
+                    <dd>데이터 없음.</dd>
                   )}
-                  {support.prefix && (
-                    <dd>
-                      <NonStandard /> 공급자 프리픽스 필요: <code>{support.prefix}</code>
-                    </dd>
-                  )}
-                  {!support.flags &&
-                    !support.alternative_name &&
-                    !support.prefix &&
-                    mapOver(support.notes, (note, subindex) => (
-                      <dd dangerouslySetInnerHTML={{ __html: note || '특이사항 없음.' }} key={subindex} />
-                    ))}
                 </Fragment>
               ))}
             </dl>

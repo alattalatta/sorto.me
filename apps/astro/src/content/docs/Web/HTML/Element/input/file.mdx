@@ -5,9 +5,7 @@ bcd: html.elements.input.type_file
 
 **`file` 유형의 [`<input>`](../input) 요소**는 사용자가 기기의 저장소에서 파일을 선택할 수 있는 컨트롤입니다. 선택한 파일은 [양식 제출](https://developer.mozilla.org/en-US/docs/Learn/Forms)을 통해 서버로 업로드하거나, [File API](https://developer.mozilla.org/en-US/docs/Web/API/File_API/Using_files_from_web_applications)를 사용한 JavaScript로 조작할 수 있습니다.
 
-<HTMLDemo height={60}>
-
-```html
+```html hidden name=demo
 <label for="profile">프로필 이미지를 선택하세요:
   <input type="file"
          id="profile"
@@ -15,7 +13,7 @@ bcd: html.elements.input.type_file
 </label>
 ```
 
-</HTMLDemo>
+<LiveExample height={140} lang="html" name="demo" />
 
 # 값
 
@@ -38,6 +36,7 @@ bcd: html.elements.input.type_file
     ```
 
 - : `capture`
+
   - [`accept`](#term-accept) 특성이 이미지 또는 비디오를 허용하는 경우, `capture`는 이미지 또는 비디오를 촬영할 때 사용할 카메라를 지정합니다.
 
     - `user`: 사용자를 마주보는 카메라와 마이크를 사용합니다.
@@ -75,29 +74,21 @@ bcd: html.elements.input.type_file
 
 ## 여러 파일 받기
 
-[`multiple` 특성](#term-multiple)을 추가하면 다수의 파일을 선택할 수 있습니다.
+[`multiple` 특성](#term-multiple)을 추가하면 다수의 파일을 선택할 수 있습니다. 현재 플랫폼에서 다수의 파일을 선택하는 방법(<kbd>Shift</kbd>, <kbd>Ctrl</kbd>, <kbd>Cmd</kbd> 등을 누른 채 선택 등)을 그대로 사용해서 다수의 파일을 `<input type="file">`에 제공할 수 있습니다.
 
-### HTML
-
-```html name=multiple
+```html hidden name=multiple
 <input id="file" type="file" multiple>
 <output id="output"></output>
 ```
 
-### CSS
-
-```css name=multiple
+```css hidden name=multiple
 #output {
   display: block;
   white-space: pre-wrap;
 }
 ```
 
-### JavaScript
-
-선택한 파일들의 이름을 출력하는 코드입니다.
-
-```js name=multiple
+```js hidden name=multiple
 const input = document.getElementById('file')
 const output = document.getElementById('output')
 
@@ -107,11 +98,7 @@ document.getElementById('file').addEventListener('input', (event) => {
 })
 ```
 
-### 결과
-
-플랫폼에서 다수의 파일을 선택하는 방법(<kbd>Shift</kbd>, <kbd>Ctrl</kbd>, <kbd>Cmd</kbd> 등을 누른 채 선택 등)을 그대로 사용해서 다수의 파일을 `<input type="file">`에 제공할 수 있습니다.
-
-<LiveExample height={120} name="multiple" />
+<LiveExample height={140} name="multiple" />
 
 # 명세
 

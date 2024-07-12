@@ -6,9 +6,7 @@ bcd: html.elements.dialog
 
 **HTML `<dialog>` 요소**는 대화상자와 경고창 등 상호작용 가능한 컴포넌트를 나타냅니다.
 
-<HTMLDemo height={180}>
-
-```html
+```html hidden name=demo
 <button id="dialog-opener" type="button">장바구니 열기</button>
 
 <dialog id="dialog">
@@ -21,7 +19,7 @@ bcd: html.elements.dialog
 </dialog>
 ```
 
-```css
+```css hidden name=demo
 dialog {
   width: 200px;
   border: 0;
@@ -38,7 +36,7 @@ ul {
 }
 ```
 
-```js
+```js hidden name=demo
 document.getElementById('dialog-opener').addEventListener('click', function() {
   document.getElementById('dialog').showModal()
 })
@@ -48,7 +46,7 @@ document.getElementById('dialog-closer').addEventListener('click', function() {
 })
 ```
 
-</HTMLDemo>
+<LiveExample height={240} lang="html" name="demo" />
 
 # 특성
 

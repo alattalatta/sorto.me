@@ -8,19 +8,17 @@ bcd: html.elements.ruby
 
 "루비"라는 이름은 활자 규격의 명칭에서 가져온 것입니다. 자세한 정보는 [위키백과의 루비 문자](https://ko.wikipedia.org/wiki/%EB%A3%A8%EB%B9%84_%EB%AC%B8%EC%9E%90)를 참고하세요.
 
-<HTMLDemo height={100}>
-
-```html
+```html hidden name=demo
 <ruby> 景 <rt>경</rt> 福 <rt>복</rt> 宮 <rt>궁</rt> </ruby>
 ```
 
-```css
+```css hidden name=demo
 ruby {
   font-size: 4em;
 }
 ```
 
-</HTMLDemo>
+<LiveExample height={140} lang="html" name="demo" />
 
 # 특성
 
@@ -28,11 +26,11 @@ ruby {
 
 # 예제
 
-```html name=char
+```html hidden name=char
 <ruby> 韓 <rp>(</rp><rt>한</rt><rp>)</rp> 國 <rp>(</rp><rt>국</rt><rp>)</rp> 語 <rp>(</rp><rt>어</rt><rp>)</rp> </ruby>
 ```
 
-```css name=char hidden
+```css editable=false name=char hidden
 body {
   font-size: 1.5em;
 }
@@ -42,11 +40,11 @@ body {
 
 ## 단어별 표기
 
-```html name=word
+```html hidden name=word
 <ruby> 韓國語 <rp>(</rp><rt>한국어</rt><rp>)</rp> </ruby>
 ```
 
-```css name=word hidden
+```css editable=false name=word hidden
 body {
   font-size: 1.5em;
 }

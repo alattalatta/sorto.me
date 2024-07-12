@@ -17,12 +17,11 @@
 .root {
   border: 1px solid #000;
   display: grid;
-  gap: 1em;
-  grid-template-columns: 1fr 1fr;
-}
+  grid-template-columns: 1fr 32px 1fr;
 
-.editor {
-  flex-basis: 33%;
+  &[data-editable='false'] {
+    grid-template-columns: 1fr;
+  }
 }
 
 .files {
@@ -58,13 +57,30 @@
   }
 }
 
+.arrow {
+  align-items: center;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+
+  &::after {
+    content: '>';
+  }
+}
+
 .monaco {
   margin-top: 4px;
+
+  & :global(.decorationsOverviewRuler) {
+    display: none !important;
+  }
 }
 
 .wrap {
   box-sizing: content-box;
-  flex-basis: 66%;
   overflow: hidden;
   position: relative;
 }

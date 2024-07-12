@@ -6,9 +6,7 @@ bcd: html.elements.select
 
 **HTML `<select>` 요소**는 여러 선택지 중 하나 이상을 선택할 수 있는 메뉴를 제공합니다.
 
-<HTMLDemo height={180}>
-
-```html
+```html hidden name=demo
 <label for="pet-select">애완동물:</label>
 <select name="pets" id="pet-select">
   <option value="" disabled selected>--선택해주세요--</option>
@@ -21,7 +19,7 @@ bcd: html.elements.select
 </select>
 ```
 
-</HTMLDemo>
+<LiveExample height={240} lang="html" name="demo" />
 
 위 예제는 접근성을 위해서 [`id` 특성](../Global_attributes#term-id)으로 [`<label>`](./label) 요소와 연결하고, 선택한 선택지를 서버로 제출할 때 사용할 이름을 [`name` 특성](#term-name)으로 지정하는 모습을 보입니다. 각각의 선택지는 `<select>` 안의 [`<option>`](./option)으로 정의합니다.
 
@@ -66,7 +64,7 @@ CSS로 `<select>` 요소에 스타일을 입히는 일은 어렵기로 악명 �
 
 ## 복수 선택과 선택지 그룹
 
-```html name=multiple
+```html hidden name=multiple
 <label>한 종류 이상의 반려동물을 선택하세요:
   <select name="pets" multiple size="4">
     <optgroup label="네발동물">
@@ -83,7 +81,7 @@ CSS로 `<select>` 요소에 스타일을 입히는 일은 어렵기로 악명 �
 </label>
 ```
 
-<LiveExample height={120} name="multiple" />
+<LiveExample height={180} name="multiple" />
 
 # 명세
 

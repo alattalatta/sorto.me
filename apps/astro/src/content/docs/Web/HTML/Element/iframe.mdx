@@ -6,9 +6,7 @@ bcd: html.elements.iframe
 
 **HTML `<iframe>` 요소**는 현재 페이지에 다른 브라우징 맥락, 즉 HTML 페이지를 삽입할 수 있습니다.
 
-<HTMLDemo height={240}>
-
-```html
+```html hidden name=demo
 <iframe
   title="인라인 프레임 예제"
   width="300"
@@ -17,7 +15,7 @@ bcd: html.elements.iframe
 ></iframe>
 ```
 
-</HTMLDemo>
+<LiveExample height={240} lang="html" name="demo" />
 
 `<iframe>`으로 삽입한 각각의 브라우징 맥락은 자신만의 세션 기록과 문서를 가집니다. 최상위 브라우징 맥락, 즉 아무데도 삽입되지 않은 브라우징 맥락은 대개 [`Window`](https://developer.mozilla.org/en-US/docs/Web/API/Window) 객체로 표현되는 브라우저 창입니다.
 

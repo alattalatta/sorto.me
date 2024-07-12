@@ -9,9 +9,7 @@ bcd: html.elements.input.type_color
 
 실제 컨트롤의 외형은 브라우저와 플랫폼에 따라서 모습이 크게 달라질 수 있습니다. 입력받은 값의 형식 검증을 내장한 것을 제외하면 평범한 텍스트 입력 칸일 수도 있고, 플랫폼의 표준 색 선택 도구를 제공할 수도 있고, 브라우저가 별도로 제공하는 색 선택 도구를 보여줄 수도 있습니다.
 
-<HTMLDemo height={200}>
-
-```html
+```html hidden name=demo
 <p>색을 결정하세요:</p>
 <div>
   <input type="color" id="head" name="head" value="#e66465">
@@ -23,13 +21,13 @@ bcd: html.elements.input.type_color
 </div>
 ```
 
-```css
+```css hidden name=demo
 input {
   margin: 0.4rem;
 }
 ```
 
-</HTMLDemo>
+<LiveExample height={240} lang="html" name="demo" />
 
 # 값
 
@@ -49,7 +47,7 @@ input {
 
 > [note] `<datalist>` 요소는 **제안**하는 값을 나타내며, 특정 값으로 입력을 **제한**하지 않습니다. `<input type="color">`에서도 마찬가지로, 사용자는 견본 색 외에도 색을 직접 선택할 수 있습니다.
 
-```html name=swatches
+```html hidden name=swatches
 <datalist id="list">
   <option>#ff0000</option>
   <option>#ee0000</option>
@@ -61,11 +59,11 @@ input {
 <input type="color" list="list" />
 ```
 
-<LiveExample name="swatches" height={60} />
+<LiveExample name="swatches" height={140} />
 
 # 명세
 
-[HTML Living Standard](https://html.spec.whatwg.org/multipage/input.html#color-state-(type=color))
+[HTML Living Standard](<https://html.spec.whatwg.org/multipage/input.html#color-state-(type=color)>)
 
 # 브라우저 호환성
 

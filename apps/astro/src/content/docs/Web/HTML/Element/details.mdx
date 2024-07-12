@@ -8,16 +8,14 @@ bcd: html.elements.details
 
 `<details>`가 생성하는 위젯은 열림과 닫힘 상태를 구분하기 위한 작은 삼각형과 그 옆의 레이블로 화면에 나타납니다. `<summary>` 요소의 콘텐츠가 위젯의 레이블로 사용됩니다.
 
-<HTMLDemo height={120}>
-
-```html
+```html hidden name=demo
 <details>
   <summary>사과의 효능</summary>
   아침에 사과 한 개면...
 </details>
 ```
 
-```css
+```css hidden name=demo
 details {
   border: 1px solid #aaa;
   border-radius: 4px;
@@ -40,7 +38,7 @@ details[open] summary {
 }
 ```
 
-</HTMLDemo>
+<LiveExample height={140} lang="html" name="demo" />
 
 닫힌 `<details>`는 삼각형과 [`<summary>`](./summary) 레이블만 표시합니다. (`<summary>`를 제공하지 않은 경우 사용자 에이전트가 정의한 문자열을 대신 보여줍니다.)
 
@@ -79,7 +77,7 @@ details.addEventListener('toggle', (event) => {
 
 [`open` 특성](#term-open)을 지정하면 위젯이 처음부터 열린 상태로 나타납니다.
 
-```html name=open
+```html hidden name=open
 <details open>
   <summary>시스템 요구사항</summary>
   <ul>
@@ -91,15 +89,13 @@ details.addEventListener('toggle', (event) => {
 </details>
 ```
 
-<LiveExample height={160} name="open" />
+<LiveExample height={240} name="open" />
 
 ## CSS 스타일링
 
-시스템 요구사항 예제에 스타일을 적용해서 탭 인터페이스처럼 보이도록 하는 예제입니다.
+시스템 요구사항 예제에 스타일을 적용해서 탭 인터페이스처럼 보이도록 하는 예제입니다. [`[open]` 선택자](https://developer.mozilla.org/ko/docs/Web/CSS/Attribute_selectors)로 열린 상태의 `<details>`를 선택할 수 있습니다.
 
-### HTML
-
-```html name=css
+```html hidden name=css
 <details>
   <summary>시스템 요구사항</summary>
   <ul>
@@ -111,11 +107,7 @@ details.addEventListener('toggle', (event) => {
 </details>
 ```
 
-### CSS
-
-[`[open]` 선택자](https://developer.mozilla.org/ko/docs/Web/CSS/Attribute_selectors)로 열린 상태의 `<details>`를 선택할 수 있습니다.
-
-```css name=css
+```css hidden name=css
 details {
   width: 620px;
   color: #000;
@@ -142,9 +134,7 @@ details[open] > summary {
 }
 ```
 
-### 결과
-
-<LiveExample height={160} name="css" />
+<LiveExample height={240} name="css" />
 
 ## 위젯 스타일링
 
@@ -152,9 +142,7 @@ details[open] > summary {
 
 `<summary>` 요소는 [`list-style-type`](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type), [`list-style-image`](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-image) 등을 포함해 [`list-style`](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style) 단축속성을 지원합니다. 따라서 `<summary>`에 `list-style: none`을 적용하면 위젯에서 삼각형을 아예 제거할 수 있습니다.
 
-### HTML
-
-```html name=list-style
+```html hidden name=list-style
 <details>
   <summary>시스템 요구사항</summary>
   <ul>
@@ -166,9 +154,7 @@ details[open] > summary {
 </details>
 ```
 
-### CSS
-
-```css name=list-style
+```css hidden name=list-style
 details {
   width: 620px;
   color: #000;
@@ -196,9 +182,7 @@ details[open] > summary {
 }
 ```
 
-### 결과
-
-<LiveExample height={160} name="list-style" />
+<LiveExample height={240} name="list-style" />
 
 # 명세
 

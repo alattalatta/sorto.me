@@ -6,16 +6,14 @@ bcd: html.elements.abbr
 
 HTML **`<abbr>`** 요소는 준말이나 머리글자를 나타냅니다. [`title`](../Global_attributes#term-title) 특성을 사용해서 준말의 전체 뜻이나 설명을 제공할 수 있습니다.
 
-<HTMLDemo height={80}>
-
-```html
+```html hidden name=demo
 <abbr title="HyperText Markup Language">HTML</abbr>에
 스타일을 적용하려면
 <abbr title="Cascading Style Sheet">CSS</abbr>를
 사용하세요.
 ```
 
-</HTMLDemo>
+<LiveExample height={120} name="demo" />
 
 # 특성
 
@@ -44,27 +42,27 @@ HTML **`<abbr>`** 요소는 준말이나 머리글자를 나타냅니다. [`titl
 
 별도의 설명 없이 준말의 존재만 나타낼 때는 `title` 특성 없는 `<abbr>`을 사용하세요.
 
-```html name=marking
+```html hidden name=marking
 <p>웹 페이지를 <abbr>HTML</abbr>로 만들어 보세요.</p>
 ```
 
-<LiveExample name="marking" height={80} />
+<LiveExample height={120} name="marking" />
 
 ## 설명 추가
 
 설명은 [`title`](../Global_attributes#term-title) 특성으로 제공할 수 있습니다. "HTML"에 마우스를 올려보세요.
 
-```html name=expansion
+```html hidden name=expansion
 <p>웹 페이지를 <abbr title="HyperText Markup Language">HTML</abbr>로 만들어 보세요.</p>
 ```
 
-<LiveExample name="expansion" height={80} />
+<LiveExample height={120} name="expansion" />
 
 ## 준말 정의
 
 `<abbr>`을 [`<dfn>`](./dfn)과 함께 사용해서 형식적으로 준말을 정의할 수 있습니다.
 
-```html name=dfn
+```html hidden name=dfn
 <p>
   <dfn id="title"><abbr title="HyperText Markup Language">HTML</abbr></dfn
   >은 웹 페이지의 구조와 의미를 부여하는 마크업 언어입니다.
@@ -76,7 +74,7 @@ HTML **`<abbr>`** 요소는 준말이나 머리글자를 나타냅니다. [`titl
 </p>
 ```
 
-<LiveExample name="dfn" height={120} />
+<LiveExample height={220} name="dfn" />
 
 # 접근성 고려사항
 

@@ -5,9 +5,7 @@ bcd: html.global_attributes.contenteditable
 
 HTML **`contenteditable`** [전역 특성](.)은 사용자가 요소를 편집할 수 있는지 지정하는 열거형 특성입니다.
 
-<HTMLDemo height={180}>
-
-```html
+```html hidden name=demo
 <blockquote contenteditable>
   <p>자신만의 명언을 적어보세요</p>
 </blockquote>
@@ -15,7 +13,7 @@ HTML **`contenteditable`** [전역 특성](.)은 사용자가 요소를 편집�
 <cite contenteditable>-- 이름을 적어주세요</cite>
 ```
 
-```css
+```css hidden name=demo
 blockquote {
   background: #eee;
   border-radius: 5px;
@@ -37,7 +35,7 @@ blockquote p::after {
 }
 ```
 
-</HTMLDemo>
+<LiveExample height={240} lang="html" name="demo" />
 
 가능한 값은 다음과 같습니다.
 

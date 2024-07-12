@@ -6,9 +6,7 @@ bcd: html.elements.ul
 
 **HTML `<ul>` 요소**는 정렬하지 않은 목록을 나타냅니다. 주로 구분점을 사용해 항목을 표현합니다.
 
-<HTMLDemo height={140}>
-
-```html
+```html hidden name=demo
 <p>태양계의 외행성:</p>
 <ul>
   <li>천왕성</li>
@@ -18,7 +16,7 @@ bcd: html.elements.ul
 </ul>
 ```
 
-</HTMLDemo>
+<LiveExample height={180} lang="html" name="demo" />
 
 # 특성
 
@@ -29,6 +27,7 @@ bcd: html.elements.ul
 - `<ul>` 요소는 순서가 무의미한 다수의 항목을 묶을 때 사용합니다. 대개 각각의 항목은 구분점을 사용해 나타내며, 점, 원, 사각형 등 다양한 형태를 취할 수 있습니다. 구분점의 형태는 HTML에서 정의하지 않고 CSS의 [`list-style-type`](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type)에서 결정합니다.
 - [`<ol>`](./ol)과 `<ul>`은 필요한 만큼 중첩할 수 있으며, 서로 혼합해서 중첩하는 것도 가능합니다.
 - `<ol>`과 `<ul>`은 둘 다 목록을 나타냅니다. 차이점은 `<ol>`에선 항목의 순서가 중요하다는 것입니다. 다음과 같은 목록에서는 순서가 중요합니다.
+
   - 레시피의 단계
   - 길 찾는 법
   - 함유량을 내림차순으로 정렬한 영양성분 목록

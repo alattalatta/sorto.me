@@ -5,9 +5,7 @@ bcd: html.elements.input.type_checkbox
 
 **`checkbox` 유형의 [`<input>`](../input) 요소**는 활성화 시 체크를 표시하는 박스로 렌더링 합니다. 서류에서 동의할 때 체크 표시를 하는 빈칸과 비슷합니다. 정확한 외형은 운영 체제의 설정과 현재 구동 중인 브라우저에 따라 다릅니다. 체크박스는 보통 정사각형이며 모서리는 둥글 수도 있습니다. 체크박스는 양식에서 하나의 값을 선택하거나 선택하지 않을 수 있는 방법을 제공합니다.
 
-<HTMLDemo height={200}>
-
-```html
+```html hidden name=demo
 <p>외형을 결정하세요:</p>
 <div>
   <input type="checkbox" id="scales" name="scales" checked>
@@ -19,13 +17,13 @@ bcd: html.elements.input.type_checkbox
 </div>
 ```
 
-```css
+```css hidden name=demo
 input {
   margin: 0.4rem;
 }
 ```
 
-</HTMLDemo>
+<LiveExample height={240} lang="html" name="demo" />
 
 > [note] [라디오 버튼](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio)은 체크박스와 비슷하지만, 한 가지 중요한 차이가 있습니다. 체크박스는 하나의 값을 선택 또는 해제할 수 있습니다. 반면 라디오 버튼은 다수가 하나의 그룹으로 묶이고, **그중에서 하나만** 선택할 수 있습니다. 즉, 다수의 체크박스는 모두 선택할 수 있지만, 다수의 라디오 버튼은 (한 그룹 안에서는) 하나만 선택할 수 있습니다.
 
@@ -74,7 +72,7 @@ input {
 
 다음은 사용자가 여러 보기 중에서 관심사를 원하는 만큼 선택할 수 있는 예제입니다.
 
-```html name=multiple
+```html hidden name=multiple
 <fieldset>
   <legend>관심사를 선택해주세요</legend>
   <div>
@@ -88,7 +86,7 @@ input {
 </fieldset>
 ```
 
-<LiveExample height={120} name="multiple" />
+<LiveExample height={180} name="multiple" />
 
 위 예제를 보면 두 개의 체크박스에 모두 같은 `name`을 지정한 것을 확인할 수 있습니다. 두 개의 체크박스를 모두 선택한 상태로 양식을 제출하게 되면, 서버가 받을 이름/값 쌍은 `interest=coding&interest=music`입니다. 이름인 `interest`가 반복해서 나타나는 점을 주목하세요. 서버에서는 이 문자열을 파싱할 때 마지막이나 맨 처음 `interest` 하나만 취하지 않고, 모든 값을 받을 수 있도록 주의해야 합니다.
 
@@ -110,7 +108,7 @@ request.args.getlist("interest") # [ "coding", "music" ]
 
 체크박스에 [`checked` 특성](#term-checked)을 추가하면 처음부터 체크된 상태로 나타나도록 할 수 있습니다.
 
-```html name=checked
+```html hidden name=checked
 <fieldset>
   <legend>관심사를 선택해주세요</legend>
   <div>
@@ -124,7 +122,7 @@ request.args.getlist("interest") # [ "coding", "music" ]
 </fieldset>
 ```
 
-<LiveExample height={120} name="checked" />
+<LiveExample height={180} name="checked" />
 
 ## 불확실한 상태의 체크박스
 
@@ -144,7 +142,7 @@ checkbox.indeterminate = true
 1. 체크한 항목의 수가 재료의 수와 같으면 제작법 체크박스를 체크합니다.
 1. 이외의 경우, 즉 체크한 항목의 수가 재료의 수보다 작으면 제작법 체크박스를 불확실한 상태로 만듭니다.
 
-```html name=indeterminate
+```html hidden name=indeterminate
 <fieldset>
   <legend>필요한 재료</legend>
   <input id="recipe" name="recipe" type="checkbox" />
@@ -167,7 +165,7 @@ checkbox.indeterminate = true
 </fieldset>
 ```
 
-```js name=indeterminate
+```js hidden name=indeterminate
 const recipe = document.querySelector('#recipe')
 const ingredients = document.querySelectorAll('ul input')
 
@@ -195,11 +193,11 @@ function updateDisplay() {
 }
 ```
 
-<LiveExample height={180} name="indeterminate" />
+<LiveExample height={240} name="indeterminate" />
 
 # 명세
 
-[HTML Living Standard](https://html.spec.whatwg.org/multipage/input.html#checkbox-state-(type=checkbox))
+[HTML Living Standard](<https://html.spec.whatwg.org/multipage/input.html#checkbox-state-(type=checkbox)>)
 
 # 브라우저 호환성
 

@@ -6,18 +6,16 @@ bcd: html.elements.source
 
 **HTML `<source>` 요소**는 [`<picture>`](./picture), [`<audio>`](./audio), [`<video>`](./video) 요소에 다수의 미디어 리소스를 지정할 때 사용합니다. 주로 같은 미디어 콘텐츠를 다양한 파일 형식으로 제공해서, 브라우저마다 다른 미디어 지원 범위에 대응하기 위해 사용합니다.
 
-<HTMLDemo>
-
-```html
+```html hidden name=demo
 <video controls width="125">
-  <source src="/gen/chestnut.webm" type="video/webm" />
-  <source src="/gen/chestnut.mp4" type="video/mp4" />
+  <source src="/assets/chestnut.webm" type="video/webm" />
+  <source src="/assets/chestnut.mp4" type="video/mp4" />
 
   죄송합니다. 브라우저가 비디오를 지원하지 않습니다.
 </video>
 ```
 
-</HTMLDemo>
+<LiveExample height={240} lang="html" name="demo" />
 
 # 특성
 

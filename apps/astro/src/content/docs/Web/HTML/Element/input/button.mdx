@@ -5,13 +5,11 @@ bcd: html.elements.input.type_button
 
 **`button` 유형의 [`<input>`](../input) 요소**는 웹 페이지의 어디에나 배치할 수 있는 간단한 버튼으로 렌더링됩니다. 버튼의 기능은 이벤트 처리기(보통 클릭 이벤트)를 부착해 직접 구현할 수 있습니다.
 
-<HTMLDemo height={60}>
-
-```html
+```html hidden name=demo
 <input type="button" value="즐겨찾기에 추가">
 ```
 
-```css
+```css hidden name=demo
 input[type="button"] {
   background: cornflowerblue;
   border: none;
@@ -33,7 +31,7 @@ input[type="button"]:active {
 }
 ```
 
-</HTMLDemo>
+<LiveExample height={140} lang="html" name="demo" />
 
 > [note] `<input type="button">`은 여전히 유효한 HTML 요소지만, 지금은 [`<button>`](../button) 요소가 버튼 생성에 선호됩니다. `<button>`의 레이블에는 임의의 HTML 코드를 사용할 수 있으므로 이미지 버튼도 쉽게 만들 수 있습니다.
 
@@ -41,7 +39,7 @@ input[type="button"]:active {
 
 `button` 유형의 [`value` 특성](../input#term-value)은 버튼의 레이블로 사용할 문자열이어야 합니다.
 
-```html name=button-value
+```html hidden name=button-value
 <input type="button" value="클릭하세요!">
 ```
 
@@ -49,7 +47,7 @@ input[type="button"]:active {
 
 `value`를 지정하지 않으면 빈 버튼을 생성합니다.
 
-```html name=button-valueless
+```html hidden name=button-valueless
 <input type="button">
 ```
 
@@ -61,7 +59,7 @@ input[type="button"]:active {
 
 # 명세
 
-[HTML Living Standard](https://html.spec.whatwg.org/multipage/input.html#button-state-(type=button))
+[HTML Living Standard](<https://html.spec.whatwg.org/multipage/input.html#button-state-(type=button)>)
 
 # 브라우저 호환성
 

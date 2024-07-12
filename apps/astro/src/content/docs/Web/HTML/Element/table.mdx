@@ -6,9 +6,7 @@ bcd: html.elements.table
 
 **HTML `<table>` 요소**는 표 데이터, 즉 칸의 행과 열로 이루어진 2차원 데이터를 나타냅니다.
 
-<HTMLDemo height={180}>
-
-```html
+```html hidden name=demo
 <table>
   <caption>우리 매장 원산지 표기</caption>
   <thead>
@@ -45,7 +43,7 @@ bcd: html.elements.table
 </table>
 ```
 
-```css
+```css hidden name=demo
 th,
 td {
   border: 1px solid #777;
@@ -58,7 +56,7 @@ th {
 }
 ```
 
-</HTMLDemo>
+<LiveExample height={240} lang="html" name="demo" />
 
 # 특성
 
@@ -68,11 +66,9 @@ th {
 
 ## 기본 사용법
 
-열 그룹이나 여러 행/열에 걸친 칸을 포함하지 않는, 기초적인 구조의 표를 보이는 예제입니다. 
+열 그룹이나 여러 행/열에 걸친 칸을 포함하지 않는, 기초적인 구조의 표를 보이는 예제입니다. `<table>` 요소와 그 구성요소에는 테두리가 포함되지 않으므로, 표를 읽기 쉽도록 간단한 검은색 테두리를 추가합니다.
 
-### HTML
-
-```html name=basic
+```html hidden name=basic
 <table>
   <thead>
     <tr>
@@ -109,11 +105,7 @@ th {
 </table>
 ```
 
-### CSS
-
-`<table>` 요소와 그 구성요소에는 테두리가 포함되지 않으므로, 표를 읽기 쉽도록 간단한 검은색 테두리를 추가합니다.
-
-```css name=basic
+```css hidden name=basic
 table,
 th,
 td {
@@ -121,9 +113,7 @@ td {
 }
 ```
 
-### 결과
-
-<LiveExample height={130} light name="basic" />
+<LiveExample height={240} light name="basic" />
 
 ## 칸 병합
 
@@ -131,7 +121,7 @@ td {
 
 "간우선"과 "진소훈"의 실 단위 소속이 "신사업실"로 같으므로 두 명의 소속실을 하나의 칸으로만 나타내겠습니다. 그리고 "실"과 "팀" 헤더가 한 눈에 들어오지 않으므로, 두 헤더 위에 "부서"라는 칸을 하나 더 배치해보겠습니다. 이번에는 결과를 먼저 확인하세요.
 
-<LiveExample height={150} light name="span" />
+<LiveExample height={240} light name="span" />
 
 ### HTML
 

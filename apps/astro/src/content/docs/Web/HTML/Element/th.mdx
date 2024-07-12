@@ -6,9 +6,7 @@ bcd: html.elements.th
 
 **HTML `<th>` 요소**는 표의 헤더를 구성하는 칸을 정의합니다.
 
-<HTMLDemo height={180}>
-
-```html
+```html hidden name=demo
 <table>
   <caption>우리 매장 원산지 표기</caption>
   <thead>
@@ -45,7 +43,7 @@ bcd: html.elements.th
 </table>
 ```
 
-```css
+```css hidden name=demo
 th,
 td {
   border: 1px solid #777;
@@ -58,7 +56,7 @@ th {
 }
 ```
 
-</HTMLDemo>
+<LiveExample height={240} lang="html" name="demo" />
 
 # 특성
 
@@ -74,11 +72,12 @@ th {
   - 이 칸이 차지해야 하는 행의 수입니다. 기본 값은 1입니다. 0을 지정할 경우 자신이 속한 테이블 구획([`<thead>`](./thead), [`<tbody>`](./tbody), [`<tfoot>`](./tfoot), 암시적으로 생성되는 경우도 포함)의 끝까지 확장됩니다. 65534를 초과하는 값을 지정하면 65534를 대신 사용합니다.
 - : `scope`
   - 이 헤더가 어느 범위의 칸을 설명하는지 지정하는 열거형 특성입니다. 다음 값 중 하나를 사용합니다.
+
     - `row`: 이 헤더가 속하는 행의 모든 칸을 설명합니다.
     - `col`: 이 헤더가 속하는 열의 모든 칸을 설명합니다.
     - `rowgroup`: 이 헤더는 행 그룹에 속하며, 그 그룹에 속한 다른 칸들을 설명합니다. [`<table>`](./table)의 [`dir` 특성](../Global_attributes#term-dir)에 따라서 헤더를 다른 칸들의 왼쪽이나 오른쪽에 배치할 수 있습니다.
     - `colgroup`: 이 헤더는 열 그룹에 속하며, 그 그룹에 속한 다른 칸들을 설명합니다.
-    
+
     `scope` 특성을 지정하지 않았거나 유효하지 않은 값을 사용한 경우, 이 헤더가 설명할 칸의 범위를 브라우저가 자동으로 판단합니다.
 
 # 명세

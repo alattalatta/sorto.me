@@ -6,9 +6,7 @@ bcd: html.elements.tbody
 
 **HTML `<thead>` 요소**는 표에서 본문을 구성하는 행들을 묶습니다.
 
-<HTMLDemo height={180}>
-
-```html
+```html hidden name=demo
 <table>
   <caption>우리 매장 원산지 표기</caption>
   <thead>
@@ -45,7 +43,7 @@ bcd: html.elements.tbody
 </table>
 ```
 
-```css
+```css hidden name=demo
 th,
 td {
   border: 1px solid #777;
@@ -58,7 +56,7 @@ th {
 }
 ```
 
-</HTMLDemo>
+<LiveExample height={240} lang="html" name="demo" />
 
 `<tbody>` 요소는 [`<thead>`](./thead), [`<tfoot>`](./tfoot)과 함께 표의 각 부분에 의미 정보를 부여합니다. 스크린 리더와 프린터 등에서 표를 출력할 때 이 정보를 활용할 수 있습니다.
 
@@ -69,7 +67,7 @@ th {
 # 사용 일람
 
 - 표의 헤더를 나타내기 위해 [`<thead>`](./thead) 요소를 사용할 경우, `<tbody>` 요소는 **반드시** `<thead>` 이후에 위치해야 합니다.
-- `<tbody>` 요소를 사용한 [`<table>`](./table)에는 `<tr>` 요소를 직접, 즉 `<tbody>`의 *형제* 요소로 사용할 수 없습니다. `<tbody>`를 사용할 경우, 헤더와 푸터에 속하지 않는 모든 행은 반드시 `<tbody>` 아래에 배치해야 합니다.
+- `<tbody>` 요소를 사용한 [`<table>`](./table)에는 `<tr>` 요소를 직접, 즉 `<tbody>`의 _형제_ 요소로 사용할 수 없습니다. `<tbody>`를 사용할 경우, 헤더와 푸터에 속하지 않는 모든 행은 반드시 `<tbody>` 아래에 배치해야 합니다.
 - 필요하다면 하나의 표에 여러 개의 연속된 `<tbody>` 요소를 사용할 수 있습니다. CSS 등을 특정 행들에만 다르게 적용해야 할 때 활용할 수 있습니다.
 
 # 명세

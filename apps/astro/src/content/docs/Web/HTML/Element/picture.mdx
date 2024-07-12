@@ -10,23 +10,20 @@ bcd: html.elements.picture
 
 브라우저는 각각의 자식 `<source>` 요소를 확인한 후 현재 상황에 제일 적합한 이미지를 선택합니다. 선택한 이미지는 자식 `<img>` 요소가 차지한 영역에 나타납니다. 적합한 이미지가 없거나, 브라우저가 `<picture>` 요소를 지원하지 않는 경우, `<img>` 요소의 [`src` 특성](./img#term-src)에 지정한 이미지를 보여줍니다.
 
-<HTMLDemo height={300}>
-
-```html
-<!-- 브라우저 화면 크기를 줄이면서 확인하세요 -->
+```html hidden name=demo
 <picture>
-  <source srcset="/gen/plumbing.jpg" media="(min-width: 400px)" />
-  <img src="/gen/building.jpg" alt="" />
+  <source srcset="/assets/plumbing.jpg" media="(min-width: 400px)" />
+  <img src="/assets/building.jpg" alt="" />
 </picture>
 ```
 
-```css
+```css hidden name=demo
 img {
   width: 100%;
 }
 ```
 
-</HTMLDemo>
+<LiveExample height={340} lang="html" name="demo" />
 
 제일 적합한 이미지는 `<source>`의 [`srcset`](./source#term-srcset), [`media`](./source#term-media), [`type`](./source#term-type) 특성의 값, 현재 레이아웃 및 장치의 능력(이미지 형식 지원 여부 등)에 따라 선택됩니다.
 

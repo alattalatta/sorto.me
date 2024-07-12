@@ -5,7 +5,8 @@ import type { CollectionEntry } from 'astro:content'
 import BrowserCompat from './BrowserCompat'
 import ContentBody from './ContentBody.astro'
 import LiveExample from './LiveExample'
-import HTMLDemo from './HTMLDemo/HTMLDemo.astro'
+import { Experimental, NonStandard } from './BrowserCompat/StatusIcon'
+import Spec from './Spec'
 
 type Props = {
   bcd: { data: Identifier; key: string } | null
@@ -24,14 +25,20 @@ const { Content } = await post.render()
     bcd={bcd}
     components={{
       BrowserCompat,
-      HTMLDemo,
+      Experimental,
       LiveExample,
+      NonStandard,
+      Spec,
     }}
     content={Content}
   />
 </article>
 
 <style lang="scss">
+  article {
+    max-width: 1120px;
+  }
+
   h1 {
     font-size: 3em;
     margin: 0;

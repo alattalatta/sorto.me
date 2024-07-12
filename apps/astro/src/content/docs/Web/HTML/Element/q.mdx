@@ -6,9 +6,7 @@ bcd: html.elements.q
 
 **HTML `<q>` 요소**는 텍스트가 짧은 인라인 인용문임을 나타냅니다. 대부분의 최신 브라우저에서는 텍스트를 따옴표로 감싸서 표시합니다. `<q>`는 문단 분리가 필요하지 않은 짧은 인용문에 사용하는 요소입니다. 긴 인용문에는 [`<blockquot>`](./blockquote) 요소를 사용하세요.
 
-<HTMLDemo height={180}>
-
-```html
+```html hidden name=demo
 <p>
   테드 창의 <cite class="book">당신 인생의 이야기</cite> (김상훈 옮김, 엘리)에서, 옮긴이는
   <cite class="chapter">지옥은 신의 부재</cite>를 <q>이 작품집 중 가장 환상적이면서 강렬한 인상을 남기는</q> 작품이라고
@@ -16,7 +14,7 @@ bcd: html.elements.q
 </p>
 ```
 
-```css
+```css hidden name=demo
 cite {
   font-style: normal;
 }
@@ -34,7 +32,7 @@ cite {
 }
 ```
 
-</HTMLDemo>
+<LiveExample height={240} lang="html" name="demo" />
 
 # 특성
 

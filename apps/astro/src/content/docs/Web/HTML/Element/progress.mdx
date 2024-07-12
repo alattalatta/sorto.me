@@ -6,25 +6,23 @@ bcd: html.elements.progress
 
 **HTML `<progress>` 요소**는 작업의 진행도를 나타내는 게이지를 표시합니다.
 
-<HTMLDemo>
+```html hidden name=demo
+<label for="progress">10초 카운터:</label>
+<progress id="progress" max="9" value="0"></progress>
+```
 
-  ```html
-  <label for="progress">10초 카운터:</label>
-  <progress id="progress" max="9" value="0"></progress>
-  ```
+```js hidden name=demo
+const progress = document.querySelector('#progress')
+setInterval(() => {
+  if (progress.value === 9) {
+    progress.value = 0
+  } else {
+    progress.value = progress.value + 1
+  }
+}, 1000)
+```
 
-  ```js
-  const progress = document.querySelector('#progress')
-  setInterval(() => {
-    if (progress.value === 9) {
-      progress.value = 0
-    } else {
-      progress.value = progress.value + 1
-    }
-  }, 1000)
-  ```
-
-</HTMLDemo>
+<LiveExample height={240} lang="html" name="demo" />
 
 # 특성
 
@@ -43,11 +41,11 @@ bcd: html.elements.progress
 
 ## 불확실 상태의 `<progress>`
 
-```html name=indeterminate
+```html hidden name=indeterminate
 <progress></progress>
 ```
 
-<LiveExample height={40} name="indeterminate" />
+<LiveExample height={80} name="indeterminate" />
 
 # 접근성 고려사항
 

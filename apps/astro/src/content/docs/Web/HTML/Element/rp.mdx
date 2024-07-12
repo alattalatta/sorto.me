@@ -6,19 +6,17 @@ bcd: html.elements.rp
 
 **HTML `<rp>` 요소**는 [`<ruby>`](./ruby)를 사용한 표기법을 지원하지 않는 브라우저에서 가독성을 해치지 않도록 보여줄 괄호를 나타냅니다. 루비 문자를 나타내는 [`<rt>`](./rt) 요소를 괄호로 감싸게 하고, 괄호의 열고 닫는 것을 각각의 `<rp>` 요소로 감싸야 합니다.
 
-<HTMLDemo height={100}>
-
-```html
+```html hidden name=demo
 <ruby> 景 <rp>(</rp><rt>경</rt><rp>)</rp> 福 <rp>(</rp><rt>복</rt><rp>)</rp> 宮 <rp>(</rp><rt>궁</rt><rp>)</rp> </ruby>
 ```
 
-```css
+```css hidden name=demo
 ruby {
   font-size: 4em;
 }
 ```
 
-</HTMLDemo>
+<LiveExample height={140} lang="html" name="demo" />
 
 # 특성
 
@@ -38,7 +36,7 @@ body {
 
 루비 문자를 지원하는 브라우저에서는 다음과 같이 보입니다. (현재 브라우저가 [`<ruby>`](./ruby)를 지원해야 함)
 
-<LiveExample name="supported" height={60} />
+<LiveExample editable={false} name="supported" height={60} />
 
 그리고 지원하지 않는 브라우저에는 다음처럼 보이게 됩니다.
 
@@ -52,7 +50,7 @@ body {
 }
 ```
 
-<LiveExample name="no-support" height={60} />
+<LiveExample editable={false} name="no-support" height={60} />
 
 # 명세
 

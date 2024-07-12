@@ -56,7 +56,7 @@ function getVirtualFilesFromCodeBlocks(groupName: string, lang: Lang): Record<st
   return Object.fromEntries(
     Array.from(document.querySelectorAll(selector))
       .map((block) => {
-        const filename = `${block.parentElement?.dataset.filename ?? 'index'}.${lang}`
+        const filename = `${groupName}/${block.parentElement?.dataset.filename ?? 'index'}.${lang}`
         const editable = (block.parentElement?.dataset.editable ?? 'true') === 'true'
 
         return [

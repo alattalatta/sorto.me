@@ -7,8 +7,8 @@ import { determineStatus, hasSupportDetail, supportLabel } from './utils'
 type Props = {
   browser: BrowserName
   data: SupportStatement
+  onClick?: (browser: BrowserName, data: SupportStatement | undefined) => void
   open: boolean
-  onClick?: (browser: BrowserName, data: SupportStatement) => void
 }
 
 const CompatCell: React.FC<Props> = ({ browser, data, open, onClick }) => {

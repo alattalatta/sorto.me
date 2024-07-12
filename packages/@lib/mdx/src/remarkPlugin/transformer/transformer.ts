@@ -20,7 +20,7 @@ const remarkPlugin: Plugin<void[], Root> = () => {
           const meta = (node.meta || '').split(' ').map((v) => v.trim().split('='))
           const metaAsDataAttrs = meta.reduce(
             (acc, [key, value]) => {
-              acc[`data-${key}`] = String(value)
+              acc[`data-${key}`] = value ? String(value) : ''
               return acc
             },
             {} as Record<string, string>,

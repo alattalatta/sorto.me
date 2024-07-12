@@ -6,9 +6,7 @@ bcd: html.elements.wbr
 
 **HTML `<wbr>` 요소**는 브라우저가 현재 요소의 줄바꿈 규칙을 무시하고 줄을 바꿀 수 있는 위치를 나타냅니다.
 
-<HTMLDemo height={200}>
-
-```html
+```html hidden name=demo
 <div class="background">
   <div class="resizable">
     <p>크기를 조절해보세요.</p>
@@ -19,7 +17,7 @@ bcd: html.elements.wbr
 </div>
 ```
 
-```css
+```css hidden name=demo
 .background {
   height: 100vh;
   background: gray;
@@ -34,7 +32,7 @@ bcd: html.elements.wbr
 }
 ```
 
-</HTMLDemo>
+<LiveExample height={240} lang="html" name="demo" />
 
 # 특성
 
@@ -52,19 +50,19 @@ UTF-8 인코딩을 사용한 페이지의 `<wbr>`은 `U+200B ZERO-WIDTH SPACE` �
 
 URL의 줄을 바꿀 때, 줄바꿈이 문장 부호 다음에 발생하는 경우 URL이 끝난 것으로 오해할 수 있습니다. 그러므로 `<wbr>`을 `/` 앞에 배치한 것을 확인할 수 있습니다.
 
-```html name=long
+```html hidden name=long
 <p>
   http://this<wbr />.is<wbr />.a<wbr />.really<wbr />.long<wbr />.example<wbr />.com/with<wbr />/deeper<wbr />/level<wbr />/pages<wbr />/deeper<wbr />/level<wbr />/pages<wbr />/deeper<wbr />/level<wbr />/pages<wbr />/deeper<wbr />/level<wbr />/pages<wbr />/deeper<wbr />/level<wbr />/pages
 </p>
 ```
 
-```css name=long hidden
+```css editable=false hidden name=long hidden
 p {
   max-width: 600px;
 }
 ```
 
-<LiveExample name="long" height={100} />
+<LiveExample name="long" height={140} />
 
 # 명세
 

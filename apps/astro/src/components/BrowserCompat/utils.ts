@@ -80,5 +80,5 @@ function versionString(version: VersionValue | undefined): string {
 }
 
 export function hasSupportDetail(support: SupportStatement): boolean {
-  return Boolean(Array.isArray(support) || support.alternative_name || support.flags || support.notes)
+  return !!support && Boolean(Array.isArray(support) || support.alternative_name || support.flags || support.notes)
 }

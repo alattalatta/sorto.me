@@ -6,9 +6,7 @@ bcd: html.elements.form
 
 **HTML `<form>` 요소**는 데이터 제출을 위한 대화형 요소로 이루어진 문서 구획을 나타냅니다.
 
-<HTMLDemo height={120}>
-
-```html
+```html hidden name=demo
 <form action="">
   <div>
     <label for="name">이름</label>
@@ -22,7 +20,7 @@ bcd: html.elements.form
 </form>
 ```
 
-```css
+```css hidden name=demo
 form {
   border: 1px solid red;
   padding: 8px;
@@ -41,7 +39,7 @@ label {
 }
 ```
 
-</HTMLDemo>
+<LiveExample height={240} lang="html" name="demo" />
 
 위의 예제와 같이, CSS [`:valid`](https://developer.mozilla.org/en-US/docs/Web/CSS/:valid)와 [`:invalid`](https://developer.mozilla.org/en-US/docs/Web/CSS/:invalid) 의사 클래스를 사용하면 양식에 속한 컨트롤의 유효성에 따라 `<form>`에 다른 스타일을 적용할 수 있습니다.
 

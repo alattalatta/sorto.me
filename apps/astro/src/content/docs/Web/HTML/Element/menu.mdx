@@ -6,9 +6,7 @@ bcd: html.elements.menu
 
 **HTML `<menu>` 요소**는 [`<ul>`](./ul)의 시맨틱 대체 요소입니다. `<ul>`과 마찬가지로 비정렬 리스트지만, 각각의 항목([`<li>`](./li))은 사용자가 활성화할 수 있는 링크 또는 명령을 나타냅니다.
 
-<HTMLDemo height={120}>
-
-```html
+```html hidden name=demo
 <menu>
   <li><button>복사</button></li>
   <li><button>잘라내기</button></li>
@@ -16,7 +14,7 @@ bcd: html.elements.menu
 </menu>
 ```
 
-```css
+```css hidden name=demo
 menu {
   display: flex;
   list-style: none;
@@ -32,7 +30,7 @@ button {
 }
 ```
 
-</HTMLDemo>
+<LiveExample height={180} lang="html" name="demo" />
 
 > [note]
 > 이전 명세에서의 `<menu>`는 웹 페이지의 컨텍스트 메뉴(우클릭 메뉴)를 수정할 수 있었으나, 지금은 폐기된 기능이며 명세에서도 제거됐습니다.

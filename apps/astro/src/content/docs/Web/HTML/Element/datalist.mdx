@@ -5,9 +5,7 @@ bcd: html.elements.datalist
 
 **HTML `<datalist>` 요소**는 입력 컨트롤에서 사용자에게 제안할 값의 목록을 나타냅니다. 각각의 값은 [`<option>`](./option) 요소로 표현합니다.
 
-<HTMLDemo height={200}>
-
-```html
+```html hidden name=demo
 <label for="choice">맛을 고르세요.</label>
 <input id="choice" list="flavors" name="choice">
 
@@ -19,7 +17,7 @@ bcd: html.elements.datalist
 </datalist>
 ```
 
-</HTMLDemo>
+<LiveExample height={220} lang="html" name="demo" />
 
 # 특성
 
@@ -31,7 +29,7 @@ bcd: html.elements.datalist
 
 [`<input type="color">`](./input/color) 요소에 `<datalist>`를 제공하면 사용자가 색을 선택할 때 견본에서 선택할 수 있습니다.
 
-```html name=color
+```html hidden name=color
 <datalist id="list">
   <option>#ff0000</option>
   <option>#ee0000</option>
@@ -43,7 +41,7 @@ bcd: html.elements.datalist
 <input type="color" list="list">
 ```
 
-<LiveExample name="color" height={60} />
+<LiveExample name="color" height={200} />
 
 ## 날짜와 시간
 
@@ -51,7 +49,7 @@ bcd: html.elements.datalist
 
 ### 날짜
 
-```html name=datetime
+```html hidden name=datetime
 <datalist id="date">
   <option value="1988-09-17">서울</option>
   <option value="1992-07-25">바르셀로나</option>
@@ -75,13 +73,13 @@ bcd: html.elements.datalist
 </div>
 ```
 
-<LiveExample name="datetime" height={90} />
+<LiveExample name="datetime" height={200} />
 
 ## 슬라이더
 
 [`<input>`](./input)의 [`range`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range) 유형에 `<datalist>`를 제공하면 슬라이더가 선택지에 스냅됩니다.
 
-```html name=range
+```html hidden name=range
 <datalist id="list">
   <option>0</option>
   <option>2</option>
@@ -95,7 +93,7 @@ bcd: html.elements.datalist
 <input type="range" list="list">
 ```
 
-<LiveExample name="range" height={60} />
+<LiveExample name="range" height={200} />
 
 # 명세
 

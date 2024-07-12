@@ -6,14 +6,14 @@ bcd: html.elements.meter
 
 **HTML `<meter>` 요소**는 정해진 범위 내에서의 스칼라 값 또는 0 이상 1 이하의 소수 값을 나타냅니다.
 
-<HTMLDemo height={40}>
-
-```html
+```html hidden name=demo
 <label for="fuel">연료:</label>
-<meter id="fuel" min="0" max="100" low="33" high="66" optimum="80" value="50">현재 50/100</meter>
+<meter id="fuel" min="0" max="100" low="33" high="66" optimum="80" value="50">
+  현재 50/100
+</meter>
 ```
 
-</HTMLDemo>
+<LiveExample height={140} lang="html" name="demo" />
 
 # 특성
 
@@ -41,17 +41,20 @@ bcd: html.elements.meter
 
 ## 간단한 예제
 
-```html name=simple
-<p>에어프라이어 온도: <meter min="100" max="200" value="180">180도</meter></p>
+```html hidden name=simple
+<p>
+  에어프라이어 온도:
+  <meter min="100" max="200" value="180">180도</meter>
+</p>
 ```
 
-<LiveExample name="simple" height={80} />
+<LiveExample name="simple" height={140} />
 
 ## 낮은 범위, 높은 범위
 
 [`<input type="range">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range)의 값을 조절하면서 세 `<meter>`의 모습이 어떻게 달라지는지 확인하세요.
 
-```html name=range
+```html hidden name=range
 <p>
   <label for="control">온도 조절:</label>
   <input id="control" type="range" list="temperatures" min="100" max="240" value="180" />
@@ -75,7 +78,7 @@ bcd: html.elements.meter
 </p>
 ```
 
-```js name=range
+```js hidden name=range
 function updateMeter(meter, value) {
   meter.value = value
   meter.innerText = `${value}도`
@@ -90,7 +93,7 @@ document.querySelector('#control').addEventListener('change', (event) => {
 })
 ```
 
-<LiveExample name="range" height={200} />
+<LiveExample name="range" height={240} />
 
 # 명세
 

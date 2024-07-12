@@ -5,15 +5,13 @@ bcd: html.global_attributes.title
 
 HTML **`title`** [전역 특성](.)은 요소에 대한 추가 도움말을 제공합니다.
 
-<HTMLDemo height={180}>
-
-```html
+```html hidden name=demo
 <iframe src="https://www.w3.org/WAI/WCAG21/Techniques/html/H65"
         title="Techniques for WCAG 2.1: title 특성으로 input 요소 설명하기">
 </iframe>
 ```
 
-</HTMLDemo>
+<LiveExample height={240} lang="html" name="demo" />
 
 `title` 특성의 내용은 보통 마우스를 올리면 나타나는 툴팁의 형태로 표현되며, [`<iframe>`](../Element/iframe)의 접근성 레이블을 추가할 때도 사용합니다.
 
@@ -25,36 +23,31 @@ HTML **`title`** [전역 특성](.)은 요소에 대한 추가 도움말을 제�
 
 `title` 특성이 한 줄이어야 할 필요는 없으며, 값에 포함된 `U+000A LINE FEED` (`LF`) 문자로 줄을 바꿀 수 있습니다. 반대로 말하면 `title` 특성 값을 입력할 때 주의를 기울여야 하는 이유기도 한데, 다음 예제에서의 `title`은 줄바꿈을 의도하지 않았더라도 두 줄로 나타나기 때문입니다.
 
-### HTML
-
-```html name=multiline
+```html hidden name=multiline
 <p><code>title</code> 값의 줄바꿈 문자를 주의하세요. <span class="example" title="줄바꿈을 정말
 의도한 걸까요?">이 예제처럼요.</span>
 ```
 
-### CSS
-```css name=multiline
+```css hidden name=multiline
 .example {
-  text-decoration: dotted underline; 
+  text-decoration: dotted underline;
 }
 ```
 
-### 결과
-
-<LiveExample height={80} name="multiline" />
+<LiveExample height={140} name="multiline" />
 
 ## title 상속
 
 `title` 특성을 명시하지 않은 요소는 부모 노드의 `title`을 상속합니다. 그리고 `title`에 빈 문자열을 명시하면 부모의 특성을 상속하지 않고, 툴팁도 보이지 않겠다는 의미입니다.
 
-```html name=inheritance
+```html hidden name=inheritance
 <div title="title 상속 예제입니다.">
   <p>이 문단에 마우스를 올리면 도움말이 나타납니다.</p>
   <p title="">하지만 이 문단에는 마우스를 올려도 도움말이 나타나지 않습니다.</p>
 </div>
 ```
 
-<LiveExample height={120} name="inheritance" />
+<LiveExample height={140} name="inheritance" />
 
 # 접근성 고려사항
 

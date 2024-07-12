@@ -6,9 +6,7 @@ bcd: html.elements.label
 
 **HTML `<label>` 요소**는 사용자 인터페이스 항목의 설명을 나타냅니다.
 
-<HTMLDemo height={180}>
-
-```html
+```html hidden name=demo
 <div>
   <label for="cheese">치즈를 좋아하시나요?</label>
   <input type="checkbox" name="cheese" id="cheese" />
@@ -20,7 +18,7 @@ bcd: html.elements.label
 </div>
 ```
 
-</HTMLDemo>
+<LiveExample height={240} lang="html" name="demo" />
 
 [`<input>`](./input) 요소에 `<label>`을 연결하는 것에는 큰 장점이 있습니다.
 
@@ -43,6 +41,7 @@ bcd: html.elements.label
 [전역 특성](/docs/Web/HTML/Global_attributes)을 포함합니다.
 
 - : `for`
+
   - 같은 문서 내의 [레이블 가능한 요소](https://html.spec.whatwg.org/multipage/forms.html#category-label) 중 `<label>`과 연결할 요소의 [`id`](/docs/Web/HTML/Global_attributes#term-id) 특성 값입니다. 이 값과 동일한 `id`를 지닌 요소가 레이블 가능한 요소에 속하지 않을 경우 아무런 효과도 없습니다.
 
     같은 `id`를 사용하는 요소가 다수여도 맨 처음 요소 하나만 고려합니다. 맨 처음 요소가 레이블 가능한 요소에 속하지 않으면 아무것도 하지 않습니다.

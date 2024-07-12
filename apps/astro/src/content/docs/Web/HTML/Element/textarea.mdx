@@ -6,9 +6,7 @@ bcd: html.elements.textarea
 
 **HTML `<textarea>` 요소**는 여러 줄의 평문을 편집할 수 있는 컨트롤을 제공합니다. 사용자가 자유 형식의 긴 글을 입력할 수 있어야 하는 리뷰나 피드백 입력 칸에 유용합니다.
 
-<HTMLDemo height={160}>
-
-```html
+```html hidden name=demo
 <label for="story">무슨 일이 있었나요?</label>
 
 <textarea id="story" name="story" rows="5" cols="33">
@@ -16,14 +14,14 @@ bcd: html.elements.textarea
 </textarea>
 ```
 
-```css
+```css hidden name=demo
 label {
   display: block;
   margin-bottom: 0.5em;
 }
 ```
 
-</HTMLDemo>
+<LiveExample height={200} lang="html" name="demo" />
 
 위 예제에서 `<textarea>`의 주요 사용법을 볼 수 있습니다.
 

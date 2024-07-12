@@ -60,8 +60,6 @@ const bcdData = (() => {
   }
   return null
 })()
-
-const posts = [...(await getCollection('posts'))].reverse()
 ---
 
 <Shell description={description} title={entry.data.title}>
@@ -73,11 +71,14 @@ const posts = [...(await getCollection('posts'))].reverse()
         [
           'blog',
           [
-            ...posts.map<[string, string]>((post) => [post.data.titleShort || post.data.title, `/posts/${post.slug}`]),
             ['(...more)', '/posts'],
           ],
         ],
-        ['docs', [['Web', '/docs/Web']]],
+        ['docs', [
+          ['HTML 요소 참고서', '/docs/Web/HTML/Element'],
+          ['HTML 전역 특성 참고서', '/docs/Web/HTML/Global_attributes'],
+          ['CSS 참고서', '/docs/Web/CSS/Reference']
+        ]],
         [
           'contact',
           [

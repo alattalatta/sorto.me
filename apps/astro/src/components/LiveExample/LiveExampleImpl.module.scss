@@ -15,14 +15,56 @@
 // })
 
 .root {
-  // background: var(--colors-bg1);
-  border-radius: 0.25rem;
-  padding: 0.5rem;
+  border: 1px solid #000;
+  display: grid;
+  gap: 1em;
+  grid-template-columns: 1fr 1fr;
+}
+
+.editor {
+  flex-basis: 33%;
+}
+
+.files {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.file {
+  width: 100%;
+
+  & button {
+    background: none;
+    border: none;
+    border-bottom: 2px solid #d6d6d6;
+    color: inherit;
+    cursor: pointer;
+    display: block;
+    font-family: var(--monospace);
+    font-size: 0.75em;
+    padding: 0.5rem;
+    width: 100%;
+
+    &:hover {
+      background: #f9f9f9;
+    }
+
+    &[aria-selected='true'] {
+      border-color: #000;
+      font-weight: 700;
+    }
+  }
+}
+
+.monaco {
+  margin-top: 4px;
 }
 
 .wrap {
-  border-radius: 0.25rem;
   box-sizing: content-box;
+  flex-basis: 66%;
   overflow: hidden;
   position: relative;
 }

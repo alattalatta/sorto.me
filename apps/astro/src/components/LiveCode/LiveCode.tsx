@@ -1,4 +1,7 @@
+import Loading from 'components/Loading'
+import type { VirtualFile } from 'components/useCodeBlockGroup'
 import { useEffect, useId, useReducer, useRef, useState } from 'react'
+import { InView } from 'react-intersection-observer'
 
 import styles from './LiveCode.module.scss'
 
@@ -6,29 +9,21 @@ export type Language = 'css' | 'html' | 'js'
 
 type Props = {
   className?: string
-  codes: Record<Language, readonly string[]>
+  files: readonly VirtualFile[]
   height?: number
-  light?: boolean
   loading?: 'eager' | 'lazy'
   minHeight?: number
 }
 
-const LiveCode: React.FC<Props> = ({
-  className,
-  codes: { css, html, js },
-  height,
-  loading: loadingProp = 'lazy',
-  light,
-  minHeight,
-}) => {
+/** Live code view */
+const LiveCode: React.FC<Props> = ({ className, files, height = 240, loading: loadingProp = 'lazy', minHeight }) => {
   const eager = loadingProp === 'eager'
 
   const id = useId()
-  const rootRef = useRef<HTMLDivElement>(null)
   const frameRef = useRef<HTMLIFrameElement>(null)
-  const initialSrc = useRef(serializeSrc(css, html, js)).current
+  const initialSrc = useRef(stringifyFiles(files)).current
 
-  const [intersected, setIntersected] = useReducer(() => true, eager) // skip intersection check when eager
+  const [wasInView, setWasInView] = useReducer(() => true, false)
   const [loaded, setLoaded] = useReducer(() => true, false)
   const [src, setSrc] = useState(initialSrc)
 
@@ -45,30 +40,10 @@ const LiveCode: React.FC<Props> = ({
   }, [id])
 
   useEffect(() => {
-    setSrc(serializeSrc(css, html, js))
-  }, [css, html, js])
+    setSrc(stringifyFiles(files))
+  }, [files])
 
-  useEffect(() => {
-    if (eager) {
-      return
-    }
-
-    if (rootRef.current) {
-      const observer = new IntersectionObserver(
-        ([target]) => {
-          if (target.isIntersecting) {
-            setIntersected()
-            observer.disconnect()
-          }
-        },
-        { threshold: 0.5 },
-      )
-      observer.observe(rootRef.current)
-
-      return () => observer.disconnect()
-    }
-  }, [eager])
-
+  // push changes to the frame
   useEffect(() => {
     if (loaded && frameRef.current?.contentWindow) {
       frameRef.current.contentWindow.postMessage(src)
@@ -78,37 +53,52 @@ const LiveCode: React.FC<Props> = ({
   const loading = !eager && !loaded
 
   return (
-    <div
-      ref={rootRef}
-      className={`${styles.root} ${className}`}
-      style={{ height: height && `${height / 16}rem`, minHeight: minHeight && `${minHeight / 16}rem` }}
-    >
-      {intersected && (
-        <iframe
-          ref={frameRef}
-          className={styles.frame}
-          data-loading={loading}
-          src={`/frame?id=${id}${light ? '&forceLightTheme' : ''}`}
-          title="예제"
-        />
+    <InView onChange={(inView) => inView && setWasInView()}>
+      {({ ref }) => (
+        <div ref={ref} className={`${styles.root} ${className}`} style={{ height, minHeight }}>
+          {(eager || wasInView) && (
+            <iframe
+              ref={frameRef}
+              className={styles.frame}
+              data-loading={loading}
+              src={`/frame?id=${id}`}
+              title="예제"
+            />
+          )}
+          <div style={{ position: 'absolute', inset: 0 }}>
+            <Loading height={height} />
+          </div>
+        </div>
       )}
-      <p className={styles.loadingMessage} data-loading={loading}>
-        <span className={styles.spinner} />
-        불러오는 중...
-      </p>
-    </div>
+    </InView>
   )
 }
 
 export default LiveCode
 
-function serializeSrc(css: readonly string[], html: readonly string[], js: readonly string[]): string {
-  const view = html.join('')
-  const styleElements = css.filter(Boolean).join('')
-  const scripts = js
-    .filter(Boolean)
-    .map((it) => `;(() => {${it}})()`)
-    .join('')
+function stringifyFiles(files: readonly VirtualFile[]): string {
+  const [css, html, js] = files.reduce(
+    (acc, file) => {
+      switch (file.lang) {
+        case 'css':
+          acc[0].push(file)
+          break
+        case 'html':
+          acc[1].push(file)
+          break
+        case 'js':
+          acc[2].push(file)
+          break
+      }
+
+      return acc
+    },
+    [[], [], []] as [VirtualFile[], VirtualFile[], VirtualFile[]],
+  )
+
+  const view = html.map((file) => file.content).join('')
+  const styleElements = css.map((file) => file.content).join('')
+  const scripts = js.map((it) => `;(() => {${it.content}})()`).join('')
 
   return `<style>${styleElements}</style>${view}<script id="dynascript">${scripts}</script>`
 }

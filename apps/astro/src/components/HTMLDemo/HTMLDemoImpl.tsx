@@ -43,7 +43,7 @@ const HTMLDemoImpl: React.FC<HTMLDemoImplProps> = ({ children, height }) => {
 
   return (
     <figure ref={rootRef} aria-label="데모" className={styles.root}>
-      <LiveCode className={styles.result} codes={codes} loading="eager" minHeight={height} />
+      <LiveCode className={styles.result} files={codes} loading="eager" minHeight={height} />
       {containsMultipleLangs && (
         <div className={styles.langButtonsBar}>
           {codes.html.length > 0 && (

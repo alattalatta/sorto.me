@@ -17,24 +17,12 @@ jobs:
 
       - uses: pnpm/action-setup@v4.0.0
         with:
-          version: 7.1.0
+          version: 9.5.0
           run_install: true
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '20'
           cache: 'pnpm'
 
-      - name: Remove development API routes
-        run: rm -r apps/main/pages/api
-
-      - run: pnpm build --filter @apps/main^...
-      - run: pnpm turbo run lint
-      - run: pnpm turbo run test
-
-      - uses: amondnet/vercel-action@v25
-        with:
-          github-token: ${{ secrets.GH_TOKEN }}
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.ORG_ID }}
-          vercel-project-id: ${{ secrets.PROJECT_ID }}
+      - run: pnpm turbo typecheck

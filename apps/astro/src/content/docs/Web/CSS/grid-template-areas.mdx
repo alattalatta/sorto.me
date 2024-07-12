@@ -6,37 +6,28 @@ bcd: css.properties.grid-template-areas
 
 CSS **`grid-template-areas`** 속성은 그리드 영역을 정의하는 동시에 각 영역에 이름을 할당합니다.
 
-<CSSDemo selector=".grid{$}">
-
-```css
-grid-template-areas:
-  "a a a"
-  "b c c"
-  "b c c";
+```css hidden name=demo
+.grid {
+  grid-template-areas:
+    "a a a"
+    "b c c"
+    "b c c";
+  /* grid-template-areas:
+    "b b a"
+    "b b c"
+    "b b c"; */
+  /* grid-template-areas:
+    ". a a"
+    "b c c"
+    "b . ."; */
+  /* grid-template-areas:
+    "c c c"
+    ". b ."
+    "a a a"; */
+}
 ```
 
-```css
-grid-template-areas:
-  "b b a"
-  "b b c"
-  "b b c";
-```
-
-```css
-grid-template-areas:
-  ". a a"
-  "b c c"
-  "b . .";
-```
-
-```css
-grid-template-areas:
-  "c c c"
-  ". b ."
-  "a a a";
-```
-
-```css hidden
+```css hidden editable=false name=demo filename=style
 body {
   height: 100vh;
   display: flex;
@@ -71,7 +62,7 @@ body {
 }
 ```
 
-```html
+```html hidden name=demo
 <div class="grid">
   <div class="a">A</div>
   <div class="b">B</div>
@@ -79,7 +70,7 @@ body {
 </div>
 ```
 
-</CSSDemo>
+<LiveExample height={240} lang="css" name="demo" />
 
 `grid-template-areas`가 정의하는 영역은 그리드 아이템에 자동으로 연결되지 않습니다. 그리드 배치 속성인 [`grid-row-start`](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-start), [`grid-row-end`](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-end), [`grid-column-start`](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-start), [`grid-column-end`](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-end), 또는 이 속성들의 단축 속성인 [`grid-row`](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row), [`grid-column`](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column), [`grid-area`](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-area)를 사용해서 영역에 아이템을 배치하세요.
 
@@ -113,9 +104,7 @@ grid-template-areas: unset;
 
 ## 레이아웃 구성하기
 
-### HTML
-
-```html name=layout
+```html hidden name=layout
 <article>
   <header>헤더</header>
   <nav>메뉴</nav>
@@ -124,9 +113,7 @@ grid-template-areas: unset;
 </article>
 ```
 
-### CSS
-
-```css name=layout
+```css hidden name=layout
 article {
   color: #fff;
   height: 300px;
@@ -160,9 +147,7 @@ footer {
 }
 ```
 
-### 결과
-
-<LiveExample name="layout" height={320} />
+<LiveExample name="layout" height={320} lang="css" />
 
 # 명세
 

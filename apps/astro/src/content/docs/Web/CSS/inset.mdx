@@ -7,21 +7,15 @@ CSS **`inset`** 속성은 `top`, `right`, `bottom`, `left`의 단축속성입니
 
 `inset`은 CSS _Logical_ Properties 명세에 속하지만 _논리_ 오프셋은 정의하지 않습니다. `inset`은 요소의 쓰기 모드, 쓰기 방향, 텍스트 방향에 관계 없이 항상 물리적 오프셋을 정의합니다.
 
-<CSSDemo height={200} selector="#abs{$}">
-
-```css
-inset: 0;
+```css hidden name=demo
+#abs {
+  inset: 0;
+  /* inset: 8px 8px 12px 24px; */
+  /* inset: 20%; */
+}
 ```
 
-```css
-inset: 8px 8px 12px 24px;
-```
-
-```css
-inset: 20%;
-```
-
-```css hidden
+```css hidden editable=false name=demo filename=style
 #container {
   width: 300px;
   height: 100px;
@@ -37,13 +31,13 @@ inset: 20%;
 }
 ```
 
-```html
+```html hidden name=demo
 <div id="container">
   <div id="abs"></div>
 </div>
 ```
 
-</CSSDemo>
+<LiveExample height={240} lang="css" name="demo" />
 
 # 구문
 

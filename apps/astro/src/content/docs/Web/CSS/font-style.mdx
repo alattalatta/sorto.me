@@ -5,32 +5,23 @@ bcd: css.properties.font-style
 
 CSS **`font-style`** 속성은 글씨의 스타일을 일반적인 모양과 이탤릭, 오블리크 중 하나로 설정합니다.
 
-<CSSDemo selector="pre{$}">
-
-```css
-font-style: normal;
+```css hidden name=demo
+pre {
+  font-style: normal;
+  /* font-style: italic; */
+  /* font-style: oblique; */
+  /* font-style: oblique 40deg; */
+}
 ```
 
-```css
-font-style: italic;
-```
-
-```css
-font-style: oblique;
-```
-
-```css
-font-style: oblique 40deg;
-```
-
-```css hidden
+```css hidden editable=false name=demo filename=style
 pre {
   font-family: 'Recursive', serif;
   text-align: center;
 }
 ```
 
-```html
+```html hiden name=demo
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Recursive&display=swap');
 </style>
@@ -40,7 +31,7 @@ we had left the ground.
 </pre>
 ```
 
-</CSSDemo>
+<LiveExample height={240} lang="css" name="demo" />
 
 영어 글꼴에서, 이탤릭은 보다 필기체에 가깝고 너비가 좁은 반면 오블리크는 단순히 일반 글씨를 기울인 모양입니다. 두 스타일 모두, 글꼴에 전용 스타일이 존재하지 않으면 일반 글꼴을 인위적으로 기울여 오블리크를 흉내냅니다. CSS [`font-systhesis` 속성](https://developer.mozilla.org/en-US/docs/Web/CSS/font-synthesis)으로 이 동작을 제어할 수 있습니다.
 
@@ -71,6 +62,7 @@ font-weight: unset;
 - : `oblique`
   - 글꼴 가족에서 오블리크 글꼴을 사용합니다. 오블리크 전용 글꼴이 없으면 이탤릭 글꼴을 사용하고, 둘 다 없으면 일반 글꼴을 인위적으로 기울입니다.
 - : `oblique <angle>`
+
   - 글꼴 가족에서 오블리크 글꼴을 사용하고, 기울기를 직접 [`<angle>`](https://developer.mozilla.org/en-US/docs/Web/CSS/angle)로 지정합니다. 다수의 오블리크 전용 글꼴을 사용할 수 있으면 지정한 각도와 제일 가까운 글꼴을 선택합니다. 오블리크 전용 글꼴이 없으면 일반 글꼴을 인위적으로 기울입니다.
 
     `-90deg` 이상, `90deg` 이하의 각도를 지정할 수 있습니다. 각도를 지정하지 않았을 때의 기본 값은 `14deg`입니다. 양의 각도는 문장의 끝을 향해, 음의 각도는 문장의 시작을 향해 기울어집니다.
@@ -85,9 +77,7 @@ TrueType과 OpenType 가변 글꼴은 "slnt" 바리에이션을 사용해 오블
 
 > [note] 아래의 예제가 올바르게 동작하려면 브라우저가 CSS Fonts Level 4 명세의 `font-style: oblique <angle>` 구문을 지원해야 합니다.
 
-### HTML
-
-```html name=variable
+```html hidden name=variable
 <header>
   <input type="range" id="angle" name="angle" min="-90" max="90" />
   <label for="angle">기울기</label>
@@ -99,9 +89,7 @@ TrueType과 OpenType 가변 글꼴은 "slnt" 바리에이션을 사용해 오블
 </div>
 ```
 
-### CSS
-
-```css name=variable
+```css hidden name=variable
 @import url(https://fonts.googleapis.com/css2?family=Recursive&display=swap);
 
 label {
@@ -120,16 +108,14 @@ label {
 }
 ```
 
-### JavaScript
-
-```js name=variable
+```js hidden name=variable
 const angleLabel = document.querySelector('label[for="angle"]')
 const angleInput = document.querySelector('#angle')
 const sampleText = document.querySelector('.sample')
 
 function update() {
   const value = `oblique ${angleInput.value}deg`
-  
+
   angleLabel.textContent = `font-style: ${value}`
   sampleText.style.fontStyle = value
 }
@@ -139,9 +125,7 @@ angleInput.addEventListener('input', update)
 update()
 ```
 
-### 결과
-
-<LiveExample name="variable" height={160} />
+<LiveExample name="variable" height={240} lang="css" />
 
 # 접근성 고려사항
 

@@ -3,31 +3,20 @@ title: 'CSS margin: 바깥 여백 단축속성'
 description: CSS margin 속성은 요소의 네 방향 바깥 여백을 동시에 설정합니다.
 bcd: css.properties.margin
 ---
+
 CSS **`margin`** 속성은 요소의 네 방향 바깥 여백을 동시에 설정합니다. `margin-top`, `margin-right`, `margin-bottom`, `margin-left`의 단축속성입니다.
 
-<CSSDemo height={200} selector="#target{$}">
-
-```css
-margin: 10px;
+```css hidden name=demo
+#target {
+  margin: 10px;
+  /* margin: 5% 0; */
+  /* margin: -20px 0 0; */
+  /* margin: 10px 30px 50px; */
+  /* margin: 50px 30px 10px 10px; */
+}
 ```
 
-```css
-margin: 5% 0;
-```
-
-```css
-margin: -20px 0 0;
-```
-
-```css
-margin: 10px 30px 50px;
-```
-
-```css
-margin: 50px 30px 10px 10px;
-```
-
-```css hidden
+```css hidden editable=false name=demo filename=style
 .aside {
   height: 40px;
   border: 8px solid darkseagreen;
@@ -39,13 +28,13 @@ margin: 50px 30px 10px 10px;
 }
 ```
 
-```html
+```html hidden name=demo
 <div class="aside"></div>
 <div id="target"></div>
 <div class="aside"></div>
 ```
 
-</CSSDemo>
+<LiveExample height={240} lang="css" name="demo" />
 
 # 구문
 
@@ -100,18 +89,14 @@ margin: unset;
 
 ## 기본 사용법
 
-### HTML
-
-```html name=basic
+```html hidden name=basic
 <div class="container">
   <div class="center">중앙에 위치합니다.</div>
   <div class="outside">0보다 작은 여백은 부모의 바깥으로 나갑니다.</div>
 </div>
 ```
 
-### CSS
-
-```css name=basic
+```css hidden name=basic
 .container {
   width: 75%;
   border: 1px solid black;
@@ -131,9 +116,7 @@ margin: unset;
 }
 ```
 
-### 결과
-
-<LiveExample height={150} light name="basic" />
+<LiveExample height={240} lang="css" name="basic" />
 
 # 명세
 

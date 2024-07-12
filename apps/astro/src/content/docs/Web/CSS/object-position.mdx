@@ -7,29 +7,17 @@ CSS **`object-position`** 속성은 [`<img>`](/docs/Web/HTML/Element/img), [`<vi
 
 대체 요소 콘텐츠의 크기를 요소 크기에 맞추는 방식은 [`object-fit` 속성](./object-fit)으로 바꿀 수 있습니다.
 
-<CSSDemo selector="img{$}">
-
-```css
-object-position: center;
+```css hidden name=demo
+img {
+  object-position: center;
+  /* object-position: left; */
+  /* object-position: right; */
+  /* object-position: 20px -20px; */
+  /* object-position: top 100px right 0; */
+}
 ```
 
-```css
-object-position: left;
-```
-
-```css
-object-position: right;
-```
-
-```css
-object-position: 20px -20px;
-```
-
-```css
-object-position: top 100px right 0;
-```
-
-```css hidden
+```css hidden editable=false name=demo filename=style
 img {
   width: 200px;
   height: 200px;
@@ -38,11 +26,11 @@ img {
 }
 ```
 
-```html
-<img src="/gen/building.jpg">
+```html hidden name=demo
+<img src="/assets/building.jpg">
 ```
 
-</CSSDemo>
+<LiveExample height={240} lang="css" name="demo" />
 
 # 구문
 

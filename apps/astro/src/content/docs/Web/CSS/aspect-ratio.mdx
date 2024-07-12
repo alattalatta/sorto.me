@@ -5,36 +5,27 @@ bcd: css.properties.aspect-ratio
 
 CSS **`aspect-ratio`** 속성은 요소 박스의 *선호 가로세로비*를 설정합니다. 선호 가로세로비는 자동 크기와 일부 레이아웃 내에서의 크기 계산에 사용됩니다.
 
-<CSSDemo selector="img{$}">
-
-```css
-aspect-ratio: auto;
+```css hidden name=demo
+img {
+  aspect-ratio: auto;
+  /* aspect-ratio: 1 / 1; */
+  /* aspect-ratio: 16 / 9; */
+  /* aspect-ratio: 2; */
+}
 ```
 
-```css
-aspect-ratio: 1 / 1;
-```
-
-```css
-aspect-ratio: 16 / 9;
-```
-
-```css
-aspect-ratio: 2;
-```
-
-```css hidden
+```css hidden editable=false name=demo filename=style
 img {
   width: auto;
   height: 200px;
 }
 ```
 
-```html
-<img src="/gen/lion.jpg">
+```html hidden name=demo
+<img src="/assets/lion.jpg">
 ```
 
-</CSSDemo>
+<LiveExample height={240} lang="css" name="demo" />
 
 # 구문
 

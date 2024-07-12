@@ -41,7 +41,7 @@ CSS **`<color>`** 자료형은 색을 표현합니다. `<color>`는 자신과 �
 
 ### 예제
 
-```html name=currentColor
+```html hidden name=currentColor
 <div class="box">
   파란 색 텍스트입니다.
   <div class="hr"></div>
@@ -49,7 +49,7 @@ CSS **`<color>`** 자료형은 색을 표현합니다. `<color>`는 자신과 �
 </div>
 ```
 
-```css name=currentColor
+```css hidden name=currentColor
 .box {
   color: blue;
   border: 1px dashed currentColor;
@@ -61,7 +61,7 @@ CSS **`<color>`** 자료형은 색을 표현합니다. `<color>`는 자신과 �
 }
 ```
 
-<LiveExample height={120} light name="currentColor" />
+<LiveExample height={140} lang="css" name="currentColor" />
 
 ## RGB 색
 
@@ -182,9 +182,9 @@ CSS Color Module Level 4에서 LCH 색 모델이 추가됐습니다. LCH 색은 
 
 LCH 색은 [`lch()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/lch) 함수 표기법으로 표현합니다.
 
-LCH는 Lab을 극형식(polar form)으로 나타낸 것으로 둘의 본질은 같습니다. 다만, LCH로는 크로마와 색상 값으로 원하는 색을 **지정**할 수 있으므로 *a\**와 *b\** 값을 **혼합**해야 하는 Lab 색보다 더 직관적입니다. 이 관점에서 LCH는 HSL과 비슷합니다.
+LCH는 Lab을 극형식(polar form)으로 나타낸 것으로 둘의 본질은 같습니다. 다만, LCH로는 크로마와 색상 값으로 원하는 색을 **지정**할 수 있으므로 \*a\**와 *b\*\* 값을 **혼합**해야 하는 Lab 색보다 더 직관적입니다. 이 관점에서 LCH는 HSL과 비슷합니다.
 
-하지만 LCH(Lab)는 인지적으로 HSL보다 훨씬 더 균일합니다. 즉, LCH 색 모델은 사람이 인지하는 색의 "밝기"를 올바르게 나타낼 수 있습니다. 예컨대 HSL에서는 두 색, `hsl(60 100% 50%)`과 `hsl(240 100% 50%)`를 같은 명도(`50%`)로 나타내지만 LCH와 Lab에서는 전자(노랑)의 *L\**이 `97.6`, 후자(파랑)의 *L\**이 `29.6`으로 수치만 봐도 후자가 훨씬 어둡습니다. 따라서 LCH는 HSL과 달리 하나의 *L\** 팔레트를 완전히 다른 색들에 적용해도 기대하는 결과 범위 내의 색조 팔레트를 얻을 수 있습니다. 참고로 LCH와 HSL의 색상환의 형태는 같지만 서로 다른 색을 가리킵니다.
+하지만 LCH(Lab)는 인지적으로 HSL보다 훨씬 더 균일합니다. 즉, LCH 색 모델은 사람이 인지하는 색의 "밝기"를 올바르게 나타낼 수 있습니다. 예컨대 HSL에서는 두 색, `hsl(60 100% 50%)`과 `hsl(240 100% 50%)`를 같은 명도(`50%`)로 나타내지만 LCH와 Lab에서는 전자(노랑)의 \*L\**이 `97.6`, 후자(파랑)의 *L\**이 `29.6`으로 수치만 봐도 후자가 훨씬 어둡습니다. 따라서 LCH는 HSL과 달리 하나의 *L\*\* 팔레트를 완전히 다른 색들에 적용해도 기대하는 결과 범위 내의 색조 팔레트를 얻을 수 있습니다. 참고로 LCH와 HSL의 색상환의 형태는 같지만 서로 다른 색을 가리킵니다.
 
 ## color() 표기법
 

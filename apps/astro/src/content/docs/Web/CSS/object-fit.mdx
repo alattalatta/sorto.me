@@ -7,29 +7,17 @@ CSS **`object-fit`** 속성은 [`<img>`](/docs/Web/HTML/Element/img), [`<video>`
 
 대체 요소 콘텐츠의 위치는 [`object-position` 속성](./object-position)으로 바꿀 수 있습니다.
 
-<CSSDemo selector="img{$}">
-
-```css
-object-fit: contain;
+```css hidden name=demo
+img {
+  object-fit: contain;
+  /* object-fit: cover; */
+  /* object-fit: fill; */
+  /* object-fit: none; */
+  /* object-fit: scale-down; */
+}
 ```
 
-```css
-object-fit: cover;
-```
-
-```css
-object-fit: fill;
-```
-
-```css
-object-fit: none;
-```
-
-```css
-object-fit: scale-down;
-```
-
-```css hidden
+```css hidden editable=false name=demo filename=style
 img {
   width: 200px;
   height: 200px;
@@ -37,11 +25,11 @@ img {
 }
 ```
 
-```html
-<img src="/gen/building.jpg">
+```html hidden name=demo
+<img src="/assets/building.jpg">
 ```
 
-</CSSDemo>
+<LiveExample height={240} lang="css" name="demo" />
 
 # 구문
 

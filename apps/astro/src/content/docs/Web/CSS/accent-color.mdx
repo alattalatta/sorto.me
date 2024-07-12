@@ -5,25 +5,16 @@ bcd: css.properties.accent-color
 
 CSS **`accent-color`** 속성은 일부 요소가 생성하는 사용자 인터페이스 컨트롤의 강조색을 지정합니다.
 
-<CSSDemo selector="*{$}">
-
-```css
-accent-color: red;
+```css hidden name=demo
+* {
+  accent-color: red;
+  /* accent-color: #43E4DA; */
+  /* accent-color: #fff; */
+  /* accent-color: #000; */
+}
 ```
 
-```css
-accent-color: #43E4DA;
-```
-
-```css
-accent-color: #fff;
-```
-
-```css
-accent-color: #000;
-```
-
-```css hidden
+```css hidden name=demo editable=false filename=style
 label {
   display: block;
 }
@@ -32,7 +23,7 @@ label + label {
 }
 ```
 
-```html
+```html hidden name=demo
 <form>
   <label>
     <input checked type="checkbox">
@@ -53,7 +44,7 @@ label + label {
 </form>
 ```
 
-</CSSDemo>
+<LiveExample height={240} lang="css" name="demo" />
 
 현재, `accent-color`를 지원하는 브라우저에서는 다음 요소의 강조색을 설정할 수 있습니다.
 

@@ -5,35 +5,26 @@ bcd: css.properties.font-family
 
 CSS **`font-family`** 속성은 선택한 요소에 적용할 글꼴 가족(활자 가족)을 지정합니다.
 
-<CSSDemo selector="pre{$}">
-
-```css
-font-family: sans-serif;
+```css hidden name=demo
+pre {
+  font-family: sans-serif;
+  /* font-family: 'Do Hyeon', sans-serif; */
+  /* font-family: serif; */
+  /* font-family: monospace; */
+}
 ```
 
-```css
-font-family: 'Do Hyeon', sans-serif;
-```
-
-```css
-font-family: serif;
-```
-
-```css
-font-family: monospace;
-```
-
-```css hidden
+```css hidden editable=false name=demo filename=style
 pre {
   text-align: center;
 }
 ```
 
-```html
+```html hidden editable=false name=demo filename=font
 <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet" />
 ```
 
-```html
+```html hidden name=demo
 <pre>
 내 그대를 생각함은
 항상 그대가 앉아 있는 배경에서
@@ -45,7 +36,7 @@ pre {
 </pre>
 ```
 
-</CSSDemo>
+<LiveExample height={240} lang="css" name="demo" />
 
 `font-family`의 값은 쉼표로 구분하는 목록으로, 브라우저는 그 중에서 사용자의 컴퓨터에 이미 설치된, 또는 [`@font-face`](./@font-face) @규칙을 통해 다운로드 받을 수 있는 가장 앞쪽 글꼴 가족을 선택합니다.
 
@@ -89,37 +80,43 @@ font-family: unset;
 - : `<family-name>`
   - 글꼴 가족의 이름입니다. 위의 구문 예제에서는 "Nanum Gothic Coding"이 글꼴 가족의 이름입니다.
 - : `<generic-name>`
+
   - `<generic-name>`은 세리프와 산세리프와 같이 글꼴의 범주명으로, 직접 지정한 글꼴들 중 무엇도 사용할 수 없는 경우에도 스타일을 어느정도 보존하기 위한 방안입니다. 범주명은 키워드 값으로서 따옴표로 감싸서는 안되며 항상 목록의 마지막에 와야 합니다. 사용할 수 있는 값은 다음과 같습니다.
 
-    - : `serif`
-      - <span style={{ fontFamily: 'serif' }}>
-          세리프는 획의 끝을 붓으로 그린 것처럼 장식한 글꼴로, 한글 바탕체에 해당합니다. 나눔명조, 본명조, 서울한강체
-          등이 있습니다.
-        </span>
-    - : `sans-serif`
-      - <span style={{ fontFamily: 'sans-serif' }}>
-          산세리프는 장식 없는 글꼴로, 한글 돋움체에 해당합니다. 나눔고딕, 본고딕, 서울남산체 등이 있습니다.
-        </span>
-    - : `monospace`
-      - <span style={{ fontFamily: 'monospace' }}>고정폭 글꼴입니다. 나눔고딕코딩, D2 Coding 등이 있습니다.</span>
-    - : `cursive`
-      - <span style={{ fontFamily: 'cursive' }}>
-          이탤릭보다 더 눈에 띄는 필기체의 성격을 가진 글꼴입니다. 영어로 확인하세요:
+        - : `serif`
+          - <span style={{ fontFamily: 'serif' }}>
+              세리프는 획의 끝을 붓으로 그린 것처럼 장식한 글꼴로, 한글 바탕체에 해당합니다. 나눔명조, 본명조, 서울한강체
+              등이 있습니다.
+            </span>
+        - : `sans-serif`
+          - <span style={{ fontFamily: 'sans-serif' }}>
+              산세리프는 장식 없는 글꼴로, 한글 돋움체에 해당합니다. 나눔고딕, 본고딕, 서울남산체 등이 있습니다.
+            </span>
+        - : `monospace`
+          - <span style={{ fontFamily: 'monospace' }}>고정폭 글꼴입니다. 나눔고딕코딩, D2 Coding 등이 있습니다.</span>
+        - : `cursive`
 
-          Glyphs in cursive fonts generally have either joining strokes or other cursive characteristics beyond those of
-          italic typefaces.
-        </span>
-    - : `fantasy`
-      - <span style={{ fontFamily: 'fantasy' }}>
-          시각적으로 흥미를 끌 수 있는 요소를 첨가한 글꼴입니다. 영어로 확인하세요:
+          - <span style={{ fontFamily: 'cursive' }}>
+              이탤릭보다 더 눈에 띄는 필기체의 성격을 가진 글꼴입니다. 영어로 확인하세요:
 
-          Fantasy fonts are primarily decorative fonts that contain playful representations of characters.
-        </span>
-    - : `system-ui`
-      - <span style={{ fontFamily: 'system-ui' }}>
-          사용자 플랫폼의 기본 인터페이스 글꼴을 사용합니다. 전세계의 활자 사용법에는 큰 차이가 있으므로,
-          `system-ui`는 위의 5개 범주로 깔끔하게 분류할 수 없는 글꼴을 위해 제공됩니다.
-        </span>
+              Glyphs in cursive fonts generally have either joining strokes or other cursive characteristics beyond those of
+              italic typefaces.
+            </span>
+
+        - : `fantasy`
+
+          - <span style={{ fontFamily: 'fantasy' }}>
+              시각적으로 흥미를 끌 수 있는 요소를 첨가한 글꼴입니다. 영어로 확인하세요:
+
+              Fantasy fonts are primarily decorative fonts that contain playful representations of characters.
+            </span>
+
+        - : `system-ui`
+          - <span style={{ fontFamily: 'system-ui' }}>
+              사용자 플랫폼의 기본 인터페이스 글꼴을 사용합니다. 전세계의 활자 사용법에는 큰 차이가 있으므로,
+              `system-ui`는 위의 5개 범주로 깔끔하게 분류할 수 없는 글꼴을 위해 제공됩니다.
+            </span>
+
     - : `ui-serif`
       - <span style={{ fontFamily: 'ui-serif' }}>사용자 인터페이스의 기본 세리프 글꼴을 사용합니다.</span>
     - : `ui-sans-serif`
@@ -129,15 +126,22 @@ font-family: unset;
     - : `ui-rounded`
       - <span style={{ fontFamily: 'ui-rounded' }}>사용자 인터페이스의 기본 둥근 글꼴을 사용합니다.</span>
     - : `math`
+
       - <span style={{ fontFamily: 'math' }}>
-          아래 첨자와 위 첨자(ax² + bx + c), 여러 줄을 차지하는 괄호, 중첩 표현식, 이중 선 문자(ℕ, ℤ, ℚ, ...)처럼 수학
-          표현을 나타내는 것에 최적화된 글꼴을 사용합니다.
+
+        아래 첨자와 위 첨자(ax² + bx + c), 여러 줄을 차지하는 괄호, 중첩 표현식, 이중 선 문자(ℕ, ℤ, ℚ, ...)처럼 수학
+        표현을 나타내는 것에 최적화된 글꼴을 사용합니다.
+
         </span>
+
     - : `emoji`
       - <span style={{ fontFamily: 'emoji' }}>이모지 📕💻 렌더링을 위해 디자인된 글꼴을 사용합니다.</span>
     - : `fangsong`
+
       - <span style={{ fontFamily: 'fangsong' }}>
-          중문 글꼴 중 명조와 해서를 혼합한 듯한 글꼴을 사용합니다. 보통 중국 공문에서 볼 수 있습니다.
+
+        중문 글꼴 중 명조와 해서를 혼합한 듯한 글꼴을 사용합니다. 보통 중국 공문에서 볼 수 있습니다.
+
         </span>
 
 ### 유효한 글꼴 가족 이름

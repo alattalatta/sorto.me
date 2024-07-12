@@ -44,6 +44,8 @@ const { links } = Astro.props
         ))
       }
     </dl>
+    <hr />
+    <a class="top" href="#">맨 위로 이동 ↑</a>
   </div>
 </div>
 
@@ -95,5 +97,17 @@ const { links } = Astro.props
     display: inline-block;
     padding: 0 1rem;
     text-transform: lowercase;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px solid #000;
+    margin: 1.5rem 0;
+  }
+
+  .top {
+    display: inline-block;
+    font-family: var(--display);
+    padding: 0 1rem;
   }
 </style>

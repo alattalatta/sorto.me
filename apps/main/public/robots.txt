@@ -1,0 +1,5 @@
+User-Agent: *
+
+Disallow: /search
+
+Sitemap: https://sorto.me/sitemap-index.xml

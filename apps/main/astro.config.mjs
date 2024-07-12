@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config'
 import mdx from '@astrojs/mdx'
 import react from '@astrojs/react'
+import sitemap from '@astrojs/sitemap'
 import remarkDirective from 'remark-directive'
 
 import * as foo from '@lib/mdx'
@@ -19,5 +20,7 @@ export default defineConfig({
       },
     }),
     react(),
+    sitemap(),
   ],
+  site: 'https://sorto.me',
 })

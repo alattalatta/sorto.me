@@ -22,6 +22,7 @@ const href = `/posts/${post.slug}`
 <style>
   article {
     width: fit-content;
+    word-break: keep-all;
   }
 
   a {
@@ -29,10 +30,11 @@ const href = `/posts/${post.slug}`
   }
 
   .thumbnail {
-    width: 720px;
-    height: 180px;
     border: 1px solid var(--primary);
     display: block;
+    height: 180px;
+    max-width: 100%;
     object-fit: cover;
+    width: 720px;
   }
 </style>

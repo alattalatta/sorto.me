@@ -45,6 +45,16 @@ const { content: Content, ...props } = Astro.props
     text-decoration: inherit;
   }
 
+  .body :global(dt) {
+    font-weight: 700;
+  }
+  .body :global(* + dt) {
+    margin-top: 1em;
+  }
+  .body :global(dd) {
+    margin-left: 1.25em;
+  }
+
   .body :global(figure) {
     margin: 1em 0;
   }
@@ -97,6 +107,26 @@ const { content: Content, ...props } = Astro.props
   }
   .body :global(.codewrap[data-variant='bad'] pre) {
     outline: 2px solid rgb(241, 73, 48);
+  }
+
+  .body :global(table) {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  .body :global(* + table, * + .table-wrap) {
+    margin-top: 1em;
+  }
+  .body :global(.table-wrap) {
+    width: 100%;
+    overflow-x: auto;
+  }
+  .body :global(.table-wrap > table) {
+    min-width: 720px;
+  }
+
+  .body :global(:is(th, td)) {
+    border: 1px solid var(--primary);
+    padding: 0.5em;
   }
 
   .body :global(.notebox) {

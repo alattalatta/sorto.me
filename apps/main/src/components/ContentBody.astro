@@ -26,11 +26,16 @@ const { content: Content, ...props } = Astro.props
   }
 
   .body :global(blockquote) {
-    border-top: 1px solid var(--primary);
-    border-bottom: 1px solid var(--primary);
-    margin: 2em 1em;
-    padding: 1em;
+    border: 1px solid var(--primary);
+    border-left-width: 0;
+    border-right-width: 0;
+    margin: 2em;
+    padding: 1em 0 0.5em;
     position: relative;
+
+    @media (max-width: 640px) {
+      margin: 2em 0;
+    }
   }
   .body :global(blockquote cite) {
     font-size: 0.75em;
@@ -56,17 +61,53 @@ const { content: Content, ...props } = Astro.props
   }
 
   .body :global(figure) {
+    align-items: center;
+    border: 1px solid var(--primary);
+    display: flex;
+    flex-direction: column;
     margin: 1em 0;
+    padding: 0.5em;
+  }
+  .body :global(figcaption) {
+    font-size: 0.75em;
   }
 
   .body :global(h2) {
     font-size: 1.5em;
+    margin-top: 2em;
   }
   .body :global(h3) {
-    font-size: 1.25em;
+    font-size: 1.2em;
+    margin-top: 1.5em;
   }
   .body :global(h4) {
     font-size: 1em;
+  }
+
+  .body :global(hr) {
+    border-top: 1px solid var(--primary);
+    margin: 3em 4em;
+    overflow: visible;
+    position: relative;
+    &::after {
+      background: #fff;
+      content: '///';
+      font-family: var(--display);
+      font-weight: 700;
+      inset: 50% auto auto 50%;
+      margin: 0 auto;
+      padding: 0 0.5em 2px;
+      position: absolute;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .body :global(img) {
+    max-width: 100%;
+  }
+
+  .body :global(mark) {
+    background: #ffca8780;
   }
 
   .body :global(p) {
@@ -135,11 +176,31 @@ const { content: Content, ...props } = Astro.props
     position: relative;
   }
   .body :global(.notebox-note) {
-    background: lemonchiffon;
-    border-left: 4px solid rgb(240, 192, 0);
+    background: rgb(255, 252, 228);
+    border: 1px solid rgb(240, 192, 0);
+
+    &::before {
+      content: '참고';
+      display: block;
+      font-family: var(--display);
+      font-size: 0.75em;
+      font-weight: 700;
+      margin-bottom: 1em;
+      opacity: 0.76;
+    }
   }
   .body :global(.notebox-warn) {
-    background: rgb(255, 204, 198);
-    border-left: 4px solid rgb(240, 14, 14);
+    background: rgb(255, 235, 232);
+    border: 1px solid rgb(240, 14, 14);
+
+    &::before {
+      content: '경고';
+      display: block;
+      font-family: var(--display);
+      font-size: 0.75em;
+      font-weight: 700;
+      margin-bottom: 1em;
+      opacity: 0.76;
+    }
   }
 </style>

@@ -9,13 +9,14 @@ import { useCodeBlockGroup, type Lang } from '../useCodeBlockGroup'
 const Editor = lazy(() => import('@monaco-editor/react').then((mod) => ({ default: mod.Editor })))
 
 export type LiveExampleImplProps = {
+  babel?: boolean
   editable?: boolean
   height?: number
   lang: Lang
   name: string
 }
 
-const LiveExampleImpl: React.FC<LiveExampleImplProps> = ({ editable = true, height = 240, lang, name }) => {
+const LiveExampleImpl: React.FC<LiveExampleImplProps> = ({ babel, editable = true, height = 240, lang, name }) => {
   const { files, updateFile: updateFileImpl } = useCodeBlockGroup(name)
 
   const [currentFileName, setCurrentFileName] = useState<string>(`${name}/index.${lang}`)
@@ -41,7 +42,7 @@ const LiveExampleImpl: React.FC<LiveExampleImplProps> = ({ editable = true, heig
   return (
     <InView onChange={(inView) => inView && setWasInView()}>
       {({ ref }) => (
-        <figure ref={ref} className={styles.root} data-editable={editable}>
+        <div ref={ref} className={styles.root} data-editable={editable}>
           {editable && (
             <>
               <div className={styles.editor}>
@@ -92,10 +93,9 @@ const LiveExampleImpl: React.FC<LiveExampleImplProps> = ({ editable = true, heig
             </>
           )}
           <div className={styles.wrap} style={{ height }}>
-            <LiveCode files={files} height={height} />
+            <LiveCode babel={babel} files={files} height={height} />
           </div>
-          <figcaption className="no-screen">라이브 에디터</figcaption>
-        </figure>
+        </div>
       )}
     </InView>
   )

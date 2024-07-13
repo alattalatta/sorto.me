@@ -19,6 +19,7 @@
     "@fontsource/orbit": "^5.0.6",
     "@lib/mdx": "workspace:*",
     "@mdn/browser-compat-data": "^5.5.39",
+    "@types/babel__standalone": "^7.1.7",
     "@types/mdast": "^4.0.4",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",

@@ -102,6 +102,9 @@ importers:
       '@mdn/browser-compat-data':
         specifier: ^5.5.39
         version: 5.5.39
+      '@types/babel__standalone':
+        specifier: ^7.1.7
+        version: 7.1.7
       '@types/mdast':
         specifier: ^4.0.4
         version: 4.0.4
@@ -914,6 +917,9 @@ packages:
 
   '@types/babel__generator@7.6.8':
     resolution: {integrity: sha512-ASsj+tpEDsEiFr1arWrlN6V3mdfjRMZt6LtK/Vp/kreFLnr5QH5+DhvD5nINYZXzwJvXeGq+05iUXcAzVrqWtw==}
+
+  '@types/babel__standalone@7.1.7':
+    resolution: {integrity: sha512-4RUJX9nWrP/emaZDzxo/+RYW8zzLJTXWJyp2k78HufG459HCz754hhmSymt3VFOU6/Wy+IZqfPvToHfLuGOr7w==}
 
   '@types/babel__template@7.4.4':
     resolution: {integrity: sha512-h/NUaSyG5EyxBIp8YRxo4RMe2/qQgvyowRwVMzhYhBCONbW8PUsg4lkFMrhgZhUe5z3L3MiLDuvyJ/CaPa2A8A==}
@@ -1890,6 +1896,7 @@ packages:
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   globals@11.12.0:
     resolution: {integrity: sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA==}
@@ -4433,6 +4440,10 @@ snapshots:
   '@types/babel__generator@7.6.8':
     dependencies:
       '@babel/types': 7.24.7
+
+  '@types/babel__standalone@7.1.7':
+    dependencies:
+      '@types/babel__core': 7.20.5
 
   '@types/babel__template@7.4.4':
     dependencies:

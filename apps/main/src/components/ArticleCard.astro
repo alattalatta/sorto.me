@@ -13,7 +13,7 @@ const href = `/posts/${post.slug}`
 
 <article aria-labelledby={post.slug}>
   <a href={href}>
-    <Image alt="" class="thumbnail" loading="lazy" src={post.data.image} />
+    <Image alt="" class="thumbnail" loading="lazy" src={post.data.image} width={1440} />
     <h2 id={post.slug}>{post.data.title}</h2>
   </a>
   <p>{post.data.description}</p>

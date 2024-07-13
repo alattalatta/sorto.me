@@ -8,6 +8,7 @@ import styles from './LiveCode.module.scss'
 export type Language = 'css' | 'html' | 'js'
 
 type Props = {
+  babel?: boolean
   className?: string
   files: readonly VirtualFile[]
   height?: number
@@ -16,16 +17,21 @@ type Props = {
 }
 
 /** Live code view */
-const LiveCode: React.FC<Props> = ({ className, files, height = 240, loading: loadingProp = 'lazy', minHeight }) => {
+const LiveCode: React.FC<Props> = ({
+  babel = false,
+  className,
+  files,
+  height = 240,
+  loading: loadingProp = 'lazy',
+  minHeight,
+}) => {
   const eager = loadingProp === 'eager'
 
   const id = useId()
   const frameRef = useRef<HTMLIFrameElement>(null)
-  const initialSrc = useRef(stringifyFiles(files)).current
 
   const [wasInView, setWasInView] = useReducer(() => true, false)
   const [loaded, setLoaded] = useReducer(() => true, false)
-  const [src, setSrc] = useState(initialSrc)
 
   useEffect(() => {
     const handleReadyMesasge = (event: MessageEvent<string>): void => {
@@ -39,16 +45,12 @@ const LiveCode: React.FC<Props> = ({ className, files, height = 240, loading: lo
     return () => window.removeEventListener('message', handleReadyMesasge)
   }, [id])
 
-  useEffect(() => {
-    setSrc(stringifyFiles(files))
-  }, [files])
-
   // push changes to the frame
   useEffect(() => {
     if (loaded && frameRef.current?.contentWindow) {
-      frameRef.current.contentWindow.postMessage(src)
+      frameRef.current.contentWindow.postMessage(files)
     }
-  }, [loaded, src])
+  }, [loaded, files])
 
   const loading = !eager && !loaded
 
@@ -61,7 +63,8 @@ const LiveCode: React.FC<Props> = ({ className, files, height = 240, loading: lo
               ref={frameRef}
               className={styles.frame}
               data-loading={loading}
-              src={`/frame?id=${id}`}
+              sandbox="allow-scripts allow-same-origin"
+              src={`/frame${babel ? '/babel' : ''}?id=${id}`}
               title="예제"
             />
           )}
@@ -75,30 +78,3 @@ const LiveCode: React.FC<Props> = ({ className, files, height = 240, loading: lo
 }
 
 export default LiveCode
-
-function stringifyFiles(files: readonly VirtualFile[]): string {
-  const [css, html, js] = files.reduce(
-    (acc, file) => {
-      switch (file.lang) {
-        case 'css':
-          acc[0].push(file)
-          break
-        case 'html':
-          acc[1].push(file)
-          break
-        case 'js':
-          acc[2].push(file)
-          break
-      }
-
-      return acc
-    },
-    [[], [], []] as [VirtualFile[], VirtualFile[], VirtualFile[]],
-  )
-
-  const view = html.map((file) => file.content).join('')
-  const styleElements = css.map((file) => file.content).join('')
-  const scripts = js.map((it) => `;(() => {${it.content}})()`).join('')
-
-  return `<style>${styleElements}</style>${view}<script id="dynascript">${scripts}</script>`
-}

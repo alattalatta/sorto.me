@@ -1,0 +1,9 @@
+---
+import FrameRenderer from 'components/FrameRenderer'
+import FrameShell from 'layouts/FrameShell.astro'
+---
+
+<FrameShell>
+  <script data-name="babel" src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <FrameRenderer babel client:load />
+</FrameShell>

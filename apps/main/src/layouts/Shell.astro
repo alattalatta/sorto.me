@@ -16,7 +16,6 @@ const { description = 'sorto.me', title = 'sorto.me' } = Astro.props
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta content="Astro description" name="description" />
     <meta content={Astro.generator} name="generator" />
     <meta content="width=device-width" name="viewport" />
     <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
@@ -29,15 +28,15 @@ const { description = 'sorto.me', title = 'sorto.me' } = Astro.props
   </head>
   <body>
     <slot />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7F0E6D3XE2"></script>
+    <script>
+      // @ts-nocheck
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-7F0E6D3XE2');
+    </script>
   </body>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7F0E6D3XE2"></script>
-  <script>
-    // @ts-nocheck
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-7F0E6D3XE2');
-  </script>
 </html>
 
 <style is:global>

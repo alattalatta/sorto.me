@@ -10,16 +10,17 @@ import Shell from 'layouts/Shell.astro'
 export const getStaticPaths = (async () => {
   return (await getCollection('posts')).map((entry) => ({
     params: { slug: entry.slug },
-    props: { entry },
+    props: entry
   }))
 }) satisfies GetStaticPaths
 
-const { entry } = Astro.props
+const props = Astro.props
+const site = Astro.site
 
 const posts = [...(await getCollection('posts'))].reverse()
 ---
 
-<Shell description={entry.data.description} title={entry.data.title}>
+<Shell description={props.data.description} image={`${site}posts/${props.slug}/og.png`} title={props.data.title}>
   <ContentGrid client:load>
     <Nav
       links={[
@@ -44,7 +45,7 @@ const posts = [...(await getCollection('posts'))].reverse()
       slot="nav"
     />
     <main>
-      <Article post={entry} />
+      <Article post={props} />
     </main>
     <Footer slot="footer" />
   </ContentGrid>

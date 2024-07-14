@@ -21,26 +21,26 @@ const processor = remark()
 export const getStaticPaths = (async () => {
   return (await getCollection('docs')).map((entry) => ({
     params: { slug: entry.id.replace('.mdx', '') },
-    props: { entry },
+    props: entry,
   }))
 }) satisfies GetStaticPaths
 
-const { entry } = Astro.props
+const props = Astro.props
 
 const description = await (async () => {
-  if (entry.data.description) {
-    return entry.data.description
+  if (props.data.description) {
+    return props.data.description
   }
 
-  return escapeUTF8(await processor.process(entry.body as string).then((res) => String(res).trim()))
+  return escapeUTF8(await processor.process(props.body as string).then((res) => String(res).trim()))
 })()
 
 const bcdData = (() => {
-  if (!entry.data.bcd) {
+  if (!props.data.bcd) {
     return null
   }
 
-  const [category, ...identifiers] = entry.data.bcd.split('.')
+  const [category, ...identifiers] = props.data.bcd.split('.')
   const data = identifiers.reduce<Identifier | null>(
     (prv, cur) => {
       if (!prv) {
@@ -62,7 +62,7 @@ const bcdData = (() => {
 })()
 ---
 
-<Shell description={description} title={entry.data.title}>
+<Shell description={description} title={props.data.title}>
   <ContentGrid client:load>
     <Nav
       links={[
@@ -90,7 +90,7 @@ const bcdData = (() => {
       slot="nav"
     />
     <main>
-      <Doc bcd={bcdData} post={entry} />
+      <Doc bcd={bcdData} post={props} />
     </main>
     <Footer slot="footer" />
   </ContentGrid>

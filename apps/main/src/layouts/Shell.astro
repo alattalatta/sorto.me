@@ -6,10 +6,11 @@ import '@fontsource/orbit'
 
 interface Props {
   description?: string
+  image?: string
   title?: string
 }
 
-const { description = 'sorto.me', title = 'sorto.me' } = Astro.props
+const { description = 'sorto.me', image, title = 'sorto.me' } = Astro.props
 ---
 
 <!doctype html>
@@ -24,6 +25,7 @@ const { description = 'sorto.me', title = 'sorto.me' } = Astro.props
     <meta content={title} property="og:title" />
     <meta content={description} name="description" />
     <meta content={description} property="og:description" />
+    {image && <meta content={image} property="og:image" />}
     <meta content="website" property="og:type" />
   </head>
   <body>

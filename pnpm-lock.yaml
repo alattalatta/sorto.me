@@ -44,12 +44,6 @@ importers:
 
   apps/main:
     dependencies:
-      '@astrojs/sitemap':
-        specifier: ^3.1.6
-        version: 3.1.6
-      '@mdx-js/react':
-        specifier: ^3.0.1
-        version: 3.0.1(@types/react@18.3.3)(react@18.3.1)
       '@monaco-editor/react':
         specifier: ^4.6.0
         version: 4.6.0(monaco-editor@0.50.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -84,13 +78,16 @@ importers:
       '@astrojs/react':
         specifier: ^3.6.0
         version: 3.6.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(vite@5.3.3(@types/node@20.14.9)(sass@1.77.8))
+      '@astrojs/sitemap':
+        specifier: ^3.1.6
+        version: 3.1.6
+      '@fontsource/gowun-batang':
+        specifier: ^5.0.13
+        version: 5.0.13
       '@fontsource/libre-barcode-128-text':
         specifier: ^5.0.17
         version: 5.0.19
       '@fontsource/nanum-gothic-coding':
-        specifier: ^5.0.18
-        version: 5.0.18
-      '@fontsource/nanum-myeongjo':
         specifier: ^5.0.18
         version: 5.0.18
       '@fontsource/orbit':
@@ -102,6 +99,9 @@ importers:
       '@mdn/browser-compat-data':
         specifier: ^5.5.39
         version: 5.5.39
+      '@mdx-js/react':
+        specifier: ^3.0.1
+        version: 3.0.1(@types/react@18.3.3)(react@18.3.1)
       '@types/babel__standalone':
         specifier: ^7.1.7
         version: 7.1.7
@@ -621,14 +621,14 @@ packages:
     resolution: {integrity: sha512-Ys+3g2TaW7gADOJzPt83SJtCDhMjndcDMFVQ/Tj9iA1BfJzFKD9mAUXT3OenpuPHbI6P/myECxRJrofUsDx/5g==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
 
+  '@fontsource/gowun-batang@5.0.13':
+    resolution: {integrity: sha512-piZnnxYZ9dWW8fWlbLVs4ikmAx1NVJQfOX6vfbMxJumamwhhSLkwUVA1Qbs433jSezuKrcNbV8TS3vsbwkJeiQ==}
+
   '@fontsource/libre-barcode-128-text@5.0.19':
     resolution: {integrity: sha512-9ga5spVffbSIiILWZ55YkgT78vIHfaAQW6KPxvd7eAgVcBXjqA8XYX6wtODMlcn9ZyWiQ70eRWEOEBfsKp8ldw==}
 
   '@fontsource/nanum-gothic-coding@5.0.18':
     resolution: {integrity: sha512-7F2WhU99Ly8pfFUtQB7irM+r6U03kYpt5OdVMXHe+3wQxMNWK3gsV3NUlSQHXIlgV8gx58HrNj7O5ftZD5nDhw==}
-
-  '@fontsource/nanum-myeongjo@5.0.18':
-    resolution: {integrity: sha512-5OclZhFD51hQ7d75+PuGWs76+qPRlvoTlWydNa45jgo7Sw0XkUHQU/PQ/j8RdroMhD/OPM9ppfXTaRFce3gDHg==}
 
   '@fontsource/orbit@5.0.6':
     resolution: {integrity: sha512-MqaxWYys/v/5CYFujnz4GljHs7SIWCd78qAMVH6gdofOlP0ISTgdWroAE5nKzVD4jKLvXwhZsSvcCz+otJmzKg==}
@@ -4193,11 +4193,11 @@ snapshots:
 
   '@eslint/js@8.57.0': {}
 
+  '@fontsource/gowun-batang@5.0.13': {}
+
   '@fontsource/libre-barcode-128-text@5.0.19': {}
 
   '@fontsource/nanum-gothic-coding@5.0.18': {}
-
-  '@fontsource/nanum-myeongjo@5.0.18': {}
 
   '@fontsource/orbit@5.0.6': {}
 

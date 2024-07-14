@@ -27,36 +27,22 @@ const browsers = [...desktopBrowsers, ...mobileBrowsers]
 ---
 
 {
-  bcd ? (
-    <figure>
-      <CompatTable className="bcd" client:idle {bcd} {browsers} />
-      <figcaption>
-        MDN{' '}
-        <a href="https://github.com/mdn/browser-compat-data" referrerpolicy="no-referrer">
-          <code>browser-compat-data</code>
-        </a>
-      </figcaption>
-    </figure>
-  ) : null
+  bcd ? <div><CompatTable className="bcd" client:idle {bcd} {browsers} /></div> : null
 }
 
 <style>
-  figure {
+  div {
     margin-top: 1em !important;
     overflow: auto hidden;
     padding-bottom: 0.5em;
     position: relative;
-  }
-
-  figcaption {
-    font-size: 1em;
-    margin-top: 0.5em;
   }
 </style>
 
 <style define:vars={{ desktops: desktopBrowsers.length }} is:global lang="scss">
   .bcd {
     border-collapse: collapse;
+    caption-side: bottom;
     font-size: 0.75em;
 
     th,

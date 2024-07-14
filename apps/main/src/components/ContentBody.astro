@@ -44,6 +44,40 @@ const { content: Content, ...props } = Astro.props
     font-style: normal;
   }
 
+  .body :global(.notebox) {
+    margin: 1em 0;
+    padding: 1em;
+    position: relative;
+  }
+  .body :global(.notebox-note) {
+    background: rgb(255, 252, 228);
+    border: 1px solid rgb(240, 192, 0);
+
+    &::before {
+      content: '참고';
+      display: block;
+      font-family: var(--display);
+      font-size: 0.75em;
+      font-weight: 700;
+      margin-bottom: 1em;
+      opacity: 0.76;
+    }
+  }
+  .body :global(.notebox-warn) {
+    background: rgb(255, 235, 232);
+    border: 1px solid rgb(240, 14, 14);
+
+    &::before {
+      content: '경고';
+      display: block;
+      font-family: var(--display);
+      font-size: 0.75em;
+      font-weight: 700;
+      margin-bottom: 1em;
+      opacity: 0.76;
+    }
+  }
+
   .body :global(code:not(pre > code)) {
     background: #9f9f9f27;
     border-radius: 4px;
@@ -180,37 +214,11 @@ const { content: Content, ...props } = Astro.props
     padding: 0.5em;
   }
 
-  .body :global(.notebox) {
-    margin: 1em 0;
-    padding: 1em;
-    position: relative;
-  }
-  .body :global(.notebox-note) {
-    background: rgb(255, 252, 228);
-    border: 1px solid rgb(240, 192, 0);
+  .body :global(:is(ol, ul)) {
+    padding-left: 1.5em;
 
-    &::before {
-      content: '참고';
-      display: block;
-      font-family: var(--display);
-      font-size: 0.75em;
-      font-weight: 700;
-      margin-bottom: 1em;
-      opacity: 0.76;
-    }
-  }
-  .body :global(.notebox-warn) {
-    background: rgb(255, 235, 232);
-    border: 1px solid rgb(240, 14, 14);
-
-    &::before {
-      content: '경고';
-      display: block;
-      font-family: var(--display);
-      font-size: 0.75em;
-      font-weight: 700;
-      margin-bottom: 1em;
-      opacity: 0.76;
+    @media (max-width: 1088px) {
+      padding-left: 1em;
     }
   }
 </style>

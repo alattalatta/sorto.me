@@ -12,6 +12,12 @@ type Props = {
 const CompatTable: React.FC<Props> = ({ bcd, browsers, ...props }) => {
   return (
     <table {...props}>
+      <caption style={{ textAlign: 'left' }}>
+        MDN{' '}
+        <a href="https://github.com/mdn/browser-compat-data">
+          <code>browser-compat-data</code>
+        </a>
+      </caption>
       <thead>
         <tr>
           <th />

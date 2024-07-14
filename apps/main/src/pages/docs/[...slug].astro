@@ -6,7 +6,7 @@ import { getCollection } from 'astro:content'
 import Doc from 'components/Doc.astro'
 import Footer from 'components/Footer.astro'
 import Nav from 'components/Nav.astro'
-import PostGrid from 'components/PostGrid'
+import ContentGrid from 'components/ContentGrid'
 import { escapeUTF8 } from 'entities'
 import Shell from 'layouts/Shell.astro'
 import type { Root } from 'mdast'
@@ -63,7 +63,7 @@ const bcdData = (() => {
 ---
 
 <Shell description={description} title={entry.data.title}>
-  <PostGrid client:load>
+  <ContentGrid client:load>
     <Nav
       links={[
         ['library', [['k-popo', 'https://www.npmjs.com/package/k-popo']]],
@@ -93,5 +93,5 @@ const bcdData = (() => {
       <Doc bcd={bcdData} post={entry} />
     </main>
     <Footer slot="footer" />
-  </PostGrid>
+  </ContentGrid>
 </Shell>

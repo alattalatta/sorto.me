@@ -17,6 +17,13 @@ const { links } = Astro.props
     <Starry client:load />
   </div>
   <div class="links">
+    <form action="/search">
+      <label class="no-screen" for="search-input">검색어</label>
+      <input id="search-input" name="q" placeholder="typescript" type="search">
+      <button type="submit">
+        검색
+      </button>
+    </form>
     <dl>
       {
         links.map(([group, items]) => (
@@ -42,7 +49,7 @@ const { links } = Astro.props
   </div>
 </div>
 
-<style>
+<style lang="scss">
   .root {
     display: flex;
     flex-direction: column;
@@ -66,17 +73,44 @@ const { links } = Astro.props
   }
 
   .links {
+    font-family: var(--display);
     grid-row: body / span 2;
     overflow: auto;
     padding: 1.5rem 2rem;
   }
 
+  form {
+    display: flex;
+    gap: 8px;
+  }
+
+  input {
+    border: 0;
+    border-bottom: 1px solid var(--primary);
+    display: block;
+    font-family: inherit;
+    font-size: 1em;
+    padding: 0.5em 0.25em;
+    width: 100%;
+
+    &:hover {
+      background: #fcfcfc;
+    }
+  }
+
+  button[type=submit] {
+    background: 0;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    cursor: pointer;
+    flex-shrink: 0;
+    width: 4em;
+  }
+
   dl {
     display: flex;
     flex-direction: column;
-
-    font-family: var(--display);
-    margin: 0;
+    margin: 2em 0 0;
   }
   dt {
     font-weight: 400;

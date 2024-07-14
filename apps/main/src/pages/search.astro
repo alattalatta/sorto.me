@@ -1,0 +1,119 @@
+---
+import Shell from 'layouts/Shell.astro'
+---
+
+<Shell title="sorto.me">
+  <main>
+    <figure>
+      <a href="/">
+        <picture>
+          <source media="(max-width: 414px)" srcset="/logo-small.svg" />
+          <img alt="ALATTA" class="mainimg" src="/logo.svg" />
+        </picture>
+      </a>
+      <figcaption>ALATTA</figcaption>
+    </figure>
+    <form method="get">
+      <input name="q" type="search" />
+      <button type="submit">
+        검색
+      </button>
+    </form>
+    <div class="gcse-wrap">
+      <div class="gcse-searchresults-only" />
+    </div>
+  </main>
+</Shell>
+<script>
+  const input = (document.querySelector('input[name=q]') as HTMLInputElement | null)
+  input && (input.value = new URLSearchParams(location.search).get('q') || '')
+</script>
+<script async is:inline src="https://cse.google.com/cse.js?cx=2583b4522ab9cd371" />
+
+<style lang="scss">
+  main {
+    min-height: 100vh;
+    min-height: 100dvh;
+    max-width: 990px;
+
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    font-family: var(--display);
+    margin: 0 auto;
+    padding: 1rem;
+    position: relative;
+  }
+
+  figure {
+    margin: 0;
+    text-align: right;
+  }
+
+  .mainimg {
+    display: block;
+    max-width: 100%;
+    width: 32rem;
+  }
+
+  form {
+    display: flex;
+    gap: 1em;
+    margin-top: 1em;
+    width: 100%;
+  }
+
+  input {
+    display: block;
+    border: 1px solid var(--primary);
+    font-family: var(--display);
+    font-size: 1.5rem;
+    padding: 0.5em 1em;
+    width: 100%;
+  }
+
+  button {
+    width: 8em;
+    background: none;
+    border: 1px solid var(--primary);
+    cursor: pointer;
+    font-size: 1em;
+    flex-shrink: 0;
+    padding: 1em;
+
+    &:hover {
+      background: #f9f9f9;
+    }
+  }
+
+  .gcse-wrap {
+    height: 900px;
+    width: 100%;
+
+    & :global(.gsc-control-cse) {
+      padding: 1em 0;
+    }
+    & :global(.gsc-table-result) {
+      margin-top: 0.5em;
+    }
+    & :global(.gs-webResult .gs-visibleUrl) {
+      color: #8c8c8c;
+    }
+
+    & :global(a) {
+      color: #177cab;
+      text-decoration: underline;
+
+      &:hover,
+      &:focus {
+        color: #c72082
+      }
+    }
+    & :global(b) {
+      background: #ffca8780;
+    }
+  }
+</style>

@@ -18,10 +18,12 @@ const { content: Content, ...props } = Astro.props
     font-family: var(--serif);
     font-size: 1.2em;
     line-height: 1.5;
-    padding: 2rem 3rem 3rem;
+    padding: 0 3rem 3rem;
 
     @media (max-width: 1088px) {
-      padding: 2rem 1rem 3rem;
+      font-size: 1em;
+      line-height: 1.8;
+      padding: 0 1rem 3rem;
     }
   }
 
@@ -75,10 +77,18 @@ const { content: Content, ...props } = Astro.props
   .body :global(h2) {
     font-size: 1.5em;
     margin-top: 2em;
+
+    @media (max-width: 1088px) {
+      margin-top: 1.5em;
+    }
   }
   .body :global(h3) {
     font-size: 1.2em;
     margin-top: 1.5em;
+
+    @media (max-width: 1088px) {
+      margin-top: 1.25em;
+    }
   }
   .body :global(h4) {
     font-size: 1em;

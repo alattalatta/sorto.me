@@ -93,6 +93,7 @@ const { content: Content, ...props } = Astro.props
     margin-top: 1em;
   }
   .body :global(dd) {
+    margin-top: 0.25em;
     margin-left: 1.25em;
   }
 
@@ -110,19 +111,11 @@ const { content: Content, ...props } = Astro.props
 
   .body :global(h2) {
     font-size: 1.5em;
-    margin-top: 2em;
-
-    @media (max-width: 1088px) {
-      margin-top: 1.5em;
-    }
+    margin-top: 1.5em;
   }
   .body :global(h3) {
     font-size: 1.2em;
-    margin-top: 1.5em;
-
-    @media (max-width: 1088px) {
-      margin-top: 1.25em;
-    }
+    margin-top: 1.25em;
   }
   .body :global(h4) {
     font-size: 1em;
@@ -215,10 +208,14 @@ const { content: Content, ...props } = Astro.props
   }
 
   .body :global(:is(ol, ul)) {
+    margin-bottom: 0.5em;
     padding-left: 1.5em;
 
     @media (max-width: 1088px) {
       padding-left: 1em;
     }
+  }
+  .body :global(li + li) {
+    margin-top: 0.25em;
   }
 </style>

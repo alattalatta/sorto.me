@@ -1,0 +1,141 @@
+---
+title: 'CSS font: 글꼴 단축속성'
+bcd: css.properties.font
+---
+
+CSS **`font`** 단축속성은 요소의 글꼴과 관련한 다양한 속성을 한 번에 설정하거나, 시스템 글꼴로 설정합니다.
+
+```css hidden name=demo
+pre {
+  font: 1.2rem 'Do Hyeon', sans-serif;
+  /* font: italic 1.2rem 'Do Hyeon', serif; */
+  /* font: italic small-caps bold 24px/2 cursive; */
+  /* font: small-caps bold 16px/1 monospace; */
+  /* font: caption; */
+}
+```
+
+```html hidden editable=false name=demo filename=font
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet" />
+```
+
+```html hidden name=demo
+<pre>
+Almost before we knew it,
+we had left the ground.
+</pre>
+```
+
+<LiveExample height={240} lang="css" name="demo" />
+
+다른 단축속성과 마찬가지로, `font` 속성에 지정하지 않은 개별 속성은 각자의 초기 값으로 설정됩니다. 따라서 명시도가 떨어지는 개별 속성 선언은 덮어써집니다. [`font-size-adjust`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size-adjust)와 [`font-kerning`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-kerning)은 `font` 속성으로 설정할 수 없지만, 그래도 함께 초기 값으로 설정됩니다.
+
+# 구성 속성
+
+- [`font-family`][font-family]
+- [`font-size`][font-size]
+- [`font-stretch`][font-stretch]
+- [`font-style`][font-style]
+- [`font-variant`][font-variant]
+- [`font-weight`][font-weight]
+- [`line-height`][line-height]
+
+# 구문
+
+```css
+/* font-size font-family */
+font: 1.2rem 'Do Hyeon', sans-serif;
+
+/* font-size/line height font-family */
+font: 1.2rem/2 'Do Hyeon', sans-serif;
+
+/* font-style font-weight font-size font-family */
+font: italic bold 1.2em 'Do Hyeon', sans-serif;
+
+/* font-stretch font-variant font-size font-family */
+font: ultra-condensed small-caps 1.2em 'Do Hyeon', sans-serif;
+
+/* 시스템 글꼴 */
+font: caption;
+```
+
+`font` 속성은 시스템 글꼴을 나타내는 하나의 키워드를 사용하거나, 다양한 글꼴 관련 속성들의 값들을 사용합니다.
+
+`font`를 시스템 글꼴 키워드로 설정하려면 `caption`, `icon`, `menu`, `message-box`, `small-caption`, `status-bar` 중 하나를 사용해야 합니다.
+
+`font`를 단축속성으로 사용하려면
+
+- 다음 두 값을 반드시 포함해야 합니다.
+  - [`<font-size>`][font-size]
+  - [`<font-family>`][font-family]
+- 다음 값은 선택적으로 포함할 수 있습니다.
+  - [`<font-style>`][font-style]
+  - [`<font-variant>`][font-variant]
+  - [`<font-weight>`][font-weight]
+  - [`<font-stretch>`][font-stretch]
+  - [`<line-height>`][line-height]
+- `font-style`, `font-variant`, `font-weight`는 반드시 `font-size`보다 앞에 위치해야 합니다.
+- `font-variant`는 CSS 2.1에서 정의된 값인 `normal`과 `small-caps`만 사용할 수 있습니다.
+- `font-stretch`는 하나의 키워드 값만 사용할 수 있습니다.
+- `line-height`는 `16px/3`처럼 `font-size` 바로 뒤에 `/`를 붙여서 지정해야 합니다.
+- `font-family`는 마지막 값이어야 합니다.
+
+## 값
+
+- : `<'font-style'>`
+
+  - CSS [`font-style`][font-style] 속성을 참고하세요.
+
+- : `<'font-variant'>`
+
+  - CSS [`font-variant`][font-variant] 속성을 참고하세요.
+
+- : `<'font-weight'>`
+
+  - CSS [`font-weight`][font-weight] 속성을 참고하세요.
+
+- : `<'font-stretch'>`
+
+  - CSS [`font-stretch`][font-stretch] 속성을 참고하세요.
+
+- : `<'font-size'>`
+
+  - CSS [`font-size`][font-size] 속성을 참고하세요.
+
+- : `<'line-height'>`
+
+  - CSS [`line-height`][line-height] 속성을 참고하세요.
+
+- : `<'font-family'>`
+  - CSS [`font-family`][font-family] 속성을 참고하세요.
+
+### 시스템 글꼴 값
+
+- : `caption`
+  - 버튼, 드롭다운 등 컨트롤의 캡션에 사용하는 글꼴입니다.
+- : `icon`
+  - 레이블 아이콘에 사용하는 글꼴입니다.
+- : `menu`
+  - 드롭다운 메뉴, 메뉴 목록 등 메뉴에 사용하는 글꼴입니다.
+- : `message-box`
+  - 대화상자에 사용하는 글꼴입니다.
+- : `small-caption`
+  - 작은 컨트롤의 레이블에 사용하는 글꼴입니다.
+- : `status-bar`
+  - 상태 표시줄에 사용하는 글꼴입니다.
+
+# 명세
+
+[CSS Fonts Module Level 4](https://drafts.csswg.org/css-fonts/#font-prop)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+[font-family]: ./font-family
+[font-size]: https://developer.mozilla.org/en-US/docs/Web/CSS/font-size
+[font-stretch]: https://developer.mozilla.org/en-US/docs/Web/CSS/font-stretch
+[font-style]: ./font-style
+[font-variant]: https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant
+[font-weight]: ./font-weight
+[line-height]: https://developer.mozilla.org/en-US/docs/Web/CSS/line-height

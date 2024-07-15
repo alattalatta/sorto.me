@@ -26,9 +26,9 @@ const LiveExampleImpl: React.FC<LiveExampleImplProps> = ({ babel, editable = tru
 
   if (files === null) {
     return (
-      <figure>
+      <div className={styles.loading}>
         <Loading height={height} round />
-      </figure>
+      </div>
     )
   }
 

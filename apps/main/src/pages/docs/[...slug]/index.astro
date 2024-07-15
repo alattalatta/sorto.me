@@ -63,7 +63,7 @@ const bcdData = (() => {
 })()
 ---
 
-<Shell description={description} image={`${site}docs/${props.slug}/og.png`} title={props.data.title}>
+<Shell description={description} image={`${site}docs/${props.id.replace('.mdx', '')}/og.png`} title={props.data.title}>
   <ContentGrid client:load>
     <Nav
       links={[

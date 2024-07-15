@@ -49,7 +49,7 @@ export function doJSX(title: string, description: string, imageBuffer: ArrayBuff
             <h1
               style={{
                 fontFamily: 'Orbit',
-                fontSize: 32,
+                fontSize: 36,
                 fontWeight: 400,
                 margin: 0,
                 padding: 0,
@@ -60,7 +60,7 @@ export function doJSX(title: string, description: string, imageBuffer: ArrayBuff
             <p
               style={{
                 fontFamily: 'Orbit',
-                fontSize: 18,
+                fontSize: 24,
                 fontWeight: 400,
                 margin: '8px 0 0',
                 padding: 0,

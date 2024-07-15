@@ -8,9 +8,9 @@ import { headingDepthAndSlug } from './headingDepthAndSlug'
 import { notebox } from './notebox'
 
 const remarkPlugin: Plugin<void[], Root> = () => {
-  const slugger = new Slugger()
-
   return (tree) => {
+    const slugger = new Slugger()
+
     visit(tree, (node: RootContent, index: number, parent: Parent) => {
       switch (node.type) {
         case 'blockquote':

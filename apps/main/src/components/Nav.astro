@@ -17,13 +17,15 @@ const { links } = Astro.props
     <Starry client:load />
   </div>
   <div class="links">
-    <form action="/search">
-      <label class="no-screen" for="search-input">검색어</label>
-      <input id="search-input" name="q" placeholder="typescript" type="search">
-      <button type="submit">
-        검색
-      </button>
-    </form>
+    <search>
+      <form action="/search">
+        <label class="no-screen" for="search-input">검색어</label>
+        <input id="search-input" name="q" placeholder="typescript" type="search">
+        <button type="submit">
+          검색
+        </button>
+      </form>
+    </search>
     <dl>
       {
         links.map(([group, items]) => (

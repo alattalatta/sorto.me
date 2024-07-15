@@ -202,12 +202,12 @@ const { content: Content, ...props } = Astro.props
     min-width: 720px;
   }
 
-  .body :global(:is(th, td)) {
+  .body :global(:where(th, td)) {
     border: 1px solid var(--primary);
     padding: 0.5em;
   }
 
-  .body :global(:is(ol, ul)) {
+  .body :global(:where(ol, ul)) {
     margin-bottom: 0.5em;
     padding-left: 1.5em;
 

@@ -10,12 +10,19 @@ import { getSubIdentifierKeys, supportLabel } from './utils'
 
 type Props = {
   bcd: { data: Identifier; key: string }
-  browsers: [BrowserName, string][]
   depth?: number
+  desktopBrowsers: [BrowserName, string][]
+  mobileBrowsers: [BrowserName, string][]
   recurse?: boolean
 }
 
-const CompatRow: React.FC<Props> = ({ bcd: { data: bcd, key }, browsers, depth = 0, recurse }) => {
+const CompatRow: React.FC<Props> = ({
+  bcd: { data: bcd, key },
+  depth = 0,
+  desktopBrowsers,
+  mobileBrowsers,
+  recurse,
+}) => {
   const $row = useRef<HTMLTableRowElement | null>(null)
   const $supDetail = useRef<HTMLTableRowElement | null>(null)
 
@@ -64,7 +71,17 @@ const CompatRow: React.FC<Props> = ({ bcd: { data: bcd, key }, browsers, depth =
             )}
             <SpecStatusIcons status={compat.status} />
           </th>
-          {browsers.map(([browser]) => (
+          {desktopBrowsers.map(([browser], index) => (
+            <CompatCell
+              key={browser}
+              browser={browser}
+              className={desktopBrowsers.length === index + 1 ? 'sep' : undefined}
+              data={compat.support[browser]!}
+              open={supportDetail?.[0] === browser}
+              onClick={setSupportDetail}
+            />
+          ))}
+          {mobileBrowsers.map(([browser]) => (
             <CompatCell
               key={browser}
               browser={browser}
@@ -78,7 +95,7 @@ const CompatRow: React.FC<Props> = ({ bcd: { data: bcd, key }, browsers, depth =
       {supportDetailOpen && (
         <tr ref={$supDetail}>
           {/* browsers + feature name */}
-          <td className={styles.supportDetail} colSpan={browsers.length + 1}>
+          <td className={styles.supportDetail} colSpan={desktopBrowsers.length + mobileBrowsers.length + 1}>
             <dl>
               {mapOver(supportDetail[1], (support, index) => (
                 <Fragment key={index}>
@@ -129,8 +146,9 @@ const CompatRow: React.FC<Props> = ({ bcd: { data: bcd, key }, browsers, depth =
             <CompatRow
               key={childKey}
               bcd={{ data: bcd[childKey], key: childKey }}
-              browsers={browsers}
               depth={depth + 1}
+              desktopBrowsers={desktopBrowsers}
+              mobileBrowsers={mobileBrowsers}
               recurse={true}
             />
           ))

@@ -10,24 +10,20 @@ type Props = {
 const { data: bcd } = Astro.props
 
 const desktopBrowsers: [BrowserName, string][] = [
-  ['ie', 'IE'],
-  ['edge', 'Edge'],
-  ['chrome', 'Chrome'],
   ['safari', 'Safari'],
+  ['chrome', 'Chrome'],
   ['firefox', 'Firefox'],
 ]
 const mobileBrowsers: [BrowserName, string][] = [
-  ['safari_ios', 'iOS\nSafari'],
-  ['webview_android', 'Android\nWebView'],
-  ['chrome_android', 'Android\nChrome'],
-  ['firefox_android', 'Android\nFirefox'],
+  ['safari_ios', 'Safari'],
+  ['chrome_android', 'Chrome'],
+  ['firefox_android', 'Firefox'],
   ['samsunginternet_android', 'Samsung\nInternet'],
 ]
-const browsers = [...desktopBrowsers, ...mobileBrowsers]
 ---
 
 {
-  bcd ? <div><CompatTable className="bcd" client:idle {bcd} {browsers} /></div> : null
+  bcd ? <div><CompatTable className="bcd" client:idle {bcd} {desktopBrowsers} {mobileBrowsers} /></div> : null
 }
 
 <style>
@@ -40,7 +36,7 @@ const browsers = [...desktopBrowsers, ...mobileBrowsers]
 </style>
 
 <style define:vars={{ desktops: desktopBrowsers.length }} is:global lang="scss">
-  .bcd {
+  .bcd.bcd {
     border-collapse: collapse;
     caption-side: bottom;
     font-size: 0.75em;
@@ -59,9 +55,9 @@ const browsers = [...desktopBrowsers, ...mobileBrowsers]
         position: absolute;
       }
     }
-
-    :is(th, td):nth-child(6) {
-      border-right: 3px double black;
+    
+    .sep {
+      border-right: 3px double var(--primary);
     }
 
     // browsers

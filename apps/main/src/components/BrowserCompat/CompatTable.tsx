@@ -5,11 +5,12 @@ import { getSubIdentifierKeys } from './utils'
 
 type Props = {
   bcd: { data: Identifier; key: string }
-  browsers: [BrowserName, string][]
   className?: string
+  desktopBrowsers: [BrowserName, string][]
+  mobileBrowsers: [BrowserName, string][]
 }
 
-const CompatTable: React.FC<Props> = ({ bcd, browsers, ...props }) => {
+const CompatTable: React.FC<Props> = ({ bcd, desktopBrowsers, mobileBrowsers, ...props }) => {
   return (
     <table {...props}>
       <caption style={{ textAlign: 'left' }}>
@@ -20,18 +21,39 @@ const CompatTable: React.FC<Props> = ({ bcd, browsers, ...props }) => {
       </caption>
       <thead>
         <tr>
-          <th />
-          {browsers.map(([key, name]) => (
+          <th rowSpan={3} />
+          <th className="sep" colSpan={3} rowSpan={2}>
+            데스크톱
+          </th>
+          <th colSpan={4}>모바일</th>
+        </tr>
+        <tr>
+          <th>iOS</th>
+          <th colSpan={3}>Android</th>
+        </tr>
+        <tr>
+          {desktopBrowsers.map(([key, name], index) => (
+            <th key={key} className={desktopBrowsers.length === index + 1 ? 'sep' : undefined}>
+              {name}
+            </th>
+          ))}
+          {mobileBrowsers.map(([key, name]) => (
             <th key={key}>{name}</th>
           ))}
         </tr>
       </thead>
       <tbody>
-        <CompatRow bcd={bcd} browsers={browsers} />
+        <CompatRow bcd={bcd} desktopBrowsers={desktopBrowsers} mobileBrowsers={mobileBrowsers} />
         {getSubIdentifierKeys(bcd.data)
           .filter((key) => Boolean(bcd.data[key]))
           .map((key) => (
-            <CompatRow key={key} bcd={{ data: bcd.data[key], key }} browsers={browsers} recurse />
+            <CompatRow
+              key={key}
+              bcd={{ data: bcd.data[key], key }}
+              desktopBrowsers={desktopBrowsers}
+              mobileBrowsers={mobileBrowsers}
+              recurse
+            />
           ))}
       </tbody>
     </table>

@@ -6,17 +6,18 @@ import { determineStatus, hasSupportDetail, supportLabel } from './utils'
 
 type Props = {
   browser: BrowserName
+  className?: string
   data: SupportStatement
   onClick?: (browser: BrowserName, data: SupportStatement | undefined) => void
   open: boolean
 }
 
-const CompatCell: React.FC<Props> = ({ browser, data, open, onClick }) => {
+const CompatCell: React.FC<Props> = ({ browser, className = '', data, open, onClick }) => {
   const sup = hasSupportDetail(data)
   const head = Array.isArray(data) ? data[0] : data
 
   return (
-    <td className={styles.root} data-open={open} data-variant={variantOf(head)}>
+    <td className={`${styles.root} ${className}`} data-hasdetail={sup} data-open={open} data-variant={variantOf(head)}>
       <button
         aria-expanded={open}
         className={styles.cell}
@@ -26,7 +27,6 @@ const CompatCell: React.FC<Props> = ({ browser, data, open, onClick }) => {
       >
         <SupportIcon support={variantOf(head)} />
         {supportLabel(data)}
-        <span aria-hidden>{sup && '*'}</span>
         {head?.alternative_name && <NonStandard title="비표준 이름" />}
         <span className="no-screen">특이사항 있음.</span>
         <span className="no-screen">세부사항 열기/닫기</span>

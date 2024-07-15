@@ -1,4 +1,4 @@
-.root {
+.root.root.root {
   width: 88px;
   background: #fff;
   padding: 0;
@@ -29,6 +29,19 @@
 
   &[data-open='true'] {
     box-shadow: inset 0 -5px 0 -1px var(--primary);
+  }
+
+  &[data-hasdetail='true']::before {
+    border: 8px solid rgb(246, 175, 52);
+    border-right-color: #fff;
+    border-bottom-color: #fff;
+    content: '';
+    height: 0;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    width: 0;
   }
 }
 

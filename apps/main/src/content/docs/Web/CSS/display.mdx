@@ -57,6 +57,7 @@ display: unset;
 ### 외부 유형
 
 - : [`<display-outside>`](https://developer.mozilla.org/en-US/docs/Web/CSS/display-outside)
+
   - 이 키워드들은 요소의 외부 디스플레이 유형을 설정합니다. 외부 디스플레이 유형은 요소가 [플로우 레이아웃](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout)에 참여하는 방식을 결정합니다.
 
     - : `block`
@@ -69,25 +70,29 @@ display: unset;
 ### 내부 유형
 
 - : [`<display-inside>`](https://developer.mozilla.org/en-US/docs/Web/CSS/display-inside)
+
   - 이 키워드들은 요소의 내부 디스플레이 유형을 설정합니다. 요소가 [대체 요소](/docs/Web/CSS/Replaced_element)인 경우를 제외하면, 내부 디스플레이 유형은 요소의 콘텐츠가 배치되는 방법을 정의합니다.
 
     - : `flow` <Experimental />
+
       - 플로우 레이아웃을 사용해 요소의 콘텐츠를 배치합니다.
 
         요소의 바깥 디스플레이 유형이 `inline`이나 `run-in`인 경우, 그리고 요소가 블록 또는 인라인 서색 맥락에 참여 중인 경우에는 인라인 박스를 생성합니다. 그 외에는 블록 컨테이너 박스를 생성합니다.
 
         다른 속성의 값([`position`](https://developer.mozilla.org/en-US/docs/Web/CSS/position), [`float`](https://developer.mozilla.org/en-US/docs/Web/CSS/float), [`overflow`](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow) 등)과, 요소 자신이 블록 또는 인라인 서식 맥락에 참여하고 있는지 혹은 참여하지 않는지에 따라서 `display: flow` 새로운 블록 서식 맥락을 생성하거나, 자신의 콘텐츠를 부모 서식 맥락에 포함시킵니다.
-  
+
     - : `flow-root`
+
       - 새로운 블록 서식 맥락을 생성하는 블록 레벨 박스를 생성하여 서식 루트를 정의합니다.
 
     - : `table`
       - HTML [`<table>`](/docs/Web/HTML/Element/table) 요소처럼 동작합니다. 블록 레벨 박스를 정의합니다.
-    
     - : `flex`
+
       - 요소가 블록 레벨로 동작합니다. 콘텐츠는 [플렉스박스 모델](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout)에 따라 배치합니다.
 
     - : `grid`
+
       - 요소가 블록 레벨로 동작합니다. 콘텐츠는 [그리드 모델](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)에 따라 배치합니다.
 
     - : `ruby` <Experimental />
@@ -98,6 +103,7 @@ display: unset;
 ### 리스트 항목
 
 - : [`<display-listitem>`](https://developer.mozilla.org/en-US/docs/Web/CSS/display-listitem)
+
   - 요소가 [`::marker`](https://developer.mozilla.org/en-US/docs/Web/CSS/::marker) 의사 요소를 생성하고, 그 내용으로 CSS [`list-style-type`](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type) 속성이 설정하는 리스트 마커를 추가합니다. 즉, 요소가 [`<li>`](/docs/Web/HTML/Element/li) 요소와 동일하게 동작합니다.
 
     `list-item`은 모든 [`<display-outside>`](#term-display-outside) 키워드와, [`<display-inside>`](#term-display-inside) 키워드 중 `flow` 및 `flow-root`과 함께 사용할 수 있습니다.
@@ -107,6 +113,7 @@ display: unset;
 ### 내부용
 
 - : [`<display-internal>`](https://developer.mozilla.org/en-US/docs/Web/CSS/display-internal)
+
   - `table`과 `ruby` 등 일부 레이아웃 모델은 복잡한 내부 구조를 가지고 있으며, 자식과 자손이 다양한 역할로 참여합니다. 그 다양한 역할을 위해 정의된 유형이 내부용 디스플레이 값입니다. 내부용 값은 특정 레이아웃 모드에서만 의미를 가집니다.
 
     - : `table-row-group`
@@ -131,37 +138,42 @@ display: unset;
 ### 박스
 
 - : [`<display-box>`](https://developer.mozilla.org/en-US/docs/Web/CSS/display-box)
+
   - 요소가 디스플레이 박스를 생성해야 하는지를 설정합니다.
 
     - : `contents`
       - 요소 자체 박스를 생성하지 않고, 대신 요소의 자식들이 생성한 박스로 대체합니다.
-        
+
         > [note] CSS Display Level 3 명세는 "대체 요소 등, CSS 박스 개념만으로는 렌더링이 불가능한 특수한 요소"에 `display: contents`를 적용했을 때 어떻게 동작해야 하는지 직접 명시하고 있습니다. 명세의 [Appendix B: Effects of display: contents on Unusual Elements](https://drafts.csswg.org/css-display/#unbox)에서 자세한 정보를 확인하세요.
-    
     - : `none`
       - 요소가 레이아웃에 영향을 주지 못하도록 설정합니다. 따라서 요소가 아예 존재하지 않는 것처럼 렌더링합니다. `display: none` 요소의 모든 자손 요소도 보이지 않습니다. 요소가 보이지 않아야 하지만, 레이아웃에 참여해서 자신의 공간은 차지해야 하는 경우에는 [`visibility` 속성](https://developer.mozilla.org/en-US/docs/Web/CSS/visibility)을 대신 사용하세요.
 
 ### 레거시
 
 - : [`<display-legacy>`](https://developer.mozilla.org/en-US/docs/Web/CSS/display-legacy)
+
   - CSS 2에서는 `display` 속성이 키워드 값을 한 개만 받을 수 있었으므로, 하나의 레이아웃 모드에 대해 블록 레벨과 인라인 레벨 하나씩 총 두 개의 키워드가 필요합니다.
 
     - : `inline-block`
+
       - 요소가 블록 요소 박스를 생성하지만, 마치 하나의 인라인 박스처럼 주변 콘텐츠와 함께 플로우 레이아웃의 흐름에 참여합니다. 즉 앞과 뒤에 개행이 새로 생기지 않습니다.
 
         `inline flow-root`와 같습니다.
-    
+
     - : `inline-table`
+
       - `inline-table`에 직접 대응되는 HTML 요소는 없습니다. [`<table>`](/docs/Web/HTML/Element/table) 요소처럼 동작하지만, 블록 레벨이 아닌 인라인 레벨 박스를 사용합니다. 테이블 박스 내부는 블록 레벨 맥락입니다.
 
         `inline table`과 같습니다.
 
     - : `inline-flex`
+
       - 인라인 요소처럼 동작하고, 콘텐츠는 [플렉스박스 모델](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout)에 따라 배치합니다.
 
         `inline flex`와 같습니다.
 
     - : `inline-grid`
+
       - 인라인 요소처럼 동작하고, 콘텐츠는 [그리드 모델](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)에 따라 배치합니다.
 
         `inline grid`와 같습니다.
@@ -188,7 +200,7 @@ CSS Display Module Level 3 명세에서는 `display` 속성에 외부와 내부 
 
 Level 3 명세에서 추가된 2개 값 구문에 대한 상세 정보는 [Display의 새로운 2개 값 구문 적용하기](https://developer.mozilla.org/en-US/docs/Web/CSS/display/two-value_syntax_of_display)를 참고하세요.
 
-# 접근성 고려사항
+# 접근성
 
 ## display: none
 

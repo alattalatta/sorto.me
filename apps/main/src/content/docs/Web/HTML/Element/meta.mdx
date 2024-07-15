@@ -23,6 +23,7 @@ bcd: html.elements.meta
 - : `content`
   - [`http-equiv`](#term-http-equiv) 또는 [`name`](#term-name) 특성에 지정한 키에 대한 값을 담습니다.
 - : `http-equiv`
+
   - 프래그마 지시문을 지정합니다. 특성의 이름(HTTP equivalent)에서 알 수 있듯이, 가능한 값은 일부 HTTP 헤더입니다.
 
     - : `content-security-policy`
@@ -37,12 +38,14 @@ bcd: html.elements.meta
       - 다음을 지정합니다.
         - [`content`](#term-content) 특성에 양의 정수 값을 지정한 경우, 지정한 시간(초 단위)만큼 대기한 후 페이지를 새로고침합니다.
         - [`content`](#term-content) 특성에 순서대로, 양의 정수 값, 문자열 `;url=`, 유효한 URL을 이어 붙인 값을 지정할 경우, 지정한 시간(초 단위)만큼 대기한 후 해당 URL로 이동합니다. (e.g. `content="5;url=https://sorto.me/`)
+
 - : `name`
+
   - `name`과 [`content`](#term-content) 특성을 함께 사용하면 문서의 메타데이터를 이름-값 쌍으로 제공할 수 있습니다. `name`은 이름, `content`는 값을 담당합니다.
 
     [표준 메타데이터 이름](./meta/name) 문서에서 HTML 명세가 포함한 표준 메타데이터 목록을 확인하세요.
 
-# 접근성 고려사항
+# 접근성
 
 [`http-equiv`](#term-http-equiv) 특성에 `refresh`를 지정한 경우에는 대기 시간이 너무 짧지 않도록 조심해야
 합니다. 스크린 리더와 같은 접근성 보조 기술의 사용자는 페이지가 자동으로 바뀌기 전에 페이지의 내용을 미처 다 읽지 못할

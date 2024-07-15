@@ -3,7 +3,6 @@ export function doJSX(title: string, description: string, imageBuffer: ArrayBuff
     <div
       style={{
         background: '#fff',
-        // borderRadius: 48,
         color: '#282826',
         display: 'flex',
         height: '100%',

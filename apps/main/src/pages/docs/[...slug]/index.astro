@@ -14,10 +14,6 @@ import { remark } from 'remark'
 import stripMarkdown from 'strip-markdown'
 import { select } from 'unist-util-select'
 
-const processor = remark()
-  .use(() => (root: Root) => select('paragraph', root) || root.children[0] || root)
-  .use(stripMarkdown)
-
 export const getStaticPaths = (async () => {
   return (await getCollection('docs')).map((entry) => ({
     params: { slug: entry.id.replace('.mdx', '') },
@@ -26,13 +22,18 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths
 
 const props = Astro.props
+const site = Astro.site
+
+const firstParagraphProcessor = remark()
+  .use(() => (root: Root) => select('paragraph', root) || root.children[0] || root)
+  .use(stripMarkdown)
 
 const description = await (async () => {
   if (props.data.description) {
     return props.data.description
   }
 
-  return escapeUTF8(await processor.process(props.body as string).then((res) => String(res).trim()))
+  return escapeUTF8(await firstParagraphProcessor.process(props.body).then((res) => String(res).trim()))
 })()
 
 const bcdData = (() => {
@@ -62,7 +63,7 @@ const bcdData = (() => {
 })()
 ---
 
-<Shell description={description} title={props.data.title}>
+<Shell description={description} image={`${site}docs/${props.slug}/og.png`} title={props.data.title}>
   <ContentGrid client:load>
     <Nav
       links={[

@@ -1,4 +1,6 @@
 ---
+import SpeedInsights from "@vercel/speed-insights/astro"
+
 import '@fontsource/libre-barcode-128-text'
 import '@fontsource/gowun-batang'
 import '@fontsource/nanum-gothic-coding'
@@ -40,6 +42,7 @@ const { description = 'sorto.me', image, title = 'sorto.me' } = Astro.props
         gtag('config', 'G-7F0E6D3XE2');
       </script>
     )}
+    {import.meta.env.PROD && <SpeedInsights />}
   </body>
 </html>
 

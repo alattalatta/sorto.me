@@ -30,14 +30,16 @@ const { description = 'sorto.me', image, title = 'sorto.me' } = Astro.props
   </head>
   <body>
     <slot />
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7F0E6D3XE2"></script>
-    <script>
-      // @ts-nocheck
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-7F0E6D3XE2');
-    </script>
+    {import.meta.env.PROD && <script async is:inline src="https://www.googletagmanager.com/gtag/js?id=G-7F0E6D3XE2"></script>}
+    {import.meta.env.PROD && (
+      <script is:inline>
+        // @ts-nocheck
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-7F0E6D3XE2');
+      </script>
+    )}
   </body>
 </html>
 

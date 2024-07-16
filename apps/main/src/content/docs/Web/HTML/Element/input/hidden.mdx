@@ -1,0 +1,39 @@
+---
+title: 'HTML <input type="hidden">'
+description: 'hidden 유형의 <input> 요소를 사용하면 사용자가 양식을 제출할 때 화면에는 노출되지 않는 추가 정보를 함께 첨부할 수 있습니다.'
+bcd: html.elements.input.type_hidden
+---
+
+**`hidden` 유형의 [`<input>`](../input) 요소**를 사용하면 사용자가 양식을 제출할 때 화면에는 노출되지 않는 추가 정보를 함께 첨부할 수 있습니다. 예를 들어 현재 편집 중인 콘텐츠의 ID나 보안 토큰을 제출해야 할 때 유용합니다. `<input type="hidden">` 요소는 항상 렌더링 되지 않으며, 페이지 콘텐츠 내에 보이게 할 수 있는 방법은 없습니다.
+
+> [note] `<input type="hidden">` 요소에서는 [`input`](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event)과 [`change`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event) 이벤트가 발생하지 않으며, `hiddenInput.focus()`와 같은 JavaScript를 사용해도 포커스를 부여할 수 없습니다.
+
+# 값
+
+`hidden` 유형의 [`value` 특성](../input#term-value)은 양식을 서버로 제출할 때 첨부하고자 하는 문자열 데이터입니다. 이 데이터는 보통 사용자가 보거나 수정할 수 없습니다. 하지만 브라우저 개발자 도구를 통해 편집할 수는 있습니다.
+
+> [warn] 값이 사용자의 페이지 콘텐츠에는 나타나지 않지만, 브라우저의 개발자 도구나 "소스 보기" 기능 내에는 노출되며 편집도 가능합니다. `<input type="hidden">`을 보안 수단으로 사용하지 마세요.
+
+# 추가 특성
+
+`hidden` 유형은 모든 [`<input>`](../input) 요소가 공유하는 특성 외에도 아래의 특성을 추가로 지원합니다.
+
+## `name`
+
+`name`은 `<input>`의 공통 특성이지만, `hidden` 유형에서는 특별한 의미를 가집니다. 일반적인 `hidden` 유형의 `name` 특성은 다른 유형들과 동일하게 동작합니다. 그러나 `name="_charset_"`로 지정한 `hidden` 유형의 경우, 양식 제출 시 사용한 문자 인코딩을 나타내는 문자열이 값으로 자동 설정됩니다.
+
+# 유효성 검증
+
+`<input type="hidden">`은 제약해야 하는 값을 가지지 않으므로 유효성 검증에 참여하지 않습니다.
+
+# 명세
+
+[HTML Standard](<https://html.spec.whatwg.org/multipage/input.html#hidden-state-(type=hidden)>)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 기본 요소: [`<input>`](./input)

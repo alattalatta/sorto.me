@@ -3,10 +3,10 @@ import bcd from '@mdn/browser-compat-data' with { type: 'json' }
 import type { CompatData, Identifier } from '@mdn/browser-compat-data'
 import type { GetStaticPaths } from 'astro'
 import { getCollection } from 'astro:content'
+import ContentGrid from 'components/ContentGrid'
 import Doc from 'components/Doc.astro'
 import Footer from 'components/Footer.astro'
 import Nav from 'components/Nav.astro'
-import ContentGrid from 'components/ContentGrid'
 import { escapeUTF8 } from 'entities'
 import Shell from 'layouts/Shell.astro'
 import type { Root } from 'mdast'
@@ -22,7 +22,7 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths
 
 const props = Astro.props
-const site = Astro.site
+const site = Astro.site?.toString() ?? ''
 
 const firstParagraphProcessor = remark()
   .use(() => (root: Root) => select('paragraph', root) || root.children[0] || root)
@@ -33,7 +33,7 @@ const description = await (async () => {
     return props.data.description
   }
 
-  return escapeUTF8(await firstParagraphProcessor.process(props.body).then((res) => String(res).trim()))
+  return escapeUTF8(await firstParagraphProcessor.process(props.body as string).then((res) => String(res).trim()))
 })()
 
 const bcdData = (() => {
@@ -50,7 +50,7 @@ const bcdData = (() => {
 
       return prv[cur]
     },
-    bcd[category as Exclude<keyof CompatData, '__meta' | 'browsers'>]
+    bcd[category as Exclude<keyof CompatData, '__meta' | 'browsers'>],
   )
 
   if (data) {
@@ -69,17 +69,21 @@ const bcdData = (() => {
       links={[
         ['library', [['k-popo', 'https://www.npmjs.com/package/k-popo']]],
         ['experiments', [['dialog98', 'https://dialog98.sorto.me/']]],
+        ['blog', [['(...more)', '/posts']]],
         [
-          'blog',
+          'docs',
           [
-            ['(...more)', '/posts'],
+            [
+              'HTML',
+              '/docs/Web/HTML',
+              [
+                ['HTML 요소 참고서', '/docs/Web/HTML/Element'],
+                ['HTML 전역 특성 참고서', '/docs/Web/HTML/Global_attributes'],
+              ],
+            ],
+            ['CSS', '/docs/Web/CSS', [['CSS 참고서', '/docs/Web/CSS/Reference']]],
           ],
         ],
-        ['docs', [
-          ['HTML 요소 참고서', '/docs/Web/HTML/Element'],
-          ['HTML 전역 특성 참고서', '/docs/Web/HTML/Global_attributes'],
-          ['CSS 참고서', '/docs/Web/CSS/Reference']
-        ]],
         [
           'contact',
           [

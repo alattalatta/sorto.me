@@ -1,9 +1,10 @@
 ---
 import Starry from 'components/Starry.tsx'
 import imgAlatta from './alatta.svg'
+import NavLinkGroup, { type LinkGroup } from './NavLinkGroup.astro'
 
 interface Props {
-  links: readonly [group: string, readonly [label: string, href: string][]][]
+  links: readonly [label: string, readonly LinkGroup[]][]
 }
 
 const { links } = Astro.props
@@ -28,20 +29,14 @@ const { links } = Astro.props
     </search>
     <dl>
       {
-        links.map(([group, items]) => (
+        links.map(([label, children]) => (
           <>
-            <dt>{group}</dt>
-            {items.map(([label, href]) => {
-              const external = !href.startsWith('/')
-
-              return (
-                <dd>
-                  <a href={href} {...(external ? { rel: 'noreferrer', target: '_blank' } : {})}>
-                    {label}
-                  </a>
-                </dd>
-              )
-            })}
+            <dt>{label}</dt>
+            <dd>
+              <ul>
+                {children.map((group) => <NavLinkGroup {group} />)}
+              </ul>
+            </dd>
           </>
         ))
       }
@@ -121,13 +116,14 @@ const { links } = Astro.props
     margin: 0;
   }
 
-  dl > * + * {
-    margin-top: 0.5rem;
-  }
-  dl a {
-    display: inline-block;
-    padding: 0 1rem;
-    text-transform: lowercase;
+  ul {
+    list-style: none;
+    margin: 0.5em 0;
+    padding-left: 1em;
+
+    & > :global(li + li) {
+      margin-top: 0.5em;
+    }
   }
 
   hr {

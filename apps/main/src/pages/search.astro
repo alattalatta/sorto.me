@@ -1,7 +1,7 @@
 ---
-import Shell from 'layouts/Shell.astro'
 import imgLogoSmall from 'images/logo-small.svg'
 import imgLogo from 'images/logo.svg'
+import Shell from 'layouts/Shell.astro'
 ---
 
 <Shell title="sorto.me">
@@ -18,21 +18,19 @@ import imgLogo from 'images/logo.svg'
     <search>
       <form method="get">
         <input name="q" type="search" />
-        <button type="submit">
-          검색
-        </button>
+        <button type="submit">검색</button>
       </form>
     </search>
     <div class="gcse-wrap">
-      <div class="gcse-searchresults-only" />
+      <div class="gcse-searchresults-only"></div>
     </div>
   </main>
 </Shell>
 <script>
-  const input = (document.querySelector('input[name=q]') as HTMLInputElement | null)
+  const input = document.querySelector('input[name=q]') as HTMLInputElement | null
   input && (input.value = new URLSearchParams(location.search).get('q') || '')
 </script>
-<script async is:inline src="https://cse.google.com/cse.js?cx=2583b4522ab9cd371" />
+<script async is:inline src="https://cse.google.com/cse.js?cx=2583b4522ab9cd371"></script>
 
 <style lang="scss">
   main {
@@ -113,7 +111,7 @@ import imgLogo from 'images/logo.svg'
 
       &:hover,
       &:focus {
-        color: #c72082
+        color: #c72082;
       }
     }
     & :global(b) {

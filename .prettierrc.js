@@ -2,12 +2,17 @@ const preset = require('@alattalatta/prettier-config')
 
 module.exports = {
   ...preset,
-  embeddedLanguageFormatting: 'off',
   overrides: [
     {
       files: '*.astro',
       options: {
         parser: 'astro',
+      },
+    },
+    {
+      files: '*.mdx',
+      options: {
+        embeddedLanguageFormatting: 'off',
       },
     },
   ],

@@ -1,9 +1,9 @@
 ---
 import { getCollection } from 'astro:content'
 import ArticleCard from 'components/ArticleCard.astro'
+import ContentGrid from 'components/ContentGrid'
 import Footer from 'components/Footer.astro'
 import Nav from 'components/Nav.astro'
-import ContentGrid from 'components/ContentGrid'
 import Shell from 'layouts/Shell.astro'
 
 const posts = [...(await getCollection('posts'))].reverse()
@@ -22,7 +22,13 @@ const posts = [...(await getCollection('posts'))].reverse()
             ['(...more)', '/posts'],
           ],
         ],
-        ['docs', [['Web', '/docs/Web']]],
+        [
+          'docs',
+          [
+            ['HTML', '/docs/Web/HTML'],
+            ['CSS', '/docs/Web/CSS'],
+          ],
+        ],
         [
           'contact',
           [

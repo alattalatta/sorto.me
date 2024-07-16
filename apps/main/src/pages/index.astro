@@ -1,5 +1,7 @@
 ---
 import Shell from 'layouts/Shell.astro'
+import imgLogoSmall from 'images/logo-small.svg'
+import imgLogo from 'images/logo.svg'
 ---
 
 <Shell title="sorto.me">
@@ -7,8 +9,8 @@ import Shell from 'layouts/Shell.astro'
     <div>
       <figure>
         <picture>
-          <source media="(max-width: 414px)" srcset="/logo-small.svg" />
-          <img alt="ALATTA" class="mainimg" src="/logo.svg" />
+          <source media="(max-width: 414px)" srcset={imgLogoSmall.src} />
+          <img alt="ALATTA" class="mainimg" src={imgLogo.src} />
         </picture>
         <figcaption>ALATTA</figcaption>
       </figure>

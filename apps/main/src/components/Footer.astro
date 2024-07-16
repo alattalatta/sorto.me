@@ -1,12 +1,17 @@
+---
+import imgCC from 'images/cc.svg'
+import imgLogoSmall from 'images/logo-small.svg'
+---
+
 <div class="root">
   <div class="logo">
     <a href="/">
-      <img alt="ALATTA" src="/logo-small.svg" />
+      <img alt="ALATTA" src={imgLogoSmall.src} />
     </a>
   </div>
   <div class="body">
     <slot />
-    <img alt="" class="cc" src="/cc.svg" />
+    <img alt="" class="cc" src={imgCC.src} />
     <small class="license">
       <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.ko" rel="noreferrer" target="_blank">CC BY-SA 4.0</a>
       unless otherwise noted. See

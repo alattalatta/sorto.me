@@ -11,7 +11,11 @@ bcd: html.elements.video
   <source src="/assets/chestnut.webm" type="video/webm" />
   <source src="/assets/chestnut.mp4" type="video/mp4" />
 
-  죄송합니다. 브라우저가 비디오를 지원하지 않습니다.
+  브라우저가 비디오를 지원하지 않습니다.
+  <br>
+  <a href="/assets/chestnut.webm">WebM</a>
+  또는
+  <a href="/assets/chestnut.mp4">MP4</a> 파일 다운로드
 </video>
 ```
 
@@ -29,18 +33,17 @@ bcd: html.elements.video
 
     > [note] 오디오를(또는 오디오를 포함한 비디오)를 자동으로 재생하는 웹 사이트는 사용자 경험에 좋지 않으므로 되도록 피해야 합니다. 반드시 자동으로 재생해야 하는 경우 옵트인(opt-in) 기능, 즉 사용자가 직접 자동재생 기능을 활성화해야 하도록 개발하세요. 다만 미디어 소스를 처음부터 제공하지 않고, 나중에 사용자가 직접 지정하는 경우 `autoplay`를 유용하게 사용할 수 있습니다.
 
-- : `autopictureinpicture` <Experimental />
-  - 지정하면 현재 문서에서 포커스가 벗어나 다른 문서, 또는 다른 앱으로 이동할 때 자동으로 PIP(Picture-in-Picture) 모드를
-    활성화하는 불리언 특성입니다.
 - : `controls`
   - 지정하면 볼륨, 탐색, 일시정지/재생 등 브라우저가 사용자 컨트롤을 제공하는 불리언 특성입니다.
 - : `controlslist`
 
-  - 브라우저 내장 컨트롤을 사용할 때(`controls` 특성을 지정했을 때)의 일부 기능을 조절하는 열거형, 공백 구분 목록 특성입니다. 다음과 같은 값을 사용할 수 있습니다.
+  - 브라우저 내장 컨트롤을 사용할 때(즉 `controls` 특성을 지정했을 때)의 일부 기능을 조절하는 열거형 공백 구분 리스트 특성입니다. 다음과 같은 값을 사용할 수 있습니다.
 
     - `nodownload`: 내장 컨트롤에서 다운로드 컨트롤을 숨겨야 함을 나타냅니다.
     - `nofullscreen`: 내장 컨트롤에서 전체 화면 컨트롤을 숨겨야 함을 나타냅니다.
     - `noremoteplayback`: 내장 컨트롤에서 원격 재생 컨트롤을 숨겨야 함을 나타냅니다.
+
+    Picture-In-Picture 모드를 비활성화하고 PIP 진입 컨트롤을 숨기려면 [`disablepictureinpicture`](#term-disablepictureinpicture) 특성을 사용하세요.
 
 - : `crossorigin`
 
@@ -52,12 +55,16 @@ bcd: html.elements.video
 
       - 자격 증명과 함께 교차 출처 요청을 전송합니다. 즉, `Origin` HTTP 헤더를 쿠키, 인증서, 또는 HTTP Basic 인증과 함께 전송합니다. 서버에서 `Access-Control-Allow-Origin` HTTP 헤더를 지정하지 않아서 요청 출처 사이트에 자격 증명을 보내지 않는다면 캔버스 이미지가 오염되고, 사용처가 제한됩니다.
 
-        특성이 존재하지 않으면 리소스를 CORS 요청 없이(`Origin` HTTP 헤더 없이) 가져오므로, `<canvas>`가 오염됩니다. 유효하지 않은 값의 경우 `anonymous` 깂을 사용한 것으로 간주합니다.
+    특성이 존재하지 않으면 리소스를 CORS 요청 없이 (`Origin` HTTP 헤더 없이) 가져오므로, `<canvas>`가 오염됩니다. 유효하지 않은 값의 경우 `anonymous` 깂을 사용한 것으로 간주합니다.
 
-- : `disablepictureinpicture` <Experimental />
-  - 브라우저가 컨텍스트 메뉴에 PIP 모드를 제안하지 않고, 자동으로 PIP를 요청하지도 않도록 지정하는 불리언 특성입니다.
-- : `disableremoteplayback` <Experimental />
-  - 지정하면 유선으로 연결한 장치(HDMI, DVI 등)와 무선 연결 기술(Miracast, Chromecast, DLNA, AirPlay 등)을 통한 오디오 원격 재생을 할 수 없는 불리언 특성입니다. [제안된 명세](https://www.w3.org/TR/remote-playback/#the-disableremoteplayback-attribute)를 방문해 자세한 정보를 알아보세요.
+- : `disablepictureinpicture`
+
+  - 브라우저가 컨텍스트 메뉴에 Picture-In-Picture 모드를 제안하지 않고, 자동으로 Picture-In-Picture 모드를 요청하지도 않도록 지정하는 불리언 특성입니다.
+
+- : `disableremoteplayback`
+
+  - 지정하면 유선으로 연결한 장치(HDMI, DVI 등)와 무선 연결 기술(Miracast, Chromecast, DLNA, AirPlay 등)을 통한 오디오 원격 재생을 막는 불리언 특성입니다.
+
 - : `height`
 
   - 비디오를 표시할 영역의 높이입니다. 픽셀 단위이며, 단위 없는 정수 값을 지정해야 합니다.
@@ -72,13 +79,12 @@ bcd: html.elements.video
 
 - : `playsinline`
 
-  - 비디오를 전체 화면이나 별도의 크기 조절 가능한 창에서 재생하지 않고, `<video>` 요소의 표시 영역 내에서 재생함을 나타내는 불리언 특성입니다.
-
-    > [note] `playsinline`의 부재가 동영상의 자동 전체 화면 재생을 의미하는 것은 아닙니다. 특히, 대다수의 사용자 에이전트에서 기본으로 인라인 재생을 택하고 있으므로, 일반적인 경우에는 `playsinline`을 지정해도, 지정하지 않아도 아무 변화가 없습니다.
+  - 비디오를 `<video>` 요소의 표시 영역 내에서 "인라인"으로 재생하도록 하는 불리언 특성입니다. 그러나 `playsinline` 특성을 누락한다고 비디오가 항상 전체 화면으로 재생되는 건 아닙니다.
 
 - : `poster`
-  - 비디오를 다운로드하는 동안 보여줄 이미지의 URL입니다. 지정하지 않으면 비디오의 첫 번째 프레임을 사용하는데, 첫 번째
-    프레임를 하기 전에는 전에는 아무것도 보여주지 않습니다.
+
+  - 비디오 다운로드 중 보여줄 이미지의 URL입니다. 지정하지 않으면 비디오의 첫 번째 프레임을 사용하는데, 첫 번째 프레임의 다운로드가 완료되기 전에는 아무것도 보여주지 않습니다.
+
 - : `preload`
 
   - 최적의 사용자 경험을 제공하기 위해 미리 불러올 비디오 데이터에 대한 힌트를 브라우저에 제공하는 열거형 특성입니다. 가능한 값은 다음과 같습니다.
@@ -88,7 +94,7 @@ bcd: html.elements.video
     - `auto`: 사용자가 비디오를 재생할 것으로 예상하지 않더라도 전체 비디오 파일을 미리 불러옵니다.
     - 빈 문자열: `auto`와 같습니다.
 
-    기본값은 브라우저마다 다르나, 명세는 `metadata`를 추천합니다.
+    기본 값은 브라우저마다 다르지만, 명세에서 권장하는 기본 값은 `metadata`입니다.
 
     > [note]
     >
@@ -96,13 +102,13 @@ bcd: html.elements.video
     > - `preload` 특성은 어디까지나 힌트 특성으로, 브라우저가 반드시 따라야 하는 것은 아닙니다.
 
 - : `src`
-  - 삽입할 비디오의 URL입니다. [HTTP 접근 제어](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)의 대상입니다. [`<source>`](./source) 요소를 사용하면 지정하지 않아도 됩니다.
+  - 삽입할 비디오의 URL입니다. [HTTP 접근 제어](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)의 대상입니다. [`<source>`](./source) 요소를 대신 사용할 수 있습니다.
 - : `width`
   - 비디오를 표시할 영역의 너비입니다. 픽셀 단위이며, 단위 없는 정수 값을 지정해야 합니다.
 
 # 사용 일람
 
-브라우저가 지원하는 파일 유형과 비디오 코덱은 서로 다릅니다. [`<source>`](./source) 요소를 추가해서 다수의 소스를 제공하면 브라우저가 이해할 수 있는 첫 번째 소스를 자동으로 사용하므로 지원 범위를 넓힐 수 있습니다.
+브라우저는 모든 비디오 형식을 지원하지 않습니다. [`<source>`](./source) 요소를 추가해서 다수의 소스를 제공하면 브라우저가 지원하는 첫 번째 소스를 자동으로 채택하므로 지원 범위를 넓힐 수 있습니다.
 
 ```html
 <audio controls>
@@ -116,15 +122,28 @@ bcd: html.elements.video
 ```
 
 - [`controls`](#term-controls) 특성을 지정하지 않으면 비디오 플레이어가 브라우저 기본 컨트롤을 제공하지 않습니다. 대신 JavaScript와 [`HTMLMediaElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement) API를 사용해서 컨트롤을 직접 구현할 수 있습니다.
-- 비디오 콘텐츠를 세밀하게 통제할 수 있도록, `HTMLMediaElement`에서는 [여러가지 다양한 이벤트](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement#events)가 발생합니다. 오류 발생 여부와 함께, 비디오를 재생 또는 조작하기에 충분히 불러온 순간도 알아낼 수 있습니다.
+- `HTMLMediaElement`에서는 비디오 콘텐츠를 세밀하게 통제할 수 있는 [여러가지 다양한 이벤트](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement#events)가 발생합니다. 이 이벤트들을 통해 미디어 제어 뿐만 아니라 다운로드 진행도와 재생률, 현재 재생 상태 및 시간 등을 알아낼 수 있습니다.
 - `<video>` 프레임의 안에서 영상이 차지하는 위치는 [`object-position`](/docs/Web/CSS/object-position) 속성으로 지정할 수 있으며, 영상의 크기는 [`object-fit`](/docs/Web/CSS/object-fit) 속성을 통해 바꿀 수 있습니다.
-- `<video>` 요소로도 오디오 콘텐츠를 재생할 수 있습니다. [`<audio>`](./audio)는 WebVTT 자막을 보여주지 않으므로, 자막을 붙여야 하는 경우 이 사실을 유용하게 활용할 수 있습니다.
+- 비디오에 자막이나 캡션을 추가하려면 JavaScript와 [`<track>`](./track) 요소, [WebVTT](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API)를 사용할 수 있습니다.
+- `<video>` 요소로도 오디오 콘텐츠를 재생할 수 있습니다. [`<audio>`](./audio)는 [WebVTT](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) 자막을 보여주지 않으므로, 오디오에 자막이 필요한 경우 `<video>`가 더 좋은 선택이 될 수 있습니다.
 
 ## CSS 스타일링
 
 `<video>`는 [대체 요소](/docs/Web/CSS/Replaced_element)로, [`display`](/docs/Web/CSS/display)의 기본값이 `inline`이지만 그 크기는 마치 `inline-block`인 것처럼 삽입한 비디오의 내재된 크기가 결정합니다.
 
 `<video>` 스타일링에는 특별히 고려해야 할 사항은 없지만, 위치와 크기를 쉽게 잡을 수 있도록 `display`를 `block`으로 지정하곤 합니다.
+
+## 자막 등 시간 기반 텍스트 트랙 추가하기
+
+자막, 폐쇄 캡션, 챕터 제목 등 시간 기반 텍스트 트랙들은 [`<track>`](./track) 요소를 `<video>` 안에 배치해서 선언적으로 추가할 수 있습니다. 트랙들은 [Web Video Text Tracks File Format (WebVTT)](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API/Web_Video_Text_Tracks_Format) 파일 형식(`.vtt`)이어야 합니다.
+
+예를 들어, 다음 HTML 코드는 사용자가 캡션을 활성화한 경우 비디오 위에 `captions.vtt`의 폐쇄 캡션을 표시합니다.
+
+```html
+<video controls src="video.webm">
+  <track default kind="captions" src="captions.vtt" />
+</video>
+```
 
 ## 트랙 추가/제거 감지하기
 
@@ -145,6 +164,34 @@ elem.videoTracks.addEventListener('removetrack', (event) => {
 ```
 
 위의 코드는 트랙의 추가와 제거 이벤트를 수신하다가, 감지하면 콘솔에 기록합니다.
+
+# 접근성
+
+비디오는 콘텐츠를 정확히 설명하는 캡션과 녹취록을 모두 포함해야 합니다. 청각이 저하된 사용자는 비디오의 오디오 콘텐츠를 이해할 때 캡션을 사용하고, 사용자가 콘텐츠 이해에 시간이 필요하다면 녹취록을 통해 원하는 속도와 형식으로 다시 내용을 살펴볼 수 있습니다.
+
+또한 음성만 있고 영상이 없는 미디어라도, `<video>` 요소에서 재생하면 영상 영역에 캡션을 보여줄 수 있다는 점을 기억해두면 좋습니다. [`<audio>`](./audio)는 자막을 보여줄 영역이 없으므로, 이런 상황은 `<video>`가 오디오를 재생하는 데 더 적합한 특별한 경우 중 하나입니다.
+
+자동 자막 생성 서비스를 사용한 경우 내용을 읽어보고 틀림이 없는지 확인해야 합니다.
+
+발화 내용 외에도, 자막과 녹취록은 중요한 정보를 포함하는 음악과 소리 효과, 감정과 분위기 등을 포함해야 합니다. 아래의 WebVTT 예제를 보면 대괄호를 사용해서 독자가 분위기를 알 수 있도록 돕고 있습니다. 이렇게 청각적 콘텐츠에서 음악, 비언어적 소리와 중요한 소리 효과를 통해 조성하는 분위기를 텍스트로도 만들 수 있습니다.
+
+```
+14
+00:03:14 --> 00:03:18
+[긴장되는 락 음악]
+
+15
+00:03:19 --> 00:03:21
+[속삭이며] 저게 뭐지?
+
+16
+00:03:22 --> 00:03:24
+저건... 저건...
+
+16 00:03:25 --> 00:03:32
+[크게 울리는 소리]
+[그릇들이 부딪히는 소리]
+```
 
 # 예제
 
@@ -168,30 +215,6 @@ elem.videoTracks.addEventListener('removetrack', (event) => {
   <source src="foo.mp4" type="video/mp4" />
   <source src="foo.avi" type="video/avi" />
 </video>
-```
-
-# 접근성
-
-발화를 포함하는 오디오는 콘텐츠를 정확히 설명하는 자막과 녹취록 모두 포함해야 합니다. [WebVTT](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API)로 지정하는 자막은 청각이 저하된 사용자가 오디오 콘텐츠를 재생하면서 실시간으로 알 수 있고, 녹취록은 콘텐츠를 이해하는데 시간이 필요한 사용자가 익숙한 형식과 원하는 속도로 천천히 읽어볼 수 있습니다.
-
-또한 음성만 있고 영상이 없는 미디어라도, `<video>` 요소에서 재생하면 영상 영역에 WebVTT 자막을 보여줄 수 있다는 점을 기억해두면 좋습니다. [`<audio>`](./audio)는 자막을 보여줄 영역이 없으므로, 이런 상황은 `<video>`가 오디오를 재생하는 몇 안되는 특별한 경우입니다.
-
-자동 자막 생성 서비스를 사용한 경우 내용을 읽어보고 틀림이 없는지 확인해야 합니다.
-
-발화 내용 외에도, 자막과 녹취록은 중요한 정보를 포함하는 음악과 소리 효과, 감정과 분위기 등을 포함해야 합니다. 아래의 WebVTT 예제를 보면 대괄호를 사용해서 독자가 분위기를 알 수 있도록 돕고 있습니다. 이렇게 청각적 콘텐츠에서 음악, 비언어적 소리와 중요한 소리 효과를 통해 조성하는 분위기를 텍스트로도 만들 수 있습니다.
-
-```
-1
-00:00:00 --> 00:00:45
-[밝은 테크노 음악]
-
-2
-00:00:46 --> 00:00:51
-타임키퍼의 팟캐스트에 오신 것을 환영합니다! 이번 에피소드에서는 어떤 스위스 시계가 손목시계인지 알아보겠습니다!
-
-16
-00:00:52 --> 00:01:02
-[웃음] 아, 죄송해요! 그러니까, 어떤 손목시계가 스위스 손목시계일까요?
 ```
 
 # 명세

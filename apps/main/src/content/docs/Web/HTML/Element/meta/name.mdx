@@ -49,50 +49,50 @@ bcd: html.elements.meta.name
   - 이 문서에서 전송하는 요청의 HTTP [`Referer` 헤더](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer)를 제어합니다.
 
     <table>
-  <caption>
-    `<meta name="referrer">`의 `content` 특성 값과 동작
-  </caption>
-  <thead>
-    <tr>
-      <th>값</th>
-      <th>설명</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>`no-referrer`</td>
-      <td>`Referer` 헤더를 전송하지 않습니다.</td>
-    </tr>
-    <tr>
-      <td>`origin`</td>
-      <td>문서의 [출처](https://developer.mozilla.org/en-US/docs/Glossary/Origin)를 전송합니다.</td>
-    </tr>
-    <tr>
-      <td>`no-referrer-when-downgrade`</td>
-      <td>기본 동작입니다. 목적지가 현재 페이지만큼 안전한 경우 (HTTP(S) → HTTPS) 전체 URL을 전송합니다. 그 외에는 (HTTPS → HTTP) 리퍼러를 전송하지 않습니다.</td>
-    </tr>
-    <tr>
-      <td>`origin-when-cross-origin`</td>
-      <td>동일 출처로 요청할 땐 전체 URL(매개변수 제외)을 전송합니다. 다른 출처로 요청할 땐 출처만 전송합니다.</td>
-    </tr>
-    <tr>
-      <td>`same-origin`</td>
-      <td>동일 출처로 요청할 땐 전체 URL(매개변수 제외)을 전송합니다. 다른 출처로 요청할 땐 리퍼러를 전송하지 않습니다.</td>
-    </tr>
-    <tr>
-      <td>`strict-origin`</td>
-      <td>목적지가 현재 페이지만큼 안전한 경우 (HTTP(S) → HTTPS) 출처를 전송합니다. 그 외에는 (HTTPS → HTTP) 리퍼러를 전송하지 않습니다.</td>
-    </tr>
-    <tr>
-      <td>`strict-origin-when-cross-origin`</td>
-      <td>동일 출처로 요청할 땐 전체 URL(매개변수 제외)을 전송합니다. 목적지가 현재 페이지만큼 안전한 경우 (HTTP(S) → HTTPS) 출처를 전송합니다. 그 외에는 (HTTPS → HTTP) 리퍼러를 전송하지 않습니다.</td>
-    </tr>
-    <tr>
-      <td>`unsafe-URL`</td>
-      <td>모든 요청에 전체 URL(매개변수 제외)을 전송합니다.</td>
-    </tr>
-  </tbody>
-</table>
+      <caption>
+        `<meta name="referrer">`의 `content` 특성 값과 동작
+      </caption>
+      <thead>
+        <tr>
+          <th>값</th>
+          <th>설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>`no-referrer`</td>
+          <td>`Referer` 헤더를 전송하지 않습니다.</td>
+        </tr>
+        <tr>
+          <td>`origin`</td>
+          <td>문서의 [출처](https://developer.mozilla.org/en-US/docs/Glossary/Origin)를 전송합니다.</td>
+        </tr>
+        <tr>
+          <td>`no-referrer-when-downgrade`</td>
+          <td>기본 동작입니다. 목적지가 현재 페이지만큼 안전한 경우 (HTTP(S) → HTTPS) 전체 URL을 전송합니다. 그 외에는 (HTTPS → HTTP) 리퍼러를 전송하지 않습니다.</td>
+        </tr>
+        <tr>
+          <td>`origin-when-cross-origin`</td>
+          <td>동일 출처로 요청할 땐 전체 URL(매개변수 제외)을 전송합니다. 다른 출처로 요청할 땐 출처만 전송합니다.</td>
+        </tr>
+        <tr>
+          <td>`same-origin`</td>
+          <td>동일 출처로 요청할 땐 전체 URL(매개변수 제외)을 전송합니다. 다른 출처로 요청할 땐 리퍼러를 전송하지 않습니다.</td>
+        </tr>
+        <tr>
+          <td>`strict-origin`</td>
+          <td>목적지가 현재 페이지만큼 안전한 경우 (HTTP(S) → HTTPS) 출처를 전송합니다. 그 외에는 (HTTPS → HTTP) 리퍼러를 전송하지 않습니다.</td>
+        </tr>
+        <tr>
+          <td>`strict-origin-when-cross-origin`</td>
+          <td>동일 출처로 요청할 땐 전체 URL(매개변수 제외)을 전송합니다. 목적지가 현재 페이지만큼 안전한 경우 (HTTP(S) → HTTPS) 출처를 전송합니다. 그 외에는 (HTTPS → HTTP) 리퍼러를 전송하지 않습니다.</td>
+        </tr>
+        <tr>
+          <td>`unsafe-URL`</td>
+          <td>모든 요청에 전체 URL(매개변수 제외)을 전송합니다.</td>
+        </tr>
+      </tbody>
+    </table>
 
     > [note]
     >
@@ -111,61 +111,60 @@ bcd: html.elements.meta.name
   - [뷰포트](https://developer.mozilla.org/en-US/docs/Glossary/Viewport)의 초기 사이즈에 대한 힌트를 제공합니다.
 
     <table>
-  <caption>
-    `<meta name="viewport">`의 `content` 특성 값과 동작
-  </caption>
-  <thead>
-    <tr>
-      <th>값</th>
-      <th>사용 가능한 하위 값</th>
-      <th>설명</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>`width`</td>
-      <td>양의 정수 또는 `device-width`</td>
-      <td>웹 사이트를 렌더링하고자 하는 뷰포트의 픽셀 너비를 정의합니다.</td>
-    </tr>
-    <tr>
-      <td>`height`</td>
-      <td>양의 정수 또는 `device-height`</td>
-      <td>웹 사이트를 렌더링하고자 하는 뷰포트의 픽셀 높이를 정의합니다.</td>
-    </tr>
-    <tr>
-      <td>`initial-scale`</td>
-      <td>`0.0`과 `10.0` 사이의 수</td>
-      <td>장치의 너비(세로 뷰에서는 `device-width`, 가로 뷰에서는 `device-height`)와 뷰포트 크기 사이의 비율을 정의합니다.</td>
-    </tr>
-    <tr>
-      <td>`maximum-scale`</td>
-      <td>`0.0`과 `10.0` 사이의 수</td>
-      <td>최대 확대 배율을 정의합니다. `minimum-scale` 이상의 값이어야 하며, 미만일 때의 동작은 정의되지 않았습니다. 브라우저 설정에 따라 이 값은 무시될 수 있으며, iOS 10+에서는 기본 설정에서 무시합니다.</td>
-    </tr>
-    <tr>
-      <td>`minimum-scale`</td>
-      <td>`0.0`과 `10.0` 사이의 수</td>
-      <td>최대 확대 배율을 정의합니다. `maximum-scale` 이하의 값이어야 하며, 초과할 때의 동작은 정의되지 않았습니다. 브라우저 설정에 따라 이 값은 무시될 수 있으며, iOS 10+에서는 기본 설정에서 무시합니다.</td>
-    </tr>
-    <tr>
-      <td>`user-scalable`</td>
-      <td>`yes` 또는 `no`</td>
-      <td>`no`를 지정할 경우 사용자가 페이지를 확대할 수 없습니다. 기본 값은 `yes`입니다. 브라우저 설정에 따라 이 값은 무시될 수 있으며, iOS 10+에서는 기본 설정에서 무시합니다.</td>
-    </tr>
-    <tr>
-      <td>`viewport-fit`</td>
-      <td>`auto`, `contain`, `cover`</td>
-      <td>
-        `auto`일 경우 초기 레이아웃 뷰포트에 영향을 주지 않으며 전체 웹 페이지가 보입니다.
+      <caption>
+        `<meta name="viewport">`의 `content` 특성 값과 동작
+      </caption>
+      <thead>
+        <tr>
+          <th>값</th>
+          <th>사용 가능한 하위 값</th>
+          <th>설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>`width`</td>
+          <td>양의 정수 또는 `device-width`</td>
+          <td>웹 사이트를 렌더링하고자 하는 뷰포트의 픽셀 너비를 정의합니다.</td>
+        </tr>
+        <tr>
+          <td>`height`</td>
+          <td>양의 정수 또는 `device-height`</td>
+          <td>웹 사이트를 렌더링하고자 하는 뷰포트의 픽셀 높이를 정의합니다.</td>
+        </tr>
+        <tr>
+          <td>`initial-scale`</td>
+          <td>`0.0`과 `10.0` 사이의 수</td>
+          <td>장치의 너비(세로 뷰에서는 `device-width`, 가로 뷰에서는 `device-height`)와 뷰포트 크기 사이의 비율을 정의합니다.</td>
+        </tr>
+        <tr>
+          <td>`maximum-scale`</td>
+          <td>`0.0`과 `10.0` 사이의 수</td>
+          <td>최대 확대 배율을 정의합니다. `minimum-scale` 이상의 값이어야 하며, 미만일 때의 동작은 정의되지 않았습니다. 브라우저 설정에 따라 이 값은 무시될 수 있으며, iOS 10+에서는 기본 설정에서 무시합니다.</td>
+        </tr>
+        <tr>
+          <td>`minimum-scale`</td>
+          <td>`0.0`과 `10.0` 사이의 수</td>
+          <td>최대 확대 배율을 정의합니다. `maximum-scale` 이하의 값이어야 하며, 초과할 때의 동작은 정의되지 않았습니다. 브라우저 설정에 따라 이 값은 무시될 수 있으며, iOS 10+에서는 기본 설정에서 무시합니다.</td>
+        </tr>
+        <tr>
+          <td>`user-scalable`</td>
+          <td>`yes` 또는 `no`</td>
+          <td>`no`를 지정할 경우 사용자가 페이지를 확대할 수 없습니다. 기본 값은 `yes`입니다. 브라우저 설정에 따라 이 값은 무시될 수 있으며, iOS 10+에서는 기본 설정에서 무시합니다.</td>
+        </tr>
+        <tr>
+          <td>`viewport-fit`</td>
+          <td>`auto`, `contain`, `cover`</td>
+          <td>
+            `auto`일 경우 초기 레이아웃 뷰포트에 영향을 주지 않으며 전체 웹 페이지가 보입니다.
 
             `contain`일 경우, 페이지 내에서 가장 큰 직사각형이 화면에 온전히 보일 수 있도록 뷰포트 크기를 조절합니다.
 
             `cover`일 경우, 뷰포트 크기를 조절해 장치 화면을 가득 채웁니다. `cover`를 사용할 땐 [안전 영역 인셋](https://developer.mozilla.org/en-US/docs/Web/CSS/env) 환경 변수를 사용해서 콘텐츠가 화면 밖으로 나가지 않도록 조절하는 걸 추천합니다.
           </td>
         </tr>
-
       </tbody>
-</table>
+    </table>
 
     > [note] `user-scalable`을 `no`로 설정해 확대 기능을 비활성화하면 저시력 사용자가 페이지 콘텐츠를 읽고 이해하기 힘들어집니다.
 
@@ -184,66 +183,66 @@ bcd: html.elements.meta.name
   - _협조적인_ 크롤러들이 이 페이지 내에서 따라야 할 동작을 정의합니다. 쉼표로 구분하는 리스트로, 사용 가능한 값은 다음과 같습니다.
 
     <table>
-  <thead>
-    <tr>
-      <th>값</th>
-      <th>설명</th>
-      <th>사용하는 검색 엔진</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>`index`</td>
-      <td>크롤러가 페이지를 색인할 수 있습니다. (기본 값)</td>
-      <td>모두</td>
-    </tr>
-    <tr>
-      <td>`noindex`</td>
-      <td>크롤러에게 패이지를 색인하지 않도록 요청합니다.</td>
-      <td>모두</td>
-    </tr>
-    <tr>
-      <td>`follow`</td>
-      <td>크롤러가 페이지 내의 링크를 따라갈 수 있습니다. (기본 값)</td>
-      <td>모두</td>
-    </tr>
-    <tr>
-      <td>`nofollow`</td>
-      <td>크롤러에게 페이지 내의 링크를 따라가지 말라고 요청합니다.</td>
-      <td>모두</td>
-    </tr>
-    <tr>
-      <td>`all`</td>
-      <td>`index, follow`와 같습니다.</td>
-      <td>[Google](https://developers.google.com/search/docs/advanced/robots/robots_meta_tag)</td>
-    </tr>
-    <tr>
-      <td>`none`</td>
-      <td>`noindex, nofollow`와 같습니다.</td>
-      <td>[Google](https://developers.google.com/search/docs/advanced/robots/robots_meta_tag)</td>
-    </tr>
-    <tr>
-      <td>`noarchive`</td>
-      <td>검색 엔진에게 페이지 콘텐츠를 캐시에 추가하지 않도록 요청합니다.</td>
-      <td>[Google](https://developers.google.com/search/docs/advanced/robots/robots_meta_tag), [Bing](https://www.bing.com/webmasters/help/which-robots-metatags-does-bing-support-5198d240)</td>
-    </tr>
-    <tr>
-      <td>`nosnippet`</td>
-      <td>검색 결과에서 페이지의 설명을 보여주지 않습니다.</td>
-      <td>[Google](https://developers.google.com/search/docs/advanced/robots/robots_meta_tag), [Bing](https://www.bing.com/webmasters/help/which-robots-metatags-does-bing-support-5198d240)</td>
-    </tr>
-    <tr>
-      <td>`noimageindex`</td>
-      <td>크롤러에게 페이지의 이미지를 색인하지 않도록 요청합니다.</td>
-      <td>[Google](https://developers.google.com/search/docs/advanced/robots/robots_meta_tag)</td>
-    </tr>
-    <tr>
-      <td>`nocache`</td>
-      <td>`noarchive`와 같습니다.</td>
-      <td>[Bing](https://www.bing.com/webmasters/help/which-robots-metatags-does-bing-support-5198d240)</td>
-    </tr>
-  </tbody>
-</table>
+      <thead>
+        <tr>
+          <th>값</th>
+          <th>설명</th>
+          <th>사용하는 검색 엔진</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>`index`</td>
+          <td>크롤러가 페이지를 색인할 수 있습니다. (기본 값)</td>
+          <td>모두</td>
+        </tr>
+        <tr>
+          <td>`noindex`</td>
+          <td>크롤러에게 패이지를 색인하지 않도록 요청합니다.</td>
+          <td>모두</td>
+        </tr>
+        <tr>
+          <td>`follow`</td>
+          <td>크롤러가 페이지 내의 링크를 따라갈 수 있습니다. (기본 값)</td>
+          <td>모두</td>
+        </tr>
+        <tr>
+          <td>`nofollow`</td>
+          <td>크롤러에게 페이지 내의 링크를 따라가지 말라고 요청합니다.</td>
+          <td>모두</td>
+        </tr>
+        <tr>
+          <td>`all`</td>
+          <td>`index, follow`와 같습니다.</td>
+          <td>[Google](https://developers.google.com/search/docs/advanced/robots/robots_meta_tag)</td>
+        </tr>
+        <tr>
+          <td>`none`</td>
+          <td>`noindex, nofollow`와 같습니다.</td>
+          <td>[Google](https://developers.google.com/search/docs/advanced/robots/robots_meta_tag)</td>
+        </tr>
+        <tr>
+          <td>`noarchive`</td>
+          <td>검색 엔진에게 페이지 콘텐츠를 캐시에 추가하지 않도록 요청합니다.</td>
+          <td>[Google](https://developers.google.com/search/docs/advanced/robots/robots_meta_tag), [Bing](https://www.bing.com/webmasters/help/which-robots-metatags-does-bing-support-5198d240)</td>
+        </tr>
+        <tr>
+          <td>`nosnippet`</td>
+          <td>검색 결과에서 페이지의 설명을 보여주지 않습니다.</td>
+          <td>[Google](https://developers.google.com/search/docs/advanced/robots/robots_meta_tag), [Bing](https://www.bing.com/webmasters/help/which-robots-metatags-does-bing-support-5198d240)</td>
+        </tr>
+        <tr>
+          <td>`noimageindex`</td>
+          <td>크롤러에게 페이지의 이미지를 색인하지 않도록 요청합니다.</td>
+          <td>[Google](https://developers.google.com/search/docs/advanced/robots/robots_meta_tag)</td>
+        </tr>
+        <tr>
+          <td>`nocache`</td>
+          <td>`noarchive`와 같습니다.</td>
+          <td>[Bing](https://www.bing.com/webmasters/help/which-robots-metatags-does-bing-support-5198d240)</td>
+        </tr>
+      </tbody>
+    </table>
 
     > [note]
     >

@@ -1,6 +1,6 @@
 import Loading from 'components/Loading'
 import type { VirtualFile } from 'components/useCodeBlockGroup'
-import { useEffect, useId, useReducer, useRef, useState } from 'react'
+import { useEffect, useId, useReducer, useRef } from 'react'
 import { InView } from 'react-intersection-observer'
 
 import styles from './LiveCode.module.scss'

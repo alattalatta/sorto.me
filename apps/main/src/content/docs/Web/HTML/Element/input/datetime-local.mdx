@@ -6,13 +6,12 @@ bcd: html.elements.input.type_datetime-local
 **`datetime-local` 유형의 [`<input>`](../input) 요소**는 사용자가 날짜와 시간을 모두 선택할 수 있는 컨트롤입니다. 입력 컨트롤의 외형은 브라우저와 운영체제에 따라 다릅니다. 값은 `YYYY-MM-DDThh:mm` 형식으로 정규화됩니다.
 
 ```html hidden name=demo
-<label for="datetime">날짜와 시간을 선택하세요:
-  <input type="datetime-local"
-         id="datetime"
-         max="2077-06-20T21:00"
-         min="2077-06-05T12:30"
-         value="2077-06-15T13:27">
-</label>
+<label for="datetime">날짜와 시간을 선택하세요:</label>
+<input type="datetime-local"
+        id="datetime"
+        max="2077-06-20T21:00"
+        min="2077-06-05T12:30"
+        value="2077-06-15T13:27">
 ```
 
 ```css hidden name=demo
@@ -121,4 +120,5 @@ console.log(dateControl.valueAsNumber) // 1496275200000, JavaScript 타임스탬
 
 # 같이 보기
 
-- 날짜 전용 입력 칸: [`<input type="date">`](./date)
+- 날짜 입력 칸: [`<input type="datetime-local">`](./date)
+- 연도와 월 입력 칸: [`<input type="month">`](./month)

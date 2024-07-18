@@ -1,0 +1,95 @@
+---
+title: 'HTML <input type="month">: 연과 월 선택'
+bcd: html.elements.input.type_month
+---
+
+**`month` 유형의 [`<input>`](../input) 요소**는 사용자가 연도와 월을 선택할 수 있는 컨트롤입니다. 입력 컨트롤의 외형은 브라우저와 운영체제에 따라 다릅니다. 값은 `YYYY-MM` 형식으로 정규화됩니다.
+
+```html hidden name=demo
+<label for="month">시작할 월을 선택하세요:</label>
+<input type="month"
+        id="month"
+        max="2077-01"
+        min="2077-12"
+        value="2077-06">
+```
+
+```css hidden name=demo
+input {
+  margin-top: 0.4rem;
+}
+```
+
+<LiveExample height={240} lang="html" name="demo" />
+
+# 값
+
+`month` 유형의 [`value` 특성](../input#term-value)은 [유효한 HTML 연/월 문자열](https://developer.mozilla.org/en-US/docs/Web/HTML/Date_and_time_formats#month_strings)이어야 합니다.
+
+JavaScript에서는 [`HTMLInputElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement)의 `value`로 값을 가져올 수 있습니다.
+
+```js
+const dateControl = document.querySelector('input[type="month"]')
+dateControl.value = '2017-06'
+console.log(dateControl.value) // '2017-06'
+```
+
+# 추가 특성
+
+`date` 유형은 [`<input>`](../input) 요소가 공유하는 특성을 지원하지만, 일부는 외관에 영향을 주지 못할 수도 있습니다. 예를 들어 [`size`](../input#term-size)와 [`placeholder`](../input#term-placeholder) 특성을 지정해도 차이가 없을 수 있습니다.
+
+- : `max`
+
+  - 선택할 수 있는 날짜의 최대 한계입니다. 입력한 값이 이 날짜 이후인 경우 [제약 검증](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Constraint_validation)에 실패합니다. `max` 특성은 반드시 `YYYY-MM` 형식의 날짜 문자열이어야 합니다. 유효하지 않은 값을 입력하면 최대 한계를 지정하지 않은 것으로 취급합니다.
+
+    `max`와 `min` 특성을 모두 지정하는 경우, `max`는 `min`과 같거나 그 이후를 가리키는 날짜 문자열이어야 합니다.
+
+- : `min`
+
+  - 선택할 수 있는 날짜의 최소 한계입니다. 입력한 값이 이 날짜 이전인 경우 [제약 검증](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Constraint_validation)에 실패합니다. `min` 특성은 반드시 `YYYY-MM` 형식의 날짜 문자열이어야 합니다. 유효하지 않은 값을 입력하면 최소 한계를 지정하지 않은 것으로 취급합니다.
+
+    `max`와 `min` 특성을 모두 지정하는 경우, `min`은 `nax`와 같거나 그 이후를 가리키는 날짜 문자열이어야 합니다.
+
+- : `step`
+
+  - 선택 가능한 값의 간격입니다. 숫자 또는 `any`를 지정할 수 있습니다. 간격에 맞는 날짜만 선택할 수 있습니다. 간격의 시작점은 `min` 특성이 존재하면 `min`, `value`가 존재하면 `value`, 둘 다 존재하지 않으면 `1970-01-01`입니다.
+
+    숫자를 지정할 경우, 수의 단위는 1개월입니다. `step`의 기본 값은 `1`이므로 기본 간격은 1개월입니다. `any`를 지정하거나 특성을 누락할 경우 `1`을 지정한 것과 같습니다.
+
+# 유효성 검증
+
+`month` 유형의 기본 설정에서는 값의 형식만 검증합니다. 브라우저 기본 인터페이스에 유효하지 않은 형식의 값을 입력할 수 없다는 점은 유용합니다.
+
+[`min`](#term-min)과 [`max` 특성](#term-max)으로 선택 가능한 날짜를 제한하는 경우 ([선택 가능한 날짜 범위 제한하기](#선택-가능한-날짜-범위-제한하기)를 참고하세요), 범위를 벗어난 값을 제출하려고 하면 오류를 표시합니다.
+
+[`required` 특성](../input#term-required)으로 날짜를 반드시 입력하게 설정할 수 있습니다. 사용자가 날짜를 입력하지 않고 양식을 제출하려고 하면 브라우저가 오류를 표시합니다.
+
+> [warn]
+> 클라이언트 사이드 유효성 검증은 서버에서의 검증을 대체할 수 없습니다. HTML을 직접 수정할 수도 있고, 아예 양식을 우회하여 서버에 직접 값을 제출하는 것도 가능합니다. 서버가 값을 올바르게 검증하지 못한 경우 망가졌거나 지나치게 큰 데이터로 인해 장애가 발생할 수 있습니다.
+
+# 예제
+
+## 선택 가능한 날짜 범위 제한하기
+
+[`min`](#term-min)과 [`max` 특성](#term-max)을 지정하면 사용자가 선택할 수 있는 날짜를 특정 범위로 제한할 수 있습니다. 이 예제에서는 2022년 4월부터 2022년 6월까지의 날짜만 선택할 수 있도록 입력 범위를 제한합니다.
+
+```html hidden name=range
+<label>프로젝트 배포월을 선택하세요:
+  <input type="date" name="schedule" min="2022-04" max="2022-06" />
+</label>
+```
+
+<LiveExample name="range" height={140} />
+
+# 명세
+
+[HTML Standard](<https://html.spec.whatwg.org/multipage/input.html#date-state-(type=month)>)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 날짜 입력 칸: [`<input type="datetime-local">`](./date)
+- 날짜와 시간 입력 칸: [`<input type="datetime-local">`](./datetime-local)

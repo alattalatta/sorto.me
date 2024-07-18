@@ -24,6 +24,7 @@
   "devDependencies": {
     "@types/hast": "^3.0.4",
     "@types/mdast": "^4.0.4",
+    "@types/node": "20",
     "@types/unist": "^3.0.2",
     "mdast-util-directive": "^3.0.0",
     "mdast-util-to-hast": "^13.2.0",

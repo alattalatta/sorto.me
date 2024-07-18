@@ -7,7 +7,7 @@ import { definitionList } from './definitionList'
 import { headingDepthAndSlug } from './headingDepthAndSlug'
 import { notebox } from './notebox'
 
-const remarkPlugin: Plugin<void[], Root> = () => {
+export const remarkTransformerPlugin: Plugin<void[], Root> = () => {
   return (tree) => {
     const slugger = new Slugger()
 
@@ -66,5 +66,3 @@ const remarkPlugin: Plugin<void[], Root> = () => {
     })
   }
 }
-
-export { remarkPlugin }

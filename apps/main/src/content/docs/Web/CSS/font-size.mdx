@@ -1,0 +1,191 @@
+---
+title: 'CSS font-size: 글씨 크기'
+bcd: css.properties.font-size
+---
+
+CSS **`font-size`** 속성은 글씨의 크기를 설정합니다. 글씨 크기를 바꾸면 `em`, `ex` 등 글씨 크기에 상대적인 [`<length>`](./length)의 단위도 변합니다.
+
+```css hidden name=demo
+pre {
+  font-size: 1.2rem;
+  /* font-size: x-small; */
+  /* font-size: smaller; */
+  /* font-size: 12px; */
+  /* font-size: 120%; */
+}
+```
+
+```css hidden editable=false name=demo filename=style
+pre {
+  text-align: center;
+}
+```
+
+```html hidden name=demo
+<pre>
+내 그대를 생각함은
+항상 그대가 앉아 있는 배경에서
+해가 지고 바람이 부는 일처럼 사소한 일 일것이나
+언젠가 그대가
+한없이 괴로움 속을 헤매일 때에
+오랫동안 전해 오던 그 사소함으로
+그대를 불러보리라
+</pre>
+```
+
+<LiveExample height={240} lang="css" name="demo" />
+
+# 구문
+
+```css
+/* <absolute-size> 값 */
+font-size: xx-small;
+font-size: x-small;
+font-size: small;
+font-size: medium;
+font-size: large;
+font-size: x-large;
+font-size: xx-large;
+font-size: xxx-large;
+
+/* <relative-size> 값 */
+font-size: smaller;
+font-size: larger;
+
+/* <length> 값 */
+font-size: 12px;
+font-size: 0.8em;
+
+/* <percentage> 값 */
+font-size: 80%;
+
+/* math */
+font-size: math;
+
+/* 전역 값 */
+font-size: inherit;
+font-size: initial;
+font-size: revert;
+font-size: revert-layer;
+font-size: unset;
+```
+
+## 값
+
+`font-size`는 다음 값 중 하나를 사용해 지정할 수 있습니다.
+
+- : `xx-small`, `x-small`, `small`, `medium`, `large`, `x-large`, `xx-large`, `xxx-large`
+
+  - 사용자의 기본 글씨 크기(`medium`)를 기준으로 하는 절대 크기 키워드입니다.
+
+- : `large`, `smaller`
+- 부모 요소의 글씨 크기에 대한 상대 크기 키워드입니다. 절대 크기 키워드 한 단계 (`medium` vs. `small`, `medium` vs. `large` 등) 정도의 차이를 보입니다.
+
+- : [`<length>`](./length)
+
+  - 양의 `<length>` 값입니다. 대부분의 글꼴 상대 길이 단위(`em`, `ex` 등)는 부모 요소의 글씨 크기를 기준으로 계산됩니다.
+
+    루트 요소 글꼴 상대 길이 단위(`rem`, `rex` 등)는 루트 요소([`<html>`](/docs/Web/HTML/Element/html))의 글씨 크기를 기준으로 계산됩니다.
+
+- : [`<percentage>`](./percentage)
+
+  - 양의 `<percentage>` 값입니다. 부모 요소의 글씨 크기를 기준으로 계산됩니다.
+
+    > [note] 접근성을 최대한 확보하려면 사용자의 기본 글씨 크기에 대한 상대 단위를 사용하는 편이 좋습니다.
+
+- : `math`
+  - 부모의 `font-size`에 대해 [확대/축소 규칙](https://w3c.github.io/mathml-core/#the-math-script-level-property)을 적용한 크기입니다. MathML 요소에서 사용합니다.
+
+# 설명
+
+글씨 크기는 키워드로 설정할 수도 있고, `px`이나 `em` 단위의 숫자를 쓸 수도 있습니다. 더 적합한 방법을 선택하세요.
+
+## 키워드
+
+키워드는 웹에서 글씨 크기를 설정할 때 좋은 방법입니다. `<body>` 요소의 글씨 크기를 키워드로 설정한 후, 다른 요소들에는 상대 크기 키워드를 사용하면 모든 글씨의 크기를 필요에 따라 한꺼번에 키우거나 줄일 수 있습니다.
+
+## `px`
+
+픽셀 수준 정확도가 필요할 땐 `px` 단위가 적합한 선택입니다. `px` 값은 정적이며, 운영체제나 브라우저에 상관없이 지정한 픽셀 수에 맞춰 렌더링 하라는 명령입니다. 그러나 플랫폼과 브라우저마다 렌더링 방식이 다르므로 최종 결과는 조금씩 다를 수 있습니다.
+
+`px` 단위와 상대 크기 키워드를 함께 사용할 수도 있습니다. 부모 요소에 `16px`을 지정한 후 자식 요소에서 `larger`를 사용하면 자식 요소의 글씨 크기는 부모 요소보다 커집니다.
+
+> [note]
+> 일부 브라우저에서는 `px` 단위로 설정된 글씨의 크기를 사용자가 제어할 수 없으므로 접근성이 떨어집니다. 포용적 디자인 시에는 `px` 단위의 사용을 지양하세요.
+
+## `em`
+
+`em`은 현재 `font-size` 값에 자신의 값을 곱한 크기를 계산 값으로 사용합니다.
+
+```css
+p {
+  font-size: 2em;
+}
+```
+
+위 예제에서, [`<p>`](/docs/Web/HTML/Element/p) 요소의 글씨 크기는 `<p>`가 상속한 `font-size`의 두 배가 됩니다. 즉 `1em`은 요소의 현재 `font-size`와 동일한 값입니다.
+
+`<p>`의 조상 중 글씨 크기를 설정한 요소가 없다면 `1em`은 브라우저의 기본 글씨 크기와 같으며, 보통 `16px`입니다. 따라서 기본 설정에서 `1em`은 `16px`, `2em`은 `32px`입니다. [`<body>`](/docs/Web/HTML/Element/body) 요소에 `font-size: 20px`을 설정했다면 `1em`은 `20px`이고, `2em`은 `40px`일 것입니다.
+
+`em`은 사용자가 설정한 글씨 크기에 따라 자동으로 조절되므로 CSS에서 매우 유용한 단위 중 하나입니다.
+
+한 가지 기억해야 할 문제 하나는 `em`의 중첩입니다.
+
+```css hidden name=compounding
+html {
+  font-size: 100%;
+}
+
+span {
+  font-size: 1.6em;
+}
+```
+
+```html hidden name=compounding
+<div>
+  <span>바깥쪽 <span>안쪽</span> 바깥쪽</span>
+</div>
+```
+
+<LiveExample height={240} lang="css" name="compounding" />
+
+브라우저의 기본 글씨 크기가 `16px`일 때를 가정하면, "바깥쪽"은 `25.6px`인데 "안쪽"은 `40.96px`입니다. 안쪽 [`<span>`](/docs/Web/HTML/Element/span)의 크기는 바깥쪽 `<span>` 글씨 크기의 1.6배고, 바깥쪽 `<span>`의 글씨 크기는 그 부모의 글씨 크기의 1.6배가 되어 16 × 1.6 × 1.6 = 40.96이 된 겁니다.
+
+## `rem`
+
+`rem`은 `em`의 중첩 문제를 회피하기 위해 정의된 단위입니다. `rem`은 부모가 아니라 루트 [`<html>`](/docs/Web/HTML/Element/html) 요소의 글씨 크기에 상대적입니다. 따라서 중첩 문제 없이도 브라우저 설정에 상대적인 글씨 크기를 지정할 수 있습니다.
+
+다음 예제는 `em`에서의 예제와 같지만, 글씨 크기의 단위만 `rem`으로 바꾼 것입니다.
+
+```css hidden name=compounding2
+html {
+  font-size: 100%;
+}
+
+span {
+  font-size: 1.6rem;
+}
+```
+
+```html hidden name=compounding2
+<div>
+  <span>바깥쪽 <span>안쪽</span> 바깥쪽</span>
+</div>
+```
+
+<LiveExample height={240} lang="css" name="compounding2" />
+
+# 명세
+
+[CSS Fonts Module Level 4](https://drafts.csswg.org/css-fonts/#font-size-prop)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 글꼴과 스타일 단축속성: [`font`](./font)
+- 글꼴: [`font-family`](./font-family)
+- 글씨 스타일: [`font-style`](./font-style)
+- 글씨 굵기: [`font-weight`](./font-weight)

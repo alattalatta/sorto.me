@@ -7,12 +7,13 @@ import '@fontsource/nanum-gothic-coding'
 import '@fontsource/orbit'
 
 interface Props {
+  canonicalPath?: string
   description?: string
   image?: string
   title?: string
 }
 
-const { description = 'sorto.me', image, title = 'sorto.me' } = Astro.props
+const { canonicalPath, description = 'sorto.me', image, title = 'sorto.me' } = Astro.props
 ---
 
 <!doctype html>
@@ -22,6 +23,7 @@ const { description = 'sorto.me', image, title = 'sorto.me' } = Astro.props
     <meta content={Astro.generator} name="generator" />
     <meta content="width=device-width" name="viewport" />
     <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+    {canonicalPath !== undefined && <link href={`${Astro.site?.toString() ?? ''}${canonicalPath}`} rel="canonical" />}
     <!-- og -->
     <title>{title}</title>
     <meta content={title} property="og:title" />
@@ -29,7 +31,7 @@ const { description = 'sorto.me', image, title = 'sorto.me' } = Astro.props
     <meta content={description} property="og:description" />
     {image && <meta content={image} property="og:image" />}
     <meta content="website" property="og:type" />
-    <meta name="google-adsense-account" content="ca-pub-3748696249484291" />
+    <meta content="ca-pub-3748696249484291" name="google-adsense-account" />
   </head>
   <body>
     <slot />

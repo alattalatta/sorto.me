@@ -22,6 +22,7 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths
 
 const props = Astro.props
+const path = props.id.replace('.mdx', '')
 const site = Astro.site?.toString() ?? ''
 
 const firstParagraphProcessor = remark()
@@ -50,7 +51,7 @@ const bcdData = (() => {
 
       return prv[cur]
     },
-    bcd[category as Exclude<keyof CompatData, '__meta' | 'browsers'>],
+    bcd[category as Exclude<keyof CompatData, '__meta' | 'browsers'>]
   )
 
   if (data) {
@@ -63,7 +64,12 @@ const bcdData = (() => {
 })()
 ---
 
-<Shell description={description} image={`${site}docs/${props.id.replace('.mdx', '')}/og.png`} title={props.data.title}>
+<Shell
+  canonicalPath={`${path}`}
+  description={description}
+  image={`${site}docs/${path}/og.png`}
+  title={props.data.title}
+>
   <ContentGrid client:load>
     <Nav
       links={[

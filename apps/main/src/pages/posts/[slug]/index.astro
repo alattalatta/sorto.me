@@ -20,7 +20,12 @@ const site = Astro.site?.toString() ?? ''
 const posts = [...(await getCollection('posts'))].reverse()
 ---
 
-<Shell description={props.data.description} image={`${site}posts/${props.slug}/og.png`} title={props.data.title}>
+<Shell
+  canonicalPath={`${props.slug}`}
+  description={props.data.description}
+  image={`${site}posts/${props.slug}/og.png`}
+  title={props.data.title}
+>
   <ContentGrid client:load>
     <Nav
       links={[

@@ -1,31 +1,125 @@
 ---
+import dayjs from 'dayjs'
 import imgCC from 'images/cc.svg'
 import imgLogoSmall from 'images/logo-small.svg'
+
+export type Props = {
+  lastModified?: string
+}
+
+const { lastModified } = Astro.props
+const lastModifiedForHuman = dayjs(lastModified).format('YYYY년 M월 D일 H시 m분')
 ---
 
 <div class="root">
-  <div class="logo">
-    <a href="/">
-      <img alt="ALATTA" src={imgLogoSmall.src} />
-    </a>
-  </div>
-  <div class="body">
-    <slot />
-    <img alt="" class="cc" src={imgCC.src} />
-    <small class="license">
-      <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.ko" rel="noreferrer" target="_blank">CC BY-SA 4.0</a>
-      unless otherwise noted. See
-      <a href="https://github.com/alattalatta/sorto.me/blob/main/LICENSE.md" rel="noreferrer" target="_blank">LICENSE</a
-      >.
-    </small>
+  {
+    lastModified && (
+      <p class="lastmod">
+        마지막 수정:{' '}
+        <time datetime={lastModified} id="lastmod">
+          {lastModifiedForHuman}.
+        </time>
+      </p>
+    )
+  }
+  <div class="brand">
+    <div class="logo">
+      <a href="/">
+        <img alt="ALATTA" src={imgLogoSmall.src} />
+      </a>
+    </div>
+    <div class="body">
+      <slot />
+      <img alt="" class="cc" src={imgCC.src} />
+      <small class="license">
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.ko" rel="noreferrer" target="_blank"
+          >CC BY-SA 4.0</a
+        >
+        unless otherwise noted. See
+        <a href="https://github.com/alattalatta/sorto.me/blob/main/LICENSE.md" rel="noreferrer" target="_blank"
+          >LICENSE</a
+        >.
+      </small>
+    </div>
   </div>
 </div>
 
+<script>
+  import dayjs from 'dayjs'
+
+  const lastmod = document.querySelector<HTMLTimeElement>('#lastmod')
+
+  if (lastmod) {
+    const rtf = new Intl.RelativeTimeFormat('ko', { numeric: 'always' })
+    const now = dayjs()
+    const then = dayjs(lastmod.dateTime)
+    const diff = now.diff(then, 'd')
+
+    if (diff < 7) {
+      lastmod.classList.add('fresh')
+      lastmod.textContent = rtf.format(-diff, 'day') + '.'
+      lastmod.title = then.format('YYYY년 M월 D일 H시 m분')
+    }
+  }
+</script>
+
 <style lang="scss">
-  .root { height: 9rem; border-top: 1px solid var(--primary); display: flex; gap: 4rem; padding: 2rem 4rem; @media
-  (max-width: 512px) { height: auto; flex-direction: column; gap: 2rem; padding: 2rem; } } .logo { display: flex;
-  align-items: flex-start; justify-content: center; @media (max-width: 512px) { justify-content: flex-start; } } .logo
-  img { height: 3rem; display: block; } .body { display: flex; flex-direction: column; align-items: flex-start;
-  justify-content: flex-start; } .cc { height: 1rem; display: block; } * + .cc { margin-top: 0.5rem; } .license {
-  display: block; font-size: 0.75rem; margin-top: 0.25rem; }
+  .root {
+    border-top: 1px solid var(--primary);
+    padding: 2rem 4rem;
+  }
+
+  .lastmod {
+    margin: 0 0 2em;
+  }
+  #lastmod.fresh {
+    cursor: help;
+    text-decoration: underline dotted;
+  }
+
+  .brand {
+    height: 9rem;
+    display: flex;
+    gap: 4rem;
+    @media (max-width: 512px) {
+      height: auto;
+      flex-direction: column;
+      gap: 2rem;
+      padding: 2rem;
+    }
+  }
+
+  .logo {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    @media (max-width: 512px) {
+      justify-content: flex-start;
+    }
+  }
+  .logo img {
+    height: 3rem;
+    display: block;
+  }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .cc {
+    height: 1rem;
+    display: block;
+  }
+  * + .cc {
+    margin-top: 0.5rem;
+  }
+
+  .license {
+    display: block;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+  }
 </style>

@@ -17,6 +17,11 @@ export const getStaticPaths = (async () => {
 const props = Astro.props
 const site = Astro.site?.toString() ?? ''
 
+const {
+  Content,
+  remarkPluginFrontmatter: { lastModified },
+} = await props.render()
+
 const posts = [...(await getCollection('posts'))].reverse()
 ---
 
@@ -26,6 +31,12 @@ const posts = [...(await getCollection('posts'))].reverse()
   image={`${site}posts/${props.slug}/og.png`}
   title={props.data.title}
 >
+  <Fragment slot="head">
+    <meta content="article" property="og:type" />
+    <meta content="alattalatta" property="article:author" />
+    <meta content={lastModified} property="article:modified_time" />
+    <meta content={props.id.split('--')[0]} property="article:published_time" />
+  </Fragment>
   <ContentGrid client:load>
     <Nav
       links={[
@@ -56,8 +67,8 @@ const posts = [...(await getCollection('posts'))].reverse()
       slot="nav"
     />
     <main>
-      <Article post={props} />
+      <Article content={Content} post={props} />
     </main>
-    <Footer slot="footer" />
+    <Footer {lastModified} slot="footer" />
   </ContentGrid>
 </Shell>

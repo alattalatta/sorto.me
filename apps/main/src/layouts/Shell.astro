@@ -30,7 +30,8 @@ const { canonicalPath, description = 'sorto.me', image, title = 'sorto.me' } = A
     <meta content={description} name="description" />
     <meta content={description} property="og:description" />
     {image && <meta content={image} property="og:image" />}
-    <meta content="website" property="og:type" />
+    <meta content="ko_KR" property="og:locale" />
+    <slot name="head" />
     <meta content="ca-pub-3748696249484291" name="google-adsense-account" />
   </head>
   <body>

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "extends": [
+    "//"
+  ],
+  "tasks": {
+    "build": {
+      "dependsOn": [
+        "lastmod",
+        "typecheck",
+        "^build"
+      ],
+      "outputs": [
+        "dist"
+      ]
+    },
+    "dev": {
+      "cache": false,
+      "dependsOn": [
+        "^build",
+        "lastmod"
+      ],
+      "persistent": true
+    },
+    "lastmod": {
+      "inputs": [
+        "src/content/**/*.mdx",
+        "lastmod.mjs"
+      ],
+      "outputs": [
+        "src/content/**/*.lastmod"
+      ]
+    }
+  }
+}

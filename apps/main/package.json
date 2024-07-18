@@ -6,6 +6,7 @@
     "astro": "astro",
     "build": "astro check && astro build",
     "dev": "astro dev",
+    "lastmod": "node ./lastmod.mjs",
     "preview": "astro preview"
   },
   "devDependencies": {
@@ -29,6 +30,7 @@
     "@types/react-dom": "^18.3.0",
     "astro": "^4.11.6",
     "entities": "^5.0.0",
+    "glob": "^11.0.0",
     "rehype-mdx-code-props": "^3.0.1",
     "remark": "^15.0.1",
     "remark-directive": "^3.0.0",
@@ -41,6 +43,7 @@
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",
     "@vercel/speed-insights": "^1.0.12",
+    "dayjs": "^1.11.12",
     "k-popo": "^2.0.4",
     "monaco-editor": "^0.50.0",
     "react": "^18.3.1",

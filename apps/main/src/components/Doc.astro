@@ -1,20 +1,21 @@
 ---
 import type { Identifier } from '@mdn/browser-compat-data'
+import type { AstroComponentFactory } from 'astro/runtime/server/index.js'
 import type { CollectionEntry } from 'astro:content'
 
 import BrowserCompat from './BrowserCompat'
+import { Experimental, NonStandard } from './BrowserCompat/StatusIcon'
 import ContentBody from './ContentBody.astro'
 import LiveExample from './LiveExample'
-import { Experimental, NonStandard } from './BrowserCompat/StatusIcon'
 import Spec from './Spec'
 
 type Props = {
   bcd: { data: Identifier; key: string } | null
+  content: AstroComponentFactory
   post: CollectionEntry<'docs'>
 }
 
-const { bcd, post } = Astro.props
-const { Content } = await post.render()
+const { bcd, content: Content, post } = Astro.props
 ---
 
 <article aria-labelledby={post.slug}>

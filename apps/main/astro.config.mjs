@@ -4,16 +4,16 @@ import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
 import remarkDirective from 'remark-directive'
 
-import * as foo from '@lib/mdx'
+import * as libmdx from '@lib/mdx'
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [
     mdx({
       optimize: true,
-      remarkPlugins: [remarkDirective, foo.remarkPlugin],
+      remarkPlugins: [remarkDirective, libmdx.remarkTransformerPlugin, libmdx.remarkLastmodPlugin],
       remarkRehype: {
-        handlers: foo.remarkRehypeHandlers,
+        handlers: libmdx.remarkRehypeHandlers,
       },
       shikiConfig: {
         theme: 'catppuccin-latte',

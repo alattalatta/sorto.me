@@ -25,6 +25,11 @@ const props = Astro.props
 const path = props.id.replace('.mdx', '')
 const site = Astro.site?.toString() ?? ''
 
+const {
+  Content,
+  remarkPluginFrontmatter: { lastModified },
+} = await props.render()
+
 const firstParagraphProcessor = remark()
   .use(() => (root: Root) => select('paragraph', root) || root.children[0] || root)
   .use(stripMarkdown)
@@ -70,6 +75,11 @@ const bcdData = (() => {
   image={`${site}docs/${path}/og.png`}
   title={props.data.title}
 >
+  <Fragment slot="head">
+    <meta content="article" property="og:type" />
+    <meta content="alattalatta" property="article:author" />
+    <meta content={lastModified} property="article:modified_time" />
+  </Fragment>
   <ContentGrid client:load>
     <Nav
       links={[
@@ -101,8 +111,8 @@ const bcdData = (() => {
       slot="nav"
     />
     <main>
-      <Doc bcd={bcdData} post={props} />
+      <Doc bcd={bcdData} content={Content} post={props} />
     </main>
-    <Footer slot="footer" />
+    <Footer {lastModified} slot="footer" />
   </ContentGrid>
 </Shell>

@@ -1,0 +1,253 @@
+---
+title: 'HTML autocomplete 특성: 자동완성'
+bcd: html.elements.form.autocomplete
+---
+
+**HTML `autocomplete` 특성**은 사용자 에이전트가 웹 페이지의 양식 컨트롤 데이터를 자동으로 채울 수 있도록 지정하고, 어떤 종류의 데이터를 사용해야 하는지에 대한 도움말을 제공합니다.
+
+[`<form>`], [`<textarea>`], [`<select>`], 그리고 텍스트나 숫자 값을 받는 [`<input>`] 요소에 지정할 수 있습니다.
+
+```html hidden name=demo
+<label for="familyName">성</label>
+<input autocomplete="family-name" name="familyName" id="familyName" type="text" />
+
+<label for="givenName">이름</label>
+<input autocomplete="given-name" name="givenName" id="givenName" type="text" />
+
+<label for="email">이메일</label>
+<input autocomplete="off" name="email" id="email" type="email" />
+```
+
+```css hidden name=demo
+input {
+  display: block;
+  margin-top: 1rem;
+}
+```
+
+<LiveExample height={240} lang="html" name="demo" />
+
+# 설명
+
+`autocomplete` 특성은 사용자 에이전트가 양식 컨트롤을 미리 채워놓을지, 채워놔야 한다면 어떤 데이터로 채워놓을지 지정합니다. `off`와 `on` 키워드, 또는 토큰들의 정렬된 공백 구분 리스트를 지정할 수 있습니다.
+
+```html
+<input autocomplete="off" />
+<input autocomplete="on" />
+<input autocomplete="shipping street-address" />
+<input autocomplete="section-user1 billing postal-code" />
+```
+
+[`<input>`], [`<select>`], [`<textarea>`] 요소에 `autocomplete` 특성이 없으면 브라우저는 해당 요소들의 **양식 소유자**가 가진 `autocomplete` 특성을 대신 사용합니다. 양식 소유자란, 요소에 [`form` 특성](../Element/input#term-form)을 지정한 경우 그 값과 일치하는 [`id`](../Global_attributes#term-id)의 [`<form>`] 요소이고, 아닐 경우 양식 요소들의 부모 또는 조상 `<form>` 요소입니다.
+
+> [note]
+> 브라우저가 자동완성을 제공하려면 양식 컨트롤이 다음 조건을 만족해야 할 수 있습니다.
+>
+> 1. 컨트롤에 [`name`](../Element/input#term-name) 또는 `id` 특성 지정
+> 2. `<form>` 요소 내에 배치됨
+> 3. 제출 버튼을 가진 `<form>` 요소에 의해 소유됨
+
+`autocomplete` 특성의 값으로 토큰 리스트를 사용했고, 동일한 리스트가 두 개 이상의 양식 컨트롤에 동일하게 쓰인 경우, 사용자 에이전트는 해당하는 모든 요소들을 같은 데이터로 자동완성합니다.
+
+여러 양식 컨트롤에서 동일한 데이터 종류를 바라지만, 데이터 자체는 달라야 하는 경우도 있습니다. 예컨대 신용카드 청구지 우편번호와 수령지 우편번호는 둘 다 우편번호지만 그 값은 다를 수도 있습니다. 이런 경우, 토큰 여럿을 공백 구분 리스트로 지정하면 고유한 자동완성을 제공할 수 있습니다. 각각 `autocomplete="shipping zip-code"`와 `autocomplete="billing zip-code"`처럼 쓸 수 있겠습니다.
+
+그런데 수령지 우편번호를 두 개 이상 써야 하는 양식의 경우는 어떨까요? 같은 `"shipping zip-code"`지만 다른 값이 필요한 경우입니다. 이런 경우에도 자동완성을 고유하게 제공하려면 토큰 리스트의 첫 값에 `section-*` 토큰을 사용해야 합니다. `*`의 자리에는 알파벳과 숫자로 구성된 고유 이름을 지정하세요. 동일한 `section-*` 토큰들을 가진 양식 필드들은 같은 **유명 그룹**에 속하게 됩니다.
+
+[`<input type="hidden">`][type=hidden] 요소에 지정하는 `autocomplete` 특성은 반드시 토큰의 리스트여야 하며 `on`과 `off` 키워드는 사용할 수 없습니다.
+
+자동완성에 사용하는 데이터를 가져오는 건 온전히 브라우저에 달렸습니다. 일반적으로는 사용자가 과거에 입력했던 값들이지만, 사전에 설정된 값 또한 포함될 수 있습니다. 예를 들어 브라우저가 자동완성에 사용할 이름, 주소, 전화번호, 이메일 주소를 사용자에게 물어본 후 저장해놨을 수도 있고, 신용카드 정보를 암호화해 저장해놨다가 제공할 수도 있습니다.
+
+# 값
+
+- : `off`
+
+  - 브라우저가 이 필드를 자동완성하지 않도록 지정합니다. 현재 웹 페이지나 애플리케이션이 자체 자동완성을 제공하는 경우나, 보안 문제로 인해 자동으로 입력되어선 안되는 필드에 사용할 수 있습니다.
+
+    > [note]
+    >
+    > 대부분의 최신 브라우저에서는 사용자 이름과 비밀번호에 대해서 `autocomplete="off"`를 지정해도 사용자에게 비밀번호 관리 기능에 데이터 저장 여부를 물어보며 자동완성 또한 제공합니다. [로그인 필드 자동완성 끄기](https://developer.mozilla.org/en-US/docs/Web/Security/Practical_implementation_guides/Turning_off_form_autocompletion#managing_autofill_for_login_fields)를 참고하세요.
+
+- : `on`
+  - 브라우저가 이 필드를 자동으로 완성하는 걸 허가합니다. 데이터 유형에 대한 힌트를 제공하지 않으므로 브라우저가 자체적으로 판단합니다.
+- : `<token-list>`
+
+  - 세부 자동완성 토큰들의 정렬된 공백 구분 리스트입니다. 사용 가능한 토큰들은 다음과 같습니다.
+
+    - : `section-*`
+      - 양식 컨트롤들의 유명 그룹 이름을 정의합니다. 첫 8글자는 대소문자 구분 없는 "section-"이어야 하고, 그 뒤를 그룹의 이름으로 잇습니다. `section-*` 토큰은 항상 토큰 리스트의 제일 첫 항목이어야 합니다. 같은 `section-*` 토큰을 가진 양식 컨트롤들은 같은 그룹에 속하게 됩니다. `"section-product1 shipping street-address"`, `"section-product2 shipping street-address"`처럼 사용할 수 있습니다.
+    - : `name`
+
+      - 사람의 성과 이름을 모두 포함한 전체 성명입니다. 인간 성명의 다양성과 그에 따른 복잡한 구조때문에 성명을 각각의 구성요소(성, 이름, 미들네임, ...)로 나누는 것보단 하나의 필드로 처리하는 편이 선호되지만, 필요한 경우 다음과 같은 더 상세한 자동완성 토큰을 사용할 수 있습니다.
+
+        - : `family-name`
+          - 성입니다. "Last name"이라고도 합니다.
+        - : `given-name`
+          - 이름입니다. "First name"이라고도 합니다.
+        - : `honorific-prefix`
+          - 성명 앞의 경칭입니다. "Mr.", "Ms.", "Dr." 등입니다.
+        - : `additional-name`
+          - 미들네임입니다.
+        - : `honorific-suffix`
+          - 성명 뒤의 경칭입니다. "Jr.", "PhD." 등입니다.
+        - : `nickname`
+          - 별명 또는 별칭입니다.
+
+    - : `email`
+      - 이메일 주소입니다.
+    - : `username`
+      - 사용자 또는 계정 이름입니다.
+    - : `new-password`
+      - 새로운 비밀번호입니다. 새로운 계정 생성, 또는 비밀번호 변경 양식에서 "새 비밀번호 입력" 또는 "비밀번호 확인" 필드에 사용해야 합니다. 브라우저가 기존 비밀번호를 신규 비밀번호에 또 입력하는 걸 방지하고, 안전한 비밀번호 생성 제안 기능에도 사용합니다.
+    - : `current-password`
+      - 현재 비밀번호입니다.
+    - : `one-time-code`
+      - 추가 보안 절차에 사용되는 1회용 비밀번호(OTP)입니다. 보통 SMS, 이메일, 인증 애플리케이션처럼 외부 채널을 통해 받은 코드입니다.
+    - : `organization-title`
+      - 직함 또는 직책입니다. "대리", "과장", "선임 디렉터", "중위" 등입니다.
+    - : `organization`
+      - 회사 또는 조직명입니다.
+    - : `street-address`
+
+      - 도로 주소입니다. 2차 행정구역 (시/군/구 등) 내에서 온전히 식별 가능한 주소여야 하지만 도시명, 우편번호, 국가명은 포함하지 않아야 합니다.
+
+        - : `shipping`
+          - 상품을 보내야 하는 주소입니다. `shipping street-address`와 같이 사용합니다. `shipping address-level2`처럼 다른 토큰과도 조합할 수 있습니다.
+        - : `billing`
+          - 청구지 주소입니다. `billing street-address`와 같이 사용합니다. `billing address-level2`처럼 다른 토큰과도 조합할 수 있습니다.
+
+    - : `address-line1`, `address-line2`, `address-line3`
+      - 도로 주소를 구성하는 각각의 줄입니다. 양식 내에 `street-address`가 없을 때만 사용해야 합니다.
+    - : `address-level4`
+      - 4차 [행정구역]입니다.
+    - : `address-level3`
+      - 3차 [행정구역]입니다.
+    - : `address-level2`
+      - 2차 [행정구역]입니다.
+    - : `address-level1`
+
+      - 1차 [행정구역]입니다.
+
+        [행정구역]: #주소의-행정구역-단계
+
+    - : `country`
+      - 국가 또는 영토 코드입니다.
+    - : `country-name`
+      - 국가 또는 영토명입니다.
+    - : `postal-code`
+      - 우편번호입니다.
+    - : `cc-name`
+
+      - 신용카드 등 결제수단에 각인됐거나 연결된 소유자의 성명입니다. `name`과 마찬가지로 각 구성요소로 나누지 않고 하나의 필드로 처리하는 것이 선호됩니다.
+
+        - : `cc-family-name`
+          - 결제수단 소유자의 성입니다.
+        - : `cc-given-name`
+          - 결제수단 소유자의 이름입니다.
+        - : `cc-additional-name`
+          - 결제수단 소유자의 미들네임입니다.
+
+    - : `cc-number`
+      - 신용카드 번호, 계좌 번호 등 결제수단을 식별하는 번호입니다.
+    - : `cc-exp`
+
+      - 결제수단의 만료일입니다. 보통 `MM/YY` 또는 `MM/YYYY` 형식입니다.
+
+        - : `cc-exp-month`
+          - 결제수단의 만료 월입니다.
+        - : `cc-exp-year`
+          - 결제수단의 만료 연도입니다.
+
+    - : `cc-csc`
+      - 결제수단의 보안 코드입니다. 신용카드에서는 CVV, CVC, CID 등으로 불리는 카드 뒷면의 세 자리 인증 번호에 해당합니다.
+    - : `cc-type`
+      - 결제수단의 종류입니다. "Visa", "Mastercard" 등입니다.
+    - : `transaction-currency`
+      - 거래 통화입니다.
+    - : `transaction-amount`
+      - 거래 금액입니다. 단위는 `transaction-currency`의 필드에 지정한 통화입니다.
+    - : `language`
+      - 사용자의 선호 언어입니다. [BCP 47 언어 태그](https://en.wikipedia.org/wiki/IETF_language_tag) 형식입니다.
+    - : `bday`
+
+      - 생년월일입니다. `YYYY-MM-DD` 형식입니다.
+
+        - : `bday-day`
+          - 생일의 일입니다.
+        - : `bday-month`
+          - 생일의 월입니다.
+        - : `bday-year`
+          - 생일의 연도입니다.
+
+    - : `sex`
+      - 성적 정체성입니다. 개행 없는 자유 형식 텍스트입니다.
+    - : `tel`
+
+      - 국가 코드를 포함한 전체 전화번호입니다. 구성요소를 나눠야 하면 아래 토큰들을 사용하세요.
+
+        - : `tel-country-code`
+          - 국가 코드입니다. 미국은 1, 대한민국은 82입니다.
+        - : `tel-national`
+          - 국가 코드를 제외한 전체 전화번호입니다. 전화번호가 "82-010-1234-5678"이라면 "010-1234-5678" 부분입니다.
+        - : `tel-area-code`
+          - 지역 코드입니다. 대한민국에서는 02, 031, 010 등입니다.
+        - : `tel-local`
+          - 국가 코드와 지역 코드를 제외한 전화번호입니다. "010-1234-5678"에서 "1234-5678" 부분입니다. 필요한 경우 `tel-local-prefix`("1234")와 `tel-local-suffix`("5678")로 나눌 수 있습니다.
+
+    - : `tel-extension`
+      - 호텔, 사무실 등 전화번호 내선번호입니다.
+    - : `impp`
+      - IRC 등 인스턴트 메시징 프로토콜 (Instant Messaging and Presence Protocol) 엔드포인트입니다.
+    - : `url`
+      - 홈페이지나 회사 웹사이트 등 양식의 맥락에 맞는 URL입니다.
+    - : `photo`
+      - 사람, 회사, 연락처 등 양식의 맥락에 맞는 사진의 URL입니다.
+    - : `webauthn`
+      - 조건적 [`navigator.credentials.get()`](https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer/get) (i.e., `{ mediation: 'conditional' }`) 호출에 의해 생성된 [Web Authentication API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API) 패스키입니다. [양식 자동 완성을 통한 패스키 로그인](https://web.dev/articles/passkey-form-autofill)을 참고하세요.
+
+[WHATWG 명세](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill)도 참고하세요.
+
+# 주소의 행정구역 단계
+
+`address-level1`부터 `address-level4`까지 4단계의 행정구역 단계 필드는 국가 내의 가장 큰 행정구역부터 점점 작은 행정구역으로 상세해지는 주소를 설명합니다. 국가들의 행정구역 체계가 다르니 주소 또한 작성할 때 순서가 서로 다를 수 있습니다.
+
+`address-level1`은 항상 국가의 바로 아래 단계인 가장 넓은 행정구역을 나타냅니다.
+
+## 대한민국의 예
+
+도로명주소는 다음과 같은 형태입니다.
+
+- 서울특별시 종로구 세종로 1
+- 경기도 수원시 팔달구 효원로 1
+- 충청남도 홍성군 홍북읍 충남대로 21
+
+이때, 각 행정구역 단계는 다음과 같이 나눌 수 있습니다.
+
+1. `address-level1`: "서울특별시", "경기도", "충청남도" (특별시, 광역시, 도)
+1. `address-level2`: "종로구", "수원시 팔달구", "홍성군" (시, 군, 구)
+1. `address-level3`: "홍북읍" (읍, 면)
+
+상세주소는 다음과 같이 나눌 수 있습니다.
+
+1. `address-line1`: "세종로 1", "효원로 1", "충남대로 21" (도로명 + 건물번호)
+1. `address-line2`: 건물 이름, 동호수 등
+
+`address-line1`, `address-line2` 대신 `street-address`를 사용할 경우 도로명 + 건물번호와 동호수 등을 같이 작성합니다.
+
+다른 국가들의 예시는 [MDN `autocomplete` 문서](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete#variations)를 참고하세요.
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- [`<form>`]
+- [`<input>`]
+- [`<select>`]
+- [`<textarea>`]
+
+[`<form>`]: ../Element/form
+[`<input>`]: ../Element/input
+[`<select>`]: ../Element/select
+[`<textarea>`]: ../Element/textarea
+[type=hidden]: ../Element/input/hidden

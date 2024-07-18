@@ -9,7 +9,7 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.8.1",
+    "@astrojs/check": "^0.8.2",
     "@astrojs/markdown-remark": "^5.1.1",
     "@astrojs/mdx": "^3.1.2",
     "@astrojs/react": "^3.6.0",
@@ -27,7 +27,7 @@
     "@types/mdast": "^4.0.4",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "astro": "^4.11.5",
+    "astro": "^4.11.6",
     "entities": "^5.0.0",
     "rehype-mdx-code-props": "^3.0.1",
     "remark": "^15.0.1",

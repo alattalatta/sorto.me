@@ -20,7 +20,15 @@ export default defineConfig({
       },
     }),
     react(),
-    sitemap(),
+    sitemap({
+      serialize: (item) => {
+        if (item.url.endsWith('/')) {
+          item.url = item.url.slice(0, -1)
+        }
+
+        return item
+      },
+    }),
   ],
   site: 'https://sorto.me',
 })

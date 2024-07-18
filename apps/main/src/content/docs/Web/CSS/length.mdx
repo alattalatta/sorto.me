@@ -3,7 +3,7 @@ title: 'CSS <length> 자료형: 길이'
 bcd: css.types.length
 ---
 
-CSS **`<length>`** 자료형은 길이를 나타내며, 다양한 CSS 속성의 값으로 사용됩니다. [`width`](https://developer.mozilla.org/en-US/docs/Web/CSS/width), [`height`](https://developer.mozilla.org/en-US/docs/Web/CSS/height), [`padding`](https://developer.mozilla.org/en-US/docs/Web/CSS/padding)처럼 너비와 높이, [`margin`](./margin)과 [`inset`](./inset)처럼 거리, 그리고 [`font-size`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size)처럼 크기 자체를 나타낼 때 모두 `<length>`가 쓰입니다.
+CSS **`<length>`** 자료형은 길이를 나타내며, [`width`](https://developer.mozilla.org/en-US/docs/Web/CSS/width), [`height`](https://developer.mozilla.org/en-US/docs/Web/CSS/height), [`margin`](./margin), [`padding`](https://developer.mozilla.org/en-US/docs/Web/CSS/padding), [`inset`](https://developer.mozilla.org/en-US/docs/Web/CSS/inset), [`font-size`](./font-size) 등 다양한 속성의 값으로 사용합니다.
 
 > [note] 일부 CSS 속성에서는 `<length>`를 받을 수 있는 곳에 [`<percentage>`](./percentage)도 사용할 수 있지만, `<percentage>`는 `<length>`와 다른 별도의 자료형입니다. [`<length-percentage>`](https://developer.mozilla.org/en-US/docs/Web/CSS/length-percentage)를 참고하세요.
 
@@ -13,9 +13,9 @@ CSS **`<length>`** 자료형은 길이를 나타내며, 다양한 CSS 속성의 
 
 > [note] 일부 속성은 음의 `<length>`를 허용하지만, 모든 `<length>`를 사용하는 속성이 음수를 받을 수 있는 것은 아닙니다.
 
-길이의 [지정 값](https://developer.mozilla.org/en-US/docs/Web/CSS/specified_value)("지정 길이")은 크기와 단위를 사용해 표현됩니다. 길이의 [계산 값](https://developer.mozilla.org/en-US/docs/Web/CSS/computed_value)("계산 길이")은 절대 길이로 이행한 값으로, 단위를 구별하지 않습니다.
+길이의 [지정 값](https://developer.mozilla.org/en-US/docs/Web/CSS/specified_value)("지정 길이")은 크기와 단위를 사용해 표현됩니다. 길이의 [계산 값](https://developer.mozilla.org/en-US/docs/Web/CSS/computed_value)("계산 길이")은 지정 값을 절대 길이로 변환한 값으로, 단위를 구별하지 않습니다.
 
-`<length>`의 단위에는 크게 상대 단위와 절대 단위 두 범주로 나뉩니다. 상대 단위는 어떤 다른 단위를 기준으로 삼아 길이를 표현합니다. 상대 단위의 정확한 기준은 단위에 따라 다른데, 어떤 특정 문자의 크기, [줄 간격](https://developer.mozilla.org/en-US/docs/Web/CSS/line-height), [뷰포트](https://developer.mozilla.org/en-US/docs/Glossary/Viewport) 크기 등을 사용합니다. 상대 단위를 사용하면 다양한 출력 환경에 더 쉽게 대응할 수 있습니다.
+`<length>`의 단위는 크게 상대 단위와 절대 단위 두 범주로 나뉩니다. 상대 단위는 어떤 다른 단위를 기준으로 삼아 길이를 표현합니다. 상대 단위의 정확한 기준은 단위에 따라 다른데, 어떤 특정 문자의 크기, [줄 간격](https://developer.mozilla.org/en-US/docs/Web/CSS/line-height), [뷰포트](https://developer.mozilla.org/en-US/docs/Glossary/Viewport) 크기 등을 사용합니다. 상대 단위를 사용하면 다양한 출력 환경에 더 쉽게 대응할 수 있습니다.
 
 > [note] 자식 요소들은 부모의 상대 길이 값을 지정한 그대로 상속하지 않고 계산 값, 즉 절대 길이로 상속합니다.
 
@@ -25,32 +25,39 @@ CSS **`<length>`** 자료형은 길이를 나타내며, 다양한 CSS 속성의 
 
 > [note] 글꼴 상대 길이 단위, 특히 [`em`](#term-em)과 [`rem`](#term-rem)은 사용자가 글꼴 크기를 변경하더라도 페이지의 수직 흐름을 유지하는 유연한 레이아웃을 만들 때 자주 사용합니다.
 
-- : `cap` <Experimental />
+- : `cap`
   - 요소 글꼴의 대문자 높이(cap height)를 나타냅니다.
 - : `ch`
-
-  - 요소 글꼴에서 문자 "0"(숫자 0, Unicode `U+0030`)의 _진행 척도_(advance measure)를 나타냅니다. [진행 척도](https://drafts.csswg.org/css-values/#length-advance-measure)란 요소의 인라인 방향에 따라 어떤 문자가 차지하는 너비(가로쓰기) 또는 높이(세로쓰기)를 말합니다.
-
-    문자 "0"의 진행 척도를 불가능하거나 어려운 경우, 너비로는 `0.5em`, 높이로는 `1em`으로 취급합니다.
-
+  - 요소 글꼴에서 문자 `0`(숫자 0, Unicode `U+0030`)의 "진행 척도"(advance measure)를 나타냅니다. [진행 척도](https://drafts.csswg.org/css-values/#length-advance-measure)란 요소의 인라인 방향에 따라 어떤 문자가 차지하는 너비(가로쓰기) 또는 높이(세로쓰기)를 말합니다. 문자 `0`의 진행 척도를 알아낼 수 없거나 알아내기 어려운 경우, 너비로는 `0.5em`, 높이로는 `1em`으로 취급합니다.
 - : `em`
-  - 요소 [`font-size` 속성](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size)의 [계산 값](https://developer.mozilla.org/en-US/docs/Web/CSS/computed_value)을 나타냅니다. `font-size` 속성에 `em` 단위를 사용하는 경우 요소가 상속한 `font-size` 값을 나타냅니다.
+  - 요소 [`font-size` 속성](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size)의 [계산 값](https://developer.mozilla.org/en-US/docs/Web/CSS/computed_value)을 나타냅니다. `font-size` 속성에 `em` 단위를 사용하는 경우 상속받은 `font-size` 값을 나타냅니다.
 - : `ex`
-  - 요소 글꼴에서 문자 "x"의 높이를 나타냅니다. "x"를 포함하는 글꼴에서는 보통 다른 알파벳 소문자의 높이와도 같으며, 많은 글꼴에서 `1ex` ≈ `0.5em`입니다.
+  - 요소 글꼴에서 문자 `x`의 높이를 나타냅니다. `x`를 포함하는 글꼴에서는 보통 다른 알파벳 소문자의 높이와도 같으며, 많은 글꼴에서 `1ex` ≈ `0.5em`입니다.
 - : `ic`
-  - 요소 글꼴에서 문자 "水"(CJK 물 한자, Unicode `U+6C34`)의 _진행 척도_(advance measure)를 나타냅니다. 진행 척도의 정의는 [`ch` 단위의 설명](#term-ch)을 참고하세요.
-- : `lh` <Experimental />
-  - 요소 [`line-height` 속성](https://developer.mozilla.org/en-US/docs/Web/CSS/line-height)의 [계산 값](https://developer.mozilla.org/en-US/docs/Web/CSS/computed_value)을 나타냅니다. `line-height`의 값이 `normal`이면 절대 길이로 변환해 사용합니다.
+  - 요소 글꼴에서 문자 `水`(CJK 물 한자, Unicode `U+6C34`)의 "진행 척도"(advance measure)를 나타냅니다. 진행 척도의 정의는 [`ch` 단위의 설명](#term-ch)을 참고하세요.
+- : `lh`
+  - 요소 [`line-height` 속성](https://developer.mozilla.org/en-US/docs/Web/CSS/line-height)의 [계산 값](https://developer.mozilla.org/en-US/docs/Web/CSS/computed_value)을 나타냅니다. `lh` 단위를 사용하면 이상적인 상황에서 줄 수에 따른 높이 계산이 가능하지만, 실제 줄 높이는 콘텐츠에 따라 달라질 수 있습니다.
+
+## 루트 요소 글꼴 상대 길이 단위
+
+루트 요소 글꼴 상대 길이는 [루트 요소](https://developer.mozilla.org/en-US/docs/Web/CSS/:root)에 적용된 글꼴의 특성 값이나 어떤 특정 문자의 크기를 기준으로 `<length>` 값을 정의합니다. 루트 요소는 보통 [`<html>`](/docs/Web/HTML/Element/html) 요소를 가리킵니다.
+
+- : `rcap`
+  - [`cap`](#term-cap)을 참고하세요.
+- : `rch`
+  - [`ch`](#term-ch)를 참고하세요.
 - : `rem`
-  - 루트 요소 (보통 [`<html>`](/docs/Web/HTML/Element/html)) [`font-size` 속성](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size)의 [계산 값](https://developer.mozilla.org/en-US/docs/Web/CSS/computed_value)을 나타냅니다. 루트 요소의 `font-size` 속성에 `rem` 단위를 사용하는 경우 `font-size`의 [초기 값](https://developer.mozilla.org/en-US/docs/Web/CSS/initial_value)을 나타냅니다. 대부분의 브라우저에서 초기 값은 `16px`이지만, 사용자 설정에 따라 달라질 수 있습니다.
-- : `rlh` <Experimental />
-  - 루트 요소 (보통 [`<html>`](/docs/Web/HTML/Element/html)) [`line-height` 속성](https://developer.mozilla.org/en-US/docs/Web/CSS/line-height)의 [계산 값](https://developer.mozilla.org/en-US/docs/Web/CSS/computed_value)을 나타냅니다. `line-height`의 값이 `normal`이면 절대 길이로 변환해 사용합니다. 루트 요소의 `font-size` 또는 `line-height` 속성에 `rlh` 단위를 사용하는 경우 각 속성의 [초기 값](https://developer.mozilla.org/en-US/docs/Web/CSS/initial_value)을 나타냅니다.
+  - [`em`](#term-em)을 참고하세요. 브라우저 기본 설정에서는 보통 `16px`과 같지만, 사용자 설정에 따라 달라질 수 있습니다.
+- : `rex`
+  - [`ex`](#term-ex)를 참고하세요.
+- : `ric`
+  - [`ic`](#term-ic)를 참고하세요.
+- : `rlh`
+  - [`lh`](#term-lh)를 참고하세요.
 
 ## 뷰포트 상대 길이 단위
 
-뷰포트 백분율 길이 단위는 [뷰포트](https://developer.mozilla.org/en-US/docs/Glossary/Viewport)의 네 가지 크기, 즉 소형, 대형, 동적, 기본 크기에 기반한 길이입니다. 뷰포트의 크기가 다양한 이유는 브라우저, 특히 모바일 브라우저의 인터페이스가 사용자 동작에 따라 늘어나거나 줄어들면서 그 아래의 콘텐츠가 보이기도, 가려지기도 하기 때문입니다.
-
-![소형과 대형 뷰포트를 나타내는, 두 개의 iOS Safari 스크린샷입니다. 브라우저 주소 표시줄이 아래에 위치합니다. 첫 번째 화면은 브라우저 주소 표시줄이 펼쳐진 상태, 두 번째 화면은 주소 표시줄이 접힌 상태입니다.;520](/gen/viewport-heights.png)
+뷰포트 상대 길이 단위, 또는 뷰포트 백분율 길이 단위는 [뷰포트](https://developer.mozilla.org/en-US/docs/Glossary/Viewport)의 네 가지 크기, 즉 소형, 대형, 동적, 기본 크기에 기반한 길이입니다. 뷰포트의 크기 종류가 다양한 이유는 브라우저, 특히 모바일 브라우저의 인터페이스가 사용자 동작에 따라 늘어나거나 줄어들면서 뷰포트의 크기도 변하기 때문입니다.
 
 - : 소형 (small)
 
@@ -79,7 +86,7 @@ CSS **`<length>`** 자료형은 길이를 나타내며, 다양한 CSS 속성의 
 - : 기본
   - 기본 뷰포트 크기는 브라우저가 정합니다. 따라서 기본 뷰포트 크기에 기반한 뷰포트 백분율 길이의 정확한 값은 소형이나 대형 뷰포트 크기일 수도 있고, 그 중간일 수도 있고, 동적 뷰포트 크기와 같을 수도 있습니다.
 
-뷰포트 백분율 길이는 초기 [컨테이닝 블록](https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block)의 크기 백분율로 `<length>` 값을 정의합니다. 그리고 초기 컨테이닝 블록은 [뷰포트](https://developer.mozilla.org/en-US/docs/Glossary/Viewport) 또는 페이지 영역, 즉 현재 문서에서 볼 수 있는 부분의 크기에 기반합니다. 다음은 각각의 뷰포트 크기에 기반한 뷰포트 백분율 길이 단위의 목록입니다.
+뷰포트 상대 길이는 `<length>` 값을 초기 [컨테이닝 블록](https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block) 크기의 1%로 정의합니다. 그리고 초기 컨테이닝 블록은 [뷰포트](https://developer.mozilla.org/en-US/docs/Glossary/Viewport) 또는 페이지 영역, 즉 현재 문서에서 볼 수 있는 부분의 크기에 기반합니다. 다음은 각각의 뷰포트 크기에 기반한 뷰포트 백분율 길이 단위의 목록입니다.
 
 > [warn] [`@page`](https://developer.mozilla.org/en-US/docs/Web/CSS/@page) 선언 블록에는 뷰포트 백분율 길이를 사용할 수 없습니다.
 
@@ -109,25 +116,42 @@ CSS **`<length>`** 자료형은 길이를 나타내며, 다양한 CSS 속성의 
 
 - : `vb`
 
-  - 루트 요소의 [블록 축](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties#block_vs._inline) 방향에 대한 뷰포트 최초 [컨테이닝 블록](https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block)의 크기 백분율입니다.
+  - 루트 요소의 [블록 축][논리 방향] 방향에 대한 뷰포트 최초 [컨테이닝 블록](https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block)의 크기 백분율입니다.
 
     소형, 대형, 동적 뷰포트 크기의 경우 각각 `svb`, `lvb`, `dvb` 단위를 사용합니다. `vb`는 브라우저 기본 뷰포트 크기에 기반한 뷰포트 백분율 길이 단위입니다.
 
 - : `vi`
 
-  - 루트 요소의 [인라인 축](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties#block_vs._inline) 방향에 대한 뷰포트 최초 [컨테이닝 블록](https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block)의 크기 백분율입니다.
+  - 루트 요소의 [인라인 축][논리 방향] 방향에 대한 뷰포트 최초 [컨테이닝 블록](https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block)의 크기 백분율입니다.
 
     소형, 대형, 동적 뷰포트 크기의 경우 각각 `svi`, `lvi`, `dvi` 단위를 사용합니다. `vi`는 브라우저 기본 뷰포트 크기에 기반한 뷰포트 백분율 길이 단위입니다.
 
+## 컨테이너 쿼리 길이 단위
+
+컨테이너 쿼리를 통해 컨테이너에 스타일을 적용할 땐 컨테이너 쿼리 길이 단위를 사용할 수 있습니다. 이 단위들은 쿼리 컨테이너의 크기에 대한 상대적인 값으로 길이를 정의합니다. 컨테이너 쿼리 길이 단위를 사용한 컴포넌트들은 컨테이너를 바꿔도 스스로의 스타일에 적용할 정확한 길이를 계산하지 않아도 되므로 배치가 유연해집니다. [컨테이너 쿼리](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries)에서 자세히 알아보세요.
+
+- : `cqw`
+  - 쿼리 컨테이너 너비의 백분율입니다. `1cqw`는 컨테이너 너비의 1%와 같습니다. 예를 들어, 쿼리 컨테이너 너비가 `800px`이라면 `50cqw`는 `400px`과 같습니다.
+- : `cqh`
+  - 쿼리 컨테이너 높이의 백분율입니다. `1cqh`는 컨테이너 높이의 1%와 같습니다. 예를 들어, 쿼리 컨테이너 높이가 `300px`이라면 `10cqh`는 `30px`과 같습니다.
+- : `cqi`
+  - 쿼리 컨테이너의 [인라인 축][논리 방향] 방향 크기 백분율입니다. `1cqi`는 컨테이너 인라인 크기의 1%와 같습니다. 예를 들어, 쿼리 컨테이너 인라인 크기가 `800px`이라면 `50cqi`는 `400px`과 같습니다.
+- : `cqb`
+  - 쿼리 컨테이너의 [블록 축][논리 방향] 방향 크기 백분율입니다. `1cqb`는 컨테이너 블록 크기의 1%와 같습니다. 예를 들어, 쿼리 컨테이너 블록 크기가 `300px`이라면 `10cqb`는 `30px`과 같습니다.
+- : `cqmin`
+  - 쿼리 컨테이너의 인라인과 블록 축 방향 중 더 작은 크기의 백분율입니다. 예를 들어, 쿼리 컨테이너 인라인 크기가 `800px`이고 블록 크기가 `300px`이라면 `50cqmin`은 `150px`과 같습니다.
+- : `cqmax`
+  - 쿼리 컨테이너의 인라인과 블록 축 방향 중 더 큰 크기의 백분율입니다. 예를 들어, 쿼리 컨테이너 인라인 크기가 `800px`이고 블록 크기가 `300px`이라면 `50cqmax`는 `400px`과 같습니다.
+
 ## 절대 길이 단위
 
-절대 길이는 출력 매체의 물리적 속성에 기반한 길이를 나타냅니다. 먼저 어떤 단위 하나를 출력 매체의 물리 단위와 연관지어 기준으로 삼고, 다른 단위는 기준 단위에 상대적으로 정의하는 방식입니다. 화면과 같은 저해상도 장치와, 프린터와 같은 고해상도 장치에서의 기준 단위가 서로 다릅니다.
+절대 길이는 출력 매체의 물리적 속성에 기반한 길이를 나타냅니다. 먼저 어떤 단위 하나를 출력 매체의 물리 단위와 연관지어 기준으로 삼고, 다른 단위는 기준 단위에 상대적으로 정의하는 방식입니다. 모니터 등 저해상도 장치와 프린터 등 고해상도 장치에서의 기준 단위는 서로 다릅니다.
 
 저해상도 장치에서는 `px` 단위가 물리적인 픽셀 하나의 크기에 대응하며, 다른 단위는 픽셀에 상대적으로 정의됩니다. 예컨대, `1in`은 `96px`이자 `72pt`입니다. 이 방식의 부작용은 인치(`in`), 센티미터(`cm`), 밀리미터(`mm`) 단위를 사용한 길이가 실제 물리적 인치, 센티미터, 밀리미터 길이와 다를 수 있다는 점입니다.
 
 고해상도 장치에서는 인치(`in`), 센티미터(`cm`), 밀리미터(`mm`) 단위가 물리적 길이와 일치하며, `px`이 물리적 길이에 상대적으로 정의됩니다. (`1in`의 1/96)
 
-> [note] 많은 사용자들이 사용자 에이전트의 기본 글씨 크기를 키워서 사용합니다. 절대 길이 단위는 사용자 설정의 영향을 받지 않는 고정된 단위므로 접근성을 저해할 수 있습니다. 그러므로, [`font-size`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size)를 정할 땐 [`em`](#term-em)이나 [`rem`](#term-rem)처럼 상대 길이 단위를 사용하세요.
+> [note] 많은 사용자들이 사용자 에이전트의 기본 글씨 크기를 키워서 사용합니다. 절대 길이 단위는 사용자 설정의 영향을 받지 않는 고정된 단위므로 접근성을 저해할 수 있습니다. [`font-size`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size)를 설정할 땐 [`em`](#term-em)이나 [`rem`](#term-rem)처럼 상대 길이 단위를 쓰는 편이 좋습니다.
 
 - : `px`
   - 픽셀 한 개입니다. 전통적으로 화면에서는 장치의 픽셀 하나를 나타냈습니다. 하지만 프린터와 고해상도 화면에서는 하나의 CSS 픽셀이 다수의 장치 픽셀에 대응합니다. 이때는 `1px`을 `1in`의 1/96으로 정의합니다.
@@ -150,8 +174,10 @@ CSS **`<length>`** 자료형은 길이를 나타내며, 다양한 CSS 속성의 
 
 # 명세
 
-[CSS Values and Units Module Level 5](https://drafts.csswg.org/css-values/#lengths)
+[CSS Values and Units Module Level 4](https://drafts.csswg.org/css-values/#lengths)
 
 # 브라우저 호환성
 
 <BrowserCompat data={props.bcd} />
+
+[논리 방향]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties#block_vs._inline

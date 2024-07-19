@@ -6,7 +6,7 @@ import { getCollection } from 'astro:content'
 import ContentGrid from 'components/ContentGrid'
 import Doc from 'components/Doc.astro'
 import Footer from 'components/Footer.astro'
-import Nav from 'components/Nav.astro'
+import MainNav from 'components/MainNav.astro'
 import { escapeUTF8 } from 'entities'
 import Shell from 'layouts/Shell.astro'
 import type { Root } from 'mdast'
@@ -81,7 +81,7 @@ const bcdData = (() => {
     <meta content={lastModified} property="article:modified_time" />
   </Fragment>
   <ContentGrid client:load>
-    <Nav
+    <MainNav
       links={[
         ['library', [['k-popo', 'https://www.npmjs.com/package/k-popo']]],
         ['experiments', [['dialog98', 'https://dialog98.sorto.me/']]],
@@ -108,7 +108,7 @@ const bcdData = (() => {
           ],
         ],
       ]}
-      slot="nav"
+      slot="header"
     />
     <main>
       <Doc bcd={bcdData} content={Content} post={props} />

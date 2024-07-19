@@ -1,6 +1,4 @@
 ---
-import Starry from 'components/Starry.tsx'
-import imgAlatta from './alatta.svg'
 import NavLinkGroup, { type LinkGroup } from './NavLinkGroup.astro'
 
 interface Props {
@@ -11,20 +9,12 @@ const { links } = Astro.props
 ---
 
 <div class="root">
-  <div class="logo">
-    <a href="/">
-      <img alt="ALATTA" src={imgAlatta.src} />
-    </a>
-    <Starry client:load />
-  </div>
   <div class="links">
     <search>
       <form action="/search">
         <label class="no-screen" for="search-input">검색어</label>
-        <input id="search-input" name="q" placeholder="typescript" type="search">
-        <button type="submit">
-          검색
-        </button>
+        <input id="search-input" name="q" placeholder="typescript" type="search" />
+        <button type="submit"> 검색 </button>
       </form>
     </search>
     <dl>
@@ -34,7 +24,9 @@ const { links } = Astro.props
             <dt>{label}</dt>
             <dd>
               <ul>
-                {children.map((group) => <NavLinkGroup {group} />)}
+                {children.map((group) => (
+                  <NavLinkGroup {group} />
+                ))}
               </ul>
             </dd>
           </>
@@ -55,7 +47,7 @@ const { links } = Astro.props
 
   .logo {
     align-items: center;
-    height: var(--tb-row-height);
+    height: var(--starry-height);
     background: var(--primary);
     border-bottom: 1px solid currentColor;
     display: flex;
@@ -95,7 +87,7 @@ const { links } = Astro.props
     }
   }
 
-  button[type=submit] {
+  button[type='submit'] {
     background: 0;
     border: 1px solid var(--primary);
     color: var(--primary);

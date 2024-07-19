@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content'
 import Article from 'components/Article.astro'
 import ContentGrid from 'components/ContentGrid'
 import Footer from 'components/Footer.astro'
-import Nav from 'components/Nav.astro'
+import MainNav from 'components/MainNav.astro'
 import Shell from 'layouts/Shell.astro'
 
 export const getStaticPaths = (async () => {
@@ -38,7 +38,7 @@ const posts = [...(await getCollection('posts'))].reverse()
     <meta content={props.id.split('--')[0]} property="article:published_time" />
   </Fragment>
   <ContentGrid client:load>
-    <Nav
+    <MainNav
       links={[
         ['library', [['k-popo', 'https://www.npmjs.com/package/k-popo']]],
         ['experiments', [['dialog98', 'https://dialog98.sorto.me/']]],
@@ -64,7 +64,7 @@ const posts = [...(await getCollection('posts'))].reverse()
           ],
         ],
       ]}
-      slot="nav"
+      slot="header"
     />
     <main>
       <Article content={Content} post={props} />

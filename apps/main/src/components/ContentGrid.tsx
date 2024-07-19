@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useRef } from 'react'
+import { useCallback, useEffect, useReducer, useRef, useState } from 'react'
 import { RemoveScroll } from 'react-remove-scroll'
 
 import styles from './ContentGrid.module.scss'
@@ -9,13 +9,36 @@ type Props = {
   children: React.ReactNode
   // slots
   footer?: React.ReactNode
-  nav?: React.ReactNode
+  header?: React.ReactNode
 }
 
-const ContentGrid: React.FC<Props> = ({ children, footer, nav }) => {
-  const $body = useRef<HTMLDivElement>(null)
+const STARRY_HEIGHT = 144
 
-  const [open, toggleOpen] = useReducer((v) => !v, false)
+const ContentGrid: React.FC<Props> = ({ children, footer, header }) => {
+  const $body = useRef<HTMLDivElement>(null)
+  const $nav = useRef<HTMLElement>(null)
+
+  const [scrollDiff, setScrollDiff] = useState(0)
+  const [open, toggleOpen_] = useReducer((v) => !v, false)
+
+  const toggleOpen = useCallback(() => {
+    if (!open && $body.current) {
+      const scrollY = window.scrollY
+      if (scrollY < STARRY_HEIGHT) {
+        setScrollDiff(STARRY_HEIGHT - scrollY)
+      } else {
+        setScrollDiff(0)
+      }
+
+      setTimeout(() => {
+        if ($nav.current) {
+          $nav.current.focus()
+        }
+      }, 100)
+    }
+
+    toggleOpen_()
+  }, [open])
 
   // there's no other inert maker
   // being lazy
@@ -32,19 +55,22 @@ const ContentGrid: React.FC<Props> = ({ children, footer, nav }) => {
   }, [open])
 
   return (
-    <div className={styles.root}>
-      <header className={styles.header}>
-        <RemoveScroll className={styles.navWrap} enabled={open}>
-          <nav className={styles.nav} data-open={open} id="postgrid-nav">
-            {nav}
-          </nav>
-        </RemoveScroll>
+    <div
+      className={styles.root}
+      style={{ ['--starry-height' as string]: `${STARRY_HEIGHT}px`, ['--scroll-diff' as string]: `${scrollDiff}px` }}
+    >
+      <header className={styles.header} data-open={open}>
         <div className={styles.logo}>
           <a href="/">
             <img alt="ALATTA" src={imgAlatta.src} />
           </a>
           <Starry />
         </div>
+        <RemoveScroll className={styles.navWrap} enabled={open}>
+          <nav ref={$nav} aria-label="사이트 링크" className={styles.nav} id="postgrid-nav" tabIndex={-1}>
+            {header}
+          </nav>
+        </RemoveScroll>
       </header>
       <button
         aria-controls="postgrid-nav"
@@ -53,6 +79,7 @@ const ContentGrid: React.FC<Props> = ({ children, footer, nav }) => {
         type="button"
         onClick={toggleOpen}
       >
+        <span className="no-screen">{open ? '사이트 링크 닫기' : '사이트 링크 열기'}</span>
         <svg fill="none" height="15" viewBox="0 0 15 15" width="15" xmlns="http://www.w3.org/2000/svg">
           {open ? (
             <path

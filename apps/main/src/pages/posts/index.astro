@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content'
 import ArticleCard from 'components/ArticleCard.astro'
 import ContentGrid from 'components/ContentGrid'
 import Footer from 'components/Footer.astro'
-import Nav from 'components/Nav.astro'
+import MainNav from 'components/MainNav.astro'
 import Shell from 'layouts/Shell.astro'
 
 const posts = [...(await getCollection('posts'))].reverse()
@@ -11,7 +11,7 @@ const posts = [...(await getCollection('posts'))].reverse()
 
 <Shell canonicalPath="posts" title="sorto.me">
   <ContentGrid client:load>
-    <Nav
+    <MainNav
       links={[
         ['library', [['k-popo', 'https://www.npmjs.com/package/k-popo']]],
         ['experiments', [['dialog98', 'https://dialog98.sorto.me/']]],
@@ -37,7 +37,7 @@ const posts = [...(await getCollection('posts'))].reverse()
           ],
         ],
       ]}
-      slot="nav"
+      slot="header"
     />
     <main>
       {posts.map((post) => <ArticleCard post={post} />)}

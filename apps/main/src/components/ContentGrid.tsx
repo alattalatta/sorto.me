@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useReducer, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { RemoveScroll } from 'react-remove-scroll'
 
 import styles from './ContentGrid.module.scss'

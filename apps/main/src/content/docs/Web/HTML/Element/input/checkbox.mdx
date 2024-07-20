@@ -25,7 +25,7 @@ input {
 
 <LiveExample height={240} lang="html" name="demo" />
 
-> [note] [라디오 버튼](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio)은 체크박스와 비슷하지만, 한 가지 중요한 차이가 있습니다. 체크박스는 하나의 값을 선택 또는 해제할 수 있습니다. 반면 라디오 버튼은 다수가 하나의 그룹으로 묶이고, **그중에서 하나만** 선택할 수 있습니다. 즉, 다수의 체크박스는 모두 선택할 수 있지만, 다수의 라디오 버튼은 (한 그룹 안에서는) 하나만 선택할 수 있습니다.
+> [note] [라디오 버튼](./radio)은 체크박스와 비슷하지만, 한 가지 중요한 차이가 있습니다. 라디오 버튼은 그룹에 속한 다수의 선택지 중 하나만 선택할 수 있지만, 체크박스는 각각의 선택지를 체크하거나 해제할 수 있습니다. 즉, 다수의 체크박스는 모두 선택할 수 있지만, 다수의 라디오 버튼은 (같은 그룹에 속한다면) 하나만 선택할 수 있습니다.
 
 # 값
 
@@ -60,7 +60,7 @@ input {
 
 # 유효성 검증
 
-`checkbox` 유형도 [유효성 검증](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Constraint_validation)을 지원하기는 하지만, 대부분의 [`ValidityState`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState) 속성은 항상 `false`입니다. 다만, [`required` 특성](../input#term-required)을 지정한 체크박스를 체크하지 않은 상태에서는 `ValidityState.valueMissing`이 `true`입니다.
+`required` 특성을 지정한 경우 체크된 상태여야 유효합니다.
 
 # 예제
 
@@ -202,3 +202,7 @@ function updateDisplay() {
 # 브라우저 호환성
 
 <BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 라디오 버튼: [`<input type="radio">`](./radio)

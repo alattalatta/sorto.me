@@ -1,0 +1,151 @@
+---
+title: 'HTML <input type="radio">: 라디오'
+bcd: html.elements.input.type_radio
+---
+
+**`radio` 유형의 [`<input>`](../input) 요소**는 "라디오 그룹" 내에서 하나만 선택할 수 있는 옵션, 즉 라디오 버튼을 나타냅니다. 라디오 그룹은 서로 연관된 옵션들을 나타내는 라디오 버튼들의 집합입니다.
+
+라디오 버튼은 보통 원형으로 렌더링 되고, 선택 시 색으로 채워지거나 강조 표시됩니다.
+
+```html hidden name=demo
+<fieldset>
+  <legend>모임 주기 선택</legend>
+  <div>
+    <input id="daily" name="interval" type="radio" value="daily" checked>
+    <label for="daily">일간</label>
+  </div>
+  <div>
+    <input id="weekly" name="interval" type="radio" value="weekly">
+    <label for="weekly">주간</label>
+  </div>
+  <div>
+    <input id="monthly" name="interval" type="radio" value="monthly">
+    <label for="monthly">월간</label>
+  </div>
+</fieldset>
+```
+
+```css hidden name=demo
+div {
+  margin: 0.4rem;
+}
+```
+
+<LiveExample height={240} lang="html" name="demo" />
+
+[구형 라디오 수신기의 푸시 버튼](https://en.wikipedia.org/wiki/Radio_button#/media/File:Car_Radio_of_Analog_Era.jpg)처럼, 하나를 누르면 다른 버튼들이 해제되기 때문에 "라디오" 버튼이라는 이름이 붙었습니다.
+
+> [note] [체크박스](./checkbox)는 라디오 버튼과 비슷하지만, 한 가지 중요한 차이가 있습니다. 라디오 버튼은 그룹에 속한 다수의 선택지 중 하나만 선택할 수 있지만, 체크박스는 각각의 선택지를 체크하거나 해제할 수 있습니다. 즉, 다수의 체크박스는 모두 선택할 수 있지만, 다수의 라디오 버튼은 (같은 그룹에 속한다면) 하나만 선택할 수 있습니다.
+
+# 값
+
+`radio` 유형의 [`value` 특성](../input#term-value)은 라디오 버튼의 값을 나타내는 문자열이어야 합니다. 이 값은 클라이언트에는 노출되지 않고, 양식을 제출할 때 라디오 그룹의 [`name`](../input#term-name)과 함께 서버로 전송됩니다.
+
+## 라디오 그룹 정의하기
+
+각각의 라디오 버튼에 같은 [`name`](../input#term-name)을 지정하면 라디오 그룹이 정의됩니다. 라디오 그룹이 정의된 후에는, 그룹 내의 라디오 버튼을 누르면 기존에 선택했던 다른 라디오 버튼의 선택이 자동으로 해제됩니다.
+
+각 그룹의 `name`이 고유한 한 라디오 그룹의 수에는 제한이 없습니다.
+
+사용자가 선호하는 연락 방식을 한 개 선택하는 예제를 보겠습니다. 이메일, 전화, 우편의 세 선택지가 있다면 세 개의 라디오 버튼을 배치하고, 셋 모두 `name="contact"`를 지정할 수 있겠습니다. `value`는 서로 다르게 지정해야 하므로 각각 `email`, `phone`, `mail`로 지정합니다.
+
+```html hidden name=def-group
+<form>
+  <fieldset>
+    <legend>선호하시는 연락 방식을 선택해 주세요</legend>
+    <div>
+      <input type="radio" id="contactChoice1" name="contact" value="email" />
+      <label for="contactChoice1">이메일</label>
+
+      <input type="radio" id="contactChoice2" name="contact" value="phone" />
+      <label for="contactChoice2">전화</label>
+
+      <input type="radio" id="contactChoice3" name="contact" value="mail" />
+      <label for="contactChoice3">우편</label>
+    </div>
+    <div>
+      <button type="submit">제출</button>
+    </div>
+  </fieldset>
+</form>
+```
+
+```js hidden editable=false name=def-group
+document.querySelector('form').addEventListener('submit', (e) => e.preventDefault())
+```
+
+<LiveExample height={240} lang="html" name="def-group" />
+
+## 라디오 그룹의 데이터
+
+위 예제에서 라디오 버튼을 하나 선택한 후 양식을 제출하면 양식 데이터에 `contact={value}`가 포함됩니다. 예를 들어, 사용자가 "전화" 라디오 버튼을 선택한 경우에는 `contact=phone`이 포함됩니다.
+
+만약 `value` 특성을 생략할 경우, 양식 그룹의 값은 `on`이 됩니다. 즉 사용자가 "전화" 라디오 버튼을 선택한 경우 `contact=on`이 제출됩니다. 유용한 값이 아니므로 `value` 지정을 잊지 않도록 주의하세요.
+
+> [note] 그룹 내의 라디오 버튼을 아무것도 선택하지 않고 제출할 경우 양식 데이터에 그룹이 아예 포함되지 않습니다.
+
+라디오 그룹의 선택지를 아무것도 선택하지 않고 제출할 수 있는 상황을 의도하는 경우는 거의 없으므로, 라디오 버튼 중 하나를 처음부터 선택해놓는 게 좋습니다. 아래의 [라디오 버튼 선택해놓기](#라디오-버튼-선택해놓기)를 확인하세요.
+
+# 추가 특성
+
+`radio` 유형은 모든 [`<input>`](../input) 요소가 공유하는 특성 외에도 아래의 특성을 추가로 지원합니다.
+
+- : `checked`
+  - 라디오 버튼이 처음부터 선택된 상태로 나타나야 하는지 나타내는 불리언 특성입니다. 이 특성은 라디오 버튼의 현재 상태는 반영하지 않으므로 사용자가 그룹 내의 다른 선택지를 선택해도 `checked` 특성이 사라지진 않고, `checked`가 없는 라디오 버튼을 선택해도 추가되지 않습니다. ([`HTMLInputElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement)의 `checked` IDL 특성만 현재 선택 상태를 반영합니다)
+- : `required`
+  - `<input>` 공용 특성입니다. 라디오 그룹 내의 아무 라디오 버튼이라도 `required` 특성을 보유한 경우, 반드시 해당 그룹의 라디오 버튼 중 하나는 선택해야 양식을 제출할 수 있습니다. 이때 선택하는 라디오 버튼에는 `required` 특성이 없어도 됩니다.
+- : `value`
+  - `value` 특성은 `<input>` 공용 특성이지만, [값](#값)에서 설명했듯 `radio` 유형에서는 그 동작이 약간 다릅니다. 양식을 제출할 때, 선택된 라디오 버튼의 `value`만 제출 데이터에 포함되고 선택되지 않은 라디오 버튼의 `value`는 아예 누락됩니다. 또한 `value`를 지정하지 않은 경우의 기본 값은 문자열 `on`입니다.
+
+# 유효성 검증
+
+`required` 특성을 지정한 경우, 자신의 그룹 내에서 하나의 라디오 버튼은 선택된 상태여야 유효합니다.
+
+# 예제
+
+가장 기본적인 사용법은 [값](#값)의 예제 코드로 확인할 수 있습니다.
+
+## 라디오 버튼 선택해놓기
+
+라디오 버튼 중 하나를 처음부터 선택한 상태로 지정하려면 [`checked`](#term-checked) 특성을 추가하세요. 이전 예제 코드에 추가해보면 아래와 같습니다.
+
+```html hidden name=def-group-checked
+<form>
+  <fieldset>
+    <legend>선호하시는 연락 방식을 선택해 주세요</legend>
+    <div>
+      <input type="radio" id="contactChoice1" name="contact" value="email" checked />
+      <label for="contactChoice1">이메일</label>
+
+      <input type="radio" id="contactChoice2" name="contact" value="phone" />
+      <label for="contactChoice2">전화</label>
+
+      <input type="radio" id="contactChoice3" name="contact" value="mail" />
+      <label for="contactChoice3">우편</label>
+    </div>
+    <div>
+      <button type="submit">제출</button>
+    </div>
+  </fieldset>
+</form>
+```
+
+```js hidden editable=false name=def-group-checked
+document.querySelector('form').addEventListener('submit', (e) => e.preventDefault())
+```
+
+<LiveExample height={240} lang="html" name="def-group-checked" />
+
+> [note] 그룹 내의 라디오 버튼 두 개 이상에 `checked` 특성을 지정한 경우 더 뒤의 라디오 버튼이 선택됩니다.
+
+# 명세
+
+[HTML Standard](<https://html.spec.whatwg.org/multipage/input.html#radio-button-state-(type=radio)>)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 체크박스: [`<input type="checkbox">`](./checkbox)

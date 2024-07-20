@@ -6,20 +6,20 @@ import Starry from './Starry'
 import imgAlatta from './alatta.svg'
 
 type Props = {
+  aside?: React.ReactNode
   children: React.ReactNode
-  // slots
   footer?: React.ReactNode
   header?: React.ReactNode
 }
 
 const STARRY_HEIGHT = 144
 
-const ContentGrid: React.FC<Props> = ({ children, footer, header }) => {
+const ContentGrid: React.FC<Props> = ({ aside, children, footer, header }) => {
   const $body = useRef<HTMLDivElement>(null)
   const $nav = useRef<HTMLElement>(null)
 
   const [scrollDiff, setScrollDiff] = useState(0)
-  const [open, toggleOpen_] = useReducer((v) => !v, false)
+  const [open, setOpen] = useState(false)
 
   const toggleOpen = useCallback(() => {
     if (!open && $body.current) {
@@ -37,7 +37,7 @@ const ContentGrid: React.FC<Props> = ({ children, footer, header }) => {
       }, 100)
     }
 
-    toggleOpen_()
+    setOpen(!open)
   }, [open])
 
   // there's no other inert maker
@@ -60,14 +60,14 @@ const ContentGrid: React.FC<Props> = ({ children, footer, header }) => {
       style={{ ['--starry-height' as string]: `${STARRY_HEIGHT}px`, ['--scroll-diff' as string]: `${scrollDiff}px` }}
     >
       <header className={styles.header} data-open={open}>
-        <div className={styles.logo}>
-          <a href="/">
-            <img alt="ALATTA" src={imgAlatta.src} />
-          </a>
-          <Starry />
-        </div>
         <RemoveScroll className={styles.navWrap} enabled={open}>
-          <nav ref={$nav} aria-label="사이트 링크" className={styles.nav} id="postgrid-nav" tabIndex={-1}>
+          <div className={styles.logo}>
+            <a href="/">
+              <img alt="ALATTA" src={imgAlatta.src} />
+            </a>
+            <Starry />
+          </div>
+          <nav ref={$nav} aria-label="목차와 메뉴" className={styles.nav} id="postgrid-nav" tabIndex={-1}>
             {header}
           </nav>
         </RemoveScroll>
@@ -79,7 +79,7 @@ const ContentGrid: React.FC<Props> = ({ children, footer, header }) => {
         type="button"
         onClick={toggleOpen}
       >
-        <span className="no-screen">{open ? '사이트 링크 닫기' : '사이트 링크 열기'}</span>
+        <span className="no-screen">{open ? '목차와 메뉴 닫기' : '목차와 메뉴 열기'}</span>
         <svg fill="none" height="15" viewBox="0 0 15 15" width="15" xmlns="http://www.w3.org/2000/svg">
           {open ? (
             <path
@@ -98,10 +98,11 @@ const ContentGrid: React.FC<Props> = ({ children, footer, header }) => {
           )}
         </svg>
       </button>
+      {aside && <aside className={styles.aside}>{aside}</aside>}
       <div ref={$body} className={styles.body} id="postgrid-body">
         {children}
-        <footer>{footer}</footer>
       </div>
+      <footer className={styles.footer}>{footer}</footer>
     </div>
   )
 }

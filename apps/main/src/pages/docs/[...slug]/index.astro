@@ -7,6 +7,7 @@ import ContentGrid from 'components/ContentGrid'
 import Doc from 'components/Doc.astro'
 import Footer from 'components/Footer.astro'
 import MainNav from 'components/MainNav.astro'
+import TableOfContents from 'components/TableOfContents.astro'
 import { escapeUTF8 } from 'entities'
 import Shell from 'layouts/Shell.astro'
 import type { Root } from 'mdast'
@@ -27,6 +28,7 @@ const site = Astro.site?.toString() ?? ''
 
 const {
   Content,
+  headings,
   remarkPluginFrontmatter: { lastModified },
 } = await props.render()
 
@@ -80,6 +82,7 @@ const bcdData = (() => {
     <meta content="alattalatta" property="article:author" />
     <meta content={lastModified} property="article:modified_time" />
   </Fragment>
+  <h1 class="no-screen">{props.data.title}</h1>
   <ContentGrid client:load>
     <MainNav
       links={[
@@ -109,7 +112,9 @@ const bcdData = (() => {
         ],
       ]}
       slot="header"
-    />
+    >
+      <TableOfContents {headings} />
+    </MainNav>
     <main>
       <Doc bcd={bcdData} content={Content} post={props} />
     </main>

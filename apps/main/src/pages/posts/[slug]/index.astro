@@ -5,6 +5,7 @@ import Article from 'components/Article.astro'
 import ContentGrid from 'components/ContentGrid'
 import Footer from 'components/Footer.astro'
 import MainNav from 'components/MainNav.astro'
+import TableOfContents from 'components/TableOfContents.astro'
 import Shell from 'layouts/Shell.astro'
 
 export const getStaticPaths = (async () => {
@@ -19,6 +20,7 @@ const site = Astro.site?.toString() ?? ''
 
 const {
   Content,
+  headings,
   remarkPluginFrontmatter: { lastModified },
 } = await props.render()
 
@@ -37,6 +39,7 @@ const posts = [...(await getCollection('posts'))].reverse()
     <meta content={lastModified} property="article:modified_time" />
     <meta content={props.id.split('--')[0]} property="article:published_time" />
   </Fragment>
+  <h1 class="no-screen">{props.data.title}</h1>
   <ContentGrid client:load>
     <MainNav
       links={[
@@ -65,7 +68,9 @@ const posts = [...(await getCollection('posts'))].reverse()
         ],
       ]}
       slot="header"
-    />
+    >
+      <TableOfContents {headings} />
+    </MainNav>
     <main>
       <Article content={Content} post={props} />
     </main>

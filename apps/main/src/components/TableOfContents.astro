@@ -1,0 +1,45 @@
+---
+import type { MarkdownHeading } from 'astro'
+
+export type Props = {
+  headings: readonly MarkdownHeading[]
+}
+
+const { headings } = Astro.props
+---
+
+<section aria-labelledby="toc-heading">
+  <h2 id="toc-heading">목차</h2>
+  <ol>
+    {
+      headings
+        .filter((h) => h.depth === 3)
+        .map((h) => (
+          <li>
+            <a href={`#${h.slug}`}>{h.text}</a>
+          </li>
+        ))
+    }
+  </ol>
+</section>
+
+<style lang="scss">
+  nav {
+    font-family: var(--display);
+    word-break: keep-all;
+  }
+
+  h2 {
+    font-size: 18px;
+    margin: 0;
+  }
+
+  ol {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  li + li {
+    margin-top: 1em;
+  }
+</style>

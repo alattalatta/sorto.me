@@ -18,7 +18,7 @@ const { content: Content, post } = Astro.props
   <header>
     <Image alt="" class="thumbnail" src={post.data.image} width={2240} />
     <hgroup>
-      <h1 id={post.slug}>{post.data.title}</h1>
+      <h2 id={post.slug}>{post.data.title}</h2>
       <time>{post.slug.split('--')[0]}</time>
     </hgroup>
   </header>
@@ -41,14 +41,12 @@ const { content: Content, post } = Astro.props
   }
 
   .thumbnail {
-    aspect-ratio: 4 / 1;
     width: 100%;
-    height: auto;
+    height: 280px;
     display: block;
     object-fit: cover;
 
     @media (max-width: 1088px) {
-      aspect-ratio: auto;
       height: 192px;
     }
   }
@@ -62,7 +60,7 @@ const { content: Content, post } = Astro.props
     word-break: keep-all;
   }
 
-  h1 {
+  h2 {
     font: 400 1.25em var(--display);
     font-weight: 400;
     margin: 0;

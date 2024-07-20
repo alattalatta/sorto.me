@@ -3,7 +3,7 @@ import type { Heading } from 'mdast'
 import { toString } from 'mdast-util-to-string'
 
 function headingDepthAndSlug(heading: Heading, slugger: Slugger): void {
-  heading.depth += 1
+  heading.depth += 2
   heading.data = {
     ...heading.data,
     hProperties: {

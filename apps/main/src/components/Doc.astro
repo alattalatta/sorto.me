@@ -16,11 +16,12 @@ type Props = {
 }
 
 const { bcd, content: Content, post } = Astro.props
+const slugAsID = post.slug.replaceAll('/', '-')
 ---
 
-<article aria-labelledby={post.slug}>
+<article aria-labelledby={slugAsID}>
   <header>
-    <h1 id={post.slug}>{post.data.title}</h1>
+    <h2 id={slugAsID}>{post.data.title}</h2>
   </header>
   <ContentBody
     bcd={bcd}
@@ -36,7 +37,7 @@ const { bcd, content: Content, post } = Astro.props
 </article>
 
 <style lang="scss">
-  h1 {
+  h2 {
     font-size: 3em;
     margin: 0;
     padding: 2rem 3rem 1rem;

@@ -10,6 +10,9 @@ const { links } = Astro.props
 
 <div class="root">
   <div class="links">
+    <slot />
+    <a class="top" href="#">맨 위로 이동 ↑</a>
+    <hr />
     <search>
       <form action="/search">
         <label class="no-screen" for="search-input">검색어</label>
@@ -33,8 +36,6 @@ const { links } = Astro.props
         ))
       }
     </dl>
-    <hr />
-    <a class="top" href="#">맨 위로 이동 ↑</a>
   </div>
 </div>
 
@@ -62,6 +63,7 @@ const { links } = Astro.props
   }
 
   .links {
+    max-height: calc(100vh - var(--starry-height));
     font-family: var(--display);
     grid-row: body / span 2;
     overflow: auto;

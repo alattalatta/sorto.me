@@ -7,26 +7,16 @@ bcd: html.elements.base
 
 스크립트에서 문서의 기준 URL을 알아내야 할 땐 [`Node.baseURI`](https://developer.mozilla.org/en-US/docs/Web/API/Node/baseURI)을 사용하세요. 문서에 `<base>` 요소가 존재하지 않을 때의 `baseURI` 속성의 값은 [`location.href`](https://developer.mozilla.org/en-US/docs/Web/API/Location/href)와 같습니다.
 
-```html
-<head>
-  <base href="https://sorto.me/docs/Web" target="_top" />
-</head>
-```
-
 # 특성
 
 [전역 특성](/docs/Web/HTML/Global_attributes)을 포함합니다.
 
-> [note] 아래 특성 중 하나라도 지정할 경우, 상대 URL을 사용한 다른 모든 요소보다 `<base>` 요소를 HTML 문서의 위에 배치해야 합니다.
+> [note] 아래 특성 중 하나라도 지정할 경우, `<base>` 요소를 상대 URL을 사용한 다른 모든 요소보다 HTML 문서의 위에 배치해야 합니다.
 
 - : `href`
-  - 문서 내의 상대 URL이 사용할 기준 URL입니다. 절대 및 상대 URL을 사용할 수 있습니다.
+  - 문서 내의 상대 URL이 사용할 기준 URL입니다. 절대 및 상대 URL을 사용할 수 있습니다. [`data:`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URLs)와 `javascript:` URL은 사용할 수 없습니다.
 - : `target`
-
-  - `target` 특성을 명시하지 않은 [`<a>`](./a), [`<area>`](./area), [`<form>`](./form) 요소가 탐색을 유발했을 때, 그 결과를 보여줄 기본 브라우징 맥락을 지정합니다. 키워드나 사용자 정의 이름을 사용할 수 있습니다.
-
-    다음 키워드는 특별한 의미를 갖습니다.
-
+  - `target` 특성을 명시하지 않은 [`<a>`](./a), [`<area>`](./area), [`<form>`](./form) 요소가 탐색을 유발했을 때, 그 결과를 보여줄 기본 브라우징 맥락을 지정합니다. 키워드나 사용자 정의 이름을 사용할 수 있습니다. 아래의 키워드는 특별한 의미를 갖습니다.
     - `_self` (기본값): 결과를 현재 브라우징 맥락에 보여줍니다.
     - `_blank`: 결과를 새롭게 생성한 이름 없는 브라우징 맥락에 보여줍니다.
     - `_parent`: 현재 페이지가 프레임 안에 존재하는 경우, 결과를 현재 브라우징 맥락의 부모에 보여줍니다. 부모가 없으면 `_self`와 동일합니다.
@@ -59,11 +49,7 @@ bcd: html.elements.base
 
 [Open Graph](https://ogp.me/) 태그는 `<base>`를 인식하지 못하므로 항상 완전한 형태의 절대 URL을 지정해야 합니다.
 
-```html variant=bad
-<base href="https://example.com/" /> <meta property="og:image" content="/thumbnail.jpg" />
-```
-
-```html variant=good
+```html
 <meta property="og:image" content="https://example.com/thumbnail.jpg" />
 ```
 

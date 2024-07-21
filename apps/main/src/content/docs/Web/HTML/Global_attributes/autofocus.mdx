@@ -1,0 +1,28 @@
+---
+title: 'HTML autofocus 전역 특성: 등장 시 포커스 부여'
+bcd: html.global_attributes.autofocus
+---
+
+HTML **`autofocus`** [전역 특성](.)은 페이지 로드 시, 혹은 요소가 속한 [`<dialog>`](../Element/dialog)가 나타날 때 자동으로 포커스를 부여할지 여부를 나타내는 불리언 특성입니다.
+
+```html
+<input autofocus name="q" type="search">
+```
+
+문서 또는 대화상자 내에서 하나의 요소만 `autofocus` 특성을 보유해야 합니다. 여러 요소에 `autofocus` 특성을 지정한 경우 제일 첫 요소가 포커스를 받습니다.
+
+> [note] `autofocus` 특성은 양식 요소뿐만 아니라 다른 요소들에도 적용할 수 있습니다. 예컨대 [`contenteditable`](./contenteditable)을 지정한 요소에 `autofocus`도 추가할 수 있습니다.
+
+# 접근성
+
+포커스의 임의 이동은 스크린 리더 사용자와 인지 장애가 있는 사람들에게 혼란스러울 수 있습니다. 스크린 리더는 `autofocus`로 인한 포커스 이동 시 어떤 알림도 제공하지 않으므로 사용자 입장에서는 포커스가 어디로 이동한 건지 파악하기 힘들 수 있습니다.
+
+`autofocus` 특성을 추가하기 전에 접근성에 대해 충분히 고려해야 합니다. 포커스 대상이 뷰포트 밖에 있으면 로드와 함께 페이지가 스크롤되며, 스마트폰 등 터치 화면 장치에서는 가상 키보드가 나타날 수도 있습니다. 스크린 리더는 포커스를 받은 양식 컨트롤의 레이블에 대해서 읽어주겠지만 그 앞의 내용은 따로 표현하지 않으며, 스크린 리더를 쓰지 않는 사용자들 또한 스크롤과 가상 키보드로 인해 문서의 앞선 맥락을 파악하지 못할 수 있습니다.
+
+# 명세
+
+[HTML Standard](https://html.spec.whatwg.org/multipage/interaction.html#dom-fe-autofocus)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />

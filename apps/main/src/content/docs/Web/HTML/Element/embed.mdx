@@ -1,0 +1,47 @@
+---
+title: 'HTML <embed>: 외부 콘텐츠 삽입 요소'
+bcd: html.elements.embed
+---
+
+**HTML `<embed>` 요소**는 외부 콘텐츠를 문서에 삽입할 때 사용합니다. 이 콘텐츠는 외부 애플리케이션이나 브라우저 플러그인 등에 의해 제공됩니다.
+
+```html hidden name=demo
+<embed type="video/webm" src="/assets/chestnut.webm" width="125" />
+```
+
+<LiveExample height={240} lang="html" name="demo" />
+
+> [note]
+>
+> 대부분의 최신 브라우저는 플러그인 지원을 중단했으므로 일반 사용자 대상 웹 사이트에서 `<embed>` 요소에 의존하는 건 좋지 않습니다.
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)을 포함합니다.
+
+- : `height`
+  - 리소스를 표시할 영역의 높이입니다. 픽셀 단위이며, 단위 없는 정수 값을 지정해야 합니다.
+- : `src`
+  - 삽입할 리소스의 URL입니다.
+- : `type`
+  - 브라우저 플러그인 선택을 위해 지정하는 [MIME 유형](https://developer.mozilla.org/en-US/docs/Glossary/MIME_type)입니다.
+- : `width`
+  - 리소스를 표시할 영역의 너비입니다. 픽셀 단위이며, 단위 없는 정수 값을 지정해야 합니다.
+
+# 사용 일람
+
+CSS [`object-position` 속성](/docs/Web/CSS/object-position)을 사용해서 요소 프레임 내의 콘텐츠 위치를 조정할 수 있습니다.
+
+> [note] `<embed>` 요소에서 [`object-fit`](/docs/Web/CSS/object-fit)은 효과가 없습니다.
+
+# 접근성
+
+[`title` 특성](../Global_attributes/title)을 사용해서 `<embed>`의 콘텐츠를 간결하게 설명할 수 있는 제목을 붙여주세요. 제목 없이는 스크린 리더 등 보조 기술 사용자가 콘텐츠를 파악하지 못할 수 있습니다.
+
+# 명세
+
+[HTML Standard](https://html.spec.whatwg.org/multipage/iframe-embed-object.html#the-embed-element)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />

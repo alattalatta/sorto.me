@@ -256,19 +256,11 @@ label {
 
     `autocomplete` 특성은 숫자나 문자 값을 사용하는 `hidden`, `text`, `search`, `url`, `tel`, `email`, `date`, `month`, `week`, `time`, `datetime-local`, `number`, `range`, `color`, `password`에 유효하고, `checkbox`, `radio`, `file`, 버튼 유형에는 유효하지 않습니다.
 
-- : `autofocus`
+- : [`autofocus`](../Global_attributes/autofocus)
 
-  - 페이지 불러오기가 끝나는 순간, 또는 이 입력 칸을 포함한 [`<dialog>`](./dialog) 요소가 보여지는 순간 이 입력 칸으로 포커스를 이동해야 하는지 지정하는 불리언 특성입니다.
-
-    > [note] `autofocus` 특성을 포함한 요소는 [`DOMContentLoaded`](https://developer.mozilla.org/en-US/docs/Web/API/Window/DOMContentLoaded_event) 이벤트가 발생하기 전에 포커스를 획득할 수도 있습니다.
-
-    문서 내에서 단 하나의 요소만 `autofocus` 특성을 가질 수 있습니다. 두 개 이상의 요소에 지정한 경우 더 앞에 위치한 요소가 포커스를 획득합니다.
+  - 페이지 불러오기가 끝나는 순간, 또는 이 입력 칸을 포함한 [`<dialog>`](./dialog) 요소가 보여지는 순간 이 입력 칸으로 포커스를 이동해야 하는지 지정하는 불리언 특성입니다. [`autofocus` 전역 특성](../Global_attributes/autofocus) 문서를 참고하세요..
 
     `hidden` 유형에는 포커스를 할 수 없으므로 `autofocus`도 유효하지 않습니다.
-
-    > [warn] `autofocus`를 사용한 자동 포커스 이동에는 사전 알림 등이 없으므로 스크린 리더 사용자나 인지력 저하를 겪는 사용자를 방해할 수 있습니다.
-
-    `autofocus` 특성을 적용하기 전에 접근성에 대해 깊게 고려해보세요. 자동으로 포커스를 이동하는 과정에 페이지 스크롤이 발생할 수 있으며, 일부 터치 장치에서는 원하지 않아도 즉시 가상 키보드가 노출될 수 있습니다. 스크린 리더는 포커스를 받은 컨트롤의 레이블은 발화하지만 그 전의 내용은 아무것도 말해주지 않고, 시각에 문제가 없는 사용자라도 작은 화면을 사용하고 있는 경우 이전 내용을 동일하게 놓칠 것입니다.
 
 - : `capture`
   - `file` 유형에만 사용할 수 있습니다. 지정한 미디어(마이크, 카메라 등)에서 새로운 파일을 캡처해 업로드할 수 있습니다.

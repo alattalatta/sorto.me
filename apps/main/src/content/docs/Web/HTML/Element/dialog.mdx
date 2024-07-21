@@ -1,6 +1,5 @@
 ---
 title: 'HTML <dialog>: 대화상자 요소'
-description: HTML <dialog> (대화상자) 요소는 대화상자와 경고창 등 상호작용 가능한 컴포넌트를 나타냅니다.
 bcd: html.elements.dialog
 ---
 
@@ -48,23 +47,35 @@ document.getElementById('dialog-closer').addEventListener('click', function() {
 
 <LiveExample height={240} lang="html" name="demo" />
 
+`<dialog>` 요소는 "모달"과 "논모달" 대화상자에 모두 사용할 수 있습니다. 모달 대화상자는 열려있는 동안 페이지 나머지 부분과의 상호작용을 막고, 논모달 대화상자는 열려있는 동안에도 페이지와 상호작용 가능합니다.
+
+`<dialog>` 요소를 열려면 JavaScript를 사용해야 합니다. [`showModal()`] 메서드를 호출하면 모달 대화상자가 열리고, [`show()`] 메서드를 호출하면 논모달 대화상자가 열립니다. [`close()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/close) 메서드를 호출하거나, `<dialog>` 내에 배치된 [`<form>`](./form) 요소가 제출되면 대화상자가 닫힙니다. 모달 대화상자의 경우 <kbd>Esc</kbd> 키를 눌러도 닫힙니다.
+
 # 특성
 
 [전역 특성](/docs/Web/HTML/Global_attributes)을 포함합니다.
 
-> [warn] `<dialog>`에 [`tabindex`](../Global_attributes#term-tabindex)를 사용하면 안됩니다.
+> [warn] `<dialog>`에 [`tabindex`](../Global_attributes#term-tabindex)를 사용하면 안됩니다. [사용 일람](#사용-일람)을 참고하세요.
 
 - : `open`
-  - 불리언 특성입니다. 대화상자가 열려서 상호작용 가능한 상태인지 나타냅니다.
-
-# 접근성
-
-[일부 보조 기술은 아직도 `<dialog>` 요소를 완전히 지원하지 않습니다.](https://www.scottohara.me/blog/2019/03/05/open-dialog.html#incoming-dialog) 따라서 사용자들이 대화상자의 내용을 읽지 못하거나, 제대로 사용하지 못할 수 있습니다. 따라서 지원 상황이 개선되기 전에는 서드파티 라이브러리를 사용하는 편이 좋을 수도 있습니다.
+  - 불리언 특성입니다. 대화상자를 처음부터 열고 상호작용 가능한 상태로 만듭니다. 되도록이면 `open` 특성보단 [`showModal()`]과 [`show()`] 메서드를 호출해 여는 게 좋습니다. `open` 특성으로 열린 대화상자는 논모달 대화상자입니다.
 
 # 사용 일람
 
-- [`<form>`](./form) 요소에 [`method="dialog"` 특성](./form#term-method)을 지정하면 양식 제출과 함께 대화상자가 닫힙니다. 이때 [대화상자 DOM 객체의 `returnValue` 속성](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/returnValue) 속성은 양식을 제출할 때 사용한 [`<button>`](./button)의 [`value` 특성](./button#term-value) 값으로 설정됩니다.
-- [`HTMLModalDialog.showModal()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal)로 `<dialog>`를 열었을 때 배경을 어둡거나 흐리게 만들어야 할 땐 CSS [`::backdrop`](https://developer.mozilla.org/en-US/docs/Web/CSS/::backdrop) 의사 요소를 사용하세요.
+- [`<form>`](./form) 요소에 [`method="dialog"` 특성](./form#term-method)을 지정하면 사용자가 양식을 제출할 때 대화상자가 닫힙니다. 이때 [대화상자 DOM 객체의 `returnValue` 속성](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/returnValue) 값은 양식을 제출할 때 사용한 [`<button>`](./button)의 [`value` 특성](./button#term-value) 값으로 설정됩니다.
+- [`showModal()`]로 `<dialog>`를 열었을 때 배경을 어둡거나 흐리게 만들어야 할 땐 CSS [`::backdrop`](https://developer.mozilla.org/en-US/docs/Web/CSS/::backdrop) 의사 요소를 사용하세요.
+- [`autofocus` 특성](../Global_attributes/autofocus)은 대화상자가 열린 후 사용자가 처음으로 상호작용해야 하는 요소에 추가해야 합니다. 그런 요소가 없다면 대화상자의 닫기 버튼에 부여하는 걸 권장합니다.
+- `<dialog>` 요소 자체는 상호작용 가능하지 않고 포커스도 받지 않으므로 [`tabindex`](../Global_attributes/tabindex) 특성을 지정하면 안됩니다. 상호작용 가능하고 포커스도 받을 수 있는 건 대화상자 자체가 아니라 그 안의 닫기 버튼 등 콘텐츠입니다.
+
+# 접근성
+
+대화상자 구현 시에는 사용자의 포커스를 어디로 둘지 고려하는 게 중요합니다. [`showModal()`]을 사용해서 여는 대화상자에서는 포커스가 콘텐츠의 포커스 가능한 제일 첫 요소로 이동합니다. 가장 적절한 최초 포커스 위치가 첫 포커스 가능한 요소가 아니라면 [`autofocus` 특성](../Global_attributes/autofocus)을 지정해야 합니다.
+
+대화상자를 닫을 수 있는 방법을 제공해 주세요. 모든 사용자가 대화상자를 닫을 수 있는 가장 확실한 방법은 확인, 취소, 닫기 등 명시적인 버튼을 추가하는 것입니다.
+
+기본 `<dialog>`에서, [`showModal()`]로 연 모달 대화상자는 <kbd>Esc</kbd>로 닫을 수 있습니다. 키보드 사용자들도 <kbd>Esc</kbd>로 모달 대화상자를 닫을 수 있을 거라고 기대하므로, 키보드 이벤트를 재정의했다면 <kbd>Esc</kbd>로 대화상자가 닫히는 기능을 구현하고 유지하세요. 여러 개의 모달 대화상자가 열려있을 때 <kbd>Esc</kbd>를 누르면 가장 마지막에 열린 대화상자만 닫혀야 합니다. `<dialog>` 요소의 기본 설정에서는 브라우저가 이 동작을 제공합니다.
+
+반대로, 기본 설정의 논모달 대화상자는 <kbd>Esc</kbd>로 닫을 수 없고, 논모달 대화상자가 표현하는 콘텐츠에 따라서는 <kbd>Esc</kbd>로 닫히는 동작이 적절하지 않을 수도 있습니다.
 
 # 명세
 
@@ -73,3 +84,6 @@ document.getElementById('dialog-closer').addEventListener('click', function() {
 # 브라우저 호환성
 
 <BrowserCompat data={props.bcd} />
+
+[`show()`]: https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/show
+[`showModal()`]: https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal

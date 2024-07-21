@@ -1,20 +1,9 @@
 ---
 title: 'HTML <body>: 문서 본문 요소'
-description: HTML <body> (문서 본문) 요소는 HTML 문서의 콘텐츠를 나타냅니다. 하나의 문서에는 하나의 <body>만 존재할 수 있습니다.
 bcd: html.elements.body
 ---
 
 **HTML `<body>` 요소**는 HTML 문서의 콘텐츠를 나타냅니다. 하나의 문서에는 하나의 `<body>`만 존재할 수 있습니다.
-
-```html
-<!DOCTYPE html>
-<html lang="ko">
-  <head></head>
-  <body>
-    <h1>HTML Standard</h1>
-  </body>
-</html>
-```
 
 # 특성
 
@@ -34,7 +23,7 @@ bcd: html.elements.body
   - 문서가 포커스를 얻었을 때 호출할 함수입니다.
 - : `onhashchange`
   - 문서의 현재 주소 중 프래그먼트 식별자(해시(`#`)로 시작하는 부분)가 바뀔 때 호출할 함수입니다.
-- : `onlanguagechange` <Experimental />
+- : `onlanguagechange`
   - 사용자의 선호 언어가 바뀔 때 호출할 함수입니다.
 - : `onload`
   - 문서를 다 불러왔을 때 호출할 함수입니다.
@@ -46,20 +35,28 @@ bcd: html.elements.body
   - 네트워크 연결이 복구됐을 때 호출할 함수입니다.
 - : `onpopstate`
   - 사용자가 세션 기록을 탐색했을 때 호출할 함수입니다.
-- : `onredo`
-  - 사용자가 실행 기록에서 앞으로 이동했을 때 호출할 함수입니다.
 - : `onresize`
   - 문서의 크기가 바뀔 때 호출할 함수입니다.
 - : `onstorage`
   - 스토리지 영역이 바뀔 때 호출할 함수입니다.
-- : `onundo`
-  - 사용자가 실행 기록에서 뒤로 이동했을 때 호출할 함수입니다.
 - : `onunload`
   - 문서가 해제(unload)되고 있을 때 호출할 함수입니다.
 
+# 예제
+
+```html
+<!DOCTYPE html>
+<html lang="ko">
+  <head></head>
+  <body>
+    <h1>HTML Standard</h1>
+  </body>
+</html>
+```
+
 # 명세
 
-[HTML Standard](https://html.spec.whatwg.org/multipage/semantics.html#the-body-element)
+[HTML Standard](https://html.spec.whatwg.org/multipage/sections.html#the-body-element)
 
 # 브라우저 호환성
 

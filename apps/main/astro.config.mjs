@@ -24,6 +24,7 @@ export default defineConfig({
     }),
     react(),
     sitemap({
+      filter: (page) => !page.startsWith(`https://sorto.me/frame`),
       lastmod: new Date(),
       serialize: (item) => {
         if (item.url.endsWith('/')) {

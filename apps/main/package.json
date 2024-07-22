@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "astro": "astro",
-    "build": "astro check && astro build",
+    "build": "astro check && astro build && cp dist/sitemap-0.xml dist/sitemap.xml",
     "dev": "astro dev",
     "lastmod": "node ./lastmod.mjs",
     "preview": "astro preview"

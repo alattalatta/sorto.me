@@ -5,3 +5,5 @@ Disallow: /frame/*
 Disallow: /search
 
 Sitemap: https://sorto.me/sitemap-index.xml
+
+#DaumWebMasterTool:ada3cf05f128ec31831b50aad6ed96d9c86db31a79885b56a3422d41705711fa:53NCqJ64wtu/VWrA2qD3+g==

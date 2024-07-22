@@ -1,6 +1,5 @@
 ---
 title: 'CSS grid-template-areas: 그리드 영역 정의 및 명명'
-description: CSS grid-template-areas 속성은 그리드 영역을 정의하는 동시에 각 영역에 이름을 할당합니다.
 bcd: css.properties.grid-template-areas
 ---
 
@@ -98,7 +97,10 @@ grid-template-areas: unset;
 - : `none`
   - 그리드 컨테이너가 이름 있는 영역을 하나도 정의하지 않습니다.
 - : [`<string>`+](https://developer.mozilla.org/en-US/docs/Web/CSS/string)
+
   - 지정한 문자열 각각이 그리드의 행을 정의하고, 문자열 내에서 공백으로 구분한 각각의 *칸*으로 그리드의 열을 정의합니다. 여러 행과 열에 같은 이름을 사용하면 해당 칸 모두를 차지하는 영역을 정의할 수 있습니다. 다만, 영역의 형태는 항상 직사각형이어야 합니다.
+
+    그리드 내에서 이름을 지정하지 않고 비워둘 칸은 "널 셀 토큰"(_null cell token_)으로 표현할 수 있습니다. 널 셀 토큰은 한 개 이상의 연속된 `.` (U+002E FULL STOP) 문자로, 예를 들어 `.`, `..`, `...` 등으로 지정합니다.
 
 # 예제
 
@@ -151,7 +153,7 @@ footer {
 
 # 명세
 
-- [CSS Grid Layout Module Level 3](https://drafts.csswg.org/css-grid/#grid-template-areas-property)
+- [CSS Grid Layout Module Level 2](https://drafts.csswg.org/css-grid/#grid-template-areas-property)
 
 # 브라우저 호환성
 

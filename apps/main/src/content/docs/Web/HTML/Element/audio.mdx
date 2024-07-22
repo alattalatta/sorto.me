@@ -34,6 +34,14 @@ bcd: html.elements.audio
 
 - : `controls`
   - 지정하면 볼륨, 탐색, 일시정지/재생 등 브라우저가 사용자 컨트롤을 제공하는 불리언 특성입니다.
+- : `controlslist`
+
+  - 브라우저 내장 컨트롤을 사용할 때(즉 `controls` 특성을 지정했을 때)의 일부 기능을 조절하는 열거형 공백 구분 리스트 특성입니다. 다음과 같은 값을 사용할 수 있습니다.
+
+    - `nodownload`: 내장 컨트롤에서 다운로드 컨트롤을 숨겨야 함을 나타냅니다.
+    - `nofullscreen`: 내장 컨트롤에서 전체 화면 컨트롤을 숨겨야 함을 나타냅니다.
+    - `noremoteplayback`: 내장 컨트롤에서 원격 재생 컨트롤을 숨겨야 함을 나타냅니다.
+
 - : `crossorigin`
 
   - CORS를 사용해 지정한 오디오 파일을 가져올지 나타내는 열거형 특성입니다. [CORS 활성화 리소스](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image)는 [`<canvas>`](./canvas) 요소에 사용해도 캔버스가 오염(taint)되지 않습니다. 가능한 값은 다음과 같습니다.
@@ -45,10 +53,10 @@ bcd: html.elements.audio
 
     특성이 존재하지 않으면 리소스를 CORS 요청 없이(`Origin` HTTP 헤더 없이) 가져오므로, `<canvas>`가 오염됩니다. 유효하지 않은 값의 경우 `anonymous` 깂을 사용한 것으로 간주합니다.
 
-- : `disableremoteplayback` <Experimental />
+- : `disableremoteplayback`
   - 유선으로 연결한 장치(HDMI, DVI 등) 및 무선 연결 기술(Miracast, Chromecast, DLNA, AirPlay 등)을 통한 오디오 원격 재생을 할 수 없도록 지정하는 불리언 특성입니다. [제안된 명세](https://www.w3.org/TR/remote-playback/#the-disableremoteplayback-attribute)를 방문해 자세한 정보를 알아보세요.
 - : `loop`
-  - 지정하면 오디오를 끝까지 재생했을 때 다시 처음으로 돌아가서 재생을 이어갑니다.
+  - 지정하면 오디오를 끝까지 재생했을 때 다시 처음으로 돌아가서 재생을 반복하는 불리언 특성입니다.
 - : `muted`
   - 지정하면 오디오의 초기 상태를 음소거로 설정하는 불리언 특성입니다.
 - : `preload`
@@ -69,7 +77,7 @@ bcd: html.elements.audio
 
 # 사용 일람
 
-브라우저가 지원하는 파일 유형과 오디오 코덱은 서로 다릅니다. [`<source>`](./source) 요소를 추가해서 다수의 소스를 제공하면 브라우저가 이해할 수 있는 첫 번째 소스를 자동으로 사용하므로 지원 범위를 넓힐 수 있습니다.
+브라우저들은 모든 오디오 형식을 지원하지 않습니다. [`<source>`](./source) 요소를 추가해서 다수의 소스를 제공하면 브라우저가 지원하는 첫 번째 소스를 자동으로 채택하므로 지원 범위를 넓힐 수 있습니다.
 
 ```html
 <audio controls>
@@ -82,16 +90,16 @@ bcd: html.elements.audio
 </audio>
 ```
 
-- [`controls`](#term-controls) 특성을 지정하지 않으면 오디오 플레이어가 브라우저 기본 컨트롤을 제공하지 않습니다. 대신 JavaScript와 [`HTMLMediaElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement) API를 사용해서 컨트롤을 직접 구현할 수 있습니다.
-- 오디오 콘텐츠를 세밀하게 통제할 수 있도록, `HTMLMediaElement`에서는 [여러가지 다양한 이벤트](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement#events)가 발생합니다. 오류 발생 여부와 함께, 오디오를 재생 또는 조작하기에 충분히 불러온 순간도 알아낼 수 있습니다.
-- [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)를 사용하면 이미 존재하는 오디오 파일을 사용하지 않고도 JavaScript 코드로 오디오 스트림을 생성 및 조작할 수 있습니다.
+- [`controls`](#term-controls) 특성을 추가하지 않으면 오디오 플레이어가 브라우저 기본 컨트롤을 제공하지 않습니다. 이때 JavaScript와 [`HTMLMediaElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement) API를 사용해서 컨트롤을 직접 구현할 수 있습니다.
+- `HTMLMediaElement`에서는 오디오 콘텐츠를 세밀하게 통제할 수 있는 [여러가지 다양한 이벤트](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement#events)가 발생합니다. 이 이벤트들을 통해 미디어 제어 뿐만 아니라 다운로드 진행도와 재생률, 현재 재생 상태 및 시간 등을 알아낼 수 있습니다.
+- [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)를 사용하면 별도의 오디오 파일을 사용하지 않고 JavaScript 코드만으로 오디오 스트림을 생성 및 조작할 수 있습니다.
 - `<video>` 요소와 달리, `<audio>` 요소는 자막을 가질 수 없습니다. 그러나 `<video>` 요소에 오디오 소스도 지정할 수 있으므로, 자막이 필요한 경우 `<video>`를 사용하세요.
 
 ## CSS 스타일링
 
 [`controls`](#term-controls) 특성을 지정하지 않은 `<audio>`는 내재된 스타일을 가지고 있지 않습니다.
 
-브라우저 내장 컨트롤의 경우 [`display`](https://developer.mozilla.org/en-US/docs/Web/CSS/display)가 기본적으로 `inline`이므로, 텍스트 내에 컨트롤을 배치하고 싶은 것이 아니면 위치와 레이아웃 조정을 편하게 할 수 있도록 `block`으로 설정하는 편이 좋습니다.
+브라우저 내장 컨트롤의 경우 [`display`](/docs/Web/CSS/display)가 기본적으로 `inline`이므로, 텍스트 내에 컨트롤을 배치하고 싶은 것이 아니면 위치와 레이아웃 조정을 편하게 할 수 있도록 `block`으로 설정하는 편이 좋습니다.
 
 내장 컨트롤에는 [`border`](https://developer.mozilla.org/en-US/docs/Web/CSS/border), [`border-radius`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius), [`padding`](https://developer.mozilla.org/en-US/docs/Web/CSS/padding), [`margin`](/docs/Web/CSS/margin)처럼 블록 단위로 영향을 주는 스타일을 적용할 수 있습니다. 그러나 버튼 크기나 아이콘, 글꼴처럼 내부의 개별 구성요소는 변경할 수 없으며, 브라우저마다 컨트롤의 생김새가 다릅니다.
 
@@ -117,30 +125,6 @@ elem.audioTrackList.addEventListener('removetrack', (event) => {
 
 위의 코드는 트랙의 추가와 제거 이벤트를 수신하다가, 감지하면 콘솔에 기록합니다.
 
-# 예제
-
-## `<source>`를 사용한 `<audio>`
-
-이 예제는 오디오 소스를 `<audio>`에 직접 지정하지 않고, 내부 [`<source>`](./source) 요소의 `src` 특성에 지정합니다. 항상 파일의 MIME 유형을 지정해서 브라우저가 재생 가능 여부를 알아내느라 시간을 낭비하지 않도록 하는 것이 좋습니다.
-
-```html
-<audio controls>
-  <source src="foo.wav" type="audio/wav" />
-</audio>
-```
-
-## 다수의 `<source>`를 사용한 `<audio>`
-
-이 예제는 다수의 [`<source>`](./source) 요소를 사용해 소스를 제공합니다. 브라우저가 첫 소스 파일(Opus)을 재생할 수 있으면 그걸 불러오고, 그렇지 않으면 두 번째(Vorbis), 마지막으로 MP3를 불러옵니다.
-
-```html
-<audio controls>
-  <source src="foo.opus" type="audio/ogg; codecs=opus" />
-  <source src="foo.ogg" type="audio/ogg; codecs=vorbis" />
-  <source src="foo.mp3" type="audio/mpeg" />
-</audio>
-```
-
 # 접근성
 
 발화를 포함하는 오디오는 콘텐츠를 정확히 설명하는 자막과 녹취록 모두 포함해야 합니다. [WebVTT](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API)로 지정하는 자막은 청각이 저하된 사용자가 오디오 콘텐츠를 재생하면서 실시간으로 알 수 있고, 녹취록은 콘텐츠를 이해하는데 시간이 필요한 사용자가 익숙한 형식과 원하는 속도로 천천히 읽어볼 수 있습니다.
@@ -165,9 +149,33 @@ elem.audioTrackList.addEventListener('removetrack', (event) => {
 [웃음] 아, 죄송해요! 그러니까, 어떤 손목시계가 스위스 손목시계일까요?
 ```
 
+# 예제
+
+## `<source>`를 사용한 `<audio>`
+
+이 예제는 오디오 소스를 `<audio>`에 직접 지정하지 않고, 내부 [`<source>`](./source) 요소의 `src` 특성에 지정합니다. 항상 파일의 MIME 유형을 지정해서 브라우저가 재생 가능 여부를 알아내느라 시간을 낭비하지 않도록 하는 것이 좋습니다.
+
+```html
+<audio controls>
+  <source src="foo.wav" type="audio/wav" />
+</audio>
+```
+
+## 다수의 `<source>`를 사용한 `<audio>`
+
+이 예제는 다수의 [`<source>`](./source) 요소를 사용해 소스를 제공합니다. 브라우저가 첫 소스 파일(Opus)을 재생할 수 있으면 그걸 불러오고, 그렇지 않으면 두 번째(Vorbis), 마지막으로 MP3를 불러옵니다.
+
+```html
+<audio controls>
+  <source src="foo.opus" type="audio/ogg; codecs=opus" />
+  <source src="foo.ogg" type="audio/ogg; codecs=vorbis" />
+  <source src="foo.mp3" type="audio/mpeg" />
+</audio>
+```
+
 # 명세
 
-[HTML Standard](https://html.spec.whatwg.org/multipage/embedded-content.html#the-audio-element)
+[HTML Standard](https://html.spec.whatwg.org/multipage/media.html#the-audio-element)
 
 # 브라우저 호환성
 

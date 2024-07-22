@@ -108,7 +108,7 @@ bcd: html.elements.video
 
 # 사용 일람
 
-브라우저는 모든 비디오 형식을 지원하지 않습니다. [`<source>`](./source) 요소를 추가해서 다수의 소스를 제공하면 브라우저가 지원하는 첫 번째 소스를 자동으로 채택하므로 지원 범위를 넓힐 수 있습니다.
+브라우저들은 모든 비디오 형식을 지원하지 않습니다. [`<source>`](./source) 요소를 추가해서 다수의 소스를 제공하면 브라우저가 지원하는 첫 번째 소스를 자동으로 채택하므로 지원 범위를 넓힐 수 있습니다.
 
 ```html
 <audio controls>
@@ -121,7 +121,7 @@ bcd: html.elements.video
 </audio>
 ```
 
-- [`controls`](#term-controls) 특성을 지정하지 않으면 비디오 플레이어가 브라우저 기본 컨트롤을 제공하지 않습니다. 대신 JavaScript와 [`HTMLMediaElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement) API를 사용해서 컨트롤을 직접 구현할 수 있습니다.
+- [`controls`](#term-controls) 특성을 추가하지 않으면 비디오 플레이어가 브라우저 기본 컨트롤을 제공하지 않습니다. 이때 JavaScript와 [`HTMLMediaElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement) API를 사용해서 컨트롤을 직접 구현할 수 있습니다.
 - `HTMLMediaElement`에서는 비디오 콘텐츠를 세밀하게 통제할 수 있는 [여러가지 다양한 이벤트](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement#events)가 발생합니다. 이 이벤트들을 통해 미디어 제어 뿐만 아니라 다운로드 진행도와 재생률, 현재 재생 상태 및 시간 등을 알아낼 수 있습니다.
 - `<video>` 프레임의 안에서 영상이 차지하는 위치는 [`object-position`](/docs/Web/CSS/object-position) 속성으로 지정할 수 있으며, 영상의 크기는 [`object-fit`](/docs/Web/CSS/object-fit) 속성을 통해 바꿀 수 있습니다.
 - 비디오에 자막이나 캡션을 추가하려면 JavaScript와 [`<track>`](./track) 요소, [WebVTT](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API)를 사용할 수 있습니다.

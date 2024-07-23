@@ -10,32 +10,37 @@ const { links } = Astro.props
 
 <div class="root">
   <div class="links">
-    <slot />
+    <slot name="toc" />
     <a class="top" href="#">맨 위로 이동 ↑</a>
     <hr />
-    <search>
-      <form action="/search">
-        <label class="no-screen" for="search-input">검색어</label>
-        <input id="search-input" name="q" placeholder="typescript" type="search" />
-        <button type="submit"> 검색 </button>
-      </form>
-    </search>
-    <dl>
-      {
-        links.map(([label, children]) => (
-          <>
-            <dt>{label}</dt>
-            <dd>
-              <ul>
-                {children.map((group) => (
-                  <NavLinkGroup {group} />
-                ))}
-              </ul>
-            </dd>
-          </>
-        ))
-      }
-    </dl>
+    <section aria-labelledby="mainnav-heading">
+      <h2 id="mainnav-heading">주요 링크</h2>
+      <search>
+        <form action="/search">
+          <label class="no-screen" for="search-input">검색어</label>
+          <input id="search-input" name="q" placeholder="typescript" type="search" />
+          <button type="submit"> 검색 </button>
+        </form>
+      </search>
+      <dl>
+        {
+          links.map(([label, children]) => (
+            <>
+              <dt>{label}</dt>
+              <dd>
+                <ul>
+                  {children.map((group) => (
+                    <NavLinkGroup {group} />
+                  ))}
+                </ul>
+              </dd>
+            </>
+          ))
+        }
+      </dl>
+    </section>
+    {Astro.slots.has('default') && <hr />}
+    <slot />
   </div>
 </div>
 
@@ -70,6 +75,15 @@ const { links } = Astro.props
     padding: 1.5rem 2rem;
   }
 
+  h2 {
+    font-size: 18px;
+    margin: 0;
+  }
+
+  search {
+    margin-top: 16px;
+  }
+
   form {
     display: flex;
     gap: 8px;
@@ -101,7 +115,7 @@ const { links } = Astro.props
   dl {
     display: flex;
     flex-direction: column;
-    margin: 2em 0 0;
+    margin: 1.5em 0 0;
   }
   dt {
     font-weight: 400;

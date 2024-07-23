@@ -16,6 +16,7 @@ const docCollection = defineCollection({
     bcd: z.string().optional(),
     description: z.string().optional(),
     title: z.string(),
+    titleShort: z.string().optional(),
   }),
   type: 'content',
 })

@@ -69,7 +69,7 @@ const posts = [...(await getCollection('posts'))].reverse()
       ]}
       slot="header"
     >
-      <TableOfContents {headings} />
+      <TableOfContents {headings} slot="toc" />
     </MainNav>
     <main>
       <Article content={Content} post={props} />

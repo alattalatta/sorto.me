@@ -1,0 +1,64 @@
+---
+export type Props = {
+  docs: readonly (readonly [id: string, title: string])[]
+  idNow: string
+  parent: readonly [id: string, title: string] | null
+}
+
+const { docs, idNow, parent } = Astro.props
+---
+
+<section aria-labelledby="related-docs-heading">
+  <h2 id="related-docs-heading">관련 문서</h2>
+  {
+    parent && (
+      <a class="parent" href={`/docs/${parent[0]}`}>
+        {parent[1]}
+      </a>
+    )
+  }
+  <ul>
+    {
+      docs.map(([id, title]) => (
+        <li>
+          <a data-current={id === idNow} href={`/docs/${id}`}>
+            {title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style lang="scss">
+  h2 {
+    font-size: 18px;
+    margin: 0;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  li + li {
+    margin-top: 0.5em;
+  }
+
+  .parent {
+    display: block;
+    margin: 1em 0;
+
+    &::before {
+      content: '↑';
+    }
+  }
+
+  a[data-current] {
+    font-weight: bold;
+
+    &::after {
+      content: '◀';
+    }
+  }
+</style>

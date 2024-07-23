@@ -1,12 +1,13 @@
 ---
-import bcd from '@mdn/browser-compat-data' with { type: 'json' }
 import type { CompatData, Identifier } from '@mdn/browser-compat-data'
+import bcd from '@mdn/browser-compat-data' with { type: 'json' }
 import type { GetStaticPaths } from 'astro'
 import { getCollection } from 'astro:content'
 import ContentGrid from 'components/ContentGrid'
 import Doc from 'components/Doc.astro'
 import Footer from 'components/Footer.astro'
 import MainNav from 'components/MainNav.astro'
+import RelatedDocs from 'components/RelatedDocs.astro'
 import TableOfContents from 'components/TableOfContents.astro'
 import { escapeUTF8 } from 'entities'
 import Shell from 'layouts/Shell.astro'
@@ -69,6 +70,22 @@ const bcdData = (() => {
   }
   return null
 })()
+
+const parentPath = path.split('/').slice(0, -1).join('/')
+const siblingRegex = new RegExp(`^${parentPath}/[^/]+$`, 'i')
+
+const allDocs = await getCollection('docs')
+
+const parentDocData = allDocs.find((entry) => entry.id === `${parentPath}.mdx`)
+
+const parentDoc = parentDocData ? ([parentPath, parentDocData.data.title] as const) : null
+const siblingDocs = allDocs
+  .filter((entry) => siblingRegex.test(entry.slug))
+  .sort((a, b) => a.id.localeCompare(b.id))
+  .map((entry) => {
+    const id = entry.id.replace('.mdx', '')
+    return [id, entry.data.titleShort ?? entry.data.title] as readonly [id: string, title: string]
+  })
 ---
 
 <Shell
@@ -86,34 +103,23 @@ const bcdData = (() => {
   <ContentGrid client:load>
     <MainNav
       links={[
-        ['library', [['k-popo', 'https://www.npmjs.com/package/k-popo']]],
-        ['experiments', [['dialog98', 'https://dialog98.sorto.me/']]],
         ['blog', [['(...more)', '/posts']]],
         [
           'docs',
           [
-            [
-              'HTML',
-              '/docs/Web/HTML',
-              [
-                ['HTML 요소 참고서', '/docs/Web/HTML/Element'],
-                ['HTML 전역 특성 참고서', '/docs/Web/HTML/Global_attributes'],
-              ],
-            ],
-            ['CSS', '/docs/Web/CSS', [['CSS 참고서', '/docs/Web/CSS/Reference']]],
-          ],
-        ],
-        [
-          'contact',
-          [
-            ['github', 'https://github.com/alattalatta'],
-            ['@sorto.me', 'mailto:alattalatta@sorto.me'],
+            ['HTML', '/docs/Web/HTML'],
+            ['CSS', '/docs/Web/CSS'],
           ],
         ],
       ]}
       slot="header"
     >
-      <TableOfContents {headings} />
+      <TableOfContents {headings} slot="toc" />
+      {
+        (siblingDocs.length > 0 || parentDoc !== null) && (
+          <RelatedDocs docs={siblingDocs} idNow={props.id.replace('.mdx', '')} parent={parentDoc} />
+        )
+      }
     </MainNav>
     <main>
       <Doc bcd={bcdData} content={Content} post={props} />

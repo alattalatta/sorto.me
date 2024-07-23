@@ -37,13 +37,9 @@ const firstParagraphProcessor = remark()
   .use(() => (root: Root) => select('paragraph', root) || root.children[0] || root)
   .use(stripMarkdown)
 
-const description = await (async () => {
-  if (props.data.description) {
-    return props.data.description
-  }
-
-  return escapeUTF8(await firstParagraphProcessor.process(props.body as string).then((res) => String(res).trim()))
-})()
+const description =
+  props.data.description ??
+  (await firstParagraphProcessor.process(props.body as string).then((res) => String(res).trim().replace(/\\/g, '')))
 
 const bcdData = (() => {
   if (!props.data.bcd) {

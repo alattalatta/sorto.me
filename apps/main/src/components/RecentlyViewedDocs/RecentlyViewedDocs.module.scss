@@ -1,0 +1,13 @@
+.heading {
+  font-size: 1.5em;
+}
+
+.list {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr 1fr;
+
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
+}

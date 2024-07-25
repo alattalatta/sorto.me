@@ -1,27 +1,40 @@
 ---
 import type { Identifier } from '@mdn/browser-compat-data'
 import type { AstroComponentFactory } from 'astro/runtime/server/index.js'
-import type { CollectionEntry } from 'astro:content'
 
 import BrowserCompat from './BrowserCompat'
 import { Experimental, NonStandard } from './BrowserCompat/StatusIcon'
 import ContentBody from './ContentBody.astro'
+import DocPin from './DocPin'
 import LiveExample from './LiveExample'
 import Spec from './Spec'
 
 type Props = {
   bcd: { data: Identifier; key: string } | null
   content: AstroComponentFactory
-  post: CollectionEntry<'docs'>
+  description: string
+  pinnable: boolean
+  slug: string
+  title: string
 }
 
-const { bcd, content: Content, post } = Astro.props
-const slugAsID = post.slug.replaceAll('/', '-')
+const { bcd, content: Content, description, pinnable, slug, title } = Astro.props
+const slugAsID = slug.replaceAll('/', '-')
 ---
 
+{pinnable && <recent-doc description={description} title={title} />}
 <article aria-labelledby={slugAsID}>
   <header>
-    <h2 id={slugAsID}>{post.data.title}</h2>
+    <h2 id={slugAsID}>
+      {title}
+    </h2>
+    {
+      pinnable && (
+        <span class="pin">
+          <DocPin client:load />
+        </span>
+      )
+    }
   </header>
   <ContentBody
     bcd={bcd}
@@ -37,13 +50,41 @@ const slugAsID = post.slug.replaceAll('/', '-')
 </article>
 
 <style lang="scss">
-  h2 {
-    font-size: 3em;
-    margin: 0;
+  header {
+    align-items: flex-start;
+    display: flex;
     padding: 2rem 3rem 1rem;
 
     @media (max-width: 1088px) {
       padding: 2rem 1rem 1rem;
     }
   }
+
+  h2 {
+    font-size: 3em;
+    margin: 0;
+    word-break: keep-all;
+  }
+
+  .pin {
+    align-items: center;
+    display: inline-flex;
+    height: 70px;
+    margin-left: 8px;
+  }
 </style>
+
+<script>
+  import { update } from 'db/RecentlyViewedDocs'
+
+  class RecentDocSaver extends HTMLElement {
+    constructor() {
+      super()
+
+      const description = this.attributes.getNamedItem('description')?.value ?? ''
+      const title = this.attributes.getNamedItem('title')?.value ?? ''
+      void update(title, description)
+    }
+  }
+  customElements.define('recent-doc', RecentDocSaver)
+</script>

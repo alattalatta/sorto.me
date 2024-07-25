@@ -6,14 +6,16 @@ import '@fontsource/gowun-batang'
 import '@fontsource/nanum-gothic-coding'
 import '@fontsource/orbit'
 
-interface Props {
+export type Props = {
   canonicalPath?: string
   description?: string
   image?: string
   title?: string
 }
 
-const { canonicalPath, description = 'sorto.me', image, title = 'sorto.me' } = Astro.props
+const { canonicalPath, description = 'sorto.me', image, title: titleProp } = Astro.props
+
+const title = titleProp ? `${titleProp} - sorto.me` : 'sorto.me'
 ---
 
 <!doctype html>
@@ -26,7 +28,7 @@ const { canonicalPath, description = 'sorto.me', image, title = 'sorto.me' } = A
     {canonicalPath !== undefined && <link href={`${Astro.site?.toString() ?? ''}${canonicalPath}`} rel="canonical" />}
     <!-- og -->
     <title>{title}</title>
-    <meta content={title} property="og:title" />
+    <meta content={titleProp} property="og:title" />
     <meta content={description} name="description" />
     <meta content={description} property="og:description" />
     {image && <meta content={image} property="og:image" />}
@@ -35,6 +37,7 @@ const { canonicalPath, description = 'sorto.me', image, title = 'sorto.me' } = A
     <meta content="ca-pub-3748696249484291" name="google-adsense-account" />
   </head>
   <body>
+    <h1 class="no-screen">{titleProp ?? 'sorto.me'}</h1>
     <slot />
     {import.meta.env.PROD && <script async is:inline src="https://www.googletagmanager.com/gtag/js?id=G-7F0E6D3XE2"></script>}
     {import.meta.env.PROD && (

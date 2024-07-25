@@ -12,6 +12,7 @@ import { readFileSync } from 'node:fs'
 // https://astro.build/config
 export default defineConfig({
   integrations: [
+    react(),
     mdx({
       optimize: true,
       remarkPlugins: [remarkDirective, libmdx.remarkTransformerPlugin, libmdx.remarkLastmodPlugin],
@@ -22,7 +23,6 @@ export default defineConfig({
         theme: 'catppuccin-latte',
       },
     }),
-    react(),
     sitemap({
       filter: (page) => !page.startsWith(`https://sorto.me/frame`),
       lastmod: new Date(),

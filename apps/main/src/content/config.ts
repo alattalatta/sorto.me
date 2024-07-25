@@ -15,6 +15,7 @@ const docCollection = defineCollection({
   schema: z.object({
     bcd: z.string().optional(),
     description: z.string().optional(),
+    pinnable: z.boolean().default(true),
     title: z.string(),
     titleShort: z.string().optional(),
   }),

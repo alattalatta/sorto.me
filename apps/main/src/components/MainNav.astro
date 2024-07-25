@@ -2,7 +2,7 @@
 import NavLinkGroup, { type LinkGroup } from './NavLinkGroup.astro'
 
 interface Props {
-  links: readonly [label: string, readonly LinkGroup[]][]
+  links: readonly [label: string, readonly LinkGroup[], href?: string][]
 }
 
 const { links } = Astro.props
@@ -24,9 +24,9 @@ const { links } = Astro.props
       </search>
       <dl>
         {
-          links.map(([label, children]) => (
+          links.map(([label, children, href]) => (
             <>
-              <dt>{label}</dt>
+              <dt>{href ? <a href={href}>{label}</a> : label}</dt>
               <dd>
                 <ul>
                   {children.map((group) => (

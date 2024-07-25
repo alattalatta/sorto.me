@@ -3,13 +3,23 @@ export type Props = {
   docs: readonly (readonly [id: string, title: string])[]
   idNow: string
   parent: readonly [id: string, title: string] | null
+  root: readonly [id: string, title: string] | null
 }
 
-const { docs, idNow, parent } = Astro.props
+const { docs: docsProp, idNow, parent, root } = Astro.props
+const docNow = docsProp.find(([id]) => id === idNow)
+const docs = docsProp.filter(([id]) => id !== idNow)
 ---
 
 <section aria-labelledby="related-docs-heading">
   <h2 id="related-docs-heading">관련 문서</h2>
+  {
+    root && (
+      <a class="root" href={`/docs/${root[0]}`}>
+        {root[1]}
+      </a>
+    )
+  }
   {
     parent && (
       <a class="parent" href={`/docs/${parent[0]}`}>
@@ -19,11 +29,18 @@ const { docs, idNow, parent } = Astro.props
   }
   <ul>
     {
+      docNow && (
+        <li>
+          <a data-current href={`/docs/${docNow[0]}`}>
+            {docNow[1]}
+          </a>
+        </li>
+      )
+    }
+    {
       docs.map(([id, title]) => (
         <li>
-          <a data-current={id === idNow} href={`/docs/${id}`}>
-            {title}
-          </a>
+          <a href={`/docs/${id}`}>{title}</a>
         </li>
       ))
     }
@@ -43,6 +60,15 @@ const { docs, idNow, parent } = Astro.props
 
   li + li {
     margin-top: 0.5em;
+  }
+
+  .root {
+    display: block;
+    margin: 1em 0;
+
+    &::before {
+      content: '↑↑';
+    }
   }
 
   .parent {

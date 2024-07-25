@@ -1,0 +1,92 @@
+---
+import RecentlyViewedDocs from './RecentlyViewedDocs/RecentlyViewedDocs'
+---
+
+<article aria-labelledby="doc-entrance">
+  <header>
+    <h2 id="doc-entrance">Web Docs</h2>
+  </header>
+  <div class="container">
+    <div class="techs">
+      <div class="tech">
+        <h3>
+          <a href="/docs/Web/HTML">HTML</a>
+        </h3>
+        <ul>
+          <li>
+            <a href="/docs/Web/HTML/Element">요소 참고서</a>
+          </li>
+          <li>
+            <a href="/docs/Web/HTML/Global_attributes">전역 특성 참고서</a>
+          </li>
+        </ul>
+      </div>
+      <div class="tech">
+        <h3>
+          <a href="/docs/Web/CSS">CSS</a>
+        </h3>
+        <ul>
+          <li>
+            <a href="/docs/Web/CSS/Reference">전체 참고서</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <hr />
+    <RecentlyViewedDocs client:load />
+  </div>
+</article>
+
+<style lang="scss">
+  h2 {
+    font-size: 3em;
+    margin: 0;
+    padding: 2rem 3rem 1rem;
+
+    @media (max-width: 1088px) {
+      padding: 2rem 1rem 1rem;
+    }
+  }
+
+  h3 {
+    font-size: 1.5em;
+  }
+
+  .container {
+    padding: 0 3rem 3rem;
+
+    @media (max-width: 1088px) {
+      padding: 0 1rem 3rem;
+    }
+  }
+
+  .techs {
+    display: grid;
+    font-size: 1.2em;
+    gap: 1.5em;
+    grid-template-columns: 300px 300px;
+    margin: 1em 0 0;
+
+    @media (max-width: 767px) {
+      gap: 0.5em;
+      grid-template-columns: 1fr;
+    }
+
+    h3 {
+      margin: 0;
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 1em;
+  }
+  li {
+    padding: 0.5em 0;
+  }
+
+  hr {
+    border-color: var(--primary);
+    margin: 3em 0;
+  }
+</style>

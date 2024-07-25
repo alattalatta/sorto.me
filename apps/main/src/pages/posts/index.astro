@@ -9,7 +9,7 @@ import Shell from 'layouts/Shell.astro'
 const posts = [...(await getCollection('posts'))].reverse()
 ---
 
-<Shell canonicalPath="posts" title="sorto.me">
+<Shell canonicalPath="posts" title="Blog">
   <ContentGrid client:load>
     <MainNav
       links={[
@@ -19,16 +19,10 @@ const posts = [...(await getCollection('posts'))].reverse()
           'blog',
           [
             ...posts.map<[string, string]>((post) => [post.data.titleShort || post.data.title, `/posts/${post.slug}`]),
-            ['(...more)', '/posts'],
+            // ['(...more)', '/posts'],
           ],
         ],
-        [
-          'docs',
-          [
-            ['HTML', '/docs/Web/HTML'],
-            ['CSS', '/docs/Web/CSS'],
-          ],
-        ],
+        ['docs', [], '/docs'],
         [
           'contact',
           [

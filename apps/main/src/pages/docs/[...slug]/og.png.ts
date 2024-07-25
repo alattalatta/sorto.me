@@ -5,7 +5,6 @@ import { findWorkspaceDir } from '@pnpm/find-workspace-dir'
 import { Resvg } from '@resvg/resvg-js'
 import type { APIRoute, GetStaticPaths, InferGetStaticPropsType } from 'astro'
 import { getCollection } from 'astro:content'
-import { escapeUTF8 } from 'entities'
 import { doJSX } from 'gen/docs/og'
 import type { Root } from 'mdast'
 import { remark } from 'remark'
@@ -33,13 +32,10 @@ const fontOrbit = await fs.readFile(path.join(appRoot, 'gen/orbit.ttf'))
 const fontNGC = await fs.readFile(path.join(appRoot, 'gen/ngc.ttf'))
 
 export const GET: APIRoute<Props> = async ({ props: { body, data } }) => {
-  const description = await (async () => {
-    if (data.description) {
-      return data.description
-    }
-
-    return escapeUTF8(await firstParagraphProcessor.process(body).then((res) => String(res).trim()))
-  })()
+  const description =
+    data.description ??
+    (await firstParagraphProcessor.process(body).then((res) => String(res).trim().replace(/\\/g, ''))) ??
+    ''
 
   const svg = await satori(doJSX(data.title, description), {
     fonts: [

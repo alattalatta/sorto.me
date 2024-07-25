@@ -1,0 +1,11 @@
+---
+import Shell, { type Props as ShellProps } from './Shell.astro'
+
+export type Props = ShellProps
+
+const props = Astro.props
+---
+
+<Shell {...props}>
+  <slot />
+</Shell>

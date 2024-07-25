@@ -1,0 +1,33 @@
+.root {
+  outline: 1px solid var(--primary);
+  outline-offset: -1px;
+  padding: 1em;
+  position: relative;
+}
+
+.pinButton {
+  border: 1px solid var(--primary);
+  inset: 0 0 auto auto;
+  position: absolute;
+}
+
+.title {
+  font-size: 1em;
+  margin: 0;
+  padding-right: 44px;
+}
+
+.description {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  display: -webkit-box;
+  font-size: 1em;
+  line-clamp: 3;
+  margin: 1em 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.viewedAt {
+  font-size: 0.8em;
+}

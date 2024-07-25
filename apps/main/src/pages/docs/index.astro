@@ -1,0 +1,23 @@
+---
+import ContentGrid from 'components/ContentGrid'
+import DocGateway from 'components/DocGateway.astro'
+import Footer from 'components/Footer.astro'
+import MainNav from 'components/MainNav.astro'
+import DocShell from 'layouts/DocShell.astro'
+---
+
+<DocShell canonicalPath="docs" title="Docs">
+  <ContentGrid client:load>
+    <MainNav
+      links={[
+        ['blog', [], '/posts'],
+        ['docs', [], '/docs'],
+      ]}
+      slot="header"
+    />
+    <main>
+      <DocGateway />
+    </main>
+    <Footer slot="footer" />
+  </ContentGrid>
+</DocShell>

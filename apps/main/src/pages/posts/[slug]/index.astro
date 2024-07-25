@@ -39,7 +39,6 @@ const posts = [...(await getCollection('posts'))].reverse()
     <meta content={lastModified} property="article:modified_time" />
     <meta content={props.id.split('--')[0]} property="article:published_time" />
   </Fragment>
-  <h1 class="no-screen">{props.data.title}</h1>
   <ContentGrid client:load>
     <MainNav
       links={[

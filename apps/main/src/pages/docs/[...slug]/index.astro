@@ -9,8 +9,7 @@ import Footer from 'components/Footer.astro'
 import MainNav from 'components/MainNav.astro'
 import RelatedDocs from 'components/RelatedDocs.astro'
 import TableOfContents from 'components/TableOfContents.astro'
-import { escapeUTF8 } from 'entities'
-import Shell from 'layouts/Shell.astro'
+import DocShell from 'layouts/DocShell.astro'
 import type { Root } from 'mdast'
 import { remark } from 'remark'
 import stripMarkdown from 'strip-markdown'
@@ -39,7 +38,8 @@ const firstParagraphProcessor = remark()
 
 const description =
   props.data.description ??
-  (await firstParagraphProcessor.process(props.body as string).then((res) => String(res).trim().replace(/\\/g, '')))
+  (await firstParagraphProcessor.process(props.body as string).then((res) => String(res).trim().replace(/\\/g, ''))) ??
+  ''
 
 const bcdData = (() => {
   if (!props.data.bcd) {
@@ -67,13 +67,17 @@ const bcdData = (() => {
   return null
 })()
 
-const parentPath = path.split('/').slice(0, -1).join('/')
+const pathComponents = path.split('/')
+const techRootPath = pathComponents.slice(0, 2).join('/')
+const parentPath = pathComponents.slice(0, -1).join('/')
 const siblingRegex = new RegExp(`^${parentPath}/[^/]+$`, 'i')
 
 const allDocs = await getCollection('docs')
 
+const techRootDocData = pathComponents.length > 3 ? allDocs.find((entry) => entry.id === `${techRootPath}.mdx`) : null
 const parentDocData = allDocs.find((entry) => entry.id === `${parentPath}.mdx`)
 
+const techRootDoc = techRootDocData ? ([techRootPath, techRootDocData.data.title] as const) : null
 const parentDoc = parentDocData ? ([parentPath, parentDocData.data.title] as const) : null
 const siblingDocs = allDocs
   .filter((entry) => siblingRegex.test(entry.slug))
@@ -84,7 +88,7 @@ const siblingDocs = allDocs
   })
 ---
 
-<Shell
+<DocShell
   canonicalPath={`docs/${path}`}
   description={description}
   image={`${site}docs/${path}/og.png`}
@@ -95,31 +99,31 @@ const siblingDocs = allDocs
     <meta content="alattalatta" property="article:author" />
     <meta content={lastModified} property="article:modified_time" />
   </Fragment>
-  <h1 class="no-screen">{props.data.title}</h1>
   <ContentGrid client:load>
     <MainNav
       links={[
-        ['blog', [['(...more)', '/posts']]],
-        [
-          'docs',
-          [
-            ['HTML', '/docs/Web/HTML'],
-            ['CSS', '/docs/Web/CSS'],
-          ],
-        ],
+        ['blog', [], '/posts'],
+        ['docs', [], '/docs'],
       ]}
       slot="header"
     >
       <TableOfContents {headings} slot="toc" />
       {
         (siblingDocs.length > 0 || parentDoc !== null) && (
-          <RelatedDocs docs={siblingDocs} idNow={props.id.replace('.mdx', '')} parent={parentDoc} />
+          <RelatedDocs docs={siblingDocs} idNow={props.id.replace('.mdx', '')} parent={parentDoc} root={techRootDoc} />
         )
       }
     </MainNav>
     <main>
-      <Doc bcd={bcdData} content={Content} post={props} />
+      <Doc
+        bcd={bcdData}
+        content={Content}
+        {description}
+        pinnable={props.data.pinnable}
+        slug={props.slug}
+        title={props.data.title}
+      />
     </main>
     <Footer {lastModified} slot="footer" />
   </ContentGrid>
-</Shell>
+</DocShell>

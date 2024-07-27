@@ -112,13 +112,23 @@ const { content: Content, ...props } = Astro.props
   .body :global(h3) {
     font-size: 1.5em;
     margin-top: 1.5em;
+    opacity: 0.88;
   }
   .body :global(h4) {
-    font-size: 1.2em;
-    margin-top: 1.25em;
+    font-size: 1.25em;
+    margin: 1.25em 0 0.75em;
+    opacity: 0.88;
   }
   .body :global(h5) {
-    font-size: 1em;
+    font-size: 1.1em;
+    margin: 1.5em 0 0.75em;
+  }
+  .body :global(h6) {
+    background: var(--primary);
+    color: var(--brand);
+    font-size: 0.85em;
+    margin: 2em 0 1em;
+    padding-left: 0.5em;
   }
 
   .body :global(hr) {

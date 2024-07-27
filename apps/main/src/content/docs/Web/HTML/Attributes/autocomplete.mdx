@@ -72,140 +72,189 @@ input {
   - 브라우저가 이 필드를 자동으로 완성하는 걸 허가합니다. 데이터 유형에 대한 힌트를 제공하지 않으므로 브라우저가 자체적으로 판단합니다.
 - : `<token-list>`
 
-  - 세부 자동완성 토큰들의 정렬된 공백 구분 리스트입니다. 사용 가능한 토큰들은 다음과 같습니다.
+  - 세부 자동완성 토큰들의 정렬된 공백 구분 리스트입니다. 전화번호, 이메일 주소, 메시지 프로토콜 토큰들은 수신자 유형 토큰보다 뒤에 위치해야 합니다.
 
-    - : `section-*`
-      - 양식 컨트롤들의 유명 그룹 이름을 정의합니다. 첫 8글자는 대소문자 구분 없는 "section-"이어야 하고, 그 뒤를 그룹의 이름으로 잇습니다. `section-*` 토큰은 항상 토큰 리스트의 제일 첫 항목이어야 합니다. 같은 `section-*` 토큰을 가진 양식 컨트롤들은 같은 그룹에 속하게 됩니다. `"section-product1 shipping street-address"`, `"section-product2 shipping street-address"`처럼 사용할 수 있습니다.
-    - : `name`
+    [HTML 명세](https://html.spec.whatwg.org/multipage/forms.html#autofill)에서 자세히 알아보세요.
 
-      - 사람의 성과 이름을 모두 포함한 전체 성명입니다. 인간 성명의 다양성과 그에 따른 복잡한 구조때문에 성명을 각각의 구성요소(성, 이름, 미들네임, ...)로 나누는 것보단 하나의 필드로 처리하는 편이 선호되지만, 필요한 경우 다음과 같은 더 상세한 자동완성 토큰을 사용할 수 있습니다.
+## 토큰 목록
 
-        - : `family-name`
-          - 성입니다. "Last name"이라고도 합니다.
-        - : `given-name`
-          - 이름입니다. "First name"이라고도 합니다.
-        - : `honorific-prefix`
-          - 성명 앞의 경칭입니다. "Mr.", "Ms.", "Dr." 등입니다.
-        - : `additional-name`
-          - 미들네임입니다.
-        - : `honorific-suffix`
-          - 성명 뒤의 경칭입니다. "Jr.", "PhD." 등입니다.
-        - : `nickname`
-          - 별명 또는 별칭입니다.
+`<token-list>`에는 다음 토큰들을 **순서대로** 지정할 수 있습니다.
 
-    - : `email`
-      - 이메일 주소입니다.
-    - : `username`
-      - 사용자 또는 계정 이름입니다.
-    - : `new-password`
-      - 새로운 비밀번호입니다. 새로운 계정 생성, 또는 비밀번호 변경 양식에서 "새 비밀번호 입력" 또는 "비밀번호 확인" 필드에 사용해야 합니다. 브라우저가 기존 비밀번호를 신규 비밀번호에 또 입력하는 걸 방지하고, 안전한 비밀번호 생성 제안 기능에도 사용합니다.
-    - : `current-password`
-      - 현재 비밀번호입니다.
-    - : `one-time-code`
-      - 추가 보안 절차에 사용되는 1회용 비밀번호(OTP)입니다. 보통 SMS, 이메일, 인증 애플리케이션처럼 외부 채널을 통해 받은 코드입니다.
-    - : `organization-title`
-      - 직함 또는 직책입니다. "대리", "과장", "선임 디렉터", "중위" 등입니다.
-    - : `organization`
-      - 회사 또는 조직명입니다.
-    - : `street-address`
+1. [그룹 명명 토큰](#그룹-명명-토큰)
+1. [그룹 식별자](#그룹-식별자)
+1. [세부 토큰](#세부-토큰)
+1. [웹 인증](#웹-인증)
 
-      - 도로 주소입니다. 2차 행정구역 (시/군/구 등) 내에서 온전히 식별 가능한 주소여야 하지만 도시명, 우편번호, 국가명은 포함하지 않아야 합니다.
+### 그룹 명명 토큰
 
-        - : `shipping`
-          - 상품을 보내야 하는 주소입니다. `shipping street-address`와 같이 사용합니다. `shipping address-level2`처럼 다른 토큰과도 조합할 수 있습니다.
-        - : `billing`
-          - 청구지 주소입니다. `billing street-address`와 같이 사용합니다. `billing address-level2`처럼 다른 토큰과도 조합할 수 있습니다.
+양식 필드들의 유명 그룹을 생성할 때 사용합니다. 그룹 명명 토큰은 공백 구분 리스트의 첫 항목이어야 합니다.
 
-    - : `address-line1`, `address-line2`, `address-line3`
-      - 도로 주소를 구성하는 각각의 줄입니다. 양식 내에 `street-address`가 없을 때만 사용해야 합니다.
-    - : `address-level4`
-      - 4차 [행정구역]입니다.
-    - : `address-level3`
-      - 3차 [행정구역]입니다.
-    - : `address-level2`
-      - 2차 [행정구역]입니다.
-    - : `address-level1`
+- : `section-*`
+  - 유명 그룹의 이름을 정의합니다. 첫 8글자는 대소문자 구분 없는 "section-"이어야 하고, 그 뒤를 그룹의 이름으로 잇습니다. `section-*` 토큰은 항상 토큰 리스트의 제일 첫 항목이어야 합니다. 같은 `section-*` 토큰을 가진 양식 컨트롤들은 같은 그룹에 속하게 됩니다. `"section-product1 shipping street-address"`, `"section-product2 shipping street-address"`처럼 사용합니다.
 
-      - 1차 [행정구역]입니다.
+### 그룹 식별자
 
-        [행정구역]: #주소의-행정구역-단계
+선택적으로 지정할 수 있는 주소/연락처 그룹 식별자입니다.
 
-    - : `country`
-      - 국가 또는 영토 코드입니다.
-    - : `country-name`
-      - 국가 또는 영토명입니다.
-    - : `postal-code`
-      - 우편번호입니다.
-    - : `cc-name`
+- : `shipping`
+  - 이 `<token-list>`가 배송지 주소 또는 연락 정보에 대한 것임을 나타냅니다.
+- : `billing`
+  - 이 `<token-list>`가 청구지 주소 또는 연락 정보에 대한 것임을 나타냈습니다.
 
-      - 신용카드 등 결제수단에 각인됐거나 연결된 소유자의 성명입니다. `name`과 마찬가지로 각 구성요소로 나누지 않고 하나의 필드로 처리하는 것이 선호됩니다.
+### 세부 토큰
 
-        - : `cc-family-name`
-          - 결제수단 소유자의 성입니다.
-        - : `cc-given-name`
-          - 결제수단 소유자의 이름입니다.
-        - : `cc-additional-name`
-          - 결제수단 소유자의 미들네임입니다.
+세부 토큰은 선택적인 "수신 유형" 토큰과 그 뒤의 연락처 토큰들로 구성되거나, 기타 토큰들의 공백 구분 리스트입니다.
 
-    - : `cc-number`
-      - 신용카드 번호, 계좌 번호 등 결제수단을 식별하는 번호입니다.
-    - : `cc-exp`
+#### 수신 유형
 
-      - 결제수단의 만료일입니다. 보통 `MM/YY` 또는 `MM/YYYY` 형식입니다.
+연락처의 수신 유형을 나타내는 토큰입니다. 수신 유형 토큰은 연락처 토큰들보다 앞에 위치해야 합니다.
 
-        - : `cc-exp-month`
-          - 결제수단의 만료 월입니다.
-        - : `cc-exp-year`
-          - 결제수단의 만료 연도입니다.
+- : `home`
+  - 거주지 연락처임을 나타냅니다.
+- : `work`
+  - 업무용 연락처임을 나타냅니다.
+- : `mobile`
+  - 이동통신 연락처임을 나타냅니다.
+- : `fax`
+  - 팩스 연락처임을 나타냅니다.
+- : `pager`
+  - 무선호출기 (삐삐) 연락처임을 나타냅니다.
 
-    - : `cc-csc`
-      - 결제수단의 보안 코드입니다. 신용카드에서는 CVV, CVC, CID 등으로 불리는 카드 뒷면의 세 자리 인증 번호에 해당합니다.
-    - : `cc-type`
-      - 결제수단의 종류입니다. "Visa", "Mastercard" 등입니다.
-    - : `transaction-currency`
-      - 거래 통화입니다.
-    - : `transaction-amount`
-      - 거래 금액입니다. 단위는 `transaction-currency`의 필드에 지정한 통화입니다.
-    - : `language`
-      - 사용자의 선호 언어입니다. [BCP 47 언어 태그](https://en.wikipedia.org/wiki/IETF_language_tag) 형식입니다.
-    - : `bday`
+#### 연락처
 
-      - 생년월일입니다. `YYYY-MM-DD` 형식입니다.
+전화번호, 이메일 주소, 메시지 프로토콜 등 연락처 정보들을 위한 토큰들입니다.
 
-        - : `bday-day`
-          - 생일의 일입니다.
-        - : `bday-month`
-          - 생일의 월입니다.
-        - : `bday-year`
-          - 생일의 연도입니다.
+- : `email`
+  - 이메일 주소입니다.
+- : `impp`
+  - IRC 등 인스턴트 메시징 프로토콜 (Instant Messaging and Presence Protocol) 엔드포인트입니다.
+- : `tel`
 
-    - : `sex`
-      - 성적 정체성입니다. 개행 없는 자유 형식 텍스트입니다.
-    - : `tel`
+  - 국가 코드를 포함한 전체 전화번호입니다. 구성요소를 나눠야 하면 아래 토큰들을 사용하세요.
 
-      - 국가 코드를 포함한 전체 전화번호입니다. 구성요소를 나눠야 하면 아래 토큰들을 사용하세요.
+    - : `tel-country-code`
+      - 국가 코드입니다. 미국은 1, 대한민국은 82입니다.
+    - : `tel-national`
+      - 국가 코드를 제외한 전체 전화번호입니다. 전화번호가 "82-010-1234-5678"이라면 "010-1234-5678" 부분입니다.
+    - : `tel-area-code`
+      - 지역 코드입니다. 대한민국에서는 02, 031, 010 등입니다.
+    - : `tel-local`
+      - 국가 코드와 지역 코드를 제외한 전화번호입니다. "010-1234-5678"에서 "1234-5678" 부분입니다. 필요한 경우 `tel-local-prefix`("1234")와 `tel-local-suffix`("5678")로 나눌 수 있습니다.
 
-        - : `tel-country-code`
-          - 국가 코드입니다. 미국은 1, 대한민국은 82입니다.
-        - : `tel-national`
-          - 국가 코드를 제외한 전체 전화번호입니다. 전화번호가 "82-010-1234-5678"이라면 "010-1234-5678" 부분입니다.
-        - : `tel-area-code`
-          - 지역 코드입니다. 대한민국에서는 02, 031, 010 등입니다.
-        - : `tel-local`
-          - 국가 코드와 지역 코드를 제외한 전화번호입니다. "010-1234-5678"에서 "1234-5678" 부분입니다. 필요한 경우 `tel-local-prefix`("1234")와 `tel-local-suffix`("5678")로 나눌 수 있습니다.
+- : `tel-extension`
+  - 호텔, 사무실 등에서 사용하는 내선번호입니다.
 
-    - : `tel-extension`
-      - 호텔, 사무실 등 전화번호 내선번호입니다.
-    - : `impp`
-      - IRC 등 인스턴트 메시징 프로토콜 (Instant Messaging and Presence Protocol) 엔드포인트입니다.
-    - : `url`
-      - 홈페이지나 회사 웹사이트 등 양식의 맥락에 맞는 URL입니다.
-    - : `photo`
-      - 사람, 회사, 연락처 등 양식의 맥락에 맞는 사진의 URL입니다.
-    - : `webauthn`
-      - 조건적 [`navigator.credentials.get()`](https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer/get) (i.e., `{ mediation: 'conditional' }`) 호출에 의해 생성된 [Web Authentication API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API) 패스키입니다. [양식 자동 완성을 통한 패스키 로그인](https://web.dev/articles/passkey-form-autofill)을 참고하세요.
+#### 기타 토큰
 
-[WHATWG 명세](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill)도 참고하세요.
+토큰이 전화번호, 이메일, IMPP가 아닐 경우 수신 유형 토큰을 앞에 붙이지 않습니다.
+
+- : `name`
+
+  - 사람의 성과 이름을 모두 포함한 전체 성명입니다. 인간 성명의 다양성과 그에 따른 복잡한 구조때문에 성명을 각각의 구성요소(성, 이름, 미들네임, ...)로 나누는 것보단 하나의 필드로 처리하는 편이 선호되지만, 필요한 경우 다음과 같은 더 상세한 자동완성 토큰을 사용할 수 있습니다.
+
+    - : `family-name`
+      - 성입니다. "Last name"이라고도 합니다.
+    - : `given-name`
+      - 이름입니다. "First name"이라고도 합니다.
+    - : `honorific-prefix`
+      - 성명 앞의 경칭입니다. "Mr.", "Ms.", "Dr." 등입니다.
+    - : `additional-name`
+      - 미들네임입니다.
+    - : `honorific-suffix`
+      - 성명 뒤의 경칭입니다. "Jr.", "PhD." 등입니다.
+    - : `nickname`
+      - 별명 또는 별칭입니다.
+
+- : `username`
+  - 사용자 또는 계정 이름입니다.
+- : `new-password`
+  - 새로운 비밀번호입니다. 새로운 계정 생성, 또는 비밀번호 변경 양식에서 "새 비밀번호 입력" 또는 "비밀번호 확인" 필드에 사용해야 합니다. 브라우저가 기존 비밀번호를 신규 비밀번호에 또 입력하는 걸 방지하고, 안전한 비밀번호 생성 제안 기능에도 사용합니다.
+- : `current-password`
+  - 현재 비밀번호입니다.
+- : `one-time-code`
+  - 추가 보안 절차에 사용되는 1회용 비밀번호(OTP)입니다. 보통 SMS, 이메일, 인증 애플리케이션처럼 외부 채널을 통해 받은 코드입니다.
+- : `organization-title`
+  - 직함 또는 직책입니다. "대리", "과장", "선임 디렉터", "중위" 등입니다.
+- : `organization`
+  - 회사 또는 조직명입니다.
+- : `street-address`
+  - 도로 주소입니다. 2차 행정구역 (시/군/구 등) 내에서 온전히 식별 가능한 주소여야 하지만 도시명, 우편번호, 국가명은 포함하지 않아야 합니다.
+- : `address-line1`, `address-line2`, `address-line3`
+  - 도로 주소를 구성하는 각각의 줄입니다. 양식 내에 `street-address`가 없을 때만 사용해야 합니다.
+- : `address-level4`
+  - 4차 [행정구역]입니다.
+- : `address-level3`
+  - 3차 [행정구역]입니다.
+- : `address-level2`
+  - 2차 [행정구역]입니다.
+- : `address-level1`
+
+  - 1차 [행정구역]입니다.
+
+    [행정구역]: #주소의-행정구역-단계
+
+- : `country`
+  - 국가 또는 영토 코드입니다.
+- : `country-name`
+  - 국가 또는 영토명입니다.
+- : `postal-code`
+  - 우편번호입니다.
+- : `cc-name`
+
+  - 신용카드 등 결제수단에 각인됐거나 연결된 소유자의 성명입니다. `name`과 마찬가지로 각 구성요소로 나누지 않고 하나의 필드로 처리하는 것이 선호됩니다.
+
+    - : `cc-family-name`
+      - 결제수단 소유자의 성입니다.
+    - : `cc-given-name`
+      - 결제수단 소유자의 이름입니다.
+    - : `cc-additional-name`
+      - 결제수단 소유자의 미들네임입니다.
+
+- : `cc-number`
+  - 신용카드 번호, 계좌 번호 등 결제수단을 식별하는 번호입니다.
+- : `cc-exp`
+
+  - 결제수단의 만료일입니다. 보통 `MM/YY` 또는 `MM/YYYY` 형식입니다.
+
+    - : `cc-exp-month`
+      - 결제수단의 만료 월입니다.
+    - : `cc-exp-year`
+      - 결제수단의 만료 연도입니다.
+
+- : `cc-csc`
+  - 결제수단의 보안 코드입니다. 신용카드에서는 CVV, CVC, CID 등으로 불리는 카드 뒷면의 세 자리 인증 번호에 해당합니다.
+- : `cc-type`
+  - 결제수단의 종류입니다. "Visa", "Mastercard" 등입니다.
+- : `transaction-currency`
+  - 거래 통화입니다.
+- : `transaction-amount`
+  - 거래 금액입니다. 단위는 `transaction-currency`의 필드에 지정한 통화입니다.
+- : `language`
+  - 사용자의 선호 언어입니다. [BCP 47 언어 태그](https://en.wikipedia.org/wiki/IETF_language_tag) 형식입니다.
+- : `bday`
+
+  - 생년월일입니다. `YYYY-MM-DD` 형식입니다.
+
+    - : `bday-day`
+      - 생일의 일입니다.
+    - : `bday-month`
+      - 생일의 월입니다.
+    - : `bday-year`
+      - 생일의 연도입니다.
+
+- : `sex`
+  - 성적 정체성입니다. 개행 없는 자유 형식 텍스트입니다.
+- : `url`
+  - 홈페이지나 회사 웹사이트 등 양식의 맥락에 맞는 URL입니다.
+- : `photo`
+  - 사람, 회사, 연락처 등 양식의 맥락에 맞는 사진의 URL입니다.
+
+#### 웹 인증
+
+[`<input>`]과 [`<textarea>`]의 `autocomplete` 리스트 마지막에 `webauthn` 토큰을 지정하면, 사용자가 컨트롤과 상호작용할 때 사용자 에이전트가 공개 키 자격 증명을 보여줍니다.
+
+- : `webauthn`
+  - 조건적 [`navigator.credentials.get()`](https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer/get) (i.e., `{ mediation: 'conditional' }`) 호출에 의해 생성된 [Web Authentication API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API) 패스키입니다. `autocomplete` 리스트의 마지막 토큰이어야 합니다. [양식 자동 완성을 통한 패스키 로그인](https://web.dev/articles/passkey-form-autofill)을 참고하세요.
 
 # 주소의 행정구역 단계
 

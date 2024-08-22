@@ -50,7 +50,7 @@ const FrameRenderer: React.FC<{ babel?: boolean }> = ({ babel }) => {
 
         const script = document.createElement('script')
         script.dataset.name = file.name
-        script.textContent = babel ? window.Babel.transform(content, { presets: ['react'] }).code ?? '' : content
+        script.textContent = babel ? (window.Babel.transform(content, { presets: ['react'] }).code ?? '') : content
         script.type = 'module'
         document.body.appendChild(script)
       }

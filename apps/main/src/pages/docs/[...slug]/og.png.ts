@@ -31,7 +31,10 @@ const appRoot = path.join(workspaceRoot, 'apps/main/src')
 const fontOrbit = await fs.readFile(path.join(appRoot, 'gen/orbit.ttf'))
 const fontNGC = await fs.readFile(path.join(appRoot, 'gen/ngc.ttf'))
 
-export const GET: APIRoute<Props> = async ({ props: { body, data } }) => {
+export const GET: APIRoute<Props> = async ({ props }) => {
+  const body = (props as unknown as { body: string }).body
+  const data = props.data
+
   const description =
     data.description ??
     (await firstParagraphProcessor.process(body).then((res) => String(res).trim().replace(/\\/g, ''))) ??

@@ -8,13 +8,13 @@ interface Props {
 
 const { post } = Astro.props
 
-const href = `/posts/${post.slug}`
+const href = `/posts/${post.id}`
 ---
 
-<article aria-labelledby={post.slug}>
+<article aria-labelledby={post.id}>
   <a href={href}>
     <Image alt="" class="thumbnail" loading="lazy" src={post.data.image} width={1440} />
-    <h2 id={post.slug}>{post.data.title}</h2>
+    <h2 id={post.id}>{post.data.title}</h2>
   </a>
   <p>{post.data.description}</p>
 </article>

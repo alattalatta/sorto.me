@@ -14,12 +14,12 @@ interface Props {
 const { content: Content, post } = Astro.props
 ---
 
-<article aria-labelledby={post.slug}>
+<article aria-labelledby={post.id}>
   <header>
     <Image alt="" class="thumbnail" src={post.data.image} width={2240} />
     <hgroup>
-      <h2 id={post.slug}>{post.data.title}</h2>
-      <time>{post.slug.split('--')[0]}</time>
+      <h2 id={post.id}>{post.data.title}</h2>
+      <time>{post.id.split('--')[0]}</time>
     </hgroup>
   </header>
   <ContentBody

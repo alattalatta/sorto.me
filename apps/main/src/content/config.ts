@@ -1,8 +1,14 @@
 import { glob } from 'astro/loaders'
 import { defineCollection, z } from 'astro:content'
 
+const generateId = ({ entry }: { entry: string }) => entry.replace(/(\/index)?\.mdx/, '')
+
 const blogCollection = defineCollection({
-  loader: glob({ base: 'posts', pattern: '**/*.mdx' }),
+  loader: glob({
+    base: './src/markdowns/posts',
+    generateId,
+    pattern: '**/*.mdx',
+  }),
   schema: ({ image }) =>
     z.object({
       description: z.string(),
@@ -13,7 +19,11 @@ const blogCollection = defineCollection({
 })
 
 const docCollection = defineCollection({
-  loader: glob({ base: 'docs', pattern: '**/*.mdx' }),
+  loader: glob({
+    base: './src/markdowns/docs',
+    generateId,
+    pattern: '**/*.mdx',
+  }),
   schema: z.object({
     bcd: z.string().optional(),
     description: z.string().optional(),

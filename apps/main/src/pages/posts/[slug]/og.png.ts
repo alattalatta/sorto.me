@@ -11,7 +11,7 @@ import sharp from 'sharp'
 
 export const getStaticPaths = (async () => {
   return (await getCollection('posts')).map((entry) => ({
-    params: { slug: entry.slug },
+    params: { slug: entry.id },
     props: entry,
   }))
 }) satisfies GetStaticPaths
@@ -26,7 +26,7 @@ const fontOrbit = await fs.readFile(path.join(appRoot, 'gen/orbit.ttf'))
 export const GET: APIRoute<Props> = async ({ props }) => {
   const { description, title } = props.data
   const imageBuffer = (
-    await sharp(await fs.readFile(path.join(appRoot, 'content/posts', props.slug, 'cover.png')))
+    await sharp(await fs.readFile(path.join(appRoot, 'markdowns/posts', props.id, 'cover.png')))
       .resize(768 * 2)
       .toBuffer()
   ).buffer

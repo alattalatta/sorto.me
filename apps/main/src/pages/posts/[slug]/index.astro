@@ -1,6 +1,6 @@
 ---
 import type { GetStaticPaths } from 'astro'
-import { getCollection } from 'astro:content'
+import { getCollection, render } from 'astro:content'
 import Article from 'components/Article.astro'
 import ContentGrid from 'components/ContentGrid'
 import Footer from 'components/Footer.astro'
@@ -10,7 +10,7 @@ import Shell from 'layouts/Shell.astro'
 
 export const getStaticPaths = (async () => {
   return (await getCollection('posts')).map((entry) => ({
-    params: { slug: entry.slug },
+    params: { slug: entry.id },
     props: entry,
   }))
 }) satisfies GetStaticPaths
@@ -22,15 +22,15 @@ const {
   Content,
   headings,
   remarkPluginFrontmatter: { lastModified },
-} = await props.render()
+} = await render(props)
 
 const posts = [...(await getCollection('posts'))].reverse()
 ---
 
 <Shell
-  canonicalPath={`${props.slug}`}
+  canonicalPath={`${props.id}`}
   description={props.data.description}
-  image={`${site}posts/${props.slug}/og.png`}
+  image={`${site}posts/${props.id}/og.png`}
   title={props.data.title}
 >
   <Fragment slot="head">
@@ -47,7 +47,7 @@ const posts = [...(await getCollection('posts'))].reverse()
         [
           'blog',
           [
-            ...posts.map<[string, string]>((post) => [post.data.titleShort || post.data.title, `/posts/${post.slug}`]),
+            ...posts.map<[string, string]>((post) => [post.data.titleShort || post.data.title, `/posts/${post.id}`]),
             ['(...more)', '/posts'],
           ],
         ],

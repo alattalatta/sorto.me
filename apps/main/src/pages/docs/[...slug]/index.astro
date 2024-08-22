@@ -2,7 +2,7 @@
 import type { CompatData, Identifier } from '@mdn/browser-compat-data'
 import bcd from '@mdn/browser-compat-data' with { type: 'json' }
 import type { GetStaticPaths } from 'astro'
-import { getCollection } from 'astro:content'
+import { getCollection, render } from 'astro:content'
 import ContentGrid from 'components/ContentGrid'
 import Doc from 'components/Doc.astro'
 import Footer from 'components/Footer.astro'
@@ -30,7 +30,7 @@ const {
   Content,
   headings,
   remarkPluginFrontmatter: { lastModified },
-} = await props.render()
+} = await render(props)
 
 const firstParagraphProcessor = remark()
   .use(() => (root: Root) => select('paragraph', root) || root.children[0] || root)
@@ -38,7 +38,9 @@ const firstParagraphProcessor = remark()
 
 const description =
   props.data.description ??
-  (await firstParagraphProcessor.process(props.body as string).then((res) => String(res).trim().replace(/\\/g, ''))) ??
+  (await firstParagraphProcessor
+    .process((props as unknown as { body: string }).body)
+    .then((res) => String(res).trim().replace(/\\/g, ''))) ??
   ''
 
 const bcdData = (() => {
@@ -80,7 +82,7 @@ const parentDocData = allDocs.find((entry) => entry.id === `${parentPath}.mdx`)
 const techRootDoc = techRootDocData ? ([techRootPath, techRootDocData.data.title] as const) : null
 const parentDoc = parentDocData ? ([parentPath, parentDocData.data.title] as const) : null
 const siblingDocs = allDocs
-  .filter((entry) => siblingRegex.test(entry.slug))
+  .filter((entry) => siblingRegex.test(entry.id))
   .sort((a, b) => a.id.localeCompare(b.id))
   .map((entry) => {
     const id = entry.id.replace('.mdx', '')
@@ -120,7 +122,7 @@ const siblingDocs = allDocs
         content={Content}
         {description}
         pinnable={props.data.pinnable}
-        slug={props.slug}
+        slug={props.id}
         title={props.data.title}
       />
     </main>

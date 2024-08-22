@@ -18,7 +18,7 @@ const posts = [...(await getCollection('posts'))].reverse()
         [
           'blog',
           [
-            ...posts.map<[string, string]>((post) => [post.data.titleShort || post.data.title, `/posts/${post.slug}`]),
+            ...posts.map<[string, string]>((post) => [post.data.titleShort || post.data.title, `/posts/${post.id}`]),
             // ['(...more)', '/posts'],
           ],
         ],

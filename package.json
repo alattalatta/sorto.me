@@ -10,8 +10,8 @@
     "packages/**"
   ],
   "devDependencies": {
-    "@alattalatta/eslint-config": "^2.1.0",
-    "@alattalatta/prettier-config": "^2.1.0",
+    "@alattalatta/eslint-config": "^2.2.0",
+    "@alattalatta/prettier-config": "^2.2.0",
     "astro": "^4.12.2",
     "eslint": "^8.57.0",
     "eslint-plugin-astro": "^1.2.3",

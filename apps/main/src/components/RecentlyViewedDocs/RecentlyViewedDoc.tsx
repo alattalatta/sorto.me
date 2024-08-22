@@ -5,10 +5,9 @@ import styles from './RecentlyViewedDoc.module.scss'
 
 type Props = {
   doc: Doc
-  onPin: (doc: Doc) => void
 }
 
-const RecentlyViewedDoc: React.FC<Props> = ({ doc, onPin }) => {
+const RecentlyViewedDoc: React.FC<Props> = ({ doc }) => {
   return (
     <article aria-labelledby={doc.id} className={styles.root}>
       <a href={doc.id}>

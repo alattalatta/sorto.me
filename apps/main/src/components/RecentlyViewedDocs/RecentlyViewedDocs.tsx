@@ -1,4 +1,4 @@
-import { listPinned, listUnpinned, pin } from 'db/RecentlyViewedDocs'
+import { listPinned, listUnpinned } from 'db/RecentlyViewedDocs'
 import { useLiveQuery } from 'dexie-react-hooks'
 
 import RecentlyViewedDoc from './RecentlyViewedDoc'
@@ -29,7 +29,7 @@ const RecentlyViewedDocs: React.FC = () => {
         {pinned.length > 0 ? (
           <div className={styles.list}>
             {pinned.map((doc) => (
-              <RecentlyViewedDoc key={doc.id} doc={doc} onPin={(d) => void pin(d.id, 0)} />
+              <RecentlyViewedDoc key={doc.id} doc={doc} />
             ))}
           </div>
         ) : (
@@ -43,7 +43,7 @@ const RecentlyViewedDocs: React.FC = () => {
         {unpinned.length > 0 ? (
           <div className={styles.list}>
             {unpinned.map((doc) => (
-              <RecentlyViewedDoc key={doc.id} doc={doc} onPin={(d) => void pin(d.id, 1)} />
+              <RecentlyViewedDoc key={doc.id} doc={doc} />
             ))}
           </div>
         ) : (

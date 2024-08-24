@@ -45,7 +45,7 @@ export default defineConfig({
         const pathname = new URL(item.url).pathname
         if (pathname.startsWith('/posts/')) {
           try {
-            const contentPath = path.join(process.cwd(), 'src/content', pathname, 'index.lastmod')
+            const contentPath = path.join(process.cwd(), 'src/markdowns', pathname, 'index.lastmod')
             const lastmod = readFileSync(contentPath)
             item.lastmod = lastmod.toString()
           } finally {
@@ -55,7 +55,7 @@ export default defineConfig({
 
         if (pathname.startsWith('/docs/')) {
           try {
-            const contentPath = path.join(process.cwd(), 'src/content', `${pathname}.lastmod`)
+            const contentPath = path.join(process.cwd(), 'src/markdowns', `${pathname}.lastmod`)
             const lastmod = readFileSync(contentPath)
             item.lastmod = lastmod.toString()
           } finally {

@@ -24,11 +24,11 @@
     },
     "lastmod": {
       "inputs": [
-        "src/content/**/*.mdx",
+        "src/markdowns/**/*.mdx",
         "lastmod.mjs"
       ],
       "outputs": [
-        "src/content/**/*.lastmod"
+        "src/markdowns/**/*.lastmod"
       ]
     }
   }

@@ -7,7 +7,7 @@ import { globSync } from 'glob'
 
 const exec = promisify(exec_)
 
-const files = globSync('src/content/**/*.mdx')
+const files = globSync('src/markdowns/**/*.mdx')
 
 try {
   await Promise.all(

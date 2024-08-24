@@ -21,7 +21,14 @@ export default defineConfig({
       optimize: true,
       remarkPlugins: [remarkDirective, libmdx.remarkTransformerPlugin, libmdx.remarkLastmodPlugin],
       remarkRehype: {
+        clobberPrefix: '',
         handlers: libmdx.remarkRehypeHandlers,
+        footnoteLabel: '각주',
+        footnoteLabelProperties: { class: 'no-screen' },
+        footnoteLabelTagName: 'h3',
+        footnoteBackLabel: (refIndex, rerefIndex) => {
+          return `${refIndex + 1}${rerefIndex ? `-${rerefIndex}` : ''}번 참조로 돌아가기`
+        },
       },
       shikiConfig: {
         theme: 'catppuccin-latte',

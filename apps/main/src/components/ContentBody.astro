@@ -228,4 +228,12 @@ const { content: Content, ...props } = Astro.props
   .body :global(li + li) {
     margin-top: 0.25em;
   }
+
+  .body :global(.footnotes) {
+    border-top: 1px solid var(--primary);
+    margin-top: 1em;
+  }
+  .body :global(.data-footnote-backref) {
+    font-size: 0.75em;
+  }
 </style>

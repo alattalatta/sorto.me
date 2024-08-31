@@ -1,0 +1,206 @@
+---
+title: 'CSS <named-color> 자료형: 사전 정의 색상 키워드'
+titleShort: '<named-color>'
+description: 'CSS <named-color> 자료형은 red, blue, black, lightseagreen 등 사전 정의된 색상 키워드입니다.'
+bcd: css.types.color.named-color
+---
+
+CSS **`<named-color>`** 자료형은 `red`, `blue`, `black`, `lightseagreen` 등 사전 정의된 색상 키워드입니다. 구문적으로는 [`<ident>`](https://developer.mozilla.org/en-US/docs/Web/CSS/ident)에 속합니다.
+
+[`<color>`](.)를 사용할 수 있는 모든 곳에는 `<named-color>`를 사용할 수 있습니다.
+
+# 구문
+
+```css
+color: red;
+color: orange;
+color: tan;
+color: rebeccapurple;
+color: transparent;
+```
+
+## 값
+
+`<named-color>`는 표준 색상, `transparent`, `currentcolor`로 구성됩니다.
+
+### 표준 색상
+
+기본 색상들은 기억하기 쉽고 널리 쓰이는 이름을 가지고 있습니다.
+
+| 키워드    | RGB 16진수 | 미리보기                                             |
+| --------- | ---------- | ---------------------------------------------------- |
+| `black`   | `#000000`  | <div style="height:1.75em;background:black"></div>   |
+| `silver`  | `#c0c0c0`  | <div style="height:1.75em;background:silver"></div>  |
+| `gray`    | `#808080`  | <div style="height:1.75em;background:gray"></div>    |
+| `white`   | `#ffffff`  | <div style="height:1.75em;background:white"></div>   |
+| `maroon`  | `#800000`  | <div style="height:1.75em;background:maroon"></div>  |
+| `red`     | `#ff0000`  | <div style="height:1.75em;background:red"></div>     |
+| `purple`  | `#800080`  | <div style="height:1.75em;background:purple"></div>  |
+| `fuchsia` | `#ff00ff`  | <div style="height:1.75em;background:fuchsia"></div> |
+| `green`   | `#008000`  | <div style="height:1.75em;background:green"></div>   |
+| `lime`    | `#00ff00`  | <div style="height:1.75em;background:lime"></div>    |
+| `olive`   | `#808000`  | <div style="height:1.75em;background:olive"></div>   |
+| `yellow`  | `#ffff00`  | <div style="height:1.75em;background:yellow"></div>  |
+| `navy`    | `#000080`  | <div style="height:1.75em;background:navy"></div>    |
+| `blue`    | `#0000ff`  | <div style="height:1.75em;background:blue"></div>    |
+| `teal`    | `#008080`  | <div style="height:1.75em;background:teal"></div>    |
+| `aqua`    | `#00ffff`  | <div style="height:1.75em;background:aqua"></div>    |
+
+기본 색상 16개 외에도 약 150개의 추가 색상이 정의돼있습니다.
+
+| 키워드                           | RGB 16진수 | 미리보기                                                          |
+| -------------------------------- | ---------- | ----------------------------------------------------------------- |
+| `aliceblue`                      | `#f0f8ff`  | <div style="height:1.75em;background:aliceblue"></div>            |
+| `antiquewhite`                   | `#faebd7`  | <div style="height:1.75em;background:antiquewhite"></div>         |
+| `aquamarine`                     | `#7fffd4`  | <div style="height:1.75em;background:aquamarine"></div>           |
+| `azure`                          | `#f0ffff`  | <div style="height:1.75em;background:azure"></div>                |
+| `beige`                          | `#f5f5dc`  | <div style="height:1.75em;background:beige"></div>                |
+| `bisque`                         | `#ffe4c4`  | <div style="height:1.75em;background:bisque"></div>               |
+| `blanchedalmond`                 | `#ffebcd`  | <div style="height:1.75em;background:blanchedalmond"></div>       |
+| `blueviolet`                     | `#8a2be2`  | <div style="height:1.75em;background:blueviolet"></div>           |
+| `brown`                          | `#a52a2a`  | <div style="height:1.75em;background:brown"></div>                |
+| `burlywood`                      | `#deb887`  | <div style="height:1.75em;background:burlywood"></div>            |
+| `cadetblue`                      | `#5f9ea0`  | <div style="height:1.75em;background:cadetblue"></div>            |
+| `chartreuse`                     | `#7fff00`  | <div style="height:1.75em;background:chartreuse"></div>           |
+| `chartreuse`                     | `#7fff00`  | <div style="height:1.75em;background:chartreuse"></div>           |
+| `chocolate`                      | `#d2691e`  | <div style="height:1.75em;background:chocolate"></div>            |
+| `coral`                          | `#ff7f50`  | <div style="height:1.75em;background:coral"></div>                |
+| `cornflowerblue`                 | `#6495ed`  | <div style="height:1.75em;background:cornflowerblue"></div>       |
+| `cornsilk`                       | `#fff8dc`  | <div style="height:1.75em;background:cornsilk"></div>             |
+| `crimson`                        | `#dc143c`  | <div style="height:1.75em;background:crimson"></div>              |
+| `cyan` (`aqua`와 같음)           | `#00ffff`  | <div style="height:1.75em;background:cyan"></div>                 |
+| `darkblue`                       | `#00008b`  | <div style="height:1.75em;background:darkblue"></div>             |
+| `darkcyan`                       | `#008b8b`  | <div style="height:1.75em;background:darkcyan"></div>             |
+| `darkgoldenrod`                  | `#b8860b`  | <div style="height:1.75em;background:darkgoldenrod"></div>        |
+| `darkgray`, `darkgrey`           | `#a9a9a9`  | <div style="height:1.75em;background:darkgray"></div>             |
+| `darkgreen`                      | `#006400`  | <div style="height:1.75em;background:darkgreen"></div>            |
+| `darkkhaki`                      | `#bdb76b`  | <div style="height:1.75em;background:darkkhaki"></div>            |
+| `darkmagenta`                    | `#8b008b`  | <div style="height:1.75em;background:darkmagenta"></div>          |
+| `darkolivegreen`                 | `#556b2f`  | <div style="height:1.75em;background:darkolivegreen"></div>       |
+| `darkorange`                     | `#ff8c00`  | <div style="height:1.75em;background:darkorange"></div>           |
+| `darkorchid`                     | `#9932cc`  | <div style="height:1.75em;background:darkorchid"></div>           |
+| `darkred`                        | `#8b0000`  | <div style="height:1.75em;background:darkred"></div>              |
+| `darksalmon`                     | `#e9967a`  | <div style="height:1.75em;background:darksalmon"></div>           |
+| `darkseagreen`                   | `#8fbc8f`  | <div style="height:1.75em;background:darkseagreen"></div>         |
+| `darkslateblue`                  | `#483d8b`  | <div style="height:1.75em;background:darkslateblue"></div>        |
+| `darkslategray`, `darkslategrey` | `#2f4f4f`  | <div style="height:1.75em;background:darkslategray"></div>        |
+| `darkturquoise`                  | `#00ced1`  | <div style="height:1.75em;background:darkturquoise"></div>        |
+| `darkviolet`                     | `#9400d3`  | <div style="height:1.75em;background:darkviolet"></div>           |
+| `deeppink`                       | `#ff1493`  | <div style="height:1.75em;background:deeppink"></div>             |
+| `deepskyblue`                    | `#00bfff`  | <div style="height:1.75em;background:deepskyblue"></div>          |
+| `dimgray`                        | `#696969`  | <div style="height:1.75em;background:dimgray"></div>              |
+| `dimgrey`                        | `#696969`  | <div style="height:1.75em;background:dimgrey"></div>              |
+| `dodgerblue`                     | `#1e90ff`  | <div style="height:1.75em;background:dodgerblue"></div>           |
+| `firebrick`                      | `#b22222`  | <div style="height:1.75em;background:firebrick"></div>            |
+| `floralwhite`                    | `#fffaf0`  | <div style="height:1.75em;background:floralwhite"></div>          |
+| `forestgreen`                    | `#228b22`  | <div style="height:1.75em;background:forestgreen"></div>          |
+| `gainsboro`                      | `#dcdcdc`  | <div style="height:1.75em;background:gainsboro"></div>            |
+| `ghostwhite`                     | `#f8f8ff`  | <div style="height:1.75em;background:ghostwhite"></div>           |
+| `gold`                           | `#ffd700`  | <div style="height:1.75em;background:gold"></div>                 |
+| `goldenrod`                      | `#daa520`  | <div style="height:1.75em;background:goldenrod"></div>            |
+| `grey` (`gray`와 같음)           | `#808080`  | <div style="height:1.75em;background:gray"></div>                 |
+| `greenyellow`                    | `#adff2f`  | <div style="height:1.75em;background:greenyellow"></div>          |
+| `honeydew`                       | `#f0fff0`  | <div style="height:1.75em;background:honeydew"></div>             |
+| `hotpink`                        | `#ff69b4`  | <div style="height:1.75em;background:hotpink"></div>              |
+| `indianred`                      | `#cd5c5c`  | <div style="height:1.75em;background:indianred"></div>            |
+| `indigo`                         | `#4b0082`  | <div style="height:1.75em;background:indigo"></div>               |
+| `ivory`                          | `#fffff0`  | <div style="height:1.75em;background:ivory"></div>                |
+| `khaki`                          | `#f0e68c`  | <div style="height:1.75em;background:khaki"></div>                |
+| `lavender`                       | `#e6e6fa`  | <div style="height:1.75em;background:lavender"></div>             |
+| `lavenderblush`                  | `#fff0f5`  | <div style="height:1.75em;background:lavenderblush"></div>        |
+| `lawngreen`                      | `#7cfc00`  | <div style="height:1.75em;background:lawngreen"></div>            |
+| `lemonchiffon`                   | `#fffacd`  | <div style="height:1.75em;background:lemonchiffon"></div>         |
+| `lightblue`                      | `#add8e6`  | <div style="height:1.75em;background:lightblue"></div>            |
+| `lightcoral`                     | `#f08080`  | <div style="height:1.75em;background:lightcoral"></div>           |
+| `lightcyan`                      | `#e0ffff`  | <div style="height:1.75em;background:lightcyan"></div>            |
+| `lightgoldenrodyellow`           | `#fafad2`  | <div style="height:1.75em;background:lightgoldenrodyellow"></div> |
+| `lightgray`                      | `#d3d3d3`  | <div style="height:1.75em;background:lightgray"></div>            |
+| `lightgreen`                     | `#90ee90`  | <div style="height:1.75em;background:lightgreen"></div>           |
+| `lightgrey`                      | `#d3d3d3`  | <div style="height:1.75em;background:lightgrey"></div>            |
+| `lightpink`                      | `#ffb6c1`  | <div style="height:1.75em;background:lightpink"></div>            |
+| `lightsalmon`                    | `#ffa07a`  | <div style="height:1.75em;background:lightsalmon"></div>          |
+| `lightseagreen`                  | `#20b2aa`  | <div style="height:1.75em;background:lightseagreen"></div>        |
+| `lightskyblue`                   | `#87cefa`  | <div style="height:1.75em;background:lightskyblue"></div>         |
+| `lightslategray`                 | `#778899`  | <div style="height:1.75em;background:lightslategray"></div>       |
+| `lightslategrey`                 | `#778899`  | <div style="height:1.75em;background:lightslategrey"></div>       |
+| `lightsteelblue`                 | `#b0c4de`  | <div style="height:1.75em;background:lightsteelblue"></div>       |
+| `lightyellow`                    | `#ffffe0`  | <div style="height:1.75em;background:lightyellow"></div>          |
+| `limegreen`                      | `#32cd32`  | <div style="height:1.75em;background:limegreen"></div>            |
+| `linen`                          | `#faf0e6`  | <div style="height:1.75em;background:linen"></div>                |
+| `magenta` (`fuchsia`와 같음)     | `#ff00ff`  | <div style="height:1.75em;background:magenta"></div>              |
+| `mediumaquamarine`               | `#66cdaa`  | <div style="height:1.75em;background:mediumaquamarine"></div>     |
+| `mediumblue`                     | `#0000cd`  | <div style="height:1.75em;background:mediumblue"></div>           |
+| `mediumorchid`                   | `#ba55d3`  | <div style="height:1.75em;background:mediumorchid"></div>         |
+| `mediumpurple`                   | `#9370db`  | <div style="height:1.75em;background:mediumpurple"></div>         |
+| `mediumseagreen`                 | `#3cb371`  | <div style="height:1.75em;background:mediumseagreen"></div>       |
+| `mediumslateblue`                | `#7b68ee`  | <div style="height:1.75em;background:mediumslateblue"></div>      |
+| `mediumspringgreen`              | `#00fa9a`  | <div style="height:1.75em;background:mediumspringgreen"></div>    |
+| `mediumturquoise`                | `#48d1cc`  | <div style="height:1.75em;background:mediumturquoise"></div>      |
+| `mediumvioletred`                | `#c71585`  | <div style="height:1.75em;background:mediumvioletred"></div>      |
+| `midnightblue`                   | `#191970`  | <div style="height:1.75em;background:midnightblue"></div>         |
+| `mintcream`                      | `#f5fffa`  | <div style="height:1.75em;background:mintcream"></div>            |
+| `mistyrose`                      | `#ffe4e1`  | <div style="height:1.75em;background:mistyrose"></div>            |
+| `moccasin`                       | `#ffe4b5`  | <div style="height:1.75em;background:moccasin"></div>             |
+| `navajowhite`                    | `#ffdead`  | <div style="height:1.75em;background:navajowhite"></div>          |
+| `oldlace`                        | `#fdf5e6`  | <div style="height:1.75em;background:oldlace"></div>              |
+| `olivedrab`                      | `#6b8e23`  | <div style="height:1.75em;background:olivedrab"></div>            |
+| `orange`                         | `#ffa500`  | <div style="height:1.75em;background:orange"></div>               |
+| `orangered`                      | `#ff4500`  | <div style="height:1.75em;background:orangered"></div>            |
+| `orchid`                         | `#da70d6`  | <div style="height:1.75em;background:orchid"></div>               |
+| `palegoldenrod`                  | `#eee8aa`  | <div style="height:1.75em;background:palegoldenrod"></div>        |
+| `palegreen`                      | `#98fb98`  | <div style="height:1.75em;background:palegreen"></div>            |
+| `paleturquoise`                  | `#afeeee`  | <div style="height:1.75em;background:paleturquoise"></div>        |
+| `palevioletred`                  | `#db7093`  | <div style="height:1.75em;background:palevioletred"></div>        |
+| `papayawhip`                     | `#ffefd5`  | <div style="height:1.75em;background:papayawhip"></div>           |
+| `peachpuff`                      | `#ffdab9`  | <div style="height:1.75em;background:peachpuff"></div>            |
+| `peru`                           | `#cd853f`  | <div style="height:1.75em;background:peru"></div>                 |
+| `pink`                           | `#ffc0cb`  | <div style="height:1.75em;background:pink"></div>                 |
+| `plum`                           | `#dda0dd`  | <div style="height:1.75em;background:plum"></div>                 |
+| `powderblue`                     | `#b0e0e6`  | <div style="height:1.75em;background:powderblue"></div>           |
+| `rebeccapurple`                  | `#663399`  | <div style="height:1.75em;background:rebeccapurple"></div>        |
+| `rosybrown`                      | `#bc8f8f`  | <div style="height:1.75em;background:rosybrown"></div>            |
+| `royalblue`                      | `#4169e1`  | <div style="height:1.75em;background:royalblue"></div>            |
+| `saddlebrown`                    | `#8b4513`  | <div style="height:1.75em;background:saddlebrown"></div>          |
+| `salmon`                         | `#fa8072`  | <div style="height:1.75em;background:salmon"></div>               |
+| `sandybrown`                     | `#f4a460`  | <div style="height:1.75em;background:sandybrown"></div>           |
+| `seagreen`                       | `#2e8b57`  | <div style="height:1.75em;background:seagreen"></div>             |
+| `seashell`                       | `#fff5ee`  | <div style="height:1.75em;background:seashell"></div>             |
+| `sienna`                         | `#a0522d`  | <div style="height:1.75em;background:sienna"></div>               |
+| `skyblue`                        | `#87ceeb`  | <div style="height:1.75em;background:skyblue"></div>              |
+| `slateblue`                      | `#6a5acd`  | <div style="height:1.75em;background:slateblue"></div>            |
+| `slategray`, `slategrey`         | `#708090`  | <div style="height:1.75em;background:slategray"></div>            |
+| `snow`                           | `#fffafa`  | <div style="height:1.75em;background:snow"></div>                 |
+| `springgreen`                    | `#00ff7f`  | <div style="height:1.75em;background:springgreen"></div>          |
+| `steelblue`                      | `#4682b4`  | <div style="height:1.75em;background:steelblue"></div>            |
+| `tan`                            | `#d2b48c`  | <div style="height:1.75em;background:tan"></div>                  |
+| `thistle`                        | `#d8bfd8`  | <div style="height:1.75em;background:thistle"></div>              |
+| `tomato`                         | `#ff6347`  | <div style="height:1.75em;background:tomato"></div>               |
+| `turquoise`                      | `#40e0d0`  | <div style="height:1.75em;background:turquoise"></div>            |
+| `violet`                         | `#ee82ee`  | <div style="height:1.75em;background:violet"></div>               |
+| `wheat`                          | `#f5deb3`  | <div style="height:1.75em;background:wheat"></div>                |
+| `whitesmoke`                     | `#f5f5f5`  | <div style="height:1.75em;background:whitesmoke"></div>           |
+| `yellowgreen`                    | `#9acd32`  | <div style="height:1.75em;background:yellowgreen"></div>          |
+
+### `transparent`
+
+`transparent` 키워드는 완전히 투명한 색상을 나타냅니다. 즉 색상을 적용한 항목 뒤의 배경이 완전히 보입니다. 기술적으로 `transparent`는 `rgb(0 0 0 / 0%)`의 단축어입니다.
+
+불투명한 색에서 투명한 색으로 나아가는 [`<gradient>`](https://developer.mozilla.org/en-US/docs/Web/CSS/gradient) 등에서 갑자기 검은색이 나타나는 걸 방지하기 위해, 현재의 CSS 명세에서는 `transparent`를 [프리멀티플라이드 알파](https://www.w3.org/TR/css-color-4/#interpolation-alpha)(premultiplied alpha) 색 공간에서 계산해야 한다고 명시하고 있습니다. 그러나 오래된 브라우저는 `transparent`를 처리할 때 0의 알파 값을 가진 검정색으로 처리할 수 있으므로 주의해야 합니다.
+
+# 설명
+
+모든 키워드는 [sRGB 색 공간](https://ko.wikipedia.org/wiki/SRGB) 내의 색을 가리키며 투명하지 않습니다. 색 이름들은 연상되는 색상을 가리키긴 하지만, 모든 이름들은 엄격한 근거 없이 임의로 지어진 것입니다.
+
+많은 키워드가 [X11](https://ko.wikipedia.org/wiki/X_%EC%9C%88%EB%8F%84_%EC%8B%9C%EC%8A%A4%ED%85%9C)에서 가져온 것이긴 하지만 실제 RGB 값은 X11 시스템에서의 색상과 다를 수 있습니다. 제조사들이 X11 색상을 하드웨어에 맞게 조정하기 때문입니다.
+
+# 명세
+
+[CSS Color Module Level 4](https://drafts.csswg.org/css-color/#named-colors)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- [`<color>`](.)

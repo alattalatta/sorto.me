@@ -42,58 +42,61 @@ const LiveExampleImpl: React.FC<LiveExampleImplProps> = ({ babel, editable = tru
   return (
     <InView onChange={(inView) => inView && setWasInView()}>
       {({ ref }) => (
-        <div ref={ref} className={styles.root} data-editable={editable}>
-          {editable && (
-            <>
-              <div className={styles.editor}>
-                {editableFiles.length > 1 && (
-                  <menu className={styles.files} role="tablist">
-                    {editableFiles.map((file) => (
-                      <li key={file.name} className={styles.file}>
-                        <button
-                          aria-selected={file.name === currentFile.name}
-                          role="tab"
-                          type="button"
-                          onClick={() => setCurrentFileName(file.name)}
-                        >
-                          {file.name.replace(`${name}/`, '')}
-                        </button>
-                      </li>
-                    ))}
-                  </menu>
-                )}
-                <div className={styles.monaco}>
-                  {/* button 32 + margin 4 = 36 */}
-                  <Suspense fallback={<Loading height={monacoHeight} />}>
-                    {wasInView && (
-                      <Editor
-                        defaultLanguage={currentFile.lang === 'js' ? 'javascript' : currentFile.lang}
-                        defaultValue={currentFile.content}
-                        height={monacoHeight}
-                        loading={null}
-                        options={{
-                          automaticLayout: true,
-                          lineNumbers: 'off',
-                          minimap: { enabled: false },
-                          scrollBeyondLastLine: false,
-                        }}
-                        path={currentFile.name}
-                        onChange={(value) =>
-                          updateFileImpl({
-                            ...currentFile,
-                            content: value ?? '',
-                          })
-                        }
-                      />
-                    )}
-                  </Suspense>
+        <div ref={ref} className={styles.root}>
+          <p className={styles.hint}>라이브 에디터 (편집 가능)</p>
+          <div className={styles.container} data-editable={editable}>
+            {editable && (
+              <>
+                <div className={styles.editor}>
+                  {editableFiles.length > 1 && (
+                    <menu className={styles.files} role="tablist">
+                      {editableFiles.map((file) => (
+                        <li key={file.name} className={styles.file}>
+                          <button
+                            aria-selected={file.name === currentFile.name}
+                            role="tab"
+                            type="button"
+                            onClick={() => setCurrentFileName(file.name)}
+                          >
+                            {file.name.replace(`${name}/`, '')}
+                          </button>
+                        </li>
+                      ))}
+                    </menu>
+                  )}
+                  <div className={styles.monaco}>
+                    {/* button 32 + margin 4 = 36 */}
+                    <Suspense fallback={<Loading height={monacoHeight} />}>
+                      {wasInView && (
+                        <Editor
+                          defaultLanguage={currentFile.lang === 'js' ? 'javascript' : currentFile.lang}
+                          defaultValue={currentFile.content}
+                          height={monacoHeight}
+                          loading={null}
+                          options={{
+                            automaticLayout: true,
+                            lineNumbers: 'off',
+                            minimap: { enabled: false },
+                            scrollBeyondLastLine: false,
+                          }}
+                          path={currentFile.name}
+                          onChange={(value) =>
+                            updateFileImpl({
+                              ...currentFile,
+                              content: value ?? '',
+                            })
+                          }
+                        />
+                      )}
+                    </Suspense>
+                  </div>
                 </div>
-              </div>
-              <div className={styles.arrow} />
-            </>
-          )}
-          <div className={styles.wrap} style={{ height }}>
-            <LiveCode babel={babel} files={files} height={height} />
+                <div className={styles.arrow} />
+              </>
+            )}
+            <div className={styles.wrap} style={{ height }}>
+              <LiveCode babel={babel} files={files} height={height} />
+            </div>
           </div>
         </div>
       )}

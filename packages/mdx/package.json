@@ -26,6 +26,7 @@
     "@types/mdast": "^4.0.4",
     "@types/node": "^20.16.5",
     "@types/unist": "^3.0.3",
+    "hast": "^1.0.0",
     "mdast-util-directive": "^3.0.0",
     "mdast-util-to-hast": "^13.2.0",
     "tsconfig": "workspace:*",

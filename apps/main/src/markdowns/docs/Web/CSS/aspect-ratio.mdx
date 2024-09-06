@@ -4,7 +4,9 @@ titleShort: 'aspect-ratio'
 bcd: css.properties.aspect-ratio
 ---
 
-CSS **`aspect-ratio`** 속성은 요소 박스의 *선호 가로세로비*를 설정합니다. 선호 가로세로비는 자동 크기와 일부 레이아웃 내에서의 크기 계산에 사용됩니다.
+CSS **`aspect-ratio`** 속성은 요소 박스의 가로세로비를 설정합니다. 부모 컨테이너나 뷰포트 크기가 변할 때에도 요소의 크기가 가로세로비를 준수하도록 브라우저가 크기를 조절해줍니다. 선호 가로세로비는 자동 크기 계산 및 일부 레이아웃에서의 크기 계산에 사용됩니다.
+
+`aspect-ratio`가 효과를 가지려면 요소의 크기 중 어느 한 축은 자동 크기(`auto`)여야 합니다. 요소의 너비와 높이를 모두 지정하면 `aspect-ratio`가 아무런 효과를 내지 않습니다.
 
 ```css hidden name=demo
 img {
@@ -31,8 +33,13 @@ img {
 # 구문
 
 ```css
-aspect-ratio: 1 / 1;
-aspect-ratio: 1;
+/* <ratio> 값 */
+aspect-ratio: 2 / 1;
+aspect-ratio: 2;
+
+/* 대체 요소 auto 폴백 */
+aspect-ratio: auto 3 / 4;
+aspect-ratio: 3 / 4 auto;
 
 /* 전역 값 */
 aspect-ratio: inherit;
@@ -42,12 +49,14 @@ aspect-ratio: revert-layer;
 aspect-ratio: unset;
 ```
 
+`aspect-ratio` 속성에는 `auto` 키워드, [`<ratio>`], 또는 둘 다 사용합니다. `auto` 키워드와 `<ratio>`를 모두 사용했으며 적용한 요소가 [`<img>`](/docs/Web/HTML/Element/img) 등 [대체 요소](/docs/Web/CSS/Replaced_element)라면 콘텐츠가 로딩될 때까지는 주어진 비율을 사용하고, 로딩 후엔 `auto`를 사용하여 콘텐츠의 내재된 가로세로비를 적용합니다. 대체 요소가 아닌 요소에서는 `<ratio>`를 사용합니다.
+
 ## 값
 
 - : `auto`
-  - 내재된 가로세로비를 가지는 [대체 요소](/docs/Web/CSS/Replaced_element)는 그 비율을 사용하고, 이외에는 선호 가로세로비를 설정하지 않습니다. 내재된 가로세로비를 사용한 크기 계산에는 항상 콘텐츠 박스의 크기를 사용합니다.
-- : [`<ratio>`](https://developer.mozilla.org/en-US/docs/Web/CSS/ratio)
-  - 요소 박스의 선호 가로세로비를 `width` / `height`의 비율로 설정합니다. `height`는 `1`의 기본 값을 가지고 있으며 슬래시와 함께 생략할 수 있습니다. 선호 가로세로비를 사용한 크기 계산에는 [`box-sizing` 속성](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing)으로 지정한 박스의 크기를 사용합니다.
+  - [대체 요소](/docs/Web/CSS/Replaced_element)가 내재된 가로세로비를 가지는 경우 그 비율을 사용하고, 내재된 가로세로비가 없거나 대체 요소가 아닌 경우에는 선호 가로세로비를 설정하지 않습니다. 내재된 가로세로비를 사용한 크기 계산에는 항상 콘텐츠 박스의 크기를 사용합니다.
+- : [`<ratio>`]
+  - 요소 박스의 선호 가로세로비를 `width` / `height`의 비율로 설정합니다. 슬래시와 `height`를 생략할 경우 1의 `height`로 취급합니다. 선호 가로세로비를 사용한 크기 계산에는 [`box-sizing` 속성][`box-sizing`]으로 지정한 박스의 크기를 사용합니다.
 
 # 명세
 
@@ -56,3 +65,6 @@ aspect-ratio: unset;
 # 브라우저 호환성
 
 <BrowserCompat data={props.bcd} />
+
+[`<ratio>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/ratio
+[`box-sizing`]: https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing

@@ -1,0 +1,30 @@
+---
+title: 'CSS font-family: 글꼴 가족 이름'
+titleShort: font-family
+bcd: css.at-rules.font-face.font-family
+---
+
+CSS **`font-family`** 서술자는 [`@font-face`](..) @규칙이 지정한 글꼴의 글꼴 가족 이름을 설정합니다.
+
+[`font-family` 속성](../font-family)에 지정하는 글꼴 가족 이름이 이 서술자의 값과 같으면 `@font-face`의 글꼴을 사용합니다.
+
+`font-family` 서술자로 붙인 이름이 글꼴 데이터에 내장된 이름을 덮어씁니다. 붙일 수 있는 이름에는 제한이 없으며, 사용자의 컴퓨터에 설치된 글꼴 중 같은 이름이 있어도 `@font-face` 글꼴이 우선합니다.
+
+# 구문
+
+```css
+/* <string> 값 */
+font-family: "Font Family";
+font-family: "Font Family 2";
+
+/* <custom-ident> 값 */
+font-family: somefont;
+```
+
+# 명세
+
+[CSS Fonts Module Level 4](https://drafts.csswg.org/css-fonts/#font-family-desc)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />

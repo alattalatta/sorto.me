@@ -1,0 +1,268 @@
+---
+title: 'CSS transform: 시각적 변형'
+titleShort: 'transform'
+bcd: css.properties.transform
+description: 'CSS transform 속성은 요소를 회전하거나, 크기를 조절하거나, 기울이거나, 이동합니다.'
+---
+
+CSS **`transform`** 속성은 요소를 회전하거나, 크기를 조절하거나, 기울이거나, 이동합니다. 기술적으로 표현하면, `transform` 속성은 요소 [시각적 서식 모델][]의 좌표 공간을 변형합니다.
+
+```html hidden editable=false name=demo
+<div class="square"></div>
+```
+
+```css hidden name=demo
+.square {
+  transform: rotate(45deg);
+  /* transform: scale(1.5); */
+  /* transform: translate(50px, 20%); */
+  /* transform: skew(10deg, 20deg); */
+  /* transform: matrix(1, 0, 0, 1, 0, 0); */
+  /* transform: translateX(40px) rotate(45deg) ; */
+  /* transform: rotate(45deg) translateX(40px); */
+
+  background-color: red;
+  height: 100px;
+  margin: 20px;
+  width: 100px;
+}
+```
+
+<LiveExample height={240} lang="css" name="demo" />
+
+`transform`의 값이 [`none`](#term-none)이 아니라면 새로운 [쌓임 맥락][]을 생성합니다. 따라서 [`position`]이 `fixed`와 `absolute`인 요소의 [컨테이닝 블록][]으로서 동작합니다.
+
+> [warn] 변형 가능한 요소에만 `transform`을 사용할 수 있습니다. 변형 가능한 요소란 CSS 박스 모델이 레이아웃을 결정하는 모든 요소들 중, [비대체 인라인 요소][], [표 열 박스](/docs/Web/HTML/Element/col), [표 열 그룹 박스](/docs/Web/HTML/Element/colgroup)를 제외한 것입니다.
+
+# 구문
+
+```css
+/* 키워드 값 */
+transform: none;
+
+/* 함수 값 */
+transform: matrix(1, 2, 3, 4, 5, 6);
+transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+transform: perspective(17px);
+transform: rotate(0.5turn);
+transform: rotate3d(1, 2, 3, 10deg);
+transform: rotateX(10deg);
+transform: rotateY(10deg);
+transform: rotateZ(10deg);
+transform: translate(12px, 50%);
+transform: translate3d(12px, 50%, 3em);
+transform: translateX(2em);
+transform: translateY(3in);
+transform: translateZ(2px);
+transform: scale(2, 0.5);
+transform: scale3d(2.5, 1.2, 0.3);
+transform: scaleX(2);
+transform: scaleY(0.5);
+transform: scaleZ(0.3);
+transform: skew(30deg, 20deg);
+transform: skewX(30deg);
+transform: skewY(1.07rad);
+
+/* 다수의 함수 값 */
+transform: translateX(10px) rotate(10deg) translateY(5px);
+transform: perspective(500px) translate(10px, 0, 20px) rotateY(3deg);
+
+/* 전역 값 */
+transform: inherit;
+transform: initial;
+transform: revert;
+transform: revert-layer;
+transform: unset;
+```
+
+`transform` 속성에는 키워드 `none` 또는 하나 이상의 [`<transform-function>`]을 사용합니다.
+
+- : [`<transform-function>`]
+
+  - 요소에 적용할 한 개 이상의 변형 함수입니다. 변형 함수는 왼쪽 함수부터 오른쪽으로 **곱해지는데**, 말하자면 오른쪽 함수부터 왼쪽의 순서로 **조합되는** 것과 같습니다.
+
+    변형 함수의 순서에 의한 영향은 아래의 [변형 순서](#변형-순서) 예제에서 확인할 수 있습니다.
+
+- : `none`
+  - 어떠한 변형도 적용하지 않습니다.
+
+# 접근성
+
+애니메이션을 적용한 확대/축소는 일부 편두통 유형의 흔한 유발인자가 되므로 접근성에 좋지 않습니다. 확대/축소 애니메이션을 적용해야 하는 경우 사용자가 애니메이션을 끌 수 있는 설정을 제공하는 게 좋습니다.
+
+[`prefers-reduced-motion` 미디어 기능][`prefers-reduced-motion`]의 사용도 고려하세요. 사용자가 시스템 설정에서 애니메이션 감소를 활성화한 경우, 웹 사이트의 애니메이션도 설정에 맞게 제한하는 미디어 쿼리를 작성할 수 있습니다.
+
+- [Understanding Success Criterion 2.3.3 | W3C Understanding WCAG 2.1](https://www.w3.org/WAI/WCAG21/Understanding/animation-from-interactions)
+
+# 예제
+
+## 변형 순서
+
+변형 함수들은 순서가 중요합니다. 회전 후 이동과 이동 후 회전은 다릅니다. 이 예제는 두 개의 사각형에 동일한 수치의 이동과 회전을 적용하지만, 그 순서가 다를 때의 모습을 보입니다.
+
+```html hidden name=order
+<div id="root">
+  <div class="original"></div>
+  <div class="one">1</div>
+  <div class="two">2</div>
+</div>
+```
+
+```css hidden name=order
+.one {
+  background: aliceblue;
+  transform: translateX(200px) rotate(45deg);
+}
+.two {
+  background: limegreen;
+  transform: rotate(45deg) translateX(200px);
+}
+```
+
+```css hidden editable=false name=order filename=style
+#root {
+  position: relative;
+  width: 100%;
+}
+.original {
+  border: 1px dashed black;
+}
+.original, .one, .two {
+  align-items: center;
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  left: 20px;
+  position: absolute;
+  top: 20px;
+  width: 100px;
+  z-index: 1;
+}
+
+#root::before,
+#root::after {
+  border: 1px dashed gray;
+  content: '';
+  left: -80px;
+  position: absolute;
+  top: 70px;
+  width: 300px;
+}
+#root::after {
+  transform: rotate(45deg);
+  transform-origin: center;
+}
+```
+
+<LiveExample height={360} lang="css" name="order" />
+
+이동 함수보다 회전 함수를 먼저 적용(`.two`)하면 회전 축을 따라 이동하게 되어 반대 순서의 요소(`.one`)와 다른 위치로 가게 되는 걸 볼 수 있습니다. 45° 기울어진 점선이 회전축을 나타냅니다.
+
+아래의 애니메이션 예제로도 확인해 보세요.
+
+```html hidden name=order-anim
+<div id="root">
+  <div class="original"></div>
+  <div class="one">1</div>
+</div>
+
+<div id="root">
+  <div class="original"></div>
+  <div class="two">2</div>
+</div>
+```
+
+```css hidden name=order-anim
+@keyframes translate-rotate {
+  0% {
+    transform: translateX(0) rotate(0);
+  }
+  33% {
+    transform: translateX(200px) rotate(0);
+  }
+  67% {
+    transform: translateX(200px) rotate(45deg);
+  }
+  100% {
+    transform: translateX(200px) rotate(45deg);
+  }
+}
+
+@keyframes rotate-translate {
+  0% {
+    transform: rotate(0) translateX(0);
+  }
+  33% {
+    transform: rotate(45deg) translateX(0);
+  }
+  67% {
+    transform: rotate(45deg) translateX(200px);
+  }
+  100% {
+    transform: rotate(45deg) translateX(200px);
+  }
+}
+
+.one {
+  animation: translate-rotate linear 3s infinite;
+  background: aliceblue;
+}
+.two {
+  animation: rotate-translate linear 3s infinite;
+  background: limegreen;
+}
+```
+
+```css hidden editable=false name=order-anim filename=style
+#root {
+  height: 200px;
+  position: relative;
+  width: 100%;
+}
+.original {
+  border: 1px dashed black;
+}
+.original, .one, .two {
+  align-items: center;
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  left: 20px;
+  position: absolute;
+  top: 20px;
+  width: 100px;
+  z-index: 1;
+}
+
+#root::before,
+#root::after {
+  border: 1px dashed gray;
+  content: '';
+  left: -80px;
+  position: absolute;
+  top: 70px;
+  width: 300px;
+}
+#root::after {
+  transform: rotate(45deg);
+  transform-origin: center;
+}
+```
+
+<LiveExample height={500} lang="css" name="order-anim" />
+
+# 명세
+
+- [CSS Transforms Module Level 2](https://drafts.csswg.org/css-transforms-2/#transform-functions)
+- [CSS Transforms Module Level 1](https://drafts.csswg.org/css-transforms/#transform-property)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+[`prefers-reduced-motion`]: https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion
+[`<transform-function>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function
+[비대체 인라인 요소]: https://developer.mozilla.org/en-US/docs/Glossary/Inline-level_content
+[시각적 서식 모델]: https://developer.mozilla.org/en-US/docs/Web/CSS/Visual_formatting_model
+[쌓임 맥락]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_positioned_layout/Understanding_z-index/Stacking_context
+[컨테이닝 블록]: https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block

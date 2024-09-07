@@ -1,0 +1,275 @@
+---
+title: 'CSS <transform-function> 자료형: 변형 함수'
+titleShort: '<transform-function>'
+bcd: css.types.transform-function
+---
+
+CSS **`<transform-function>`** 자료형은 요소의 외관에 영향을 주는 변형을 나타냅니다. 변형 함수는 [`transform` 속성](./transform)에서 사용되며 요소를 2차원 또는 3차원 공간에서 회전하고, 크기를 키우거나 줄이고, 왜곡하고, 이동할 수 있습니다.
+
+# 구문
+
+`<transform-function>` 구문은 아래의 변형 함수 중 하나를 사용해 구성합니다. 각각의 함수는 2차원 또는 3차원 기하학적 연산을 적용합니다.
+
+## 행렬 변형
+
+- : [`matrix()`]
+  - 2차원 변형을 동차 변환 행렬로 서술합니다.
+- : [`matrix3d()`]
+  - 3차원 변형을 4×4 동차 변환 행렬로 서술합니다.
+
+## 원근
+
+- : [`perspective()`]
+  - 관찰자와 z=0 평면 사이의 거리를 설정합니다.
+
+## 회전
+
+- : [`rotate()`]
+  - 요소를 2차원 평면 내의 고정점 기준으로 회전합니다.
+- : [`rotate3d()`]
+  - 요소를 3차원 공간 내의 고정축 기준으로 회전합니다.
+- : [`rotateX()`]
+  - 요소를 가로축 기준으로 회전합니다.
+- : [`rotateY()`]
+  - 요소를 세로축 기준으로 회전합니다.
+- : [`rotateZ()`]
+  - 요소를 z축 기준으로 회전합니다.
+
+## 크기 조절 (확대/축소)
+
+- : [`scale()`]
+  - 2차원 평면에서의 요소 크기를 조절합니다.
+- : [`scale3d()`]
+  - 3차원 공간에서의 요소 크기를 조절합니다.
+- : [`scaleX()`]
+  - 요소의 가로 크기를 조절합니다.
+- : [`scaleY()`]
+  - 요소의 세로 크기를 조절합니다.
+- : [`scaleZ()`]
+  - 요소의 z축 크기를 조절합니다.
+
+## 기울이기
+
+- : [`skew()`]
+  - 요소를 2차원 평면에서 기울입니다.
+- : [`skewX()`]
+  - 요소를 가로 방향으로 기울입니다.
+- : [`skewY()`]
+  - 요소를 세로 방향으로 기울입니다.
+
+## 평행 이동
+
+- : [`translate()`]
+  - 2차원 평면에서 요소를 이동합니다.
+- : [`translate3d()`]
+  - 3차원 공간에서 요소를 이동합니다.
+- : [`translateX()`]
+  - 요소를 가로 방향으로 이동합니다.
+- : [`translateY()`]
+  - 요소를 세로 방향으로 이동합니다.
+- : [`translateZ()`]
+  - 요소를 z축 방향으로 이동합니다.
+
+# 설명
+
+> [note] 변형 함수들은 [`transform`](./transform) 속성에 사용할 수 있고, 개별 변형 속성인 [`translate`], [`scale`], [`rotate`]에는 사용할 수 없습니다.
+
+HTML 요소의 크기와 형태, 그리고 요소에 적용된 변형을 설명할 땐 다양한 좌표계를 사용할 수 있습니다. 가장 흔한 것은 [데카르트 좌표계](https://ko.wikipedia.org/wiki/%EB%8D%B0%EC%B9%B4%EB%A5%B4%ED%8A%B8_%EC%A2%8C%ED%91%9C%EA%B3%84)지만 간혹 [동차좌표계](https://ko.wikipedia.org/wiki/%EB%8F%99%EC%B0%A8%EC%A2%8C%ED%91%9C)가 쓰이기도 합니다.
+
+## 데카르트 좌표계
+
+데카르트 좌표계에서는 2차원 점을 X 좌표(횡좌표)와 Y 좌표(종좌표)로 표현합니다. 벡터 표기법 `(x, y)`로 나타낼 수 있습니다.
+
+CSS에서 (그리고 대부분의 컴퓨터 그래픽에서) 원점 `(0, 0)`은 기준 요소의 좌상단 꼭짓점을 나타냅니다. 양의 좌표는 원점에서 아래와 오른쪽, 음의 좌표는 원점에서 위와 왼쪽에 위치합니다. 따라서 오른쪽으로 2단위, 아래로 5단위 이동한 점은 `(2, 5)`이고, 왼쪽으로 3단위, 위로 12단위 이동한 점은 `(-3, -12)`입니다.
+
+## 변형 함수 (동차좌표계)
+
+변형 함수는 요소의 좌표들을 조작해서 외형을 바꾸는 함수입니다. 선형 변형 함수는 다음과 같은 2×2 행렬로 서술합니다.
+
+<math style="display:block">
+  <semantics>
+    <mrow>
+      <mo>(</mo>
+      <mtable>
+        <mtr>
+          <mtd><mi>a</mi></mtd>
+          <mtd><mi>c</mi></mtd>
+        </mtr>
+        <mtr>
+          <mtd><mi>b</mi></mtd>
+          <mtd><mi>d</mi></mtd>
+        </mtr>
+      </mtable>
+      <mo>)</mo>
+    </mrow>
+  </semantics>
+</math>
+
+변형 함수를 요소에 적용할 땐 행렬 곱셈을 사용합니다. 따라서 좌표의 각 값이 행렬에 의해 다음과 같이 바뀝니다.
+
+<math style="display:block">
+  <semantics>
+    <mrow>
+      <mrow>
+        <mo>(</mo>
+        <mtable>
+          <mtr>
+            <mtd><mi>a</mi></mtd>
+            <mtd><mi>c</mi></mtd>
+          </mtr>
+          <mtr>
+            <mtd><mi>b</mi></mtd>
+            <mtd><mi>d</mi></mtd>
+          </mtr>
+        </mtable>
+        <mo>)</mo>
+      </mrow>
+      <mrow>
+        <mo>(</mo>
+        <mtable>
+          <mtr>
+            <mtd><mi>x</mi></mtd>
+          </mtr>
+          <mtr>
+            <mtd><mi>y</mi></mtd>
+          </mtr>
+        </mtable>
+        <mo>)</mo>
+      </mrow>
+      <mo>=</mo>
+      <mrow>
+        <mo>(</mo>
+        <mtable>
+          <mtr>
+            <mtd><mi>a</mi><mi>x</mi><mo>+</mo><mi>c</mi><mi>y</mi></mtd>
+          </mtr>
+          <mtr>
+            <mtd><mi>b</mi><mi>x</mi><mo>+</mo><mi>d</mi><mi>y</mi></mtd>
+          </mtr>
+        </mtable>
+        <mo>)</mo>
+      </mrow>
+    </mrow>
+  </semantics>
+</math>
+
+여러 변형 함수를 한 번에 적용할 수도 있습니다.
+
+<math style="display:block">
+  <semantics>
+    <mrow>
+      <mrow>
+        <mo>(</mo>
+        <mtable>
+          <mtr>
+            <mtd><msub><mi>a</mi><mn>1</mn></msub></mtd>
+            <mtd><msub><mi>c</mi><mn>1</mn></msub></mtd>
+          </mtr>
+          <mtr>
+            <mtd><msub><mi>b</mi><mn>1</mn></msub></mtd>
+            <mtd><msub><mi>d</mi><mn>1</mn></msub></mtd>
+          </mtr>
+        </mtable>
+        <mo>)</mo>
+      </mrow>
+      <mrow>
+        <mo>(</mo>
+        <mtable>
+          <mtr>
+            <mtd><msub><mi>a</mi><mn>2</mn></msub></mtd>
+            <mtd><msub><mi>c</mi><mn>2</mn></msub></mtd>
+          </mtr>
+          <mtr>
+            <mtd><msub><mi>b</mi><mn>2</mn></msub></mtd>
+            <mtd><msub><mi>d</mi><mn>2</mn></msub></mtd>
+          </mtr>
+        </mtable>
+        <mo>)</mo>
+      </mrow>
+      <mo>=</mo>
+      <mrow>
+        <mo>(</mo>
+        <mtable>
+          <mtr>
+            <mtd>
+              <msub><mi>a</mi><mn>1</mn></msub>
+              <msub><mi>a</mi><mn>2</mn></msub>
+              <mo>+</mo>
+              <msub><mi>c</mi><mn>1</mn></msub>
+              <msub><mi>b</mi><mn>2</mn></msub>
+            </mtd>
+            <mtd>
+              <msub><mi>a</mi><mn>1</mn></msub>
+              <msub><mi>c</mi><mn>2</mn></msub>
+              <mo>+</mo>
+              <msub><mi>c</mi><mn>1</mn></msub>
+              <msub><mi>d</mi><mn>2</mn></msub>
+            </mtd>
+          </mtr>
+          <mtr>
+            <mtd>
+              <msub><mi>b</mi><mn>1</mn></msub>
+              <msub><mi>a</mi><mn>2</mn></msub>
+              <mo>+</mo>
+              <msub><mi>d</mi><mn>1</mn></msub>
+              <msub><mi>b</mi><mn>2</mn></msub>
+            </mtd>
+            <mtd>
+              <msub><mi>b</mi><mn>1</mn></msub>
+              <msub><mi>c</mi><mn>2</mn></msub>
+              <mo>+</mo>
+              <msub><mi>d</mi><mn>1</mn></msub>
+              <msub><mi>d</mi><mn>2</mn></msub>
+            </mtd>
+          </mtr>
+        </mtable>
+        <mo>)</mo>
+      </mrow>
+    </mrow>
+  </semantics>
+</math>
+
+이렇게, 변형을 행렬로 나타내면 회전, 크기 조절, 기울이기 등 대부분의 변형을 서술하고 합성할 수 있습니다.[^1] 합성 변형은 오른쪽에서 왼쪽으로 적용되는 것과 같습니다.
+
+[^1]: 선형 함수로 표현할 수 있는 모든 변형은 행렬로 서술할 수 있습니다.
+
+하지만 중요한 변형 중 하나, 평행 이동(_translation_)은 선형 변형이 아닙니다. 따라서 평행 이동 변형 시에는 이동 벡터 `(tx, ty)`를 별도의 매개변수로서 따로 표현해야 합니다.
+
+> [note] 동차좌표계는 데카르트 좌표계보다 어렵지만, [사영기하학](https://ko.wikipedia.org/wiki/%EC%82%AC%EC%98%81%EA%B8%B0%ED%95%98%ED%95%99)의 동차좌표는 3×3 변환 행렬로 이어지며 평행 이동도 선형 함수로 표현할 수 있습니다.
+
+# 명세
+
+[CSS Transforms Module Level 2](https://drafts.csswg.org/css-transforms-2/#transform-functions)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 변형 함수 적용: [`transform`](./transform)
+
+[`matrix()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/matrix
+[`matrix3d()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/matrix3d
+[`perspective()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/perspective
+[`rotate()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/rotate
+[`rotate3d()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/rotate3d
+[`rotateX()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/rotateX
+[`rotateY()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/rotateY
+[`rotateZ()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/rotateZ
+[`scale()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/scale
+[`scale3d()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/scale3d
+[`scaleX()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/scaleX
+[`scaleY()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/scaleY
+[`scaleZ()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/scaleZ
+[`skew()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/skew
+[`skewX()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/skewX
+[`skewY()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/skewY
+[`translate()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translate
+[`translate3d()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translate3d
+[`translateX()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translateX
+[`translateY()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translateY
+[`translateZ()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translateZ
+[`rotate`]: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/rotate
+[`scale`]: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/scale
+[`translate`]: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translate

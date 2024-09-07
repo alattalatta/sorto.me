@@ -165,6 +165,10 @@ const { content: Content, ...props } = Astro.props
     background: #ffca8780;
   }
 
+  .body :global(math) {
+    margin: 1em 0;
+  }
+
   .body :global(p) {
     margin: 0;
   }
@@ -203,6 +207,11 @@ const { content: Content, ...props } = Astro.props
   }
   .body :global(.codewrap[data-variant='bad'] pre) {
     outline: 2px solid rgb(241, 73, 48);
+  }
+
+  .body :global(semantics) {
+    width: fit-content;
+    margin: auto;
   }
 
   .body :global(table) {

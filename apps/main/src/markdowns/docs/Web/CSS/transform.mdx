@@ -79,7 +79,7 @@ transform: unset;
 
 - : [`<transform-function>`]
 
-  - 요소에 적용할 한 개 이상의 변형 함수입니다. 변형 함수는 왼쪽 함수부터 오른쪽으로 **곱해지는데**, 말하자면 오른쪽 함수부터 왼쪽의 순서로 **조합되는** 것과 같습니다.
+  - 요소에 적용할 한 개 이상의 변형 함수입니다. 변형 함수는 왼쪽 함수부터 오른쪽으로 **곱해지는데**, 말하자면 오른쪽 함수부터 왼쪽의 순서로 **합성되는** 것과 같습니다.
 
     변형 함수의 순서에 의한 영향은 아래의 [변형 순서](#변형-순서) 예제에서 확인할 수 있습니다.
 
@@ -260,8 +260,9 @@ transform: unset;
 
 <BrowserCompat data={props.bcd} />
 
+[`position`]: https://developer.mozilla.org/en-US/docs/Web/CSS/position
 [`prefers-reduced-motion`]: https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion
-[`<transform-function>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function
+[`<transform-function>`]: ./transform-function
 [비대체 인라인 요소]: https://developer.mozilla.org/en-US/docs/Glossary/Inline-level_content
 [시각적 서식 모델]: https://developer.mozilla.org/en-US/docs/Web/CSS/Visual_formatting_model
 [쌓임 맥락]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_positioned_layout/Understanding_z-index/Stacking_context

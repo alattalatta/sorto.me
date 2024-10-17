@@ -4,9 +4,9 @@ titleShort: '<color>'
 bcd: css.types.color
 ---
 
-CSS **`<color>`** 자료형은 색상을 표현합니다. `<color>`는 자신과 그 뒤의 배경을 어떻게 [합성](https://www.w3.org/TR/2003/REC-SVG11-20030114/masking.html#SimpleAlphaBlending)해야 하는지 결정하는 [알파 채널](https://ko.wikipedia.org/wiki/알파_채널) *투명도 값*도 포함할 수 있습니다.
+CSS **`<color>`** 자료형은 색상을 표현합니다. `<color>`는 자신과 그 뒤의 배경을 어떻게 [합성](https://www.w3.org/TR/2003/REC-SVG11-20030114/masking.html#SimpleAlphaBlending)해야 하는지 결정하는 [알파 채널](https://ko.wikipedia.org/wiki/알파_채널) 투명도 값도 포함할 수 있습니다.
 
-> [note] `<color>` 값의 정의는 명확하지만, 실제로 출력되는 색상은 기기마다 (간혹 크게) 차이가 존재할 수 있습니다. 대부분의 출력 장치는 *캘리브레이션*이라고 부르는 색 보정 과정을 거치지 않으며, 장치가 사용 중인 색 프로필을 브라우저가 지원하지 않을 수도 있기 때문입니다.
+> [note] `<color>` 값의 정의는 명확하지만, 실제로 출력되는 색상은 기기마다 (간혹 크게) 차이가 날 수 있습니다. 대부분의 출력 장치는 "캘리브레이션"이라고 부르는 색 보정 과정을 거치지 않으며, 장치의 현재 색 프로필을 브라우저가 지원하지 않을 수도 있기 때문입니다.
 
 # 구문
 
@@ -62,8 +62,8 @@ light-dark(rgb(255 255 255), rgb(0 0 0))
 
 `<color>` 자료형은 아래 구문들 중 하나로 지정합니다.
 
-- 키워드: [`<named-color>`](./named-color), [`<system-color>`](./system-color), [`currentcolor`](#currentcolor-키워드)
-- 16진수 표기법: [`<hex-color>`](./hex-color) (`#ff0000` 등)
+- 키워드: [`<named-color>`](./color_value/named-color), [`<system-color>`](./color_value/system-color), [`currentcolor`](#currentcolor-키워드)
+- 16진수 표기법: [`<hex-color>`](./color_value/hex-color) (`#ff0000` 등)
 - 함수 표기법: `<color-function>`
   - [sRGB](https://ko.wikipedia.org/wiki/SRGB): [`hsl()`](#hsl-색), [`hwb()`](#hwb-색), [`rgb()`](#rgb-색)
   - [CIELAB](https://ko.wikipedia.org/wiki/CIELAB_%EC%83%89_%EA%B3%B5%EA%B0%84): [`lab()`](#lab-색), [`lch()`](#lch-색)
@@ -75,7 +75,7 @@ light-dark(rgb(255 255 255), rgb(0 0 0))
 
 ## currentcolor 키워드
 
-`currentcolor` 키워드는 요소의 [CSS `color` 속성](https://developer.mozilla.org/en-US/docs/Web/CSS/color)이 가진 값을 나타냅니다. 이 키워드를 사용하면 기본 값에서는 `color`의 영향을 받지 않는 속성들의 색도 `color`의 값으로 맞출 수 있습니다.
+`currentcolor` 키워드는 요소의 [CSS `color` 속성][`color`]이 가진 값을 나타냅니다. 이 키워드를 사용하면 기본 값에서는 `color`의 영향을 받지 않는 속성들의 색도 `color`의 값으로 맞출 수 있습니다.
 
 `currentcolor`를 `color` 속성의 값으로 사용한 경우에는 부모에게서 상속하는 `color` 값을 가리키게 됩니다.
 
@@ -276,3 +276,5 @@ hwb(90 10% 10% / 50%)
 # 브라우저 호환성
 
 <BrowserCompat data={props.bcd} />
+
+[`color`]: ./color

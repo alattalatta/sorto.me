@@ -1,0 +1,122 @@
+---
+title: 'CSS color: 글씨 색'
+titleShort: 'color'
+bcd: css.properties.color
+---
+
+CSS **`color`** 속성은 요소의 글씨와 글씨 장식의 색, 그리고 [`currentcolor` 키워드][`currentcolor`] 값을 설정합니다. `currentcolor`는 다른 속성에서 요소의 글씨 색을 참조할 때 사용할 수 있는 값으로, [`border-color`] 등 다른 색상 속성들의 기본 값입니다.
+
+```css hidden name=demo
+p {
+  color: maroon;
+  /* color: #3d3; */
+  /* color: rgb(114 120 250); */
+}
+```
+
+```css hidden editable=false name=demo filename=style
+p {
+  font-size: 1.25rem;
+  font-weight: bold;
+  white-space: pre-wrap;
+}
+```
+
+```html hidden name=demo
+<p>조류는 존재한다.
+포유류도 존재한다.
+양서류도 존재한다.
+그러나 꼭 꼬집어, 어류는 존재하지 않는다.</p>
+```
+
+<LiveExample height={240} lang="css" name="demo" />
+
+# 구문
+
+```css
+/* 키워드 값 */
+color: currentcolor;
+
+/* <named-color> 값 */
+color: red;
+color: orange;
+color: tan;
+color: rebeccapurple;
+
+/* <hex-color> 값 */
+color: #090;
+color: #009900;
+color: #090a;
+color: #009900aa;
+
+/* <rgb()>, 구형 <rgba()> 값 */
+color: rgb(34, 12, 64);
+color: rgb(34, 12, 64, 0.6);
+color: rgba(34, 12, 64, 0.6);
+color: rgb(34 12 64 / 0.6);
+color: rgba(34 12 64 / 0.6);
+color: rgb(34.6 12 64 / 60%);
+color: rgba(34.6 12 64 / 60%);
+
+/* <hsl()>, 구형 <hsla()> 값 */
+color: hsl(30, 100%, 50%);
+color: hsl(30, 100%, 50%, 0.6);
+color: hsla(30, 100%, 50%, 0.6);
+color: hsl(30 100% 50% / 0.6);
+color: hsla(30 100% 50% / 0.6);
+color: hsl(30.2 100% 50% / 60%);
+color: hsla(30.2 100% 50% / 60%);
+
+/* <hwb()> 값 */
+color: hwb(90 10% 10%);
+color: hwb(90 10% 10% / 0.5);
+color: hwb(90deg 10% 10%);
+color: hwb(1.5708rad 60% 0%);
+color: hwb(0.25turn 0% 40% / 50%);
+
+/* 전역 값 */
+color: inherit;
+color: initial;
+color: revert;
+color: revert-layer;
+color: unset;
+```
+
+`color` 속성에는 한 개의 [`<color>`] 값을 사용합니다. 단색이어야 함에 주의하세요. [`linear-gradient()`] 등 [`<gradient>`] 값은 사실 [`<image>`] 자료형이므로 `color` 속성에 사용할 수 없습니다.
+
+Sets the color to the element's color property value. However, if set as the value of color, currentcolor is treated as inherit.
+
+## 값
+
+- : [`<color>`]
+  - 요소의 글씨와 글씨 장식의 색을 설정합니다.
+- : [`currentcolor`]
+  - `currentcolor`를 `color` 속성에 사용할 경우 `inherit`과 같습니다.
+
+# 접근성
+
+글씨 색과 그 뒤 배경의 대비를 충분히 높게 유지해야 저시력 사용자들이 페이지 콘텐츠를 읽을 수 있습니다.
+
+글씨와 배경의 대비란 두 색의 밝기(_luminosity_)를 비교한 값입니다. [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/standards-guidelines/wcag/)를 만족하려면 본문 글씨는 4.5:1, 제목 등 큰 글씨는 3:1의 대비가 필요합니다. 큰 글씨란 18.66px 이상의 [굵은](./font-weight) 텍스트, 또는 24px 이상의 글씨를 말합니다.
+
+- [WebAIM: Color Contrast Checker](https://webaim.org/resources/contrastchecker/)
+- [Understanding Success Criterion 1.4.3 | W3C Understanding WCAG 2.0](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html)
+
+# 명세
+
+- [CSS Color Module Level 4](https://drafts.csswg.org/css-color/#the-color-property)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- [`<color>`] 자료형
+
+[`<color>`]: ./color_value
+[`<gradient>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/gradient
+[`<image>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/image
+[`border-color`]: https://developer.mozilla.org/en-US/docs/Web/CSS/border-color
+[`currentcolor`]: ./color_value#currentcolor-키워드
+[`linear-gradient()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient

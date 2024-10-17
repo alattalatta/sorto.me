@@ -10,7 +10,7 @@ bcd: css.types.color.hsl
 
 ```css hidden name=demo
 #color {
-  background-color: hsl(50 100% 50%);
+  background-color: hsl(50 100 50);
   /* background-color: hsl(150deg 30% 40%); */
   /* background-color: hsl(0.2turn 60% 50% / 0.7); */
   /* background-color: hsl(120grad 100% 50% / 25%); */
@@ -29,8 +29,6 @@ bcd: css.types.color.hsl
 ```
 
 <LiveExample height={140} lang="css" name="demo" />
-
-`hsl()` 색의 색상 성분에 180°를 더하거나 빼서 보색을 구할 수 있습니다. 예를 들어, 어느 색의 색상 성분이 `10deg`라면, 보색은 `190deg`가 됩니다.
 
 # 구문
 
@@ -108,6 +106,10 @@ hsl(from <color> H S L[ / A])
 # 브라우저 호환성
 
 <BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- [`hwb()`](./hwb)
 
 [`<alpha-value>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/alpha-value
 [`<angle>`]: ../angle

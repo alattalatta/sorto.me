@@ -1,0 +1,109 @@
+---
+title: 'CSS hwb() 함수형 표기: HWB 색 구문'
+titleShort: 'hwb()'
+bcd: css.types.color.hwb
+---
+
+**`hwb()`** 함수형 표기는 [sRGB](https://ko.wikipedia.org/wiki/SRGB) 색을 색상(_hue_), 백색(_whiteness_), 흑색(_blackness_) 성분으로 표현합니다. 선택적으로 알파 성분이 색의 투명도를 나타냅니다.
+
+```css hidden name=demo
+#color {
+  background-color: hwb(50 0% 0%);
+  /* background-color: hwb(150deg 28% 48%); */
+  /* background-color: hwb(0.2turn 20% 20% / 0.7); */
+  /* background-color: hwb(120grad 0% 0% / 25%); */
+}
+```
+
+```css hidden editable=false name=demo filename=style
+#color {
+  width: 100px;
+  height: 100px;
+}
+```
+
+```html hidden editable=false name=demo
+<div id="color"></div>
+```
+
+<LiveExample height={140} lang="css" name="demo" />
+
+# 구문
+
+```css
+/* 절대 값 */
+hwb(194 0% 0%)
+hwb(194 0% 0% / .5)
+
+/* 상대 값 */
+hwb(from green h w b / 0.5)
+hwb(from #0000FF h calc(w + 30) b)
+hwb(from lch(40% 70 240deg) h w calc(b - 30))
+```
+
+## 값
+
+### 절대 값 구문
+
+```
+hwb(H W B[ / A])
+```
+
+- : `H`
+  - 색의 색상([`<hue>`]) 각도를 나타내는 [`<number>`], [`<angle>`], 또는 키워드 `none` (`0deg`와 같음)입니다.
+- : `W`
+  - 색의 백색 성분을 나타내는 [`<percentage>`] 또는 키워드 `none` (`0%`와 같음) 값입니다. `0%`는 백색의 부재, `100%`는 `B`가 `0`일 땐 완전한 백색이고 아닐 땐 `W`와 `B`가 정규화합니다.
+- : `B`
+  - 색의 흑색 성분을 나타내는 [`<percentage>`] 또는 키워드 `none` (`0%`와 같음) 값입니다. `0%`는 흑색의 부재, `100%`는 `W`가 `0`일 땐 완전한 흑색이고 아닐 땐 `W`와 `B`가 정규화합니다.
+- : `A` (선택사항)
+
+  - 색의 알파 채널을 나타내는 [`<alpha-value>`] 값입니다. `0`은 `0%` (완전 투명), `1`은 `100%` (완전 불투명)입니다. `none`을 사용해 알파 채널이 없음을 명시할 수도 있습니다.
+
+    `A` 값을 생략하면 `100%`와 같습니다. 생략하지 않을 경우 앞의 세 값과 `/`로 구분해야 합니다.
+
+> [note] `hwb()` 절대 값은 [`rgb()`] 값으로 직렬화됩니다. 직렬화 과정에서 빨강, 초록, 파랑 성분이 반올림될 수 있습니다.
+
+### 상대 값 구문
+
+```
+hwb(from <color> H W B[ / A])
+```
+
+- : `from <color>`
+  - 상대 색의 **기준색**을 나타내는 [`<color>`] 값입니다. 앞의 `from`까지 포함해야 합니다. 기준색으로는 다른 상대색을 포함한 아무 [`<color>`] 값이나 사용할 수 있습니다.
+- : `H`
+  - 색의 색상([`<hue>`]) 각도를 나타내는 [`<number>`], [`<angle>`], 또는 키워드 `none` (`0deg`와 같음)입니다.
+- : `W`
+  - 색의 백색 성분을 나타내는 [`<percentage>`] 또는 키워드 `none` (`0%`와 같음) 값입니다. `0%`는 백색의 부재, `100%`는 `B`가 `0`일 땐 완전한 백색이고 아닐 땐 `W`와 `B`가 정규화합니다.
+- : `B`
+  - 색의 흑색 성분을 나타내는 [`<percentage>`] 또는 키워드 `none` (`0%`와 같음) 값입니다. `0%`는 흑색의 부재, `100%`는 `W`가 `0`일 땐 완전한 흑색이고 아닐 땐 `W`와 `B`가 정규화합니다.
+- : `A` (선택사항)
+
+  - 색의 알파 채널을 나타내는 [`<alpha-value>`] 값입니다. `0`은 `0%` (완전 투명), `1`은 `100%` (완전 불투명)입니다. `none`을 사용해 알파 채널이 없음을 명시할 수도 있습니다.
+
+    `A` 값을 생략하면 `100%`와 같습니다. 생략하지 않을 경우 앞의 세 값과 `/`로 구분해야 합니다.
+
+> [note] 가시광선의 스펙트럼 전체를 표현하기 위해, `hwb()` 상대 값은 `color(srgb)`로 직렬화됩니다. [`HTMLElement.style`] 속성이나 [`CSSStyleDeclaration.getPropertyValue()`] 메서드로 출력 색상 값을 조회하면 `color(srgb ...)` 값을 반환합니다.
+
+# 명세
+
+- [CSS Color Module Level 5](https://drafts.csswg.org/css-color-5/#relative-HWB)
+- [CSS Color Module Level 4](https://drafts.csswg.org/css-color/#the-hwb-notation)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- [`hsl()`](./hsl)
+
+[`<alpha-value>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/alpha-value
+[`<angle>`]: ../angle
+[`<color>`]: ../color_value
+[`<hue>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/hue
+[`<number>`]: ../number
+[`<percentage>`]: ../percentage
+[`CSSStyleDeclaration.getPropertyValue()`]: https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/getPropertyValue
+[`HTMLElement.style`]: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style
+[`rgb()`]: ../color_value#rgb-색

@@ -65,7 +65,7 @@ light-dark(rgb(255 255 255), rgb(0 0 0))
 - 키워드: [`<named-color>`](./color_value/named-color) (`black`, `white`, `red` 등), [`<system-color>`](./color_value/system-color), [`currentcolor`](#currentcolor-키워드)
 - 16진수 표기법: [`<hex-color>`](./color_value/hex-color) (`#ff0000` 등)
 - 함수 표기법: `<color-function>`
-  - [sRGB](https://ko.wikipedia.org/wiki/SRGB): [`hsl()`], [`hwb()`](#hwb-색), [`rgb()`](#rgb-색)
+  - [sRGB](https://ko.wikipedia.org/wiki/SRGB): [`hsl()`], [`hwb()`], [`rgb()`](#rgb-색)
   - [CIELAB](https://ko.wikipedia.org/wiki/CIELAB_%EC%83%89_%EA%B3%B5%EA%B0%84): [`lab()`](#lab-색), [`lch()`](#lch-색)
   - [Oklab](https://bottosson.github.io/posts/oklab/): [`oklab()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklab), [`oklch()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch)
   - 기타 색 공간: [`color()`](#color-표기법)
@@ -122,29 +122,11 @@ RGB 색은 `rgb()`와 `rgba()` 함수 표기법으로 표현합니다.
 
 ## HSL 색
 
-[`hsl()`](./color_value/hsl) 문서를 참고하세요.
+[`hsl()`] 문서를 참고하세요.
 
 ## HWB 색
 
-HWB 색 모델은 HSL처럼 색상, 백색, 흑색 값으로 [sRGB 색 공간](https://ko.wikipedia.org/wiki/SRGB) 위의 색을 정의합니다.
-
-HSL과 마찬가지로 RGB보다 HWB를 더 직관적으로 받아들이기 쉽습니다. 색상 매개변수는 HSL과 동일하고, 그 뒤에 백색과 흑색 매개변수를 [`<percentage>`](./percentage) 값으로 제공해야 합니다. 선택적으로 알파 값도 지정할 수 있습니다.
-
-> [note] HWB 색의 함수 표기법에는 별도의 `hwba()` 구문이 존재하지 않습니다.
-
-### 구문
-
-HWB 색은 `hwb()` 함수 표기법으로 표현합니다.
-
-> [warn] HWB 함수는 RGB와 HSL과는 달리 매개변수를 쉼표로 구분하는 구문이 존재하지 않습니다.
-
-- : 함수 표기법: `hwb(H W B)`, `hwb(H W B/A)`
-
-  - `H`(색상)는 색상환 위의 각도입니다. [CSS Color Module Level 4](https://drafts.csswg.org/css-color/#the-hsl-notation) 명세에 따라 `deg`, `rad`, `grad`, `turn` 단위를 사용한 [`<angle>`](https://developer.mozilla.org/en-US/docs/Web/CSS/angle), 또는 [CSS Color Module Level 3](https://drafts.csswg.org/css-color-3/#hsl-color) 명세에 따라 단위 없는 [`<number>`](./number)를 지정할 수 있으며, `<number>`를 사용하면 도 단위(`deg`)로 해석합니다. 색상환의 정의에 따르면 적색=`0deg`=`360deg`고, 다른 모든 색은 원 위에 균일하게 위치합니다. 예컨대 녹색=`120deg`, 청색=`240deg`입니다. `<angle>` 자료형이므로 0도 ~ 360도를 벗어나면 원을 한 바퀴 돌게 됩니다. 따라서 `-120deg`=`240deg`, `480deg`=`120deg`, `-1turn`=`1turn`입니다.
-
-    `W`(백색)와 `B`(흑색)는 [`<percentage>`](./percentage)입니다. 두 값을 혼합하면 최종 색이 되므로 완전한 검은색은 **흑색** `100%` 뿐만 아니라 **백색** `0%`도 필요합니다. 완전한 흰색 또한 흑색 `0%`와 백색 `100%`가 필요합니다. 흑색과 백색을 둘 다 `50%`로 지정하거나 둘 다 `100%`로 지정하면 중간 회색입니다.
-
-    `A`(알파)는 `<percentage>` 또는 0 이상 1 이하의 `<number>`로 숫자 `1`은 `100%`(불투명)와 같습니다.
+[`hwb()`] 문서를 참고하세요.
 
 ## Lab 색
 
@@ -260,3 +242,4 @@ hwb(90 10% 10% / 50%)
 
 [`color`]: ./color
 [`hsl()`]: ./color_value/hsl
+[`hwb()`]: ./color_value/hwb

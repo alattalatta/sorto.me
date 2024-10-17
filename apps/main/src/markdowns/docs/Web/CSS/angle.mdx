@@ -1,0 +1,38 @@
+---
+title: 'CSS <angle> 자료형: 각도'
+titleShort: '<angle>'
+bcd: css.types.angle
+---
+
+CSS **`<angle>`** 자료형은 각도를 도(°), 그레이드, 라디안, 회전수로 표현합니다. `<angle>`은 [`<gradient>`]와 일부 [`transform`] 함수 등에서 사용됩니다.
+
+# 구문
+
+`<angle>` 자료형은 [`<number>`]와 그 뒤의 단위로 구성됩니다. 수와 단위 리터럴 사이에 공백이 있어선 안됩니다. 수가 0일 땐 단위를 붙이지 않아도 됩니다.
+
+선택적으로 `+`와 `-` 부호를 앞에 붙일 수 있습니다. 양의 수는 시계방향 각도, 음의 수는 반시계방향 각도입니다. 정적 값에서는 여러 값이 동일한 결과를 낳을 수 있습니다. 예를 들어 `90deg`는 `-270deg`와 같고, `1turn`은 `4turn`과 같습니다. [`animation`]이나 [`transition`]처럼 동적 값에서는 결과가 달라집니다.
+
+## 단위
+
+- : `deg`
+  - [도(°)](<https://ko.wikipedia.org/wiki/%EB%8F%84_(%EA%B0%81%EB%8F%84)>) 단위입니다. 한 바퀴는 `360deg`입니다.
+- : `grad`
+  - [그레이드](<https://ko.wikipedia.org/wiki/%EA%B7%B8%EB%A0%88%EC%9D%B4%EB%93%9C_(%EA%B0%81%EB%8F%84)>) 단위입니다. 한 바퀴는 `400grad`입니다.
+- : `rad`
+  - [라디안](https://ko.wikipedia.org/wiki/%EB%9D%BC%EB%94%94%EC%95%88) 단위입니다. 한 바퀴는 2π 라디안으로 대략 `6.2832rad`입니다. `1rad`는 180/π°입니다.
+- : `turn`
+  - 회전의 수입니다. 한 바퀴는 `1turn`입니다.
+
+# 명세
+
+- [CSS Values and Units Module Level 4](https://drafts.csswg.org/css-values/#angles)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+[`<gradient>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/gradient
+[`<number>`]: ./number
+[`animation`]: https://developer.mozilla.org/en-US/docs/Web/CSS/animation
+[`transform`]: https://developer.mozilla.org/en-US/docs/Web/CSS/transform
+[`transition`]: https://developer.mozilla.org/en-US/docs/Web/CSS/transition

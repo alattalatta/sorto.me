@@ -1,0 +1,63 @@
+---
+title: 'HTML popover 전역 특성: 팝오버 요소로 설정'
+titleShort: 'popover'
+bcd: html.global_attributes.popover
+---
+
+HTML **`popover`** [전역 특성](.)은 요소를 팝오버 요소로 지정합니다.
+
+팝오버 요소는 제어 요소와의 상호작용 ([`popovertarget`] 특성을 추가한 [`<button>`]과 [`<input type="button">`]) 또는 [`HTMLElement.showPopover()`] 호출에 의해 열리기 전까진 `display: none`으로 숨겨집니다.
+
+열린 팝오버 요소는 다른 요소들보다 상위 레이어에 나타나며, 부모 요소의 [`position`]이나 [`overflow`] 스타일에 영향을 받지 않습니다.
+
+가능한 값은 다음과 같습니다.
+
+- : `auto` 또는 빈 문자열
+  - 사용자가 팝오버 요소 밖과 상호작용 시 자동으로 닫히며, 일반적으로 한 번에 하나의 팝오버만 화면에 나타날 수 있습니다.
+- : `manual`
+  - 팝오버 요소를 항상 직접 닫아야 합니다. 팝오버가 열려있을 때 제어 요소를 다시 클릭하거나, [`HTMLElement.hidePopover()`]를 호출하면 닫힙니다. `auto`와 달리 여러 팝오버를 한번에 표시할 수 있습니다.
+
+더 자세한 정보는 [Popover API 랜딩 페이지](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API)를 참고하세요.
+
+# 예제
+
+## 자동 팝오버
+
+팝오버를 열고, 아무데나 다른 곳을 클릭하면 자동으로 닫힙니다.
+
+```html hidden name=auto
+<button popovertarget="popover">팝오버 열기</button>
+<div id="popover" popover>팝오버 내용</div>
+```
+
+<LiveExample height={240} lang="html" name="auto" />
+
+## 수동 팝오버
+
+팝오버가 열리면 "팝오버 열기" 버튼을 다시 누르거나, 팝오버 내의 "닫기" 버튼 클릭 전엔 닫히지 않습니다.
+
+```html hidden name=manual
+<button popovertarget="popover" type="button">팝오버 열기</button>
+<div id="popover" popover="manual">
+  팝오버 내용
+  <button popovertarget="popover" type="button">닫기</button>
+</div>
+```
+
+<LiveExample height={240} lang="html" name="manual" />
+
+# 명세
+
+[HTML Standard](https://html.spec.whatwg.org/multipage/popover.html#the-popover-attribute)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+[`<button>`]: ../Element/button
+[`<input type="button">`]: ../Element/input/button
+[`HTMLElement.hidePopover()`]: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/hidePopover
+[`HTMLElement.showPopover()`]: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/showPopover
+[`overflow`]: https://developer.mozilla.org/en-US/docs/Web/CSS/overflow
+[`popovertarget`]: ../Element/button#term-popovertarget
+[`position`]: https://developer.mozilla.org/en-US/docs/Web/CSS/position

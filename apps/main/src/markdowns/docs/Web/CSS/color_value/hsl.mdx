@@ -1,0 +1,120 @@
+---
+title: 'CSS hsl() 함수형 표기: HSL 색 구문'
+titleShort: 'hsl()'
+bcd: css.types.color.hsl
+---
+
+**`hsl()`** 함수형 표기는 [sRGB](https://ko.wikipedia.org/wiki/SRGB) 색을 색상(_hue_), 채도(_saturation_), 명도(_lightness_) 성분으로 표현합니다. 선택적으로 알파 성분이 색의 투명도를 나타냅니다.
+
+> [note] `hsla()` 함수형 표기는 `hsl()`의 별칭으로서 서로 완전히 동일합니다. `hsl()`을 사용하는 걸 권장합니다.
+
+```css hidden name=demo
+#color {
+  background-color: hsl(50 100% 50%);
+  /* background-color: hsl(150deg 30% 40%); */
+  /* background-color: hsl(0.2turn 60% 50% / 0.7); */
+  /* background-color: hsl(120grad 100% 50% / 25%); */
+}
+```
+
+```css hidden editable=false name=demo filename=style
+#color {
+  width: 100px;
+  height: 100px;
+}
+```
+
+```html hidden editable=false name=demo
+<div id="color"></div>
+```
+
+<LiveExample height={140} lang="css" name="demo" />
+
+`hsl()` 색의 색상 성분에 180°를 더하거나 빼서 보색을 구할 수 있습니다. 예를 들어, 어느 색의 색상 성분이 `10deg`라면, 보색은 `190deg`가 됩니다.
+
+# 구문
+
+```css
+/* 절대 값 */
+hsl(120deg 75% 25%)
+hsl(120 75 25) /* 색상의 deg, 채도와 명도의 % 단위는 선택사항 */
+hsl(120deg 75% 25% / 60%)
+hsl(none 75% 25%)
+
+/* 상대 값 */
+hsl(from green h s l / 0.5)
+hsl(from #0000FF h s calc(l + 20))
+hsl(from rgb(200 0 0) calc(h + 30) s calc(l + 30))
+
+/* 구형 'hsla()' 별칭 */
+hsla(120deg 75% 25% / 60%)
+
+/* 구형 구문 */
+hsl(120, 75%, 25%)
+hsl(120deg, 75%, 25%, 0.8)
+```
+
+> [note] `hsl()`/`hsla()`의 값을 쉼표로 구분하는 건 구형 구문입니다. 구형 구문에서는 `none` 값을 사용할 수 없고, 색상 성분의 `deg` 단위는 선택사항이며, 채도와 명도의 `%` 단위는 필수입니다.
+
+## 값
+
+### 절대 값 구문
+
+```
+hsl(H S L[ / A])
+```
+
+- : `H`
+  - 색의 색상([`<hue>`]) 각도를 나타내는 [`<number>`], [`<angle>`], 또는 키워드 `none` (`0deg`와 같음)입니다.
+- : `S`
+  - 색의 채도를 나타내는 [`<percentage>`] 또는 키워드 `none` (`0%`와 같음) 값입니다. `100%`는 포화색, `0%`는 무채색(회색)입니다.
+- : `L`
+  - 색의 밝기를 나타내는 [`<percentage>`] 또는 키워드 `none` (`0%`와 같음) 값입니다. `100%`는 흰색, `0%`는 검은색, `50%`는 "일반" 색입니다.
+- : `A` (선택사항)
+
+  - 색의 알파 채널을 나타내는 [`<alpha-value>`] 값입니다. `0`은 `0%` (완전 투명), `1`은 `100%` (완전 불투명)입니다. `none`을 사용해 알파 채널이 없음을 명시할 수도 있습니다.
+
+    `A` 값을 생략하면 `100%`와 같습니다. 생략하지 않을 경우 앞의 세 값과 `/`로 구분해야 합니다.
+
+> [note] `hsl()` 절대 값은 [`rgb()`] 값으로 직렬화됩니다. 직렬화 과정에서 빨강, 초록, 파랑 성분이 반올림될 수 있습니다.
+
+### 상대 값 구문
+
+```
+hsl(from <color> H S L[ / A])
+```
+
+- : `from <color>`
+  - 상대 색의 **기준색**을 나타내는 [`<color>`] 값입니다. 앞의 `from`까지 포함해야 합니다. 기준색으로는 다른 상대색을 포함한 아무 [`<color>`] 값이나 사용할 수 있습니다.
+- : `H`
+  - 색의 색상([`<hue>`]) 각도를 나타내는 [`<number>`], [`<angle>`], 또는 키워드 `none` (`0deg`와 같음)입니다.
+- : `S`
+  - 색의 채도를 나타내는 [`<percentage>`] 또는 키워드 `none` (`0%`와 같음) 값입니다. `100%`는 포화색, `0%`는 무채색(회색)입니다.
+- : `L`
+  - 색의 밝기를 나타내는 [`<percentage>`] 또는 키워드 `none` (`0%`와 같음) 값입니다. `100%`는 흰색, `0%`는 검은색, `50%`는 "일반" 색입니다.
+- : `A` (선택사항)
+
+  - 색의 알파 채널을 나타내는 [`<alpha-value>`] 값입니다. `0`은 `0%` (완전 투명), `1`은 `100%` (완전 불투명)입니다. `none`을 사용해 알파 채널이 없음을 명시할 수도 있습니다.
+
+    `A` 값을 생략하면 `100%`와 같습니다. 생략하지 않을 경우 앞의 세 값과 `/`로 구분해야 합니다.
+
+> [note] 가시광선의 스펙트럼 전체를 표현하기 위해, `hsl()` 상대 값은 `color(srgb)`로 직렬화됩니다. [`HTMLElement.style`] 속성이나 [`CSSStyleDeclaration.getPropertyValue()`] 메서드로 출력 색상 값을 조회하면 `color(srgb ...)` 값을 반환합니다.
+
+# 명세
+
+- [CSS Color Module Level 5](https://drafts.csswg.org/css-color-5/#relative-HSL)
+- [CSS Color Module Level 4](https://drafts.csswg.org/css-color/#the-hsl-notation)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+[`<alpha-value>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/alpha-value
+[`<angle>`]: ../angle
+[`<color>`]: ../color_value
+[`<hue>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/hue
+[`<number>`]: ../number
+[`<percentage>`]: ../percentage
+[`CSSStyleDeclaration.getPropertyValue()`]: https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/getPropertyValue
+[`HTMLElement.style`]: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style
+[`rgb()`]: ../color_value#rgb-색

@@ -62,10 +62,10 @@ light-dark(rgb(255 255 255), rgb(0 0 0))
 
 `<color>` 자료형은 아래 구문들 중 하나로 지정합니다.
 
-- 키워드: [`<named-color>`](./color_value/named-color), [`<system-color>`](./color_value/system-color), [`currentcolor`](#currentcolor-키워드)
+- 키워드: [`<named-color>`](./color_value/named-color) (`black`, `white`, `red` 등), [`<system-color>`](./color_value/system-color), [`currentcolor`](#currentcolor-키워드)
 - 16진수 표기법: [`<hex-color>`](./color_value/hex-color) (`#ff0000` 등)
 - 함수 표기법: `<color-function>`
-  - [sRGB](https://ko.wikipedia.org/wiki/SRGB): [`hsl()`](#hsl-색), [`hwb()`](#hwb-색), [`rgb()`](#rgb-색)
+  - [sRGB](https://ko.wikipedia.org/wiki/SRGB): [`hsl()`], [`hwb()`](#hwb-색), [`rgb()`](#rgb-색)
   - [CIELAB](https://ko.wikipedia.org/wiki/CIELAB_%EC%83%89_%EA%B3%B5%EA%B0%84): [`lab()`](#lab-색), [`lch()`](#lch-색)
   - [Oklab](https://bottosson.github.io/posts/oklab/): [`oklab()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklab), [`oklch()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch)
   - 기타 색 공간: [`color()`](#color-표기법)
@@ -122,26 +122,7 @@ RGB 색은 `rgb()`와 `rgba()` 함수 표기법으로 표현합니다.
 
 ## HSL 색
 
-HSL 색 모델은 색상, 채도, 명도 값으로 [sRGB 색 공간](https://ko.wikipedia.org/wiki/SRGB) 위의 색을 정의합니다. 선택적으로 알파 값이 색의 투명도를 나타냅니다.
-
-많은 디자이너는 색상, 채도, 명도를 구별해 조정할 수 있는 HSL을 RGB보다 직관적으로 받아들입니다. 특히 HSL을 활용하면 한 색상의 여러 색조를 만들기 쉽습니다. 그러나 HSL을 사용하면 [인지적으로 균일하지 못한](https://en.wikipedia.org/wiki/Color_difference#Tolerance) 색상이 나타날 수 있습니다. 예를 들어, `hsl(240 100% 50%)`와 `hsl(60 100% 50%)`의 수치 상 명도는 같지만, 실제 색을 비교하면 전자가 후자의 색보다 훨씬 어둡게 보입니다.
-
-### 구문
-
-HSL 색은 `hsl()`과 `hsla()` 함수 표기법으로 표현합니다.
-
-> [note] CSS Color Module Level 4에서 `hsla()`가 `hsl()`의 별칭이 됐습니다. Level 4 표준을 준수하는 브라우저에서는 `hsla()`와 `hsl()`이 같은 매개변수를 받고 동일하게 동작합니다.
-
-- : 함수 표기법: `hsl(H, S, L)`, `hsla(H, S, L)`, `hsl(H, S, L, A)`, `hsla(H, S, L, A)`
-
-  - `H`(색상)는 색상환 위의 각도입니다. [CSS Color Module Level 4](https://drafts.csswg.org/css-color/#the-hsl-notation) 명세에 따라 `deg`, `rad`, `grad`, `turn` 단위를 사용한 [`<angle>`](https://developer.mozilla.org/en-US/docs/Web/CSS/angle), 또는 [CSS Color Module Level 3](https://drafts.csswg.org/css-color-3/#hsl-color) 명세에 따라 단위 없는 [`<number>`](./number)를 지정할 수 있으며, `<number>`를 사용하면 도 단위(`deg`)로 해석합니다. 색상환의 정의에 따르면 적색=`0deg`=`360deg`고, 다른 모든 색은 원 위에 균일하게 위치합니다. 예컨대 녹색=`120deg`, 청색=`240deg`입니다. `<angle>` 자료형이므로 0도 ~ 360도를 벗어나면 원을 한 바퀴 돌게 됩니다. 따라서 `-120deg`=`240deg`, `480deg`=`120deg`, `-1turn`=`1turn`입니다.
-
-    `S`(채도)와 `L`(명도)은 [`<percentage>`](./percentage)입니다. **채도** `100%`는 완전한 유채색, `0%`는 완전한 무채색(회색)입니다. **명도** `100%`는 백색, `0%`는 흑색, `50%`는 중간 회색입니다.
-
-    `A`(알파)는 `<percentage>` 또는 0 이상 1 이하의 `<number>`로 숫자 `1`은 `100%`(불투명)와 같습니다.
-
-- 함수 표기법: `hsl(H S L)`, `hsla(H S L)`, `hsl(H S L / A)`, `hsla(H S L / A)`
-  - : CSS Color Module Level 4부터 함수 표기법의 매개변수를 공백으로 구분할 수 있습니다.
+[`hsl()`](./color_value/hsl) 문서를 참고하세요.
 
 ## HWB 색
 
@@ -278,3 +259,4 @@ hwb(90 10% 10% / 50%)
 <BrowserCompat data={props.bcd} />
 
 [`color`]: ./color
+[`hsl()`]: ./color_value/hsl

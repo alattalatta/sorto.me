@@ -76,18 +76,15 @@ const siblingRegex = new RegExp(`^${parentPath}/[^/]+$`, 'i')
 
 const allDocs = await getCollection('docs')
 
-const techRootDocData = pathComponents.length > 3 ? allDocs.find((entry) => entry.id === `${techRootPath}.mdx`) : null
-const parentDocData = allDocs.find((entry) => entry.id === `${parentPath}.mdx`)
+const techRootDocData = pathComponents.length > 3 ? allDocs.find((entry) => entry.id === techRootPath) : null
+const parentDocData = allDocs.find((entry) => entry.id === parentPath)
 
 const techRootDoc = techRootDocData ? ([techRootPath, techRootDocData.data.title] as const) : null
 const parentDoc = parentDocData ? ([parentPath, parentDocData.data.title] as const) : null
 const siblingDocs = allDocs
   .filter((entry) => siblingRegex.test(entry.id))
   .sort((a, b) => a.id.localeCompare(b.id))
-  .map((entry) => {
-    const id = entry.id.replace('.mdx', '')
-    return [id, entry.data.titleShort ?? entry.data.title] as readonly [id: string, title: string]
-  })
+  .map((entry) => [entry.id, entry.data.titleShort ?? entry.data.title] as readonly [id: string, title: string])
 ---
 
 <DocShell

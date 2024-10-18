@@ -65,7 +65,7 @@ light-dark(rgb(255 255 255), rgb(0 0 0))
 - 키워드: [`<named-color>`](./color_value/named-color) (`black`, `white`, `red` 등), [`<system-color>`](./color_value/system-color), [`currentcolor`](#currentcolor-키워드)
 - 16진수 표기법: [`<hex-color>`](./color_value/hex-color) (`#ff0000` 등)
 - 함수 표기법: `<color-function>`
-  - [sRGB](https://ko.wikipedia.org/wiki/SRGB): [`hsl()`], [`hwb()`], [`rgb()`](#rgb-색)
+  - [sRGB](https://ko.wikipedia.org/wiki/SRGB): [`hsl()`], [`hwb()`], [`rgb()`]
   - [CIELAB](https://ko.wikipedia.org/wiki/CIELAB_%EC%83%89_%EA%B3%B5%EA%B0%84): [`lab()`](#lab-색), [`lch()`](#lch-색)
   - [Oklab](https://bottosson.github.io/posts/oklab/): [`oklab()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklab), [`oklch()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch)
   - 기타 색 공간: [`color()`](#color-표기법)
@@ -105,20 +105,7 @@ light-dark(rgb(255 255 255), rgb(0 0 0))
 
 ## RGB 색
 
-RGB 색 모델은 적색, 녹색, 청색 값으로 [sRGB 색 공간](https://ko.wikipedia.org/wiki/SRGB) 위의 색을 정의합니다. 선택적으로 알파 값이 색의 투명도를 나타냅니다.
-
-### 구문
-
-RGB 색은 `rgb()`와 `rgba()` 함수 표기법으로 표현합니다.
-
-> [note] CSS Color Module Level 4에서 `rgba()`가 `rgb()`의 별칭이 됐습니다. Level 4 표준을 준수하는 브라우저에서는 `rgba()`와 `rgb()`가 같은 매개변수를 받고 동일하게 동작합니다.
-
-- : 함수 표기법: `rgb(R, G, B)`, `rgba(R, G, B)`, `rgb(R, G, B, A)`, `rgba(R, G, B, A)`
-
-  - `R`(적), `G`(녹), `B`(청)를 [`<number>`](./number) 또는 [`<percentage>`](./percentage)로 표기하며, 숫자 `255`는 `100%`와 같습니다. `A`(알파)는 `<percentage>` 또는 0 이상 1 이하의 `<number>`로 숫자 `1`은 `100%`(불투명)와 같습니다.
-
-- : 함수 표기법: `rgb(R G B)`, `rgba(R G B)`, `rgb(R G B / A)`, `rgba(R G B / A)`
-  - CSS Color Module Level 4부터 함수 표기법의 매개변수를 공백으로 구분할 수 있습니다.
+[`rgb()`] 문서를 참고하세요.
 
 ## HSL 색
 
@@ -243,3 +230,4 @@ hwb(90 10% 10% / 50%)
 [`color`]: ./color
 [`hsl()`]: ./color_value/hsl
 [`hwb()`]: ./color_value/hwb
+[`rgb()`]: ./color_value/rgb

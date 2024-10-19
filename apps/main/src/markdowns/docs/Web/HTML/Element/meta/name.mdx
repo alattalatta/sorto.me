@@ -3,7 +3,7 @@ title: '표준 메타데이터 이름'
 bcd: html.elements.meta.name
 ---
 
-[`<meta>`](.) 요소는 문서의 메타데이터를 키-값 쌍의 형태로 제공합니다. [`name` 특성](.#term-name)은 메타데이터의 이름을, [`content` 특성](.#term-content)은 메타데이터의 값을 나타냅니다.
+[`<meta>`](../meta) 요소는 문서의 메타데이터를 키-값 쌍의 형태로 제공합니다. [`name` 특성](.#term-name)은 메타데이터의 이름을, [`content` 특성](.#term-content)은 메타데이터의 값을 나타냅니다.
 
 # HTML 명세에 정의된 표준 메타데이터 이름
 
@@ -156,11 +156,13 @@ bcd: html.elements.meta.name
           <td>`viewport-fit`</td>
           <td>`auto`, `contain`, `cover`</td>
           <td>
+          
             `auto`일 경우 초기 레이아웃 뷰포트에 영향을 주지 않으며 전체 웹 페이지가 보입니다.
 
             `contain`일 경우, 페이지 내에서 가장 큰 직사각형이 화면에 온전히 보일 수 있도록 뷰포트 크기를 조절합니다.
 
             `cover`일 경우, 뷰포트 크기를 조절해 장치 화면을 가득 채웁니다. `cover`를 사용할 땐 [안전 영역 인셋](https://developer.mozilla.org/en-US/docs/Web/CSS/env) 환경 변수를 사용해서 콘텐츠가 화면 밖으로 나가지 않도록 조절하는 걸 추천합니다.
+
           </td>
         </tr>
       </tbody>
@@ -173,7 +175,7 @@ bcd: html.elements.meta.name
 [WHATWG 위키의 MetaExtensions 페이지](https://wiki.whatwg.org/wiki/MetaExtensions)에는 아직 명세에 포함되지 않은 많은 수의 비표준 메타데이터 이름이 나열돼있습니다. 비록 표준은 아니지만, 아래 목록을 포함해서 일부 메타데이터 이름은 이미 널리 쓰이고 있습니다.
 
 - : `creator`
-  - 문서를 생성한 사람이나 단체 등의 이름입니다. 여러 이름을 나열해야 하면 그 수 만큼의 [`<meta>`](.) 요소를 사용해야 합니다.
+  - 문서를 생성한 사람이나 단체 등의 이름입니다. 여러 이름을 나열해야 하면 그 수 만큼의 [`<meta>`](../meta) 요소를 사용해야 합니다.
 - : `googlebot`
   - `robots` 메타데이터의 별칭으로, Googlebot만 사용합니다. (Google의 색인 크롤러)
 - : `publisher`

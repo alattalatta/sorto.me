@@ -27,7 +27,7 @@ rgb(255 0 153 / 80%)
 hsl(150 30% 60%)
 hsl(150 30% 60% / 80%)
 
-/* HWB (색조, 백색률, 흑색률) */
+/* HWB (색조, 백색, 흑색) */
 hwb(12 50% 0%)
 hwb(194 0% 0% / 0.5)
 
@@ -35,7 +35,7 @@ hwb(194 0% 0% / 0.5)
 lab(50% 40 59.5)
 lab(50% 40 59.5 / 0.5)
 
-/* LCH (밝기, 크로마, 색조) */
+/* LCH (밝기, 채도, 색조) */
 lch(52.2% 72.2 50)
 lch(52.2% 72.2 50 / 0.5)
 
@@ -43,7 +43,7 @@ lch(52.2% 72.2 50 / 0.5)
 oklab(59% 0.1 0.1)
 oklab(59% 0.1 0.1 / 0.5)
 
-/* Oklch (밝기, 크로마, 색조) */
+/* Oklch (밝기, 채도, 색조) */
 oklch(60% 0.15 50)
 oklch(60% 0.15 50 / 0.5)
 
@@ -66,7 +66,7 @@ light-dark(rgb(255 255 255), rgb(0 0 0))
 - 16진수 표기법: [`<hex-color>`](./color_value/hex-color) (`#ff0000` 등)
 - 함수 표기법: `<color-function>`
   - [sRGB](https://ko.wikipedia.org/wiki/SRGB): [`hsl()`], [`hwb()`], [`rgb()`]
-  - [CIELAB](https://ko.wikipedia.org/wiki/CIELAB_%EC%83%89_%EA%B3%B5%EA%B0%84): [`lab()`], [`lch()`](#lch-색)
+  - [CIELAB](https://ko.wikipedia.org/wiki/CIELAB_%EC%83%89_%EA%B3%B5%EA%B0%84): [`lab()`], [`lch()`]
   - [Oklab](https://bottosson.github.io/posts/oklab/): [`oklab()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklab), [`oklch()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch)
   - 기타 색 공간: [`color()`](#color-표기법)
 - [상대 색상 구문](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_colors/Relative_colors)으로 기존 색상에 상대적인 신규 색상 지정
@@ -78,8 +78,6 @@ light-dark(rgb(255 255 255), rgb(0 0 0))
 `currentcolor` 키워드는 요소의 [CSS `color` 속성][`color`]이 가진 값을 나타냅니다. 이 키워드를 사용하면 기본 값에서는 `color`의 영향을 받지 않는 속성들의 색도 `color`의 값으로 맞출 수 있습니다.
 
 `currentcolor`를 `color` 속성의 값으로 사용한 경우에는 부모에게서 상속하는 `color` 값을 가리키게 됩니다.
-
-### 예제
 
 ```html hidden name=currentcolor
 <div class="box">
@@ -103,43 +101,19 @@ light-dark(rgb(255 255 255), rgb(0 0 0))
 
 <LiveExample height={140} lang="css" name="currentcolor" />
 
-## RGB 색
-
-[`rgb()`] 문서를 참고하세요.
-
-## HSL 색
-
-[`hsl()`] 문서를 참고하세요.
-
-## HWB 색
-
-[`hwb()`] 문서를 참고하세요.
-
-## Lab 색
-
-[`lab()`] 문서를 참고하세요.
-
-## LCH 색
-
-CSS Color Module Level 4에서 LCH 색 모델이 추가됐습니다. LCH 색은 특정 색 공간에 제한되지 않으며, 인간이 볼 수 있는 가시영역을 모두 표현할 수 있습니다.
-
-LCH 색은 [`lch()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/lch) 함수 표기법으로 표현합니다.
-
-LCH는 Lab을 극형식(polar form)으로 나타낸 것으로 둘의 본질은 같습니다. 다만, LCH로는 크로마와 색상 값으로 원하는 색을 **지정**할 수 있으므로 \*a\**와 *b\*\* 값을 **혼합**해야 하는 Lab 색보다 더 직관적입니다. 이 관점에서 LCH는 HSL과 비슷합니다.
-
-하지만 LCH(Lab)는 인지적으로 HSL보다 훨씬 더 균일합니다. 즉, LCH 색 모델은 사람이 인지하는 색의 "밝기"를 올바르게 나타낼 수 있습니다. 예컨대 HSL에서는 두 색, `hsl(60 100% 50%)`과 `hsl(240 100% 50%)`를 같은 명도(`50%`)로 나타내지만 LCH와 Lab에서는 전자(노랑)의 \*L\**이 `97.6`, 후자(파랑)의 *L\**이 `29.6`으로 수치만 봐도 후자가 훨씬 어둡습니다. 따라서 LCH는 HSL과 달리 하나의 *L\*\* 팔레트를 완전히 다른 색들에 적용해도 기대하는 결과 범위 내의 색조 팔레트를 얻을 수 있습니다. 참고로 LCH와 HSL의 색상환의 형태는 같지만 서로 다른 색을 가리킵니다.
-
 ## color() 표기법
 
 CSS Color Module Level 4에서 [`color()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color) 함수가 추가됐습니다. `color()` 함수는 사전에 정의된 색 공간뿐만 아니라 [`@color-profile`](https://developer.mozilla.org/en-US/docs/Web/CSS/@color-profile) 규칙으로 정의한 사용자 정의 색 공간 위의 색도 표현할 수 있습니다.
 
 # 보간
 
-애니메이션과 [그레이디언트](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images/Using_CSS_gradients)에서, `<color>` 값의 보간은 적색, 청색, 녹색 값에 대해 독립적으로 이뤄집니다. 각각의 값은 부동소수점 실수로서 보간됩니다. 갑자기 무채색이 나타나는 일을 방지하기 위해, 색 보간은 [알파 채널을 곱한 색 공간](https://www.w3.org/TR/css-color-4/#interpolation-alpha)에서 진행합니다. 보간 속도는 애니메이션이 사용하는 [타이밍 함수](https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function)가 결정합니다.
+색의 보간은 [그레이디언트][`<gradient>`], [트랜지션](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transitions/Using_CSS_transitions), [애니메이션](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations/Using_CSS_animations)에서 발생합니다.
+
+`<color>` 값의 보간 시 우선 주어진 색공간으로의 변환을 먼저 수행하고, [계산 값](https://developer.mozilla.org/en-US/docs/Web/CSS/computed_value) 각각의 색 성분을 선형 보간합니다. 트랜지션과 애니메이션에서의 보간 속도는 [이징 함수][`<easing-function>`]가 결정합니다. 보간 색공간은 Oklab이 기본이지만, 몇몇 색 관련 함수 표기법에서는 [`<color-interpolation-method>`]로 재설정할 수 있습니다.
 
 # 접근성
 
-색을 구분하기 힘든 사용자도 존재하므로 [WCAG 2.1](https://www.w3.org/TR/WCAG/#use-of-color) 권고안은 특정 메시지나 동작, 결과를 색만으로 나타내지 않도록 안내하고 있습니다.
+색을 구분하기 힘든 사용자도 존재하므로 [WCAG 2.2](https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable/Use_of_color) 권고안은 특정 메시지나 동작, 결과를 색만으로 나타내지 않도록 안내하고 있습니다.
 
 # 예제
 
@@ -225,8 +199,12 @@ hwb(90 10% 10% / 50%)
 
 <BrowserCompat data={props.bcd} />
 
+[`<color-interpolation-method>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/color-interpolation-method
+[`<easing-function>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function
+[`<gradient>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/gradient
 [`color`]: ./color
 [`hsl()`]: ./color_value/hsl
 [`hwb()`]: ./color_value/hwb
 [`lab()`]: ./color_value/lab
+[`lch()`]: ./color_value/lch
 [`rgb()`]: ./color_value/rgb

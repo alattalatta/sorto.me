@@ -50,7 +50,11 @@ hwb(H W B[ / A])
 ```
 
 - : `H`
+
   - 색의 색상([`<hue>`]) 각도를 나타내는 [`<number>`], [`<angle>`], 또는 키워드 `none` (`0deg`와 같음)입니다.
+
+    > [note] 주어진 색상 각도가 가리키는 색은 sRGB([`hsl()`], `hwb()`), CIELAB([`lch()`]), Oklab([`oklch()`]) 색 공간에서 모두 다릅니다. [`<hue>`] 문서에서 자세한 정보를 확인하세요.
+
 - : `W`
   - 색의 백색 성분을 나타내는 [`<percentage>`] 또는 키워드 `none` (`0%`와 같음) 값입니다. `0%`는 백색의 부재, `100%`는 `B`가 `0`일 땐 완전한 백색이고 아닐 땐 `W`와 `B`가 정규화합니다.
 - : `B`
@@ -105,5 +109,8 @@ hwb(from <color> H W B[ / A])
 [`<number>`]: ../number
 [`<percentage>`]: ../percentage
 [`CSSStyleDeclaration.getPropertyValue()`]: https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/getPropertyValue
+[`hsl()`]: ./hsl
 [`HTMLElement.style`]: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style
+[`lch()`]: ./lch
+[`oklch()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch
 [`rgb()`]: ./rgb

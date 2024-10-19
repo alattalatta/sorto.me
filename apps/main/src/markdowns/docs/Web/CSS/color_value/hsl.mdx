@@ -63,7 +63,11 @@ hsl(H S L[ / A])
 ```
 
 - : `H`
+
   - 색의 색상([`<hue>`]) 각도를 나타내는 [`<number>`], [`<angle>`], 또는 키워드 `none` (`0deg`와 같음)입니다.
+
+    > [note] 주어진 색상 각도가 가리키는 색은 sRGB(`hsl()`, [`hwb()`]), CIELAB([`lch()`]), Oklab([`oklch()`]) 색 공간에서 모두 다릅니다. [`<hue>`] 문서에서 자세한 정보를 확인하세요.
+
 - : `S`
   - 색의 채도를 나타내는 [`<percentage>`] 또는 키워드 `none` (`0%`와 같음) 값입니다. `100%`는 포화색, `0%`는 무채색(회색)입니다.
 - : `L`
@@ -119,4 +123,7 @@ hsl(from <color> H S L[ / A])
 [`<percentage>`]: ../percentage
 [`CSSStyleDeclaration.getPropertyValue()`]: https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/getPropertyValue
 [`HTMLElement.style`]: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style
+[`hwb()`]: ./hwb
+[`lch()`]: ./lch
+[`oklch()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch
 [`rgb()`]: ./rgb

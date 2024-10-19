@@ -1,0 +1,108 @@
+---
+title: 'CSS lch() 함수형 표기: L*C*h 색 구문'
+titleShort: 'lch()'
+bcd: css.types.color.lch
+---
+
+**`lch()`** 함수형 표기는 [CIELCh](https://en.wikipedia.org/wiki/CIELAB_color_space#Cylindrical_model) 색공간의 색을 밝기(_lightness_), 채도(_chroma_), 색상(_hue_) 성분으로 표현합니다. 선택적으로 알파 성분이 색의 투명도를 나타냅니다.
+
+```css hidden name=demo
+#color {
+  background-color: lch(87 86.32 87.42);
+  /* background-color: lch(51 28.67 158.99); */
+  /* background-color: lch(78 71.36 110.69 / 0.7); */
+  /* background-color: lch(88 111.56 133.11 / 0.25); */
+}
+```
+
+```css hidden editable=false name=demo filename=style
+#color {
+  width: 100px;
+  height: 100px;
+}
+```
+
+```html hidden editable=false name=demo
+<div id="color"></div>
+```
+
+<LiveExample height={140} lang="css" name="demo" />
+
+# 구문
+
+```css
+/* 절대 값 */
+lch(29.2345% 44.2 27);
+lch(52.2345% 72.2 56.2);
+lch(52.2345% 72.2 56.2 / .5);
+
+/* 상대 값 */
+lch(from green l c h / 0.5)
+lch(from #0000FF calc(l + 10) c h)
+lch(from hsl(180 100% 50%) calc(l - 10) c h)
+```
+
+## 값
+
+### 절대 값 구문
+
+```
+lch(L C H[ / A])
+```
+
+- : `L`
+  - 색의 밝기를 나타내는 `0` 이상 `100` 이하의 [`<number>`], `0%` 이상 `100%` 이하의 [`<percentage>`], 또는 키워드 `none` (`0%`와 같음) 값입니다. `100%`는 흰색, `0%`는 검은색입니다.
+- : `C`
+  - 색의 채도 성분을 나타내는 [`<number>`], [`<percentage>`], 또는 키워드 `none` (`0%`와 같음) 값입니다. 의미 있는 최소 값은 `0`(`0%`)이며, 최대 값에는 이론적으로 제한이 없지만 실제로 사용 가능한 값은 `230`을 넘지 않습니다. `100%`는 `150`과 같습니다.
+- : `H`
+
+  - 색의 색상([`<hue>`]) 성분을 나타내는 [`<number>`], [`<angle>`], 또는 키워드 `none` (`0deg`와 같음) 값입니다.
+
+    > [note] 주어진 색상 각도가 가리키는 색은 sRGB([`hsl()`], [`hwb()`]), CIELAB(`lch()`), Oklab([`oklch()`]) 색 공간에서 모두 다릅니다. [`<hue>`] 문서에서 자세한 정보를 확인하세요.
+
+- : `A` (선택사항)
+
+  - 색의 알파 채널을 나타내는 [`<alpha-value>`] 값입니다. `0`은 `0%` (완전 투명), `1`은 `100%` (완전 불투명)입니다. `none`을 사용해 알파 채널이 없음을 명시할 수도 있습니다.
+
+    `A` 값을 생략하면 `100%`와 같습니다. 생략하지 않을 경우 앞의 세 값과 `/`로 구분해야 합니다.
+
+### 상대 값 구문
+
+```
+lch(from <color> L C H[ / A])
+```
+
+- : `from <color>`
+  - 상대 색의 **기준색**을 나타내는 [`<color>`] 값입니다. 앞의 `from`까지 포함해야 합니다. 기준색으로는 다른 상대색을 포함한 아무 [`<color>`] 값이나 사용할 수 있습니다.
+- : `L`
+  - 색의 밝기를 나타내는 `0` 이상 `100` 이하의 [`<number>`], `0%` 이상 `100%` 이하의 [`<percentage>`], 또는 키워드 `none` (`0%`와 같음) 값입니다. `100%`는 흰색, `0%`는 검은색입니다.
+- : `C`
+  - 색의 채도 성분을 나타내는 [`<number>`], [`<percentage>`], 또는 키워드 `none` (`0%`와 같음) 값입니다. 의미 있는 최소 값은 `0`(`0%`)이며, 최대 값에는 이론적으로 제한이 없지만 실제로 사용 가능한 값은 `230`을 넘지 않습니다. `100%`는 `150`과 같습니다.
+- : `H`
+
+  - 색의 색상([`<hue>`]) 성분을 나타내는 [`<number>`], [`<angle>`], 또는 키워드 `none` (`0deg`와 같음) 값입니다.
+
+- : `A` (선택사항)
+
+  - 색의 알파 채널을 나타내는 [`<alpha-value>`] 값입니다. `0`은 `0%` (완전 투명), `1`은 `100%` (완전 불투명)입니다. `none`을 사용해 알파 채널이 없음을 명시할 수도 있습니다.
+
+    `A` 값을 생략하면 `100%`와 같습니다. 생략하지 않을 경우 앞의 세 값과 `/`로 구분해야 합니다.
+
+# 명세
+
+- [CSS Color Module Level 5](https://drafts.csswg.org/css-color-5/#relative-LCH)
+- [CSS Color Module Level 4](https://drafts.csswg.org/css-color/#lab-colors)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+[`<alpha-value>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/alpha-value
+[`<angle>`]: ../angle
+[`<color>`]: ../color_value
+[`<hue>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/hue
+[`<number>`]: ../number
+[`<percentage>`]: ../percentage
+[`hsl()`]: ./hsl
+[`hwb()`]: ./hwb
+[`oklch()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch

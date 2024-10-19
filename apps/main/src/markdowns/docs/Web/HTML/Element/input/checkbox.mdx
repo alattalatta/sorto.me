@@ -48,7 +48,7 @@ input {
 
 `value` 특성을 생략하게 될 경우, 체크박스에서의 기본 값은 `on`이므로 위 예제에서라면 `subscribe=on`을 제출할 것입니다.
 
-> [note] 체크되지 않은 체크박스는 양식 제출 시 아무것도 제출하지 않습니다. 즉, 서버가 `name=unchecked`나 `name=off` 따위의 데이터를 수신하지 않습니다. 해제된 체크박스를 나타내는 기본 값을 서버로 전송해야 하는 경우라면, JavaScript 등으로 체크박스와 같은 `name`, 원하는 `value`를 지정한 [`<input type="hidden">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/hidden)을 생성할 수 있을 겁니다.
+> [note] 체크되지 않은 체크박스는 양식 제출 시 아무것도 제출하지 않습니다. 즉, 서버가 `name=unchecked`나 `name=off` 따위의 데이터를 수신하지 않습니다. 해제된 체크박스를 나타내는 기본 값을 서버로 전송해야 하는 경우라면, JavaScript 등으로 체크박스와 같은 `name`, 원하는 `value`를 지정한 [`<input type="hidden">`]을 생성할 수 있을 겁니다.
 
 # 추가 특성
 
@@ -207,3 +207,5 @@ function updateDisplay() {
 # 같이 보기
 
 - 라디오 버튼: [`<input type="radio">`](./radio)
+
+[`<input type="hidden">`]: ./hidden

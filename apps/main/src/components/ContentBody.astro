@@ -27,6 +27,19 @@ const { content: Content, ...props } = Astro.props
     }
   }
 
+  @keyframes blink {
+    0%,
+    55% {
+      background: rgb(146, 252, 234);
+    }
+    100% {
+      background: transparent;
+    }
+  }
+  .body :global(:target) {
+    animation: blink 2s ease;
+  }
+
   .body :global(a[target='_blank'])::after {
     content: '⧉' / ' (새 탭에서 열기)';
     display: inline-block;

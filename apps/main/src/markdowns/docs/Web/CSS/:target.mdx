@@ -1,0 +1,65 @@
+---
+title: 'CSS :target 의사 클래스: 프래그먼트 대상'
+titleShort: ':target'
+bcd: css.selectors.target
+---
+
+CSS **`:target`** [의사 클래스]는 URL의 프래그먼트와 [`id` 특성]이 일치하는 고유 요소 (대상 요소)를 나타냅니다.
+
+예를 들어, [`https://sorto.me/docs/Web/CSS/:target#구문`](/docs/Web/CSS/:target#구문) URL로 이동 시, `:target` 의사 클래스로 `<h2 id="구문">구문</h2>` 요소를 선택할 수 있습니다.
+
+# 구문
+
+```css
+:target {
+  /* ... */
+}
+```
+
+> [note] CSS 명세의 문제로 인해 [웹 컴포넌트](https://developer.mozilla.org/en-US/docs/Web/API/Web_components) 내에서는 `:target`이 작동하지 않습니다. [섀도 루트](https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot)가 대상 요소를 섀도 트리에 전달하지 않기 때문입니다.
+
+# 예제
+
+```html hidden name=example
+<h3>목차</h3>
+<ol>
+  <li><a href="#p1">서론</a></li>
+  <li><a href="#p2">본론</a></li>
+</ol>
+
+<h3>프래그먼트 이동에 대하여</h3>
+<p id="p1">
+  이 문단은 <b>서론</b>입니다. 위의 목차에서 선택해보세요.
+</p>
+<p id="p2">
+  이 문단은 <b>본론</b>입니다. 목차에서 선택하면 스타일이 바뀌어요.
+</p>
+```
+
+```css hidden name=example
+p:target {
+  background-color: gold;
+}
+
+/* 선택한 문단 왼쪽에 화살표 붙이기 */
+p:target::before {
+  color: limegreen;
+  content: "►";
+  font: 0.7em sans-serif;
+  margin-right: 0.25em;
+}
+```
+
+<LiveExample height={260} lang="css" name="example" />
+
+# 명세
+
+- [HTML Standard](https://html.spec.whatwg.org/multipage/semantics-other.html#selector-target)
+- [Selectors Level 4](https://drafts.csswg.org/selectors/#the-target-pseudo)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+[`id`]: /docs/Web/HTML/Global_attributes/id
+[의사 클래스]: https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes

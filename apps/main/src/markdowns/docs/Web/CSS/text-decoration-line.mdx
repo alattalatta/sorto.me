@@ -1,0 +1,91 @@
+---
+title: 'CSS text-decoration-line: 밑줄, 윗줄, 취소선 등 글 장식선 종류'
+titleShort: text-decoration-line
+bcd: css.properties.text-decoration-line
+---
+
+CSS **`text-decoration-line`** 속성은 밑줄과 윗줄 등 글을 장식하는 선의 종류를 설정합니다.
+
+```css hidden name=demo
+u {
+  text-decoration-line: underline;
+  /* text-decoration-line: overline; */
+  /* text-decoration-line: line-through; */
+  /* text-decoration-line: underline overline; */
+  /* text-decoration-line: underline overline line-through; */
+}
+```
+
+```css hidden editable=false name=demo filename=style
+.text {
+  font-size: 1.25rem;
+}
+```
+
+```html hidden name=demo
+<p class="text">
+  마침내 우리는 성스러운 <u>완모식 표본</u> 앞에 당도했다.
+</p>
+```
+
+<LiveExample height={200} lang="css" name="demo" />
+
+# 구문
+
+```css
+/* 단일 키워드 */
+text-decoration-line: none;
+text-decoration-line: underline;
+text-decoration-line: overline;
+text-decoration-line: line-through;
+
+/* 다중 키워드 */
+text-decoration-line: underline overline;
+text-decoration-line: overline underline line-through;
+
+/* 전역 값 */
+text-decoration-line: inherit;
+text-decoration-line: initial;
+text-decoration-line: revert;
+text-decoration-line: revert-layer;
+text-decoration-line: unset;
+```
+
+`text-decoration-line` 속성에는 `none` 키워드, 또는 공백으로 구분한 한 개 이상의 장식선 종류 키워드를 사용합니다.
+
+## 값
+
+- : `none`
+  - 글에 장식선을 추가하지 않습니다.
+- : `underline`
+  - 글의 각 행 아래에 밑줄을 추가합니다.
+- : `overline`
+  - 글의 각 행 위에 윗줄을 추가합니다.
+- : `line-through`
+  - 글의 각 행 가운데를 가로지르는 선을 추가합니다.
+
+# 예제
+
+```css hidden name=example
+.wavy {
+  text-decoration-color: red;
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+}
+```
+
+```html hidden name=example
+<p class="wavy">
+  불길한 빨간색 물결 밑줄이에요.
+</p>
+```
+
+<LiveExample height={140} lang="css" name="example" />
+
+# 명세
+
+- [CSS Text Decoration Module Level 3](https://drafts.csswg.org/css-text-decor/#text-decoration-line-property)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />

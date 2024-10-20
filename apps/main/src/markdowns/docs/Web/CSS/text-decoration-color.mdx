@@ -1,0 +1,114 @@
+---
+title: 'CSS text-decoration-color: 밑줄, 윗줄, 취소선 등 글 장식선 색'
+titleShort: text-decoration-color
+bcd: css.properties.text-decoration-color
+---
+
+CSS **`text-decoration-color`** 속성은 [`text-decoration-line`] 속성이 추가하는 글 장식선의 색을 설정합니다.
+
+```css hidden name=demo
+u {
+  text-decoration-color: red;
+  /* text-decoration-color: #16da04; */
+  /* text-decoration-color: hsl(261, 96%, 44%); */
+  /* text-decoration-color: currentcolor; */
+}
+```
+
+```css hidden editable=false name=demo filename=style
+.text {
+  font-size: 1.25rem;
+}
+
+u {
+  text-decoration-line: underline;
+}
+```
+
+```html hidden name=demo
+<p class="text">
+  마침내 우리는 성스러운 <u>완모식 표본</u> 앞에 당도했다.
+</p>
+```
+
+<LiveExample height={180} lang="css" name="demo" />
+
+# 구문
+
+```css
+/* <color> 값 */
+text-decoration-color: red;
+text-decoration-color: #00ff00;
+text-decoration-color: rgb(255 128 128 / 50%);
+text-decoration-color: transparent;
+text-decoration-color: currentcolor;
+
+/* 전역 값 */
+text-decoration-color: inherit;
+text-decoration-color: initial;
+text-decoration-color: revert;
+text-decoration-color: revert-layer;
+text-decoration-color: unset;
+```
+
+## 값
+
+- : [`<color>`]
+  - 장식선의 색을 설정합니다.
+
+# 접근성
+
+글씨와 뒤의 배경, 그리고 장식선의 색이 서로 충분히 높은 대비를 가져야 저시력 사용자들이 페이지 콘텐츠를 읽을 수 있습니다.
+
+색을 구분하기 힘든 사용자도 존재하므로 색만 사용해 뜻을 전달하지 않아야 합니다. 예를 들어 링크 포커스 여부를 글씨와 장식선 색만 사용해 표현하는 건 좋지 않습니다.
+
+# 예제
+
+## 밑줄과 윗줄에 다른 색 입히기
+
+CSS만 사용해서는 장식선의 종류마다 다른 색을 적용할 수 없습니다. 대신 HTML 요소를 중첩하고, 각각 다른 종류와 다른 색을 입히는 방법을 고려할 수 있습니다.
+
+```css hidden name=example
+.overline {
+  text-decoration-color: blue;
+  text-decoration-line: overline;
+}
+.underline {
+  text-decoration-color: red;
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+}
+
+.both {
+  text-decoration-color: #0e0;
+  text-decoration-line: underline overline;
+}
+```
+
+```html hidden name=example
+<p>
+  이럴수가, <span class="overline"><span class="underline">파란 윗선과 빨간 밑선</span></span>이
+  같이 존재해요!
+</p>
+
+<p>
+  요소 중첩 없이는 <span class="both">같은 색만 사용할 수 있어요.</span>
+</p>
+```
+
+<LiveExample height={200} lang="html" name="example" />
+
+# 명세
+
+- [CSS Text Decoration Module Level 3](https://drafts.csswg.org/css-text-decor/#text-decoration-color-property)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 장식선 종류: [`text-decoration-line`]
+
+[`<color>`]: ./color_value
+[`text-decoration-line`]: ./text-decoration-line

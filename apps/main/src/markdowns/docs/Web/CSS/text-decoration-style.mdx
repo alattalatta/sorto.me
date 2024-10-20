@@ -1,0 +1,119 @@
+---
+title: 'CSS text-decoration-style: 글 장식선 모양'
+titleShort: text-decoration-style
+bcd: css.properties.text-decoration-style
+---
+
+CSS **`text-decoration-style`** 속성은 [`text-decoration-line`] 속성이 추가하는 글 장식선의 모양을 설정합니다.
+
+```css hidden name=demo
+u {
+  text-decoration-style: solid;
+  /* text-decoration-style: dashed; */
+  /* text-decoration-style: dotted; */
+  /* text-decoration-style: double; */
+  /* text-decoration-style: wavy; */
+}
+```
+
+```css hidden editable=false name=demo filename=style
+.text {
+  font-size: 1.25rem;
+}
+
+u {
+  text-decoration-line: underline;
+}
+```
+
+```html hidden name=demo
+<p class="text">
+  마침내 우리는 성스러운 <u>완모식 표본</u> 앞에 당도했다.
+</p>
+```
+
+<LiveExample height={180} lang="css" name="demo" />
+
+# 구문
+
+```css
+/* <color> 값 */
+text-decoration-style: solid;
+text-decoration-style: double;
+text-decoration-style: dotted;
+text-decoration-style: dashed;
+text-decoration-style: wavy;
+
+/* 전역 값 */
+text-decoration-style: inherit;
+text-decoration-style: initial;
+text-decoration-style: revert;
+text-decoration-style: revert-layer;
+text-decoration-style: unset;
+```
+
+## 값
+
+- : `solid`
+  - 실선입니다.
+- : `double`
+  - 이중 실선입니다.
+- : `dotted`
+  - 점선입니다.
+- : `dashed`
+  - 대시선입니다.
+- : `wavy`
+  - 구불구불한 선입니다.
+
+# 예제
+
+## 밑줄과 윗줄에 다른 모양 사용하기
+
+CSS만 사용해서는 장식선의 종류마다 다른 모양을 적용할 수 없습니다. 대신 HTML 요소를 중첩하고, 각각 다른 종류와 다른 모양을 입히는 방법을 고려할 수 있습니다.
+
+```css hidden name=example
+.overline {
+  text-decoration-color: blue;
+  text-decoration-line: overline;
+}
+.underline {
+  text-decoration-color: red;
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+}
+
+.both {
+  text-decoration-color: #0ecf00;
+  text-decoration-line: underline overline;
+  text-decoration-style: dashed;
+}
+```
+
+```html hidden name=example
+<p>
+  이럴 수가, <span class="overline"><span class="underline">윗선은 실선이고 밑선은 구불구불</span></span>해요!
+</p>
+
+<p>
+  요소 중첩 없이는 <span class="both">같은 스타일만 사용할 수 있어요.</span>
+</p>
+```
+
+<LiveExample height={200} lang="html" name="example" />
+
+# 명세
+
+- [CSS Text Decoration Module Level 3](https://drafts.csswg.org/css-text-decor/#text-decoration-style-property)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 장식선 색: [`text-decoration-color`]
+- 장식선 종류: [`text-decoration-line`]
+
+[`<color>`]: ./color_value
+[`text-decoration-color`]: ./text-decoration-color
+[`text-decoration-line`]: ./text-decoration-line

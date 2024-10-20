@@ -4,17 +4,17 @@ titleShort: '<percentage>'
 bcd: css.types.percentage
 ---
 
-CSS **`<percentage>`** 자료형은 백분율 값을 표현합니다. 대개 부모 객체의 크기에 비례하는 수치를 정의할 때 사용합니다. [`width`](https://developer.mozilla.org/en-US/docs/Web/CSS/width), [`height`](https://developer.mozilla.org/en-US/docs/Web/CSS/height), [`margin`](./margin), [`padding`](https://developer.mozilla.org/en-US/docs/Web/CSS/padding), [`font-size`](./font-size) 등 다양한 속성이 `<percentage>`를 받을 수 있습니다.
+CSS **`<percentage>`** 자료형은 백분율 값을 표현합니다. 대개 부모 객체의 크기에 비례하는 수치를 정의할 때 사용합니다. [`width`], [`height`], [`margin`], [`padding`], [`font-size`] 등 다양한 속성이 `<percentage>`를 받을 수 있습니다.
 
-> [note] 상속은 계산 값만 가능합니다. 따라서 부모의 속성에 백분율 값을 지정했다 하더라도 상속 속성이 받는 값은 실제 값, 예컨대 [`<length>`](./length) 값에서라면 픽셀 길이가 됩니다.
+> [note] 상속은 계산 값만 가능합니다. 따라서 부모의 속성에 백분율 값을 지정했다 하더라도 상속 속성이 받는 값은 실제 값, 예컨대 [`<length>`] 값에서라면 픽셀 길이가 됩니다.
 
 # 구문
 
-`<percentage>` 구문은 [`<number>`](./number) 뒤에 백분율 기호(`%`)를 붙여 구성합니다. `<number>`가 확장하는 [`<integer>`](./integer)와 마찬가지로 `+`와 `-`로 부호를 표시할 수는 있지만, `<percentage>`를 받는 모든 속성에서 음의 백분율은 유효하지 않습니다. 다른 모든 CSS의 수치와 마찬가지로 수와 백분율 기호 사이에 공백이 있어선 안됩니다.
+`<percentage>` 구문은 [`<number>`](./number) 뒤에 백분율 기호(`%`)를 붙여 구성합니다. `<number>`가 확장하는 [`<integer>`]와 마찬가지로 `+`와 `-`로 부호를 표시할 수는 있지만, `<percentage>`를 받는 모든 속성에서 음의 백분율은 유효하지 않습니다. 다른 모든 CSS의 수치와 마찬가지로 수와 백분율 기호 사이에 공백이 있어선 안됩니다.
 
 # 보간
 
-애니메이션에서 `<percentage>` 값은 부동소수점 실수로서 보간됩니다. 보간 속도는 애니메이션이 사용하는 [타이밍 함수](https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function)가 결정합니다.
+애니메이션에서 `<percentage>` 값은 부동소수점 실수로서 보간됩니다. 보간 속도는 애니메이션이 사용하는 [이징 함수][`<easing-function>`]가 결정합니다.
 
 # 명세
 
@@ -23,3 +23,12 @@ CSS **`<percentage>`** 자료형은 백분율 값을 표현합니다. 대개 부
 # 브라우저 호환성
 
 <BrowserCompat data={props.bcd} />
+
+[`<easing-function>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function
+[`<integer>`]: ./integer
+[`<length>`]: ./length
+[`font-size`]: ./font-size
+[`height`]: https://developer.mozilla.org/en-US/docs/Web/CSS/height
+[`margin`]: ./margin
+[`padding`]: ./padding
+[`width`]: https://developer.mozilla.org/en-US/docs/Web/CSS/width

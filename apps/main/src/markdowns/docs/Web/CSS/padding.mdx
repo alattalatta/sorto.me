@@ -1,0 +1,87 @@
+---
+title: 'CSS padding: 안쪽 여백 단축속성'
+titleShort: padding
+bcd: css.properties.padding
+---
+
+CSS **`padding`** 속성은 요소의 네 방향 안쪽 여백(패딩)을 동시에 설정합니다.
+
+```css hidden name=demo
+#target {
+  padding: 10px;
+  /* padding: 5% 0; */
+  /* padding: 10px 30px 50px; */
+  /* padding: 50px 30px 10px 10px; */
+}
+```
+
+```css hidden editable=false name=demo filename=style
+#target {
+  background: beige;
+  border: 8px solid aquamarine;
+}
+
+.inside {
+  background: white;
+  border: 2px dashed darkseagreen;
+  height: 40px;
+}
+```
+
+```html hidden name=demo
+<div id="target">
+  <div class="inside"></div>
+</div>
+```
+
+<LiveExample height={240} lang="css" name="demo" />
+
+# 구문
+
+```css
+/* 모든 방향 */
+padding: 10px;
+
+/* 위+아래 왼쪽+오른쪽 */
+padding: 4px 10%;
+
+/* 위 왼쪽+오른쪽 아래 */
+padding: 0 auto 50%;
+
+/* 위 오른쪽 아래 왼쪽 */
+padding: 2.4em 3em 3em 3em;
+
+/* 전역 값 */
+padding: inherit;
+padding: initial;
+padding: revert;
+padding: revert-layer;
+padding: unset;
+```
+
+`padding` 속성에는 한 개에서 네 개까지의 값을 사용합니다. 각각의 값은 [`<length>`](./length) 또는 [`<percentage>`](./percentage)입니다. 0보다 작은 값은 지정할 수 없습니다.
+
+- 값을 **한 개** 지정하면 네 방향 여백 모두에 적용됩니다.
+- 값을 **두 개** 지정하면 첫 번째 값은 위와 아래, 두 번째 값은 왼쪽과 오른쪽 여백에 적용됩니다.
+- 값을 **세 개** 지정하면 첫 번째 값은 위, 두 번째 값은 왼쪽과 오른쪽, 세 번째 값은 아래 여백에 적용됩니다.
+- 값을 **네 개** 지정하면 각각 위, 오른쪽, 아래, 왼쪽 여백에 적용됩니다. (시계 방향)
+
+## 값
+
+- : [`<length>`](./length)
+  - 안쪽 여백의 크기를 고정된 수치로 지정합니다.
+- : [`<percentage>`](./percentage)
+  - 안쪽 여백의 크기를 [컨테이닝 블록](https://developer.mozilla.org/ko/docs/Web/CSS/Containing_block)의 인라인 크기(가로쓰기에서는 **너비**)에 대한 백분율로 지정합니다.
+
+# 명세
+
+- [CSS Box Model Module Level 3](https://drafts.csswg.org/css-box/#padding-shorthand)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 바깥 여백: [`margin`](./margin)
+- [CSS 기본 박스 모델 소개](https://developer.mozilla.org/ko/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model)

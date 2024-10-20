@@ -1,0 +1,113 @@
+---
+title: 'CSS text-decoration: 글 장식선 (밑줄, 윗줄, 취소선)'
+titleShort: text-decoration
+bcd: css.properties.text-decoration
+---
+
+CSS **`text-decoration`** 속성은 밑줄과 윗줄 등 글을 장식하는 [선의 종류][`text-decoration-line`], [모양][`text-decoration-style`], [색][`text-decoration-color`], [두께][`text-decoration-thickness`]를 설정합니다.
+
+```css hidden name=demo
+.line {
+  text-decoration: underline;
+  /* text-decoration: overline 3px; */
+  /* text-decoration: line-through wavy; */
+  /* text-decoration: underline wavy red; */
+  /* text-decoration: underline overline dashed hsl(200, 96%, 60%); */
+}
+```
+
+```css hidden editable=false name=demo filename=style
+.text {
+  font-size: 1.25rem;
+}
+```
+
+```html hidden name=demo
+<p class="text">
+  마침내 우리는 성스러운 <span class="line">완모식 표본</span> 앞에 당도했다.
+</p>
+```
+
+<LiveExample height={180} lang="css" name="demo" />
+
+# 구성 속성
+
+`text-decoration`은 다음 네 속성의 단축 속성입니다.
+
+- [`text-decoration-color`]
+- [`text-decoration-line`]
+- [`text-decoration-style`]
+- [`text-decoration-thickness`]
+
+# 구문
+
+```css
+text-decoration: none;
+text-decoration: underline;
+text-decoration: overline red;
+text-decoration: underline line-through blue 2px;
+
+/* 전역 값 */
+text-decoration: inherit;
+text-decoration: initial;
+text-decoration: revert;
+text-decoration: revert-layer;
+text-decoration: unset;
+```
+
+`text-decoration` 속성에는 각 구성 속성의 값을 공백으로 구분해 사용합니다.
+
+# 예제
+
+## 밑줄과 윗줄에 다른 스타일 입히기
+
+CSS만 사용해서는 장식선의 종류마다 다른 스타일을 적용할 수 없습니다. 대신 HTML 요소를 중첩하고, 각각 다른 스타일을 적용하는 걸 고려할 수 있습니다.
+
+```css hidden name=example
+.overline {
+  text-decoration-color: blue;
+  text-decoration-line: overline;
+}
+.underline {
+  text-decoration-color: red;
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+}
+
+.both {
+  text-decoration-color: #0e0;
+  text-decoration-line: underline overline;
+}
+```
+
+```html hidden name=example
+<p>
+  이럴 수가, <span class="overline"><span class="underline">파란 윗선과 빨간 밑선</span></span>이
+  같이 존재해요!
+</p>
+
+<p>
+  요소 중첩 없이는 <span class="both">같은 스타일만 사용할 수 있어요.</span>
+</p>
+```
+
+<LiveExample height={200} lang="html" name="example" />
+
+# 명세
+
+- [CSS Text Decoration Module Level 3](https://drafts.csswg.org/css-text-decor/#text-decoration-property)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 장식선 색: [`text-decoration-color`]
+- 장식선 종류: [`text-decoration-line`]
+- 장식선 모양: [`text-decoration-style`]
+
+[`text-decoration-color`]: ./text-decoration-color
+[`text-decoration-line`]: ./text-decoration-line
+[`text-decoration-style`]: ./text-decoration-style
+[`text-decoration-thickness`]: https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-thickness

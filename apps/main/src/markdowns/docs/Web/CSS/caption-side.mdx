@@ -1,0 +1,112 @@
+---
+title: 'CSS caption-side: 표 설명 위치'
+titleShort: 'caption-side'
+bcd: css.properties.caption-side
+---
+
+CSS **`caption-side`** 속성은 표 [`<caption>`] 요소의 내용이 지정한 위치에 그려지도록 설정합니다. 위치는 [`<table>`]의 [`writing-mode`]에 상대적입니다.
+
+```css hidden name=demo
+table {
+  caption-side: top;
+  /* caption-side: bottom; */
+}
+```
+
+```css hidden name=demo filename=style
+table {
+  border-collapse: collapse;
+}
+
+td,
+th {
+  border: 1px solid black;
+}
+
+caption {
+  background: yellow;
+  padding: 0.5em 0;
+}
+```
+
+```html hidden name=demo
+<table>
+  <caption>우리 매장 원산지 표기</caption>
+  <thead>
+    <tr>
+      <th>종류</th>
+      <th>품목</th>
+      <th>원산지</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="3">과일</th>
+      <td>사과</td>
+      <td rowspan="2">국산</td>
+    </tr>
+    <tr>
+      <td>배</td>
+    </tr>
+    <tr>
+      <td>파인애플</td>
+      <td>수입산</td>
+    </tr>
+    <tr>
+      <th>곡물</th>
+      <td>쌀</td>
+      <td>국산</td>
+    </tr>
+    <tr>
+      <th>해산물</th>
+      <td>고등어</td>
+      <td>원양산</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+<LiveExample height={240} lang="css" name="demo" />
+
+# 구문
+
+```css
+/* 방향 값 */
+caption-side: top;
+caption-side: bottom;
+
+/* 전역 값 */
+caption-side: inherit;
+caption-side: initial;
+caption-side: revert;
+caption-side: revert-layer;
+caption-side: unset;
+```
+
+`caption-side` 속성에는 다음 값 중 하나를 사용합니다.
+
+## 값
+
+- : `top`
+  - 설명 박스가 표의 블록 시작점에 그려집니다.
+- : `bottom`
+  - 설명 박스가 표의 블록 끝점에 그려집니다.
+
+> [note] [CSS Logical Properties and Values](https://drafts.csswg.org/css-logical/) 모듈에서는 설명 박스를 표의 인라인 시작점과 인라인 끝점에 그리는 두 개의 논리 값, `inline-start`와 `inline-end`도 정의하고 있습니다. 하지만 아무 브라우저에서도 두 값을 지원하지 않습니다.
+
+# 명세
+
+- [Cascading Style Sheets Level 2 Revision 2 (CSS 2.2) Specification](https://drafts.csswg.org/css2/#propdef-caption-side)
+- [CSS Logical Properties and Values Level 1](https://drafts.csswg.org/css-logical/#caption-side)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 표 설명 요소: [HTML `<caption>`][`<caption>`]
+
+[`<caption>`]: /docs/Web/HTML/Element/caption
+[`<table>`]: /docs/Web/HTML/Element/table
+[`writing-mode`]: https://developer.mozilla.org/en-US/docs/Web/CSS/writing-mode

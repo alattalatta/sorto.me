@@ -1,0 +1,139 @@
+---
+title: 'CSS filter: 그래픽 필터 적용'
+titleShort: 'filter'
+bcd: css.properties.filter
+---
+
+CSS **`filter`** 속성은 흐림 효과(블러), 색상 변경 등 그래픽 필터를 요소에 적용합니다. 필터를 사용하면 이미지, 배경, 테두리의 렌더링 결과를 바꿀 수 있습니다.
+
+[`blur()`]와 [`contrast()`]처럼 사전에 정의된 효과들을 사용할 수도 있고, SVG [`<filter>`] 요소를 가리키는 URL을 사용할 수도 있습니다.
+
+```css hidden name=demo
+img {
+  filter: blur(5px);
+  /* filter: contrast(200%); */
+  /* filter: grayscale(80%); */
+  /* filter: hue-rotate(90deg); */
+  /* filter: url(#custom-filter); */
+}
+```
+
+```html hidden name=demo
+<img height="160" src="/assets/infrared-jeju.jpg">
+
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">
+  <filter id="custom-filter">
+    <feDropShadow dx="4" dy="8" stdDeviation="4"></feDropShadow>
+  </filter>
+</svg>
+```
+
+<LiveExample height={200} lang="css" name="demo" />
+
+# 구문
+
+```css
+/* <filter-function> 값 */
+filter: blur(5px);
+filter: brightness(0.4);
+filter: contrast(200%);
+filter: drop-shadow(16px 16px 20px blue);
+filter: grayscale(50%);
+filter: hue-rotate(90deg);
+filter: invert(75%);
+filter: opacity(25%);
+filter: saturate(30%);
+filter: sepia(60%);
+
+/* URL */
+filter: url("filters.svg#filter-id");
+
+/* 다중 필터 */
+filter: contrast(175%) brightness(3%);
+filter: drop-shadow(3px 3px red) sepia(100%) drop-shadow(-3px -3px blue);
+
+/* 필터 제거 */
+filter: none;
+
+/* 전역 값 */
+filter: inherit;
+filter: initial;
+filter: revert;
+filter: revert-layer;
+filter: unset;
+```
+
+`filter` 속성에는 키워드 `none`을 사용하거나, 아래 나열된 필터 함수 또는 SVG [`<filter>`]를 가리키는 [`url()`] 함수를 혼합하여 한 개 이상 사용합니다. `filter`에 지정한 필터 함수 중 하나라도 매개변수가 유효하지 않으면 키워드 `none`을 지정한 것과 같습니다.
+
+필터 함수 또는 `url()`을 여러 개 사용한 경우 순서대로 적용합니다.
+
+## 필터 함수
+
+별도의 설명이 없다면, 매개변수로 백분율을 받는 함수는 0 이상 1 이하의 정수 값도 받을 수 있습니다. 예컨대 `brightness(0.4)`는 `brightness(40%)`와 같습니다.
+
+- : [`blur()`]
+  - 가우시안 블러를 적용합니다.
+- : [`brightness()`]
+  - 선형 곱셈을 적용하여 더 밝게, 또는 더 어둡게 만듭니다. `0%`는 완전한 검은색이고 `100%`는 원본 그대로며 `100%`를 초과할수록 결과가 더 밝아집니다.
+- : [`contrast()`]
+  - 대비를 조절합니다. `0%`는 완전한 회색이고 `100%`는 원본 그대로며 `100%`를 초과할수록 대비가 높아집니다.
+- : [`drop-shadow()`]
+  - 윤곽을 따라 그림자를 그립니다. 매개변수 구문은 [`box-shadow`]와 거의 같지만, `inset` 키워드와 `spread` 값은 사용할 수 없습니다. `drop-shadow()` 이후의 필터는 그림자에도 적용됩니다.
+- : [`grayscale()`]
+  - 흑백으로 만듭니다. `0%`는 원본 그대로고 `100%`에서 완전한 흑백 이미지가 됩니다.
+- : [`hue-rotate()`]
+  - 색조를 바꿉니다. 매개변수 [`<angle>`]로 색상환의 회전 각도를 지정합니다. `0deg`는 원본 그대로입니다.
+- : [`invert()`]
+  - 색을 반전합니다. `0%`는 원본 그대로고 `50%`는 완전환 회색, `100%`는 완전한 반전입니다.
+- : [`opacity()`]
+  - 불투명도를 바꿉니다. `0%`는 완전히 투명하고 `100%`는 원본 그대로입니다.
+- : [`saturate()`]
+  - 채도를 바꿉니다. `0%`는 완전한 무채색이고 `100%`는 원본 그대로며 `100%`를 초과할수록 채도가 높아집니다.
+- : [`sepia()`]
+  - 세피아 톤을 적용합니다. `0%`는 원본 그대로고 `100%`에서 완전한 세피아 이미지가 됩니다.
+
+## 필터 조합
+
+아래 예제처럼 필터를 원하는 만큼 여러 개 지정할 수 있으며, 적용 순서는 선언한 순서와 같습니다.
+
+```css
+/* 대비와 밝기 함께 조절 */
+filter: contrast(175%) brightness(103%);
+```
+
+# 보간
+
+보간 시작 필터 리스트와 종료 필터 리스트 중 어느 쪽에라도 [`url()`]이 있다면 이산 보간을 사용합니다.
+
+시작과 종료 필터 리스트의 길이가 같고, 한 쪽의 필터 함수가 다른 쪽에도 존재할 경우 각각의 필터를 필터 함수가 정의하는 보간법에 따라 보간합니다.
+
+시작과 종료 필터 리스트의 길이가 다르고, 짧은 리스트의 필터 함수가 긴 리스트에도 존재할 경우, 긴 리스트에만 존재하는 필터 함수를 짧은 리스트의 뒤에 추가해 길이를 맞춥니다. 추가된 필터들의 매개변수는 초기 값, 즉 필터를 적용하지 않은 것과 같은 상태로 설정합니다. 예컨대 `blur()`라면 `0px`, `brightness()`라면 `100%`가 됩니다. 이후에 각각의 필터를 필터 함수가 정의하는 보간법에 따라 보간합니다.
+
+한 쪽이 `none`이라면, `none`을 길이 0의 짧은 리스트로 취급해서 위의 규칙과 동일하게 보간합니다.
+
+기타 다른 경우에는 이산 보간을 사용합니다.
+
+{/* TODO: 예제 */}
+
+# 명세
+
+- [Filter Effects Module Level 1](https://drafts.fxtf.org/filter-effects/#FilterProperty)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+[`<angle>`]: ./angle
+[`<filter>`]: https://developer.mozilla.org/en-US/docs/Web/SVG/Element/filter
+[`blur()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/blur
+[`box-shadow`]: https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow
+[`brightness()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/brightness
+[`contrast()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/contrast
+[`drop-shadow()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/drop-shadow
+[`grayscale()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/grayscale
+[`hue-rotate()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/hue-rotate
+[`invert()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/invert
+[`opacity()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/opacity
+[`saturate()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/saturate
+[`sepia()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/sepia
+[`url()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/url_function

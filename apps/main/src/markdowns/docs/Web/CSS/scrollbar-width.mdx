@@ -1,0 +1,88 @@
+---
+title: 'CSS scrollbar-width: 스크롤바 너비'
+titleShort: scrollbar-width
+bcd: css.properties.scrollbar-width
+---
+
+CSS **`scrollbar-width`** 속성은 스크롤바가 보여질 때의 선호 너비를 지정합니다.
+
+이 속성의 주 목적은 페이지 내의 좁은 요소에서 스크롤이 필요할 경우 스크롤바를 작게 표시하여 공간을 최적화하기 위함이지, 스크롤바의 외관을 저자가 원하는 특정 디자인으로 바꾸기 위한 것이 아닙니다.
+
+스크롤바는 페이지와 상호작용하는 중요한 UI 요소입니다. 운영체제는 이런 요소들의 외관을 일관적으로 유지하여 친숙함을 통한 접근성을 유지하고자 하고, 사용자들은 필요한 경우 운영체제나 사용자 에이전트 설정을 통해 다양한 UI 요소의 외관을 조정할 수 있습니다.
+
+UX 차원에서의 목적을 갖고 `scrollbar-width` 속성을 사용하는 것은 적절하지만, 그 외의 경우 이런 설정을 무시하는 건 지양해야 합니다.
+
+```css hidden name=demo
+html {
+  scrollbar-width: auto;
+  /* scrollbar-width: thin; */
+  /* scrollbar-width: none; */
+}
+```
+
+```html hidden name=demo
+<pre>
+계절이 지나가는 하늘에는
+가을로 가득 차 있습니다.
+
+나는 아무 걱정도 없이
+가을 속의 별들을 다 헤일 듯합니다.
+
+가슴속에 하나둘 새겨지는 별을
+이제 다 못 헤는 것은
+쉬이 아침이 오는 까닭이요,
+내일 밤이 남은 까닭이요,
+아직 나의 청춘이 다하지 않은 까닭입니다.
+</pre>
+```
+
+<LiveExample height={140} lang="css" name="demo" />
+
+# 구문
+
+```css
+/* 키워드 값 */
+scrollbar-width: auto;
+scrollbar-width: thin;
+scrollbar-width: none;
+
+/* 전역 값 */
+scrollbar-color: inherit;
+scrollbar-color: initial;
+scrollbar-color: revert;
+scrollbar-color: revert-layer;
+scrollbar-color: unset;
+```
+
+A thin scrollbar width variant on platforms that provide that option, or a thinner scrollbar than the default platform scrollbar width.
+
+## 값
+
+- : `auto`
+  - 플랫폼의 기본 스크롤바 너비를 사용합니다.
+- : `thin`
+  - 플랫폼이 제공하는 스크롤바 유형 중 얇은 것을 사용합니다.
+- : `none`
+
+  - 요소를 스크롤할 수 있지만 스크롤바는 보이지 않습니다.
+
+    > [note] 사용자가 직접 스크롤할 수는 없고 코드에서만 스크롤 가능해야 하는 경우 `scrollbar-width: none`이 아니라 [`overflow: hidden`][`overflow`]을 사용해야 합니다.
+
+# 접근성
+
+`scrollbar-width`에 `thin`이나 `none`을 지정할 경우, 대체 스크롤 방법을 제공하지 않는다면 사용자가 스크롤을 하기 어렵거나 완전히 불가능할 수 있습니다. 스와이프 제스처나 마우스 휠을 통한 스크롤은 여전히 유효하지만 일부 장치에는 내장된 대체 스크롤 방법이 없기 때문입니다.
+
+# 명세
+
+[CSS Scrollbars Styling Module Level 1](https://drafts.csswg.org/css-scrollbars/#scrollbar-width)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 스크롤바 색: [`scrollbar-color`]
+
+[`overflow`]: https://developer.mozilla.org/en-US/docs/Web/CSS/overflow
+[`scrollbar-color`]: ./scrollbar-color

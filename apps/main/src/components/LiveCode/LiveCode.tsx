@@ -63,7 +63,7 @@ const LiveCode: React.FC<Props> = ({
               ref={frameRef}
               className={styles.frame}
               data-loading={loading}
-              sandbox="allow-scripts allow-same-origin"
+              sandbox="allow-forms allow-scripts allow-same-origin"
               src={`/frame${babel ? '/babel' : ''}?id=${id}`}
               title="예제"
             />

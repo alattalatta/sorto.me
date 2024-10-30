@@ -18,7 +18,7 @@ bcd: html.elements.input.type_file
 
 # 값
 
-`<input type="file">` 요소의 [`value` 특성](../input#term-value)은 문자열로, 사용자가 선택한 파일의 경로입니다. 아직 파일을 선택하지 않은 경우 빈 문자열(`""`)입니다. 다수의 파일을 선택한 경우에는 파일 리스트에서 첫 번째 파일의 경로만 나타냅니다. 나머지 파일은 요소 DOM, [`HTMLInputElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement)의 `files` 속성으로 식별할 수 있습니다.
+`file` 유형의 값은 사용자가 선택한 파일의 경로입니다. 아직 파일을 선택하지 않은 경우 빈 문자열(`""`)입니다. 다수의 파일을 선택한 경우에는 파일 리스트에서 첫 번째 파일의 경로만 나타냅니다. 나머지 파일은 요소 DOM, [`HTMLInputElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement)의 `files` 속성으로 식별할 수 있습니다.
 
 > [note] 파일의 경로라고는 하지만, 악의적인 사이트가 사용자의 파일 시스템 구조를 알아낼 수 없도록 실제 값은 항상 `C:\fakepath\` + 파일 이름으로 나타납니다.
 
@@ -103,7 +103,7 @@ document.getElementById('file').addEventListener('input', (event) => {
 
 # 명세
 
-[HTML Standard](<https://html.spec.whatwg.org/multipage/input.html#file-upload-state-(type=file)>)
+- [HTML Standard](<https://html.spec.whatwg.org/multipage/input.html#file-upload-state-(type=file)>)
 
 # 브라우저 호환성
 

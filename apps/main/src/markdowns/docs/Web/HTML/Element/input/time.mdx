@@ -25,7 +25,9 @@ input {
 
 # 값
 
-`time` 유형의 [`value` 특성](../input#term-value)은 24시간 형식의 `hh:mm`, 초 단위 포함 ([`step` 특성 사용하기](#step-특성-사용하기)를 참고하세요) 시 `hh:mm:ss`여야 합니다.
+`time` 유형의 값은 24시간 형식의 `hh:mm`이고, 초 단위 포함 ([`step` 특성 사용하기](#step-특성-사용하기)를 참고하세요) 시 `hh:mm:ss`입니다.
+
+사용자의 화면에 나타나는 날짜의 형식은 `time` 입력 칸이 실제로 저장하는 값과는 다른 형식을 사용합니다. 사용자에게 보이는 시간 형식은 브라우저의 로케일에 따라 달라지지만, 실제 저장 값과 [`value` 특성](../input#term-value)은 항상 위의 `hh:mm` 또는 `hh:mm:ss` 형식을 사용합니다.
 
 JavaScript에서는 [`HTMLInputElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement)의 `value`로 값을 가져올 수 있습니다.
 
@@ -99,7 +101,7 @@ console.log(dateControl.value) // '15:30'
 
 # 명세
 
-[HTML Standard](<https://html.spec.whatwg.org/multipage/input.html#date-state-(type=time)>)
+- [HTML Standard](<https://html.spec.whatwg.org/multipage/input.html#date-state-(type=time)>)
 
 # 브라우저 호환성
 

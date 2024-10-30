@@ -27,9 +27,9 @@ input {
 
 # 값
 
-`date` 유형의 [`value` 특성](../input#term-value)은 [유효한 HTML 날짜 문자열](https://developer.mozilla.org/en-US/docs/Web/HTML/Date_and_time_formats#date_strings)이어야 합니다.
+`date` 유형의 값은 [유효한 HTML 날짜 문자열](https://developer.mozilla.org/en-US/docs/Web/HTML/Date_and_time_formats#date_strings)입니다.
 
-> [note] 사용자의 화면에 나타나는 날짜의 형식은 `date` 입력 칸이 실제로 저장하는 값과는 다른 형식을 사용합니다. 사용자에게 보이는 날짜 형식은 브라우저의 로케일에 따라 달라지지만, 실제 저장 값과 `value` 특성은 항상 `YYYY-MM-DD` 형식을 사용합니다.
+사용자의 화면에 나타나는 날짜의 형식은 `date` 입력 칸이 실제로 저장하는 값과는 다른 형식을 사용합니다. 사용자에게 보이는 날짜 형식은 브라우저의 로케일에 따라 달라지지만, 실제 저장 값과 [`value` 특성](../input#term-value)은 항상 `YYYY-MM-DD` 형식을 사용합니다.
 
 JavaScript에서는 [`HTMLInputElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement)의 `value`와 `valueAsNumber`로 값을 가져올 수 있습니다.
 
@@ -89,7 +89,7 @@ console.log(dateControl.valueAsNumber) // 1496275200000, JavaScript 타임스탬
 
 # 명세
 
-[HTML Standard](<https://html.spec.whatwg.org/multipage/input.html#date-state-(type=date)>)
+- [HTML Standard](<https://html.spec.whatwg.org/multipage/input.html#date-state-(type=date)>)
 
 # 브라우저 호환성
 

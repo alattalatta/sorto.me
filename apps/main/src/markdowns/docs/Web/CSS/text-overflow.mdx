@@ -1,0 +1,74 @@
+---
+title: 'CSS text-overflow: 글 넘침 동작 제어'
+titleShort: text-overflow
+bcd: css.properties.text-overflow
+---
+
+CSS **`text-overflow`** 속성은 글이 넘쳐서 보이지 않는 부분이 생겼을 때, 이를 사용자에게 전달하는 방법을 설정합니다. 단순히 잘라낼 수도 있고, 말줄임표("…")를 붙여줄 수도 있습니다.
+
+```css hidden name=demo
+#target {
+  text-overflow: ellipsis;
+  /* text-overflow: clip; */
+}
+```
+
+```css hidden name=demo filename=style
+#target {
+  border: 1px solid #ccc;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 240px;
+}
+```
+
+```html hidden name=demo
+<p id="target">
+  대한민국과 아메리카합중국간의 상호방위조약 제4조에 의한 시설과 구역 및 대한민국에 있어서의 합중국 군대의 지위에 관한협정의 시행에 따른 국가 및 지방자치단체의 재산의 관리와 처분에 관한 법률
+</p>
+```
+
+<LiveExample height={140} lang="css" name="demo" />
+
+`text-overflow` 속성만으로는 글의 넘침이 강제되지 않습니다. 글이 개행되는 대신 넘쳐야 하면 [`overflow`]와 [`white-space`] 속성도 다음과 같이 설정해야 합니다.
+
+```css
+overflow: hidden;
+white-space: nowrap;
+```
+
+위쪽 라이브 에디터의 `style.css`도 참고하세요.
+
+`text-overflow` 속성은 블록 컨테이너 요소에서 인라인 진행 방향으로 넘친 내용에만 영향을 줍니다. 즉 컨테이너의 아래쪽으로 넘친 글에는 적용되지 않습니다.
+
+# 구문
+
+```css
+text-overflow: clip;
+text-overflow: ellipsis;
+
+/* 전역 값 */
+text-overflow: inherit;
+text-overflow: initial;
+text-overflow: revert;
+text-overflow: revert-layer;
+text-overflow: unset;
+```
+
+## 값
+
+- : `clip`
+  - 기본 값입니다. 콘텐츠 영역을 넘어간 글자를 잘라냅니다. 문자 중간에서도 잘라낼 수 있습니다.
+- : `ellipsis`
+  - 잘린 글이 있음을 표시하기 위해 말줄임표(`…`, `U+2026 HORIZONTAL ELLIPSIS`)를 추가합니다. 말줄임표도 콘텐츠 영역 내에 표시하므로, 잘리지 않고 노출되는 글자 수가 `clip`보다 적어집니다. 콘텐츠 영역의 너비가 말줄임표보다 작으면 `clip` 동작처럼 중간에 잘라냅니다.
+
+# 명세
+
+- [CSS Overflow Module Level 3](https://drafts.csswg.org/css-overflow/#text-overflow)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+[`overflow`]: https://developer.mozilla.org/en-US/docs/Web/CSS/overflow
+[`white-space`]: https://developer.mozilla.org/en-US/docs/Web/CSS/white-space

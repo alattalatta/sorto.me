@@ -1,0 +1,74 @@
+---
+title: 'CSS scrollbar-color: 스크롤바 색 지정'
+titleShort: scrollbar-color
+bcd: css.properties.scrollbar-color
+---
+
+CSS **`scrollbar-color`** 속성은 스크롤바 트랙과 막대의 색을 지정합니다. "트랙"은 스크롤바의 배경으로, 보통 현재 스크롤 위치와 관계 없이 고정돼있습니다. "막대"(thumb)는 스크롤바의 트랙 위에서 움직이는 손잡이 부분입니다.
+
+`scrollbar-color` 속성을 문서의 루트 요소([`<html>`])에 지정하여 뷰포트 스크롤바 색을 바꿀 수 있습니다.
+
+```css hidden name=demo
+html {
+  scrollbar-color: red blue;
+}
+```
+
+```html hidden name=demo
+<pre>
+계절이 지나가는 하늘에는
+가을로 가득 차 있습니다.
+
+나는 아무 걱정도 없이
+가을 속의 별들을 다 헤일 듯합니다.
+
+가슴속에 하나둘 새겨지는 별을
+이제 다 못 헤는 것은
+쉬이 아침이 오는 까닭이요,
+내일 밤이 남은 까닭이요,
+아직 나의 청춘이 다하지 않은 까닭입니다.
+</pre>
+```
+
+<LiveExample height={140} lang="css" name="demo" />
+
+# 구문
+
+```css
+/* 키워드 값 */
+scrollbar-color: auto;
+
+/* <color> <color> 값 */
+scrollbar-color: rebeccapurple green; /* <막대 색> <트랙 색> */
+
+/* 전역 값 */
+scrollbar-color: inherit;
+scrollbar-color: initial;
+scrollbar-color: revert;
+scrollbar-color: revert-layer;
+scrollbar-color: unset;
+```
+
+## 값
+
+`scrollbar-color`에는 `auto` 키워드 또는 두 개의 [`<color>`] 값을 사용합니다.
+
+- : `auto`
+  - 플랫폼의 기본 스크롤바 색을 사용합니다.
+- : [`<color> <color>`][`<color>`]
+  - 첫 번째 색은 막대의 색, 두 번째 색은 트랙의 색을 지정합니다.
+
+# 접근성
+
+스크롤바의 색을 직접 지정할 경우, 저자는 트랙과 손잡이의 색 대비가 충분하도록 주의해야 합니다. `auto` 키워드의 경우 사용자 에이전트가 색 대비를 확보해줘야 합니다. [Techniques for WCAG 2.0: G183: Using a contrast ratio of 3:1](https://www.w3.org/TR/WCAG20-TECHS/G183.html)을 참고하세요.
+
+# 명세
+
+[CSS Scrollbars Styling Module Level 1](https://drafts.csswg.org/css-scrollbars/#scrollbar-color)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+[`<color>`]: ./color_value
+[`<html>`]: /docs/Web/HTML/Element/html

@@ -1,0 +1,112 @@
+---
+title: 'CSS scrollbar-gutter: 스크롤바 공간 확보'
+titleShort: scrollbar-gutter
+bcd: css.properties.scrollbar-gutter
+---
+
+CSS **`scrollbar-gutter`** 속성을 사용하면 스크롤바가 차지할 공간만 미리 확보해둘 수 있습니다. [`overflow: scroll`][`overflow`]과 달리 스크롤이 필요하지 않을 땐 불필요한 스크롤바 없이 여백만 생기고, 콘텐츠가 길어져 스크롤바가 필요할 때가 돼도 여백 위에 나타나므로 기존 레이아웃이 바뀌지 않습니다.
+
+요소의 스크롤바 여백(gutter)은 테두리 영역의 안쪽 모서리와 안쪽 여백(패딩) 영역의 바깥쪽 모서리 사이의 공간으로, 스크롤바가 위치하는 곳입니다. 스크롤바가 없으면 스크롤바 여백은 안쪽 여백 영역의 일부로 그려집니다.
+
+스크롤바에는 클래식과 오버레이 두 종류가 있습니다.
+
+- 클래식 스크롤바는 스크롤바 여백 내에 배치되며 존재할 때 공간을 차지합니다.
+- 오버레이 스크롤바는 콘텐츠 영역 위에 올라가며 보통 반투명합니다.
+
+> [note]
+>
+> 오버레이 스크롤바를 사용하는 경우, 스크롤바가 공간을 차지하지 않으므로 `scrollbar-gutter` 속성도 아무 효과가 없습니다. macOS에서 아래 라이브 에디터 예제를 확인하려면 시스템 설정에서 "스크롤 막대 보기"를 "항상"으로 설정해서 클래식 스크롤바를 사용하도록 변경해야 합니다.
+
+```css hidden name=demo
+#target {
+  scrollbar-gutter: stable;
+  /* scrollbar-gutter: stable both-edges; */
+  /* scrollbar-gutter: auto; */
+}
+```
+
+```css hidden name=demo filename=style
+#target {
+  background: #a7a7a7;
+  height: 180px;
+  overflow: auto;
+  padding: 0.5rem;
+  resize: vertical;
+}
+
+pre {
+  background: #fff;
+  border: 1px solid #0008;
+}
+
+p {
+  text-align: right;
+}
+```
+
+```html hidden name=demo
+<div id="target">
+  <pre>계절이 지나가는 하늘에는
+가을로 가득 차 있습니다.
+
+나는 아무 걱정도 없이
+가을 속의 별들을 다 헤일 듯합니다.
+
+가슴속에 하나둘 새겨지는 별을
+이제 다 못 헤는 것은
+쉬이 아침이 오는 까닭이요,
+내일 밤이 남은 까닭이요,
+아직 나의 청춘이 다하지 않은 까닭입니다.</pre>
+</div>
+<p>
+  높이를 조절해보세요 ⬆️
+</p>
+```
+
+<LiveExample height={280} lang="css" name="demo" />
+
+# 구문
+
+```css
+/* auto 키워드 */
+scrollbar-gutter: auto;
+
+/* stable 키워드 */
+scrollbar-gutter: stable;
+scrollbar-gutter: stable both-edges;
+
+/* 전역 값 */
+scrollbar-gutter: inherit;
+scrollbar-gutter: initial;
+scrollbar-gutter: revert;
+scrollbar-gutter: revert-layer;
+scrollbar-gutter: unset;
+```
+
+`scrollbar-gutter`에는 `auto` 키워드 또는 `stable` 키워드를 사용합니다. `stable` 키워드 사용 시, 선택적으로 `both-edges` 키워드를 추가할 수 있습니다.
+
+## 값
+
+- : `auto`
+  - 초기 값입니다. 클래식 스크롤바의 경우, [`overflow`]가 `scroll`일 때, 또는 `auto`면서 콘텐츠 박스가 넘칠 때 스크롤바 여백을 생성합니다. 오버레이 스크롤바는 공간을 차지하지 않습니다.
+- : `stable`
+  - 클래식 스크롤바의 경우, 콘텐츠 박스의 넘침 여부와 상관 없이 [`overflow`]의 값이 `auto`, `scroll`, `hidden`이라면 스크롤바 여백을 생성합니다. 오버레이 스크롤바의 경우 여백을 생성하지 않습니다.
+- : `both-edges`
+  - 어느 한 쪽에 스크롤바 여백이 존재한다면 반대쪽에도 같은 크기의 여백을 생성합니다.
+
+# 명세
+
+- [CSS Overflow Module Level 3](https://drafts.csswg.org/css-overflow/#scrollbar-gutter-property)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 스크롤바 색: [`scrollbar-color`]
+- 스크롤바 너비: [`scrollbar-width`]
+
+[`overflow`]: https://developer.mozilla.org/en-US/docs/Web/CSS/overflow
+[`scrollbar-color`]: ./scrollbar-color
+[`scrollbar-width`]: ./scrollbar-width

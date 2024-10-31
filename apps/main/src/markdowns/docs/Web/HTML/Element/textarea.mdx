@@ -79,15 +79,15 @@ label {
 
 # CSS 스타일링
 
-`<textarea>`는 [대체 요소](/docs/Web/CSS/Replaced_element)로, 마치 래스터 이미지처럼 요소가 내재된 크기를 가지고 있습니다. 기본 스타일에서 `<textarea>`의 [`display`](/docs/Web/CSS/display) 값은 `inline-block`입니다. 다른 양식 요소와 비교하면 `<textarea>`는 스타일 적용이 수월한 편으로 박스 모델과 글꼴, 색상 등을 평범한 CSS로 바꿀 수 있습니다.
+`<textarea>`는 [대체 요소](/docs/Web/CSS/Replaced_element)로, 마치 래스터 이미지처럼 요소에 내재된 크기를 가지고 있습니다. 기본 스타일에서 `<textarea>`의 [`display`](/docs/Web/CSS/display) 값은 `inline-block`입니다. 다른 양식 요소와 비교하면 `<textarea>`는 스타일 적용이 수월한 편으로 박스 모델과 글꼴, 색상 등을 평범한 CSS로 바꿀 수 있습니다.
 
 ## 불분명한 기준선
 
-HTML 명세는 `<textarea>`의 기준선(baseline)이 어디인지 명시하지 않았으므로 브라우저마다 서로 다른 위치를 기준선으로 삼았습니다. 따라서 `<textarea>`에 [`vertical-align: baseline`](https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align)을 사용했을 때의 동작은 분명하지 않습니다. 사용을 지양하세요.
+HTML 명세는 `<textarea>`의 기준선(baseline)이 어디인지 명시하지 않았으므로 브라우저마다 서로 다른 위치를 기준선으로 삼았습니다. 따라서 `<textarea>`에 [`vertical-align: baseline`][`vertical-align`]을 사용했을 때의 동작은 분명하지 않습니다. 사용을 지양하세요.
 
 ## 크기 조절 가능 여부 설정
 
-대부분의 브라우저에서는 `<textarea>`의 오른쪽 아래 꼭지점을 드래그해서 크기를 바꿀 수 있습니다. 크기 조절 기능은 CSS [`resize` 속성](https://developer.mozilla.org/en-US/docs/Web/CSS/resize)으로 설정할 수 있습니다.
+대부분의 브라우저에서는 `<textarea>`의 오른쪽 아래 꼭지점을 드래그해서 크기를 바꿀 수 있습니다. 크기 조절 기능은 CSS [`resize` 속성][`resize`]으로 설정할 수 있습니다.
 
 ```css
 textarea {
@@ -97,8 +97,15 @@ textarea {
 
 # 명세
 
-[HTML Standard](https://html.spec.whatwg.org/multipage/form-elements.html#the-textarea-element)
+- [HTML Standard](https://html.spec.whatwg.org/multipage/form-elements.html#the-textarea-element)
 
 # 브라우저 호환성
 
 <BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 한 줄 입력 칸: [`<input type="text">`](./input/text)
+
+[`resize`]: https://developer.mozilla.org/en-US/docs/Web/CSS/resize
+[`vertical-align`]: /docs/Web/CSS/vertical-align

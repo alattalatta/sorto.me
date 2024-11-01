@@ -1,0 +1,111 @@
+---
+title: 'CSS oklch() 함수형 표기: Oklch 색 구문'
+titleShort: 'oklch()'
+bcd: css.types.color.oklch
+---
+
+**`oklch()`** 함수형 표기는 [Oklab](https://bottosson.github.io/posts/oklab/) 색공간의 색을 밝기(_lightness_), 채도(_chroma_), 색상(_hue_) 성분으로 표현합니다. 선택적으로 알파 성분이 색의 투명도를 나타냅니다.
+
+```css hidden name=demo
+#color {
+  background-color: oklch(0.88 0.18 93.18);
+  /* background-color: oklch(0.57 0.09 159.44); */
+  /* background-color: oklch(0.8 0.17 120.96 / 0.7); */
+  /* background-color: oklch(0.87 0.29 141.95 / 0.25); */
+}
+```
+
+```css hidden editable=false name=demo filename=style
+#color {
+  width: 100px;
+  height: 100px;
+}
+```
+
+```html hidden editable=false name=demo
+<div id="color"></div>
+```
+
+<LiveExample height={140} lang="css" name="demo" />
+
+# 구문
+
+```css
+/* 절대 값 */
+oklch(40.1% 0.123 21.57)
+oklch(59.69% 0.156 49.77)
+oklch(59.69% 0.156 49.77 / .5)
+
+/* 상대 값 */
+oklch(from green l c h / 0.5)
+oklch(from #0000FF calc(l + 0.1) c h)
+oklch(from hsl(180 100% 50%) calc(l - 0.1) c h)
+oklch(from var(--aColor) l c h / calc(alpha - 0.1))
+```
+
+## 값
+
+### 절대 값 구문
+
+```
+oklch(L C H[ / A])
+```
+
+- : `L`
+  - 색의 밝기를 나타내는 `0` 이상 `1` 이하의 [`<number>`], `0%` 이상 `100%` 이하의 [`<percentage>`], 또는 키워드 `none` (`0%`와 같음) 값입니다. `100%`는 흰색, `0%`는 검은색입니다.
+- : `C`
+  - 색의 채도 성분을 나타내는 [`<number>`], [`<percentage>`], 또는 키워드 `none` (`0%`와 같음) 값입니다. 의미 있는 최소 값은 `0`(`0%`)이며, 최대 값에는 이론적으로 제한이 없지만 실제로 사용 가능한 값은 `0.5`를 넘지 않습니다. `100%`는 `0.4`와 같습니다.
+- : `H`
+
+  - 색의 색상([`<hue>`]) 성분을 나타내는 [`<number>`], [`<angle>`], 또는 키워드 `none` (`0deg`와 같음) 값입니다.
+
+    > [note] 주어진 색상 각도가 가리키는 색은 sRGB([`hsl()`], [`hwb()`]), CIELAB([`lch()`]), Oklab(`oklch()`) 색 공간에서 모두 다릅니다. [`<hue>`] 문서에서 자세한 정보를 확인하세요.
+
+- : `A` (선택사항)
+
+  - 색의 알파 채널을 나타내는 [`<alpha-value>`] 값입니다. `0`은 `0%` (완전 투명), `1`은 `100%` (완전 불투명)입니다. `none`을 사용해 알파 채널이 없음을 명시할 수도 있습니다.
+
+    `A` 값을 생략하면 `100%`와 같습니다. 생략하지 않을 경우 앞의 세 값과 `/`로 구분해야 합니다.
+
+### 상대 값 구문
+
+```
+oklch(from <color> L C H[ / A])
+```
+
+- : `from <color>`
+  - 상대 색의 **기준색**을 나타내는 [`<color>`] 값입니다. 앞의 `from`까지 포함해야 합니다. 기준색으로는 다른 상대색을 포함한 아무 [`<color>`] 값이나 사용할 수 있습니다.
+- : `L`
+  - 색의 밝기를 나타내는 `0` 이상 `1` 이하의 [`<number>`], `0%` 이상 `100%` 이하의 [`<percentage>`], 또는 키워드 `none` (`0%`와 같음) 값입니다. `100%`는 흰색, `0%`는 검은색입니다.
+- : `C`
+  - 색의 채도 성분을 나타내는 [`<number>`], [`<percentage>`], 또는 키워드 `none` (`0%`와 같음) 값입니다. 의미 있는 최소 값은 `0`(`0%`)이며, 최대 값에는 이론적으로 제한이 없지만 실제로 사용 가능한 값은 `0.5`를 넘지 않습니다. `100%`는 `0.4`와 같습니다.
+- : `H`
+
+  - 색의 색상([`<hue>`]) 성분을 나타내는 [`<number>`], [`<angle>`], 또는 키워드 `none` (`0deg`와 같음) 값입니다.
+
+    > [note] 주어진 색상 각도가 가리키는 색은 sRGB([`hsl()`], [`hwb()`]), CIELAB([`lch()`]), Oklab(`oklch()`) 색 공간에서 모두 다릅니다. [`<hue>`] 문서에서 자세한 정보를 확인하세요.
+
+- : `A` (선택사항)
+
+  - 색의 알파 채널을 나타내는 [`<alpha-value>`] 값입니다. `0`은 `0%` (완전 투명), `1`은 `100%` (완전 불투명)입니다. `none`을 사용해 알파 채널이 없음을 명시할 수도 있습니다.
+
+    `A` 값을 생략하면 `100%`와 같습니다. 생략하지 않을 경우 앞의 세 값과 `/`로 구분해야 합니다.
+
+# 명세
+
+- [CSS Color Module Level 5](https://drafts.csswg.org/css-color-5/#relative-Oklch)
+- [CSS Color Module Level 4](https://drafts.csswg.org/css-color/#ok-lab)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+[`<alpha-value>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/alpha-value
+[`<angle>`]: ../angle
+[`<color>`]: ../color_value
+[`<hue>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/hue
+[`<number>`]: ../number
+[`<percentage>`]: ../percentage
+[`hsl()`]: ./hsl
+[`hwb()`]: ./hwb
+[`lch()`]: ./lch

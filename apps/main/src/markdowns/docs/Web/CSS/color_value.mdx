@@ -70,8 +70,9 @@ light-dark(rgb(255 255 255), rgb(0 0 0))
   - [Oklab](https://bottosson.github.io/posts/oklab/): [`oklab()`], [`oklch()`]
   - 기타 색 공간: [`color()`](#color-표기법)
 - [상대 색상 구문](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_colors/Relative_colors)으로 기존 색상에 상대적인 신규 색상 지정
-- 두 개 이상 색상 혼합: [`color-mix()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-mix)
-- 라이트 모드, 다크 모드에서 사용할 색상 각각 지정: [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark)
+- 두 개 이상 색상 혼합: [`color-mix()`]
+- 대비율에 따라 색 선택: [`color-contrast()`]
+- 라이트 모드, 다크 모드에서 사용할 색상 각각 지정: [`light-dark()`]
 
 ## currentcolor 키워드
 
@@ -103,7 +104,7 @@ light-dark(rgb(255 255 255), rgb(0 0 0))
 
 ## color() 표기법
 
-CSS Color Module Level 4에서 [`color()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color) 함수가 추가됐습니다. `color()` 함수는 사전에 정의된 색 공간뿐만 아니라 [`@color-profile`](https://developer.mozilla.org/en-US/docs/Web/CSS/@color-profile) 규칙으로 정의한 사용자 정의 색 공간 위의 색도 표현할 수 있습니다.
+CSS Color Module Level 4에서 [`color()`] 함수가 추가됐습니다. `color()` 함수는 사전에 정의된 색 공간뿐만 아니라 [`@color-profile`] 규칙으로 정의한 사용자 정의 색 공간 위의 색도 표현할 수 있습니다.
 
 # 보간
 
@@ -199,14 +200,19 @@ hwb(90 10% 10% / 50%)
 
 <BrowserCompat data={props.bcd} />
 
-[`<color-interpolation-method>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/color-interpolation-method
-[`<easing-function>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function
-[`<gradient>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/gradient
+[`@color-profile`]: https://developer.mozilla.org/en-US/docs/Web/CSS/@color-profile
 [`color`]: ./color
+[`color()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color
+[`color-contrast()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-contrast
+[`color-mix()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-mix
 [`hsl()`]: ./color_value/hsl
 [`hwb()`]: ./color_value/hwb
 [`lab()`]: ./color_value/lab
 [`lch()`]: ./color_value/lch
+[`light-dark()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark
 [`oklab()`]: ./color_value/oklab
 [`oklch()`]: ./color_value/oklch
 [`rgb()`]: ./color_value/rgb
+[`<color-interpolation-method>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/color-interpolation-method
+[`<easing-function>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function
+[`<gradient>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/gradient

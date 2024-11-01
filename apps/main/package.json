@@ -12,7 +12,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/markdown-remark": "^5.3.0",
-    "@astrojs/mdx": "^3.1.8",
+    "@astrojs/mdx": "^3.1.9",
     "@astrojs/react": "^3.6.2",
     "@astrojs/sitemap": "^3.2.1",
     "@fontsource/gowun-batang": "^5.1.0",
@@ -28,7 +28,7 @@
     "@types/mdast": "^4.0.4",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
-    "astro": "^4.16.7",
+    "astro": "^4.16.8",
     "glob": "^11.0.0",
     "rehype-mdx-code-props": "^3.0.1",
     "remark": "^15.0.1",

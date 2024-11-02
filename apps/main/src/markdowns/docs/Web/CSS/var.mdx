@@ -1,0 +1,160 @@
+---
+title: 'CSS var(): 사용자 지정 속성 값 참조'
+titleShort: var()
+bcd: css.properties.custom-property.var
+---
+
+CSS **`var()`** 함수는 "CSS 변수"라고도 불리는 [사용자 지정 속성][`--*`]의 값을 다른 속성의 값에 대입할 때 사용합니다.
+
+```css hidden name=demo
+#target {
+  background-color: var(--first-color);
+  /* background-color: var(--second-color); */
+  /* background-color: var(--third-color); */
+}
+```
+
+```css hidden name=demo filename=declarations
+:root {
+  --first-color: #16f;
+  --second-color: #f79;
+  --third-color: var(--first-color);
+}
+```
+
+```css hidden name=demo filename=style
+#target {
+  height: 40px;
+  width: 40px;
+}
+```
+
+```html hidden name=demo
+<div id="target"></div>
+```
+
+<LiveExample height={140} lang="css" name="demo" />
+
+`var()` 함수는 속성의 값 자리에만 들어갈 수 있습니다. 속성 이름이나 선택자 등에는 사용할 수 없습니다.
+
+# 구문
+
+```css
+var(<custom-property-name>[, <declaration-value>])
+
+/* 단순 사용법 */
+var(--custom-prop);
+
+/* 대체 값과 함께 */
+var(--custom-prop,);  /* 빈 값으로 대체 */
+var(--custom-prop, initial); /* 속성의 초기 값으로 대체 */
+var(--custom-prop, #FF0000);
+var(--custom-prop, var(--default-value));
+var(--custom-prop, var(--default-value, red));
+```
+
+`var()`의 첫 번째 매개변수는 참조할 사용자 지정 속성의 이름입니다. 선택적으로 두 번째 매개변수에는 대체 값을 지정할 수 있습니다. 첫 번째 매개변수로 참조하려 한 사용자 지정 속성이 정의되지 않았거나 [CSS 전역 키워드]와 같은 값이면 대체 값을 대신 사용하게 됩니다.
+
+사용자 지정 속성과 마찬가지로, 대체 값도 쉼표를 포함할 수 있습니다. 예를 들어 `var(--foo, red, blue)`라면 대체 값은 `red, blue`가 됩니다. 즉, 첫 번째 쉼표와 함수의 끝 사이까지를 모두 대체 값으로 취급합니다.
+
+## 값
+
+- : `<custom-property-name>`
+  - 두 개의 대시(`--`)로 시작하는, 사용자 지정 속성의 이름입니다.
+- : `<declaration-value>`
+
+  - 사용자 지정 속성의 대체 값입니다. 사용자 지정 속성이 정의되지 않았거나 [CSS 전역 키워드]와 같은 값이면 이 값으로 대체합니다. 일부 특별한 문자[^1]를 제외한 아무 문자나 포함할 수 있습니다. 대체 값에 또 다른 `var()`를 지정할 수도 있습니다.
+
+    대체 값을 지정하지 않았는데 첫 번째 매개변수의 사용자 지정 속성도 정의되지 않은 경우 `var()` 함수는 [유효하지 않은 값](#유효하지-않은-값)으로 해석됩니다.
+
+    > [note] `var(--a,)`도 유효한 구문입니다. `--a`가 정의되지 않았거나 전역 키워드와 같은 값이면 `var()`를 빈 값으로 치환합니다.
+
+# 예제
+
+## 대체 값 지정하기
+
+```css hidden name=fallback
+body {
+  background-color: var(--main-bg-color, limegreen);
+}
+```
+
+<LiveExample height={140} name="fallback" />
+
+`--main-bg-color` 속성이 정의되지 않았으므로 [`<body>`]의 배경색에 `limegreen`을 대신 사용합니다.
+
+## 대체 값으로 다른 사용자 지정 속성 지정하기
+
+```css hidden name=fallback-var
+body {
+  background-color: var(
+    --main-bg-color,
+    var(--fallback-bg-color, limegreen)
+  );
+}
+
+:root {
+  --fallback-bg-color: teal;
+}
+```
+
+<LiveExample height={140} name="fallback-var" />
+
+`--main-bg-color` 속성이 정의되지 않았으므로 [`<body>`]의 배경색에 `var(--fallback-bg-color)`인 `teal`을 대신 사용합니다.
+
+## 유효하지 않은 값
+
+`var()` 함수는 다음과 같은 경우에 유효하지 않은 값으로 해석됩니다.
+
+- 사용자 지정 속성이 정의되지 않았고, 대체 값도 제공하지 않은 경우
+- 사용자 지정 속성이 정의되었지만, 그 값이 속성의 값으로 유효하지 않은 경우
+
+이런 경우에는 속성의 값으로 [`unset`]을 지정한 것과 같습니다. 구문 오류와는 달리 사용자 지정 속성은 분석 시점에서의 빠른 실패가 불가능하므로, 사용자 에이전트는 다른 종속된 값들을 폐기한 뒤에야 `var()`가 잘못됐다는 걸 알 수 있습니다. 아래 예제를 확인해주세요.
+
+```html hidden name=invalid
+<p class="p1">정의되지 않은 변수</p>
+<p class="p2">유효하지 않은 변수</p>
+<p class="p3">유효하지 않은 색 리터럴</p>
+```
+
+```css hidden name=invalid
+p {
+  color: red;
+}
+
+.p1 {
+  color: var(--invalid-color);
+}
+
+.p2 {
+  --invalid-color: 20px;
+  color: var(--invalid-color);
+}
+
+.p3 {
+  color: 20px;
+}
+```
+
+<LiveExample height={140} name="invalid" />
+
+`color: 20px` 문단의 경우 단순히 무시해버렸기 때문에 `p { color: red }`의 빨간 글자색을 유지했지만, 유효하지 않은 `var()`를 사용한 위쪽 두 문단은 기본 글자색인 검정색으로 초기화된 걸 볼 수 있습니다.
+
+# 명세
+
+- [CSS Custom Properties for Cascading Variables Module Level 1](https://drafts.csswg.org/css-variables/#using-variables)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- [사용자 지정 속성 (`--*`)][`--*`]
+
+[^1]: 개행 문자, 짝 없는 닫는 괄호 (`)`, `]`, `}`), 최상위 세미콜론, 느낌표
+
+[`--*`]: ./--*
+[CSS 전역 키워드]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Values_and_Units#css-wide_values
+[`unset`]: https://developer.mozilla.org/en-US/docs/Web/CSS/unset
+[`<body>`]: /docs/Web/HTML/Element/body

@@ -10,36 +10,40 @@ CSS **`@font-face`** @규칙은 텍스트를 표시할 때 사용할 사용자 �
 
 ```css
 @font-face {
-  font-family: 'Open Sans';
-  src: url('/fonts/OpenSans-Regular.woff2') format('woff2'), url('/fonts/OpenSans-Regular.woff') format('woff');
+  font-family: "Trickster";
+  src:
+    local("Trickster"),
+    url("trickster-COLRv1.otf") format("opentype") tech(color-COLRv1),
+    url("trickster-outline.otf") format("opentype"),
+    url("trickster-outline.woff") format("woff");
 }
 ```
 
 ## 서술자
 
-- : `ascent-override`
+- : [`ascent-override`]
   - 글꼴의 윗선(ascent) 수치를 정의합니다.
-- : `descent-override`
+- : [`descent-override`]
   - 글꼴의 밑선(descent) 수치를 정의합니다.
-- : [`font-display`](./@font-face/font-display)
+- : [`font-display`]
   - 글꼴을 불러오는 동안, 그리고 불러온 후에 어떻게 표시할 것인지 지정합니다.
-- : [`font-family`](./@font-face/font-family)
+- : [`font-family`]
   - 이 글꼴이 속하는 글꼴 가족의 이름을 지정합니다.
-- : `font-stretch`
-  - [`font-stretch`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-stretch)의 값입니다. 이 글꼴에서 지원하고자 하는 범위를 두 개의 값으로 지정할 수 있습니다. (`font-stretch: 50% 200%`)
-- : `font-style`
-  - [`font-style`](./font-style)의 값입니다. 이 글꼴에서 지원하고자 하는 범위를 두 개의 값으로 지정할 수 있습니다. (`font-style: oblique 20deg 50deg`)
-- : `font-weight`
-  - [`font-weight`](./font-weight)의 값입니다. 이 글꼴에서 지원하고자 하는 범위를 두 개의 값으로 지정할 수 있습니다. (`font-weight: 100 400`)
-- : `font-variant`
-  - [`font-variant`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant)의 값입니다.
-- : `font-feature-settings`
+- : [`font-feature-settings`]
   - OpenType 글꼴의 고급 설정을 조정할 수 있습니다.
-- : `font-variation-settings`
+- : [`font-stretch`]
+  - [`font-stretch`][`font-stretch` 속성]의 값입니다. 이 글꼴에서 지원하고자 하는 범위를 두 개의 값으로 지정할 수 있습니다. (`font-stretch: 50% 200%`)
+- : [`font-style`]
+  - [`font-style`][`font-style` 속성]의 값입니다. 이 글꼴에서 지원하고자 하는 범위를 두 개의 값으로 지정할 수 있습니다. (`font-style: oblique 20deg 50deg`)
+- : [`font-weight`]
+  - [`font-weight`][`font-weight` 속성]의 값입니다. 이 글꼴에서 지원하고자 하는 범위를 두 개의 값으로 지정할 수 있습니다. (`font-weight: 100 400`)
+- : [`font-variation-settings`]
   - OpenType과 TrueType 가변 글꼴의 디자인 축(axis)을 직접 조절할 수 있습니다.
-- : `line-gap-override`
+- : [`line-gap-override`]
   - 글꼴의 행간 수치를 정의합니다.
-- : `src`
+- : [`size-adjust`]
+  - 글꼴의 자형(glyph) 외곽선 및 이 글꼴의 여러 수치에 곱할 계수를 지정합니다. 다양한 글꼴을 같은 크기로 렌더링 하면서도 조화를 유지해야 할 때 유용합니다.
+- : [`src`]
 
   - 글꼴의 데이터가 담긴 리소스를 지정합니다. 원격 글꼴 파일의 URL일 수도 있고, 사용자 컴퓨터에 저장된 글꼴의 이름일 수도 있습니다.
 
@@ -49,16 +53,16 @@ CSS **`@font-face`** @규칙은 텍스트를 표시할 때 사용할 사용자 �
     src: url(ideal-sans-serif.woff) format('woff'), url(basic-sans-serif.ttf) format('truetype');
     ```
 
-- : `size-adjust`
-  - 글꼴의 자형(glyph) 외곽선 및 이 글꼴의 여러 수치에 곱할 계수를 지정합니다. 다양한 글꼴을 같은 크기로 렌더링 하면서도 조화를 유지해야 할 때 유용합니다.
-- : `unicode-range`
+- : [`unicode-range`]
   - 이 글꼴이 사용할 Unicode 코드 포인트 범위를 지정합니다.
 
 # 설명
 
+보통은 `local()`과 `url()`을 함께 사용해서, 사용자가 글꼴을 설치하지 않았어도 서버에서 제공하는 글꼴을 다운로드해서 사용하게 지정하는 방법이 많이 쓰입니다.
+
 [`src`](#term-src)에 `local()` 함수를 사용한 경우, 사용자 에이전트는 `local()`의 매개변수로 받은 글꼴 이름을 사용자 시스템에서 탐색합니다. 만약 일치하는 글꼴이 존재하면 그 글꼴을 사용하고, 찾을 수 없었으면 `src`의 다음 항목으로 넘어갑니다.
 
-보통은 `local()`과 `url()`을 함께 사용해서, 사용자가 글꼴을 설치하지 않았어도 서버에서 제공하는 글꼴을 다운로드해서 사용하게 지정하는 방법이 많이 쓰입니다.
+브라우저는 리소스를 선언 순서대로 불러오려 시도하므로 보통 `local()`을 `url()`보다 먼저 선언합니다. 두 함수 모두 선택사항이므로 `url()`만 사용하거나 `local()`만 사용하는 것도 가능합니다. `format()`이나 `tech()`를 사용하는 더 구체적인 글꼴이 더 적합하다면, 이런 추가 정보를 가진 글꼴을 먼저 선언해야 덜 구체적인 글꼴보다 먼저 불러오려고 시도할 것입니다.
 
 `@font-face`는 반드시 최상위 CSS에서만 사용할 수 있는 것은 아니고, [조건 그룹 @규칙](https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule#conditional_group_rules) 내부에도 배치할 수 있습니다.
 
@@ -131,3 +135,20 @@ body {
 # 브라우저 호환성
 
 <BrowserCompat data={props.bcd} />
+
+[`ascent-override`]: https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/ascent-override
+[`descent-override`]: https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/descent-override
+[`font-display`]: ./@font-face/font-display
+[`font-family`]: ./@font-face/font-family
+[`font-feature-settings`]: https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-feature-settings
+[`font-stretch`]: https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-stretch
+[`font-stretch` 속성]: https://developer.mozilla.org/en-US/docs/Web/CSS/font-stretch
+[`font-style`]: https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-style
+[`font-style` 속성]: ./font-style
+[`font-variation-settings`]: https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-variation-settings
+[`font-weight`]: https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-weight
+[`font-weight` 속성]: ./font-weight
+[`line-gap-override`]: https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/line-gap-override
+[`size-adjust`]: https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/size-adjust
+[`src`]: https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/src
+[`unicode-range`]: https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/unicode-range

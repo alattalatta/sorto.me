@@ -1,0 +1,159 @@
+---
+title: 'CSS resize: 요소 크기 조절 허용 여부'
+titleShort: resize
+bcd: css.properties.resize
+---
+
+CSS **`resize`** 속성은 요소의 크기를 사용자가 조절할 수 있는지, 그렇다면 어떤 방향의 크기를 조절할 수 있는지 지정합니다.
+
+```css hidden name=demo
+#target {
+  resize: both;
+  /* resize: horizontal; */
+  /* resize: vertical; */
+}
+```
+
+```css hidden name=demo filename=style
+#target {
+  background: cyan;
+  border: 2px solid #000;
+  height: 200px;
+  overflow: hidden;
+  width: 200px;
+}
+```
+
+```html hidden name=demo
+<div id="target">
+  <div class="inside"></div>
+</div>
+```
+
+<LiveExample height={240} lang="css" name="demo" />
+
+> [note]
+> 다음 요소에는 `resize` 속성이 적용되지 않습니다.
+>
+> - 인라인 요소
+> - 블록 요소인데 [`overflow`]가 `visible` 또는 `clip`
+
+# 구문
+
+```css
+/* 키워드 값 */
+resize: none;
+resize: both;
+resize: horizontal;
+resize: vertical;
+resize: block;
+resize: inline;
+
+/* 전역 값 */
+resize: inherit;
+resize: initial;
+resize: revert;
+resize: revert-layer;
+resize: unset;
+```
+
+`resize` 속성에는 아래 키워드 값 중 하나를 사용합니다.
+
+## 값
+
+- : `none`
+  - 요소가 크기를 조절할 방법을 제공하지 않습니다.
+- : `both`
+  - 요소가 크기 조절 방법을 노출합니다. 가로 방향과 세로 방향 크기 모두 조절 가능합니다.
+- : `horizontal`
+  - 요소가 가로 방향 크기 조절 방법을 노출합니다.
+- : `vertical`
+  - 요소가 세로 방향 크기 조절 방법을 노출합니다.
+- : `block`
+  - 요소가 블록 방향 ([`direction`]과 [`writing-mode`] 속성에 따라 가로 또는 세로 방향) 크기 조절 방법을 노출합니다.
+- : `inline`
+  - 요소가 인라인 방향 ([`direction`]과 [`writing-mode`] 속성에 따라 가로 또는 세로 방향) 크기 조절 방법을 노출합니다.
+
+# 예제
+
+## [`<textarea>` 요소][`<textarea>`] 크기 조절 기능 끄기
+
+많은 수의 브라우저에서는 [`<textarea>`]의 크기를 사용자가 조절할 수 있습니다. 이 동작을 끄기 위해 `resize` 속성을 사용할 수 있습니다.
+
+```css hidden name=textarea
+.fixed-size {
+  resize: none;
+}
+```
+
+```html hidden name=textarea
+<textarea class="fixed-size">크기를 조절할 수 없어요.</textarea>
+<br>
+<textarea>크기를 조절할 수 있어요.</textarea>
+```
+
+<LiveExample height={160} lang="html" name="textarea" />
+
+## 임의 요소 크기 조절 허용하기
+
+블록 요소면서 [`overflow`]가 `visible`이나 `clip`이 아닌 요소에 `resize` 속성을 사용하면 마치 기본 스타일의 `<textarea>`처럼 사용자가 크기를 조절할 수 있는 요소가 됩니다.
+
+```css hidden name=any
+.target {
+  background: aliceblue;
+  border: 1px solid lightgray;
+  height: 2em;
+  resize: vertical;
+}
+
+.overflow-auto {
+  overflow: auto;
+}
+.overflow-hidden {
+  overflow: hidden;
+}
+.overflow-scroll {
+  overflow: scroll;
+}
+.overflow-visible {
+  overflow: visible;
+}
+```
+
+```html hidden name=any
+<pre class="target overflow-auto">
+overflow: auto
+overflow: auto
+overflow: auto
+</pre>
+<pre class="target overflow-hidden">
+overflow: hidden
+overflow: hidden
+overflow: hidden
+</pre>
+<pre class="target overflow-scroll">
+overflow: scroll
+overflow: scroll
+overflow: scroll
+</pre>
+<pre class="target overflow-visible">
+overflow: visible
+overflow: visible
+overflow: visible
+</pre>
+```
+
+<LiveExample height={300} lang="html" name="any" />
+
+# 명세
+
+- [CSS Basic User Interface Module Level 4](https://drafts.csswg.org/css-ui/#resize)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+[`direction`]: https://developer.mozilla.org/en-US/docs/Web/CSS/direction
+[`overflow`]: https://developer.mozilla.org/en-US/docs/Web/CSS/overflow
+[`writing-mode`]: https://developer.mozilla.org/en-US/docs/Web/CSS/writing-mode
+[`<textarea>`]: /docs/Web/HTML/Element/textarea

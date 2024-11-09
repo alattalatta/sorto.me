@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="-20 -20 130 140">
+  <rect width="130" height="140" fill="white" x="-20" y="-20" stroke="#000" stroke-width="1" />
+  <marker id="dot" markerHeight="3" markerWidth="3" refX="1" refY="1" viewBox="0 0 2 2">
+    <circle fill="#ff2a78" cx="1" cy="1" r="1" />
+  </marker>
+  <marker id="dot-empty" markerHeight="4" markerWidth="4" refX="3" refY="3" viewBox="0 0 6 6">
+    <circle fill="white" cx="3" cy="3" r="2" stroke="#1fbcbd" stroke-width="1" />
+  </marker>
+  <marker id="dot-empty2" markerHeight="4" markerWidth="4" refX="3" refY="3" viewBox="0 0 6 6">
+    <circle fill="white" cx="3" cy="3" r="2" stroke="#ff2a78" stroke-width="1" />
+  </marker>
+  <!-- axis -->
+  <text x="-5" y="105" dominant-baseline="mathematical" font-size="6" text-anchor="end">0</text>
+  <path d="M0,0 v100" fill="none" stroke="gray" stroke-width="0.5" />
+  <text x="-15" y="50" font-size="6" text-anchor="middle" writing-mode="vertical-rl">출력</text>
+  <text x="-5" y="-5" dominant-baseline="mathematical" font-size="6" text-anchor="middle">1</text>
+  <path d="M0,100 h100" fill="none" stroke="gray" stroke-width="0.5" />
+  <text x="50" y="115" font-size="6" text-anchor="middle">입력</text>
+  <text x="50" y="105" dominant-baseline="mathematical" font-size="6" text-anchor="middle">0.5</text>
+  <text x="100" y="105" dominant-baseline="mathematical" font-size="6" text-anchor="middle">1</text>
+  <!-- graph -->
+  <path
+    d="M0,100 C30,80,70,80,100,0 v100"
+    fill="white"
+    stroke="none"
+  />
+  <path d="M0,100 L30,80" fill="none" marker-end="url(#dot-empty)" stroke="#1fbcbd" stroke-dasharray="2 3" />
+  <path d="M100,0 L20,-40" fill="none" marker-end="url(#dot-empty)" stroke="#1fbcbd" stroke-dasharray="2 3" />
+  <path
+    d="M0,100 C30,80,20,-40,100,0"
+    fill="none"
+    id="line"
+    marker-end="url(#dot)"
+    marker-start="url(#dot)"
+    stroke="#ff2a78"
+  />
+  <path d="M100,0 h-51" fill="none" marker-end="url(#dot-empty2)" stroke="#ff2a78" stroke-dasharray="2" />
+</svg>

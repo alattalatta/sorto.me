@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="-20 -10 130 130">
+  <rect width="130" height="130" fill="white" x="-20" y="-10" stroke="#000" stroke-width="1" />
+  <marker id="dot" markerHeight="3" markerWidth="3" refX="1" refY="1" viewBox="0 0 2 2">
+    <circle fill="#ff2a78" cx="1" cy="1" r="1" />
+  </marker>
+  <!-- axis -->
+  <text x="-5" y="105" dominant-baseline="mathematical" font-size="6" text-anchor="end">0</text>
+  <path d="M0,0 v100" fill="none" stroke="gray" stroke-width="0.5" />
+  <text x="-15" y="50" font-size="6" text-anchor="middle" writing-mode="vertical-rl">출력</text>
+  <text x="-5" y="-5" dominant-baseline="mathematical" font-size="6" text-anchor="middle">1</text>
+  <path d="M0,100 h100" fill="none" stroke="gray" stroke-width="0.5" />
+  <text x="50" y="115" font-size="6" text-anchor="middle">입력</text>
+  <text x="50" y="105" dominant-baseline="mathematical" font-size="6" text-anchor="middle">0.5</text>
+  <text x="100" y="105" dominant-baseline="mathematical" font-size="6" text-anchor="middle">1</text>
+  <!-- output line -->
+  <path d="M-5,99.5 h105" fill="none" stroke="lightgray" stroke-dasharray="2 2" stroke-width="1">
+    <animateTransform
+      attributeName="transform"
+      attributeType="XML"
+      begin="0;vline.end+1s"
+      calcMode="spline"
+      dur="3s"
+      fill="freeze"
+      from="0 0"
+      keySplines="0.42 0 0.58 1"
+      keyTimes="0;1"
+      to="0 -99"
+      type="translate"
+    />
+  </path>
+  <!-- graph -->
+  <g>
+    <path
+      d="M0,100 C42,100,58,0,100,0 v100"
+      fill="white"
+      stroke="none"
+    />
+    <path d="M0.5,0 v100" fill="none" stroke="lightgray" stroke-width="1">
+      <animateTransform
+        attributeName="transform"
+        attributeType="XML"
+        begin="0;vline.end+1s"
+        dur="3s"
+        fill="freeze"
+        from="0 0"
+        id="vline"
+        to="99 0"
+        type="translate"
+      />
+    </path>
+    <path
+      d="M0,100 C42,100,58,0,100,0"
+      fill="none"
+      id="line"
+      marker-end="url(#dot)"
+      marker-start="url(#dot)"
+      stroke="#ff2a78"
+    />
+  </g>
+  <!-- bar -->
+  <rect fill="black" height="100" width="3" x="5" y="-100" transform="rotate(180)">
+    <animate
+      attributeName="height"
+      begin="0;vline.end+1s"
+      calcMode="spline"
+      dur="3s"
+      fill="freeze"
+      from="1"
+      to="100"
+      keySplines="0.42 0 0.58 1"
+      keyTimes="0;1"
+    />
+  </rect>
+</svg>

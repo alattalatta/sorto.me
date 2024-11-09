@@ -17,13 +17,13 @@ import { select } from 'unist-util-select'
 
 export const getStaticPaths = (async () => {
   return (await getCollection('docs')).map((entry) => ({
-    params: { slug: entry.id.replace('.mdx', '') },
+    params: { slug: entry.id.replace(/(index)?\.mdx/, '') },
     props: entry,
   }))
 }) satisfies GetStaticPaths
 
 const props = Astro.props
-const path = props.id.replace('.mdx', '')
+const path = props.id.replace(/(index)?\.mdx/, '')
 const site = Astro.site?.toString() ?? ''
 
 const {

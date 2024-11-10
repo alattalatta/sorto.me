@@ -5,9 +5,6 @@ description: 불러오지 못한 이미지의 처우에 대하여
 image: ./cover.png
 ---
 
-import { Image } from 'astro:assets'
-import imgFirefox from './firefox.png'
-
 상품 섬네일처럼 레이아웃에서 중요한 이미지를 불러오지 못했을 때, 그 자리를 비워놓거나 *엑박*으로 방치하지 않고 **오류 또는 임시 이미지**를 대신 노출해달라는 건 기본적인 요구사항이다. 그러나 그 구현은 쉽지 않다.
 
 # 바닐라맛 JavaScript (`onerror`)
@@ -325,6 +322,9 @@ Chromium 계열 브라우저에서는 위 이미지 세 개 모두 임시 이미
 Chrome 등에서는 따라서 `alt`가 비어있어도, 비어있지 않아도 의사 요소를 표시한다. 빈 문자열의 `alt`라고 해도 이 요소가 적어도 (접근성 트리와는 별개로) 텍스트를 표현하는 걸로 취급하는 듯 하다. 그런데 세 번째 이미지, `<img src="https://example.org/void.png">`에서도 의사 요소가 나타난다. 두 번째 경우에서 "요소에 `alt` 특성이 없음"에 해당하므로 대체되어야 하는데 그렇지 않은 것이다.
 
 반면 Firefox에서는 `alt`가 없는 경우 뿐만 아니라 비어있는 경우에도 `<img>`가 대체된다. `alt`가 빈 값이라면 아무것도 표현하지 못하는 장식 요소로 볼 수 있으므로, 네 번째 경우에 해당하는 "내재적 크기가 0인 대체 요소"로 그리는 걸로 보인다. 또한 `alt`가 아예 없는 경우에도 대체하므로 의사 요소가 나타나지 않는다. 이건 대체하는 게 명세에 맞긴 하다.
+
+import { Image } from 'astro:assets'
+import imgFirefox from './firefox.png'
 
 <figure>
   <Image alt="" src={imgFirefox} width={420} />

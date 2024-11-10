@@ -1,6 +1,7 @@
 ---
 import type { Identifier } from '@mdn/browser-compat-data'
 import type { AstroComponentFactory } from 'astro/runtime/server/index.js'
+import { Image } from 'astro:assets'
 
 import BrowserCompat from './BrowserCompat'
 import { Experimental, NonStandard } from './BrowserCompat/StatusIcon'
@@ -41,6 +42,7 @@ const slugAsID = slug.replaceAll('/', '-')
     components={{
       BrowserCompat,
       Experimental,
+      Image,
       LiveExample,
       NonStandard,
       Spec,

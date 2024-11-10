@@ -1,0 +1,104 @@
+---
+title: 'CSS transition-timing-function: 트랜지션 이징 함수'
+titleShort: 'transition-timing-function'
+bcd: css.properties.transition-timing-function
+---
+
+CSS **`transition-timing-function`** 속성은 트랜지션 효과의 영향을 받는 중인 CSS 속성들의 중간 값을 계산하는 방법을 지정합니다. 다르게 말하자면, 트랜지션의 지속시간에 걸쳐 그 속도를 조절하는 가속도 곡선, 즉 이징 함수를 설정합니다.
+
+```css hidden name=demo
+#target {
+  transition-timing-function: ease;
+  /* transition-timing-function: linear; */
+  /* transition-timing-function: steps(6, end); */
+  /* transition-timing-function: cubic-bezier(0.3, 0.2, 0.2, 2.0); */
+}
+```
+
+```css hidden name=demo filename=style
+#target {
+  background-color: #fff;
+  border: 1px solid #282826;
+  color: #282826;
+  height: 100px;
+  transition-duration: 1s;
+  transition-property: background-color, color, width;
+  width: 100px;
+}
+#target:hover {
+  background-color: #282826;
+  color: #ffca87;
+  width: 200px;
+}
+```
+
+```html hidden name=demo
+<div id="target">마우스를 올리거나 터치해보세요.</div>
+```
+
+<LiveExample height={160} lang="css" name="demo" />
+
+트랜지션을 적용할 속성 각각에 대해 하나의 [`<easing-function>`]을 사용할 수 있으며, 적용 순서는 [`transition-property`]에 지정한 것과 같습니다.
+
+`transition-timing-function`의 길이가 `transition-property`보다 짧은 경우에는 `transition-property`의 길이보다 길어질 때까지 리스트를 반복한 후 사용합니다. 예컨대 5개 속성에 대해 `transition-timing-function: linear, ease`를 지정했다면 `linear, ease, linear, ease, linear`로 적용됩니다.
+
+`transition-timing-function`의 길이가 `transition-property`보다 긴 경우에는 `transition-property`의 길이만큼만 잘라서 사용합니다.
+
+두 경우 모두 CSS 선언은 유효합니다.
+
+# 구문
+
+```css
+/* 키워드 값 */
+transition-timing-function: ease;
+transition-timing-function: ease-in;
+transition-timing-function: ease-out;
+transition-timing-function: ease-in-out;
+transition-timing-function: linear;
+transition-timing-function: step-start;
+transition-timing-function: step-end;
+
+/* 함수 값 */
+transition-timing-function: steps(4, jump-end);
+transition-timing-function: cubic-bezier(0.1, 0.7, 1, 0.1);
+
+/* 다수의 이징 함수 지정 */
+transition-timing-function: ease, step-start, cubic-bezier(0.1, 0.7, 1, 0.1);
+
+/* 전역 값 */
+transition-timing-function: inherit;
+transition-timing-function: initial;
+transition-timing-function: revert;
+transition-timing-function: revert-layer;
+transition-timing-function: unset;
+```
+
+`transition-timing-function` 속성에는 한 개 이상의 [`<easing-function>`]을 사용합니다.
+
+## 값
+
+- : `<easing-function>`
+  - [`transition-property`]의 속성 각각에 대응하는 이징 함수를 지정합니다. `ease`, `ease-out`, `linear` 등 사용 가능한 값의 종류와 의미는 [`<easing-function>`] 문서를 참고하세요.
+
+# 접근성
+
+애니메이션은 사용자 인터페이스 구성요소 사이의 관계 표현이나 필요한 행동 표시처럼 사용자를 안내할 때 도움이 됩니다. 잘 활용하면 인지 부담을 줄이고, 변화를 놓치지 않도록 돕고, 탐색 위치를 기억할 때 참고할 수 있습니다. 그러나 어떤 애니메이션은 주의력결핍 과잉행동장애 (ADHD) 등 인지적 문제를 가진 사용자에게 문제가 될 수 있고, 특정 종류의 움직임은 전정장애, 발작, 편두통, 광과민성 증후군에 악영향을 줄 수 있습니다.
+
+애니메이션을 일시정지하거나 비활성화할 방법의 제공을 고려하세요. [움직임 감소 미디어 쿼리][`prefers-reduced-motion`] (또는 이와 같은 역할의 [사용자 에이전트 클라이언트 힌트](https://developer.mozilla.org/en-US/docs/Web/HTTP/Client_hints#user-agent_client_hints) [`Sec-CH-Prefers-Reduced-Motion`] 헤더)를 사용하여 애니메이션이 적은 환경을 선호하는 사용자에게 적절한 경험을 제공하세요.
+
+# 명세
+
+[CSS Transitions](https://drafts.csswg.org/css-transitions/#transition-timing-function-property)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+이징 함수 자료형: [`<easing-function>`]
+
+[`prefers-reduced-motion`]: https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion
+[`Sec-CH-Prefers-Reduced-Motion`]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-Prefers-Reduced-Motion
+[`transition-property`]: https://developer.mozilla.org/en-US/docs/Web/CSS/transition-property
+[`<easing-function>`]: ./easing-function

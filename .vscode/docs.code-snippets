@@ -1,0 +1,25 @@
+{
+  "BCD": {
+    "scope": "markdown",
+    "prefix": "doc.bcd",
+    // # 브라우저 호환성
+    //
+    // <BrowserCompat data={props.bcd} />
+    "body": ["# 브라우저 호환성", "", "<BrowserCompat data={props.bcd} />"],
+  },
+  "CSS properties": {
+    "scope": "markdown",
+    "prefix": "doc.css",
+    // ---
+    // title: 'CSS <easing-function> 자료형: 애니메이션/트랜지션 이징 함수'
+    // titleShort: '<easing-function>'
+    // bcd: css.types.easing-function
+    // ---
+    "body": ["---", "title: 'CSS $1: $2'", "titleShort: '$1'", "bcd: css.properties.$1", "---", ""],
+  },
+  "LiveExample": {
+    "scope": "markdown",
+    "prefix": "live",
+    "body": ["<LiveExample height={$1} lang=\"$2\" name=\"$3\" />$0"],
+  },
+}

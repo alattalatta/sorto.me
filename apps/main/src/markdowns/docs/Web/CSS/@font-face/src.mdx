@@ -1,0 +1,217 @@
+---
+title: 'CSS @font-face src: 글꼴 리소스'
+titleShort: src
+bcd: css.at-rules.font-face.src
+---
+
+CSS [`@font-face`](../@font-face) @규칙의 **`src`** 서술자는 글꼴 데이터를 담은 리소스의 위치를 지정합니다. `@font-face` 선언이 유효하려면 반드시 필요합니다.
+
+# 구문
+
+```css
+/* <url> 값 */
+src: url(https://somewebsite.com/path/to/font.woff); /* 절대 경로 */
+src: url(path/to/font.woff); /* 상대 경로 */
+src: url("path/to/font.woff"); /* 따옴표 사용 */
+src: url(path/to/svgFont.svg#example); /* 글꼴 식별 프래그먼트 */
+
+/* <font-face-name> 값 */
+src: local(font); /* 따옴표 없이 */
+src: local(some font); /* 공백 포함 */
+src: local("font"); /* 따옴표 사용 */
+
+/* <tech(<font-tech>)> 값 */
+src: url(path/to/fontCOLRv1.otf) tech(color-COLRv1);
+src: url(path/to/fontCOLR-svg.otf) tech(color-SVG);
+
+/* <format(<font-format>)> 값 */
+src: url(path/to/font.woff) format("woff");
+src: url(path/to/font.otf) format("opentype");
+
+/* 다수의 리소스 지정 */
+src:
+  url(path/to/font.woff) format("woff"),
+  url(path/to/font.otf) format("opentype");
+
+/* 다수의 리소스를 글꼴 형식과 기술과 함께 지정 */
+src:
+  url("trickster-COLRv1.otf") format(opentype) tech(color-COLRv1),
+  url("trickster-outline.otf") format(opentype);
+```
+
+## 값
+
+- : `url(<url>)`
+
+  - 외부 리소스를 참조합니다. [`<url>`] 값 한 개를 사용하고, 선택적으로 `format()`과 `tech()`를 사용해 URL이 참조하는 리소스의 형식과 기술에 대한 힌트를 제공할 수 있습니다. `format()`과 `tech()`는 알려진 글꼴 형식과 기술들을 나열한 쉼표 구분 문자열 리스트입니다. 사용자 에이전트가 해당하는 글꼴 기술이나 형식을 지원하지 않으면 이 리소스의 다운로드를 건너뜁니다. 형식이나 기술 힌트를 제공하지 않으면 항상 다운로드합니다.
+
+    - : `format(<font-format>)`
+      - 글꼴 형식에 대한 힌트를 제공합니다. 사용자 에이전트가 이 형식을 지원하지 않거나, 형식이 유효하지 않으면 글꼴을 다운로드하지 않으므로 대역폭을 아낄 수 있습니다. 지정하지 않으면 브라우저는 글꼴을 다운로드한 후에 형식을 파악합니다. 구형 브라우저 호환을 위해 사전 정의된 키워드 외의 값을 사용해야 할 경우 형식 문자열을 따옴표로 감싸세요. 가능한 값은 아래의 [글꼴 형식](#글꼴-형식)에서 확인할 수 있습니다.
+    - : `tech(<font-tech>)`
+      - 글꼴 기술에 대한 힌트를 제공합니다. 가능한 값은 아래의 [글꼴 기술](#글꼴-기술)에서 확인할 수 있습니다.
+
+- : `local(<font-face-name>)`
+
+  - 사용자 기기에 이미 설치된 글꼴을 이름으로 참조합니다. 글꼴 이름은 따옴표로 감쌀 수도, 감싸지 않을 수도 있습니다.
+
+    > [note] OpenType과 TrueType 글꼴 사용 시, `<font-face-name>`은 PostScript 이름을 참조할 수도 있고, 기기 로컬 글꼴들의 이름 테이블에 포함된 글꼴 전체 이름을 참조할 수도 있습니다. 둘 중 어느 걸 참조할지는 플랫폼과 글꼴에 따라 다르므로 기대대로 정확하게 동작하려면 두 이름을 각각 사용한 `local()`을 모두 포함해야 합니다.
+
+    > [note]
+    >
+    > 로컬 글꼴은 사용자의 기기에 처음부터 설치돼있었거나 사용자가 직접 설치한 것입니다.
+    >
+    > 사전 설치 글꼴의 목록은 같은 기기를 사용하는 모든 사용자들이 동일하겠지만 사용자 설치 글꼴은 아닙니다. 따라서 웹 사이트가 사용자 설치 글꼴의 목록을 구성하여 고유 식별 정보를 생성(핑거프린팅)하고 추적할 때 악용될 수 있습니다.
+    >
+    > 사용자 에이전트는 핑거프린팅을 방지하기 위해 `local()` 사용 시 사용자 설치 글꼴을 무시할 수 있습니다.
+
+# 설명
+
+`src` 서술자의 값은 우선순위가 앞으로 오는 쉼표 구분 리스트로, 외부 리소스 참조 시 `url()`, 로컬 글꼴을 이름으로 참조 시 `local()`을 사용합니다. 사용자 에이전트는 글꼴이 필요해지면 `src` 리스트를 순회하며 가장 먼저 활성화 가능한 글꼴을 사용합니다. 잘못된 데이터를 포함한 글꼴이나 주어진 이름으로 찾을 수 없는 로컬 글꼴은 무시합니다.
+
+`src` 서술자를 여러 개 설정한 경우에는 리소스를 불러오는 게 가능한 마지막 서술자만 적용됩니다. 마지막 `src` 서술자가 리소스를 불러올 수 있고 `local()` 글꼴을 포함하지 않은 경우, 앞선 `src` 서술자에 `local()` 글꼴이 있고 사용자 기기에도 글꼴이 설치돼있더라도 브라우저는 외부 글꼴을 다운로드하고 로컬 글꼴은 무시할 수 있습니다.
+
+> [note] 서술자의 값 중 브라우저가 올바르게 인식할 수 없는 것은 무시됩니다. 어떤 브라우저는 값 중 하나라도 유효하지 않으면 그 값을 포함한 `src` 전체를 무시하므로 대체 글꼴 선언 방식에 차이를 둬야 할 수 있습니다. [브라우저 호환성](#브라우저-호환성)의 "Drop invalid item" 행을 참고하세요.
+
+CSS의 다른 URL들처럼 `url()`에 사용하는 값도 상대 경로를 사용할 수 있습니다. 상대 경로의 기준은 `@font-face` 규칙을 포함한 스타일시트의 위치가 됩니다.
+
+SVG 글꼴의 경우, URL은 SVG 문서 내에서 글꼴 정의를 포함하는 요소를 가리켜야 합니다. 요소 참조를 포함하지 않으면 제일 위에 정의된 글꼴을 참조하는 걸로 취급합니다. 글꼴 여러 개를 포함할 수 있는 글꼴 컨테이너 형식 또한 하나의 `@font-face` 규칙에서 하나의 글꼴만 가져올 수 있습니다. 어떤 글꼴을 가져올지는 프래그먼트 식별자를 사용해 지정합니다. 컨테이너 형식이 프래그먼트 식별자 스킴을 정의하지 않는 경우 1부터 시작하는 인덱싱 스킴[^1]을 사용합니다. SVG와 글꼴 컨테이너 모두 다음 코드처럼 선언할 수 있습니다.
+
+```css
+/* 컨테이너 내에 포함된 PostScript 이름 */
+src: url(collection.otc#font-aa);
+/* SVG 글꼴 파일 내에 포함된 요소 ID */
+src: url(fonts.svg#font-bb);
+```
+
+## 글꼴 형식
+
+아래 표는 유효한 `format()` 키워드와 이에 대응하는 글꼴 형식입니다. 현재 브라우저가 글꼴 형식을 지원하는지 확인하려면 [`@supports`] 규칙을 사용하세요.
+
+| 키워드              | 글꼴 형식            | 주로 쓰이는 확장자 |
+| ------------------- | -------------------- | ------------------ |
+| `collection`        | OpenType Collection  | .otc, .ttc         |
+| `embedded-opentype` | Embedded OpenType    | .eot               |
+| `opentype`          | OpenType             | .otf, .ttf         |
+| `svg`               | SVG Font (지원 중단) | .svg, .svgz        |
+| `truetype`          | TrueType             | .ttf               |
+| `woff`              | WOFF 1.0             | .woff              |
+| `woff2`             | WOFF 2.0             | .woff2             |
+
+> [note]
+>
+> - `format(svg)`는 SVG 글꼴을 가리키고, `tech(color-SVG)`는 SVG 테이블을 포함한 OpenType 글꼴(OpenType-SVG 색상 글꼴이라고도 함)을 가리킵니다. 완전히 다른 것이므로 혼동하지 않도록 주의하세요.
+> - `format()`에 있어서 `opentype`과 `truetype` 값은 같습니다. `format(opentype)`은 글꼴이 PostScript CFF 스타일 자형 데이터를 포함하거나 OpenType 레이아웃 정보를 포함한다는 의미를 갖지 않습니다.
+
+다음은 정규화되기 전의 오래된 `format()` 문자열에 대응하는 구문을 나타낸 표입니다. 하위 호환성을 위해 아래 값을 사용해야 하면 따옴표로 감싸야 합니다.
+
+| 구형 구문                       | 현재 구문                           |
+| ------------------------------- | ----------------------------------- |
+| `format("woff2-variations")`    | `format(woff2) tech(variations)`    |
+| `format("woff-variations")`     | `format(woff) tech(variations)`     |
+| `format("opentype-variations")` | `format(opentype) tech(variations)` |
+| `format("truetype-variations")` | `format(truetype) tech(variations)` |
+
+# 글꼴 기술
+
+아래 표는 유효한 `tech()` 키워드와 이에 대응하는 글꼴 기술입니다. 현재 브라우저가 글꼴 기술을 지원하는지 확인하려면 [`@supports`] 규칙을 사용하세요.
+
+| 키워드            | 설명                                                                    |
+| ----------------- | ----------------------------------------------------------------------- |
+| color-cbdt        | 색상 비트맵 데이터 테이블                                               |
+| color-colrv0      | COLR 버전 0 테이블을 통한 다색 자형                                     |
+| color-colrv1      | COLR 버전 1 테이블을 통한 다색 자형                                     |
+| color-sbix        | 표준 비트맵 그래픽 테이블                                               |
+| color-svg         | SVG 다색 테이블                                                         |
+| features-aat      | TrueType morx와 kerx 테이블                                             |
+| features-graphite | Graphite 기능, 즉 Silf, Glat, Gloc, Feat, Sill 테이블                   |
+| features-opentype | OpenType GSUB와 GPOS 테이블                                             |
+| incremental       | 점진적 글꼴 로딩                                                        |
+| palettes          | [`font-palette`]를 사용해 선택할 수 있는 색상 팔레트 포함               |
+| variations        | TrueType와 OpenType 글꼴의 축, 굵기, 자형 등을 제어할 수 있는 글꼴 변형 |
+
+# 예제
+
+## 글꼴 리소스 지정하기
+
+```css
+/* 일반 글꼴 정의하기 */
+@font-face {
+  font-family: MainText;
+  src:
+    local(Futura-Medium),
+    url("FuturaMedium.woff") format("woff"),
+    url("FuturaMedium.otf") format("opentype");
+}
+
+/* 일반 글꼴과 같은 가족(MainText)으로 굵은 글꼴 정의하기 */
+@font-face {
+  font-family: MainText;
+  src:
+    local(Gill Sans Bold) /* 글꼴 전체 이름 */,
+    local(GillSans-Bold) /* PostScript 이름 */,
+    url("GillSansBold.woff") format("woff"),
+    url("GillSansBold.otf") format("opentype");
+  font-weight: bold;
+}
+```
+
+## 구형 브라우저 지원용 대체 글꼴 정의하기
+
+브라우저는 사용 가능한 글꼴 출처를 나열하는 하나의 `src` 서술자에서 글꼴을 선택해야 합니다. 브라우저는 불러올 수 있는 첫 번째 리소스를 선택하므로 `src` 리스트에서 사용을 먼저 바라는 글꼴이 앞에 와야 합니다.
+
+즉, 일반적으로는 로컬 글꼴이 원격 파일들보다 먼저 와야 하고, `format()`과 `tech()` 제약이 추가된 글꼴이 그렇지 않은 글꼴보다 먼저 와야 합니다. 제약 없는 글꼴이 먼저 오면 브라우저가 항상 제약 없는 글꼴부터 선택할테니 그렇습니다. 예를 들어,
+
+```css
+@font-face {
+  font-family: "MgOpenModernaBold";
+  src:
+    url("MgOpenModernaBoldIncr.otf") format("opentype") tech(incremental),
+    url("MgOpenModernaBold.otf") format(opentype);
+}
+```
+
+`tech(incremental)`을 지원하지 않는 브라우저는 첫 번째 항목을 무시하고 두 번째 리소스를 불러와야 합니다.
+
+하지만 일부 브라우저는 아직 유효하지 않은 항목을 무시하지 못하고, 대신 해당 `src` 서술자 리스트 전체를 무시합니다. 해당하는 브라우저를 지원해야 할 땐 `src` 서술자를 여러 개 포함하는 방법을 쓸 수 있습니다. `src` 서술자들의 순서는 거꾸로 아래가 우선하므로, 원래 의도한 대로 모든 항목을 포함한 표준 서술자가 제일 밑으로 가야 합니다.
+
+```css
+@font-face {
+  font-family: "MgOpenModernaBold";
+  src: url("MgOpenModernaBold.otf") format(opentype);
+  src: url("MgOpenModernaBoldIncr.otf") format("opentype") tech(incremental);
+  src:
+    url("MgOpenModernaBoldIncr.otf") format("opentype") tech(incremental),
+    url("MgOpenModernaBold.otf") format(opentype);
+}
+```
+
+## 브라우저가 글꼴 기술을 지원하는지 확인하기
+
+[`@supports`]를 이용해 사용자 에이전트의 글꼴 기술 지원 여부를 확인하는 예제입니다. `@supports` 블록 내의 CSS는 사용자 에이전트가 `color-COLRv1` 기술을 지원할 때만 적용됩니다.
+
+```css
+@supports font-tech(color-COLRv1) {
+  @font-face {
+    font-family: "Trickster";
+    src: url("trickster-COLRv1.otf") format(opentype) tech(color-COLRv1);
+  }
+
+  .colored_text {
+    font-family: "Trickster";
+  }
+}
+```
+
+# 명세
+
+- [CSS Fonts Module Level 4](https://drafts.csswg.org/css-fonts/#src-desc)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+[^1]: `font#1`이 첫 번째 글꼴, `font#2`가 두 번째 글꼴, ...
+
+[`font-palette`]: https://developer.mozilla.org/en-US/docs/Web/CSS/font-palette
+[`@supports`]: https://developer.mozilla.org/en-US/docs/Web/CSS/@supports
+[`<url>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/url_value

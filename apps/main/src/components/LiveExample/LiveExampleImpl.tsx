@@ -1,5 +1,5 @@
 import Loading from 'components/Loading'
-import { Suspense, lazy, useReducer, useState } from 'react'
+import { Suspense, lazy, useReducer, useState, useMemo, useEffect, useRef } from 'react'
 import { InView } from 'react-intersection-observer'
 
 import styles from './LiveExampleImpl.module.scss'
@@ -17,6 +17,8 @@ export type LiveExampleImplProps = {
 }
 
 const LiveExampleImpl: React.FC<LiveExampleImplProps> = ({ babel, editable = true, height = 240, lang, name }) => {
+  const $container = useRef<HTMLDivElement>(null)
+
   const { files, updateFile: updateFileImpl } = useCodeBlockGroup(name)
 
   const [currentFileName, setCurrentFileName] = useState<string>(`${name}/index.${lang}`)
@@ -24,10 +26,25 @@ const LiveExampleImpl: React.FC<LiveExampleImplProps> = ({ babel, editable = tru
 
   const [wasInView, setWasInView] = useReducer(() => true, false)
 
+  const editableFiles = useMemo(() => files?.filter((file) => file.editable) ?? [], [files])
+  const [observedHeight, setObservedHeight] = useState<number>(height)
+
+  useEffect(() => {
+    if ($container.current) {
+      const ob = new ResizeObserver((entries) => {
+        for (const entry of entries) {
+          setObservedHeight(entry.contentRect.height)
+        }
+      })
+      ob.observe($container.current)
+      return () => ob.disconnect()
+    }
+  }, [files])
+
   if (files === null) {
     return (
       <div className={styles.loading}>
-        <Loading height={height} round />
+        <Loading height={observedHeight} round />
       </div>
     )
   }
@@ -36,15 +53,14 @@ const LiveExampleImpl: React.FC<LiveExampleImplProps> = ({ babel, editable = tru
     return <p style={{ color: 'red' }}>LiveExample: 파일이 없습니다!</p>
   }
 
-  const editableFiles = files.filter((file) => file.editable)
-  const monacoHeight = editableFiles.length > 1 ? height - 36 : height
+  const monacoHeight = editableFiles.length > 1 ? observedHeight - 36 : observedHeight
 
   return (
     <InView onChange={(inView) => inView && setWasInView()}>
       {({ ref }) => (
         <div ref={ref} className={styles.root}>
           <p className={styles.hint}>라이브 에디터 (편집 가능)</p>
-          <div className={styles.container} data-editable={editable}>
+          <div ref={$container} className={styles.container} data-editable={editable}>
             {editable && (
               <>
                 <div className={styles.editor}>

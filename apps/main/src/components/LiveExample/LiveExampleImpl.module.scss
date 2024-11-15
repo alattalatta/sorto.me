@@ -18,6 +18,8 @@
   border: 1px solid #000;
   display: grid;
   grid-template-columns: 1fr 32px 1fr;
+  overflow: hidden;
+  resize: vertical;
 
   &[data-editable='false'] {
     grid-template-columns: 1fr;

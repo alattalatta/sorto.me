@@ -33,7 +33,7 @@
     "rehype-mdx-code-props": "^3.0.1",
     "remark": "^15.0.1",
     "remark-directive": "^3.0.0",
-    "sass": "^1.80.7",
+    "sass": "^1.81.0",
     "satori": "^0.11.3",
     "sharp": "^0.33.5",
     "strip-markdown": "^6.0.0",

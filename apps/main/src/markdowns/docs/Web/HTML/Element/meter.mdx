@@ -35,7 +35,7 @@ bcd: html.elements.meter
 
   - 이 `<meter>`를 _양식 소유자_([`<form>`](./form) 요소)와 연결합니다. 같은 문서 상에 존재하는 `<form>`의 [`id`](/docs/Web/HTML/Global_attributes#term-id) 값을 지정하세요. 이 특성이 존재하지 않으면 `<meter>`의 양식 소유자는 가장 가까운 조상 `<form>`이 됩니다.
 
-    `form` 특성은 [`<input type="number">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number)의 값처럼, `<meter>`가 양식에 관련된 값을 보여줄 때만 사용합니다.
+    `form` 특성은 [`<input type="number">`]의 값처럼, `<meter>`가 양식에 관련된 값을 보여줄 때만 사용합니다.
 
 # 예제
 
@@ -52,7 +52,7 @@ bcd: html.elements.meter
 
 ## 낮은 범위, 높은 범위
 
-[`<input type="range">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range)의 값을 조절하면서 세 `<meter>`의 모습이 어떻게 달라지는지 확인하세요.
+[`<input type="range">`]의 값을 조절하면서 세 `<meter>`의 모습이 어떻게 달라지는지 확인하세요.
 
 ```html hidden name=range
 <p>
@@ -106,3 +106,6 @@ document.querySelector('#control').addEventListener('change', (event) => {
 # 같이 보기
 
 - 독립 콘텐츠 컨테이너: [`<progress>`](./progress)
+
+[`<input type="number">`]: ./input/number
+[`<input type="range">`]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range

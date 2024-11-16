@@ -4,21 +4,27 @@ titleShort: '<datalist>'
 bcd: html.elements.datalist
 ---
 
-**HTML `<datalist>` 요소**는 입력 컨트롤에서 사용자에게 제안할 값의 목록을 나타냅니다. 각각의 값은 [`<option>`](./option) 요소로 표현합니다.
+**HTML `<datalist>` 요소**는 입력 컨트롤에서 사용자에게 제안할 값의 목록을 나타냅니다. 각각의 값은 [`<option>` 요소][`<option>`]로 표현합니다.
 
 ```html hidden name=demo
 <label for="choice">맛을 고르세요.</label>
 <input id="choice" list="flavors" name="choice">
 
 <datalist id="flavors">
-  <option>딸기</option>
-  <option>바나나</option>
-  <option>초코</option>
-  <option>민트</option>
+  <option value="딸기"></option>
+  <option value="바나나">국산 바나나</option>
+  <option value="초코"></option>
+  <option value="민트"></option>
 </datalist>
 ```
 
 <LiveExample height={220} lang="html" name="demo" />
+
+`<datalist>`를 입력 칸과 연결하려면 우선 `<datalist>`에 고유한 [`id`]를 부여해야 합니다. 그리고 [`<input>` 요소][`<input>`]의 [`list` 특성](./input#term-list)에 `id`와 같은 값을 지정하면 됩니다. `<input>`의 일부 유형만 `list` 특성을 지원하므로 사용 전에 확인이 필요합니다.
+
+각각의 [`<option>`]에는 [`value` 특성](./option#term-value)이 필요합니다. 사용자가 추천 값을 선택 시 입력되는 값은 `value` 특성의 값입니다. `<option>` 요소의 내용이나 [`label` 특성](./option#term-label)은 (Firefox) `value` 대신 보여지거나, (Chrome, Safari) `value`와 함께 보여지며 부연 설명으로 사용됩니다.
+
+> [note] `<datalist>`는 [`<select>`]의 대체재가 아닙니다. `<datalist>` 스스로는 입력 칸을 나타내지 않으며 사용자가 선택할 수 있는 추천 값의 목록일 뿐입니다. 또한 연결된 `<input>` 요소에서도 `<datalist>`의 추천 목록을 무시하고 직접 값을 입력하는 게 가능합니다.
 
 # 특성
 
@@ -46,7 +52,7 @@ bcd: html.elements.datalist
 
 ## 날짜와 시간
 
-[`<input>`](./input)의 [`month`](./input/month), [`week`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/week), [`date`](./input/date), [`time`](./input/time), [`datetime-local`](./input/datetime-local) 유형에 `<datalist>`를 제공하면 사용자가 간편하게 시간 또는 날짜를 선택할 수 있습니다.
+[`<input>`]의 [`month`](./input/month), [`week`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/week), [`date`](./input/date), [`time`](./input/time), [`datetime-local`](./input/datetime-local) 유형에 `<datalist>`를 제공하면 사용자가 간편하게 시간 또는 날짜를 선택할 수 있습니다.
 
 ### 날짜
 
@@ -78,7 +84,7 @@ bcd: html.elements.datalist
 
 ## 슬라이더
 
-[`<input>`](./input)의 [`range`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range) 유형에 `<datalist>`를 제공하면 슬라이더가 선택지에 스냅됩니다.
+[`<input>`]의 [`range`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range) 유형에 `<datalist>`를 제공하면 슬라이더가 선택지에 스냅됩니다.
 
 ```html hidden name=range
 <datalist id="list">
@@ -98,7 +104,7 @@ bcd: html.elements.datalist
 
 # 명세
 
-[HTML Standard](https://html.spec.whatwg.org/multipage/forms.html#the-datalist-element)
+[HTML Standard](https://html.spec.whatwg.org/multipage/form-elements.html#the-datalist-element)
 
 # 브라우저 호환성
 
@@ -106,5 +112,10 @@ bcd: html.elements.datalist
 
 # 같이 보기
 
-- 데이터 리스트를 사용하는 컨트롤: [`<input>`](./input)의 [`list` 특성](./input#term-list).
+- 데이터 리스트를 사용하는 컨트롤: [`<input>`]의 [`list` 특성](./input#term-list).
 - 제안할 값: [`<option>`](./option)
+
+[`id`]: /docs/Web/HTML/Global_attributes#term-id
+[`<input>`]: ./input
+[`<option>`]: ./option
+[`<select>`]: ./select

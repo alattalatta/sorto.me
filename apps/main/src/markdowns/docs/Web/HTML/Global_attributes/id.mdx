@@ -1,0 +1,45 @@
+---
+title: 'HTML id 전역 특성: 고유 식별자'
+titleShort: 'id'
+bcd: html.global_attributes.id
+---
+
+HTML **`id`** [전역 특성](../Global_attributes)은 문서 내에서 고유한 식별자(ID)를 요소에 부여합니다.
+
+# 설명
+
+ID는 특정 요소를 가리키는 링크[^1]를 생성할 때나, 스크립트나 스타일에서 하나의 요소만 식별할 때 사용합니다.
+
+[^1]: [프래그먼트 식별자](https://developer.mozilla.org/en-US/docs/Web/URI#fragment)
+
+ID를 부여한 요소는 스크립트에서 전역 컨텍스트의 속성으로 바로 접근할 수 있습니다. 속성 이름은 `id` 특성의 값과 같고, 속성 값은 요소를 가리킵니다. 예를 들어,
+
+```html
+<p id="welcome">어서오세요!</p>
+```
+
+위와 같은 HTML 마크업이 있다면, JavaScript에서 `welcome` 속성으로 접근할 수 있습니다.
+
+```js
+const welcomeText = window.welcome.textContent // "어서오세요!"
+```
+
+## 구문
+
+`id` 특성은 ASCII 공백 문자를 포함해선 안됩니다. 하지만 공백이 주어진다면 브라우저는 그 공백 또한 ID의 일부로 취급합니다. 공백으로 구분한 여러 값을 지정할 수 있는 [`class` 전역 특성](./class)과 달리, `id`는 하나의 값만 가질 수 있습니다.
+
+기술적으로 따지면 `id`에는 아무 Unicode 문자나 지정할 수 있습니다. 그러나 [`querySelector()`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) 등 JavaScript API들이나 CSS 스타일시트에서 선택자로 ID 참조 시에는 반드시 유효한 CSS 식별자여야 합니다. 따라서 `id` 값이 CSS 식별자로는 유효하지 않은 값[^2]이라면, 선택자에 ID를 사용하기 전에 [`CSS.escape()`](https://developer.mozilla.org/en-US/docs/Web/API/CSS/escape_static)를 사용하거나 직접 이스케이프 처리를 먼저 해줘야 합니다.
+
+[^2]: `my?id`, `1234` 등
+
+그러므로 이스케이프가 처음부터 필요하지 않도록, ID를 정할 땐 유효한 CSS 식별자로서 지정하는 것을 권장합니다.
+
+또한 모든 유효한 `id` 특성이 JavaScript 식별자로 유효하진 않습니다. 예를 들어 `1234`는 유효한 특성 값이지만 JavaScript 식별자는 아닙니다. 즉 `1234`는 유효한 변수 명이 아니므로 `window.1234`처럼 접근할 수 없습니다. `window['1234']`로는 가능합니다.
+
+# 명세
+
+- [HTML Standard](https://html.spec.whatwg.org/multipage/dom.html#global-attributes:the-id-attribute-2)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />

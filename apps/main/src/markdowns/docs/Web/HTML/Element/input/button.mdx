@@ -34,7 +34,7 @@ input[type="button"]:active {
 
 <LiveExample height={180} lang="html" name="demo" />
 
-> [note] `<input type="button">`은 여전히 유효한 HTML 요소지만, 지금은 [`<button>`](../button) 요소가 버튼 생성에 선호됩니다. `<button>`의 레이블에는 임의의 HTML 코드를 사용할 수 있으므로 이미지 버튼도 쉽게 만들 수 있습니다.
+> [note] `<input type="button">`은 여전히 유효한 HTML 요소지만, 지금은 [`<button>`](../button) 요소가 더 적합합니다. `<button>` 여는 태그와 닫는 태그 사이의 내용이 버튼 레이블이 되므로 임의의 HTML 코드를 사용할 수 있고, 따라서 이미지 버튼도 쉽게 만들 수 있습니다.
 
 # 값
 
@@ -53,18 +53,6 @@ input[type="button"]:active {
 ```
 
 <LiveExample height={80} name="button-valueless" />
-
-# 추가 특성
-
-`button` 유형은 모든 [`<input>`](../input) 요소가 공유하는 특성 외에도 아래의 특성을 추가로 지원합니다.
-
-- : `popovertarget`
-  - `<input type="button">`을 팝오버 제어 버튼으로 지정합니다. 값으로는 제어할 팝오버 요소의 ID를 지정해야 합니다. [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API)를 참고하세요.
-- : `popovertargetaction`
-  - `<input type="button">`이 제어하는 팝오버 요소에 대해 수행할 작업을 지정합니다. 가능한 값은 다음과 같습니다.
-    - `hide`: 팝오버 요소를 숨깁니다. 이미 숨겨진 팝오버 요소에 대해서는 아무런 효과가 없습니다.
-    - `show`: 팝오버 요소를 표시합니다. 이미 표시된 팝오버 요소에 대해서는 아무런 효과가 없습니다.
-    - `toggle`: 팝오버 요소의 숨김/표시 상태를 전환합니다. 팝오버 요소가 숨겨져 있으면 표시하고, 표시되어 있으면 숨깁니다. `popovertargetaction` 특성을 지정하지 않았을 때의 기본 값입니다.
 
 # 유효성 검증
 

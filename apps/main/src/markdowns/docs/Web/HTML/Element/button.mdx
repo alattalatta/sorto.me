@@ -38,6 +38,25 @@ button:active {
 
 [전역 특성](/docs/Web/HTML/Global_attributes)을 포함합니다.
 
+- : `command` <Experimental />
+
+  - 이 버튼이 제어하는 요소에 수행할 동작을 지정합니다. 제어 대상 요소는 [`commandfor` 특성](#term-commandfor)으로 지정할 수 있습니다. 가능한 값은 다음과 같습니다.
+
+    - : `show-modal`
+      - [`<dialog>` 요소][`<dialog>`]를 모달로 표시합니다. 대화상자가 이미 열려있는 경우 아무 동작도 하지 않습니다.
+    - : `close`
+      - [`<dialog>` 요소][`<dialog>`]를 닫습니다. 대화상자가 이미 닫혀있는 경우 아무 동작도 하지 않습니다.
+    - : `show-popover`
+      - 팝오버를 표시합니다. 팝오버가 이미 표시된 경우 아무 동작도 하지 않습니다. 자세한 내용은 [Popover API]를 참고하세요.
+    - : `hide-popover`
+      - 팝오버를 숨깁니다. 팝오버가 이미 숨겨진 경우 아무 동작도 하지 않습니다. 자세한 내용은 [Popover API]를 참고하세요.
+    - : `toggle-popover`
+      - 팝오버의 표시/숨김 상태를 전환합니다. 자세한 내용은 [Popover API]를 참고하세요.
+    - : 사용자 지정 값
+      - 두 개의 하이픈(`--`)으로 시작하는 사용자 지정 값을 설정할 경우, 제어 대상 요소에 [`CommandEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CommandEvent)를 송신합니다.
+
+- : `commandfor` <Experimental />
+  - `<button>`이 다른 상호작용 요소를 제어하도록 합니다. 제어 대상 요소의 [`id`]를 지정해야 합니다. 제어 동작은 [`command` 특성](#term-command)으로 지정할 수 있습니다.
 - : `disabled`
   - 지정하면 사용자의 상호작용을 비활성화, 즉 버튼의 클릭과 포커스 획득을 막는 불리언 특성입니다.
 - : `form`
@@ -81,7 +100,7 @@ button:active {
     - `_parent`: 현재 페이지가 프레임 안에 존재하는 경우, 결과를 현재 브라우징 맥락의 부모에 보여줍니다. 부모가 없으면 `_self`와 동일합니다.
     - `_top`: 결과를 최상위 브라우징 맥락에 보여줍니다. 최상위 브라우징 맥락이란 현재 맥락의 조상 중 부모가 없는 맥락입니다. 현재 맥락이 부모를 가지지 않으면 `_self`와 동일합니다.
 
-    버튼의 양식 소유자에 지정한 [`target`](./form#attr-target) 특성보다 우선합니다.
+    버튼의 양식 소유자에 지정한 [`target`](./form#term-target) 특성보다 우선합니다.
 
 - : `name`
 
@@ -89,7 +108,7 @@ button:active {
 
 - : `popovertarget`
 
-  - `<button>`을 팝오버 제어 버튼으로 지정합니다. 값으로는 제어할 팝오버 요소의 ID를 지정해야 합니다. [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API)를 참고하세요.
+  - `<button>`을 팝오버 제어 버튼으로 지정합니다. 제어할 팝오버 요소의 [`id`]를 지정해야 합니다. [Popover API]를 참고하세요.
 
 - : `popovertargetaction`
 
@@ -144,6 +163,21 @@ button:active {
 
 버튼을 포함한 대화형 요소 다수를 시각적으로 가까이 배치할 땐 서로를 분리하는 공간을 둬야 합니다. 운동조절 장애를 가진 사용자가 원하지 않는 요소와 상호작용하는 것을 방지할 수 있습니다.
 
+## ARIA 상태 정보
+
+버튼의 상태를 설명하기 위한 올바른 ARIA 특성은 [`aria-checked`]나 [`aria-selected`]가 아닌 [`aria-pressed`]입니다. [ARIA `button` 역할][`button` ARIA]에서 더 알아보세요.
+
+## 버튼 스타일
+
+요소가 포커스를 받았을 때 나타나는 포커스 링은 제거하지 않는 게 제일 좋습니다. 하지만 버튼 스타일을 재정의해야 하는 경우 저시력 사용자가 포커스 위치를 인지할 수 있도록, 그리고 인지력 저하를 겪는 사용자가 포커스 상태를 이해할 수 있도록 충분한 대비를 확보해야 합니다.
+
+[`:focus-visible` 의사 클래스][`:focus-visible`]를 사용하면 키보드 포커스를 받은 `<button>`처럼, [`:focus`] 요소 중에서도 사용자 에이전트의 휴리스틱이 강조가 필요하다고 판단한 요소에만 스타일을 적용할 수 있습니다. 자세한 내용은 [`:focus` vs. `:focus-visible`](https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible#focus_vs_focus-visible)을 참고하세요.
+
+[Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/standards-guidelines/wcag/)를 만족하려면 본문 글씨는 4.5:1, 제목 등 큰 글씨는 3:1의 대비가 필요합니다. 글씨와 배경의 대비란 두 색의 휘도(_luminosity_)를 비교한 값입니다. 큰 글씨란 18.66px 이상의 [굵은](./font-weight) 텍스트, 또는 24px 이상의 글씨를 말합니다.
+
+- [WebAIM: Color Contrast Checker](https://webaim.org/resources/contrastchecker/)
+- [Understanding Success Criterion 1.4.3 | W3C Understanding WCAG 2.0](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html)
+
 # 명세
 
 [HTML Standard](https://html.spec.whatwg.org/multipage/form-elements.html#the-button-element)
@@ -151,3 +185,11 @@ button:active {
 # 브라우저 호환성
 
 <BrowserCompat data={props.bcd} />
+
+[`aria-checked`]: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-checked
+[`aria-pressed`]: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-pressed
+[`aria-selected`]: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected
+[`button` ARIA]: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/button_role
+[`id`]: ../Global_attributes/id
+[Popover API]: https://developer.mozilla.org/en-US/docs/Web/API/Popover_API
+[`<dialog>`]: ./dialog

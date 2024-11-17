@@ -64,7 +64,7 @@ function bissectDefinitionList(
           ],
           data: {
             hProperties: {
-              id: slugger.slug(`term-${toString(otherChildren)}`),
+              id: slugger.slug(`term-${toString(otherChildren)}`.trim()),
             },
           },
           type: 'term',

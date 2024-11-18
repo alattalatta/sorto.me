@@ -13,11 +13,14 @@ module.exports = {
       },
       rules: {
         // https://github.com/ota-meshi/eslint-plugin-astro/issues/240
+        '@typescript-eslint/no-unsafe-argument': 'off',
         '@typescript-eslint/no-unsafe-assignment': 'off',
         '@typescript-eslint/no-unsafe-call': 'off',
         '@typescript-eslint/no-unsafe-member-access': 'off',
         '@typescript-eslint/no-unsafe-return': 'off',
+        'astro/sort-attributes': 'warn',
         'react/jsx-key': 'off',
+        'react/jsx-sort-props': 'off',
         'react/self-closing-comp': 'off',
       },
     },

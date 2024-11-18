@@ -7,6 +7,7 @@ import BrowserCompat from './BrowserCompat'
 import { Experimental, NonStandard } from './BrowserCompat/StatusIcon'
 import ContentBody from './ContentBody.astro'
 import DocPin from './DocPin'
+import DocsUnderPath from './DocsUnderPath.astro'
 import LiveExample from './LiveExample'
 import Spec from './Spec'
 
@@ -45,6 +46,7 @@ const slugAsID = slug.replaceAll('/', '-')
       Image,
       LiveExample,
       NonStandard,
+      DocsUnderPath,
       Spec,
     }}
     content={Content}

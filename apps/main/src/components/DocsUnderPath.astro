@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content'
+import { getShortTitle } from 'content/docs'
+
+export type Props = {
+  path: string
+}
+
+const props = Astro.props
+
+const docs = (await getCollection('docs'))
+  .filter((doc) => doc.id.startsWith(props.path))
+  .sort((a, b) => getShortTitle(a).localeCompare(getShortTitle(b)))
+---
+
+<ul>
+  {
+    docs.map((doc) => (
+      <li>
+        <a href={`/docs/${doc.id}`}>
+          <code>{getShortTitle(doc)}</code>
+        </a>
+      </li>
+    ))
+  }
+</ul>

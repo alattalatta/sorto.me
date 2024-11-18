@@ -9,6 +9,7 @@ import Footer from 'components/Footer.astro'
 import MainNav from 'components/MainNav.astro'
 import RelatedDocs from 'components/RelatedDocs.astro'
 import TableOfContents from 'components/TableOfContents.astro'
+import { getShortTitle } from 'content/docs'
 import DocShell from 'layouts/DocShell.astro'
 import type { Root } from 'mdast'
 import { remark } from 'remark'
@@ -83,12 +84,8 @@ const techRootDoc = techRootDocData ? ([techRootPath, techRootDocData.data.title
 const parentDoc = parentDocData ? ([parentPath, parentDocData.data.title] as const) : null
 const siblingDocs = allDocs
   .filter((entry) => siblingRegex.test(entry.id))
-  .sort((a, b) => getDocTitleForSort(a).localeCompare(getDocTitleForSort(b)))
+  .sort((a, b) => getShortTitle(a).localeCompare(getShortTitle(b)))
   .map((entry) => [entry.id, entry.data.titleShort ?? entry.data.title] as readonly [id: string, title: string])
-
-function getDocTitleForSort(doc: (typeof allDocs)[number]) {
-  return doc.data.titleShort ?? doc.data.title
-}
 ---
 
 <DocShell

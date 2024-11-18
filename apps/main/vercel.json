@@ -18,12 +18,5 @@
         }
       ]
     }
-  ],
-  "redirects": [
-    {
-      "source": "/docs/Web/CSS/\\:target",
-      "destination": "/docs/Web/CSS/Pseudo-classes/\\:target",
-      "permanent": true
-    }
   ]
 }

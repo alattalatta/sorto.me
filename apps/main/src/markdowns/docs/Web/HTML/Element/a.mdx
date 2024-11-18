@@ -25,7 +25,7 @@ bcd: html.elements.a
 
 - : `attributionsrc` <Experimental />
 
-  - 브라우저가 [`Attribution-Reporting-Eligible`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Attribution-Reporting-Eligible) 헤더를 보내도록 합니다. 서버에서는 이 헤더를 확인 후 [`Attribution-Reporting-Register-Source`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Attribution-Reporting-Register-Source) 헤더를 응답에 포함하여 [탐색 기반 기여 소스](https://developer.mozilla.org/en-US/docs/Web/API/Attribution_Reporting_API/Registering_sources#navigation-based_attribution_sources)를 등록할 수 있습니다.
+  - 브라우저가 [`Attribution-Reporting-Eligible` 헤더](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Attribution-Reporting-Eligible)를 보내도록 합니다. 서버에서는 이 헤더를 확인 후 [`Attribution-Reporting-Register-Source` 헤더](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Attribution-Reporting-Register-Source)를 응답에 포함하여 [탐색 기반 기여 소스](https://developer.mozilla.org/en-US/docs/Web/API/Attribution_Reporting_API/Registering_sources#navigation-based_attribution_sources)를 등록할 수 있습니다.
 
     브라우저는 사용자가 링크를 클릭하면 `Attribution-Reporting-Register-Source` 헤더에 의해 제공된 탐색 기반 기여 소스와 연관된 소스 데이터를 저장합니다. [Attribution Reporting API](https://developer.mozilla.org/en-US/docs/Web/API/Attribution_Reporting_API)에서 자세한 정보를 확인하세요.
 

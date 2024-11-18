@@ -22,6 +22,28 @@ bcd: html.elements.script
 
     [브라우저 호환성](#브라우저-호환성)을 참고하세요.
 
+- : `attributionsrc` <Experimental />
+
+  - 브라우저가 [`Attribution-Reporting-Eligible` 헤더](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Attribution-Reporting-Eligible)를 보내도록 합니다. 서버에서는 이 헤더를 확인 후 [`Attribution-Reporting-Register-Source`] 또는 [`Attribution-Reporting-Register-Trigger` 헤더][`Attribution-Reporting-Register-Trigger`]를 응답에 포함하여 JavaScript 기반 [기여 소스](https://developer.mozilla.org/en-US/docs/Web/API/Attribution_Reporting_API/Registering_sources#javascript-based_event_sources)와 [기여 트리거](https://developer.mozilla.org/en-US/docs/Web/API/Attribution_Reporting_API/Registering_triggers#javascript-based_attribution_triggers)를 등록할 수 있습니다. 어떤 헤더를 보낼지는 등록을 유도한 `Attribution-Reporting-Eligible` 헤더의 값에 따라 달라집니다.
+
+    이 특성은 두 가지 종류의 값을 가질 수 있습니다.
+
+    - 불리언, i.e. `attributionsrc` 특성 이름만. [`Attribution-Reporting-Eligible`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Attribution-Reporting-Eligible) 헤더를 `src` 특성이 가리키는 것과 같은 서버로 전송합니다. 기여 소스와 트리거 등록을 같은 서버에서 처리할 때는 이렇게 지정해도 됩니다. 기여 트리거 등록 시에는 특성의 값이 선택 사항이며, 값을 지정하지 않으면 빈 문자열을 사용합니다.
+    - 한 개 이상의 URL을 포함한 문자열.
+
+      ```
+      attributionsrc="https://a.example/register-source https://b.example/register-source"
+      ```
+
+      요청하는 리소스가 외부 서버거나, 기여 소스 등록을 다른 서버에서 처리하는 경우에 사용할 수 있습니다. 리소스 요청이 발생하면, 리소스 출처 외에도 지정한 URL들에도 `Attribution-Reporting-Eligible` 헤더를 전송합니다. 각 URL들에서는 [`Attribution-Reporting-Register-Source`] 또는 [`Attribution-Reporting-Register-Trigger` 헤더][`Attribution-Reporting-Register-Trigger`]를 응답해 등록을 마칠 수 있습니다.
+
+- : `blocking`
+
+  - 이 스크립트를 가져오는 동안 중단할 작업을 명시합니다. 중단 토큰들의 공백 구분 리스트를 지정해야 합니다. 중단 토큰은 다음과 같습니다.
+
+    - : `render`
+      - 화면에 콘텐츠를 렌더링 하는 것을 중단합니다.
+
 - : `crossorigin`
 
   - 일반 `<script>` 요소는 표준 [CORS](https://developer.mozilla.org/en-US/docs/Glossary/CORS) 검사를 통과하지 못했을 때 [`window.onerror`](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror)에 최소한의 정보만 제공합니다. 정적 미디어를 별도의 도메인에서 서빙하는 경우에 오류 기록이 필요하면 이 특성을 지정하세요. [CORS 설정 특성](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin)에서 자세한 설명과, 사용 가능한 값을 확인하세요.
@@ -40,7 +62,7 @@ bcd: html.elements.script
 
     `defer` 특성을 사용하면 스크립트 평가가 브라우저 파서의 작업을 막지 않습니다. [`async`](#term-async)도 이런 측면에서는 비슷한 효과를 가집니다.
 
-- : `fetchpriority` <Experimental />
+- : `fetchpriority`
 
   - 스크립트를 가져올 때의 우선순위에 대한 힌트를 브라우저에 제공합니다. 가능한 값은 다음과 같습니다.
 
@@ -51,12 +73,14 @@ bcd: html.elements.script
     - : `auto`
       - 기본 값입니다. 브라우저가 우선순위를 자동으로 판단합니다.
 
+    [`HTMLScriptElement.fetchPriority`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/fetchPriority) 문서를 참고하세요.
+
 - : `integrity`
 
-  - 가져온 리소스에 변형이 존재하는지 검사할 때 사용자 에이전트가 사용할 값입니다. [하위 리소스 무결성](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity) 문서를 참고하세요.
+  - 가져온 리소스에 변형이 존재하는지 검사할 때 사용자 에이전트가 사용할 값입니다. [`src` 특성](#term-src)이 존재할 때만 지정해야 합니다. [하위 리소스 무결성](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity) 문서를 참고하세요.
 
 - : `nomodule`
-  - ES2015 모듈을 지원하는 브라우저에서 실행해선 안될 스크립트임을 나타내는 불리언 특성입니다. JavaScript 모듈을 지원하지 않는 오래된 브라우저에서 실행할 대체 스크립트로 사용할 수 있습니다.
+  - [ES 모듈](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)을 지원하는 브라우저에서 실행해선 안될 스크립트임을 나타내는 불리언 특성입니다. JavaScript 모듈을 지원하지 않는 오래된 브라우저에서 실행할 대체 스크립트로 사용할 수 있습니다.
 - : `nonce`
   - [`script-src` `Content-Security-Policy`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src)의 화이트리스트에 스크립트를 등록하기 위한 논스(일회용 숫자 값)입니다. 서버는 정책을 매번 전송할 때마다 항상 고유 논스를 생성해야 합니다. 논스 값을 예측할 수 있으면 매우 쉽게 리소스 정책을 우회할 수 있으므로, 알아낼 수 없는 값을 생성하는 것이 중요합니다.
 - : `referrerpolicy`
@@ -81,13 +105,20 @@ bcd: html.elements.script
 
   - `<script>`가 나타내는 스크립트의 유형을 지정합니다. 다음 범주 중 하나에 속하는 값을 사용할 수 있습니다.
 
-    - **생략하거나 JavaScript MIME 유형**: 스크립트가 JavaScript임을 나타냅니다. 명세에서는 이 값을 불필요하게 JavaScript MIME 유형으로 설정하지 말고 아예 생략하는 것을 권장하고 있습니다.
-    - **`module`**: 스크립트를 JavaScript 모듈로 취급합니다. 이 스크립트의 처리가 [`defer`](#term-defer) 특성의 영향을 받지 않게 됩니다. `module` 사용법에 대해서는 [JavaScript 모듈 안내서](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)를 참고하세요. 일반 스크립트와 달리, 모듈 스크립트는 교차 출처 가져오기에 CORS 프로토콜의 사용을 요구합니다.
-    - **다른 모든 값**: 스크립트를 브라우저가 처리하지 않습니다. JavaScript를 제외한, 유효한 MIME 유형을 지정해야 합니다. [`src`](#term-src) 특성은 무시됩니다.
+    - : 생략, 빈 문자열, 또는 JavaScript MIME 유형
+      - JavaScript를 사용한 "클래식 스크립트"임을 나타냅니다. JavaScript MIME 유형을 명시하지 말고 `type` 특성을 생략하는 것이 권장됩니다.
+    - : `importmap`
+      - 요소의 내용이 임포트 맵임을 나타냅니다. 임포트 맵은 브라우저가 [JavaScript 모듈](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#importing_modules_using_import_maps)의 지정자를 분석하는 방법을 개발자가 제어할 수 있는 JSON 객체입니다. [`importmap`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap) 문서를 참고하세요.
+    - : `module`
+      - 코드를 JavaScript 모듈로 취급합니다. 스크립트 내용의 처리가 지연됩니다. [`charset`](#term-charset)과 [`defer` 특성](#term-defer)의 영향을 받지 않게 됩니다. `module` 사용법에 대해서는 [JavaScript 모듈 안내서](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)를 참고하세요. 클래식 스크립트와 달리, 모듈 스크립트는 교차 출처 가져오기에 CORS 프로토콜의 사용을 요구합니다.
+    - : `speculationrules` <Experimental />
+      - 요소의 내용이 예측 규칙임을 나타냅니다. 예측 규칙은 브라우저가 미리 가져오거나 미리 렌더링할 리소스를 결정할 때 사용하는 JSON 객체입니다. [Speculation Rules API](https://developer.mozilla.org/en-US/docs/Web/API/Speculation_Rules_API)의 일부입니다. [`speculationrules`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/speculationrules) 문서를 참고하세요.
+    - : 다른 모든 값
+      - 요소의 내용을 데이터 블록으로 취급합니다. 브라우저는 아무 처리도 하지 않습니다. JavaScript를 제외한 유효한 MIME 유형을 지정해야 합니다. [`src`](#term-src)를 포함하여 모든 특성이 무시됩니다.
 
 # 참고
 
-[`async`](#term-async), [`defer`](#term-defer), [`type="module"`](#term-type), 인라인 스크립트는 가져오는 즉시 브라우저의 파싱을 막고 먼저 실행됩니다.
+[`async`](#term-async), [`defer`](#term-defer), [`type="module"`](#term-type)을 지정하지 스크립트는 내용을 가져오고 실행하는 동안 문서 파싱을 막고 먼저 실행됩니다.
 
 스크립트는 `text/javascript` MIME 유형을 가지고 있어야 하지만, 브라우저의 기준은 관대하여 이미지(`image/*`), 비디오(`video/*`), 오디오(`audio/*`), `text/csv`만 아니라면 실행을 막지 않습니다.
 
@@ -144,3 +175,6 @@ bcd: html.elements.script
 # 같이 보기
 
 - [`<noscript>`](./noscript)
+
+[`Attribution-Reporting-Register-Source`]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Attribution-Reporting-Register-Source
+[`Attribution-Reporting-Register-Trigger`]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Attribution-Reporting-Register-Trigger

@@ -1,5 +1,5 @@
 ---
-title: 'HTML <select>: 선택 요소'
+title: 'HTML <select>: 선택지 요소'
 titleShort: '<select>'
 bcd: html.elements.select
 ---
@@ -21,13 +21,13 @@ bcd: html.elements.select
 
 <LiveExample height={240} lang="html" name="demo" />
 
-위 예제는 접근성을 위해서 [`id` 특성](../Global_attributes/id)으로 [`<label>`](./label) 요소와 연결하고, 선택한 선택지를 서버로 제출할 때 사용할 이름을 [`name` 특성](#term-name)으로 지정하는 모습을 보입니다. 각각의 선택지는 `<select>` 안의 [`<option>`](./option)으로 정의합니다.
+위 예제는 접근성을 위해서 [`id` 특성](../Global_attributes/id)으로 [`<label>` 요소](./label)와 연결하고, 선택한 선택지를 서버로 제출할 때 사용할 이름을 [`name` 특성](#term-name)으로 지정하는 모습을 보입니다. 각각의 선택지는 `<select>` 안의 [`<option>`](./option)으로 정의합니다.
 
-`<option>` 요소는 서버 제출 시 전송할 값을 [`value`](./option#term-value) 특성에 담고 있어야 합니다. `value`를 생략하는 경우 `<option>` 안의 텍스트를 전송합니다. `<option>`에 [`selected`](./option#term-selected) 특성을 지정하면 페이지를 불러올 때 해당 선택지를 자동으로 선택합니다.
+`<option>` 요소는 서버 제출 시 전송할 값을 [`value` 특성](./option#term-value)에 담고 있어야 합니다. `value`를 생략하는 경우 `<option>` 안의 텍스트를 전송합니다. `<option>`에 [`selected` 특성](./option#term-selected)을 지정하면 페이지를 불러올 때 해당 선택지를 자동으로 선택합니다.
 
 `<select>` 요소에는 지정할 경우 컨트롤의 동작을 바꿀 수 있는 특성이 몇가지 있습니다. [`multiple`](#term-multiple)을 지정하면 사용자가 복수의 선택지를 선택할 수 있고, [`size`](#term-size)로는 한 번에 보여줄 선택지의 수를 설정할 수 있습니다. 일반적인 양식 입력 칸이 받는 `autofocus`, `disabled`, `required` 도 사용 가능합니다.
 
-`<option>`을 [`<optgroup>`](./optgroup)으로 묶으면 드롭다운 메뉴에 그룹을 생성할 수 있습니다.
+`<option>`을 [`<optgroup>` 요소](./optgroup)로 묶으면 드롭다운 메뉴에 그룹을 생성할 수 있습니다. 또한 [`<hr>` 요소][`<hr>`]를 추가해서 선택지 사이에 구분선을 넣을 수도 있습니다.
 
 # 특성
 
@@ -58,25 +58,61 @@ CSS로 `<select>` 요소에 스타일을 입히는 일은 어렵기로 악명 �
 
 박스 모델, 나타나는 글꼴 등 컨트롤의 일부 모습은 수정할 수 있고, [`appearance`](https://developer.mozilla.org/en-US/docs/Web/CSS/appearance) 속성을 사용해서 기본 시스템 스타일을 제거할 수도 있습니다. 그러나 이 방법들은 브라우저마다 다른 결과를 낳을 수 있습니다. `<select>`를 다른 양식 요소와 가로 방향으로 나란히 놓는 것도 어렵습니다. `<select>`의 내부 구조는 복잡하고 조정하기 어려우므로, 완전한 통제가 필요하면 외부 라이브러리를 고려하거나, 다른 요소와 JavaScript, WAI-ARIA를 조합해 직접 드롭다운 메뉴를 구현해야 합니다.
 
+# 접근성
+
+지금은 `<select>` 내의 [`<hr>` 요소][`<hr>`]가 접근성 트리에 노출되지 않으므로 접근성 보조기술이 인식할 수도 없습니다. 순수한 장식 요소로 취급해야 합니다.
+
 # 예제
 
-## 복수 선택과 선택지 그룹
+## 선택지 그룹과 구분선
+
+```html hidden name=group
+<label for="food">제일 좋아하는 메뉴를 선택하세요</label>
+<select id="food" name="food">
+  <option value="">메뉴 선택...</option>
+  <hr />
+  <optgroup label="과일">
+    <option value="apple">사과</option>
+    <option value="banana">바나나</option>
+    <option value="cherry">체리</option>
+  </optgroup>
+  <optgroup label="채소">
+    <option value="artichoke">아티초크</option>
+    <option value="broccoli">브로콜리</option>
+    <option value="cabbage">양배추</option>
+  </optgroup>
+  <hr />
+  <optgroup label="육류">
+    <option value="beef">소고기</option>
+    <option value="chicken">닭고기</option>
+    <option value="pork">돼지고기</option>
+  </optgroup>
+  <optgroup label="어류">
+    <option value="cod">대구</option>
+    <option value="flatfish">광어</option>
+    <option value="salmon">연어</option>
+  </optgroup>
+</select>
+```
+
+<LiveExample height={240} name="group" />
+
+## 선택지 그룹과 복수 선택
 
 ```html hidden name=multiple
-<label>한 종류 이상의 반려동물을 선택하세요:
-  <select name="pets" multiple size="4">
-    <optgroup label="네발동물">
-      <option value="dog">개</option>
-      <option value="cat">고양이</option>
-      <option value="hamster" disabled>햄스터</option>
-    </optgroup>
-    <optgroup label="조류">
-      <option value="parrot">앵무새</option>
-      <option value="macaw">닭</option>
-      <option value="albatross">알바트로스</option>
-    </optgroup>
-  </select>
-</label>
+<label for="pet">한 종류 이상의 반려동물을 선택하세요</label>
+<select id="for" multiple name="pets" size="6">
+  <optgroup label="네발동물">
+    <option value="dog">개</option>
+    <option value="cat">고양이</option>
+    <option value="hamster" disabled>햄스터</option>
+  </optgroup>
+  <optgroup label="조류">
+    <option value="parrot">앵무새</option>
+    <option value="macaw">닭</option>
+    <option value="albatross">알바트로스</option>
+  </optgroup>
+</select>
 ```
 
 <LiveExample height={180} name="multiple" />
@@ -93,3 +129,5 @@ CSS로 `<select>` 요소에 스타일을 입히는 일은 어렵기로 악명 �
 
 - 선택지: [`<option>`](./option)
 - 선택지 그룹: [`<optgroup>`](./optgroup)
+
+[`<hr>`]: ./hr

@@ -1,0 +1,82 @@
+---
+title: 'CSS :focus 의사 클래스: 포커스 대상'
+titleShort: ':focus'
+bcd: css.selectors.focus
+---
+
+CSS **`:focus`** [의사 클래스]는 포커스를 부여받은 요소를 나타냅니다. 주로 양식의 입력 칸 등의 스타일에 사용합니다. 포커스는 보통 사용자가 요소를 클릭이나 터치할 때, 또는 키보드 <kbd>Tab</kbd>으로 선택할 때 부여됩니다.
+
+```html hidden name=demo
+<label for="name">이름</label>
+<input id="name" type="text">
+<br>
+<label for="occupation">직업</label>
+<select id="occupation">
+  <option>전문직</option>
+  <option>사무직</option>
+  <option>서비스/영업/판매직</option>
+  <option>생산/기술직/노무직</option>
+  <option>교사/강사</option>
+  <option>학생</option>
+  <option>프리랜서</option>
+  <option>무직</option>
+  <option>기타</option>
+</select>
+<br>
+<button type="button">확인</button>
+```
+
+```css hidden name=demo
+input:focus {
+  background: lightblue;
+  outline: 2px solid dodgerblue;
+}
+
+select:focus {
+  background: khaki;
+}
+
+button:focus {
+  outline: 2px dashed mediumseagreen;
+}
+```
+
+<LiveExample height={240} lang="css" name="demo" />
+
+> [note] `:focus`는 포커스를 직접 부여받은 요소에만 적용됩니다. 포커스된 요소의 조상에 스타일을 적용해야 하면 [`:focus-within` 의사 클래스][`focus-within`]를 사용하세요.
+
+# 구문
+
+```css
+:focus {
+  /* ... */
+}
+```
+
+# 접근성
+
+저시력 사용자도 시작적 포커스 표시자를 볼 수 있어야 합니다. 저시력 사용자뿐만 아니라 밝은 곳, 예컨대 직사광선 아래에서 화면을 보는 사용자에게도 도움이 됩니다. [WCAG 2.1 SC 1.4.11 Non-Text Contrast](https://www.w3.org/WAI/WCAG21/Understanding/non-text-contrast.html)에서는 시각적 포커스 표시자의 대비를 적어도 3:1 요구합니다.
+
+## 외곽선 제거
+
+포커스 표시자 외곽선을 제거하면 접근성을 해칩니다. [WCAG 2.1 SC 1.4.11 Non-Text Contrast](https://www.w3.org/WAI/WCAG21/Understanding/non-text-contrast.html)를 만족하는 포커스 표시자로 대체하세요.
+
+```css variant=bad
+:focus {
+  outline: none;
+}
+```
+
+- [Quick tip: Never remove CSS outlines](https://www.a11yproject.com/posts/never-remove-css-outlines/)
+
+# 명세
+
+- [HTML Standard](https://html.spec.whatwg.org/multipage/semantics-other.html#selector-focus)
+- [Selectors Level 4](https://drafts.csswg.org/selectors/#focus-pseudo)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+[`focus-within`]: https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-within
+[의사 클래스]: ../Pseudo-classes

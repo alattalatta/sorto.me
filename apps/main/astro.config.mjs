@@ -70,12 +70,11 @@ export default defineConfig({
       },
     }),
   ],
-  redirects: vercel.redirects.reduce((acc, item) => {
-    acc[item.source] = {
-      status: item.permanent ? 308 : 307,
-      destination: item.destination,
-    }
-    return acc
-  }, {}),
+  redirects: {
+    '/docs/Web/CSS/:target': {
+      destination: '/docs/Web/CSS/Pseudo-classes/:target',
+      status: 308,
+    },
+  },
   site: 'https://sorto.me',
 })

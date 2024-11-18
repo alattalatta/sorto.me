@@ -1,50 +1,59 @@
 ---
 export type Props = {
-  docs: readonly (readonly [id: string, title: string])[]
+  children: readonly (readonly [id: string, title: string])[]
   idNow: string
   parent: readonly [id: string, title: string] | null
   root: readonly [id: string, title: string] | null
+  siblings: readonly (readonly [id: string, title: string])[]
 }
 
-const { docs: docsProp, idNow, parent, root } = Astro.props
-const docNow = docsProp.find(([id]) => id === idNow)
-const docs = docsProp.filter(([id]) => id !== idNow)
+const { children, idNow, parent, root, siblings } = Astro.props
+const docNow = siblings.find(([id]) => id === idNow)
+const docs = siblings.filter(([id]) => id !== idNow)
 ---
 
 <section aria-labelledby="related-docs-heading">
   <h2 id="related-docs-heading">관련 문서</h2>
   {
     root && (
-      <a class="root" href={`/docs/${root[0]}`}>
-        {root[1]}
-      </a>
+      <span class="arrowed parent">
+        <a href={`/docs/${root[0]}`}>{root[1]}</a>
+      </span>
     )
   }
   {
     parent && (
-      <a class="parent" href={`/docs/${parent[0]}`}>
-        {parent[1]}
-      </a>
+      <span class="arrowed parent">
+        <a href={`/docs/${parent[0]}`}>{parent[1]}</a>
+      </span>
     )
   }
-  <ul>
-    {
-      docNow && (
-        <li>
-          <a data-current href={`/docs/${docNow[0]}`}>
-            {docNow[1]}
-          </a>
-        </li>
-      )
-    }
-    {
-      docs.map(([id, title]) => (
-        <li>
-          <a href={`/docs/${id}`}>{title}</a>
-        </li>
-      ))
-    }
-  </ul>
+  {docNow && <span class="arrowed current">{docNow[1]}</span>}
+  {
+    children.length > 0 && (
+      <ul class="children">
+        {children.map(([id, title]) => (
+          <li class="arrowed child">
+            <a href={`/docs/${id}`}>{title}</a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+  {
+    docs.length > 0 && (
+      <Fragment>
+        <hr />
+        <ul>
+          {docs.map(([id, title]) => (
+            <li>
+              <a href={`/docs/${id}`}>{title}</a>
+            </li>
+          ))}
+        </ul>
+      </Fragment>
+    )
+  }
 </section>
 
 <style lang="scss">
@@ -62,29 +71,33 @@ const docs = docsProp.filter(([id]) => id !== idNow)
     margin-top: 0.5em;
   }
 
-  .root {
-    display: block;
+  .arrowed {
+    display: flex;
+    gap: 0.5em;
     margin: 1em 0;
 
     &::before {
-      content: '↑↑';
+      display: inline-block;
+      text-align: center;
+      width: 1em;
     }
   }
 
   .parent {
-    display: block;
-    margin: 1em 0;
-
     &::before {
       content: '↑';
     }
   }
 
-  a[data-current] {
-    font-weight: bold;
+  .current {
+    font-weight: 700;
 
-    &::after {
-      content: '◀';
+    &::before {
+      content: '-';
     }
+  }
+
+  .child::before {
+    content: '↓';
   }
 </style>

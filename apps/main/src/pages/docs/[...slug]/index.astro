@@ -74,6 +74,7 @@ const pathComponents = path.split('/')
 const techRootPath = pathComponents.slice(0, 2).join('/')
 const parentPath = pathComponents.slice(0, -1).join('/')
 const siblingRegex = new RegExp(`^${parentPath}/[^/]+$`, 'i')
+const childrenRegex = new RegExp(`^${path}/[^/]+$`, 'i')
 
 const allDocs = await getCollection('docs')
 
@@ -84,6 +85,10 @@ const techRootDoc = techRootDocData ? ([techRootPath, techRootDocData.data.title
 const parentDoc = parentDocData ? ([parentPath, parentDocData.data.title] as const) : null
 const siblingDocs = allDocs
   .filter((entry) => siblingRegex.test(entry.id))
+  .sort((a, b) => getShortTitle(a).localeCompare(getShortTitle(b)))
+  .map((entry) => [entry.id, entry.data.titleShort ?? entry.data.title] as readonly [id: string, title: string])
+const childrenDocs = allDocs
+  .filter((entry) => childrenRegex.test(entry.id))
   .sort((a, b) => getShortTitle(a).localeCompare(getShortTitle(b)))
   .map((entry) => [entry.id, entry.data.titleShort ?? entry.data.title] as readonly [id: string, title: string])
 ---
@@ -110,7 +115,13 @@ const siblingDocs = allDocs
       <TableOfContents {headings} slot="toc" />
       {
         (siblingDocs.length > 0 || parentDoc !== null) && (
-          <RelatedDocs docs={siblingDocs} idNow={props.id.replace('.mdx', '')} parent={parentDoc} root={techRootDoc} />
+          <RelatedDocs
+            children={childrenDocs}
+            idNow={props.id.replace('.mdx', '')}
+            parent={parentDoc}
+            root={techRootDoc}
+            siblings={siblingDocs}
+          />
         )
       }
     </MainNav>

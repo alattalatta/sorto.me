@@ -9,6 +9,8 @@ import remarkDirective from 'remark-directive'
 import * as libmdx from '@lib/mdx'
 import { readFileSync } from 'node:fs'
 
+import vercel from '../../vercel.json' assert { type: 'json' }
+
 // https://astro.build/config
 export default defineConfig({
   experimental: {
@@ -68,5 +70,12 @@ export default defineConfig({
       },
     }),
   ],
+  redirects: vercel.redirects.reduce((acc, item) => {
+    acc[item.source] = {
+      status: item.permanent ? 308 : 307,
+      destination: item.destination,
+    }
+    return acc
+  }, {}),
   site: 'https://sorto.me',
 })

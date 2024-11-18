@@ -1,0 +1,21 @@
+---
+title: 'CSS 의사 클래스'
+---
+
+CSS **의사 클래스**는 선택자가 특정 상태의 요소만 선택하도록 제한하는 키워드입니다. 예를 들어 [`:hover`](https://developer.mozilla.org/en-US/docs/Web/CSS/:hover) 키워드를 사용하면 사용자의 포인터가 가리키고 있는 버튼만 선택하여 스타일을 적용할 수 있습니다.
+
+```css
+button:hover {
+  color: blue;
+}
+```
+
+의사 클래스는 하나의 콜론(`:`)과 의사 클래스의 이름(`hover` 등)으로 구성됩니다. 함수형 의사 클래스는 한 쌍의 괄호를 사용해 인수를 정의합니다(`:dir()` 등).
+
+의사 클래스를 활용하면 스타일을 문서 트리의 구조뿐만 아니라 탐색자의 탐색 기록([`:visited`](https://developer.mozilla.org/en-US/docs/Web/CSS/:visited))이나 콘텐츠의 상태([`:checked`](https://developer.mozilla.org/en-US/docs/Web/CSS/:checked)), 마우스의 위치([`:hover`](https://developer.mozilla.org/en-US/docs/Web/CSS/:hover)) 등 외부 요인에 따라서도 적용할 수 있습니다.
+
+> [note] [**의사 요소**](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements)는 요소의 특정 부분에 스타일을 적용할 때 사용합니다.
+
+다음은 sorto.me의 모든 의사 클래스 문서 목록입니다.
+
+- [`:target`](./Pseudo-classes/:target)

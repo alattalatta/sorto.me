@@ -1,0 +1,150 @@
+---
+title: '섀도 DOM을 버리기로 했다'
+description: Lit은 이제 안녕
+image: ./cover.png
+---
+
+**웹 컴포넌트**, 또는 **커스텀 요소**에서 섀도 DOM(_Shadow DOM_)은 빼놓을 수 없다. UI 라이브러리의 기초가 된 "컴포넌트의 재사용"을 DOM 스스로 제공하는 게 커스텀 요소고, 재사용을 하고자 한다면 주변에 아무 영향을 주지 않는 게 좋으니까. 요컨대 재사용을 하기 쉬우려면 '순수'해야 한다는 것이고, 이 순수성의 가장 잘 보이는 예시가 섀도 DOM 내부에 전역 CSS를 넣더라도 밖으로 새지 않는다는 점이다. 3,210명이 각각 구현한 커스텀 요소를 한 페이지에 때려넣어도 스타일이 깨지지 않으니 완벽한 재사용이다[^1].
+
+[^1]: JavaScript를 사용해서 전역 컨텍스트를 변조하는 경우는 제외.
+
+하지만 새지 않는 건 스타일만이 아니다. 너무 철저하게 '그림자' 속에 묻혀있어서, 평범한 HTML 마크업에서는 당연히 될 것도 되지 않는다. [`<button type="submit">`](/docs/Web/HTML/Element/button)이 양식을 제출하지 못하는 걸 겪고, 이제 커스텀 요소를 쳐다도 안보려고 한다.
+
+# 당연히 되어야 하는 버튼
+
+컴포넌트가 꼭 기능을 포함해야 할 필요는 없다. 사전 정의된 스타일만 적용된 것도 컴포넌트라고 한다. 그래서 버튼 컴포넌트를 만들었고, 이왕 컴포넌트화 했으니 "바쁜 상태" 표시 기능을 추가했다. 이 정도면 버튼을 왜 컴포넌트화 했어야 했는지는 변호가 된 것 같다.
+
+나는 커스텀 요소를 쓰고 싶을 때 [Lit](https://lit.dev/)을 사용했었다. 빌드 툴 설정이 거의 필요 없어서 편하고, 가볍기도 하고. 코드로는 아래와 같겠다.
+
+```js
+import { html, LitElement } from 'lit'
+import { customElement, property } from 'lit/decorators.js'
+
+@customElement('my-button')
+class MyButton extends LitElement {
+  @property({ type: Boolean })
+  busy = false
+
+  @property({ type: Boolean })
+  disabled = false
+
+  @property({ type: String })
+  type = 'submit'
+
+  @property({ type: String })
+  variant = 'primary'
+
+  render() {
+    const interactive = !this.busy && !this.disabled
+    return html`
+      <button
+        aria-disabled=${interactive}
+        class=${styles.button({ busy: this.busy, variant: this.variant })}
+        type=${this.type}
+        @click=${!interactive ? (e) => e.stopPropagation() : undefined}>
+        ${this.busy ? '로딩 중...' : this.children}
+      </button>
+    `
+  }
+}
+```
+
+이제 이걸 일반 HTML 쓰듯 양식 제출 버튼으로 삼아보자.
+
+```html
+<form>
+  <label for="text">텍스트 입력</label>
+  <input id="text" name="text" required type="text">
+  <br>
+  <my-button type="submit">제출</my-button>
+</form>
+```
+
+텍스트를 입력하고, 제출 버튼을 누르면... 아무 일도 일어나지 않는다. "하지만 `type="submit"`인걸?" 그러나 제출 이벤트는 커녕 `required` 속성이 붙은 `input` 요소의 유효성 검증조차 일어나지 않는다. 아, 섀도 DOM 때문이구나, 망했다. 그런 생각만 들었다.
+
+# "캡슐화"
+
+커스텀 요소는 외부에 영향을 주지 않는다 했다. `<form>`은 외부다. 양식 입장에서 보면 `<my-button type="submit">`은 `<button type="submit">`이 아니라 `<my-button type="submit">`에 불과하다. `<video>` 요소의 재생 버튼이 바깥 HTML 세상에서는 없는 거나 마찬가지듯, `<my-button>`의 섀도 트리에 있는 `<button type="submit">` 역시 존재하지 않는 요소다. 버튼은 '구현 상세'고, 그걸 숨기는 게 캡슐화니까.
+
+비단 버튼의 문제만이 아니다. 이제 모두들 UI 라이브러리 없으면 살 수 없는 몸이 돼서 잊혀지고 있는 것 같지만 `<input>`은 엄청나게 많은 일을 저절로 한다.
+
+- 요소의 ID를 가리키는 [`<label>`](/docs/Web/HTML/Element/label)을 접근 가능한 레이블로 사용한다.
+- [양식의 요소 목록](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/elements)에 추가된다.
+- 양식 제출 시 [제출 데이터](https://developer.mozilla.org/en-US/docs/Web/API/FormData)에 값을 포함한다.
+- `required`, `pattern` 등 유효성 검증에 참여하고, 검증 실패 시 양식 제출을 막는다.
+- [양식 초기화](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/reset) 시 스스로의 값을 초기화한다.
+- 조상 [`<fieldset>` 요소가 비활성화되면](/docs/Web/HTML/Element/fieldset#term-disabled) 스스로 비활성화된다.
+- 브라우저가 양식을 자동완성할 때 적절히 채워진다.
+- 상태에 따라 CSS `:disabled`, `:invalid` 등 의사 클래스로 선택할 수 있다.
+
+더 있을 수도 있다. 아무튼 정말 많이 해준다. 그런데 커스텀 요소 안의 `<input>`은 아무것도 하지 못한다. 저것들은 다 외부니까.
+
+# FACE - Form Associated Custom Element
+
+그래서 나왔다. _Form Associated Custom Element_ - 양식 연결된 커스텀 요소. 이 글은 FACE를 소개하는 글이 아니니까 간단하게만 보면...
+
+1. 커스텀 요소 클래스에 `static formAssociated = true`를 추가한다.
+1. 생성자에서 `this.attachInternals()`를 추가하고, 반환 값인 [`ElementInternals`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals)를 저장한다.
+1. `ElementInternals`를 잘 써서 유효성 검증 등에 참여한다.
+1. `ElementInternals`를 잘 써서 FACE 전용 메서드들을 잘 구현한다.
+
+그러니까 `formDisabledCallback()`을 써서 비활성화 시 어떻게 반응할지 정의하고, `formResetCallback()`을 써서 초기화 시 어떻게 반응할지 정의하고, ... [`ElementInternals.setValidity()`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/setValidity)로 검증에 참여하고, ... 이런 식이다. 그리고 나는 [_Shadow DOM: Not by Default_](https://enhance.dev/blog/posts/2023-08-18-shadow-dom-not-by-default)에 공감할 수밖에 없다. 그렇다고 Enhance를 쓰겠다는 건 아니지만.
+
+> 하지만, JavaScript로 만들어진 [원래 없던] 문제를 더 많은 JavaScript로 해결하는 건 물에 빠진 사람에게 물 한 컵 건네주는 것과 같다고 생각합니다.
+
+게다가 **FACE를 써도 제출 버튼은 만들 수 없다**! 2019년에 만들어진 [WICG/webcomponents#814](https://github.com/WICG/webcomponents/issues/814)는 아직 열려있다...
+
+# 몸 비틀기 시작
+
+## 클릭 제출
+
+적어도, `ElementInternals`를 통해서 이 커스텀 요소의 조상 `<form>` 요소는 찾을 수 있게 됐다. 그렇다면 클릭했을 때 그 양식의 [`requestSubmit()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/requestSubmit)을 호출하면 어떨까? 유효성 검증까지 포함하니까 그렇게 나쁘지 않은 선택일지도?
+
+```js
+@customElement('my-button')
+class MyButton extends LitElement {
+  // ...
+
+  #internals
+
+  static formAssociated = true
+
+  constructor() {
+    super()
+    this.#internals = this.attachInternals()
+  }
+
+  // @click={this.handleClick}
+  handleClick() {
+    if (this.busy || this.disabled) {
+      return
+    }
+
+    if (this.type === 'submit' && this.#internals.form) {
+      this.#internals.form.requestSubmit()
+    }
+  }
+}
+```
+
+이제 클릭을 하면, 와! 제출이 된다! FACE 만세! 그런데 입력 칸에서 엔터를 누르면 여전히 제출이 안된다!
+
+## 엔터 키 제출
+
+데스크톱 환경에서 입력 칸에 입력하다가 엔터를 누르면 제출되는 건 뺄 수 없는 UX다. 이게 가끔 안되는 곳이 있는데 너무 너무 불편하다. 내가 싫은 걸 남에게 강요할 수는 없으니 어떻게든 엔터 키로 제출이 되어야 한다.
+
+`this.#internals.form`의 `keydown` 이벤트를 수신하고, 키가 `'Enter'`면 `requestSubmit()`을 할까..? 아니, 이미 충분히 복잡하다. 날로 먹을 수 있는 좋은 방법이 있다.
+
+```html
+<form>
+  <input type="text">
+  <button hidden type="submit"></button>
+  <my-button type="submit">제출</my-button>
+</form>
+```
+
+제출 버튼은 `hidden` 특성을 추가해도 엔터 키로 동작한다는 점! JavaScript를 더 추가하지 않아도 된다. 만세!
+
+---
+
+그리고 이렇게 `<button hidden>`과 `<my-button>`을 한 쌍씩 두 군데의 양식에 더 집어넣은 후 내가 왜 이러고 있나 어처구니가 없어져서 Svelte로 넘어갔다고 한다. 너무 편하다. 끝.

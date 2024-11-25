@@ -9,7 +9,7 @@ import remarkDirective from 'remark-directive'
 import * as libmdx from '@lib/mdx'
 import { readFileSync } from 'node:fs'
 
-import vercel from '../../vercel.json' assert { type: 'json' }
+import vercel from './vercel.json' assert { type: 'json' }
 
 // https://astro.build/config
 export default defineConfig({

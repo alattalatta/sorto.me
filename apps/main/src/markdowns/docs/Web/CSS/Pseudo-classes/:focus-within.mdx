@@ -1,0 +1,70 @@
+---
+title: 'CSS :focus-within 의사 클래스: 포커스 대상 포함'
+titleShort: ':focus-within'
+bcd: css.selectors.focus-within
+---
+
+CSS **`:focus-within`** [의사 클래스]는 자신이나 자손이 포커스를 부여받은 요소를 나타냅니다. 즉 스스로 [`:focus`]로 선택되거나, 자손 요소 중 하나가 `:focus`로 선택되는 요소와 같습니다. [섀도 트리](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM)의 요소도 자손에 포함됩니다.
+
+```html hidden name=demo
+<div class="control">
+  <label for="name">이름</label>
+  <input id="name" type="text">
+</div>
+<div class="control">
+  <label for="occupation">직업</label>
+  <select id="occupation">
+    <option>전문직</option>
+    <option>사무직</option>
+    <option>서비스/영업/판매직</option>
+    <option>생산/기술직/노무직</option>
+    <option>교사/강사</option>
+    <option>학생</option>
+    <option>프리랜서</option>
+    <option>무직</option>
+    <option>기타</option>
+  </select>
+</div>
+```
+
+```css hidden name=demo
+.control {
+  border: 1px dashed transparent;
+}
+
+.control:focus-within {
+  border-color: black;
+}
+
+.control:focus-within label {
+  font-weight: 700;
+}
+```
+
+<LiveExample height={240} lang="css" name="demo" />
+
+`:focus-within`은 사용자가 [`<input>`]을 선택했을 때 그 양식 전체를 강조하는 등의 용도로 유용합니다.
+
+# 구문
+
+```css
+:focus-within {
+  /* ... */
+}
+```
+
+# 명세
+
+- [Selectors Level 4](https://drafts.csswg.org/selectors/#the-focus-within-pseudo)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- [`:focus`]
+
+[`:focus`]: ./:focus
+[`<input>`]: /docs/Web/HTML/Element/input
+[의사 클래스]: ../Pseudo-classes

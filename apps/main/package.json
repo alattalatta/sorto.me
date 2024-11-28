@@ -22,7 +22,7 @@
     "@lib/mdx": "workspace:*",
     "@mdn/browser-compat-data": "^5.6.18",
     "@mdx-js/react": "^3.1.0",
-    "@pnpm/find-workspace-dir": "^7.0.2",
+    "@pnpm/find-workspace-dir": "^900.0.0",
     "@resvg/resvg-js": "^2.6.2",
     "@types/babel__standalone": "^7.1.9",
     "@types/mdast": "^4.0.4",

@@ -115,8 +115,8 @@ importers:
         specifier: ^3.1.0
         version: 3.1.0(@types/react@18.3.12)(react@18.3.1)
       '@pnpm/find-workspace-dir':
-        specifier: ^7.0.2
-        version: 7.0.2
+        specifier: ^1000.0.0
+        version: 1000.0.0
       '@resvg/resvg-js':
         specifier: ^2.6.2
         version: 2.6.2
@@ -852,16 +852,16 @@ packages:
     resolution: {integrity: sha512-cq8o4cWH0ibXh9VGi5P20Tu9XF/0fFXl9EUinr9QfTM7a7p0oTA4iJRCQWppXR1Pg8dSM0UCItCkPwsk9qWWYA==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
 
-  '@pnpm/constants@9.0.0':
-    resolution: {integrity: sha512-cyZ12A7j1BzeQ9nr5HBdlSLxN1VWnCG/1xjdgDUL/WDlgmVa3k6TI2CktTHjR5w/rWbKudpIaMAmJJk9w+cTRQ==}
+  '@pnpm/constants@1000.0.0':
+    resolution: {integrity: sha512-BvWyUBVRI8Vj9QSaGBQZuwy/iH9XiAba4bIAziV+jw9OP7TYfx05pdbDqJZyLBBTzchj4PGTmm1LnUarjZOA+g==}
     engines: {node: '>=18.12'}
 
-  '@pnpm/error@6.0.2':
-    resolution: {integrity: sha512-3/wWJYjUyO9ToLaZpBASYIBg87C4DBZ8yfzrt0cSCTbRFDBUNdH0dzwfVKEqhR7A9tpRMyeoRIzPUVxWc+U+RQ==}
+  '@pnpm/error@1000.0.0':
+    resolution: {integrity: sha512-2umtIxzA2HtjjubZqaiKUpvFV0e9ac/gYW7oa2atxjjKMMIxWOOHjSpmIiev4bQQ5bQi/Sigs0b34Ra48VMpcw==}
     engines: {node: '>=18.12'}
 
-  '@pnpm/find-workspace-dir@7.0.2':
-    resolution: {integrity: sha512-BAcRbWXNBeA9ur+d/ccO2dvxogHr6+6qtiM1AgXzJ6gSfNqJRb6tzgRDgIJGouve9s2P6Qsqr4TbFOltEKuLJg==}
+  '@pnpm/find-workspace-dir@1000.0.0':
+    resolution: {integrity: sha512-JLNYdBGHQqw+HE/Cod73io+gcPN6GQ0rgSmkjUSuTS3DmFM4CdNsvl5aCRz8wHZ5ZsFRHJwzIWHfZxcB63jHWA==}
     engines: {node: '>=18.12'}
 
   '@resvg/resvg-js-android-arm-eabi@2.6.2':
@@ -1910,6 +1910,7 @@ packages:
   eslint@8.57.0:
     resolution: {integrity: sha512-dZ6+mexnaTIbSBZWgou51U6OmzIhYM2VcNdtiTtI7qPNZm35Akpr0f6vtw3w1Kmn5PYo+tZVfh13WrhpS6oLqQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
 
   espree@10.3.0:
@@ -4562,15 +4563,15 @@ snapshots:
 
   '@pkgr/core@0.1.1': {}
 
-  '@pnpm/constants@9.0.0': {}
+  '@pnpm/constants@1000.0.0': {}
 
-  '@pnpm/error@6.0.2':
+  '@pnpm/error@1000.0.0':
     dependencies:
-      '@pnpm/constants': 9.0.0
+      '@pnpm/constants': 1000.0.0
 
-  '@pnpm/find-workspace-dir@7.0.2':
+  '@pnpm/find-workspace-dir@1000.0.0':
     dependencies:
-      '@pnpm/error': 6.0.2
+      '@pnpm/error': 1000.0.0
       find-up: 5.0.0
 
   '@resvg/resvg-js-android-arm-eabi@2.6.2':

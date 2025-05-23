@@ -4,7 +4,7 @@ titleShort: '<dialog>'
 bcd: html.elements.dialog
 ---
 
-**HTML `<dialog>` 요소**는 대화상자와 경고창 등 상호작용 가능한 컴포넌트를 나타냅니다.
+**HTML `<dialog>` 요소**는 모달 또는 비모달 대화상자, 경고창, 인스펙터, 내부 화면 등 상호작용 가능한 컴포넌트를 나타냅니다.
 
 ```html hidden name=demo
 <button id="dialog-opener" type="button">장바구니 열기</button>
@@ -50,7 +50,7 @@ document.getElementById('dialog-closer').addEventListener('click', function() {
 
 `<dialog>` 요소는 "모달"과 "논모달" 대화상자에 모두 사용할 수 있습니다. 모달 대화상자는 열려있는 동안 페이지 나머지 부분과의 상호작용을 막고, 논모달 대화상자는 열려있는 동안에도 페이지와 상호작용 가능합니다.
 
-`<dialog>` 요소를 열려면 JavaScript를 사용해야 합니다. [`showModal()`] 메서드를 호출하면 모달 대화상자가 열리고, [`show()`] 메서드를 호출하면 논모달 대화상자가 열립니다. [`close()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/close) 메서드를 호출하거나, `<dialog>` 내에 배치된 [`<form>`](./form) 요소가 제출되면 대화상자가 닫힙니다. 모달 대화상자의 경우 <kbd>Esc</kbd> 키를 눌러도 닫힙니다.
+`<dialog>` 요소를 열려면 JavaScript나 [`<button>`의 `commandfor` 특성](./button#term-commandfor)을 사용해야 합니다. JavaScript 사용 시, [`showModal()`] 메서드를 호출하면 모달 대화상자가 열리고, [`show()`] 메서드를 호출하면 논모달 대화상자가 열립니다. [`close()`] 메서드를 호출하거나, `<dialog>` 내에 배치된 [`<form>`] 요소가 제출되면 대화상자가 닫힙니다. 모달 대화상자의 경우 <kbd>Esc</kbd> 키를 눌러도 닫힙니다.
 
 # 특성
 
@@ -58,25 +58,45 @@ document.getElementById('dialog-closer').addEventListener('click', function() {
 
 > [warn] `<dialog>`에 [`tabindex`](../Global_attributes#term-tabindex)를 사용하면 안됩니다. [사용 일람](#사용-일람)을 참고하세요.
 
+- : `closedby` <Experimental />
+
+  - `<dialog>`를 닫을 수 있는 사용자 행동 유형을 지정합니다. 사용자 행동 유형에는 세 종류가 있습니다.
+
+    - '가벼운' 해제 동작. 사용자가 대화상자 외부를 클릭하거나 탭하면 `<dialog>`가 닫힙니다. `popover="auto"` 팝오버의 "가벼운 해제" 동작과 같습니다.
+    - 플랫폼별 동작. 데스크톱에서는 <kbd>Esc</kbd> 키, 모바일에서는 "뒤로" 또는 "해제" 제스처입니다.
+    - 개발자 정의 동작. [`HTMLDialogElement.close()`][`close()`] 메서드를 호출하거나 [`<form>`]을 제출하는 [`<button>`]의 클릭 등이 속합니다.
+
+    가능한 값은 다음과 같습니다.
+
+    - : `auto`
+      - 세 방법 모두 사용할 수 있습니다.
+    - : `closerequest`
+      - 플랫폼별 동작과 개발자 정의 동작을 사용할 수 있습니다.
+    - : `none`
+      - 개발자 정의 동작에 의해서만 닫힙니다.
+
+    `<dialog>`에 유효한 `closedby` 특성을 지정하지 않을 경우의 기본 동작은 다음과 같습니다.
+
+    - [`showModal()`]로 열렸으면 `closerequest`처럼 동작합니다.
+    - [`show()`]로 열렸으면 `none`처럼 동작합니다.
+
 - : `open`
-  - 불리언 특성입니다. 대화상자를 처음부터 열고 상호작용 가능한 상태로 만듭니다. 되도록이면 `open` 특성보단 [`showModal()`]과 [`show()`] 메서드를 호출해 여는 게 좋습니다. `open` 특성으로 열린 대화상자는 논모달 대화상자입니다.
+  - 대화상자를 처음부터 열고 상호작용 가능한 상태로 만듭니다. 되도록이면 `open` 특성보단 [`showModal()`]과 [`show()`] 메서드를 호출해 여는 게 좋습니다. `open` 특성으로 열린 대화상자는 논모달 대화상자입니다.
 
 # 사용 일람
 
-- [`<form>`](./form) 요소에 [`method="dialog"` 특성](./form#term-method)을 지정하면 사용자가 양식을 제출할 때 대화상자가 닫힙니다. 이때 [대화상자 DOM 객체의 `returnValue` 속성](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/returnValue) 값은 양식을 제출할 때 사용한 [`<button>`](./button)의 [`value` 특성](./button#term-value) 값으로 설정됩니다.
-- [`showModal()`]로 `<dialog>`를 열었을 때 배경을 어둡거나 흐리게 만들어야 할 땐 CSS [`::backdrop`](https://developer.mozilla.org/en-US/docs/Web/CSS/::backdrop) 의사 요소를 사용하세요.
+- [`<form>`] 요소에 [`method="dialog"` 특성](./form#term-method)을 지정했거나, 양식 제출 버튼에 [`formmethod="dialog"` 특성](./form#term-formmethod)을 지정한 경우, 사용자가 양식을 제출할 때 대화상자가 닫힙니다. 이때 [대화상자 DOM 객체의 `returnValue` 속성](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/returnValue) 값은 양식을 제출할 때 사용한 [`<button>`]의 [`value` 특성](./button#term-value) 값으로 설정됩니다.
+- [`showModal()`]로 열린 모달 대화상자의 뒤쪽 배경("백드롭")에는 CSS [`::backdrop`](https://developer.mozilla.org/en-US/docs/Web/CSS/::backdrop) 의사 요소로 스타일을 적용할 수 있습니다. 어둡게, 흐리게, 또는 기타 다른 방법으로 배경과 상호작용 불가능함을 나타낼 때 유용합니다.
 - [`autofocus` 특성](../Global_attributes/autofocus)은 대화상자가 열린 후 사용자가 처음으로 상호작용해야 하는 요소에 추가해야 합니다. 그런 요소가 없다면 대화상자의 닫기 버튼에 부여하는 걸 권장합니다.
 - `<dialog>` 요소 자체는 상호작용 가능하지 않고 포커스도 받지 않으므로 [`tabindex`](../Global_attributes/tabindex) 특성을 지정하면 안됩니다. 상호작용 가능하고 포커스도 받을 수 있는 건 대화상자 자체가 아니라 그 안의 닫기 버튼 등 콘텐츠입니다.
 
 # 접근성
 
-대화상자 구현 시에는 사용자의 포커스를 어디로 둘지 고려하는 게 중요합니다. [`showModal()`]을 사용해서 여는 대화상자에서는 포커스가 콘텐츠의 포커스 가능한 제일 첫 요소로 이동합니다. 가장 적절한 최초 포커스 위치가 첫 포커스 가능한 요소가 아니라면 [`autofocus` 특성](../Global_attributes/autofocus)을 지정해야 합니다.
+대화상자 구현 시에는 사용자의 포커스를 어디로 둘지 고려하는 게 중요합니다. [`showModal()`]을 사용해서 여는 대화상자에서는 포커스가 콘텐츠의 포커스 가능한 제일 첫 요소로 이동합니다. [`autofocus` 특성](../Global_attributes/autofocus)을 대화상자 내부 요소 중 하나에 추가하면 적절한 최초 포커스 요소에 지정할 수 있습니다. 적절한 최초 포커스 위치를 알기 힘든 경우, 특히 대화상자 콘텐츠가 동적으로 생성돼 알 수 없는 경우, `<dialog>` 요소 자체가 `autofocus`를 부여할 제일 적절한 위치일 수 있습니다.
 
 대화상자를 닫을 수 있는 방법을 제공해 주세요. 모든 사용자가 대화상자를 닫을 수 있는 가장 확실한 방법은 확인, 취소, 닫기 등 명시적인 버튼을 추가하는 것입니다.
 
-기본 `<dialog>`에서, [`showModal()`]로 연 모달 대화상자는 <kbd>Esc</kbd>로 닫을 수 있습니다. 키보드 사용자들도 <kbd>Esc</kbd>로 모달 대화상자를 닫을 수 있을 거라고 기대하므로, 키보드 이벤트를 재정의했다면 <kbd>Esc</kbd>로 대화상자가 닫히는 기능을 구현하고 유지하세요. 여러 개의 모달 대화상자가 열려있을 때 <kbd>Esc</kbd>를 누르면 가장 마지막에 열린 대화상자만 닫혀야 합니다. `<dialog>` 요소의 기본 설정에서는 브라우저가 이 동작을 제공합니다.
-
-반대로, 기본 설정의 논모달 대화상자는 <kbd>Esc</kbd>로 닫을 수 없고, 논모달 대화상자가 표현하는 콘텐츠에 따라서는 <kbd>Esc</kbd>로 닫히는 동작이 적절하지 않을 수도 있습니다.
+기본 `<dialog>`에서, [`showModal()`]로 연 모달 대화상자는 <kbd>Esc</kbd>로 닫을 수 있습니다. 키보드 사용자들도 <kbd>Esc</kbd>로 모달 대화상자를 닫을 수 있을 거라고 기대하므로, 키보드 이벤트를 재정의했다면 <kbd>Esc</kbd>로 대화상자가 닫히는 기능을 구현하고 유지하세요. 여러 개의 모달 대화상자가 열려있을 때 <kbd>Esc</kbd>를 누르면 가장 마지막에 열린 대화상자만 닫혀야 합니다. `<dialog>` 요소의 기본 설정에서는 브라우저가 이 동작을 제공합니다. 반대로, 기본 설정의 논모달 대화상자는 <kbd>Esc</kbd>로 닫을 수 없고, 논모달 대화상자가 표현하는 콘텐츠에 따라서는 <kbd>Esc</kbd>로 닫히는 동작이 적절하지 않을 수도 있습니다.
 
 # 명세
 
@@ -86,5 +106,8 @@ document.getElementById('dialog-closer').addEventListener('click', function() {
 
 <BrowserCompat data={props.bcd} />
 
+[`<button>`]: ./button
+[`<form>`]: ./form
+[`close()`]: https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/close
 [`show()`]: https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/show
 [`showModal()`]: https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal

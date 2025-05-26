@@ -98,6 +98,65 @@ document.getElementById('dialog-closer').addEventListener('click', function() {
 
 기본 `<dialog>`에서, [`showModal()`]로 연 모달 대화상자는 <kbd>Esc</kbd>로 닫을 수 있습니다. 키보드 사용자들도 <kbd>Esc</kbd>로 모달 대화상자를 닫을 수 있을 거라고 기대하므로, 키보드 이벤트를 재정의했다면 <kbd>Esc</kbd>로 대화상자가 닫히는 기능을 구현하고 유지하세요. 여러 개의 모달 대화상자가 열려있을 때 <kbd>Esc</kbd>를 누르면 가장 마지막에 열린 대화상자만 닫혀야 합니다. `<dialog>` 요소의 기본 설정에서는 브라우저가 이 동작을 제공합니다. 반대로, 기본 설정의 논모달 대화상자는 <kbd>Esc</kbd>로 닫을 수 없고, 논모달 대화상자가 표현하는 콘텐츠에 따라서는 <kbd>Esc</kbd>로 닫히는 동작이 적절하지 않을 수도 있습니다.
 
+# 예제
+
+## 순수 HTML 대화상자
+
+HTML만 사용해 논모달 대화상자를 만드는 예제입니다. `<dialog>` 요소에 `open` 특성을 지정했으므로 대화상자가 열린 상태로 나타납니다. `<form>` 요소의 `method` 특성을 `dialog`로 설정했기 때문에 "확인" 버튼을 클릭하면 대화상자가 닫힙니다. 따라서 JavaScript 없이도 대화상자를 닫을 수 있습니다.
+
+```html hidden name=pure
+<dialog open>
+  <p>환영합니다!</p>
+  <form method="dialog">
+    <button>확인</button>
+  </form>
+</dialog>
+```
+
+<LiveExample name="pure" height={180} />
+
+## 모달 대화상자
+
+그레이디언트 백드롭을 가진 모달 대화상자 예제입니다. "대화상자 열기" 버튼을 누르면 `showModal()` 메서드를 호출해 대화상자를 엽니다. <kbd>Esc</kbd> 키를 누르거나, `close()` 메서드를 호출하는 "닫기" 버튼을 클릭하면 대화상자가 닫힙니다.
+
+대화상자가 열리는 순간, 기본 설정에서 브라우저는 대화상자 내부에서 포커스 가능한 첫 번째 요소에 포커스를 부여합니다. 이 예제에서는 "닫기" 버튼에 [`autofocus` 특성](../Global_attributes/autofocus)을 추가해, 대화상자가 열릴 때 자동으로 포커스가 주어지도록 했습니다.
+
+```html hidden name=modal
+<dialog>
+  <p>앗, 정말 멋진 대화상자</p>
+  <button autofocus id="close" type="button">닫기</button>
+</dialog>
+<button id="open" type="button">대화상자 열기</button>
+```
+
+```css hidden name=modal
+::backdrop {
+  background-image: linear-gradient(
+    45deg,
+    magenta,
+    rebeccapurple,
+    dodgerblue,
+    green
+  );
+  opacity: 0.75;
+}
+```
+
+```js hidden name=modal
+const dialog = document.querySelector('dialog')
+
+// "대화상자 열기" 버튼
+document.getElementById('open').addEventListener('click', () => {
+  dialog.showModal()
+})
+// "닫기" 버튼
+document.getElementById('close').addEventListener('click', () => {
+  dialog.close()
+})
+```
+
+<LiveExample name="modal" height={250} />
+
 # 명세
 
 [HTML Standard](https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element)

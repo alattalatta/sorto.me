@@ -13,8 +13,7 @@
   },
   "scripts": {
     "build": "rm -rf dist && vite build",
-    "lint": "tsc --noEmit",
-    "typecheck": "tsc --noEmit"
+    "test": "tsc --noEmit"
   },
   "dependencies": {
     "@mdx-js/mdx": "^3.1.0",

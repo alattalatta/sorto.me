@@ -23,7 +23,11 @@ const mobileBrowsers: [BrowserName, string][] = [
 ---
 
 {
-  bcd ? <div><CompatTable className="bcd" client:idle {bcd} {desktopBrowsers} {mobileBrowsers} /></div> : null
+  bcd ? (
+    <div>
+      <CompatTable {bcd} className="bcd" client:idle {desktopBrowsers} {mobileBrowsers} />
+    </div>
+  ) : null
 }
 
 <style>
@@ -35,7 +39,7 @@ const mobileBrowsers: [BrowserName, string][] = [
   }
 </style>
 
-<style define:vars={{ desktops: desktopBrowsers.length }} is:global lang="scss">
+<style is:global lang="scss">
   .bcd.bcd {
     border-collapse: collapse;
     caption-side: bottom;
@@ -55,7 +59,7 @@ const mobileBrowsers: [BrowserName, string][] = [
         position: absolute;
       }
     }
-    
+
     .sep {
       border-right: 3px double var(--primary);
     }

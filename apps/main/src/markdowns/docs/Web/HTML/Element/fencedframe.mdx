@@ -1,0 +1,54 @@
+---
+title: 'HTML <fencedframe>: 격리 프레임 요소'
+titleShort: '<fencedframe>'
+bcd: html.elements.fencedframe
+---
+
+**HTML `<fencedframe>` 요소**는 현재 HTML 문서 내에 삽입된 중첩 브라우징 맥락을 나타냅니다. `<fencedframe>`은 [`<iframe>`] 요소와 형태와 기능이 매우 유사하지만, 다음과 같은 차이점을 가집니다.
+
+- `<fencedframe>` 콘텐츠와 부모 사이트의 통신은 제한됩니다.
+- `<fencedframe>`은 교차 사이트 데이터를 접근할 수 있지만, 사용자 사생활을 보호할 수 있는 굉장히 특정된 상황에서만 가능합니다.
+- `<fencedframe>`은 일반 스크립트로 조작하거나 내부 데이터에 접근(예시: 소스 URL 읽기/쓰기 등)할 수 없습니다. `<fencedframe>` 콘텐츠는 특정 API를 통해서만 삽입할 수 있습니다.
+- `<fencedframe>`은 부모 컨텍스트의 DOM에 접근할 수 없으며, 부모 컨텍스트도 `<fencedframe>`의 DOM에 접근할 수 없습니다.
+
+`<fencedframe>` 요소는 더 많은 개인 정보 보호 기능을 내장한 `<iframe>`의 일종으로, `<iframe>`의 서드 파티 쿠키 의존성 등 개인 정보 위험을 해결할 수 있습니다. 더 많은 정보는 [Fenced frame API](https://developer.mozilla.org/en-US/docs/Web/API/Fenced_frame_API)에서 확인하세요.
+
+# 특성
+
+[전역 특성](/docs/Web/HTML/Global_attributes)을 포함합니다.
+
+- : `allow`
+  - `<fencedframe>`의 [권한 정책](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Permissions_Policy)을 지정합니다. 권한 정책은 요청 출처에 따라 `<fencedframe>`에서 사용할 수 있는 기능을 정의합니다. [분리 프레임에서 사용 가능한 권한 정책](#분리-프레임에서-사용-가능한-권한-정책)을 참고하세요.
+- : `height`
+  - 프레임의 CSS 픽셀 단위 높이입니다. 기본 값은 `150`입니다.
+- : `width`
+  - 프레임의 CSS 픽셀 단위 높이입니다. 기본 값은 `300`입니다.
+
+# 분리 프레임에서 사용 가능한 권한 정책
+
+기능을 허용하거나 거부할 수 있는 권한들이 상위 맥락에서 분리 프레임으로 위임될 경우 통신 채널로 남용될 수 있으며 따라서 개인 정보를 위협할 수 있습니다. 결과적으로, [권한 정책](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Permissions-Policy)을 통해 활성화 여부를 제어할 수 있는 표준 웹 기능([`camera`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Permissions-Policy/camera), [`geolocation`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Permissions-Policy/geolocation) 등)은 분리 프레임 내에서 **사용할 수 없습니다**.
+
+분리 프레임 내의 정책으로 활성화할 수 있는 기능은 분리 프레임 내에서 사용하도록 설계된 특정 기능들로 제한됩니다.
+
+- [Protected Audience API](https://privacysandbox.google.com/private-advertising/protected-audience)
+  - `attribution-reporting`
+  - `private-aggregation`
+  - `shared-storage`
+  - `shared-storage-select-url`
+- [Shared Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Shared_Storage_API)
+  - `attribution-reporting`
+  - `private-aggregation`
+  - `shared-storage`
+  - `shared-storage-select-url`
+
+지금은 위의 기능 모두 분리 프레임 내에서 항상 활성화됩니다. 향후에는 `<fencedframe>`의 [`allow` 특성](#term-allow)을 사용해 어떤 기능을 활성화할지 제어할 수 있을 것입니다.
+
+# 명세
+
+[Fenced Frame](https://wicg.github.io/fenced-frame/#the-fencedframe-element)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+[`<iframe>`]: ./iframe

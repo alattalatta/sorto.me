@@ -28,9 +28,9 @@ bcd: html.elements.iframe
 
 - : `allow`
 
-  - `<iframe>`의 [기능 정책](https://developer.mozilla.org/en-US/docs/Web/HTTP/Feature_Policy)을 지정합니다. 기능 정책은 `<iframe>` 내에서 요청의 출처에 따라서, 사용 가능한 기능(마이크와 카메라 접근, 배터리와 웹 공유 API 등)을 정의합니다.
+  - `<iframe>`의 [권한 정책](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Permissions_Policy)을 지정합니다. 권한 정책은 요청 출처에 따라 `<iframe>`에서 사용할 수 있는 기능을 정의합니다.
 
-    [기능 정책 사용하기의 iframe allow 특성](https://developer.mozilla.org/en-US/docs/Web/HTTP/Feature_Policy/Using_Feature_Policy#the_iframe_allow_attribute)을 참고하세요.
+    [`Permissions-Policy` 헤더의 iframe 부분](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Permissions-Policy#iframes)을 참고하세요.
 
 - : `allowfullscreen`
 
@@ -61,7 +61,7 @@ bcd: html.elements.iframe
 
 - : `height`
   - 프레임의 CSS 픽셀 단위 높이입니다. 기본 값은 `150`입니다.
-- : `loading` <Experimental />
+- : `loading`
 
   - 브라우저가 프레임을 불러오는 방식을 지정합니다.
 

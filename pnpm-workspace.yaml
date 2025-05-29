@@ -1,4 +1,7 @@
 packages:
-  - 'apps/main'
-  - 'packages/mdx'
-  - 'packages/tsconfig'
+  - apps/main
+  - packages/mdx
+  - packages/tsconfig
+onlyBuiltDependencies:
+  - esbuild
+  - sharp

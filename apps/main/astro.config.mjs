@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs'
 import path from 'node:path'
 
 import { defineConfig } from 'astro/config'
@@ -7,15 +8,11 @@ import sitemap from '@astrojs/sitemap'
 import remarkDirective from 'remark-directive'
 
 import * as libmdx from '@lib/mdx'
-import { readFileSync } from 'node:fs'
-
-import vercel from './vercel.json' assert { type: 'json' }
 
 // https://astro.build/config
 export default defineConfig({
   experimental: {
     contentIntellisense: true,
-    contentLayer: true,
   },
   integrations: [
     react(),

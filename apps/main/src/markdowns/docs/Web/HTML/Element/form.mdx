@@ -47,6 +47,20 @@ label {
 
 [전역 특성](/docs/Web/HTML/Global_attributes)을 포함합니다.
 
+- : `accept-charset`
+  - 서버에서 받을 수 있는 [문자 인코딩](https://developer.mozilla.org/en-US/docs/Web/Guide/Localizations_and_character_encodings)을 나타내는 공백 구분 목록입니다. 브라우저는 지정한 순서에 따라 문자 인코딩을 사용합니다. 기본 값은 [문서의 인코딩](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Encoding)과 동일합니다.
+- : [`autocomplete`](../Attributes/autocomplete)
+
+  - 브라우저가 양식 내 컨트롤을 자동으로 완성할 수 있어야 하는지 지정합니다. 각각의 컨트롤에 지정하는 `autocomplete`이 `<form>`의 `autocomplete`보다 우선합니다. 가능한 값은 다음과 같습니다.
+
+    - `off`: 브라우저가 양식의 항목을 자동으로 완성하지 않습니다. (로그인 양식처럼 보이는 경우, 브라우저는 `off`를 무시합니다. [자동완성 특성과 로그인 필드](https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion#the_autocomplete_attribute_and_login_fields)를 참고하세요.)
+    - `on`: 브라우저가 양식의 항목을 자동으로 완성할 수 있습니다.
+
+- : `name`
+  - 양식의 이름을 지정합니다. 지정할 경우, 문서 내의 양식끼리 겹치는 이름이 없어야 합니다.
+- : `rel`
+  - 양식이 생성하는 링크의 종류를 명시합니다. [링크 유형](../Link_types)을 공백으로 구분한 리스트여야 합니다.
+
 ## 양식 제출과 관련된 특성
 
 - : `action`
@@ -83,24 +97,9 @@ label {
     - `_blank`: 결과를 새롭게 생성한 이름 없는 브라우징 맥락에 보여줍니다.
     - `_parent`: 현재 페이지가 프레임 안에 존재하는 경우, 결과를 현재 브라우징 맥락의 부모에 보여줍니다. 부모가 없으면 `_self`와 동일합니다.
     - `_top`: 결과를 최상위 브라우징 맥락에 보여줍니다. 최상위 브라우징 맥락이란 현재 맥락의 조상 중 부모가 없는 맥락입니다. 현재 맥락이 부모를 가지지 않으면 `_self`와 동일합니다.
+    - `_unfencedTop`: 삽입된 [분리 프레임](https://developer.mozilla.org/en-US/docs/Web/API/Fenced_frame_API) 내 양식의 결과를 최상위 프레임으로, 즉 다른 키워드와 달리 분리 프레임의 경계를 넘어 탐색할 수 있도록 허용합니다. 분리 프레임 내에서만 사용할 수 있습니다.
 
     [`<button>`](./button), [`<input type="submit">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/submit), [`<input type="image">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image) 요소의 [`formtarget`](./button#term-formtarget) 특성이 우선합니다.
-
-## 기타 특성
-
-- : `accept-charset`
-  - 서버에서 받을 수 있는 [문자 인코딩](https://developer.mozilla.org/en-US/docs/Web/Guide/Localizations_and_character_encodings)을 나타내는 공백 구분 목록입니다. 브라우저는 지정한 순서에 따라 문자 인코딩을 사용합니다. 기본 값은 [문서의 인코딩](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Encoding)과 동일합니다.
-- : [`autocomplete`](../Attributes/autocomplete)
-
-  - 브라우저가 양식 내 컨트롤을 자동으로 완성할 수 있어야 하는지 지정합니다. 각각의 컨트롤에 지정하는 `autocomplete`이 `<form>`의 `autocomplete`보다 우선합니다. 가능한 값은 다음과 같습니다.
-
-    - `off`: 브라우저가 양식의 항목을 자동으로 완성하지 않습니다. (로그인 양식처럼 보이는 경우, 브라우저는 `off`를 무시합니다. [자동완성 특성과 로그인 필드](https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion#the_autocomplete_attribute_and_login_fields)를 참고하세요.)
-    - `on`: 브라우저가 양식의 항목을 자동으로 완성할 수 있습니다.
-
-- : `name`
-  - 양식의 이름을 지정합니다. 지정할 경우, 문서 내의 양식끼리 겹치는 이름이 없어야 합니다.
-- : `rel`
-  - 양식이 생성하는 링크의 종류를 명시합니다. [링크 유형](../Link_types)을 공백으로 구분한 리스트여야 합니다.
 
 # 명세
 

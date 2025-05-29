@@ -33,16 +33,23 @@ bcd: html.elements.canvas
 
 ## 최대 캔버스 크기
 
-`<canvas>` 요소의 최대 크기는 굉장히 크지만, 정확한 한계는 브라우저마다 다릅니다.
-
-| 브라우저 | 최대 높이   | 최대 너비   | 최대 넓이                          |
-| -------- | ----------- | ----------- | ---------------------------------- |
-| Chrome   | 32,767 픽셀 | 32,767 픽셀 | 268,435,456 픽셀 (16,384 x 16,384) |
-| Firefox  | 32,767 픽셀 | 32,767 픽셀 | 472,907,776 픽셀 (22,528 x 20,992) |
-| Safari   | 32,767 픽셀 | 32,767 픽셀 | 268,435,456 픽셀 (16,384 x 16,384) |
-| IE       | 8,192 픽셀  | 8,192 픽셀  | ?                                  |
+`<canvas>` 요소의 최대 크기는 굉장히 크지만, 정확한 한계는 브라우저마다 다릅니다. 대부분의 경우 10,000 x 10,000 픽셀을 초과하지만 iOS에서는 4,096 x 4,096 픽셀로 제한됩니다. [브라우저와 장치별 최대 크기](https://jhildenbiddle.github.io/canvas-size/#/?id=test-results)를 확인하세요.
 
 > [note] 최대 크기를 초과하면 그리기 명령이 듣지 않아, 캔버스를 사용할 수 없게 됩니다.
+
+## 오프스크린 캔버스
+
+[`OffscreenCanvas API`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas)를 사용하면 캔버스를 문서와 분리해 렌더링 할 수 있습니다. 워커 스레드가 오프스크린 캔버스의 렌더링을 처리하면 캔버스 작업이 웹 애플리케이션의 메인 스레드를 막지 않으므로, 복잡한 그래픽을 렌더링 하더라도 다른 UI 요소가 사용자 입력에 반응할 수 있습니다. OffscreenCanvas API 문서에서 자세한 내용을 확인하세요.
+
+# 접근성
+
+## 대체 콘텐츠
+
+`<canvas>` 요소 자체는 비트맵에 불과하며, 그려진 개체에 대한 정보를 아무것도 제공하지 않습니다. 캔버스 콘텐츠는 시맨틱 HTML과는 달리 접근성 도구로 노출되지도 않습니다. 그러므로 접근성을 확보해야 하는 상황이라면 캔버스를 피하는 편이 대개 좋습니다. 아래의 문서들에서 캔버스와 접근성에 대해 더 알아보세요.
+
+- [Canvas accessibility use cases](https://www.w3.org/WAI/PF/HTML/wiki/Canvas_Accessibility_Use_Cases)
+- [Canvas element accessibility issues](https://www.w3.org/html/wg/wiki/AddedElementCanvas)
+- [Best practices for interactive canvas elements](https://html.spec.whatwg.org/multipage/scripting.html#best-practices)
 
 # 예제
 
@@ -68,16 +75,6 @@ ctx.fillRect(10, 10, 100, 100)
 ### 결과
 
 <LiveExample lang="js" name="basic" />
-
-# 접근성
-
-## 대체 콘텐츠
-
-`<canvas>` 요소 자체는 비트맵에 불과하며, 그려진 개체에 대한 정보를 아무것도 제공하지 않습니다. 캔버스 콘텐츠는 시맨틱 HTML과는 달리 접근성 도구로 노출되지도 않습니다. 그러므로 접근성을 확보해야 하는 상황이라면 일반적인 경우엔 캔버스를 피하는 편이 좋습니다. 아래의 문서들에서 캔버스와 접근성에 대해 더 알아보세요.
-
-- [Canvas accessibility use cases](https://www.w3.org/WAI/PF/HTML/wiki/Canvas_Accessibility_Use_Cases)
-- [Canvas element accessibility issues](https://www.w3.org/html/wg/wiki/AddedElementCanvas)
-- [Best practices for interactive canvas elements](https://html.spec.whatwg.org/multipage/scripting.html#best-practices)
 
 # 명세
 

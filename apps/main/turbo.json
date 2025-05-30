@@ -7,7 +7,7 @@
     "build": {
       "dependsOn": [
         "lastmod",
-        "typecheck",
+        "test",
         "^build"
       ],
       "outputs": [

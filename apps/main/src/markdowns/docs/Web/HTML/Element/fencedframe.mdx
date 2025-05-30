@@ -43,6 +43,22 @@ bcd: html.elements.fencedframe
 
 지금은 위의 기능 모두 분리 프레임 내에서 항상 활성화됩니다. 향후에는 `<fencedframe>`의 [`allow` 특성](#term-allow)을 사용해 어떤 기능을 활성화할지 제어할 수 있을 것입니다.
 
+# 사용 일람
+
+CSS [`object-position` 속성](/docs/Web/CSS/object-position)을 사용해서 요소 프레임 내의 콘텐츠 위치를 조정할 수 있습니다.
+
+> [note] `<fencedframe>` 요소에서 [`object-fit`](/docs/Web/CSS/object-fit)은 효과가 없습니다.
+
+# 접근성
+
+스크린 리더와 같은 보조 기술은 `<fencedframe>`의 [`title`](../Global_attributes#term-title)을 사용해 내부 콘텐츠를 설명할 수 있습니다. `title`의 값은 콘텐츠를 명확하게 나타내야 합니다.
+
+```html
+<fencedframe title="광고: 소토에서 전해드리는 최신 상품, 20% 할인 중"></fencedframe>
+```
+
+`title`이 없으면, 보조 기술 사용자는 `<fencedframe>` 내부를 탐색해 무슨 콘텐츠인지 확인해야 합니다. 이때 발생하는 맥락의 변화는 시간도 오래 걸릴 뿐더러 혼란스럽기 쉽습니다. 프레임 내에 비디오나 오디오 등 대화형 콘텐츠가 있거나, 한 페이지가 다수의 `<fencedframe>`을 포함하는 경우 더 심각한 문제가 될 수 있습니다.
+
 # 명세
 
 [Fenced Frame](https://wicg.github.io/fenced-frame/#the-fencedframe-element)

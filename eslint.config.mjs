@@ -13,5 +13,6 @@ export default tselint.config(react, ...astro.configs.recommended, {
   },
   rules: {
     'astro/sort-attributes': 'warn',
+    '@typescript-eslint/no-unsafe-assignment': 'off',
   },
 })

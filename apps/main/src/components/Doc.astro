@@ -4,7 +4,7 @@ import type { AstroComponentFactory } from 'astro/runtime/server/index.js'
 import { Image } from 'astro:assets'
 
 import BrowserCompat from './BrowserCompat'
-import { Experimental, NonStandard } from './BrowserCompat/StatusIcon'
+import { Deprecated, Experimental, NonStandard } from './BrowserCompat/StatusIcon'
 import ContentBody from './ContentBody.astro'
 import DocPin from './DocPin'
 import DocsUnderPath from './DocsUnderPath.astro'
@@ -42,6 +42,7 @@ const slugAsID = slug.replaceAll('/', '-')
     bcd={bcd}
     components={{
       BrowserCompat,
+      Deprecated,
       Experimental,
       Image,
       LiveExample,

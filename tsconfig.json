@@ -1,4 +1,4 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "include": ["apps/astro"],
+  "include": ["eslint.config.mjs"]
 }

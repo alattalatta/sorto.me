@@ -20,34 +20,26 @@ img {
 
 위의 예제는 `<img>` 요소의 기본 사용법을 보입니다.
 
-- [`src`](#term-src) 특성은 **필수**로, 삽입하려는 이미지의 경로를 담습니다.
-- [`alt`](#term-alt) 특성은 이미지를 글로 설명하는 특성으로, 필수는 아니지만 접근성에 **매우 중요**합니다. 스크린 리더는 이 특성을 읽어서 사용자에게 이미지에 대한 설명을 제공합니다. 또한 모종의 이유로 이미지를 불러오지 못했을 때도 이 특성의 텍스트를 대신 노출합니다.
+- [`src` 특성](#term-src)은 삽입하려는 이미지의 경로를 담습니다. [`srcset` 특성](#term-srcset)을 사용할 땐 생략할 수 있습니다. `src`와 `srcset` 중 하나는 반드시 지정해야 합니다.
+- [`alt` 특성](#term-alt)은 이미지를 글로 설명하는 특성으로, 필수는 아니지만 접근성에 **매우 중요**합니다. 스크린 리더는 이 특성을 읽어서 사용자에게 이미지에 대한 설명을 제공합니다. 또한 모종의 이유로 이미지를 불러오지 못했을 때도 이 특성의 텍스트를 대신 노출합니다.
 
 # 지원하는 이미지 형식
 
 HTML 표준은 사용자 에이전트가 지원해야 하는 이미지 형식을 명시하지 않으므로, 서로 지원하는 형식이 다릅니다.
 
-다음 표는 웹에서 많이 사용하는 이미지 형식과, 형식을 지원하는 브라우저의 목록입니다.
+> [note] [이미지 파일 종류와 형식 안내서](https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Formats/Image_types)에서 종류별 자세한 설명과 웹 브라우저 지원 여부를 확인할 수 있습니다. 아래 목록은 요약입니다.
 
-| 준말 | MIME 유형       | 확장자             | 요약                                                                                                                                                                                                                                                                                                                                                                                     |
-| ---- | --------------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| APNG | `image/apng`    | `.apng`            | 무손실 애니메이션 시퀀스에 좋은 선택지입니다. 성능면에서는 AVIF와 WebP가 좋지만 더 많은 브라우저가 APNG를 지원합니다.<br />**지원**: Chrome, Edge, Firefox, Opera, Safari                                                                                                                                                                                                                |
-| AVIF | `image/avif`    | `.avif`            | 고성능, 로열티 프리 형식입니다. 이미지와 애니메이션 시퀀스에 모두 탁월합니다. PNG, JPEG보다 훨씬 뛰어난 압축률을 보유하고도 넓은 색상 범위, 애니메이션 프레임, 투명도도 지원합니다. AVIF를 사용할 땐 미지원 브라우저를 대비하여 [`<picture>`](./picture) 요소 등 대체 이미지 형식을 제공해야 합니다.<br />**지원**: Chrome, Opera, Firefox (설정 필요, 애니메이션 등 고급 기능은 미구현) |
-| GIF  | `image/gif`     | `.gif`             | 간단한 이미지와 애니메이션에 적합합니다. 무손실 인덱스 색상 이미지에는 PNG, 애니메이션 시퀀스에는 WebP, AVIF, APNG의 사용을 고려하세요.<br />**지원**: 대부분의 브라우저                                                                                                                                                                                                                 |
-| JPEG | `image/jpeg`    | `.jpg`, `.jpeg` 등 | 정적 이미지의 손실 압축 저장에 적합합니다. 제일 널리 쓰이는 형식입니다. 이미지의 정확한 재현이 필요하면 PNG, 정확한 재현에 더 높은 압축률까지 필요하면 WebP와 AVIF의 사용을 고려하세요.<br />**지원**: 대부분의 브라우저                                                                                                                                                                 |
-| PNG  | `image/png`     | `.png`             | JPEG와 비교했을 때 이미지의 정확한 재현이 중요하거나 투명도를 지원하는 형식이 필요할 때 선호되는 형식입니다. WebP와 AVIF가 더 높은 압축률을 지원하지만 PNG는 대부분의 브라우저에서 지원합니다.<br />**지원**: 대부분의 브라우저                                                                                                                                                          |
-| SVG  | `image/svg+xml` | `.svg`             | 벡터 이미지 형식입니다. 사용자 인터페이스 구성 요소, 아이콘, 다이어그램 등 다양한 크기로 정확하게 그려야 하는 이미지에 적합합니다.<br />**지원**: 대부분의 브라우저                                                                                                                                                                                                                      |
-| WebP | `image/webp`    | `.webp`            | 이미지와 애니메이션 시퀀스에 모두 좋은 선택입니다. PNG와 JPEG보다 훨씬 뛰어난 압축률을 보유하고도 넓은 색상 범위, 애니메이션 프레임, 투명도도 지원합니다. AVIF에 비하면 압축률은 떨어지지만 더 많은 브라우저가 WebP를 지원합니다.<br />**지원**: Chrome, Edge, Firefox, Opera, Safari                                                                                                    |
+웹에서 자주 쓰이는 이미지 파일 종류는 다음과 같습니다.
 
-> [note] PNG, JPEG, GIF처럼 과거에 개발한 이미지 형식은 신형 형식인 WebP와 AVIF보다 성능이 떨어지지만 구형 브라우저에서도 지원한다는 장점을 가집니다. 그러나 구형 브라우저의 시장 점유율이 점점 낮아지고 있으므로 신형 이미지 형식의 점유율은 반대로 점점 올라가고 있습니다.
+- [APNG (Animated Portable Network Graphics)](https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Formats/Image_types#apng_animated_portable_network_graphics): 무손실 애니메이션 시퀀스에 좋은 선택지입니다. GIF에 비해 성능이 좋습니다.
+- [AVIF (AV1 Image File Format)](https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Formats/Image_types#avif_image): 뛰어난 성능을 지녀 이미지와 애니메이션 시퀀스에 모두 탁월합니다.
+- [GIF (Graphics Interchange Format)](https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Formats/Image_types#gif_graphics_interchange_format): **간단한** 이미지와 애니메이션에 적합합니다.
+- [JPEG (Joint Photographic Experts Group image)](https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Formats/Image_types#jpeg_joint_photographic_experts_group_image): 정적 이미지의 손실 압축 저장에 적합합니다. 제일 널리 쓰이는 형식입니다.
+- [PNG (Portable Network Graphics)](https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Formats/Image_types#png_portable_network_graphics): 정적 이미지의 무손실 압축 저장에 적합합니다. JPEG보다 품질이 다소 좋습니다.
+- [SVG (Scalable Vector Graphics)](https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Formats/Image_types#svg_scalable_vector_graphics): 벡터 이미지 형식입니다. 다양한 크기로 정확하게 그려야 하는 이미지에 적합합니다.
+- [WebP (Web Picture format)](https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Formats/Image_types#webp_image): 이미지와 애니메이션 시퀀스에 모두 좋은 선택입니다.
 
-아래의 표는 웹에서 사용할 수는 있지만, 뚜렷한 대체제가 있거나 브라우저 지원이 거의 없어 피해야 하는 형식의 목록입니다.
-
-| 준말 | MIME 유형      | 확장자          | 요약                    |
-| ---- | -------------- | --------------- | ----------------------- |
-| BMP  | `image/bmp`    | `.bmp`          | **지원**: 모든 브라우저 |
-| ICO  | `image/x-icon` | `.ico`, `.cur`  | **지원**: 모든 브라우저 |
-| TIFF | `image/tiff`   | `.tif`, `.tiff` | **지원**: Safari        |
+WebP와 AVIF는 정적 이미지와 애니메이션 시퀀스에 모두 PNG, JPEG, GIF보다 뛰어난 성능을 제공하므로, 다양한 크기에서 모두 정확하게 그려야 하는 이미지(벡터 이미지, SVG를 사용하세요)가 아니라면 추천하는 선택지입니다.
 
 # 특성
 
@@ -71,16 +63,42 @@ HTML 표준은 사용자 에이전트가 지원해야 하는 이미지 형식을
 
     `alt`는 이미지를 복사해서 텍스트에 붙여 넣을 때나, 이미지를 즐겨찾기에 추가할 때 등 다른 용도로도 쓰입니다.
 
+- : `attributionsrc` <Experimental />
+
+  - 브라우저가 이미지 요청 시 [`Attribution-Reporting-Eligible` 헤더](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Attribution-Reporting-Eligible)를 보내도록 합니다. 서버에서는 이 헤더를 확인 후 [`Attribution-Reporting-Register-Source`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Attribution-Reporting-Register-Source) 또는 [`Attribution-Reporting-Register-Trigger` 헤더](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Attribution-Reporting-Register-Trigger)를 응답에 포함하여 각각 [이미지 기반 기여 소스](https://developer.mozilla.org/en-US/docs/Web/API/Attribution_Reporting_API/Registering_sources#html-based_event_sources) 또는 [기여 트리거](https://developer.mozilla.org/en-US/docs/Web/API/Attribution_Reporting_API/Registering_triggers#html-based_attribution_triggers)를 등록할 수 있습니다.
+
+    소스 혹은 트리거 이벤트는 브라우저가 이미지 파일 응답을 받는 시점에 발동합니다.
+
+    > [note] [Attribution Reporting API](https://developer.mozilla.org/en-US/docs/Web/API/Attribution_Reporting_API)에서 자세한 정보를 확인하세요.
+
+    이 특성은 두 가지 종류의 값을 가질 수 있습니다.
+
+    - 불리언, i.e. `attributionsrc` 특성 이름만. [`Attribution-Reporting-Eligible`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Attribution-Reporting-Eligible) 헤더를 `src` 특성이 가리키는 것과 같은 서버로 전송합니다. 기여 소스 등록을 같은 서버에서 처리할 때는 이렇게 지정해도 됩니다.
+    - 한 개 이상의 URL을 포함한 문자열.
+
+      ```
+      attributionsrc="https://a.example/register-source
+                      https://b.example/register-source"
+      ```
+
+      요청하는 리소스가 외부 서버거나, 기여 소스 등록을 다른 서버에서 처리하는 경우에 사용할 수 있습니다. 리소스 요청이 발생하면, 리소스 출처 외에도 지정한 URL들에도 `Attribution-Reporting-Eligible` 헤더를 전송합니다. 각 URL들에서는 [`Attribution-Reporting-Register-Source`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Attribution-Reporting-Register-Source) 또는 [`Attribution-Reporting-Register-Trigger`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Attribution-Reporting-Register-Trigger)로 응답해 등록을 마칠 수 있습니다.
+
 - : `crossorigin`
 
-  - CORS를 사용해 지정한 오디오 파일을 가져올지 나타내는 열거형 특성입니다. [CORS 활성화 리소스](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image)는 [`<canvas>`](./canvas) 요소에 사용해도 캔버스가 오염(taint)되지 않습니다. 가능한 값은 다음과 같습니다.
+  - CORS를 사용해 지정한 오디오 파일을 가져올지 나타내는 열거형 특성입니다. [CORS 활성화 리소스](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image)는 [`<canvas>`](./canvas) 요소에 사용해도 캔버스가 [오염](https://developer.mozilla.org/en-US/docs/Web/HTML/How_to/CORS_enabled_image#security_and_tainted_canvases)(taint)되지 않습니다.
+
+    `crossorigin` 특성을 지정하지 않는 경우 비 CORS 요청([`Origin`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Origin) 헤더 없이)을 전송하고, 오염된 이미지로 취급하여 이미지 데이터 접근을 제한하므로 `<canvas>`에서 사용할 수 없습니다.
+
+    `crossorigin` 특성을 지정한 경우 CORS 요청([`Origin`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Origin) 헤더 포함)을 전송합니다. 하지만 서버가 이미지의 교차 출처 요청을 허용하지 않는다면 ([`Access-Control-Allow-Origin`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Access-Control-Allow-Origin) 헤더가 없거나, 그 값 중에 요청 사이트의 출처가 없다면) 브라우저가 이미지 로딩을 차단하고 개발자 도구 콘솔에 오류를 표시합니다.
+
+    가능한 값은 다음과 같습니다.
 
     - : `anonymous`
-      - 자격 증명 없이 교차 출처 요청을 전송합니다. 즉, `Origin` HTTP 헤더를 쿠키, 인증서, HTTP Basic 인증 없이 전송합니다. 서버에서 `Access-Control-Allow-Origin` HTTP 헤더를 지정하지 않아서 요청 출처 사이트에 자격 증명을 보내지 않는다면 캔버스 이미지가 오염되고, 사용처가 제한됩니다.
+      - 자격 증명을 제외하고 교차 출처 요청을 전송합니다. 즉 [쿠키](https://developer.mozilla.org/en-US/docs/Glossary/Cookie), [X.509 인증서](https://datatracker.ietf.org/doc/html/rfc5280), [`Authorization` 헤더](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Authorization)를 전송하지 않습니다.
     - : `user-credentials`
-      - 자격 증명과 함께 교차 출처 요청을 전송합니다. 즉, `Origin` HTTP 헤더를 쿠키, 인증서, 또는 HTTP Basic 인증과 함께 전송합니다. 서버에서 `Access-Control-Allow-Origin` HTTP 헤더를 지정하지 않아서 요청 출처 사이트에 자격 증명을 보내지 않는다면 캔버스 이미지가 오염되고, 사용처가 제한됩니다.
+      - 가능한 자격 증명과 함께 교차 출처 요청을 전송합니다. 즉 쿠키, X.509 인증서, `Authorization` 헤더를 전송합니다. 서버가 요청 출처 사이트와 자격 증명 공유(`Access-Control-Allow-Credentials: true` 응답 헤더)를 하지 않으면 이미지는 오염된 것으로 취급하고 데이터 접근이 제한됩니다.
 
-    특성이 존재하지 않으면 리소스를 CORS 요청 없이(`Origin` HTTP 헤더 없이) 가져오므로, `<canvas>`가 오염됩니다. 유효하지 않은 값의 경우 `anonymous` 깂을 사용한 것으로 간주합니다.
+    유효하지 않은 값을 지정한 경우 `anonymous`와 동일하게 동작합니다.
 
 - : `decoding`
 
@@ -91,9 +109,13 @@ HTML 표준은 사용자 에이전트가 지원해야 하는 이미지 형식을
     - : `async`
       - 이미지 디코딩을 비동기적으로 수행해서 다른 콘텐츠의 렌더링 딜레이를 줄입니다.
     - : `auto`
-      - 기본값입니다. 브라우저가 알아서 최적 값을 계산합니다
+      - 기본값입니다. 브라우저가 알아서 최적 값을 계산합니다.
 
-- : `fetchpriority` <Experimental />
+- : `elementtiming`
+
+  - [`PerformanceElementTiming`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceElementTiming) API가 이미지를 관측하도록 합니다. 특성의 값이 관측된 이미지의 식별자로 쓰입니다. [`elementtiming` 특성 페이지](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/elementtiming)를 참고하세요.
+
+- : `fetchpriority`
 
   - 이미지를 가져올 때의 우선순위에 대한 힌트를 브라우저에 제공합니다. 가능한 값은 다음과 같습니다.
 
@@ -175,9 +197,7 @@ HTML 표준은 사용자 에이전트가 지원해야 하는 이미지 형식을
 
     > [note] `<img>`가 [`<a>`](./a), [`<button>`](./button)의 자손일 땐 사용할 수 없습니다.
 
-# 사용 일람
-
-## CSS 스타일링
+# CSS 스타일링
 
 `<img>`는 [대체 요소](/docs/Web/CSS/Replaced_element)로, [`display`](/docs/Web/CSS/display)의 기본값은 `inline`이지만 삽입한 이미지의 내재된 높이와 너비에 따라 마치 `inline-block`을 지정한 것과 같이 요소의 크기가 결정됩니다. `<img>`에는 [`border`](https://developer.mozilla.org/en-US/docs/Web/CSS/border), [`border-radius`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius), [`margin`](/docs/Web/CSS/margin), [`padding`](/docs/Web/CSS/padding), [`width`](https://developer.mozilla.org/en-US/docs/Web/CSS/width), [`height`](https://developer.mozilla.org/en-US/docs/Web/CSS/height) 등의 속성을 적용할 수 있습니다.
 
@@ -186,6 +206,38 @@ HTML 표준은 사용자 에이전트가 지원해야 하는 이미지 형식을
 요소 박스 내에서 이미지의 위치는 [`object-position`](/docs/Web/CSS/object-position) 속성으로 바꿀 수 있습니다. 또한 [`object-fit`](/docs/Web/CSS/object-fit) 속성을 통해 이미지 크기를 요소 크기에 맞출지, 요소 전체를 채울지 등을 지정할 수 있습니다.
 
 이미지는 고유 너비와 높이를 가질 수 있지만, 일부 유형의 이미지는 그렇지 않습니다. 예를 들어, SVG 요소는 루트 [`<svg>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg) 요소에 `width`와 `height` 특성이 없는 경우 고유 크기를 가지지 않습니다.
+
+# 접근성
+
+## 유의미한 대체 설명 작성
+
+[`alt` 특성](#term-alt)의 값은 분명하고 간결하게 이미지의 내용을 설명해야 합니다. 이미지가 존재한다는 사실 그 자체를 알려줄 뿐인 값이나, 파일 이름처럼 내용을 설명하지 못하는 값을 사용하면 안됩니다. 이미지에 대응 가능한 텍스트가 없어서 `alt`를 의도적으로 누락한 경우에는 이미지의 의도를 설명할 수 있는 다른 방법을 고려하세요.
+
+### 좋지 않음
+
+```html variant=bad
+<img alt="사진" src="penguin.jpg" />
+```
+
+### 좋음
+
+```html variant=good
+<img alt="일광욕 중인 황제펭귄." src="penguin.jpg" />
+```
+
+`alt` 특성의 값이 적절한지 확인하기 제일 좋은 방법은 주위 콘텐츠와 함께 `alt` 값을 읽어보면서, 눈으로 이미지를 볼 때와 같은 의미로 받아들여지는지 확인하는 것입니다. 예를 들어, 앞선 내용이 "여행 중에 귀여운 동물들도 만났어요." 라면, '좋지 않음' 예제에서는 "여행 중에 귀여운 동물들도 만났어요. 사진"으로 끝나게 되므로 무슨 동물인지 알 방법이 없어 적절하지 않습니다. '좋음' 예제에서는 "여행 중에 귀여운 동물들도 만났어요. 일광욕 중인 황제펭귄."이 되어 뜻이 분명해집니다.
+
+[`<a>`]나 [`<button>`] 내의 이미지처럼 어떤 동작을 실행하는 이미지의 경우, `alt`에 동작을 설명하는 값을 지정하는 걸 고려하세요. 예를 들면 `alt="다음 페이지"`나 `alt="검색"` 등입니다.
+
+일부 스크린 리더에서는 `alt`가 없으면 파일 이름을 대신 읽을 수도 있는데, 파일 이름은 이미지의 콘텐츠와 관련이 없을 수도 있기 때문에 사용자에게 혼란을 줄 수 있습니다.
+
+## title 특성
+
+[`title` 전역 특성](../Global_attributes#term-title)은 [`alt` 특성](#term-alt)을 대체할 수 없습니다. `alt`와 `title`의 값을 동일하게 설정하는 것도 피하세요. 일부 스크린 리더에서 이미지를 같은 내용으로 두 번 표현할 수 있습니다.
+
+`title`을 `alt`에 대한 보충 정보로 사용해서도 안됩니다. 이미지에 설명이 필요하면 [`<figure>`](./figure)와 [`<figcaption>`](./figcaption) 요소를 사용하세요.
+
+`title` 특성의 값은 보통 툴팁, 즉 마우스 커서가 이미지 위에 멈추면 잠시 후에 나타나는 형태로 보여집니다. 따라서 사용자가 추가 정보를 얻는 방법 중 하나로 사용할 수는 있지만, 개발자로서 사용자가 툴팁을 항상 볼 수 있을 것이라는 가정을 해선 안됩니다. 키보드나 터치 스크린만 사용하는 경우 툴팁을 볼 방법이 없습니다. 사용자에게 중요한 정보는 `title`에 제공하지 말고 `<figcaption>` 등 다른 방법으로 문서 본문에 포함하세요.
 
 # 예제
 
@@ -215,34 +267,6 @@ HTML 표준은 사용자 에이전트가 지원해야 하는 이미지 형식을
 
 [`srcset`](#term-srcset)과 `sizes`를 지원하지 않는 사용자 에이전트를 위해서는 [`src` 특성](#term-src)도 지정해야 합니다. 모던 브라우저에서는 `srcset` 특성에 너비 서술자 `w`를 사용했으므로 `src`를 무시합니다.
 
-# 접근성
-
-## 유의미한 대체 설명 작성
-
-[`alt` 특성](#term-alt)의 값은 분명하고 간결하게 이미지의 내용을 설명해야 합니다. 이미지가 존재한다는 사실 그 자체나 파일 이름 등 내용을 설명하지 못하는 값을 사용하면 안됩니다. 이미지에 대응 가능한 텍스트가 없어서 `alt`를 의도적으로 누락한 경우에는 이미지의 의도를 설명할 수 있는 다른 방법을 고려하세요.
-
-### 좋지 않음
-
-```html variant=bad
-<img alt="image" src="penguin.jpg" />
-```
-
-### 좋음
-
-```html variant=good
-<img alt="일광욕 중인 황제펭귄." src="penguin.jpg" />
-```
-
-일부 스크린 리더에서는 `alt`가 없으면 파일 이름을 대신 읽을 수도 있는데, 파일 이름은 이미지의 콘텐츠와 관련이 없을 수도 있기 때문에 사용자에게 혼란을 줄 수 있습니다. 되도록이면 항상 `alt`를 지정하세요.
-
-## title 특성
-
-[`title` 전역 특성](../Global_attributes#term-title)은 [`alt` 특성](#term-alt)을 대체할 수 없습니다. `alt`와 `title`의 값을 동일하게 설정하는 것도 피하세요. 일부 스크린 리더에서 이미지를 같은 내용으로 두 번 표현할 수 있습니다.
-
-`title`을 `alt`에 대한 보충 정보로 사용해서도 안됩니다. 이미지에 설명이 필요하면 [`<figure>`](./figure)와 [`<figcaption>`](./figcaption) 요소를 사용하세요.
-
-`title` 특성의 값은 보통 툴팁, 즉 마우스 커서가 이미지 위에 멈추면 잠시 후에 나타나는 형태로 보여집니다. 따라서 사용자가 추가 정보를 얻는 방법 중 하나로 사용할 수는 있지만, 개발자로서 사용자가 툴팁을 항상 볼 수 있을 것이라는 가정을 해선 안됩니다. 키보드나 터치 스크린만 사용하는 경우 툴팁을 볼 방법이 없습니다. 사용자에게 중요한 정보는 `title`에 제공하지 말고 `<figcaption>` 등 다른 방법으로 문서 본문에 포함하세요.
-
 # 명세
 
 [HTML Standard](https://html.spec.whatwg.org/multipage/embedded-content.html#the-img-element)
@@ -254,3 +278,6 @@ HTML 표준은 사용자 에이전트가 지원해야 하는 이미지 형식을
 # 같이 보기
 
 - 상황별 대체 이미지 제공: [`<picture>`](./picture)
+
+[`<a>`]: ./a
+[`<button>`]: ./button

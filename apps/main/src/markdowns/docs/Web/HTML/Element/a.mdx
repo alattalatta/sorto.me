@@ -36,7 +36,7 @@ bcd: html.elements.a
 
       ```
       attributionsrc="https://a.example/register-source
-      https://b.example/register-source"
+                      https://b.example/register-source"
       ```
 
       요청하는 리소스가 외부 서버거나, 기여 소스 등록을 다른 서버에서 처리하는 경우에 사용할 수 있습니다. 리소스 요청이 발생하면, 리소스 출처 외에도 지정한 URL들에도 `Attribution-Reporting-Eligible` 헤더를 전송합니다. 각 URL들에서는 [`Attribution-Reporting-Register-Source`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Attribution-Reporting-Register-Source)로 응답해 소스 등록을 마칠 수 있습니다.

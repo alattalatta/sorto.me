@@ -1,0 +1,88 @@
+---
+title: 'HTML <input type="range">: 숫자 슬라이더'
+titleShort: '<input type="range">'
+bcd: html.elements.input.type_range
+---
+
+**`range` 유형의 [`<input>`](../input) 요소**는 사용자가 최소 값 이상, 최대 값 이하의, 정확도의 중요성은 다소 떨어져도 괜찮은 숫자 값을 지정할 수 있는 컨트롤입니다. 텍스트 상자로 그려지는 [`number`](./number) 유형과 달리, 보통 슬라이더나 다이얼로 그려집니다.
+
+`range` 유형은 정확하지 않을 수 있으므로, 정확한 값이 중요한 곳에는 사용하지 않아야 합니다.
+
+```html hidden name=demo
+<fieldset>
+  <legend>오디오 제어</legend>
+  <div>
+    <input id="volume" name="volume" type="range" min="0" max="10">
+    <label for="volume">볼륨</label>
+  </div>
+  <div>
+    <input id="vibration" name="vibration" type="range" min="0" max="4">
+    <label for="vibration">진동</label>
+  </div>
+</fieldset>
+```
+
+```css hidden name=demo
+div {
+  margin: 0.4rem;
+}
+```
+
+<LiveExample height={240} lang="html" name="demo" />
+
+# 값
+
+`range` 유형의 [`value` 특성](../input#term-value)은 선택한 숫자의 문자열입니다. 빈 문자열(`''`)은 되지 않습니다. 기본 값은 최소와 최대 값의 중간이지만, 최대가 최소보다 작은 경우 `min`과 같아집니다.
+
+최소보다 낮은 값을 설정하려 시도하면 최소 값으로 설정되고, 최대보다 높은 값을 설정하려 시도하면 최대 값으로 설정됩니다.
+
+# 추가 특성
+
+`radio` 유형은 모든 [`<input>`](../input) 요소가 공유하는 특성 외에도 아래의 특성을 추가로 지원합니다.
+
+> [note] `accept`, `alt`, `checked`, `dirname`, `formaction`, `formenctype`, `formmethod`, `formnovalidate`, `formtarget`, `height`, `maxlength`, `minlength`, `multiple`, `pattern`, `placeholder`, `readonly`, `required`, `size`, `src`는 사용할 수 없으며 지정해도 무시합니다.
+
+- : `list`
+
+  - 현재 문서 내에 존재하는 [`<datalist>` 요소][`<datalist>`]의 [`id` 특성][`id`]을 지정하면 사전 설정된 추천 입력값을 보여줄 수 있습니다. `<datalist>`에 정의됐지만 현재 `<input>` 유형과 호환되지 않는 값은 추천 목록에 포함되지 않습니다. 추천 목록은 추천 사항일 뿐이며 필수 사항이 아니므로 사용자는 목록을 무시하고 직접 값을 입력할 수 있습니다.
+
+    아래의 [값 마크 추가하기](#값-마크-추가하기) 예제에서 `list` 특성을 사용한 예제를 확인할 수 있습니다.
+
+- : `max`
+
+  - 선택할 수 있는 값의 최대 한계입니다. 입력한 값이 이 값보다 큰 경우 [제약 검증](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Constraint_validation)에 실패합니다. `max` 특성이 숫자가 아니면 최대 한계를 지정하지 않은 것으로 취급합니다.
+
+    `max`와 `min` 특성을 모두 지정하는 경우, `max`는 `min`과 이상인 값이어야 합니다.
+
+- : `min`
+
+  - 선택할 수 있는 값의 최소 한계입니다. 입력한 값이 이 값보다 작은 경우 [제약 검증](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Constraint_validation)에 실패합니다. `min` 특성이 숫자가 아니면 최소 한계를 지정하지 않은 것으로 취급합니다.
+
+    `max`와 `min` 특성을 모두 지정하는 경우, `min`은 `max`와 이하인 값이어야 합니다.
+
+- : `step`
+
+  - 선택 가능한 값의 간격입니다. 간격에 맞는 값만 선택할 수 있습니다. 간격의 시작점은 `min` 특성이 존재하면 `min`, `value`가 존재하면 `value`입니다.
+
+    숫자 외에 `any`를 지정할 수도 있습니다. `any` 지정 시 간격이 없으며 범위 내에서 모든 값을 선택할 수 있게 됩니다. 아래의 [`step="any" 지정`](#step-any-지정) 예제에서 확인할 수 있습니다.
+
+    `range` 유형의 기본 간격은 `1`이므로 사용자는 정수 값만 선택할 수 있습니다. 단, 간격의 시작점이 정수가 아니라면 예외입니다.
+
+# 유효성 검증
+
+- `value`가 유효한 부동소숫점 숫자로 변환 가능한 값이 아니라면 입력이 잘못된 것이므로 검증에 실패합니다.
+- [`min`](#term-min) 미만의 값에서 실패합니다. `min`의 기본 값은 0입니다.
+- [`max`](#term-max) 초과의 값에서 실패합니다. `max`의 기본 값은 100입니다.
+- [`step`](#term-step)의 배수에 맞지 않는 값에서 실패합니다. `step`의 기본 값은 1입니다.
+
+# 명세
+
+- [HTML Standard](<https://html.spec.whatwg.org/multipage/input.html#range-state-(type=range)>)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 숫자 입력: [`<input type="number">`](./number)

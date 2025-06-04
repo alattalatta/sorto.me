@@ -60,7 +60,7 @@ const LiveExampleImpl: React.FC<LiveExampleImplProps> = ({ babel, editable = tru
       {({ ref }) => (
         <div ref={ref} className={styles.root}>
           <p className={styles.hint}>라이브 에디터 (편집 가능)</p>
-          <div ref={$container} className={styles.container} data-editable={editable}>
+          <div ref={$container} className={styles.container} data-editable={editable} style={{ minHeight: height }}>
             {editable && (
               <>
                 <div className={styles.editor}>
@@ -110,8 +110,8 @@ const LiveExampleImpl: React.FC<LiveExampleImplProps> = ({ babel, editable = tru
                 <div className={styles.arrow} />
               </>
             )}
-            <div className={styles.wrap} style={{ height }}>
-              <LiveCode babel={babel} files={files} height={height} />
+            <div className={styles.wrap} style={{ minHeight: height }}>
+              <LiveCode babel={babel} files={files} />
             </div>
           </div>
         </div>

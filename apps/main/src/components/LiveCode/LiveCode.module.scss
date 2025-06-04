@@ -1,6 +1,7 @@
 .root {
   display: flex;
-  position: relative;
+  inset: 0;
+  position: absolute;
 }
 
 .frame {

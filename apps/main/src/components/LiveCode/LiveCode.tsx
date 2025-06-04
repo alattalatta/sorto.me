@@ -13,7 +13,6 @@ type Props = {
   files: readonly VirtualFile[]
   height?: number
   loading?: 'eager' | 'lazy'
-  minHeight?: number
 }
 
 /** Live code view */
@@ -23,7 +22,6 @@ const LiveCode: React.FC<Props> = ({
   files,
   height = 240,
   loading: loadingProp = 'lazy',
-  minHeight,
 }) => {
   const eager = loadingProp === 'eager'
 
@@ -57,7 +55,7 @@ const LiveCode: React.FC<Props> = ({
   return (
     <InView onChange={(inView) => inView && setWasInView()}>
       {({ ref }) => (
-        <div ref={ref} className={`${styles.root} ${className}`} style={{ height, minHeight }}>
+        <div ref={ref} className={`${styles.root} ${className}`}>
           {(eager || wasInView) && (
             <iframe
               ref={frameRef}

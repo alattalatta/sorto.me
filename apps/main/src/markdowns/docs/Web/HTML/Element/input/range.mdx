@@ -4,7 +4,7 @@ titleShort: '<input type="range">'
 bcd: html.elements.input.type_range
 ---
 
-**`range` 유형의 [`<input>`](../input) 요소**는 사용자가 최소 값 이상, 최대 값 이하의, 정확도의 중요성은 다소 떨어져도 괜찮은 숫자 값을 지정할 수 있는 컨트롤입니다. 텍스트 상자로 그려지는 [`number`](./number) 유형과 달리, 보통 슬라이더나 다이얼로 그려집니다.
+**`range` 유형의 [`<input>`] 요소**는 사용자가 최소 값 이상, 최대 값 이하의, 정확도의 중요성은 다소 떨어져도 괜찮은 숫자 값을 지정할 수 있는 컨트롤입니다. 텍스트 상자로 그려지는 [`number`](./number) 유형과 달리, 보통 슬라이더나 다이얼로 그려집니다.
 
 `range` 유형은 정확하지 않을 수 있으므로, 정확한 값이 중요한 곳에는 사용하지 않아야 합니다.
 
@@ -46,7 +46,7 @@ div {
 
   - 현재 문서 내에 존재하는 [`<datalist>` 요소][`<datalist>`]의 [`id` 특성][`id`]을 지정하면 사전 설정된 추천 입력값을 보여줄 수 있습니다. `<datalist>`에 정의됐지만 현재 `<input>` 유형과 호환되지 않는 값은 추천 목록에 포함되지 않습니다. 추천 목록은 추천 사항일 뿐이며 필수 사항이 아니므로 사용자는 목록을 무시하고 직접 값을 입력할 수 있습니다.
 
-    아래의 [값 마크 추가하기](#값-마크-추가하기) 예제에서 `list` 특성을 사용한 예제를 확인할 수 있습니다.
+    아래의 [틱 마크 추가하기](#틱-마크-추가하기) 예제에서 `list` 특성을 사용한 예제를 확인할 수 있습니다.
 
 - : `max`
 
@@ -64,7 +64,7 @@ div {
 
   - 선택 가능한 값의 간격입니다. 간격에 맞는 값만 선택할 수 있습니다. 간격의 시작점은 `min` 특성이 존재하면 `min`, `value`가 존재하면 `value`입니다.
 
-    숫자 외에 `any`를 지정할 수도 있습니다. `any` 지정 시 간격이 없으며 범위 내에서 모든 값을 선택할 수 있게 됩니다. 아래의 [`step="any" 지정`](#step-any-지정) 예제에서 확인할 수 있습니다.
+    숫자 외에 `any`를 지정할 수도 있습니다. `any` 지정 시 간격이 없으며 범위 내에서 모든 값을 선택할 수 있게 됩니다. 아래의 [`step="any"` 지정](#step-any-지정) 예제에서 확인할 수 있습니다.
 
     `range` 유형의 기본 간격은 `1`이므로 사용자는 정수 값만 선택할 수 있습니다. 단, 간격의 시작점이 정수가 아니라면 예외입니다.
 
@@ -74,6 +74,124 @@ div {
 - [`min`](#term-min) 미만의 값에서 실패합니다. `min`의 기본 값은 0입니다.
 - [`max`](#term-max) 초과의 값에서 실패합니다. `max`의 기본 값은 100입니다.
 - [`step`](#term-step)의 배수에 맞지 않는 값에서 실패합니다. `step`의 기본 값은 1입니다.
+
+# 예제
+
+`number` 유형도 최소와 최대 값 사이를 선택하도록 강제할 수 있지만, 사용자가 특정 값을 직접 입력해야 합니다. 반면 `range`는 사용자가 직접 입력할 필요 없이, 심지어는 정확한 값을 모른 채로, 대략적인 위치를 선택하기만 하면 됩니다.
+
+`range`가 적합한 경우 몇 가지입니다.
+
+- 볼륨, 밸런스, 필터 제어 등 오디오 컨트롤
+- 색상 채널, 투명도, 밝기 등 색상 구성
+- 난이도, 시야 거리, 월드 크기 등 게임 설정
+- 비밀번호 관리자에서 자동 생성할 비밀번호의 길이
+
+적합 여부를 판단할 수 있는 기준 중 하나로, 만약 사용자가 정확한 숫자보다는 최소와 최대 사이에서의 거리 비율을 더 중요하게 여긴다면 `range`가 적합합니다. 예를 들어, "볼륨을 0.5로 설정"보다는 "볼륨을 최대치의 50%로 설정"이라고 생각하는 사용자가 많을 겁니다.
+
+## `step="any"` 지정
+
+소숫점 아래로 몇 자리나 와도 괜찮다면 [`step` 특성](#term-step)에 `any`를 지정할 수 있습니다.
+
+```html hidden name=any
+<input id="range" type="range" min="0" max="1" step="any">
+<p>값: <output id="out" for="range"></output></p>
+```
+
+```js hidden name=any
+const range = document.querySelector('#range')
+const out = document.querySelector('#out')
+
+out.textContent = range.value
+range.addEventListener('input', (event) => {
+  out.textContent = event.target.value
+})
+```
+
+<LiveExample height={120} lang="html" name="any" />
+
+## 틱 마크 추가하기
+
+`range`에 특정 값을 나타내는 틱 마크를 추가할 수도 있습니다. [`list` 특성](#term-list)에 [`<datalist>`] 요소의 [`id`] 값을 지정하세요. 각각의 틱 마크는 [`<option>`] 요소로, 값은 `<option>`의 `value` 특성으로 정의합니다.
+
+```html hidden name=ticks
+<label for="temp">온도 설정:</label><br />
+<input type="range" id="temp" max="36" min="18" name="temp" list="markers" step="0.5" />
+
+<datalist id="markers">
+  <option value="22"></option>
+  <option value="24"></option>
+  <option value="26"></option>
+  <option value="28"></option>
+  <option value="30"></option>
+</datalist>
+```
+
+<LiveExample height={120} lang="html" name="ticks" />
+
+## `<datalist>` 한 개와 `range` 여러 개
+
+`<datalist>` 요소 한 개를 여러 개의 [`<input>`]이 공유할 수도 있습니다.
+
+> [note] [아래 예제처럼 레이블을 표시](#레이블-추가하기)하려면 `<input type="range">` 각각에 `<datalist>`가 하나씩 필요합니다.
+
+```html hidden name=ticks-multiple
+<div>
+  <label for="temp1">온도 설정 1:</label><br>
+  <input type="range" id="temp1" max="36" min="18" name="temp1" list="markers" step="0.5" />
+</div>
+<div>
+  <label for="temp2">온도 설정 2:</label><br>
+  <input type="range" id="temp2" max="36" min="18" name="temp2" list="markers" step="0.5" />
+</div>
+
+<datalist id="markers">
+  <option value="22"></option>
+  <option value="24"></option>
+  <option value="26"></option>
+  <option value="28"></option>
+  <option value="30"></option>
+</datalist>
+```
+
+<LiveExample height={180} lang="html" name="ticks-multiple" />
+
+## 레이블 추가하기
+
+[`<option>`] 요소의 `label` 특성을 사용하면 틱 마크에 레이블을 추가할 수 있지만, 레이블은 기본 스타일에서 그려지지 않습니다. CSS를 사용해서 레이블이 노출되게 하고 올바른 위치에 배치할 수 있습니다. 이 예제는 그런 방법 중 한 가지입니다.
+
+```html hidden name=labels
+<label for="temp">온도 설정:</label><br />
+<input type="range" id="temp" max="100" min="0" name="temp" list="markers" step="5" />
+
+<datalist id="markers">
+  <option label="꽁꽁" value="0"></option>
+  <option label="썰렁" value="25"></option>
+  <option label="적절" value="50"></option>
+  <option label="따듯" value="75"></option>
+  <option label="후끈" value="100"></option>
+</datalist>
+```
+
+```css hidden name=labels
+datalist {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  writing-mode: vertical-lr;
+  width: 200px;
+}
+
+option {
+  padding: 0;
+}
+
+input[type="range"] {
+  width: 200px;
+  margin: 0;
+}
+```
+
+<LiveExample height={180} lang="html" name="labels" />
 
 # 명세
 
@@ -86,3 +204,8 @@ div {
 # 같이 보기
 
 - 숫자 입력: [`<input type="number">`](./number)
+
+[`<datalist>`]: ../datalist
+[`<input>`]: ../input
+[`<option>`]: ../option
+[`id`]: /docs/Web/HTML/Global_attributes/id

@@ -1,0 +1,95 @@
+---
+title: 'CSS user-select: 블록 선택 가능 여부'
+titleShort: user-select
+bcd: css.properties.user-select
+---
+
+CSS **`user-select`** 속성은 사용자가 요소의 텍스트를 선택할 수 있는지 제어합니다.
+
+```css hidden name=demo
+p {
+  user-select: none;
+  /* user-select: text; */
+  /* user-select: all; */
+}
+```
+
+```css hidden name=demo filename=style
+p {
+  font-size: 1.5em;
+}
+```
+
+```html hidden name=demo
+<p>선택해보세요</p>
+```
+
+<LiveExample height={180} lang="css" name="demo" />
+
+# 구문
+
+```css
+/* 키워드 값 */
+user-select: none;
+user-select: auto;
+user-select: text;
+user-select: all;
+
+/* 전역 값 */
+user-select: inherit;
+user-select: initial;
+user-select: revert;
+user-select: revert-layer;
+user-select: unset;
+```
+
+## 값
+
+- : `none`
+  - 요소와 그 이하의 텍스트를 선택할 수 없습니다. [`Select`](https://developer.mozilla.org/en-US/docs/Web/API/Selection) 객체가 요소를 선택의 일부로서 포함할 수는 있습니다.
+- : `auto`
+
+  - `auto`의 사용 값은 다음 순서로 결정됩니다.
+
+    1. [`::before`]과 [`::after`] 의사 요소에서는 `none`입니다.
+    2. 부모 요소의 `user-select` 사용 값이 `none`이면 이 요소의 사용 값도 `none`입니다.
+    3. 부모 요소의 `user-select` 사용 값이 `all`이면 이 요소의 사용 값도 `all`입니다.
+    4. 다른 경우 `text`입니다.
+
+- : `text`
+  - 텍스트를 선택할 수 있습니다.
+- : `all`
+  - 요소의 텍스트를 모두 선택하거나 아무것도 선택하지 않습니다. 선택 범위가 요소의 일부를 포함하게 되면 하위 요소까지 모두 포함하게 범위가 확장됩니다. 콘텐츠 내에서 더블 클릭 또는 우클릭 시 `all` 값을 적용한 제일 높은 조상 요소의 텍스트가 모두 선택됩니다.
+
+# 예제
+
+```html hidden name=example
+<p>선택할 수 있는 텍스트입니다.</p>
+<p class="unselectable">앗, 이건 선택할 수 없어요.</p>
+<p class="all">한 번 클릭하면 이 텍스트가 모두 선택됩니다.</p>
+```
+
+```css hidden name=example
+.unselectable {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.all {
+  -webkit-user-select: all;
+  user-select: all;
+}
+```
+
+<LiveExample height={180} lang="css" name="example" />
+
+# 명세
+
+[CSS Basic User Interface Module Level 4](https://drafts.csswg.org/css-ui/#content-selection)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+[`::after`]: https://developer.mozilla.org/en-US/docs/Web/CSS/::after
+[`::before`]: https://developer.mozilla.org/en-US/docs/Web/CSS/::before

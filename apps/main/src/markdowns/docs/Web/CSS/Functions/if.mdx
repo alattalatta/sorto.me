@@ -1,0 +1,381 @@
+---
+title: 'CSS if(): 조건부 스타일링'
+titleShort: 'if()'
+bcd: css.types.if
+---
+
+CSS **`if()`** 함수는 조건 결과에 따라 속성에 다른 값을 지정할 수 있습니다. 조건에는 [스타일 쿼리], [미디어 쿼리], [기능 쿼리]를 사용할 수 있습니다.
+
+```css hidden name=demo
+article {
+  background: if(
+    style(--highlight: important): #333;
+    else: #fff;
+  );
+  border: 1px solid #ccc;
+  color: if(
+    style(--highlight: important): #fff;
+    else: #000;
+  );
+  padding: 1em;
+}
+```
+
+```css hidden name=demo filename=style
+article + article {
+  margin-top: 1em;
+}
+
+h2, p {
+  margin: 0;
+}
+
+.root {
+  display: flex;
+  gap: 1em;
+}
+```
+
+```html hidden name=demo
+<div class="root">
+  <div class="column" style="--highlight: important;">
+    <article>
+      <h2>중요한 글</h2>
+      <p>이 글은 중요한 내용입니다.</p>
+    </article>
+    <article>
+      <h2>중요한 글</h2>
+      <p>이 글은 중요한 내용입니다.</p>
+    </article>
+  </div>
+  <div class="column">
+    <article>
+      <h2>일반 글</h2>
+      <p>이 글은 일반적인 내용입니다.</p>
+    </article>
+    <article>
+      <h2>일반 글</h2>
+      <p>이 글은 일반적인 내용입니다.</p>
+    </article>
+  </div>
+</div>
+```
+
+<LiveExample height={240} lang="css" name="demo" />
+
+# 구문
+
+```css
+selector {
+  /* 스타일 쿼리 */
+  background-color: if(style(--scheme: dark): black);
+  padding: if(style(--size: 2xl): 1em; else: 0.25em);
+
+  /* 미디어 쿼리 */
+  background: if(media(print): white; else: black);
+  margin: if(media(max-width: 700px): 0 auto ; else: 20px auto 0);
+
+  /* 기능 쿼리 */
+  color: if(
+    supports(color: lch(7.1% 60.23 300.16)): lch(7.1% 60.23 300.16);
+    else: #03045e
+  );
+  border: if(
+    supports(color: lch(77.7% 0 0)): 3px solid lch(77.7% 0 0);
+    else: 3px solid #c0c0c0
+  );
+
+  /* 다중 조건 */
+  background-image: if(
+    style(--scheme: ice): linear-gradient(to left, #caf0f8, white, #caf0f8);
+    style(--scheme: fire): linear-gradient(to left, #ffc971, white, #ffc971);
+    else: none
+  );
+  /* 값 일부로 사용 */
+  border: 3px solid if(
+    supports(color: lch(77.7% 0 0)): lch(77.7% 0 0);
+    else: #c0c0c0
+  );
+}
+```
+
+`if()` 함수의 구문은 다음과 같습니다.
+
+```
+if([[<if-condition> : <value>;] | [else : <value>;]]*)
+```
+
+> [note] 조건과 값은 콜론(`:`)으로 구별해야 하고, 각각의 `<if-condition> : <value>` 쌍은 세미콜론(`;`)으로 구별해야 합니다.
+
+## 매개변수
+
+- : `<if-condition>`
+  - [스타일 쿼리], [미디어 쿼리], [기능 쿼리] 중 하나입니다.
+- : `else`
+  - 항상 참으로 평가되는 `<if-condition>`을 나타내는 키워드입니다.
+- : `<value>`
+  - 속성 값입니다.
+
+## 반환 값
+
+조건에 맞는 값, 또는 [`guaranteed-invalid`]. 후자의 경우 속성이 초기 값을 유지합니다.
+
+# 설명
+
+CSS `if()` 함수는 속성 값에 조건 논리를 제공하며 JavaScript의 [`if ... else`] 문과 비슷하게 동작합니다.
+
+반환 값은 다음 순서로 계산됩니다.
+
+1. `<if-condition>` 표현식이 함수에 제공된 순서대로 평가됩니다.
+2. 참으로 평가되는 첫 번째 `<if-condition>` 또는 `else`에 연결된 `<value>`를 반환합니다.
+3. 모든 조건이 참으로 평가되지 않으면 [`guaranteed-invalid`]를 반환하여 속성이 초기 값을 유지하게 됩니다.
+
+예를 들어...
+
+```css
+div {
+  background-image: if(
+    style(--scheme: ice): linear-gradient(to left, #caf0f8, white, #caf0f8);
+    style(--scheme: fire): linear-gradient(to left, #ffc971, white, #ffc971);
+    else: none
+  );
+}
+```
+
+위 규칙을 보면 `--scheme` [사용자 지정 속성]이 `ice`인지 `fire`인지에 따라 [`background-image`] 속성에 다른 `linear-gradient()` 값을 설정합니다. 만약 `--scheme`이 둘 다 아니라면 `else`의 값인 `none`을 반환하므로, `background-image: none`과 같아집니다.
+
+`if()` 함수 안에 `else : <value>` 쌍을 아무데나 여러 개 포함하는 것도 유효합니다. 하지만 대부분의 경우 가장 마지막에 하나의 `else : <value>` 쌍만 사용하는 것 말고는 그렇게 유용하지 않습니다. JavaScript의 [`if ... else`] 문과 마찬가지로, 처음으로 참으로 평가된 조건 아래는 사용하지 않기 때문입니다.
+
+```css
+div {
+  background-image: if(
+    else: none;
+    /* 절대 쓰이지 않음 */
+    style(--scheme: ice): linear-gradient(to left, #caf0f8, white, #caf0f8);
+    /* 절대 쓰이지 않음 */
+    style(--scheme: fire): linear-gradient(to left, #ffc971, white, #ffc971)
+  );
+}
+```
+
+다만 조건을 디버깅 할 땐 중간에 `else : <value>`를 넣는 게 유용할 수도 있습니다. 예를 들어, 다음과 같이 어떤 조건이 참으로 평가되고 있는지 알아볼 수 있습니다.
+
+```css
+div {
+  background-image: if(
+    /* 참이 되는 건가? */
+    style(--scheme: ice): linear-gradient(to left, #caf0f8, white, #caf0f8);
+    /* 동작 안 하면 알 수 있을 디버깅 이미지 */
+    else: url("debug.png");
+    /* 절대 쓰이지 않음 */
+    style(--scheme: fire): linear-gradient(to left, #ffc971, white, #ffc971);
+    /* 절대 쓰이지 않음 */
+    else: none
+  );
+}
+```
+
+참고로 `else : <value>` 쌍 하나만 있는 `if()`와, 아무것도 없는 `if()` 함수 모두 유효한 구문입니다.
+
+```css
+background-color: if(else: black);
+background-color: if();
+```
+
+물론 `black`과 `initial`을 직접 지정하는 것과 같으므로 실제로 사용할 일은 없습니다.
+
+## 조건 유형
+
+`<if-condition>`에는 다음 세 종류의 쿼리 중 하나를 사용할 수 있습니다.
+
+### 스타일 쿼리
+
+[컨테이너 스타일 쿼리][스타일 쿼리]를 사용하면 요소에 설정된 특정 속성의 값을 시험하고, 각각의 경우에 따라 다른 속성에 값을 적용할 수 있습니다. 위의 예제 코드들에서 제시한 `if()` 조건들이 스타일 쿼리였습니다. 한 개의 스타일 쿼리 조건을 사용한 `if()` 함수를 다시 살펴보겠습니다.
+
+```css
+background-image: if (
+  style(--scheme: ice): linear-gradient(to left, #caf0f8, white, #caf0f8);
+)
+```
+
+위 코드는 `--scheme` 사용자 지정 속성이 같은 요소에서서 `ice`로 설정된 경우, 지정한 `linear-gradient()` 값을 반환합니다.
+
+스타일 쿼리를 `if()` 함수 안에서 사용하면 [`@container`]와 달리 같은 요소의 다른 속성을 조건에 따라 설정할 수 있습니다. 반면 `@container` 사용 시에는 부모에서 스타일을 확인한 수 자식 스타일로 적용하는 방법밖에 없습니다.
+
+조건 내에서 `and`, `or`, `not` 논리도 사용할 수 있습니다.
+
+```css
+background-color: if(
+  style((--scheme: dark) or (--scheme: very-dark)): black
+);
+background-color: if(
+  style((--scheme: dark) and (--contrast: hi)): black
+);
+background-color: if(
+  not style(--scheme: light): black
+);
+```
+
+`@container` 쿼리에도 장점은 있습니다. `if()` 함수는 속성 한 개의 값만 설정할 수 있지만, `@container` 쿼리는 전체 스타일 규칙을 한번에 조건부로 적용할 수 있습니다. 그러므로 각자 적절한 상황에 따라 사용하면 됩니다.
+
+> [note]
+> 현재, 컨테이너 스타일 쿼리는 사용자 지정 속성만 지원하며 일반 CSS 속성에는 사용할 수 없습니다. 예를 들어 다음 선언은 작동하지 않습니다.
+>
+> ```css
+> background-color: if(style(color: white): black);
+> ```
+
+### 미디어 쿼리
+
+[미디어 쿼리] 조건을 사용하면 [`@media`]와 동일한 방식으로 조건을 설정할 수 있습니다.
+
+예를 들어, 미디어 유형을 사용한 다음 `<if-condition> : <value>` 쌍은 인쇄 시 배경색을 `white`로 설정합니다.
+
+```css
+background-color: if (
+  media(print): white;
+)
+```
+
+미디어 기능을 사용한 다음 쌍은 현재 뷰포트 너비가 `700px` 미만일 때 바깥 여백을 `0 auto`로 설정합니다.
+
+```css
+margin: if {
+  media(width < 700px): 0 auto;
+}
+```
+
+`if()` 함수를 사용하면 미디어 쿼리 결과에 따라 하나의 속성 값을 다르게 설정해야 할 때 편리합니다.
+
+조건 내에서 `and`, `or`, `not` 논리도 사용할 수 있습니다.
+
+```css
+border-color: if(
+  media((width > 700px) and (width < 1000px)): blue;
+);
+border-color: if(
+  media((width < 500px) or (orientation: landscape)): blue;
+);
+```
+
+`if()` 함수는 속성 한 개의 값만 설정할 수 있지만, [`@media`] 쿼리는 전체 스타일 규칙을 한번에 조건부로 적용할 수 있습니다. 그러므로 각자 적절한 상황에 따라 사용하면 됩니다.
+
+### 기능 쿼리
+
+[기능 쿼리] 조건을 사용하면 [`@supports`]와 동일한 방식으로 브라우저의 기능 지원 여부에 따라 속성 값을 설정할 수 있습니다.
+
+예를 들어, 아래 선언은 브라우저가 [`lch()`] 색상을 지원하면 `lch()` 색상 값을 설정합니다.
+
+```css
+color: if (
+  supports(color: lch(77.7% 0 0)): lch(77.7% 0 0);
+)
+```
+
+선택자 지원 쿼리도 쓸 수 있습니다. 아래 선언은 브라우저가 `h2 + p` 선택자를 지원하면 `blue` 값을 설정합니다.
+
+```css
+color: if(
+  supports(selector(h2 + p)): blue;
+)
+```
+
+조건 내에서 `and`, `or`, `not` 논리도 사용할 수 있습니다.
+
+```css
+color: if(
+  supports((selector(h2 + p)) and (color: blue)): blue;
+);
+color: if(
+  supports((selector(h2 + p)) or (color: not-a-color)): blue;
+);
+color: if(
+  supports(not selector(h2 + p)): blue;
+);
+```
+
+`if()` 함수는 속성 한 개의 값만 설정할 수 있지만, [`@supports`] 쿼리는 전체 스타일 규칙을 한번에 조건부로 적용할 수 있습니다. 그러므로 각자 적절한 상황에 따라 사용하면 됩니다.
+
+> [note]
+>
+> 아래 코드처럼 값 없는 속성 지원 쿼리는 `if()`에서 작동하지 않습니다.
+>
+> ```css
+> color: if(
+>   supports(color): blue;
+> )
+> ```
+
+## 대체 값 제공
+
+`if()` 함수는 우아한 저하(graceful degradation)를 지원하지 않습니다. `if()`를 지원하지 않는 브라우저를 위해 대체 선언을 명시해야 합니다. 예를 들어, `if()`를 지원하는 브라우저에서는 아래 선언에서 `padding: 1em`을 `padding: if(...)`가 덮어쓰고, 지원하지 않는 브라우저에서는 `padding: 1em`을 적용합니다.
+
+```css
+padding: 1em;
+padding: if(style(--size: 2xl): 1em; else: 0.25em);
+```
+
+## 값 전체, 값 일부
+
+`if()` 함수는 속성의 값 일부로도 사용할 수 있습니다.
+
+다음 선언은 [`lch()`]의 지원 여부에 따라 [`border`] 단축 속성의 [`border-color`]만 다르게 설정합니다. `3px solid` 부분은 변하지 않습니다.
+
+```css
+border: if(
+  supports(color: lch(77.7% 0 0)): 3px solid lch(77.7% 0 0);
+  else: 3px solid #c0c0c0;
+);
+```
+
+따라서 다음과 같이 짧게 만들 수 있습니다.
+
+```css
+border: 3px solid
+  if(
+    supports(color: lch(77.7% 0 0)): 3px solid lch(77.7% 0 0) ; else: #c0c0c0
+  );
+```
+
+## 중첩 `if()`
+
+`if()` 함수를 값의 일부로도 사용할 수 있으므로, 다른 `if()`의 `<value>`에서 사용할 수 있습니다.
+
+예를 들어, 다음은 다양한 조건에 따라 `color` 속성 값을 설정하는 선언입니다. 우선 외곽의 `if()` 함수는 `--scheme` 사용자 지정 속성이 `ice`인지 `fire`인지 시험합니다. 그 안에 다시 `if()` 함수가 있는데, 이 내부 함수는 브라우저가 [`lch()`] 색상을 지원하는지 시험하여, 지원하면 `lch()` 색상 값을 반환하고, 지원하지 않으면 16진수 색상 값을 반환합니다.
+
+```css
+color: if(
+  style(--scheme: ice):
+    if(
+      supports(color: lch(7.1% 60.23 300.16)): lch(7.1% 60.23 300.16);
+      else: #03045e
+    );
+  style(--scheme: fire):
+    if(
+      supports(color: lch(21.38% 44.22 40.66)): lch(21.38% 44.22 40.66);
+      else: #621708
+    );
+  else: black
+);
+```
+
+## 명세
+
+[CSS Values and Units Module Level 5](https://drafts.csswg.org/css-values-5/#if-notation)
+
+## 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+[기능 쿼리]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_conditional_rules/Using_feature_queries
+[미디어 쿼리]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries
+[사용자 지정 속성]: ../--*
+[스타일 쿼리]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_size_and_style_queries#container_style_queries
+[`@container`]: https://developer.mozilla.org/en-US/docs/Web/CSS/@container
+[`@media`]: https://developer.mozilla.org/en-US/docs/Web/CSS/@media
+[`@supports`]: https://developer.mozilla.org/en-US/docs/Web/CSS/@supports
+[`background-image`]: https://developer.mozilla.org/en-US/docs/Web/CSS/background-image
+[`guaranteed-invalid`]: https://developer.mozilla.org/en-US/docs/Glossary/guaranteed_invalid_value
+[`if ... else`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else
+[`lch()`]: ../color_value/lch
+[`linear-gradient()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient

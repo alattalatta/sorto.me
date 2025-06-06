@@ -7,7 +7,6 @@ export default tselint.config(react, ...astro.configs.recommended, {
     parserOptions: {
       project: true,
       projectService: true,
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       tsconfigRootDir: import.meta.dirname,
     },
   },

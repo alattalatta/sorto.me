@@ -1,5 +1,6 @@
+import type { Monaco } from '@monaco-editor/react'
 import Loading from 'components/Loading'
-import { Suspense, lazy, useReducer, useState, useMemo, useEffect, useRef } from 'react'
+import { Suspense, lazy, useReducer, useState, useMemo, useEffect, useRef, useCallback } from 'react'
 import { InView } from 'react-intersection-observer'
 
 import styles from './LiveExampleImpl.module.scss'
@@ -24,6 +25,20 @@ const LiveExampleImpl: React.FC<LiveExampleImplProps> = ({ babel, editable = tru
   const [currentFileName, setCurrentFileName] = useState<string>(`${name}/index.${lang}`)
   const currentFile = files?.find((file) => file.name === currentFileName) ?? files?.[0]
 
+  const updateFile = useCallback(
+    (value: string | undefined) => {
+      if (!currentFile) {
+        return
+      }
+
+      updateFileImpl({
+        ...currentFile,
+        content: value ?? '',
+      })
+    },
+    [currentFile, updateFileImpl],
+  )
+
   const [wasInView, setWasInView] = useReducer(() => true, false)
 
   const editableFiles = useMemo(() => files?.filter((file) => file.editable) ?? [], [files])
@@ -40,6 +55,12 @@ const LiveExampleImpl: React.FC<LiveExampleImplProps> = ({ babel, editable = tru
       return () => ob.disconnect()
     }
   }, [files])
+
+  const suppressCSSValidation = useCallback((_: unknown, monaco: Monaco) => {
+    monaco.languages.css.cssDefaults.setOptions({
+      validate: false,
+    })
+  }, [])
 
   if (files === null) {
     return (
@@ -94,14 +115,11 @@ const LiveExampleImpl: React.FC<LiveExampleImplProps> = ({ babel, editable = tru
                             lineNumbers: 'off',
                             minimap: { enabled: false },
                             scrollBeyondLastLine: false,
+                            padding: { bottom: 16, top: 16 },
                           }}
                           path={currentFile.name}
-                          onChange={(value) =>
-                            updateFileImpl({
-                              ...currentFile,
-                              content: value ?? '',
-                            })
-                          }
+                          onChange={updateFile}
+                          onMount={suppressCSSValidation}
                         />
                       )}
                     </Suspense>

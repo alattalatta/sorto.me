@@ -9,34 +9,36 @@ CSS [`@font-face`](../@font-face) @규칙의 **`src`** 서술자는 글꼴 데�
 # 구문
 
 ```css
-/* <url> 값 */
-src: url(https://somewebsite.com/path/to/font.woff); /* 절대 경로 */
-src: url(path/to/font.woff); /* 상대 경로 */
-src: url("path/to/font.woff"); /* 따옴표 사용 */
-src: url(path/to/svgFont.svg#example); /* 글꼴 식별 프래그먼트 */
+@font-face {
+  /* <url> 값 */
+  src: url(https://somewebsite.com/path/to/font.woff); /* 절대 경로 */
+  src: url(path/to/font.woff); /* 상대 경로 */
+  src: url("path/to/font.woff"); /* 따옴표 사용 */
+  src: url(path/to/svgFont.svg#example); /* 글꼴 식별 프래그먼트 */
 
-/* <font-face-name> 값 */
-src: local(font); /* 따옴표 없이 */
-src: local(some font); /* 공백 포함 */
-src: local("font"); /* 따옴표 사용 */
+  /* <font-face-name> 값 */
+  src: local(font); /* 따옴표 없이 */
+  src: local(some font); /* 공백 포함 */
+  src: local("font"); /* 따옴표 사용 */
 
-/* <tech(<font-tech>)> 값 */
-src: url(path/to/fontCOLRv1.otf) tech(color-COLRv1);
-src: url(path/to/fontCOLR-svg.otf) tech(color-SVG);
+  /* <tech(<font-tech>)> 값 */
+  src: url(path/to/fontCOLRv1.otf) tech(color-COLRv1);
+  src: url(path/to/fontCOLR-svg.otf) tech(color-SVG);
 
-/* <format(<font-format>)> 값 */
-src: url(path/to/font.woff) format("woff");
-src: url(path/to/font.otf) format("opentype");
+  /* <format(<font-format>)> 값 */
+  src: url(path/to/font.woff) format("woff");
+  src: url(path/to/font.otf) format("opentype");
 
-/* 다수의 리소스 지정 */
-src:
-  url(path/to/font.woff) format("woff"),
-  url(path/to/font.otf) format("opentype");
+  /* 다수의 리소스 지정 */
+  src:
+    url(path/to/font.woff) format("woff"),
+    url(path/to/font.otf) format("opentype");
 
-/* 다수의 리소스를 글꼴 형식과 기술과 함께 지정 */
-src:
-  url("trickster-COLRv1.otf") format(opentype) tech(color-COLRv1),
-  url("trickster-outline.otf") format(opentype);
+  /* 다수의 리소스를 글꼴 형식과 기술과 함께 지정 */
+  src:
+    url("trickster-COLRv1.otf") format(opentype) tech(color-COLRv1),
+    url("trickster-outline.otf") format(opentype);
+}
 ```
 
 ## 값

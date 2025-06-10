@@ -11,41 +11,43 @@ CSS **`display`** 속성은 요소가 블록과 인라인 중 어느 것으로 �
 # 구문
 
 ```css
-/* 레거시 값 */
-display: block;
-display: inline;
-display: inline-block;
-display: flex;
-display: inline-flex;
-display: grid;
-display: inline-grid;
-display: flow-root;
+selector {
+  /* 사전 조합 값 */
+  display: block;
+  display: inline;
+  display: inline-block;
+  display: flex;
+  display: inline-flex;
+  display: grid;
+  display: inline-grid;
+  display: flow-root;
 
-/* 박스 생성 */
-display: none;
-display: contents;
+  /* 박스 생성 */
+  display: none;
+  display: contents;
 
-/* 2개 값 구문 */
-display: block flex;
-display: block flow;
-display: block flow-root;
-display: block grid;
-display: inline flex;
-display: inline flow;
-display: inline flow-root;
-display: inline grid;
+  /* 2개 값 구문 */
+  display: block flex;
+  display: block flow;
+  display: block flow-root;
+  display: block grid;
+  display: inline flex;
+  display: inline flow;
+  display: inline flow-root;
+  display: inline grid;
 
-/* 기타 값 */
-display: table;
-display: table-row;
-display: list-item;
+  /* 기타 값 */
+  display: table;
+  display: table-row;
+  display: list-item;
 
-/* 전역 값 */
-display: inherit;
-display: initial;
-display: revert;
-display: revert-layer;
-display: unset;
+  /* 전역 값 */
+  display: inherit;
+  display: initial;
+  display: revert;
+  display: revert-layer;
+  display: unset;
+}
 ```
 
 `display` 속성은 아래의 키워드 값을 사용해 지정할 수 있습니다.
@@ -56,47 +58,41 @@ display: unset;
 
 ### 외부 유형
 
-- : [`<display-outside>`](./display-outside)
+- : [`<display-outside>`]
 
   - 이 키워드들은 요소의 외부 디스플레이 유형을 설정합니다. 외부 디스플레이 유형은 요소가 [플로 레이아웃](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout)에 참여하는 방식을 결정합니다.
 
-    - : `block`
-      - 요소가 블록 요소 박스를 생성합니다. 일반적인 문서 흐름 내에 있을 경우, 요소의 앞과 뒤에 개행이 발생합니다.
-    - : `inline`
-      - 요소가 인라인 요소 박스를 한 개 이상 생성합니다. 인라인 요소 박스로는 개행이 발생하지 않습니다. 즉 일반적인 문서 흐름 내에 있으며 충분한 공간이 확보된 경우, 다음 요소는 이 요소와 같은 줄에 위치합니다.
+  - : `block`
+    - 요소가 블록 요소 박스를 생성합니다. 일반 문서 흐름 내에 위치할 경우 앞뒤로 개행됩니다.
+  - : `inline`
+    - 요소가 인라인 요소 박스를 한 개 이상 생성합니다. 인라인 요소 박스만으로는 개행이 발생하지 않습니다. 일반 문서 흐름 내에 위치하고 충분한 공간이 확보되면 다음 요소는 인라인 요소와 같은 줄에 배치됩니다.
 
 > [note] 2개 값 구분을 지원하는 브라우저에서는 외부 키워드만 지정한 요소의 내부 디스플레이 유형을 `flow`로 설정합니다. 따라서 2개 값 구문을 지원하지 않는 브라우저와 동일하게 동작합니다.
 
 ### 내부 유형
 
-- : [`<display-inside>`](https://developer.mozilla.org/en-US/docs/Web/CSS/display-inside)
+- : [`<display-inside>`]
 
   - 이 키워드들은 요소의 내부 디스플레이 유형을 설정합니다. 요소가 [대체 요소](/docs/Web/CSS/Replaced_element)인 경우를 제외하면, 내부 디스플레이 유형은 요소의 콘텐츠가 배치되는 방법을 정의합니다.
 
     - : `flow`
 
-      - 플로 레이아웃을 사용해 요소의 콘텐츠를 배치합니다.
+      - 요소 콘텐츠를 플로 레이아웃 (블록-인라인 레이아웃)에 따라 배치합니다.
 
-        요소의 바깥 디스플레이 유형이 `inline`이나 `run-in`인 경우, 그리고 요소가 블록 또는 인라인 서색 맥락에 참여 중인 경우에는 인라인 박스를 생성합니다. 그 외에는 블록 컨테이너 박스를 생성합니다.
+        외부 레이아웃 유형이 `inline`이고, 이 요소가 블록 또는 인라인 서식 맥락에 속한 경우 인라인 박스를 생성합니다. 이외의 경우 블록 컨테이너 박스를 생성합니다.
 
-        다른 속성의 값([`position`](https://developer.mozilla.org/en-US/docs/Web/CSS/position), [`float`](https://developer.mozilla.org/en-US/docs/Web/CSS/float), [`overflow`](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow) 등)과, 요소 자신이 블록 또는 인라인 서식 맥락에 참여하고 있는지 혹은 참여하지 않는지에 따라서 `display: flow` 새로운 블록 서식 맥락을 생성하거나, 자신의 콘텐츠를 부모 서식 맥락에 포함시킵니다.
+        [`position`], [`float`], [`overflow`] 등의 다른 속성 값 및 이 요소 자체가 블록 또는 인라인 서식 맥락에 속하는지에 따라 새로운 [블록 서식 맥락]을 생성하거나, 자신의 콘텐츠를 부모의 서식 맥락에 포함시킵니다.
 
     - : `flow-root`
-
-      - 새로운 블록 서식 맥락을 생성하는 블록 레벨 박스를 생성하여 서식 루트를 정의합니다.
-
+      - 새로운 블록 서식 맥락을 생성하는 블록 요소 박스를 생성합니다.
     - : `table`
-      - HTML [`<table>`](/docs/Web/HTML/Element/table) 요소처럼 동작합니다. 블록 레벨 박스를 정의합니다.
+      - [`<table>` 요소](/docs/Web/HTML/Element/table)처럼 동작합니다. 블록 레벨 박스를 생성합니다.
     - : `flex`
-
-      - 요소가 블록 레벨로 동작합니다. 콘텐츠는 [플렉스박스 모델](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout)에 따라 배치합니다.
-
+      - 블록 레벨 요소처럼 동작합니다. 콘텐츠를 [플렉스박스 모델](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout)에 따라 배치합니다.
     - : `grid`
-
-      - 요소가 블록 레벨로 동작합니다. 콘텐츠는 [그리드 모델](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)에 따라 배치합니다.
-
+      - 블록 레벨 요소처럼 동작합니다. 콘텐츠를 [그리드 모델](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout)에 따라 배치합니다.
     - : `ruby`
-      - 요소가 인라인 레벨로 동작합니다. 콘텐츠는 루비 서식 모델에 따라 배치합니다. 결과적으로 HTML [`<ruby>`](/docs/Web/HTML/Element/ruby) 요소와 동일하게 동작합니다.
+      - [`<ruby>` 요소](/docs/Web/HTML/Element/ruby)처럼 동작합니다. 인라인 레벨 요소처럼 동작하고, 콘텐츠를 루비 서식 모델에 따라 배치합니다.
 
 > [note] 2개 값 구분을 지원하는 브라우저에서는 내부 키워드만 지정한 요소의 외부 디스플레이 유형을 `block`으로 설정합니다. 따라서 2개 값 구문을 지원하지 않는 브라우저와 동일하게 동작합니다.
 
@@ -106,7 +102,7 @@ display: unset;
 
   - 요소가 [`::marker`](https://developer.mozilla.org/en-US/docs/Web/CSS/::marker) 의사 요소를 생성하고, 그 내용으로 CSS [`list-style-type`](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type) 속성이 설정하는 리스트 마커를 추가합니다. 즉, 요소가 [`<li>`](/docs/Web/HTML/Element/li) 요소와 동일하게 동작합니다.
 
-    `list-item`은 모든 [`<display-outside>`](#term-display-outside) 키워드와, [`<display-inside>`](#term-display-inside) 키워드 중 `flow` 및 `flow-root`과 함께 사용할 수 있습니다.
+    `list-item`은 모든 [`<display-outside>`] 키워드와, [`<display-inside>`] 키워드 중 `flow` 및 `flow-root`과 함께 사용할 수 있습니다.
 
 > [note] 2개 값 구분을 지원하는 브라우저에서는 `list-item`과 함께 내부 키워드를 지정하지 않은 경우, 내부 디스플레이 유형을 `flow`로 설정합니다. 외부 키워드를 지정하지 않은 경우, 외부 디스플레이 유형은 `block`이 됩니다.
 
@@ -114,26 +110,30 @@ display: unset;
 
 - : [`<display-internal>`](https://developer.mozilla.org/en-US/docs/Web/CSS/display-internal)
 
-  - `table`과 `ruby` 등 일부 레이아웃 모델은 복잡한 내부 구조를 가지고 있으며, 자식과 자손이 다양한 역할로 참여합니다. 그 다양한 역할을 위해 정의된 유형이 내부용 디스플레이 값입니다. 내부용 값은 특정 레이아웃 모드에서만 의미를 가집니다.
+  - `table`과 `ruby` 등 일부 레이아웃 모델은 복잡한 내부 구조를 가지고 있으며, 자식과 자손이 다양한 역할로 참여합니다. 그 다양한 역할들을 위해 정의된 유형이 내부용 디스플레이 값입니다. 내부용 값은 특정 레이아웃 모드에서만 의미를 가집니다.
 
     - : `table-row-group`
-      - HTML [`<tbody>`](/docs/Web/HTML/Element/tbody) 요소처럼 동작합니다.
+      - HTML [`<tbody>` 요소](/docs/Web/HTML/Element/tbody)처럼 동작합니다.
     - : `table-header-group`
-      - HTML [`<thead>`](/docs/Web/HTML/Element/thead) 요소처럼 동작합니다.
+      - HTML [`<thead>` 요소](/docs/Web/HTML/Element/thead)처럼 동작합니다.
     - : `table-footer-group`
-      - HTML [`<foot>`](/docs/Web/HTML/Element/tfoot) 요소처럼 동작합니다.
+      - HTML [`<tfoot>` 요소](/docs/Web/HTML/Element/tfoot)처럼 동작합니다.
     - : `table-row`
-      - HTML [`<tr>`](/docs/Web/HTML/Element/tr) 요소처럼 동작합니다.
+      - HTML [`<tr>` 요소](/docs/Web/HTML/Element/tr)처럼 동작합니다.
     - : `table-cell`
-      - HTML [`<td>`](/docs/Web/HTML/Element/td) 요소처럼 동작합니다.
+      - HTML [`<td>` 요소](/docs/Web/HTML/Element/td)처럼 동작합니다.
     - : `table-column-group`
-      - HTML [`<colgroup>`](/docs/Web/HTML/Element/colgroup) 요소처럼 동작합니다.
+      - HTML [`<colgroup>` 요소](/docs/Web/HTML/Element/colgroup)처럼 동작합니다.
     - : `table-column`
-      - HTML [`<col>`](/docs/Web/HTML/Element/col) 요소처럼 동작합니다.
+      - HTML [`<col>` 요소](/docs/Web/HTML/Element/col)처럼 동작합니다.
     - : `table-caption`
-      - HTML [`<caption>`](/docs/Web/HTML/Element/caption) 요소처럼 동작합니다.
-    - : `ruby-text` <Experimental />
-      - HTML [`<rt>`](/docs/Web/HTML/Element/rt) 요소처럼 동작합니다.
+      - HTML [`<caption>` 요소](/docs/Web/HTML/Element/caption)처럼 동작합니다.
+    - : `ruby-text`
+      - HTML [`<rt>` 요소](/docs/Web/HTML/Element/rt)처럼 동작합니다.
+    - : `ruby-base-container`
+      - 익명 박스로 동작합니다.
+    - : `ruby-text-container`
+      - HTML [`<rtc>` 요소](/docs/Web/HTML/Element/rtc)처럼 동작합니다.
 
 ### 박스
 
@@ -143,9 +143,7 @@ display: unset;
 
     - : `contents`
 
-      - 요소 자체 박스를 생성하지 않고, 대신 요소의 자식들이 생성한 박스로 대체합니다.
-
-        > [note] CSS Display Level 3 명세는 "대체 요소 등, CSS 박스 개념만으로는 렌더링이 불가능한 특수한 요소"에 `display: contents`를 적용했을 때 어떻게 동작해야 하는지 직접 명시하고 있습니다. 명세의 [Appendix B: Effects of display: contents on Unusual Elements](https://drafts.csswg.org/css-display/#unbox)에서 자세한 정보를 확인하세요.
+      - 요소 자체 박스를 생성하지 않고, 대신 요소의 자식들이 생성한 박스로 대체합니다. 참고로 CSS Display Level 3 명세는 "대체 요소 등, CSS 박스 개념만으로는 렌더링이 불가능한 특수한 요소"에 `display: contents`를 적용했을 때 어떻게 동작해야 하는지 직접 명시하고 있습니다. 명세의 [Appendix B: Effects of display: contents on Unusual Elements](https://drafts.csswg.org/css-display/#unbox)에서 자세한 정보를 확인하세요.
 
     - : `none`
       - 요소가 레이아웃에 영향을 주지 못하도록 설정합니다. 따라서 요소가 아예 존재하지 않는 것처럼 렌더링합니다. `display: none` 요소의 모든 자손 요소도 보이지 않습니다. 요소가 보이지 않아야 하지만, 레이아웃에 참여해서 자신의 공간은 차지해야 하는 경우에는 [`visibility` 속성](https://developer.mozilla.org/en-US/docs/Web/CSS/visibility)을 대신 사용하세요.
@@ -200,7 +198,7 @@ CSS Display Module Level 3 명세에서는 `display` 속성에 외부와 내부 
 }
 ```
 
-Level 3 명세에서 추가된 2개 값 구문에 대한 상세 정보는 [Display의 새로운 2개 값 구문 적용하기](https://developer.mozilla.org/en-US/docs/Web/CSS/display/two-value_syntax_of_display)를 참고하세요.
+이런 구문 변경점에 대한 자세한 정보는 [CSS `display`에서 다중 키워드 구문 사용하기](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_display/multi-keyword_syntax_of_display)를 참고하세요.
 
 # 접근성
 
@@ -214,6 +212,10 @@ Level 3 명세에서 추가된 2개 값 구문에 대한 상세 정보는 [Displ
 
 일부 브라우저에서는 [`display: contents`](#term-contents)를 지정한 요소를 접근성 트리에서 제거하여 스크린 리더가 해당 요소를 읽지 못하게 됩니다. (자손 요소들은 트리에 남으며 읽을 수 있습니다) 이 동작은 명세에 맞지 않는 잘못된 동작입니다.
 
+## 표
+
+일부 브라우저에서는 [`<table>` 요소](/docs/Web/HTML/Element/table)의 `display`를 `block`, `grid`, `flex`로 설정하면 [접근성 트리](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Accessibility/What_is_accessibility#accessibility_apis)에서의 표현도 바꿉니다. 따라서 스크린 리더가 표를 표로 인식하지 못합니다.
+
 # 명세
 
 [CSS Display Module Level 3](https://drafts.csswg.org/css-display/#the-display-properties)
@@ -221,3 +223,9 @@ Level 3 명세에서 추가된 2개 값 구문에 대한 상세 정보는 [Displ
 # 브라우저 호환성
 
 <BrowserCompat data={props.bcd} />
+
+[`<display-inside>`]: ./display/display-inside
+[`<display-outside>`]: ./display/display-outside
+[`float`]: https://developer.mozilla.org/en-US/docs/Web/CSS/float
+[`overflow`]: https://developer.mozilla.org/en-US/docs/Web/CSS/overflow
+[`position`]: https://developer.mozilla.org/en-US/docs/Web/CSS/position

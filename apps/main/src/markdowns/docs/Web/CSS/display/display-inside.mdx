@@ -1,0 +1,39 @@
+---
+title: 'CSS <display-inside>: 내부 레이아웃 유형'
+titleShort: '<display-inside>'
+---
+
+**`<display-inside>`** 키워드는 요소의 내부 레이아웃 유형을 설정합니다. 내부 레이아웃 유형은 요소의 콘텐츠([비대체 요소](/docs/Web/CSS/Replaced_element)일 때)를 배치하는 서식 맥락의 종류를 지정합니다. `<display-inside>`는 [`display` 속성](../display)의 값으로 사용하며, 레거시 구문에 따라 단일 키워드로 사용하거나, Level 3 명세에 따라 [`<display-outside>`] 키워드와 함께 사용할 수 있습니다.
+
+# 구문
+
+- : `flow`
+
+  - 요소 콘텐츠를 플로 레이아웃 (블록-인라인 레이아웃)에 따라 배치합니다.
+
+    외부 레이아웃 유형이 `inline`이고, 이 요소가 블록 또는 인라인 서식 맥락에 속한 경우 인라인 박스를 생성합니다. 이외의 경우 블록 컨테이너 박스를 생성합니다.
+
+    [`position`], [`float`], [`overflow`] 등의 다른 속성 값 및 이 요소 자체가 블록 또는 인라인 서식 맥락에 속하는지에 따라 새로운 [블록 서식 맥락]을 생성하거나, 자신의 콘텐츠를 부모의 서식 맥락에 포함시킵니다.
+
+- : `flow-root`
+  - 새로운 블록 서식 맥락을 생성하는 블록 요소 박스를 생성합니다.
+- : `table`
+  - [`<table>` 요소](/docs/Web/HTML/Element/table)처럼 동작합니다. 블록 레벨 박스를 생성합니다.
+- : `flex`
+  - 블록 레벨 요소처럼 동작합니다. 콘텐츠를 [플렉스박스 모델](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout)에 따라 배치합니다.
+- : `grid`
+  - 블록 레벨 요소처럼 동작합니다. 콘텐츠를 [그리드 모델](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout)에 따라 배치합니다.
+- : `ruby`
+  - [`<ruby>` 요소](/docs/Web/HTML/Element/ruby)처럼 동작합니다. 인라인 레벨 요소처럼 동작하고, 콘텐츠를 루비 서식 모델에 따라 배치합니다.
+
+> [note] 브라우저가 내부 레이아웃 유형 키워드 하나만 지정된 `display` 속성(e.g., `display: flex`, `display: grid`)을 마주하면 외부 레이아웃 유형은 `block`으로 처리합니다(e.g., `display: block flex`, `display: inline grid`). 이는 단일 키워드만 사용 가능한 구 명세와 호환되는 동작입니다. 예를 들어 `display: flex`를 지정할 땐 플렉스 컨테이너 자체는 블록 요소로 동작하길 바라기 때문입니다.
+
+# 명세
+
+[CSS Display Module Level 3](https://drafts.csswg.org/css-display/#typedef-display-inside)
+
+[`<display-outside>`]: ./display-outside
+[`float`]: https://developer.mozilla.org/en-US/docs/Web/CSS/float
+[`overflow`]: https://developer.mozilla.org/en-US/docs/Web/CSS/overflow
+[`position`]: https://developer.mozilla.org/en-US/docs/Web/CSS/position
+[블록 서식 맥락]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_display/Block_formatting_context

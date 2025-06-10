@@ -72,6 +72,10 @@ export default defineConfig({
       destination: '/docs/Web/CSS/Pseudo-classes/:target',
       status: 308,
     },
+    '/docs/Web/CSS/display-outside': {
+      destination: '/docs/Web/CSS/display/display-outside',
+      status: 308,
+    },
     '/docs/Web/CSS/var': {
       destination: '/docs/Web/CSS/Functions/var',
       status: 308,

@@ -4,7 +4,7 @@ titleShort: '<video>'
 bcd: html.elements.video
 ---
 
-**HTML `<video>` 요소**는 비디오 콘텐츠를 문서에 삽입할 때 사용합니다. 오디오 콘텐츠도 함께 사용할 수 있지만, [`<audio>`](./audio)가 좀 더 적합한 사용자 경험을 제공합니다.
+**HTML `<video>` 요소**는 비디오 콘텐츠를 문서에 삽입할 때 사용합니다. 오디오 콘텐츠 삽입에도 사용할 수 있지만, [`<audio>`]가 좀 더 적합한 사용자 경험을 제공합니다.
 
 ```html hidden name=demo
 <video controls width="125">
@@ -21,6 +21,8 @@ bcd: html.elements.video
 
 <LiveExample height={240} lang="html" name="demo" />
 
+위의 예제는 `<video>` 요소의 기본 사용법을 보입니다.[`<image>`]와 유사하게, [`src` 특성](#term-src)에 비디오의 경로를 지정해야 합니다. 이외에도 비디오 너비와 높이, 자동재생과 반복 여부 등을 특성으로 지정할 수 있습니다.
+
 `<video></video>` 안의 내용은 미지원 브라우저에서 대체 콘텐츠로 보여집니다.
 
 # 특성
@@ -31,13 +33,13 @@ bcd: html.elements.video
 
   - 지정하면 비디오 다운로드가 끝나지 않았더라도 최대한 빠른 시점에 자동으로 재생하는 불리언 특성입니다.
 
-    > [note] 오디오를(또는 오디오를 포함한 비디오)를 자동으로 재생하는 웹 사이트는 사용자 경험에 좋지 않으므로 되도록 피해야 합니다. 반드시 자동으로 재생해야 하는 경우 옵트인(opt-in) 기능, 즉 사용자가 직접 자동재생 기능을 활성화해야 하도록 개발하세요. 다만 미디어 소스를 처음부터 제공하지 않고, 나중에 사용자가 직접 지정하는 경우 `autoplay`를 유용하게 사용할 수 있습니다.
+    > [note] 오디오 또는 오디오를 포함한 비디오를 자동으로 재생하면 사용자 경험에 좋지 않습니다. 따라서 최신 브라우저 대부분은 오디오 콘텐츠의 자동재생을 차단합니다. [자동재생 안내서](https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Autoplay) 문서를 방문해 더 알아보세요.
 
 - : `controls`
   - 지정하면 볼륨, 탐색, 일시정지/재생 등 브라우저가 사용자 컨트롤을 제공하는 불리언 특성입니다.
 - : `controlslist`
 
-  - 브라우저 내장 컨트롤을 사용할 때(즉 `controls` 특성을 지정했을 때)의 일부 기능을 조절하는 열거형 공백 구분 리스트 특성입니다. 다음과 같은 값을 사용할 수 있습니다.
+  - 브라우저 내장 컨트롤, 즉 `controls` 특성을 지정했을 때 일부 기능을 조절할 수 있는 열거형 공백 구분 리스트 특성입니다. 다음과 같은 값을 사용할 수 있습니다.
 
     - `nodownload`: 내장 컨트롤에서 다운로드 컨트롤을 숨겨야 함을 나타냅니다.
     - `nofullscreen`: 내장 컨트롤에서 전체 화면 컨트롤을 숨겨야 함을 나타냅니다.
@@ -47,15 +49,20 @@ bcd: html.elements.video
 
 - : `crossorigin`
 
-  - CORS를 사용해 지정한 비디오 파일을 가져올지 나타내는 열거형 특성입니다. [CORS 활성화 리소스](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image)는 [`<canvas>`](./canvas) 요소에 사용해도 캔버스가 오염(taint)되지 않습니다. 가능한 값은 다음과 같습니다.
+  - 비디오 파일을 가져올 때 CORS를 사용할지 나타내는 열거형 특성입니다. [CORS 활성화 리소스](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image)는 [`<canvas>`](./canvas) 요소에 사용해도 캔버스가 [오염](https://developer.mozilla.org/en-US/docs/Web/HTML/How_to/CORS_enabled_image#security_and_tainted_canvases)(taint)되지 않습니다.
+
+    `crossorigin` 특성을 지정하지 않는 경우 비 CORS 요청([`Origin`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Origin) 헤더 없이)을 전송하고, 오염된 리소스로 취급하여 리소스 데이터 접근을 제한하므로 `<canvas>`에서 사용할 수 없습니다.
+
+    `crossorigin` 특성을 지정한 경우 CORS 요청([`Origin`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Origin) 헤더 포함)을 전송합니다. 하지만 서버가 리소스의 교차 출처 요청을 허용하지 않는다면 ([`Access-Control-Allow-Origin`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Access-Control-Allow-Origin) 헤더가 없거나, 그 값 중에 요청 사이트의 출처가 없다면) 브라우저가 리소스 로딩을 차단하고 개발자 도구 콘솔에 오류를 표시합니다.
+
+    가능한 값은 다음과 같습니다.
 
     - : `anonymous`
-      - 자격 증명 없이 교차 출처 요청을 전송합니다. 즉, `Origin` HTTP 헤더를 쿠키, 인증서, HTTP Basic 인증 없이 전송합니다. 서버에서 `Access-Control-Allow-Origin` HTTP 헤더를 지정하지 않아서 요청 출처 사이트에 자격 증명을 보내지 않는다면 캔버스 이미지가 오염되고, 사용처가 제한됩니다.
+      - 자격 증명을 제외하고 교차 출처 요청을 전송합니다. 즉 [쿠키](https://developer.mozilla.org/en-US/docs/Glossary/Cookie), [X.509 인증서](https://datatracker.ietf.org/doc/html/rfc5280), [`Authorization` 헤더](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Authorization)를 전송하지 않습니다.
     - : `user-credentials`
+      - 가능한 자격 증명과 함께 교차 출처 요청을 전송합니다. 즉 쿠키, X.509 인증서, `Authorization` 헤더를 전송합니다. 서버가 요청 출처 사이트와 자격 증명 공유(`Access-Control-Allow-Credentials: true` 응답 헤더)를 하지 않으면 리소스를 오염된 것으로 취급하고 데이터 접근이 제한됩니다.
 
-      - 자격 증명과 함께 교차 출처 요청을 전송합니다. 즉, `Origin` HTTP 헤더를 쿠키, 인증서, 또는 HTTP Basic 인증과 함께 전송합니다. 서버에서 `Access-Control-Allow-Origin` HTTP 헤더를 지정하지 않아서 요청 출처 사이트에 자격 증명을 보내지 않는다면 캔버스 이미지가 오염되고, 사용처가 제한됩니다.
-
-    특성이 존재하지 않으면 리소스를 CORS 요청 없이 (`Origin` HTTP 헤더 없이) 가져오므로, `<canvas>`가 오염됩니다. 유효하지 않은 값의 경우 `anonymous` 깂을 사용한 것으로 간주합니다.
+    유효하지 않은 값을 지정한 경우 `anonymous`와 동일하게 동작합니다.
 
 - : `disablepictureinpicture`
 
@@ -102,13 +109,13 @@ bcd: html.elements.video
     > - `preload` 특성은 어디까지나 힌트 특성으로, 브라우저가 반드시 따라야 하는 것은 아닙니다.
 
 - : `src`
-  - 삽입할 비디오의 URL입니다. [HTTP 접근 제어](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)의 대상입니다. [`<source>`](./source) 요소를 대신 사용할 수 있습니다.
+  - 삽입할 비디오의 URL입니다. [HTTP 접근 제어](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)의 대상입니다. [`<source>`] 요소를 대신 사용할 수 있습니다.
 - : `width`
   - 비디오를 표시할 영역의 너비입니다. 픽셀 단위이며, 단위 없는 정수 값을 지정해야 합니다.
 
 # 사용 일람
 
-브라우저들은 모든 비디오 형식을 지원하지 않습니다. [`<source>`](./source) 요소를 추가해서 다수의 소스를 제공하면 브라우저가 지원하는 첫 번째 소스를 자동으로 채택하므로 지원 범위를 넓힐 수 있습니다.
+브라우저들은 모든 비디오 형식을 지원하지 않습니다. [`<source>`] 요소를 추가해서 다수의 소스를 제공하면 브라우저가 지원하는 첫 번째 소스를 자동으로 채택하므로 지원 범위를 넓힐 수 있습니다.
 
 ```html
 <audio controls>
@@ -124,8 +131,8 @@ bcd: html.elements.video
 - [`controls`](#term-controls) 특성을 추가하지 않으면 비디오 플레이어가 브라우저 기본 컨트롤을 제공하지 않습니다. 이때 JavaScript와 [`HTMLMediaElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement) API를 사용해서 컨트롤을 직접 구현할 수 있습니다.
 - `HTMLMediaElement`에서는 비디오 콘텐츠를 세밀하게 통제할 수 있는 [여러가지 다양한 이벤트](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement#events)가 발생합니다. 이 이벤트들을 통해 미디어 제어 뿐만 아니라 다운로드 진행도와 재생률, 현재 재생 상태 및 시간 등을 알아낼 수 있습니다.
 - `<video>` 프레임의 안에서 영상이 차지하는 위치는 [`object-position`](/docs/Web/CSS/object-position) 속성으로 지정할 수 있으며, 영상의 크기는 [`object-fit`](/docs/Web/CSS/object-fit) 속성을 통해 바꿀 수 있습니다.
-- 비디오에 자막이나 캡션을 추가하려면 JavaScript와 [`<track>`](./track) 요소, [WebVTT](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API)를 사용할 수 있습니다.
-- `<video>` 요소로도 오디오 콘텐츠를 재생할 수 있습니다. [`<audio>`](./audio)는 [WebVTT](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) 자막을 보여주지 않으므로, 오디오에 자막이 필요한 경우 `<video>`가 더 좋은 선택이 될 수 있습니다.
+- 비디오에 자막이나 캡션을 추가하려면 JavaScript와 [`<track>`] 요소, [WebVTT](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API)를 사용할 수 있습니다.
+- `<video>` 요소로도 오디오 콘텐츠를 재생할 수 있습니다. [`<audio>`]는 [WebVTT](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) 자막을 보여주지 않으므로, 오디오에 자막이 필요한 경우 `<video>`가 더 좋은 선택이 될 수 있습니다.
 
 ## CSS 스타일링
 
@@ -135,7 +142,7 @@ bcd: html.elements.video
 
 ## 자막 등 시간 기반 텍스트 트랙 추가하기
 
-자막, 폐쇄 캡션, 챕터 제목 등 시간 기반 텍스트 트랙들은 [`<track>`](./track) 요소를 `<video>` 안에 배치해서 선언적으로 추가할 수 있습니다. 트랙들은 [Web Video Text Tracks File Format (WebVTT)](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API/Web_Video_Text_Tracks_Format) 파일 형식(`.vtt`)이어야 합니다.
+자막, 폐쇄 캡션, 챕터 제목 등 시간 기반 텍스트 트랙들은 [`<track>`] 요소를 `<video>` 안에 배치해서 선언적으로 추가할 수 있습니다. 트랙들은 [Web Video Text Tracks File Format (WebVTT)](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API/Web_Video_Text_Tracks_Format) 파일 형식(`.vtt`)이어야 합니다.
 
 예를 들어, 다음 HTML 코드는 사용자가 캡션을 활성화한 경우 비디오 위에 `captions.vtt`의 폐쇄 캡션을 표시합니다.
 
@@ -227,5 +234,11 @@ elem.videoTracks.addEventListener('removetrack', (event) => {
 
 # 같이 보기
 
-- 오디오 삽입: [`<audio>`](./audio)
-- 미디어 소스 추가: [`<source>`](./source)
+- 오디오 삽입: [`<audio>`]
+- 미디어 소스 추가: [`<source>`]
+
+[`<audio>`]: ./audio
+[`<canvas>`]: ./canvas
+[`<image>`]: ./image
+[`<source>`]: ./source
+[`<track>`]: ./track

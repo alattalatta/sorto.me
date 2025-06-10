@@ -25,7 +25,7 @@ const docCollection = defineCollection({
     pattern: '**/*.mdx',
   }),
   schema: z.object({
-    bcd: z.string().optional(),
+    bcd: z.union([z.string(), z.array(z.string())]).optional(),
     description: z.string().optional(),
     pinnable: z.boolean().default(true),
     title: z.string(),

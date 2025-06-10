@@ -11,8 +11,10 @@ import DocsUnderPath from './DocsUnderPath.astro'
 import LiveExample from './LiveExample'
 import Spec from './Spec'
 
+type MaybeArray<T> = T | T[]
+
 type Props = {
-  bcd: { data: Identifier; key: string } | null
+  bcd: MaybeArray<{ data: Identifier; key: string } | null>
   content: AstroComponentFactory
   description: string
   pinnable: boolean

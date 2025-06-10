@@ -1,6 +1,12 @@
 ---
 title: 'CSS <display-inside>: 내부 레이아웃 유형'
 titleShort: '<display-inside>'
+bcd:
+  - css.properties.display.flow-root
+  - css.properties.display.table
+  - css.properties.display.flex
+  - css.properties.display.grid
+  - css.properties.display.ruby
 ---
 
 **`<display-inside>`** 키워드는 요소의 내부 레이아웃 유형을 설정합니다. 내부 레이아웃 유형은 요소의 콘텐츠([비대체 요소](/docs/Web/CSS/Replaced_element)일 때)를 배치하는 서식 맥락의 종류를 지정합니다. `<display-inside>`는 [`display` 속성](../display)의 값으로 사용하며, 레거시 구문에 따라 단일 키워드로 사용하거나, Level 3 명세에 따라 [`<display-outside>`] 키워드와 함께 사용할 수 있습니다.
@@ -31,6 +37,10 @@ titleShort: '<display-inside>'
 # 명세
 
 [CSS Display Module Level 3](https://drafts.csswg.org/css-display/#typedef-display-inside)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
 
 [`<display-outside>`]: ./display-outside
 [`float`]: https://developer.mozilla.org/en-US/docs/Web/CSS/float

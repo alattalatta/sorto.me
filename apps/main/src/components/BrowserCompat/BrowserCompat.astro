@@ -3,11 +3,14 @@ import type { BrowserName, Identifier } from '@mdn/browser-compat-data'
 
 import CompatTable from './CompatTable'
 
+type MaybeArray<T> = T | T[]
+
 type Props = {
-  data: { data: Identifier; key: string } | null
+  data: MaybeArray<{ data: Identifier; key: string }> | null
 }
 
-const { data: bcd } = Astro.props
+const { data } = Astro.props
+const bcd = Array.isArray(data) ? data : data ? [data] : null
 
 const desktopBrowsers: [BrowserName, string][] = [
   ['safari', 'Safari'],
@@ -23,11 +26,13 @@ const mobileBrowsers: [BrowserName, string][] = [
 ---
 
 {
-  bcd ? (
-    <div>
-      <CompatTable {bcd} className="bcd" client:idle {desktopBrowsers} {mobileBrowsers} />
-    </div>
-  ) : null
+  bcd
+    ? bcd.map((item) => (
+        <div>
+          <CompatTable bcd={item} className="bcd" client:idle {desktopBrowsers} {mobileBrowsers} />
+        </div>
+      ))
+    : null
 }
 
 <style>

@@ -44,12 +44,8 @@ const description =
     .then((res) => String(res).trim().replace(/\\/g, ''))) ??
   ''
 
-const bcdData = (() => {
-  if (!props.data.bcd) {
-    return null
-  }
-
-  const [category, ...identifiers] = props.data.bcd.split('.')
+const getSingleBCDData = (identifier: string): { data: Identifier; key: string } | null => {
+  const [category, ...identifiers] = identifier.split('.')
   const data = identifiers.reduce<Identifier | null>(
     (prv, cur) => {
       if (!prv) {
@@ -68,6 +64,24 @@ const bcdData = (() => {
     }
   }
   return null
+}
+
+const bcdData = (() => {
+  if (!props.data.bcd) {
+    return null
+  }
+
+  if (typeof props.data.bcd === 'string') {
+    return getSingleBCDData(props.data.bcd)
+  }
+
+  return props.data.bcd.map((identifier: string) => {
+    const data = getSingleBCDData(identifier)
+    if (data) {
+      return data
+    }
+    return null
+  })
 })()
 
 const pathComponents = path.split('/')

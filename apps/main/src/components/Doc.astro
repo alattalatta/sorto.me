@@ -10,11 +10,13 @@ import DocPin from './DocPin'
 import DocsUnderPath from './DocsUnderPath.astro'
 import LiveExample from './LiveExample'
 import Spec from './Spec'
+import Baseline from './Baseline.astro'
 
 type MaybeArray<T> = T | T[]
 
 type Props = {
-  bcd: MaybeArray<{ data: Identifier; key: string } | null>
+  baseline: boolean
+  bcd: MaybeArray<{ data: Identifier; fullKey: string; key: string } | null>
   content: AstroComponentFactory
   description: string
   pinnable: boolean
@@ -22,21 +24,30 @@ type Props = {
   title: string
 }
 
-const { bcd, content: Content, description, pinnable, slug, title } = Astro.props
+const { baseline, bcd, content: Content, description, pinnable, slug, title } = Astro.props
 const slugAsID = slug.replaceAll('/', '-')
 ---
 
 {pinnable && <recent-doc description={description} title={title} />}
 <article aria-labelledby={slugAsID}>
   <header>
-    <h2 id={slugAsID}>
-      {title}
-    </h2>
+    <div class="header-top">
+      <h2 id={slugAsID}>
+        {title}
+      </h2>
+      {
+        pinnable && (
+          <span class="pin">
+            <DocPin client:load />
+          </span>
+        )
+      }
+    </div>
     {
-      pinnable && (
-        <span class="pin">
-          <DocPin client:load />
-        </span>
+      baseline && bcd && (
+        <div class="baseline">
+          <Baseline data={bcd} />
+        </div>
       )
     }
   </header>
@@ -58,13 +69,16 @@ const slugAsID = slug.replaceAll('/', '-')
 
 <style lang="scss">
   header {
-    align-items: flex-start;
-    display: flex;
-    padding: 2rem 3rem 1rem;
+    padding: 2rem 3rem;
 
     @media (max-width: 1088px) {
-      padding: 2rem 1rem 1rem;
+      padding: 2rem 1rem;
     }
+  }
+
+  .header-top {
+    align-items: flex-start;
+    display: flex;
   }
 
   h2 {
@@ -78,6 +92,10 @@ const slugAsID = slug.replaceAll('/', '-')
     display: inline-flex;
     height: 70px;
     margin-left: 8px;
+  }
+
+  .baseline {
+    margin-top: 1rem;
   }
 </style>
 

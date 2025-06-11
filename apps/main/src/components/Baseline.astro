@@ -1,0 +1,147 @@
+---
+import type { Identifier } from '@mdn/browser-compat-data'
+import { computeBaseline } from 'compute-baseline'
+
+import high from 'images/baseline-high.svg'
+import low from 'images/baseline-low.svg'
+import none from 'images/baseline-false.svg'
+import chevDown from 'images/chev-down.svg'
+
+type MaybeArray<T> = T | T[]
+
+type Props = {
+  data: MaybeArray<{ data: Identifier; fullKey: string; key: string } | null> | null
+}
+
+const { data } = Astro.props
+if (Array.isArray(data)) {
+  throw new Error('Baseline component does not support arrays of data')
+}
+
+const status = data ? computeBaseline({ checkAncestors: true, compatKeys: [data.fullKey] }) : null
+
+const baseline = status?.baseline
+const support = baseline || 'none'
+
+const intl = new Intl.DateTimeFormat('ko', {
+  year: 'numeric',
+  month: 'long',
+})
+---
+
+{
+  status ? (
+    <details class={support}>
+      <summary>
+        <img alt="" class="baseline" src={(baseline === 'high' ? high : baseline === 'low' ? low : none).src} />
+        {support !== 'none' && <strong>Baseline</strong>}
+        {support === 'low' && status.baseline_low_date && (
+          <span class="baseline-date">{status.baseline_low_date.slice(0, 4)}</span>
+        )}
+        <span>{support === 'high' ? '넓은 지원' : support === 'low' ? '최근 지원 시작 ' : '제한 지원'}</span>
+        <img alt="" class="chev" src={chevDown.src} />
+      </summary>
+      <div class="body">
+        <p>
+          {support === 'high' ? (
+            '모든 주요 브라우저가 지원하는 기능입니다.'
+          ) : support === 'low' ? (
+            <>
+              {status.baseline_low_date ? <b>{intl.format(new Date(status.baseline_low_date))}</b> : '최근'}부터 모든
+              주요 브라우저가 지원하는 기능입니다.
+            </>
+          ) : (
+            '일부 브라우저에서 사용할 수 없는 기능입니다.'
+          )}
+        </p>
+        <p class="links">
+          <a
+            class="external"
+            href="https://web-platform-dx.github.io/web-features/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {'Baseline이란?'}
+          </a>
+          <a href="#브라우저-호환성">{'전체 호환성 표 보기'}</a>
+        </p>
+      </div>
+    </details>
+  ) : null
+}
+
+<style lang="scss">
+  details {
+    background: rgb(from var(--color) r g b / 0.05);
+    border: 1px solid var(--color);
+  }
+
+  .high {
+    --color: #1ea446;
+  }
+  .low {
+    --color: #1b6ef3;
+  }
+  .none {
+    --color: #f09409;
+  }
+
+  summary {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    font-family: var(--display);
+    gap: 8px;
+    padding: 8px 16px;
+  }
+
+  .baseline {
+    width: 36px;
+    height: 36px;
+  }
+
+  .baseline-date {
+    background: var(--color);
+    color: #fff;
+    font-size: 0.9em;
+    padding: 0 0.25em;
+    padding-bottom: 0.125em;
+  }
+
+  .chev {
+    width: 16px;
+    height: 16px;
+    margin-left: auto;
+  }
+  details[open] .chev {
+    transform: rotate(180deg);
+  }
+
+  .body {
+    padding: 8px 16px 16px;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .links {
+    display: flex;
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  .external::after {
+    content: '⧉' / ' (새 탭에서 열기)';
+    display: inline-block;
+    font-size: 0.75em;
+    margin-right: 0.125em;
+    vertical-align: super;
+  }
+
+  @media (max-width: 512px) {
+    .links {
+      flex-direction: column;
+    }
+  }
+</style>

@@ -35,7 +35,7 @@
     "remark": "^15.0.1",
     "remark-directive": "^4.0.0",
     "sass": "^1.89.2",
-    "satori": "^0.13.1",
+    "satori": "^0.15.0",
     "sharp": "^0.34.2",
     "strip-markdown": "^6.0.0",
     "unist-util-select": "^5.1.0"

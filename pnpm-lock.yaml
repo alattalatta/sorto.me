@@ -157,8 +157,8 @@ importers:
         specifier: ^1.89.2
         version: 1.89.2
       satori:
-        specifier: ^0.13.1
-        version: 0.13.2
+        specifier: ^0.15.0
+        version: 0.15.2
       sharp:
         specifier: ^0.34.2
         version: 0.34.2
@@ -187,8 +187,8 @@ importers:
         specifier: ^4.0.0
         version: 4.0.0
       satori:
-        specifier: ^0.13.1
-        version: 0.13.2
+        specifier: ^0.15.0
+        version: 0.15.2
       unified:
         specifier: ^11.0.5
         version: 11.0.5
@@ -233,8 +233,8 @@ importers:
         specifier: ^1000.1.0
         version: 1000.1.0
       satori:
-        specifier: ^0.13.1
-        version: 0.13.2
+        specifier: ^0.15.0
+        version: 0.15.2
 
 packages:
 
@@ -3567,8 +3567,8 @@ packages:
     engines: {node: '>=14.0.0'}
     hasBin: true
 
-  satori@0.13.2:
-    resolution: {integrity: sha512-BPoExgKlkZPY1j4I2vSovo9OJALOw5siU37cm1aNcq/XWCojpFM3FHXHxby9tQ2R5ajV2fRQgouWoonQ83z+Hg==}
+  satori@0.15.2:
+    resolution: {integrity: sha512-vu/49vdc8MzV5jUchs3TIRDCOkOvMc1iJ11MrZvhg9tE4ziKIEIBjBZvies6a9sfM2vQ2gc3dXeu6rCK7AztHA==}
     engines: {node: '>=16'}
 
   sax@1.4.1:
@@ -8501,7 +8501,7 @@ snapshots:
     optionalDependencies:
       '@parcel/watcher': 2.5.1
 
-  satori@0.13.2:
+  satori@0.15.2:
     dependencies:
       '@shuding/opentype.js': 1.4.0-beta.0
       css-background-parser: 0.1.0

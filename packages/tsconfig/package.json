@@ -8,7 +8,6 @@
     "react-library.json"
   ],
   "dependencies": {
-    "@pnpm/find-workspace-dir": "^1000.1.0",
-    "satori": "^0.13.1"
+    "@pnpm/find-workspace-dir": "^1000.1.0"
   }
 }

@@ -28,7 +28,7 @@ const posts = [...(await getCollection('posts'))].reverse()
 ---
 
 <Shell
-  canonicalPath={`${props.id}`}
+  canonicalPath={`posts/${props.id}`}
   description={props.data.description}
   image={`${site}posts/${props.id}/og.png`}
   title={props.data.title}

@@ -15,7 +15,7 @@ type Props = {
 
 const { data } = Astro.props
 if (Array.isArray(data)) {
-  throw new Error('Baseline component does not support arrays of data')
+  return null
 }
 
 const status = data ? computeBaseline({ checkAncestors: true, compatKeys: [data.fullKey] }) : null

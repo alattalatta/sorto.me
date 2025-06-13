@@ -1,0 +1,114 @@
+---
+title: 'CSS background-color: 배경 색'
+titleShort: 'background-color'
+bcd: css.properties.background-color
+---
+
+CSS **`background-color`** 속성은 요소의 배경 색을 설정합니다.
+
+```css hidden name=demo
+#target {
+  background-color: maroon;
+  /* background-color: #3d3; */
+  /* background-color: rgb(114 120 250); */
+  /* background-color: hsla(30 100% 50% / 0.6); */
+}
+```
+
+```css hidden editable=false name=demo filename=style
+#target {
+  width: 100px;
+  height: 100px;
+}
+```
+
+```html hidden editable=false name=demo
+<div id="target"></div>
+```
+
+<LiveExample height={120} lang="css" name="demo" />
+
+# 구문
+
+```css
+selector {
+  /* <named-color> 값 */
+  background-color: red;
+  background-color: orange;
+  background-color: tan;
+  background-color: rebeccapurple;
+
+  /* <hex-color> 값 */
+  background-color: #090;
+  background-color: #009900;
+  background-color: #090a;
+  background-color: #009900aa;
+
+  /* <rgb()>, 구형 <rgba()> 값 */
+  background-color: rgb(34, 12, 64);
+  background-color: rgb(34, 12, 64, 0.6);
+  background-color: rgba(34, 12, 64, 0.6);
+  background-color: rgb(34 12 64 / 0.6);
+  background-color: rgba(34 12 64 / 0.6);
+  background-color: rgb(34.6 12 64 / 60%);
+  background-color: rgba(34.6 12 64 / 60%);
+
+  /* <hsl()>, 구형 <hsla()> 값 */
+  background-color: hsl(30, 100%, 50%);
+  background-color: hsl(30, 100%, 50%, 0.6);
+  background-color: hsla(30, 100%, 50%, 0.6);
+  background-color: hsl(30 100% 50% / 0.6);
+  background-color: hsla(30 100% 50% / 0.6);
+  background-color: hsl(30.2 100% 50% / 60%);
+  background-color: hsla(30.2 100% 50% / 60%);
+
+  /* <hwb()> 값 */
+  background-color: hwb(90 10% 10%);
+  background-color: hwb(90 10% 10% / 0.5);
+  background-color: hwb(90deg 10% 10%);
+  background-color: hwb(1.5708rad 60% 0%);
+  background-color: hwb(0.25turn 0% 40% / 50%);
+
+  /* 키워드 값 */
+  background-color: currentcolor;
+  background-color: transparent;
+
+  /* 전역 값 */
+  background-color: inherit;
+  background-color: initial;
+  background-color: revert;
+  background-color: revert-layer;
+  background-color: unset;
+}
+```
+
+`background-color` 속성에는 한 개의 [`<color>`] 값을 사용합니다.
+
+## 값
+
+- : [`<color>`]
+  - 요소의 배경 색을 설정합니다. 배경 색은 [`background-image`]의 뒤에 그려지므로 이미지 배경 설정 시 가려지지만, 배경 이미지의 투명한 부분을 통해 노출될 수 있습니다.
+
+# 접근성
+
+글씨 색과 그 뒤 배경의 대비를 충분히 높게 유지해야 저시력 사용자들이 페이지 콘텐츠를 읽을 수 있습니다.
+
+[Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/standards-guidelines/wcag/)를 만족하려면 본문 글씨는 4.5:1, 제목 등 큰 글씨는 3:1의 대비가 필요합니다. 글씨와 배경의 대비란 두 색의 휘도(_luminosity_)를 비교한 값입니다. 큰 글씨란 18.66px 이상의 [굵은](./font-weight) 텍스트, 또는 24px 이상의 글씨를 말합니다.
+
+- [WebAIM: Color Contrast Checker](https://webaim.org/resources/contrastchecker/)
+- [Understanding Success Criterion 1.4.3 | W3C Understanding WCAG 2.0](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html)
+
+# 명세
+
+- [CSS Backgrounds and Borders Module Level 3](https://drafts.csswg.org/css-backgrounds/#background-color)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- [`<color>`] 자료형
+
+[`<color>`]: ./color_value
+[`background-image`]: https://developer.mozilla.org/en-US/docs/Web/CSS/background-image

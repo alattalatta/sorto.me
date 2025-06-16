@@ -1,0 +1,110 @@
+---
+title: 'CSS border-width: 테두리 두께 단축 속성'
+titleShort: 'border-width'
+bcd: css.properties.border-width
+---
+
+CSS **`border-width`** 단축 속성은 요소의 네 방향 테두리 두께를 설정합니다.
+
+```css hidden name=demo filename=style
+#target {
+  background: lightblue;
+  border: 1px solid;
+  border-color: red;
+  height: 100px;
+  width: 200px;
+}
+```
+
+```css hidden name=demo
+#target {
+  border-width: 4px;
+  /* border-width: 1em; */
+  /* border-width: 4px 0; */
+  /* border-width: 0 4px; */
+  /* border-width: 1ch 0 3px; */
+  /* border-width: 1ex 3px 1em 0.5em; */
+  /* border-width: thick thick thin thin; */
+}
+```
+
+```html hidden name=demo
+<div id="target"></div>
+```
+
+<LiveExample height={180} lang="css" name="demo" />
+
+# 구성 속성
+
+- [`border-bottom-width`]
+- [`border-left-width`]
+- [`border-right-width`]
+- [`border-top-width`]
+
+# 구문
+
+```css
+selector {
+  /* 키워드 값 */
+  border-width: thin;
+  border-width: medium;
+  border-width: thick;
+
+  /* <length> 값 */
+  border-width: 4px;
+  border-width: 1.2rem;
+
+  /* 위 아래 | 왼쪽 오른쪽 */
+  border-width: 2px 1.5em;
+
+  /* 위 | 왼쪽 오른쪽 | 아래 */
+  border-width: 1px 2em 1.5cm;
+
+  /* 위 | 오른쪽 | 아래 | 왼쪽 */
+  border-width: 1px 2em 0 4rem;
+
+  /* 전역 값 */
+  border-width: inherit;
+  border-width: initial;
+  border-width: revert;
+  border-width: revert-layer;
+  border-width: unset;
+}
+```
+
+`margin` 속성에는 한 개에서 네 개까지의 값을 사용합니다. 각각의 값은 [`<length>`] 또는 두께를 나타내는 키워드입니다.
+
+- 값을 **한 개** 지정하면 네 방향 테두리 모두에 적용됩니다.
+- 값을 **두 개** 지정하면 첫 번째 값은 위와 아래, 두 번째 값은 왼쪽과 오른쪽 테두리에 적용됩니다.
+- 값을 **세 개** 지정하면 첫 번째 값은 위, 두 번째 값은 왼쪽과 오른쪽, 세 번째 값은 아래 테두리에 적용됩니다.
+- 값을 **네 개** 지정하면 각각 위, 오른쪽, 아래, 왼쪽 테두리에 적용됩니다. (시계 방향)
+
+## 값
+
+- : `<line-width>`
+
+  - 0 이상의 [`<length>`], 또는 테두리의 두께를 나타내는 키워드 값 중 하나입니다. 키워드 값은 다음 중 하나여야 합니다.
+
+    - `thin`
+    - `medium`
+    - `thick`
+
+    > [note] CSS 명세가 키워드에 대응하는 두께를 정의하진 않았으므로 구현체마다 정확한 값은 다를 수 있습니다. 그러나 항상 `thin ≤ medium ≤ thick` 순서로 두께가 증가하며, 단일 문서 내에서는 값이 일정합니다.
+
+# 명세
+
+- [CSS Backgrounds and Borders Module Level 3](https://drafts.csswg.org/css-backgrounds/#the-border-width)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 방향별 두께: [`border-top-width`], [`border-right-width`], [`border-bottom-width`], [`border-left-width`]
+
+[`<length>`]: ./length
+[`border-bottom-width`]: ./border-bottom-width
+[`border-left-width`]: ./border-left-width
+[`border-right-width`]: ./border-right-width
+[`border-top-width`]: ./border-top-width

@@ -1,0 +1,124 @@
+---
+title: 'CSS border-left-width: 왼쪽 테두리 두께'
+titleShort: 'border-left-width'
+bcd: css.properties.border-left-width
+---
+
+CSS **`border-left-width`** 속성은 요소의 왼쪽 테두리 두께를 설정합니다.
+
+```css hidden name=demo filename=style
+#target {
+  background: lightblue;
+  border: 1px dashed #0006;
+  border-left-color: red;
+  border-left-style: solid;
+  height: 100px;
+  width: 200px;
+}
+```
+
+```css hidden name=demo
+#target {
+  border-left-width: 4px;
+  /* border-left-width: 0.5em;   */
+  /* border-left-width: thick; */
+  /* border-left-width: 0; */
+}
+```
+
+```html hidden name=demo
+<div id="target"></div>
+```
+
+<LiveExample height={180} lang="css" name="demo" />
+
+# 구문
+
+```css
+selector {
+  /* <length> 값 */
+  border-left-width: 10em;
+  border-left-width: 3vmax;
+  border-left-width: 6px;
+
+  /* 키워드 값 */
+  border-left-width: thin;
+  border-left-width: medium;
+  border-left-width: thick;
+
+  /* 전역 값 */
+  border-left-width: inherit;
+  border-left-width: initial;
+  border-left-width: revert;
+  border-left-width: revert-layer;
+  border-left-width: unset;
+}
+```
+
+`border-left-width` 속성에는 한 개의 키워드 또는 [`<length>`] 값을 사용합니다.
+
+## 값
+
+- : `<line-width>`
+
+  - 0 이상의 [`<length>`], 또는 테두리의 두께를 나타내는 키워드 값 중 하나입니다. 키워드 값은 다음 중 하나여야 합니다.
+
+    - `thin`
+    - `medium`
+    - `thick`
+
+    > [note] CSS 명세가 키워드에 대응하는 두께를 정의하진 않았으므로 구현체마다 정확한 값은 다를 수 있습니다. 그러나 항상 `thin ≤ medium ≤ thick` 순서로 두께가 증가하며, 단일 문서 내에서는 값이 일정합니다.
+
+# 예제
+
+## 키워드 두께 비교하기
+
+```css hidden name=keywords
+.thin {
+  border-left-width: thin;
+}
+.medium {
+  border-left-width: medium;
+}
+.thick {
+  border-left-width: thick;
+}
+```
+
+```css hidden name=keywords filename=style
+.thin, .medium, .thick {
+  border-left-color: red;
+  border-left-style: solid;
+  height: 30px;
+  margin-bottom: 8px;
+  text-align: center;
+  width: 200px;
+}
+```
+
+```html hidden name=keywords
+<div class="thin">thin</div>
+<div class="medium">medium</div>
+<div class="thick">thick</div>
+```
+
+<LiveExample height={200} lang="css" name="keywords" />
+
+# 명세
+
+- [CSS Backgrounds and Borders Module Level 3](https://drafts.csswg.org/css-backgrounds/#the-border-width)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 다른 방향: [`border-top-width`], [`border-right-width`], [`border-bottom-width`]
+- 네 방향 단축 속성: [`border-width`]
+
+[`<length>`]: ./length
+[`border-bottom-width`]: ./border-bottom-width
+[`border-right-width`]: ./border-right-width
+[`border-top-width`]: ./border-top-width
+[`border-width`]: ./border-width

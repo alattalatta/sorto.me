@@ -6,7 +6,7 @@ bcd: css.types.length
 
 CSS **`<length>`** 자료형은 길이를 나타내며, [`width`], [`height`], [`margin`], [`padding`], [`inset`], [`font-size`] 등 다양한 속성의 값으로 사용합니다.
 
-> [note] 일부 CSS 속성에서는 `<length>`를 받을 수 있는 곳에 [`<percentage>`](./percentage)도 사용할 수 있지만, `<percentage>`는 `<length>`와 다른 별도의 자료형입니다. [`<length-percentage>`](https://developer.mozilla.org/en-US/docs/Web/CSS/length-percentage)를 참고하세요.
+> [note] 일부 CSS 속성에서는 `<length>`를 받을 수 있는 곳에 [`<percentage>`]도 사용할 수 있지만, `<percentage>`는 `<length>`와 다른 별도의 자료형입니다. [`<length-percentage>`]를 참고하세요.
 
 # 구문
 
@@ -129,7 +129,11 @@ CSS **`<length>`** 자료형은 길이를 나타내며, [`width`], [`height`], [
 
 ## 컨테이너 쿼리 길이 단위
 
-컨테이너 쿼리를 통해 컨테이너에 스타일을 적용할 땐 컨테이너 쿼리 길이 단위를 사용할 수 있습니다. 이 단위들은 쿼리 컨테이너의 크기에 대한 상대적인 값으로 길이를 정의합니다. 컨테이너 쿼리 길이 단위를 사용한 컴포넌트들은 컨테이너를 바꿔도 스스로의 스타일에 적용할 정확한 길이를 계산하지 않아도 되므로 배치가 유연해집니다. [컨테이너 쿼리](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries)에서 자세히 알아보세요.
+컨테이너 쿼리를 통해 컨테이너에 스타일을 적용할 땐 컨테이너 쿼리 길이 단위를 사용할 수 있습니다. 이 단위들은 쿼리 컨테이너의 크기에 대한 상대적인 값으로 길이를 정의합니다. 컨테이너 쿼리 길이 단위를 사용한 컴포넌트들은 컨테이너를 바꿔도 스스로의 스타일에 적용할 정확한 길이를 계산하지 않아도 되므로 배치가 유연해집니다.
+
+컨테이너 쿼리에 사용 가능한 컨테이너가 없을 때는 [소형 뷰포트 크기](#뷰포트-상대-길이-단위)와 같습니다.
+
+[컨테이너 쿼리](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries)에서 자세히 알아보세요.
 
 - : `cqw`
   - 쿼리 컨테이너 너비의 백분율입니다. `1cqw`는 컨테이너 너비의 1%와 같습니다. 예를 들어, 쿼리 컨테이너 너비가 `800px`이라면 `50cqw`는 `400px`과 같습니다.
@@ -182,6 +186,8 @@ CSS **`<length>`** 자료형은 길이를 나타내며, [`width`], [`height`], [
 <BrowserCompat data={props.bcd} />
 
 [`<easing-function>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function
+[`<length-percentage>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/length-percentage
+[`<percentage>`]: ./percentage
 [`font-size`]: ./font-size
 [`height`]: https://developer.mozilla.org/en-US/docs/Web/CSS/height
 [`inset`]: ./inset

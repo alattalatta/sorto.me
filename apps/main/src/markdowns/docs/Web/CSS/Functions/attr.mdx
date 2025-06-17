@@ -1,0 +1,258 @@
+---
+title: 'CSS attr(): 특성 값 가져오기'
+titleShort: 'attr()'
+bcd: css.types.attr
+---
+
+CSS **`attr()`** 함수는 선택된 요소의 특성 값을 가져와서 CSS 속성의 값으로 사용할 때 사용하는 함수입니다. [`var()`](./var) 함수로 사용자 지정 속성의 값을 대입하는 것과 비슷합니다.
+
+`attr()`을 의사 요소에 사용하면 원래 요소의 특성 값을 반환합니다.
+
+```css hidden name=demo
+blockquote::after {
+  color: slategray;
+  content: "출처: " attr(cite);
+  display: block;
+  font-size: 0.8em;
+  margin-top: 0.5em;
+}
+```
+
+```html hidden name=demo
+<blockquote cite="https://sorto.me/docs/Web/CSS">
+  Cascading Style Sheets (CSS)는 HTML과 XML (SVG, MathML, XHTML 등 방언 포함) 문서의 외형을 기술하는 스타일시트 언어입니다. CSS는 요소가 화면에, 종이에, 소리로서, 또는 기타 다른 매체에서 어떻게 나타나야 하는지 설명합니다.
+</blockquote>
+
+<blockquote cite="https://sorto.me/docs/Web/HTML">
+  HyperText Markup Language (HTML)은 웹의 가장 기본적인 구성 블록으로, 웹 콘텐츠의 의미와 구조를 정의합니다. HTML 외의 다른 기술은 대개 웹 페이지의 외형(CSS)이나 기능과 동작(JavaScript)을 기술할 때 사용합니다.
+</blockquote>
+```
+
+<LiveExample height={280} lang="css" name="demo" />
+
+# 구문
+
+```css
+/* 기본 사용법 */
+attr(data-count)
+attr(href)
+
+/* 자료형 명시 */
+attr(data-width px)
+attr(data-size rem)
+attr(data-name raw-string)
+attr(id type(<custom-ident>))
+attr(data-count type(<number>))
+attr(data-size type(<length> | <percentage>))
+
+/* 예비 값 제공 */
+attr(data-count type(<number>), 0)
+attr(data-width px, inherit)
+attr(data-something, "default")
+```
+
+`attr()` 함수의 구문은 다음과 같습니다.
+
+```
+attr(<attr-name> <attr-type>? , <fallback-value>?)
+```
+
+## 매개변수
+
+- : `<attr-name>`
+  - 선택한 요소에서 값을 가져올 특성의 이름입니다.
+- : `<attr-type>`
+
+  - 특성의 값을 어떤 CSS 자료형으로 해석할지 지정합니다. `raw-string`, `type()` 함수, CSS 크기 단위 (`<attr-unit>` 식별자 사용) 중 하나를 사용할 수 있습니다. 생략하면 `raw-string`과 같습니다.
+
+    - `raw-string`은 특성의 값을 그대로 CSS 문자열로 취급하며 CSS 이스케이프, 공백 제거, 주석 제거 등의 별도 처리를 하지 않습니다. `<fallback-value>`는 특성 자체가 존재하지 않을 때만 사용되며, 특성에 빈 값을 지정한 경우에는 사용되지 않습니다.
+
+      ```css
+      attr(data-name raw-string, "김아무개")
+      ```
+
+    - `type()` 함수는 한 개의 `<syntax>`를 매개변수로 받습니다. `<syntax>`는 특성 값을 해석할 [CSS 자료형](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Values_and_Units/CSS_data_types)으로, [`<angle>`], [`<color>`], [`<custom-ident>`], [`<image>`], [`<integer>`], [`<length>`], [`<length-percentage>`], [`<number>`], [`<percentage>`], [`<resolution>`], [`<string>`], [`<time>`], [`<transform-function>`] 중 하나[^1], 또는 여럿의 조합을 사용할 수 있습니다.
+
+      [^1]: 보안 상의 이유로 [`<url>`]은 `attr()`에 사용할 수 없습니다.
+
+      ```css
+      attr(id type(<custom-ident>), none)
+      attr(data-count type(<number>), 0)
+      ```
+
+      여러 타입을 받을 수 있어야 하면 `|`로 구분하여 여러 자료형을 지정하세요.
+
+      ```css
+      attr(data-size type(<length> | <percentage>), 0px)
+      ```
+
+      모든 자료형을 받을 수 있어야 하면 `*`을 사용하세요. `raw-string`과는 달리 CSS 값 분석은 실행하지만 추가 제약조건은 두지 않고, 분석 결과를 `<string>` 값으로서가 아니라 토큰 그대로 반환합니다.
+
+      ```css
+      attr(data-content type(*))
+      ```
+
+    - `<attr-unit>` 식별자는 숫자형 값이 나타내는 단위를 지정합니다. [`%`][`<percentage>`] 또는 `px`, `rem`, `deg` 등 [길이 단위](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Values_and_Units/Numeric_data_types#distance_units)를 사용할 수 있습니다.
+
+      ```css
+      attr(data-width px)
+      attr(data-size rem, inherit)
+      ```
+
+- : `<fallback-value>`
+  - 특성이 존재하지 않거나, `<attr-type>`에 맞지 않는 값인 경우 대신 사용할 예비 값입니다.
+
+## 반환 값
+
+`<attr-name>`과 같은 이름을 가진 특성의 값을 CSS 문자열, 또는 `<attr-type>`으로 해석한 값입니다.
+
+`<attr-type>`을 지정한 경우, `attr()`은 특성의 값을 `<attr-type>`으로 해석하려 시도합니다. 만약 값이 유효한 `<attr-type>`이 아니라면 `<fallback-value>`를 대신 반환합니다. `<attr-type>`을 지정하지 않았으면 CSS 문자열로서 특성 값을 그대로 반환합니다.
+
+`<fallback-value>`를 지정하지 않은 경우, `<attr-type>`이 없으면 빈 문자열, `<attr-type>`이 있으면 [`guaranteed-invalid`] 값을 반환합니다.
+
+# 설명
+
+## 기능 감지
+
+[`@supports`] @규칙을 사용해 `<attr-type>`을 포함한 최근 구문을 지원하는 환경인지 확인할 수 있습니다. 사용자 지정 속성을 제외한 CSS 속성에 `attr()`을 사용한 값을 할당하는 걸 테스트하세요.
+
+```css
+@supports (x: attr(x type(*))) {
+  /* 최근 attr() 구문 지원 환경 */
+}
+
+@supports not (x: attr(x type(*))) {
+  /* 최근 attr() 구문 미지원 환경 */
+}
+```
+
+JavaScript에서는 [`CSS.supports()`](https://developer.mozilla.org/en-US/docs/Web/API/CSS/supports_static) 함수를 사용해 기능 감지를 할 수 있습니다.
+
+```js
+if (CSS.supports("x: attr(x type(*))")) {
+  /* 최근 attr() 구문 지원 환경 */
+}
+
+if (!CSS.supports("x: attr(x type(*))")) {
+  /* 최근 attr() 구문 미지원 환경 */
+}
+```
+
+# 예제
+
+## 예비 값 지정하기
+
+이 예제에서는 [`<p>` 요소](/docs/Web/HTML/Element/p)의 끝에 `data-browser` 특성의 값을 덧붙입니다. 만약 `data-browser` 특성이 없으면 "(알 수 없음)"을 대신 덧붙입니다.
+
+```css hidden name=fallback
+p::after {
+  color: tomato;
+  content: " " attr(data-browser, "(알 수 없음)");
+}
+```
+
+```html hidden name=fallback
+<p data-browser="Firefox">제가 좋아하는 브라우저는:</p>
+<p>여러분이 좋아하시는 브라우저는:</p>
+```
+
+<LiveExample height={180} lang="html" name="fallback" />
+
+## 색상 가져오기
+
+이 예제에서는 [`background-color`] 속성에 `data-bg` 특성의 값을 사용합니다. 만약 `data-bg` 특성이 없거나, 색상으로서 유효하지 않은 값이면 `red`로 대체합니다.
+
+```css hidden name=color
+.box {
+  background-color: attr(data-bg type(<color>), red);
+}
+.box::before {
+  content: attr(data-bg);
+  color: white;
+}
+```
+
+```css hidden name=color filename=style
+.box {
+  height: 100px;
+  width: 100px;
+}
+
+.flex {
+  display: flex;
+  gap: 1em;
+}
+```
+
+```html hidden name=color
+<div class="flex">
+  <div class="box" data-bg="blue"></div>
+  <div class="box" data-bg="green"></div>
+  <div class="box" data-bg="30px"></div>
+</div>
+```
+
+<LiveExample height={180} lang="html" name="color" />
+
+## 길이 가져오기
+
+이 예제에서는 `data-rot` 특성의 값을 `deg`로 해석해 변형에 적용합니다.
+
+```css hidden name=length
+.box {
+  transform: rotate(attr(data-rot deg, 0deg));
+}
+.box::before {
+  content: attr(data-rot);
+}
+```
+
+```css hidden name=length filename=style
+.box {
+  border: 1px solid black;
+  height: 100px;
+  width: 100px;
+}
+
+.flex {
+  display: flex;
+  gap: 1em;
+}
+```
+
+```html hidden name=length
+<div class="flex">
+  <div class="box" data-rot="3"></div>
+  <div class="box" data-rot="-5"></div>
+  <div class="box" data-rot="10"></div>
+</div>
+```
+
+<LiveExample height={180} lang="html" name="length" />
+
+# 명세
+
+[CSS Values and Units Module Level 5](https://drafts.csswg.org/css-values-5/#attr-notation)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+[`@supports`]: https://developer.mozilla.org/en-US/docs/Web/CSS/@supports
+[`<angle>`]: ../angle
+[`<color>`]: ../color
+[`<custom-ident>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/custom-ident
+[`<image>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/image
+[`<integer>`]: ../integer
+[`<length>`]: ../length
+[`<length-percentage>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/length-percentage
+[`<number>`]: ../number
+[`<percentage>`]: ../percentage
+[`<resolution>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/resolution
+[`<string>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/string
+[`<time>`]: ../time
+[`<transform-function>`]: ../transform-function
+[`<url>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/url
+[`background-color`]: ../background-color
+[`CSS.supports()`]: https://developer.mozilla.org/en-US/docs/Web/API/CSS/supports_static
+[`guaranteed-invalid`]: https://developer.mozilla.org/en-US/docs/Glossary/guaranteed_invalid_value

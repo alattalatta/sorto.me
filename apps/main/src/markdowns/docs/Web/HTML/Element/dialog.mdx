@@ -56,8 +56,6 @@ document.getElementById('dialog-closer').addEventListener('click', function() {
 
 [전역 특성](/docs/Web/HTML/Global_attributes)을 포함합니다.
 
-> [warn] `<dialog>`에 [`tabindex`](../Global_attributes#term-tabindex)를 사용하면 안됩니다. [사용 일람](#사용-일람)을 참고하세요.
-
 - : `closedby` <Experimental />
 
   - `<dialog>`를 닫을 수 있는 사용자 행동 유형을 지정합니다. 사용자 행동 유형에는 세 종류가 있습니다.
@@ -88,7 +86,6 @@ document.getElementById('dialog-closer').addEventListener('click', function() {
 - [`<form>`] 요소에 [`method="dialog"` 특성](./form#term-method)을 지정했거나, 양식 제출 버튼에 [`formmethod="dialog"` 특성](./form#term-formmethod)을 지정한 경우, 사용자가 양식을 제출할 때 대화상자가 닫힙니다. 이때 [대화상자 DOM 객체의 `returnValue` 속성](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/returnValue) 값은 양식을 제출할 때 사용한 [`<button>`]의 [`value` 특성](./button#term-value) 값으로 설정됩니다.
 - [`showModal()`]로 열린 모달 대화상자의 뒤쪽 배경("백드롭")에는 CSS [`::backdrop`](https://developer.mozilla.org/en-US/docs/Web/CSS/::backdrop) 의사 요소로 스타일을 적용할 수 있습니다. 어둡게, 흐리게, 또는 기타 다른 방법으로 배경과 상호작용 불가능함을 나타낼 때 유용합니다.
 - [`autofocus` 특성](../Global_attributes/autofocus)은 대화상자가 열린 후 사용자가 처음으로 상호작용해야 하는 요소에 추가해야 합니다. 그런 요소가 없다면 대화상자의 닫기 버튼에 부여하는 걸 권장합니다.
-- `<dialog>` 요소 자체는 상호작용 가능하지 않고 포커스도 받지 않으므로 [`tabindex`](../Global_attributes/tabindex) 특성을 지정하면 안됩니다. 상호작용 가능하고 포커스도 받을 수 있는 건 대화상자 자체가 아니라 그 안의 닫기 버튼 등 콘텐츠입니다.
 
 # 접근성
 

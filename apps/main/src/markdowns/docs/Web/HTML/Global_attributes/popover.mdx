@@ -6,16 +6,22 @@ bcd: html.global_attributes.popover
 
 HTML **`popover`** [전역 특성](../Global_attributes)은 요소를 팝오버 요소로 지정합니다.
 
-팝오버 요소는 제어 요소와의 상호작용 ([`popovertarget`] 특성을 추가한 [`<button>`]과 [`<input type="button">`]) 또는 [`HTMLElement.showPopover()`] 호출에 의해 열리기 전까진 `display: none`으로 숨겨집니다.
+# 값
 
-열린 팝오버 요소는 다른 요소들보다 상위 레이어에 나타나며, 부모 요소의 [`position`]이나 [`overflow`] 스타일에 영향을 받지 않습니다.
-
-가능한 값은 다음과 같습니다.
+`popover` 특성에는 다음 값 중 하나를 사용합니다.
 
 - : `auto` 또는 빈 문자열
-  - 사용자가 팝오버 요소 밖과 상호작용 시 자동으로 닫히며, 일반적으로 한 번에 하나의 팝오버만 화면에 나타날 수 있습니다.
+  - 사용자가 팝오버 요소 밖과 상호작용하거나 <kbd>Esc</kbd> 키를 누르면 자동으로 닫히며, 열릴 때 다른 `auto` 팝오버들을 닫습니다. 단, 부모가 `auto` 팝오버라면 부모는 닫지 않습니다.
+- : `hint`
+  - 열릴 때 `auto` 팝오버는 닫지 않지만, 다른 `hint` 팝오버는 닫습니다. '가볍게' 닫을 수 있고, <kbd>Esc</kbd> 등 닫기 요청에 반응합니다.
 - : `manual`
-  - 팝오버 요소를 항상 직접 닫아야 합니다. 팝오버가 열려있을 때 제어 요소를 다시 클릭하거나, [`HTMLElement.hidePopover()`]를 호출하면 닫힙니다. `auto`와 달리 여러 팝오버를 한번에 표시할 수 있습니다.
+  - 팝오버 요소가 '가볍게' 닫히지 않으므로 사용자가 직접 닫아야 합니다. 열거나 닫으려면 JavaScript를 사용하거나, 명시적인 보이기/숨기기/토글 명령 버튼을 사용해야 합니다. 동시에 여러 `manual` 팝오버를 열 수 있습니다.
+
+# 설명
+
+팝오버 요소는 호출/제어 요소([`popovertarget`] 특성을 추가한 [`<button>`] 또는 [`<input type="button">`])와의 상호작용, 또는 [`HTMLElement.showPopover()`] 호출에 의해 열리기 전까진 `display: none`으로 숨겨집니다.
+
+열린 팝오버 요소는 [최상위 레이어](https://developer.mozilla.org/en-US/docs/Glossary/Top_layer)에 나타나며, 부모 요소의 [`position`]이나 [`overflow`] 스타일에 영향을 받지 않습니다.
 
 더 자세한 정보는 [Popover API 랜딩 페이지](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API)를 참고하세요.
 

@@ -23,7 +23,7 @@
     color: gray;
   }
 
-  &:hover::after {
+  &:hover::before {
     background: rgb(211, 240, 255);
   }
 
@@ -31,7 +31,7 @@
     box-shadow: inset 0 -5px 0 -1px var(--primary);
   }
 
-  &[data-hasdetail='true']::before {
+  &[data-hasdetail='true']::after {
     border: 8px solid rgb(246, 175, 52);
     border-right-color: #fff;
     border-bottom-color: #fff;

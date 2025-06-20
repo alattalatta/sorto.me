@@ -11,6 +11,7 @@ type Props = {
 }
 
 const CompatTable: React.FC<Props> = ({ bcd, desktopBrowsers, mobileBrowsers, ...props }) => {
+  console.log(bcd)
   return (
     <table {...props}>
       <caption style={{ textAlign: 'left' }}>
@@ -21,15 +22,15 @@ const CompatTable: React.FC<Props> = ({ bcd, desktopBrowsers, mobileBrowsers, ..
       </caption>
       <thead>
         <tr>
-          <th rowSpan={3} />
+          <th rowSpan={desktopBrowsers.length} />
           <th className="sep" colSpan={3} rowSpan={2}>
             데스크톱
           </th>
-          <th colSpan={4}>모바일</th>
+          <th colSpan={mobileBrowsers.length}>모바일</th>
         </tr>
         <tr>
-          <th>iOS</th>
-          <th colSpan={3}>Android</th>
+          <th colSpan={2}>iOS</th>
+          <th colSpan={4}>Android</th>
         </tr>
         <tr>
           {desktopBrowsers.map(([key, name], index) => (

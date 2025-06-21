@@ -11,7 +11,6 @@ type Props = {
 }
 
 const CompatTable: React.FC<Props> = ({ bcd, desktopBrowsers, mobileBrowsers, ...props }) => {
-  console.log(bcd)
   return (
     <table {...props}>
       <caption style={{ textAlign: 'left' }}>

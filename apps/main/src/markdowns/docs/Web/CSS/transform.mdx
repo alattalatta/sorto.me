@@ -5,7 +5,7 @@ bcd: css.properties.transform
 description: 'CSS transform 속성은 요소를 회전하거나, 크기를 조절하거나, 기울이거나, 이동합니다.'
 ---
 
-CSS **`transform`** 속성은 요소를 회전하거나, 크기를 조절하거나, 기울이거나, 이동합니다. 기술적으로 표현하면, `transform` 속성은 요소 [시각적 서식 모델][]의 좌표 공간을 변형합니다.
+CSS **`transform`** 속성은 요소를 회전하거나, 크기를 조절하거나, 기울이거나, 이동합니다. 기술적으로 표현하면, `transform` 속성은 요소 [시각적 서식 모델]의 좌표 공간을 변형합니다.
 
 ```html hidden editable=false name=demo
 <div class="square"></div>
@@ -30,9 +30,9 @@ CSS **`transform`** 속성은 요소를 회전하거나, 크기를 조절하거�
 
 <LiveExample height={240} lang="css" name="demo" />
 
-`transform`의 값이 [`none`](#term-none)이 아니라면 새로운 [쌓임 맥락][]을 생성합니다. 따라서 [`position`]이 `fixed`와 `absolute`인 요소의 [컨테이닝 블록][]으로서 동작합니다.
+`transform`의 값이 [`none`](#term-none)이 아니라면 새로운 [쌓임 맥락]을 생성합니다. 따라서 [`position`]이 `fixed`와 `absolute`인 요소의 [컨테이닝 블록]으로서 동작합니다.
 
-> [warn] 변형 가능한 요소에만 `transform`을 사용할 수 있습니다. 변형 가능한 요소란 CSS 박스 모델이 레이아웃을 결정하는 모든 요소들 중, [비대체 인라인 요소][], [표 열 박스](/docs/Web/HTML/Element/col), [표 열 그룹 박스](/docs/Web/HTML/Element/colgroup)를 제외한 것입니다.
+> [warn] 변형 가능한 요소에만 `transform`을 사용할 수 있습니다. 변형 가능한 요소란 CSS 박스 모델이 레이아웃을 결정하는 모든 요소들 중, [비대체 인라인 요소], [표 열 박스](/docs/Web/HTML/Element/col), [표 열 그룹 박스](/docs/Web/HTML/Element/colgroup)를 제외한 것입니다.
 
 # 구문
 
@@ -260,9 +260,9 @@ transform: unset;
 
 <BrowserCompat data={props.bcd} />
 
+[`<transform-function>`]: ./transform-function
 [`position`]: https://developer.mozilla.org/en-US/docs/Web/CSS/position
 [`prefers-reduced-motion`]: https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion
-[`<transform-function>`]: ./transform-function
 [비대체 인라인 요소]: https://developer.mozilla.org/en-US/docs/Glossary/Inline-level_content
 [시각적 서식 모델]: https://developer.mozilla.org/en-US/docs/Web/CSS/Visual_formatting_model
 [쌓임 맥락]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_positioned_layout/Understanding_z-index/Stacking_context

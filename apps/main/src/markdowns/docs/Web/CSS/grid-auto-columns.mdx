@@ -1,17 +1,17 @@
 ---
-title: 'CSS grid-auto-rows: 그리드 자동 생성 행 크기 설정'
-titleShort: 'grid-auto-rows'
-bcd: css.properties.grid-auto-rows
+title: 'CSS grid-auto-columns: 그리드 자동 생성 열 크기 설정'
+titleShort: 'grid-auto-columns'
+bcd: css.properties.grid-auto-columns
 ---
 
-CSS **`grid-auto-rows`** 속성은 암시적으로 생성된 [그리드 행](https://developer.mozilla.org/en-US/docs/Glossary/Grid_Row) 또는 행 패턴의 크기를 설정합니다.
+CSS **`grid-auto-columns`** 속성은 암시적으로 생성된 [그리드 열](https://developer.mozilla.org/en-US/docs/Glossary/Grid_Column) 또는 열 패턴의 크기를 설정합니다.
 
 ```css hidden name=demo
 .grid {
-  grid-auto-rows: auto;
-  /* grid-auto-rows: min-content; */
-  /* grid-auto-rows: 30px; */
-  /* grid-auto-rows: 40px 10px; */
+  grid-auto-columns: auto;
+  /* grid-auto-columns: min-content; */
+  /* grid-auto-columns: 50px; */
+  /* grid-auto-columns: 50px 100px; */
 }
 ```
 
@@ -21,8 +21,7 @@ CSS **`grid-auto-rows`** 속성은 암시적으로 생성된 [그리드 행](htt
   border: 1px solid #ccc;
   color: #fff;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 30px 50px;
+  grid-auto-rows: 30px;
   gap: 8px;
   padding: 8px;
 }
@@ -39,6 +38,7 @@ CSS **`grid-auto-rows`** 속성은 암시적으로 생성된 [그리드 행](htt
 .item:nth-child(1) {
   background: #24c0a5;
   color: #fff;
+  grid-column: 1 / span 2;
 }
 .item:nth-child(2) {
   background: #0043ff;
@@ -72,63 +72,63 @@ CSS **`grid-auto-rows`** 속성은 암시적으로 생성된 [그리드 행](htt
 
 <LiveExample height={300} lang="css" name="demo" />
 
-그리드 아이템이 [`grid-template-rows`]로 정의된 행으로 배치되지 않을 때, 아이템을 담기 위한 암시적 그리드 행이 생성됩니다. 이는 [`grid-row`]를 행 범위 밖으로 설정하거나, 자동 배치 알고리즘이 추가 행을 생성할 때 발생할 수 있습니다.
+그리드 아이템이 [`grid-template-columns`]로 정의된 열로 배치되지 않을 때, 아이템을 담기 위한 암시적 그리드 열이 생성됩니다. 이는 [`grid-column`]을 열 범위 밖으로 설정하거나, 자동 배치 알고리즘이 추가 열을 생성할 때 발생할 수 있습니다.
 
-예컨대, 위 예시의 그리드 행은 `30px 50px`로 두 개만 정의됐으므로 5번부터 11번 요소를 담기 위해 네 개의 암시적 행이 생성됩니다.
+예컨대 위 예시의 그리드 열은 정의되지 않았고, 대신 `span 2`로 두 열을 차지한다고만 지정했으므로 두 개의 암시적 그리드 열이 생성되고, 나머지 그리드 아이템들도 두 열에 적절히 배치됩니다.
 
 # 구문
 
 ```css
 selector {
   /* 키워드 값 */
-  grid-auto-rows: min-content;
-  grid-auto-rows: max-content;
-  grid-auto-rows: auto;
+  grid-auto-columns: min-content;
+  grid-auto-columns: max-content;
+  grid-auto-columns: auto;
 
   /* <length> 값 */
-  grid-auto-rows: 100px;
-  grid-auto-rows: 20cm;
-  grid-auto-rows: 50vmax;
+  grid-auto-columns: 100px;
+  grid-auto-columns: 20cm;
+  grid-auto-columns: 50vmax;
 
   /* <percentage> 값 */
-  grid-auto-rows: 10%;
-  grid-auto-rows: 33.3%;
+  grid-auto-columns: 10%;
+  grid-auto-columns: 33.3%;
 
   /* <flex> 값 */
-  grid-auto-rows: 0.5fr;
-  grid-auto-rows: 3fr;
+  grid-auto-columns: 0.5fr;
+  grid-auto-columns: 3fr;
 
   /* minmax() 값 */
-  grid-auto-rows: minmax(100px, auto);
-  grid-auto-rows: minmax(max-content, 2fr);
-  grid-auto-rows: minmax(20%, 80vmax);
+  grid-auto-columns: minmax(100px, auto);
+  grid-auto-columns: minmax(max-content, 2fr);
+  grid-auto-columns: minmax(20%, 80vmax);
 
   /* fit-content() 값 */
-  grid-auto-rows: fit-content(400px);
-  grid-auto-rows: fit-content(5cm);
-  grid-auto-rows: fit-content(20%);
+  grid-auto-columns: fit-content(400px);
+  grid-auto-columns: fit-content(5cm);
+  grid-auto-columns: fit-content(20%);
 
   /* 여러 track-size 값 */
-  grid-auto-rows: min-content max-content auto;
-  grid-auto-rows: 100px 150px 390px;
-  grid-auto-rows: 10% 33.3%;
-  grid-auto-rows: 0.5fr 3fr 1fr;
-  grid-auto-rows: minmax(100px, auto) minmax(max-content, 2fr) minmax(20%, 80vmax);
-  grid-auto-rows: 100px minmax(100px, auto) 10% 0.5fr fit-content(400px);
+  grid-auto-columns: min-content max-content auto;
+  grid-auto-columns: 100px 150px 390px;
+  grid-auto-columns: 10% 33.3%;
+  grid-auto-columns: 0.5fr 3fr 1fr;
+  grid-auto-columns: minmax(100px, auto) minmax(max-content, 2fr) minmax(20%, 80vmax);
+  grid-auto-columns: 100px minmax(100px, auto) 10% 0.5fr fit-content(400px);
 
   /* 전역 값 */
-  grid-auto-rows: inherit;
-  grid-auto-rows: initial;
-  grid-auto-rows: revert;
-  grid-auto-rows: revert-layer;
-  grid-auto-rows: unset;
+  grid-auto-columns: inherit;
+  grid-auto-columns: initial;
+  grid-auto-columns: revert;
+  grid-auto-columns: revert-layer;
+  grid-auto-columns: unset;
 }
 ```
 
 ## 값
 
 - : [`<length>`](./length)
-  - 행의 높이를 지정하는 양의 길이입니다.
+  - 열의 너비를 지정하는 양의 길이입니다.
 - : [`<percentage>`](./percentage)
   - 그리드 컨테이너의 블록 크기에 상대적인 크기를 나타내는 양의 `<percentage>` 값입니다. 그리드 컨테이너의 크기가 트랙들의 크기에 의해 결정되는 경우라면 `<percentage>`는 `auto`로 취급됩니다.
 - : [`<flex>`]
@@ -166,15 +166,15 @@ selector {
 
 # 같이 보기
 
-- [`grid-auto-columns`]: 자동 생성 열 크기 설정
+- [`grid-auto-rows`]: 자동 생성 행 크기 설정
 
 [`<custom-ident>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/custom-ident
 [`<flex>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/flex_value
 [`align-content]: https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
 [`fit-content()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/fit-content_function
-[`grid-auto-columns`]: ./grid-auto-columns
-[`grid-row`]: https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row
-[`grid-template-rows`]: ./grid-template-rows
+[`grid-auto-rows`]: ./grid-auto-rows
+[`grid-column`]: https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column
+[`grid-template-columns`]: ./grid-template-columns
 [`jusfity-content`]: https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
 [`max-content`]: https://developer.mozilla.org/en-US/docs/Web/CSS/max-content
 [`min-content`]: https://developer.mozilla.org/en-US/docs/Web/CSS/min-content

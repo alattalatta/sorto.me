@@ -13,7 +13,7 @@
   },
   "scripts": {
     "build": "rm -rf dist && vite build",
-    "test": "tsc --noEmit"
+    "test": "vitest run"
   },
   "dependencies": {
     "@mdx-js/mdx": "^3.1.0",
@@ -22,7 +22,6 @@
     "github-slugger": "^2.0.0",
     "mdast-util-to-string": "^4.0.0",
     "satori": "^0.15.2",
-    "unified": "^11.0.5",
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
@@ -32,9 +31,14 @@
     "@types/unist": "^3.0.3",
     "mdast-util-directive": "^3.1.0",
     "mdast-util-to-hast": "^13.2.0",
+    "rehype-stringify": "^10.0.1",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.2",
     "tsconfig": "workspace:*",
     "typescript": "^5.8.3",
+    "unified": "^11.0.5",
     "vite": "^6.3.5",
-    "vite-plugin-dts": "^4.5.4"
+    "vite-plugin-dts": "^4.5.4",
+    "vitest": "^3.2.4"
   }
 }

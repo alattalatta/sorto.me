@@ -5,7 +5,7 @@ bcd: css.properties.translate
 description: 'CSS translate 속성은 transform 속성과 별개로 요소에 이동 변형을 적용합니다.'
 ---
 
-CSS **`translate`** 속성은 [`transform` 속성][`transform`]과 별개로 요소에 이동 변형을 적용합니다. 이 속성은 일반적인 사용자 인터페이스 변형에 더 적합하고, `transform` 속성에서 변형 함수들의 적용 순서를 기억하지 않아도 되므로 편리합니다.
+CSS **`translate`** 속성은 [`transform` 속성][`transform`]과 별개로 요소에 이동 변형을 적용합니다. 이 속성은 일반적인 사용자 인터페이스 변형에 더 적합하고, `transform` 속성에서 변형 함수들이 적용되는 순서를 기억하지 않아도 되므로 편리합니다.
 
 ```html hidden name=demo
 <div class="view">
@@ -91,10 +91,12 @@ selector {
 # 같이 보기
 
 - 종합 시각적 변형: [`transform`]
+- 회전 변형: [`rotate`]
 
 [`<length>`]: ./length
 [`<length-percentage>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/length-percentage
 [`<percentage>`]: ./percentage
+[`rotate`]: ./rotate
 [`transform`]: ./transform
 [`translate()`]: https://developer.mozilla.org/ko/docs/Web/CSS/transform-function/translate
 [`translate3d()`]: https://developer.mozilla.org/ko/docs/Web/CSS/transform-function/translate3d

@@ -1,0 +1,104 @@
+---
+title: 'CSS rotate: 회전 변형'
+titleShort: 'rotate'
+bcd: css.properties.rotate
+description: 'CSS rotate 속성은 transform 속성과 별개로 요소에 회전 변형을 적용합니다.'
+---
+
+CSS **`rotate`** 속성은 [`transform` 속성][`transform`]과 별개로 요소에 회전 변형을 적용합니다. 이 속성은 일반적인 사용자 인터페이스 변형에 더 적합하고, `transform` 속성에서 변형 함수들이 적용되는 순서를 기억하지 않아도 되므로 편리합니다.
+
+```html hidden name=demo
+<div class="view">
+  <div class="square">Sqare</div>
+</div>
+```
+
+```css hidden name=demo
+.square {
+  rotate: none;
+  /* rotate: 60deg; */
+  /* rotate: x 60deg; */
+  /* rotate: y 60deg; */
+  /* rotate: z 60deg; */
+  /* rotate: -1 1 1 60deg; */
+}
+```
+
+```css hidden name=demo filename=style
+.view {
+  perspective: 500px;
+}
+.square {
+  align-items: center;
+  background-color: cornflowerblue;
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  transform: rotateY(45deg) translateX(30px);
+  transform-style: preserve-3d;
+  width: 100px;
+}
+```
+
+<LiveExample height={200} lang="css" name="demo" />
+
+# 구문
+
+```css
+selector {
+  /* 키워드 값 */
+  rotate: none;
+
+  /* 각도 값 */
+  rotate: -45deg;
+  rotate: 1.2turn;
+  rotate: 0.31rad;
+
+  /* 축 지정 각도 값 */
+  rotate: x -45deg;
+  rotate: y 1.2turn;
+  rotate: z 0.31rad;
+
+  /* 벡터 지정 각도 값 */
+  rotate: 1 1 0.5 30deg;
+
+  /* 전역 값 */
+  translate: inherit;
+  translate: initial;
+  translate: revert;
+  translate: revert-layer;
+  translate: unset;
+}
+```
+
+`rotate` 속성에는 키워드 `none`, [`<angle>`] 한 개, `x | y | z`와 `<angle>` 한 개, 또는 회전축을 나타내는 벡터에 `<angle>` 한 개를 사용합니다.
+
+## 값
+
+- : [`<angle>`]
+  - Z축을 중심으로 요소를 회전합니다. [`rotate()`] 함수와 같습니다.
+- : `x | y | z <angle>`
+  - 지정한 축을 중심으로 요소를 회전합니다.
+- : `<number> <number> <number> <angle>`
+  - 세 개의 [`<number>`]로 요소를 회전할 중심축을 정의한 후, 그 축을 중심으로 요소를 회전합니다.
+- : `none`
+  - 회전 변형을 적용하지 않습니다.
+
+# 명세
+
+[CSS Transforms Module Level 2](https://drafts.csswg.org/css-transforms-2/#individual-transforms)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 종합 시각적 변형: [`transform`]
+- 이동 변형: [`translate`]
+
+[`<angle>`]: ./angle
+[`<number>`]: ./number
+[`rotate()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/rotate
+[`transform`]: ./transform
+[`translate`]: ./translate

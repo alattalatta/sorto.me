@@ -76,20 +76,17 @@ font-size: unset;
 `font-size`는 다음 값 중 하나를 사용해 지정할 수 있습니다.
 
 - : `xx-small`, `x-small`, `small`, `medium`, `large`, `x-large`, `xx-large`, `xxx-large`
-
   - 사용자의 기본 글씨 크기(`medium`)를 기준으로 하는 절대 크기 키워드입니다.
 
 - : `large`, `smaller`
 - 부모 요소의 글씨 크기에 대한 상대 크기 키워드입니다. 절대 크기 키워드 한 단계 (`medium` vs. `small`, `medium` vs. `large` 등) 정도의 차이를 보입니다.
 
 - : [`<length>`](./length)
-
   - 양의 `<length>` 값입니다. 대부분의 글꼴 상대 길이 단위(`em`, `ex` 등)는 부모 요소의 글씨 크기를 기준으로 계산됩니다.
 
     루트 요소 글꼴 상대 길이 단위(`rem`, `rex` 등)는 루트 요소([`<html>`](/docs/Web/HTML/Element/html))의 글씨 크기를 기준으로 계산됩니다.
 
 - : [`<percentage>`](./percentage)
-
   - 양의 `<percentage>` 값입니다. 부모 요소의 글씨 크기를 기준으로 계산됩니다.
 
     > [note] 접근성을 최대한 확보하려면 사용자의 기본 글씨 크기에 대한 상대 단위를 사용하는 편이 좋습니다.
@@ -190,3 +187,4 @@ span {
 - 글꼴: [`font-family`](./font-family)
 - 글씨 스타일: [`font-style`](./font-style)
 - 글씨 굵기: [`font-weight`](./font-weight)
+- 줄 높이: [`line-height`](./line-height)

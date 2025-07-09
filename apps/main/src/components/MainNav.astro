@@ -68,7 +68,8 @@ const { links } = Astro.props
   }
 
   .links {
-    max-height: calc(100vh - var(--starry-height));
+    border-bottom: 1px solid var(--primary);
+    max-height: calc(100vh - var(--starry-height) + 1px);
     font-family: var(--display);
     grid-row: body / span 2;
     overflow: auto;

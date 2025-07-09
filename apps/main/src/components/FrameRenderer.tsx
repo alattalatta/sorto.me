@@ -17,7 +17,7 @@ const FrameRenderer: React.FC<{ babel?: boolean }> = ({ babel }) => {
     window.parent.postMessage(`${id}/ready`)
 
     const handleMessage = (event: MessageEvent<VirtualFile[]>): void => {
-      if (!$root.current) {
+      if (!$root.current || !event.data || !Array.isArray(event.data)) {
         return
       }
 
@@ -25,6 +25,10 @@ const FrameRenderer: React.FC<{ babel?: boolean }> = ({ babel }) => {
 
       const { css, html, js } = event.data.reduce(
         (acc, file) => {
+          if (typeof file !== 'object' || !('lang' in file)) {
+            return acc
+          }
+
           acc[file.lang].push(file)
           return acc
         },

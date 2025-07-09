@@ -1,0 +1,92 @@
+---
+title: 'CSS background-clip: 배경 영역'
+titleShort: 'background-clip'
+bcd: css.properties.background-clip
+---
+
+CSS **`background-clip`** 속성은 요소의 배경을 테두리 박스, 안쪽 여백 박스, 콘텐츠 박스, 텍스트 중 어디까지 표시할지 설정합니다.
+
+```css hidden name=demo
+#target {
+  background-clip: border-box;
+  /* background-clip: padding-box; */
+  /* background-clip: content-box; */
+  /* background-clip: text; color: transparent; */
+}
+```
+
+```css hidden name=demo filename=style
+#target {
+  background-image: linear-gradient(45deg, limegreen, gold);
+  border: 10px dotted;
+  border-color: #0003;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 20px;
+  height: 80px;
+  text-align: center;
+}
+```
+
+```html hidden name=demo
+<div id="target">라임그린 골드 배경</div>
+```
+
+<LiveExample height={180} lang="css" name="demo" />
+
+배경은 언제나 테두리 뒤에 그려지므로, `background-clip: border-box`는 테두리가 (반)투명하거나, 일부 (반)투명한 영역이 존재할 때만 시각적 효과가 생깁니다. 또한, `background-clip: text`는 텍스트가 완전히 불투명할 땐 거의 효과가 없습니다.
+
+> [note] [루트 요소][`<html>`]는 다른 요소들과 다른 배경 페인팅 영역을 사용하므로 `background-clip` 속성을 지정해도 효과가 없습니다. [Backgrounds of Special Elements](https://drafts.csswg.org/css-backgrounds-3/#special-backgrounds)를 참고하세요.
+
+# 구문
+
+```css
+selector {
+  /* 키워드 값 */
+  background-clip: border-box;
+  background-clip: padding-box;
+  background-clip: content-box;
+  background-clip: text;
+  background-clip: border-area;
+
+  /* 전역 값 */
+  background-clip: inherit;
+  background-clip: initial;
+  background-clip: revert;
+  background-clip: revert-layer;
+  background-clip: unset;
+}
+```
+
+## 값
+
+- : `border-box`
+  - 배경이 테두리의 바깥 가장자리까지 그려집니다.
+- : `padding-box`
+  - 배경이 안쪽 여백의 바깥 가장자리까지 그려집니다. 테두리 아래에는 배경을 그리지 않습니다.
+- : `content-box`
+  - 배경이 콘텐츠 박스에서 잘립니다.
+- : `text`
+  - 배경이 텍스트의 글자 모양에 맞춰 잘립니다.
+- : `border-area`
+  - 배경이 테두리가 그려지는 영역에 맞춰 잘립니다. [`border-width`]와 [`border-style`]을 고려하지만 [`border-color`]의 투명도는 무시합니다.
+
+# 접근성
+
+`background-clip: text`를 사용할 땐 최종 텍스트 색이 뒤의 배경과 충분한 대비를 이뤄야 저시력 사용자들이 페이지 콘텐츠를 읽을 수 있습니다. 또한 배경을 이미지로 지정한 경우, 이미지 로딩이 실패하면 텍스트를 읽을 수 없게 됩니다. 예비 배경색을 추가하고, 이미지 없이도 텍스트가 잘 나오는지 확인하세요.
+
+[`@supports`]를 사용해 `background-clip: text`가 지원되는지 기능 쿼리를 사용하고, 지원되지 않는 환경에서는 접근 가능한 대안을 제공하세요.
+
+# 명세
+
+[CSS Backgrounds and Borders Module Level 3](https://drafts.csswg.org/css-backgrounds/#background-clip)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+[`@supports`]: https://developer.mozilla.org/en-US/docs/Web/CSS/@supports
+[`<html>`]: /docs/Web/HTML/Element/html
+[`border-color`]: https://developer.mozilla.org/en-US/docs/Web/CSS/border-color
+[`border-style`]: https://developer.mozilla.org/en-US/docs/Web/CSS/border-style
+[`border-width`]: ./border-width

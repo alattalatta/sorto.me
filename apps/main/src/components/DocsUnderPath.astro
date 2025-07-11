@@ -8,8 +8,13 @@ export type Props = {
 
 const props = Astro.props
 
+const childrenRegex = new RegExp(`^${props.path}([^/]+)$`)
+
 const docs = (await getCollection('docs'))
-  .filter((doc) => doc.id.startsWith(props.path))
+  .filter((doc) => {
+    console.log(childrenRegex, doc.id)
+    return childrenRegex.test(doc.id)
+  })
   .sort((a, b) => getShortTitle(a).localeCompare(getShortTitle(b)))
 ---
 

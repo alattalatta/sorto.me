@@ -68,18 +68,11 @@ export default defineConfig({
     }),
   ],
   redirects: {
-    '/docs/Web/CSS/:target': {
-      destination: '/docs/Web/CSS/Pseudo-classes/:target',
-      status: 308,
-    },
-    '/docs/Web/CSS/display-outside': {
-      destination: '/docs/Web/CSS/display/display-outside',
-      status: 308,
-    },
-    '/docs/Web/CSS/var': {
-      destination: '/docs/Web/CSS/Functions/var',
-      status: 308,
-    },
+    '/docs/Web/CSS/@font-face': '/docs/Web/CSS/At-rules/@font-face',
+    '/docs/Web/CSS/@font-face/[...slug]': '/docs/Web/CSS/At-rules/@font-face/[...slug]',
+    '/docs/Web/CSS/:target': '/docs/Web/CSS/Pseudo-classes/:target',
+    '/docs/Web/CSS/display-outside': '/docs/Web/CSS/display/display-outside',
+    '/docs/Web/CSS/var': '/docs/Web/CSS/Functions/var',
   },
   site: 'https://sorto.me',
 })

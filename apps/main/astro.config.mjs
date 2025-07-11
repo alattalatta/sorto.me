@@ -69,7 +69,11 @@ export default defineConfig({
   ],
   redirects: {
     '/docs/Web/CSS/@font-face': '/docs/Web/CSS/At-rules/@font-face',
-    '/docs/Web/CSS/@font-face/[...slug]': '/docs/Web/CSS/At-rules/@font-face/[...slug]',
+    '/docs/Web/CSS/@font-face/font-display': '/docs/Web/CSS/At-rules/@font-face/font-display',
+    '/docs/Web/CSS/@font-face/font-family': '/docs/Web/CSS/At-rules/@font-face/font-family',
+    '/docs/Web/CSS/@font-face/font-style': '/docs/Web/CSS/At-rules/@font-face/font-style',
+    '/docs/Web/CSS/@font-face/font-weight': '/docs/Web/CSS/At-rules/@font-face/font-weight',
+    '/docs/Web/CSS/@font-face/src': '/docs/Web/CSS/At-rules/@font-face/src',
     '/docs/Web/CSS/:target': '/docs/Web/CSS/Pseudo-classes/:target',
     '/docs/Web/CSS/display-outside': '/docs/Web/CSS/display/display-outside',
     '/docs/Web/CSS/var': '/docs/Web/CSS/Functions/var',

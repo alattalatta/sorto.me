@@ -11,10 +11,7 @@ const props = Astro.props
 const childrenRegex = new RegExp(`^${props.path}([^/]+)$`)
 
 const docs = (await getCollection('docs'))
-  .filter((doc) => {
-    console.log(childrenRegex, doc.id)
-    return childrenRegex.test(doc.id)
-  })
+  .filter((doc) => childrenRegex.test(doc.id))
   .sort((a, b) => getShortTitle(a).localeCompare(getShortTitle(b)))
 ---
 

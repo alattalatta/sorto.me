@@ -1,0 +1,146 @@
+---
+title: 'CSS @keyframes: 애니메이션 단계 정의'
+titleShort: '@keyframes'
+bcd: css.at-rules.keyframes
+---
+
+CSS **`@keyframes`** @규칙은 CSS 애니메이션 시퀀스의 중간점(키프레임)을 정의합니다. 키프레임 덕분에 애니메이션은 시작점과 끝점만 정의할 수 있는 [트랜지션](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transitions)에 비해 세밀한 제어를 할 수 있습니다.
+
+# 구문
+
+```css
+@keyframes slide-in {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+```
+
+## 값
+
+- : [`<custom-ident>`]
+  - 키프레임 목록을 식별할 이름입니다.
+- : `from`
+  - `0%`와 같습니다.
+- : `to`
+  - `100%`와 같습니다.
+- : [`<percentage>`]
+  - 키프레임이 애니메이션의 어느 시점에 나타나야 하는지를 애니메이션 전체 길이의 백분율로 지정합니다.
+- : `<timeline-range-name>` [`<percentage>`]
+  - 키프레임이 애니메이션의 [`animation-range`] 범위에서 어느 시점에 나타나야 하는지를 애니메이션 전체 길이의 백분율로 지정합니다. [CSS 스크롤 애니메이션](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_scroll-driven_animations)에서 유명 타임라인 범위에 대해 알아보세요.
+
+# 설명
+
+키프레임을 사용하려면 `@keyframes` 규칙을 사용하세요. 규칙의 이름은 [`animation-name`]에서 사용하게 됩니다. 각각의 `@keyframes` 규칙은 키프레임 선택자의 리스트와 선택자의 스타일 규칙으로 구성되며, 선택자는 키프레임을 애니메이션의 어느 시점에 배치할지, 스타일 규칙은 그 시점에 어떤 스타일을 요소에 적용할지 지정합니다.
+
+키프레임의 스타일 규칙에서는 [`!important`]를 사용해도 효과가 없습니다.
+
+키프레임을 정의할 땐 선택자 백분율에 따라 정의하지 않아도 됩니다. 실제로 사용할 때 순서대로 정렬돼 반영됩니다.
+
+JavaScript에서는 CSS 객체 모델 인터페이스 [CSSKeyframesRule](https://developer.mozilla.org/en-US/docs/Web/API/CSSKeyframesRule)을 사용해 `@keyframes` @규칙에 접근할 수 있습니다.
+
+## 유효한 키프레임 리스트
+
+키프레임 규칙에 애니메이션의 시작점(`0%` 또는 `from`)이나 끝점(`100%` 또는 `to`)을 정의하지 않은 경우 애니메이션이 적용되지 않은 요소의 기본 스타일을 시작점과 끝점 중 빠진 것에 적용합니다. 이 동작을 사용하면 요소의 초기 상태부터 시작해서 다시 초기 상태로 돌아가는 애니메이션을 만들 수 있습니다.
+
+```css hidden name=from-to
+@keyframes oscillate {
+  50% {
+    background: #0007;
+    translate: 10px;
+  }
+}
+
+#target {
+  animation: oscillate 1s linear infinite;
+  background: #000;
+}
+```
+
+```css hidden name=from-to filename=style
+#target {
+  border: 1px solid black;
+  height: 100px;
+  width: 100px;
+}
+```
+
+```html hidden name=from-to
+<div id="target"></div>
+```
+
+<LiveExample height={180} lang="css" name="from-to" />
+
+키프레임의 스타일 규칙 중 애니메이션 불가능한 속성은 무시합니다. 나머지 애니메이션 가능한 속성들은 정상적으로 애니메이션을 적용합니다.
+
+## 중복 처리
+
+같은 이름을 지정한 `@keyframes`가 여럿이면 CSS 파서가 마지막으로 마주한 것만 사용합니다. `@keyframes` 규칙은 종속 대상이 아니므로 애니메이션은 항상 단 하나의 `@keyframes` 규칙에서만 키프레임을 가져옵니다.
+
+한 키프레임 규칙 내에 동일한 백분율 지점이 여럿이면 모든 키프레임의 스타일 규칙을 합쳐 적용합니다. 즉, `@keyframes` 자체는 종속 대상이 아니지만, 그 안의 키프레임끼리는 종속될 수 있습니다.
+
+## 빠진 속성 처리
+
+어떤 속성을 모든 키프레임에 명시하지 않으면, 그 속성은 자신이 명시된 키프레임만 사용해 보간합니다.
+
+```css hidden name=omitted
+@keyframes identifier {
+  0% {
+    background: red;
+    left: 0;
+    top: 0;
+  }
+  30% {
+    background: yellow;
+    top: 40px;
+  }
+  60%,
+  75% {
+    background: green;
+    left: 50px;
+  }
+  100% {
+    background: white;
+    left: 150px;
+    top: 10px;
+  }
+}
+
+#target {
+  animation: identifier 4s linear infinite;
+  position: relative;
+}
+```
+
+```css hidden name=omitted filename=style
+#target {
+  border: 1px solid black;
+  height: 100px;
+  width: 100px;
+}
+```
+
+```html hidden name=omitted
+<div id="target"></div>
+```
+
+<LiveExample height={300} lang="css" name="omitted" />
+
+위 예제에서 `left`는 `0%`, `60%`, `75%`, `100%` 키프레임을 이용해 보간되고, `top`은 `0%`, `30%`, `100%` 키프레임을 이용해 보간됩니다.
+
+# 명세
+
+[CSS Animations Level 1](https://drafts.csswg.org/css-animations/#keyframes)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+[`!important`]: https://developer.mozilla.org/en-US/docs/Web/CSS/important
+[`<custom-ident>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/custom-ident
+[`<percentage>`]: ../percentage
+[`animation-name`]: https://developer.mozilla.org/en-US/docs/Web/CSS/animation-name
+[`animation-range`]: https://developer.mozilla.org/en-US/docs/Web/CSS/animation-range

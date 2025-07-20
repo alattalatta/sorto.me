@@ -9,6 +9,8 @@ import remarkDirective from 'remark-directive'
 
 import * as libmdx from '@lib/mdx'
 
+import cssProp from './css-prop.mjs'
+
 // https://astro.build/config
 export default defineConfig({
   experimental: {
@@ -30,7 +32,8 @@ export default defineConfig({
         },
       },
       shikiConfig: {
-        theme: 'catppuccin-latte',
+        langs: [cssProp],
+        theme: 'rose-pine-dawn',
       },
     }),
     sitemap({

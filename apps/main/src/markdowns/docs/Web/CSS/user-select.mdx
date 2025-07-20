@@ -28,7 +28,7 @@ p {
 
 # 구문
 
-```css
+```css-prop
 /* 키워드 값 */
 user-select: none;
 user-select: auto;
@@ -48,9 +48,7 @@ user-select: unset;
 - : `none`
   - 요소와 그 이하의 텍스트를 선택할 수 없습니다. [`Select`](https://developer.mozilla.org/en-US/docs/Web/API/Selection) 객체가 요소를 선택의 일부로서 포함할 수는 있습니다.
 - : `auto`
-
   - `auto`의 사용 값은 다음 순서로 결정됩니다.
-
     1. [`::before`]과 [`::after`] 의사 요소에서는 `none`입니다.
     2. 부모 요소의 `user-select` 사용 값이 `none`이면 이 요소의 사용 값도 `none`입니다.
     3. 부모 요소의 `user-select` 사용 값이 `all`이면 이 요소의 사용 값도 `all`입니다.

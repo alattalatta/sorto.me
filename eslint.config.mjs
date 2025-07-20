@@ -10,7 +10,7 @@ export default tselint.config(
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     const subParser = opts?.parserOptions?.parser?.meta?.name
 
-    if (opts && (baseParser === ts || subParser === ts)) {
+    if (opts && (baseParser === 'ts' || subParser === 'ts')) {
       opts.parserOptions = {
         ...opts.parserOptions,
         projectService: false,

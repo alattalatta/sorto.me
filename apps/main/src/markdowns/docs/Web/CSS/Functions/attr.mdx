@@ -32,23 +32,23 @@ blockquote::after {
 
 # 구문
 
-```css
+```css-prop
 /* 기본 사용법 */
-attr(data-count)
-attr(href)
+property: attr(data-count);
+property: attr(href);
 
 /* 자료형 명시 */
-attr(data-width px)
-attr(data-size rem)
-attr(data-name raw-string)
-attr(id type(<custom-ident>))
-attr(data-count type(<number>))
-attr(data-size type(<length> | <percentage>))
+property: attr(data-width px);
+property: attr(data-size rem);
+property: attr(data-name raw-string);
+property: attr(id type(<custom-ident>));
+property: attr(data-count type(<number>));
+property: attr(data-size type(<length> | <percentage>));
 
 /* 예비 값 제공 */
-attr(data-count type(<number>), 0)
-attr(data-width px, inherit)
-attr(data-something, "default")
+property: attr(data-count type(<number>), 0);
+property: attr(data-width px, inherit);
+property: attr(data-something, "default");
 ```
 
 `attr()` 함수의 구문은 다음과 같습니다.
@@ -62,9 +62,7 @@ attr(<attr-name> <attr-type>? , <fallback-value>?)
 - : `<attr-name>`
   - 선택한 요소에서 값을 가져올 특성의 이름입니다.
 - : `<attr-type>`
-
   - 특성의 값을 어떤 CSS 자료형으로 해석할지 지정합니다. `raw-string`, `type()` 함수, CSS 크기 단위 (`<attr-unit>` 식별자 사용) 중 하나를 사용할 수 있습니다. 생략하면 `raw-string`과 같습니다.
-
     - `raw-string`은 특성의 값을 그대로 CSS 문자열로 취급하며 CSS 이스케이프, 공백 제거, 주석 제거 등의 별도 처리를 하지 않습니다. `<fallback-value>`는 특성 자체가 존재하지 않을 때만 사용되며, 특성에 빈 값을 지정한 경우에는 사용되지 않습니다.
 
       ```css

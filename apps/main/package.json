@@ -37,6 +37,7 @@
     "sass": "^1.89.2",
     "satori": "^0.15.2",
     "sharp": "^0.34.3",
+    "shiki": "*",
     "strip-markdown": "^6.0.0",
     "unist-util-select": "^5.1.0"
   },

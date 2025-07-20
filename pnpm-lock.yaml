@@ -162,6 +162,9 @@ importers:
       sharp:
         specifier: ^0.34.3
         version: 0.34.3
+      shiki:
+        specifier: '*'
+        version: 3.8.1
       strip-markdown:
         specifier: ^6.0.0
         version: 6.0.0

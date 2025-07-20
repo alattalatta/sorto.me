@@ -39,18 +39,18 @@ CSS **`var()`** 함수는 "CSS 변수"라고도 불리는 [사용자 지정 속�
 
 # 구문
 
-```css
-var(<custom-property-name>[, <declaration-value>])
+```css-prop
+property: var(<custom-property-name>[, <declaration-value>]);
 
 /* 단순 사용법 */
-var(--custom-prop);
+property: var(--custom-prop);
 
 /* 예비 값과 함께 */
-var(--custom-prop,);  /* 빈 값으로 대체 */
-var(--custom-prop, initial); /* 속성의 초기 값으로 대체 */
-var(--custom-prop, #FF0000);
-var(--custom-prop, var(--default-value));
-var(--custom-prop, var(--default-value, red));
+property: var(--custom-prop,);  /* 빈 값으로 대체 */
+property: var(--custom-prop, initial); /* 속성의 초기 값으로 대체 */
+property: var(--custom-prop, #FF0000);
+property: var(--custom-prop, var(--default-value));
+property: var(--custom-prop, var(--default-value, red));
 ```
 
 `var()`의 첫 번째 매개변수는 참조할 사용자 지정 속성의 이름입니다. 선택적으로 두 번째 매개변수에는 예비 값을 지정할 수 있습니다. 첫 번째 매개변수로 참조하려 한 사용자 지정 속성이 정의되지 않았거나 [CSS 전역 키워드]와 같은 값이면 예비 값을 대신 사용하게 됩니다.
@@ -62,7 +62,6 @@ var(--custom-prop, var(--default-value, red));
 - : `<custom-property-name>`
   - 두 개의 대시(`--`)로 시작하는, 사용자 지정 속성의 이름입니다.
 - : `<declaration-value>`
-
   - 사용자 지정 속성의 예비 값입니다. 사용자 지정 속성이 정의되지 않았거나 [CSS 전역 키워드]와 같은 값이면 이 값으로 대체합니다. 일부 특별한 문자[^1]를 제외한 아무 문자나 포함할 수 있습니다. 예비 값에 또 다른 `var()`를 지정할 수도 있습니다.
 
     예비 값을 지정하지 않았는데 첫 번째 매개변수의 사용자 지정 속성도 정의되지 않은 경우 `var()` 함수는 [유효하지 않은 값](#유효하지-않은-값)으로 해석됩니다.

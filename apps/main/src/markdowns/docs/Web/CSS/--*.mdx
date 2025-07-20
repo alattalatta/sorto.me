@@ -42,7 +42,7 @@ CSS에서, `--example-name`처럼 `--`로 시작하는 이름의 속성은 다�
 
 <LiveExample lang="css" name="demo" height={160} />
 
-사용자 지정 속성은 선언이 선택한 요소들의 내부로 범위가 한정되며 다른 CSS 속성들처럼 [종속](https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade)과 [상속](https://developer.mozilla.org/en-US/docs/Web/CSS/Inheritance) 대상입니다. 단, [`@property` @규칙](https://developer.mozilla.org/en-US/docs/Web/CSS/@property)의 [`inherits` 서술자](https://developer.mozilla.org/en-US/docs/Web/CSS/@property/inherits)가 `false`면 상속 대상에서 제외됩니다.
+사용자 지정 속성은 선언이 선택한 요소들의 내부로 범위가 한정되며 다른 CSS 속성들처럼 [종속](https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade)과 [상속](https://developer.mozilla.org/en-US/docs/Web/CSS/Inheritance) 대상입니다. 단, [`@property` 규칙][`@property`]의 [`inherits` 서술자][`inherits`]가 `false`면 상속 대상에서 제외됩니다.
 
 # 구문
 
@@ -69,4 +69,6 @@ CSS에서, `--example-name`처럼 `--`로 시작하는 이름의 속성은 다�
 
 - 사용자 지정 속성 값 참조하기: [`var()`]
 
+[`@property`]: ./At-rules/@property
+[`inherits`]: https://developer.mozilla.org/en-US/docs/Web/CSS/@property/inherits
 [`var()`]: ./var

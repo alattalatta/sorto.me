@@ -1,0 +1,138 @@
+---
+title: 'CSS backdrop-filter: 배경 그래픽 필터 적용'
+titleShort: 'backdrop-filter'
+bcd: css.properties.backdrop-filter
+---
+
+CSS **`backdrop-filter`** 속성은 흐림 효과(블러), 색상 변경 등 그래픽 필터를 요소가 차지하는 영역의 뒤에 적용합니다. 요소가 아니라 요소의 뒤에 적용하므로, 필터의 효과를 볼 수 있으려면 요소 자체의 [배경][`background-color`]도 투명하거나 반투명해야 합니다.
+
+```css hidden name=demo
+#target {
+  backdrop-filter: blur(5px);
+  /* backdrop-filter: sepia(80%); */
+  /* backdrop-filter: brightness(1.5) grayscale(100%); */
+  /* backdrop-filter: hue-rotate(90deg); */
+}
+```
+
+```css hidden name=demo filename=style
+#root {
+  display: flex;
+  position: relative;
+  width: min-content;
+}
+
+#target {
+  border: 1px solid #fff;
+  border-radius: 999px;
+  color: #fff;
+  left: 0;
+  margin: 0 1em;
+  padding: 0.75em 0;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+```
+
+```html hidden name=demo
+<div id="root">
+  <img height="160" src="/assets/infrared-jeju.jpg">
+  <p id="target">예제</p>
+</div>
+```
+
+<LiveExample height={240} lang="css" name="demo" />
+
+# 구문
+
+```css-prop
+/* <filter-function> 값 */
+backdrop-filter: blur(5px);
+backdrop-filter: brightness(0.4);
+backdrop-filter: contrast(200%);
+backdrop-filter: grayscale(50%);
+backdrop-filter: hue-rotate(90deg);
+backdrop-filter: invert(75%);
+backdrop-filter: opacity(25%);
+backdrop-filter: saturate(30%);
+backdrop-filter: sepia(60%);
+
+/* URL */
+backdrop-filter: url("filters.svg#filter-id");
+
+/* 다중 필터 */
+backdrop-filter: contrast(175%) brightness(3%);
+
+/* 필터 제거 */
+backdrop-filter: none;
+
+/* 전역 값 */
+backdrop-filter: inherit;
+backdrop-filter: initial;
+backdrop-filter: revert;
+backdrop-filter: revert-layer;
+backdrop-filter: unset;
+```
+
+`backdrop-filter` 속성에는 키워드 `none`을 사용하거나, [`<filter-function>`]과 SVG [`<filter>`]를 가리키는 [`url()`] 함수를 혼합하여 한 개 이상 사용합니다. `backdrop-filter`에 지정한 필터 함수 중 하나라도 매개변수가 유효하지 않으면 키워드 `none`을 지정한 것과 같습니다.
+
+필터 함수 또는 `url()`을 여러 개 사용한 경우 순서대로 적용합니다.
+
+필터 함수에는 [`blur()`], [`brightness()`], [`contrast()`], [`grayscale()`], [`hue-rotate()`], [`invert()`], [`saturate()`], [`sepia()`] 등이 있습니다.
+
+> [note] [`drop-shadow()`]와 [`opacity()`]는 `backdrop-filter`에서도 유효한 함수므로 규칙이 무효화되진 않지만, 적용했을 때 효과도 거의 없습니다.
+
+## 필터 조합
+
+아래 예제처럼 필터를 원하는 만큼 여러 개 지정할 수 있으며, 적용 순서는 선언한 순서와 같습니다.
+
+```css-prop
+/* 대비와 밝기 함께 조절 */
+backdrop-filter: contrast(175%) brightness(103%);
+```
+
+# 보간
+
+보간 시작 필터 리스트와 종료 필터 리스트 중 어느 쪽에라도 [`url()`]이 있다면 이산 보간을 사용합니다.
+
+시작과 종료 필터 리스트의 길이가 같고, 한 쪽의 필터 함수가 다른 쪽에도 존재할 경우 각각의 필터를 필터 함수가 정의하는 보간법에 따라 보간합니다.
+
+시작과 종료 필터 리스트의 길이가 다르고, 짧은 리스트의 필터 함수가 긴 리스트에도 존재할 경우, 긴 리스트에만 존재하는 필터 함수를 짧은 리스트의 뒤에 추가해 길이를 맞춥니다. 추가된 필터들의 매개변수는 초기 값, 즉 필터를 적용하지 않은 것과 같은 상태로 설정합니다. 예컨대 `blur()`라면 `0px`, `brightness()`라면 `100%`가 됩니다. 이후에 각각의 필터를 필터 함수가 정의하는 보간법에 따라 보간합니다.
+
+한 쪽이 `none`이라면, `none`을 길이 0의 짧은 리스트로 취급해서 위의 규칙과 동일하게 보간합니다.
+
+기타 다른 경우에는 이산 보간을 사용합니다.
+
+# 명세
+
+- [Filter Effects Module Level 2](https://drafts.fxtf.org/filter-effects-2/#BackdropFilterProperty)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 요소에 적용하는 필터: [`filter`]
+
+[`<angle>`]: ./angle
+[`<filter>`]: https://developer.mozilla.org/en-US/docs/Web/SVG/Element/filter
+[`<filter-function>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function
+[`background-color`]: ./background-color
+[`blur()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/blur
+[`box-shadow`]: https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow
+[`brightness()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/brightness
+[`contrast()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/contrast
+[`drop-shadow()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/drop-shadow
+[`filter`]: ./filter
+[`grayscale()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/grayscale
+[`hue-rotate()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/hue-rotate
+[`invert()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/invert
+[`opacity()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/opacity
+[`saturate()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/saturate
+[`sepia()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/sepia
+[`url()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/url_function

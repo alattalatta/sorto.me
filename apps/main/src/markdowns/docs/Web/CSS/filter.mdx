@@ -12,7 +12,7 @@ CSS **`filter`** 속성은 흐림 효과(블러), 색상 변경 등 그래픽 �
 img {
   filter: blur(5px);
   /* filter: contrast(200%); */
-  /* filter: grayscale(80%); */
+  /* filter: brightness(1.5) grayscale(80%); */
   /* filter: hue-rotate(90deg); */
   /* filter: url(#custom-filter); */
 }
@@ -28,7 +28,7 @@ img {
 </svg>
 ```
 
-<LiveExample height={200} lang="css" name="demo" />
+<LiveExample height={240} lang="css" name="demo" />
 
 # 구문
 
@@ -63,7 +63,7 @@ filter: revert-layer;
 filter: unset;
 ```
 
-`filter` 속성에는 키워드 `none`을 사용하거나, 아래 나열된 필터 함수 또는 SVG [`<filter>`]를 가리키는 [`url()`] 함수를 혼합하여 한 개 이상 사용합니다. `filter`에 지정한 필터 함수 중 하나라도 매개변수가 유효하지 않으면 키워드 `none`을 지정한 것과 같습니다.
+`filter` 속성에는 키워드 `none`을 사용하거나, [`<filter-function>`]과 SVG [`<filter>`]를 가리키는 [`url()`] 함수를 혼합하여 한 개 이상 사용합니다. `filter`에 지정한 필터 함수 중 하나라도 매개변수가 유효하지 않으면 키워드 `none`을 지정한 것과 같습니다.
 
 필터 함수 또는 `url()`을 여러 개 사용한 경우 순서대로 적용합니다.
 
@@ -96,7 +96,7 @@ filter: unset;
 
 아래 예제처럼 필터를 원하는 만큼 여러 개 지정할 수 있으며, 적용 순서는 선언한 순서와 같습니다.
 
-```css
+```css-prop
 /* 대비와 밝기 함께 조절 */
 filter: contrast(175%) brightness(103%);
 ```
@@ -123,8 +123,14 @@ filter: contrast(175%) brightness(103%);
 
 <BrowserCompat data={props.bcd} />
 
+# 같이 보기
+
+- 요소의 뒤에 적용하는 필터: [`backdrop-filter`]
+
 [`<angle>`]: ./angle
 [`<filter>`]: https://developer.mozilla.org/en-US/docs/Web/SVG/Element/filter
+[`<filter-function>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function
+[`backdrop-filter`]: ./backdrop-filter
 [`blur()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/blur
 [`box-shadow`]: https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow
 [`brightness()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/brightness

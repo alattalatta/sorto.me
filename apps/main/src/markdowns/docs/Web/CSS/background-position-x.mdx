@@ -1,0 +1,93 @@
+---
+title: 'CSS background-position-x: 배경 이미지 가로축 위치'
+titleShort: 'background-position-x'
+bcd: css.properties.background-position-x
+---
+
+CSS **`background-position-x`** 속성은 요소 배경 이미지 각각의 가로축 위치를 설정합니다. 최종 위치는 [`background-origin`]이 설정한 위치 레이어에 상대적입니다.
+
+```css hidden name=demo
+#target {
+  background-position-x: left;
+  /* background-position-x: center; */
+  /* background-position-x: right; */
+  /* background-position-x: 25%; */
+  /* background-position-x: 48px; */
+}
+```
+
+```css hidden name=demo filename=style
+#target {
+  background-image: url(/assets/logo-small.svg);
+  background-position-y: center;
+  background-repeat: no-repeat;
+  background-size: 100px;
+  border: 1px dashed black;
+  height: 160px;
+}
+```
+
+```html hidden name=demo
+<div id="target"></div>
+```
+
+<LiveExample height={200} lang="css" name="demo" />
+
+# 구문
+
+```css-prop
+/* 키워드 값 */
+background-position-x: left;
+background-position-x: center;
+background-position-x: right;
+
+/* <percentage> 값 */
+background-position-x: 25%;
+
+/* <length> 값 */
+background-position-x: 0px;
+background-position-x: 1cm;
+background-position-x: 8em;
+
+/* 배경 이미지 다수 위치 설정 */
+background-position-x: 0px, center;
+
+/* 전역 값 */
+background-position-x: inherit;
+background-position-x: initial;
+background-position-x: revert;
+background-position-x: revert-layer;
+background-position-x: unset;
+```
+
+`background-position-x` 속성에는 다음 값을 쉼표로 구분하여 한 개 이상 사용합니다.
+
+## 값
+
+- : `left`
+  - 배경 이미지의 왼쪽 모서리를 배경 위치 레이어의 왼쪽 모서리에 맞춥니다.
+- : `right`
+  - 배경 이미지의 오른쪽 모서리를 배경 위치 레이어의 오른쪽 모서리에 맞춥니다.
+- : `center`
+  - 배경 이미지의 중앙을 배경 위치 레이어의 중앙에 맞춥니다.
+- : [`<length>`]
+  - 배경 이미지의 왼쪽 모서리를 배경 위치 레이어의 왼쪽 모서리에서 주어진 길이만큼 떨어진 곳에 맞춥니다.
+- : [`<percentage>`]
+  - `0%`는 `left`, `100%`는 `right`와 같습니다. 따라서 `50%`를 지정하면 중앙에 정렬됩니다.
+
+# 명세
+
+- [CSS Backgrounds Module Level 4](https://drafts.csswg.org/css-backgrounds-4/#background-position-longhands)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 세로축 위치: [`background-position-y`]
+
+[`<length>`]: ./length
+[`<percentage>`]: ./percentage
+[`background-origin`]: https://developer.mozilla.org/en-US/docs/Web/CSS/background-origin
+[`background-position-y`]: ./background-position-y

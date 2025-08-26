@@ -21,7 +21,7 @@
     "@fontsource/nanum-gothic-coding": "^5.2.5",
     "@fontsource/orbit": "^5.2.5",
     "@lib/mdx": "workspace:*",
-    "@mdn/browser-compat-data": "^6.0.35",
+    "@mdn/browser-compat-data": "^7.0.0",
     "@mdx-js/react": "^3.1.0",
     "@pnpm/find-workspace-dir": "^1000.1.1",
     "@resvg/resvg-js": "^2.6.2",

@@ -1,0 +1,107 @@
+---
+title: 'CSS coumn-gap: 열 사이 간격'
+titleShort: 'coumn-gap'
+bcd: css.properties.column-gap
+---
+
+CSS **`column-gap`** 속성은 요소의 열 사이 간격을 설정합니다.
+
+`column-gap`은 [다열 레이아웃](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_multicol_layout)의 일부로서 정의됐으나, 범위가 확장돼 다양한 레이아웃에서 사용할 수 있습니다. 이제 [CSS Box Alignment](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_box_alignment) 모듈에 정의되며 다열, 플렉스, 그리드 레이아웃 모두에서 사용 가능합니다.
+
+초기 명세에서는 `grid-column-gap`이라는 이름을 사용했습니다. 구형 브라우저와의 호환성 유지를 위해, `grid-column-gap` 역시 이 속성의 별칭으로 인식됩니다.
+
+```css hidden name=demo
+.grid {
+  column-gap: 0;
+  /* column-gap: 8px; */
+  /* column-gap: 33%; */
+}
+```
+
+```css hidden editable=false name=demo filename=style
+.grid {
+  width: 300px;
+  border: 1px solid #ccc;
+  color: #fff;
+  display: grid;
+  grid: auto-flow / 1fr 1fr;
+  padding: 8px;
+}
+.item {
+  background: #f0f0f0;
+  color: #000;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.item:nth-child(1) {
+  background: #24c0a5;
+  color: #fff;
+}
+.item:nth-child(2) {
+  background: #0043ff;
+  color: #fff;
+}
+.item:nth-child(3) {
+  background: #b42809;
+  color: #fff;
+}
+.item:nth-child(4) {
+  background: #ffb800;
+  color: #fff;
+}
+```
+
+```html hidden name=demo
+<div class="grid">
+  <div class="item">1번</div>
+  <div class="item">2번</div>
+  <div class="item">3번</div>
+  <div class="item">4번</div>
+  <div class="item">5번</div>
+</div>
+```
+
+<LiveExample height={200} lang="css" name="demo" />
+
+# 구문
+
+```css-prop
+/* 키워드 값 */
+column-gap: normal;
+
+/* <length> 값 */
+column-gap: 3px;
+column-gap: 2.5em;
+
+/* <percentage> 값 */
+column-gap: 3%;
+
+/* 전역 값 */
+column-gap: inherit;
+column-gap: initial;
+column-gap: revert;
+column-gap: revert-layer;
+column-gap: unset;
+```
+
+`column-gap` 속성에는 한 개의 [`<length>`], [`<percentage>`], 또는 키워드 `normal`을 사용합니다.
+
+## 값
+
+- : `normal`
+  - 브라우저 기본 간격을 사용합니다. 다열 레이아웃에서는 `1em`으로 정의되어 있습니다. 나머지 레이아웃에서는 `0`입니다.
+- : [`<length>`]
+  - 열 간격을 `<length>`로 설정합니다. 양의 길이여야 합니다.
+- : [`<percentage>`]
+  - 열 간격을 `<percentage>`로 설정합니다. 양의 백분율이어야 합니다.
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+[`<length>`]: ./length
+[`<percentage>`]: ./percentage

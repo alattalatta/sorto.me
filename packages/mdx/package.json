@@ -16,18 +16,18 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@mdx-js/mdx": "^3.1.0",
-    "@pnpm/find-workspace-dir": "^1000.1.1",
-    "fp-ts": "^2.16.10",
+    "@mdx-js/mdx": "^3.1.1",
+    "@pnpm/find-workspace-dir": "^1000.1.2",
+    "fp-ts": "^2.16.11",
     "github-slugger": "^2.0.0",
     "mdast-util-to-string": "^4.0.0",
-    "satori": "^0.15.2",
+    "satori": "^0.18.1",
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
     "@types/hast": "^3.0.4",
     "@types/mdast": "^4.0.4",
-    "@types/node": "^22.16.5",
+    "@types/node": "^22.18.0",
     "@types/unist": "^3.0.3",
     "mdast-util-directive": "^3.1.0",
     "mdast-util-to-hast": "^13.2.0",
@@ -35,7 +35,7 @@
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.1.2",
     "tsconfig": "workspace:*",
-    "typescript": "^5.8.3",
+    "typescript": "^5.9.2",
     "unified": "^11.0.5",
     "vite": "npm:rolldown-vite@latest",
     "vite-plugin-dts": "^4.5.4",

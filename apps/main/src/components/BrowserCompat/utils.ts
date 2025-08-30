@@ -56,10 +56,6 @@ export function determineStatus(statement: SimpleSupportStatement): SupportStatu
     return 'unknown'
   }
 
-  if (statement.version_added === true) {
-    return 'yes'
-  }
-
   if (!statement.version_added) {
     return 'no'
   }

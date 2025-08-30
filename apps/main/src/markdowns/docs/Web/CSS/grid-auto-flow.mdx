@@ -1,0 +1,118 @@
+---
+title: 'CSS grid-auto-flow: 그리드 자동 생성 방향 설정'
+titleShort: 'grid-auto-flow'
+bcd: css.properties.grid-auto-flow
+---
+
+CSS **`grid-auto-flow`** 속성은 그리드 칸을 명시하지 않은 요소를 그리드에 어떻게 배치할지 결정합니다.
+
+```css hidden name=demo
+.grid {
+  grid-auto-flow: row;
+  /* grid-auto-flow: row dense; */
+  /* grid-auto-flow: column; */
+}
+```
+
+```css hidden editable=false name=demo filename=style
+.grid {
+  width: 300px;
+  border: 1px solid #ccc;
+  color: #fff;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 30px 30px 30px;
+  gap: 8px;
+  padding: 8px;
+}
+.item {
+  background: #f0f0f0;
+  color: #000;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.item:nth-child(1) {
+  background: #24c0a5;
+  color: #fff;
+  grid-column: 1 / span 2;
+}
+.item:nth-child(2) {
+  background: #0043ff;
+  color: #fff;
+  grid-column: 1 / span 2;
+}
+.item:nth-child(3) {
+  background: #b42809;
+  color: #fff;
+}
+.item:nth-child(4) {
+  background: #ffb800;
+  color: #fff;
+}
+```
+
+```html hidden name=demo
+<div class="grid">
+  <div class="item">1번</div>
+  <div class="item">2번</div>
+  <div class="item">3번</div>
+  <div class="item">4번</div>
+  <div class="item">5번</div>
+</div>
+```
+
+<LiveExample height={200} lang="css" name="demo" />
+
+# 구문
+
+```css-prop
+/* 키워드 값 */
+grid-auto-flow: row;
+grid-auto-flow: column;
+grid-auto-flow: dense;
+grid-auto-flow: row dense;
+grid-auto-flow: column dense;
+
+/* 전역 값 */
+grid-auto-flow: inherit;
+grid-auto-flow: initial;
+grid-auto-flow: revert;
+grid-auto-flow: revert-layer;
+grid-auto-flow: unset;
+```
+
+`grid-auto-flow` 속성에는 다음과 같이 한 개 또는 두 개 키워드 값을 사용합니다.
+
+- 단일 키워드: `row`, `column`, `dense`
+- 두 개 키워드: `row dense`, `column dense`
+
+## 값
+
+- `row`
+  - 그리드 아이템을 배치할 때 행을 먼저 채웁니다. 필요하면 행을 추가합니다. `row`도 `column`도 지정하지 않았을 때의 기본 값입니다.
+- `column`
+  - 그리드 아이템을 배치할 때 열을 먼저 채웁니다. 필요하면 열을 추가합니다.
+- `dense`
+  - "빽빽한" (dense) 배치 알고리즘은, 그리드 아이템 배치 중에 생긴 빈 공간을 나중에 오는 작은 아이템으로 채우려고 시도합니다. 그 결과 큰 아이템들에 의해 생긴 공백이 채워지지만, 배치되는 순서가 문서 순서와 딴판이 될 수 있습니다.
+  
+    `dense`를 지정하지 않으면 "희박한" (sparse) 기본 배치 알고리즘이 사용됩니다. 이 알고리즘은 아이템을 배치할 때 "앞으로"만 이동하며 중간에 구멍이 생겨도 메우지 않습니다. 이렇게 하면 모든 자동 배치된 아이템이 순서대로 나타나지만, 뒤쪽의 작은 아이템이 채울 수 있었던 구멍이 앞에 남게 됩니다.
+
+# 명세
+
+- [CSS Grid Layout Module Level 2](https://drafts.csswg.org/css-grid/#grid-auto-flow-property)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- [`grid-auto-columns`]: 자동 생성 열 크기 설정
+- [`grid-auto-rows`]: 자동 생성 행 크기 설정
+
+[`grid-auto-columns`]: ./grid-auto-columns
+[`grid-auto-rows`]: ./grid-auto-rows

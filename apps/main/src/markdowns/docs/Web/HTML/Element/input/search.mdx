@@ -1,14 +1,14 @@
 ---
-title: 'HTML <input type="text">: 일반 평문 입력'
-titleShort: '<input type="text">'
-bcd: html.elements.input.type_text
+title: 'HTML <input type="search">: 검색 텍스트 입력'
+titleShort: '<input type="search">'
+bcd: html.elements.input.type_search
 ---
 
-**`text` 유형의 [`<input>`](../input) 요소**는 한 줄의 기본적인 텍스트 입력 칸을 제공합니다.
+**`search` 유형의 [`<input>`](../input) 요소**는 사용자가 검색 질의를 입력할 수 있는 텍스트 입력 칸을 제공합니다. [`text` 유형](./text)과 기능은 같지만 사용자 에이전트 내장 스타일이 다를 수 있습니다.
 
 ```html hidden name=demo
-<label for="username">사용자 이름 (4~8 글자):</label>
-<input id="username" maxlength="8" minlength="4" type="text" />
+<label for="keyword">검색어:</label>
+<input id="keyword" name="q" type="search" />
 ```
 
 ```css hidden name=demo
@@ -21,11 +21,11 @@ label {
 
 # 값
 
-`text` 유형의 값은 문자열입니다. 값의 형식을 제한하려면 [`minlength`](#term-minlength), [`maxlength`](#term-maxlength), [`pattern` 특성](#term-pattern) 등을 사용하세요.
+`search` 유형의 값은 문자열입니다. 값의 형식을 제한하려면 [`minlength`](#term-minlength), [`maxlength`](#term-maxlength), [`pattern` 특성](#term-pattern) 등을 사용하세요.
 
 # 추가 특성
 
-`text` 유형은 모든 [`<input>`](../input) 요소가 공유하는 특성 외에도 아래의 특성을 추가로 지원합니다.
+`search` 유형은 모든 [`<input>`](../input) 요소가 공유하는 특성 외에도 아래의 특성을 추가로 지원합니다.
 
 - : `list`
 
@@ -67,7 +67,7 @@ label {
 
 # 유효성 검증
 
-기본 텍스트 입력 칸은 아무 형식의 문자열이나 받을 수 있어야 하므로 `text` 유형에는 내장된 유효성 검증 기능이 없습니다. 하지만 필요한 경우 [`required` 특성](../input#term-required)으로 입력을 필수로 받게 하거나, [`maxlength`](#term-maxlength), [`minlength`](#term-minlength), [`pattern`](#term-pattern) 등을 사용해 입력 형식을 제한할 수 있습니다.
+`search` 입력 칸은 `text` 유형과 마찬가지로 기본 유효성 검증을 포함하지 않습니다. 평범한 검색 창에서 입력 칸을 제한해야 하는 경우는 많지 않고, 대부분의 경우에는 사용자가 원하는 검색어라면 뭐든 입력 가능해야 하기 때문입니다. 하지만 이미 형식이 정해진 데이터에 대한 질의 등, 유효성 검증이 필요한 경우 [`maxlength`](#term-maxlength), [`minlength`](#term-minlength), [`pattern`](#term-pattern) 등을 사용해 입력 형식을 제한할 수 있습니다.
 
 > [note] HTML 양식 검증은 서버에서 입력 데이터를 검증하는 것의 대안이 될 수 없습니다. HTML 코드를 직접 편집해서 검증을 우회하거나 아예 삭제하는 게 너무나 쉽기 때문입니다. 게다가 HTML을 아예 거치지 않고 서버로 직접 요청을 전송해버릴 수도 있습니다. 서버 측 코드가 입력 데이터 검증에 실패한다면 잘못된 형식이나 유형이나 크기의 데이터가 데이터베이스에 저장되어 큰 문제가 발생할 수 있습니다.
 
@@ -81,7 +81,7 @@ label {
 
 # 같이 보기
 
-- 여러 줄 입력 칸: [`<textarea>`](../textarea)
+- 일반 텍스트 입력 칸: [`<input type="text">`](../text)
 
 [`id`]: /docs/Web/HTML/Global_attributes/id
 [`<datalist>`]: ../datalist

@@ -148,7 +148,7 @@ label {
         </td>
       </tr>
       <tr>
-        <td>`search`</td>
+        <td>[`search`](./input/search)</td>
         <td>검색 문자열을 입력하는 칸입니다. 브라우저가 지원할 경우 초기화 버튼을 보여주기도 합니다. 동적 키보드 환경에서는 엔터 키 대신 검색 아이콘을 보여줍니다.</td>
         <td>
           <input type="search" />
@@ -401,9 +401,9 @@ label {
 
     유효하지 않은 값을 지정한 경우 무시합니다. `text`, `search`, `url`, `tel`, `email`, `password` 유형에 사용할 수 있습니다.
 
-    > [note] `pattern` 특성을 사용할 땐 반드시 `<input>` 근처의 부가 설명으로 형식에 대한 도움말을 제공하세요. `<input>`에 [`aria-describedby` 특성](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby)을 추가해서 설명과 연결하면 접근성을 강화할 수 있습니다.
+    > [note] `pattern` 특성을 사용할 땐 가까운 곳에 기대 형식에 대한 설명 텍스트를 배치하세요. 또한 [`title` 특성](../Global_attributes#term-title)으로 추가 도움말을 제공할 수 있습니다. 대부분의 브라우저에서는 `title`의 내용을 툴팁으로 표시합니다.
     >
-    > 여기에 더해서 [`title` 특성](../Global_attributes#term-title)으로 정확한 요구사항을 설명하면 대부분의 브라우저에서 툴팁으로 보여줄 것입니다. 하지만 [`title` 특성의 접근성 문제를 고려하면](../Global_attributes/title#접근성-고려사항) 일반 텍스트 설명 없는 `title`만 단독으로 사용하지는 말아야 합니다.
+    > 접근성에서, 설명 텍스트는 필수 사항이고 툴팁은 보조 기능입니다.
 
 - : `placeholder`
 

@@ -20,7 +20,7 @@ jobs:
           version: 10.11.0
           run_install: true
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: '22'
           cache: 'pnpm'

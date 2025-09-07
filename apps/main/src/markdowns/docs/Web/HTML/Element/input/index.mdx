@@ -162,7 +162,7 @@ label {
         </td>
       </tr>
       <tr>
-        <td>`tel`</td>
+        <td>[`tel`](./input/tel)</td>
         <td>전화번호를 입력하는 칸입니다. 동적 키보드 환경에서는 전화번호 키패드를 보여줍니다.</td>
         <td>
           <input type="tel" />
@@ -252,13 +252,11 @@ label {
 - : `autocapitalize`
   - 입력한 텍스트에 자동 대문자화를 적용할지, 어떻게 적용할지 지정합니다.
 - : [`autocomplete`](../Attributes/autocomplete)
-
   - 이 입력 칸에서 제공할 자동완성 기능을 나타내는 공백 구분 문자열 리스트를 지정합니다. 일반적인 자동완성은 사용자가 이전에 같은 칸에 입력한 값의 목록을 제공하는 정도지만, 사용자 에이전트에 따라 `email` 자동완성에 기기의 연락처 정보를 사용하는 등 더 복잡한 자동완성도 존재할 수 있습니다. [HTML `autocomplete` 특성 문서](../Attributes/autocomplete)에서 사용 가능한 값들을 확인하세요.
 
     `autocomplete` 특성은 숫자나 문자 값을 사용하는 `hidden`, `text`, `search`, `url`, `tel`, `email`, `date`, `month`, `week`, `time`, `datetime-local`, `number`, `range`, `color`, `password`에 유효하고, `checkbox`, `radio`, `file`, 버튼 유형에는 유효하지 않습니다.
 
 - : [`autofocus`](../Global_attributes/autofocus)
-
   - 페이지 불러오기가 끝나는 순간, 또는 이 입력 칸을 포함한 [`<dialog>`](./dialog) 요소가 보여지는 순간 이 입력 칸으로 포커스를 이동해야 하는지 지정하는 불리언 특성입니다. [`autofocus` 전역 특성](../Global_attributes/autofocus) 문서를 참고하세요.
 
     `hidden` 유형에는 포커스를 할 수 없으므로 `autofocus`도 유효하지 않습니다.
@@ -266,7 +264,6 @@ label {
 - : `capture`
   - `file` 유형에만 사용할 수 있습니다. 지정한 미디어(마이크, 카메라 등)에서 새로운 파일을 캡처해 업로드할 수 있습니다.
 - : `checked`
-
   - `checkbox`와 `radio` 유형에 사용할 수 있습니다. 불리언 특성으로서, `radio`에 지정한 경우 같은 이름을 가진 라디오 버튼들의 그룹 내에서 이 라디오 버튼을 선택했음을 나타냅니다. `checkbox`에 지정한 경우 체크박스가 미리 (페이지 로드 시) 체크된 상태로 나타납니다. `checked` 특성은 _현재_ 체크 상태를 나타내지 않습니다. 체크박스와 라디오 버튼의 상태가 바뀌어도 `checked` 콘텐츠 특성은 변화를 반영하지 않습니다. (현재 체크 상태는 [`HTMLInputElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement)의 `checked` IDL 특성이 나타냅니다.)
 
     > [note] 다른 입력 칸과 달리, 체크박스와 라디오의 값은 현재 `HTMLInputElement.checked` 값이 참일 때만 서버로 제출됩니다.
@@ -274,7 +271,6 @@ label {
     > 예를 들어, `name`이 `fruit`이고 `value`가 `cherry`인 체크박스를 체크한 상황이면 양식 데이터에 `fruit=cherry`를 포함합니다. 그러나 체크박스를 체크하지 않은 상황일 땐 `fruit`이 양식 데이터에 아예 포함되지 않습니다. 체크박스와 라디오의 기본 `value`는 `on`입니다.
 
 - : `dirname`
-
   - `email`, `hidden`, `search`, `tel`, `text`, `url` 유형에 사용할 수 있습니다. 지정하면 요소의 쓰기 방향을 제출 데이터에 포함합니다. 따라서 제출 데이터에는 두 개의 이름/값 쌍이 포함되는데, 첫 번째는 [`name`](#term-name)/[`value`](#term-value) 쌍이고, 두 번째는 `dirname`/(쓰기 방향에 따라)`ltr` 또는 `rtl`입니다.
 
     ```html
@@ -288,25 +284,20 @@ label {
     위의 예제 양식을 제출하면 데이터의 `fruit`은 `cherry`를, `fruit-dir`는 (한국어의 쓰기 방향인) `ltr`을 가지게 됩니다.
 
 - : `disabled`
-
   - 지정할 경우 사용자와의 상호작용을 막는 불리언 특성입니다. 비활성 컨트롤은 사용 불가능하다는 것을 나타내기 위해 더 연한 색상을 사용하는 등 모양이 달라지곤 합니다.
 
     상호작용을 막는다는 것은 컨트롤이 클릭 이벤트를 받지 못하고, 양식 제출 시 컨트롤의 값을 포함하지 않는다는 뜻입니다.
 
 - : `form`
-
   - 이 컨트롤을 _양식 소유자_([`<form>`](./form) 요소)와 연결합니다. 같은 문서 상에 존재하는 `<form>`의 [`id`](/docs/Web/HTML/Global_attributes/id) 값을 지정하세요. 이 특성이 존재하지 않으면 컨트롤의 양식 소유자는 가장 가까운 조상 `<form>`이 됩니다.
 
     `form` 특성을 사용하면 `<input>`이 `<form>`의 자손이 아니어도 연결할 수 있으며, `form` 특성이 가리키는 `<form>`이 조상 `<form>`보다 우선합니다.
 
 - : `formaction`
-
   - `image`와 `submit` 유형에 사용할 수 있습니다. 버튼을 클릭했을 때 데이터를 제출할 URL을 지정합니다. 버튼의 *양식 소유자*에 지정한 [`action`](./form#term-action) 특성보다 우선합니다. 양식 소유자가 없으면 아무 효과도 없습니다.
 
 - : `formenctype`
-
   - `image`와 `submit` 유형에 사용할 수 있습니다. 버튼을 클릭했을 때, 제출할 데이터를 인코딩하는 방법을 지정합니다. 가능한 값은 다음과 같습니다.
-
     - `application/x-www-form-urlencoded`: 기본값입니다.
     - `multipart/form-data`: [`type`](#term-type)이 `file`인 `<input>`을 제출할 때 사용합니다.
     - `text/plain`: 디버깅 용도로 사용하는 값입니다. 실제 사용자가 제출하는 데이터의 인코딩에는 사용하지 말아야 합니다.
@@ -314,9 +305,7 @@ label {
     버튼의 양식 소유자에 지정한 [`enctype`](./form#term-enctype) 특성보다 우선합니다.
 
 - : `formmethod`
-
   - `image`와 `submit` 유형에 사용할 수 있습니다. 버튼을 클릭했을 때, 제출할 데이터를 전송할 [HTTP 메서드](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)를 지정합니다. 가능한 값은 다음과 같습니다.
-
     - `post`: 양식의 데이터를 HTTP 요청의 본문에 넣어서 서버로 전송합니다. 로그인 키처럼 공개해선 안되는 정보를 포함해야 할 때 사용하세요.
     - `get`: 양식의 데이터를 `action` URL 뒤의 쿼리 문자열로 붙여서 서버로 전송합니다. 검색 창처럼 [양식이 유발하는 부수효과가 없을 때](https://developer.mozilla.org/ko/docs/Glossary/Idempotent) 사용하세요.
     - `dialog`: 양식이 [`<dialog>`](./dialog) 안에 있을 때, 양식을 제출하면 대화상자를 닫습니다.
@@ -324,15 +313,12 @@ label {
     버튼의 양식 소유자에 지정한 [`method`](./form#term-method) 특성보다 우선합니다.
 
 - : `formnovalidate`
-
   - `image`와 `submit` 유형에 사용할 수 있습니다. 버튼을 클릭했을 때, 제출 시 양식의 데이터를 [검증](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation)하지 않음을 지정하는 불리언 특성입니다. 버튼의 양식 소유자에 지정한 [`novalidate`](./form#term-novalidate) 특성보다 우선합니다.
 
 - : `formtarget`
-
   - `image`와 `submit` 유형에 사용할 수 있습니다. 버튼을 클릭했을 때, 제출 결과를 표시할 위치를 지정합니다. 가능한 값은 브라우징 맥락(탭, 창, <code>&lt;iframe&gt;</code>)의 이름입니다.
 
     다음의 키워드는 특별한 뜻을 가지고 있습니다.
-
     - `_self` (기본값): 결과를 현재 브라우징 맥락에 보여줍니다.
     - `_blank`: 결과를 새롭게 생성한 이름 없는 브라우징 맥락에 보여줍니다.
     - `_parent`: 현재 페이지가 프레임 안에 존재하는 경우, 결과를 현재 브라우징 맥락의 부모에 보여줍니다. 부모가 없으면 `_self`와 동일합니다.
@@ -343,7 +329,6 @@ label {
 - : `height`
   - `image` 유형에만 사용할 수 있습니다. 이미지의 높이를 지정합니다.
 - : `list`
-
   - 추천 선택지 목록을 나타내는 [`<datalist>`](./datalist) 요소의 ID를 지정합니다. `<input>`의 유형에 맞지 않는 선택지는 무시합니다. 추천 선택지는 어디까지나 추천으로, 사용자는 자신이 원하는 다른 값을 직접 입력할 수 있습니다.
 
     `text`, `search`, `url`, `tel`, `email`, `date`, `month`, `week`, `time`, `datetime-local`, `number`, `range`, `color` 유형에 사용할 수 있습니다.
@@ -351,7 +336,6 @@ label {
     [`<datalist>` 요소의 예제](./datalist#예제)도 확인해보세요.
 
 - : `max`
-
   - 유효한 최대 값을 지정합니다. 숫자 외의 값은 유효하지 않으며, 지정해도 최대 값을 설정하지 않습니다.
 
     초과하는 값을 받은 경우 `<input>`은 [제약 검증](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Constraint_validation)을 통과하지 못합니다.
@@ -359,7 +343,6 @@ label {
     `date`, `month`, `week`, `time`, `datetime-local`, `number`, `range` 유형에 사용할 수 있습니다.
 
 - : `maxlength`
-
   - 입력 값의 유효한 최대 문자 수(UTF-16 코드 유닛 기준)를 지정합니다. 0 이상의 정수만 지정할 수 있습니다. 유효하지 않은 값은 지정해도 최대 길이를 설정하지 않습니다.
 
     이 값보다 긴 길이의 텍스트를 받은 경우 `<input>`이 [제약 검증](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Constraint_validation)을 통과하지 못합니다. 기본 설정에서, 브라우저는 사용자가 입력하는 값의 길이를 이 특성의 값으로 제한합니다.
@@ -367,7 +350,6 @@ label {
     `text`, `search`, `url`, `tel`, `email`, `password` 유형에 사용할 수 있습니다.
 
 - : `min`
-
   - 유효한 최소 값을 지정합니다. 숫자 외의 값은 유효하지 않으며, 지정해도 최대 값을 설정하지 않습니다.
 
     미달하는 값을 받은 경우 `<input>`은 [제약 검증](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Constraint_validation)을 통과하지 못합니다.
@@ -375,7 +357,6 @@ label {
     `date`, `month`, `week`, `time`, `datetime-local`, `number`, `range` 유형에 사용할 수 있습니다.
 
 - : `minlength`
-
   - 입력 값의 유효한 최소 문자 수(UTF-16 코드 유닛 기준)를 지정합니다. 0 이상의 정수만 지정할 수 있습니다. 유효하지 않은 값은 지정해도 최대 길이를 설정하지 않습니다.
 
     이 값보다 짧은 길이의 텍스트를 받은 경우 `<input>`이 [제약 검증](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Constraint_validation)을 통과하지 못합니다.
@@ -383,20 +364,16 @@ label {
     `text`, `search`, `url`, `tel`, `email`, `password` 유형에 사용할 수 있습니다.
 
 - : `multiple`
-
   - `email`과 `file` 유형에 사용할 수 있습니다. 불리언 특성으로, 지정할 경우 `email`의 경우 여러 이메일 주소를 쉼표로 구분해서 입력할 수 있고, `file`의 경우 여러 파일을 한꺼번에 선택할 수 있습니다.
 
 - : `name`
-
   - 컨트롤의 이름을 지정합니다. 양식을 제출할 때 값과 함께 이름/값 쌍을 구성합니다. 비록 명세 상으로는 `name`이 필수 특성은 아니지만, 지정하지 않으면 양식 제출 데이터에 포함되지 않으므로 필수로 간주해도 무리가 없습니다.
 
     `name`에는 두 가지 특별한 값을 제외하면 아무 문자열이나 지정할 수 있습니다.
-
     1. `__charset__`: `type="hidden"`인 `<input>`에 지정하면, 사용자 에이전트가 자동으로 `value`를 양식 제출 시 사용한 문자 인코딩으로 설정합니다.
     2. `isindex`: 역사적인 이유로 사용할 수 없습니다.
 
 - : `pattern`
-
   - [제약 검증](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Constraint_validation)을 만족하려면 입력 값이 일치해야 하는 정규표현식을 지정합니다. JavaScript [`RegExp`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)가 인식할 수 있는 정규표현식이어야 합니다. 정규표현식을 컴파일할 때 `u` 플래그를 지정하므로 패턴은 항상 Unicode 코드 포인트의 시퀀스로 취급합니다. 정규표현식을 열고 닫는 슬래시는 생략해야 합니다.
 
     유효하지 않은 값을 지정한 경우 무시합니다. `text`, `search`, `url`, `tel`, `email`, `password` 유형에 사용할 수 있습니다.
@@ -406,7 +383,6 @@ label {
     > 접근성에서, 설명 텍스트는 필수 사항이고 툴팁은 보조 기능입니다.
 
 - : `placeholder`
-
   - 사용자가 입력해야 하는 값을 간략하게 알려줄 텍스트를 지정합니다. 값이 개행 문자를 포함해서는 안됩니다. `placeholder`는 이 입력 칸의 설명을 제공하는 것이 아니라, 기대하는 데이터의 유형을 나타내야 합니다. 예컨대 레이블이 "이름"인 텍스트 입력 칸의 `placeholder`에 어울리는 값은 "김철수"입니다.
 
     `text`, `search`, `url`, `tel`, `email`, `password`, `number` 유형에 사용할 수 있습니다.
@@ -414,19 +390,16 @@ label {
     > [note] `placeholder`는 양식을 설명할 수 있는 다른 방법에 비해 적합하지 않으며 예상하지 못한 기술적 문제를 유발할 수 있습니다. 아래의 [레이블](#레이블)을 참고하세요.
 
 - : `readonly`
-
   - 불리언 특성입니다. 지정하면 사용자가 값을 편집할 수 없습니다.
 
     `text`, `search`, `url`, `tel`, `email`, `date`, `month`, `week`, `time`, `datetime-local`, `number`, `password` 유형에 사용할 수 있습니다.
 
 - : `required`
-
   - 불리언 특성입니다. 양식을 제출하려면 사용자가 반드시 이 `<input>`에 값을 입력해야 합니다.
 
     `text`, `search`, `url`, `tel`, `email`, `date`, `month`, `week`, `time`, `datetime-local`, `number`, `password`, `checkbox`, `radio`, `file` 유형에 사용할 수 있습니다.
 
 - : `size`
-
   - 입력 칸의 크기를 한 번에 보여줄 글자의 수로 지정합니다. 0보다 큰 정수만 지정할 수 있으며 기본 값은 20입니다. 글꼴마다 글자의 너비가 다르고, 문자끼리의 너비도 서로 다르므로 이 특성으로는 정확한 너비를 설정할 수 없습니다. `size` 특성 대신 CSS [`width` 속성](https://developer.mozilla.org/en-US/docs/Web/CSS/width)을 사용하세요.
 
     `email`, `password`, `tel`, `text` 유형에 사용할 수 있습니다.
@@ -434,9 +407,7 @@ label {
 - : `src`
   - `image` 유형에만 사용할 수 있습니다. 제출 버튼의 이미지로 사용할 파일의 URL을 지정합니다.
 - : `step`
-
   - 입력 가능한 값의 간격입니다. 지정하지 않을 경우,
-
     - `number`와 `range` 유형에서의 기본 값은 1입니다.
     - `time` 유형에서의 기본 값은 기본 값은 1초입니다.
     - `date` 유형에서의 기본 값은 1일입니다.
@@ -452,7 +423,6 @@ label {
     `date`, `month`, `week`, `time`, `datetime-local`, `number`, `range` 유형에 사용할 수 있습니다.
 
 - : `type`
-
   - 렌더링할 컨트롤의 유형을 지정하는 문자열입니다. 예를 들어 체크박스를 생성하려면 `type` 특성에 `checkbox`를 사용합니다. 지정하지 않았거나 알 수 없는 값을 지정한 경우 `text` 유형을 보여줍니다.
 
     가능한 유형은 위의 [`<input>` 유형](#input-유형)에서 볼 수 있습니다.

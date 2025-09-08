@@ -50,7 +50,7 @@
     "dexie": "^4.2.0",
     "dexie-react-hooks": "^4.2.0",
     "k-popo": "^2.0.5",
-    "monaco-editor": "^0.52.2",
+    "monaco-editor": "^0.53.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-intersection-observer": "^9.16.0",

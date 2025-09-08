@@ -1,0 +1,105 @@
+---
+title: 'CSS row-gap: 행 사이 간격'
+titleShort: 'row-gap'
+bcd: css.properties.row-gap
+---
+
+CSS **`row-gap`** 속성은 요소의 행 사이 간격을 설정합니다.
+
+초기 명세에서는 `grid-row-gap`이라는 이름을 사용했습니다. 구형 브라우저와의 호환성 유지를 위해, `grid-row-gap` 역시 이 속성의 별칭으로 인식됩니다.
+
+```css hidden name=demo
+.grid {
+  row-gap: 0;
+  /* row-gap: 8px; */
+  /* row-gap: 33%; */
+}
+```
+
+```css hidden editable=false name=demo filename=style
+.grid {
+  width: 300px;
+  border: 1px solid #ccc;
+  color: #fff;
+  display: grid;
+  grid: auto-flow / 1fr 1fr;
+  padding: 8px;
+}
+.item {
+  background: #f0f0f0;
+  color: #000;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.item:nth-child(1) {
+  background: #24c0a5;
+  color: #fff;
+}
+.item:nth-child(2) {
+  background: #0043ff;
+  color: #fff;
+}
+.item:nth-child(3) {
+  background: #b42809;
+  color: #fff;
+}
+.item:nth-child(4) {
+  background: #ffb800;
+  color: #fff;
+}
+```
+
+```html hidden name=demo
+<div class="grid">
+  <div class="item">1번</div>
+  <div class="item">2번</div>
+  <div class="item">3번</div>
+  <div class="item">4번</div>
+  <div class="item">5번</div>
+</div>
+```
+
+<LiveExample height={200} lang="css" name="demo" />
+
+# 구문
+
+```css-prop
+/* <length> 값 */
+row-gap: 3px;
+row-gap: 2.5em;
+
+/* <percentage> 값 */
+row-gap: 3%;
+
+/* 전역 값 */
+row-gap: inherit;
+row-gap: initial;
+row-gap: revert;
+row-gap: revert-layer;
+row-gap: unset;
+```
+
+`row-gap` 속성에는 한 개의 [`<length>`] 또는 [`<percentage>`]를 사용합니다.
+
+## 값
+
+- : [`<length>`]
+  - 행 간격을 `<length>`로 설정합니다. 양의 길이여야 합니다.
+- : [`<percentage>`]
+  - 행 간격을 `<percentage>`로 설정합니다. 양의 백분율이어야 합니다.
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 열 사이 간격: [`column-gap`]
+
+[`<length>`]: ./length
+[`<percentage>`]: ./percentage
+[`column-gap`]: ./column-gap

@@ -1,0 +1,32 @@
+---
+title: 'CSS <length-percentage> 자료형: 길이 또는 백분율'
+titleShort: '<length-percentage>'
+bcd: css.types.length-percentage
+---
+
+CSS **`<length-percentage>`** 자료형은 [`<length>`]와 [`<percentage>`] 모두 허용하는 값을 나타냅니다.
+
+`<length-percentage>`를 값으로 받는 속성이라면 백분율이 길이로 계산됩니다. 따라서 [`calc()`]에서 백분율을 사용할 수 있습니다. 즉, 다음 세 [`width`] 모두 유효합니다.
+
+```css-prop
+width: 200px;
+width: 20%;
+width: calc(100% - 200px);
+```
+
+# 구문
+
+[`<length>`]와 [`<percentage>`]의 구문을 참고하세요.
+
+# 명세
+
+- [CSS Values and Units Module Level 4](https://drafts.csswg.org/css-values/#mixed-percentages)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+[`<length>`]: ./length
+[`<percentage>`]: ./percentage
+[`calc()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/calc
+[`width`]: https://developer.mozilla.org/en-US/docs/Web/CSS/width

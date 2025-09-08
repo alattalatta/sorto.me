@@ -88,16 +88,14 @@ column-gap: revert-layer;
 column-gap: unset;
 ```
 
-`column-gap` 속성에는 한 개의 [`<length>`], [`<percentage>`], 또는 키워드 `normal`을 사용합니다.
+`column-gap` 속성에는 한 개의 [`<length-percentage>`] 또는 키워드 `normal`을 사용합니다.
 
 ## 값
 
 - : `normal`
   - 브라우저 기본 간격을 사용합니다. 다열 레이아웃에서는 `1em`으로 정의되어 있습니다. 나머지 레이아웃에서는 `0`입니다.
-- : [`<length>`]
-  - 열 간격을 `<length>`로 설정합니다. 양의 길이여야 합니다.
-- : [`<percentage>`]
-  - 열 간격을 `<percentage>`로 설정합니다. 양의 백분율이어야 합니다.
+- : [`<length-percentage>`]
+  - 열 간격을 길이 또는 백분율로 설정합니다. 양의 값이어야 합니다.
 
 # 브라우저 호환성
 
@@ -107,6 +105,5 @@ column-gap: unset;
 
 - 행 사이 간격: [`row-gap`]
 
-[`<length>`]: ./length
-[`<percentage>`]: ./percentage
+[`<length-percentage>`]: ./length-percentage
 [`row-gap`]: ./row-gap

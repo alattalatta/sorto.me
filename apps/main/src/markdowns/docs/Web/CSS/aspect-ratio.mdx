@@ -49,7 +49,7 @@ aspect-ratio: revert-layer;
 aspect-ratio: unset;
 ```
 
-`aspect-ratio` 속성에는 `auto` 키워드, [`<ratio>`], 또는 둘 다 사용합니다. `auto` 키워드와 `<ratio>`를 모두 사용했으며 적용한 요소가 [`<img>`](/docs/Web/HTML/Element/img) 등 [대체 요소](/docs/Web/CSS/Replaced_element)라면 콘텐츠가 로딩될 때까지는 주어진 비율을 사용하고, 로딩 후엔 `auto`를 사용하여 콘텐츠의 내재된 가로세로비를 적용합니다. 대체 요소가 아닌 요소에서는 `<ratio>`를 사용합니다.
+`aspect-ratio` 속성에는 `auto` 키워드, [`<ratio>`], 또는 둘 다 사용합니다. `auto` 키워드와 `<ratio>`를 모두 사용했으며 적용한 요소가 [`<img>`](/docs/Web/HTML/Element/img) 등 [대체 요소](/docs/Web/CSS/Replaced_element)라면 콘텐츠가 로딩될 때까지는 주어진 비율을 사용하고, 로딩 후엔 `auto`를 사용하여 콘텐츠의 [내재된 가로세로비][내재적 크기]를 적용합니다. 대체 요소가 아닌 요소에서는 `<ratio>`를 사용합니다.
 
 ## 값
 
@@ -68,3 +68,4 @@ aspect-ratio: unset;
 
 [`<ratio>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/ratio
 [`box-sizing`]: https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
+[내재적 크기]: /docs/Web/CSS/Intrinsic_size

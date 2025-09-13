@@ -1,0 +1,87 @@
+---
+title: 'CSS: 내재적 크기 (Intrinsic size)'
+description: 'CSS에서, 요소의 레이아웃 맥락을 고려하지 않고 오직 요소의 콘텐츠만을 따졌을 때 요소가 차지할 크기를 내재적 크기라고 합니다. 내재적 크기는 요소의 콘텐츠에 따라 달라지며, 요소의 스타일 속성에 영향을 받을 수 있습니다.'
+---
+
+CSS에서, 요소의 레이아웃 맥락을 고려하지 않고 오직 요소의 콘텐츠만을 따졌을 때 요소가 차지할 크기를 **내재적 크기**라고 합니다. 내재적 크기는 요소의 콘텐츠에 따라 달라지며, 요소의 스타일 속성에 영향을 받을 수 있습니다. 내재적 크기의 반대는 "외재적 크기"로, 컨테이너 크기와 같이 외부 요인에 의해 결정되는 크기입니다. [`min-content`]와 [`max-content`] 키워드가 요소의 내재적 크기를 나타냅니다.
+
+인라인 요소의 크기는 내재적 크기와 같습니다. [`height`], [`width`], [`block-size`], [`inline-size`], [`padding-block`], [`margin-block`] 등 CSS [박스 모델] 속성들은 인라인 요소에 영향을 주지 않습니다. (단, [`padding-inline`], [`margin-inline`]은 줄 내에서의 인라인 간격에 영향을 줍니다.)
+
+예를 들어, 인라인 [`<span>` 요소][`<span>`]의 내재적 최소 크기는, 다른 아무 CSS 속성 없이 `inline-size: 0`의 컨테이너 내에 [띄워졌을 때][`float`]와 같습니다. 반대로, 내재적 최대 크기는 무한한 `inline-size` 값을 가진 컨테이너에서의 크기와 같습니다.
+
+이미지에서의 내재적 크기도 텍스트와 같은 뜻입니다. 렌더링에 영향을 줄 CSS 속성을 모두 제외했을 때 이미지가 차지하는 크기가 곧 이미지의 내재적 크기입니다.
+
+픽셀 밀도와 해상도는 내재적 크기에 영향을 줍니다. 기본적으로 이미지들은 "1x" 픽셀 밀도 (기기 픽셀 1개 = CSS 픽셀 1개)로 취급하고, 내재적 크기는 단순히 이미지의 픽셀 높이 및 너비와 같습니다. 이미지의 내재적 크기와 해상도는 EXIF 데이터에 명시될 수 있습니다. 픽셀 밀도는 [`srcset` 특성][`srcset`]에 명시할 수 있습니다. 만약 EXIF 데이터와 `srcset`이 모두 존재하면 `srcset`이 우선합니다.
+
+# 내재적 최소 크기
+
+요소를 내재적 최소 크기로 설정하려면 [`inline-size`] (한국어, 영어처럼 가로쓰기 문자에서는 [`width`]) 속성을 [`min-content`]로 설정하세요. 이렇게 하면, 요소의 인라인 크기는 텍스트가 컨테이너 밖으로 넘치지 않으면서 최대한 많은 자동 줄바꿈을 적용한 크기가 됩니다. 따라서 텍스트만 포함하는 요소의 경우, 가장 긴 단어의 길이와 같아집니다.
+
+> [note]
+> 한글, 중문, 일문 텍스트의 경우 [`word-break`]의 값에 따라 내재적 최소 크기가 달라질 수 있습니다. `word-break: keep-all`일 땐 가장 긴 단어의 길이와 같지만, `keep-all`이 아닌 경우 CJK 문자는 어디에서나 자동 줄바꿈이 발생할 수 있으므로 단 한 글자의 너비와 같아집니다.
+>
+> 아래 예제의 세 번째, 초록 배경 예제에서 `word-break`에 따른 차이를 확인할 수 있습니다.
+
+```css hidden name=minimum
+p {
+  block-size: min-content;
+  inline-size: min-content;
+}
+
+.break-default {
+  background: palegoldenrod;
+}
+.break-keep {
+  background: lightgreen;
+  word-break: keep-all;
+}
+```
+
+```html hidden name=minimum
+<div style="display:flex;gap:10px;">
+  <p class="break-default">This is the opposite of an element's extrinsic size, which is determined by external constraints such as container size. This is the opposite of an element's extrinsic size, which is determined by external constraints such as container size.</p>
+  <p class="break-default">내재적 크기는 요소의 콘텐츠에 따라 달라지며, 요소의 스타일 속성에 영향을 받을 수 있습니다. 내재적 크기의 반대는 외재적 크기로, 컨테이너 크기와 같이 외부 요인에 의해 결정되는 크기입니다.</p>
+  <p class="break-keep">내재적 크기는 요소의 콘텐츠에 따라 달라지며, 요소의 스타일 속성에 영향을 받을 수 있습니다. 내재적 크기의 반대는 외재적 크기로, 컨테이너 크기와 같이 외부 요인에 의해 결정되는 크기입니다.</p>
+</div>
+```
+
+<LiveExample height={300} lang="css" name="minimum" />
+
+# 내재적 최대 크기
+
+요소를 내재적 최대 크기로 설정하려면 [`inline-size`] (한국어, 영어처럼 가로쓰기 문자에서는 [`width`]) 속성을 [`max-content`]로 설정하세요. 이렇게 하면 내재적 최소 크기와 반대로 텍스트가 컨테이너 밖으로 넘치더라도 자동 줄바꿈 없이 텍스트를 표시할 수 있는 크기가 됩니다.
+
+```css hidden name=maximum
+p {
+  background: palegoldenrod;
+  block-size: max-content;
+  inline-size: max-content;
+}
+```
+
+```html hidden name=maximum
+  <p>This is the opposite of an element's extrinsic size, which is determined by external constraints such as container size. This is the opposite of an element's extrinsic size, which is determined by external constraints such as container size.</p>
+  <p>내재적 크기는 요소의 콘텐츠에 따라 달라지며, 요소의 스타일 속성에 영향을 받을 수 있습니다. 내재적 크기의 반대는 외재적 크기로, 컨테이너 크기와 같이 외부 요인에 의해 결정되는 크기입니다.</p>
+```
+
+<LiveExample height={180} lang="css" name="maximum" />
+
+# 같이 보기
+
+- 가로세로비: [`aspect-ratio`]
+
+[`block-size`]: https://developer.mozilla.org/en-US/docs/Web/CSS/block-size
+[`height`]: https://developer.mozilla.org/en-US/docs/Web/CSS/height
+[`float`]: https://developer.mozilla.org/en-US/docs/Web/CSS/float
+[`inline-size`]: https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size
+[`margin-block`]: https://developer.mozilla.org/en-US/docs/Web/CSS/margin-block
+[`margin-inline`]: https://developer.mozilla.org/en-US/docs/Web/CSS/margin-inline
+[`max-content`]: https://developer.mozilla.org/en-US/docs/Web/CSS/max-width#values
+[`min-content`]: https://developer.mozilla.org/en-US/docs/Web/CSS/min-width#values
+[`padding-block`]: https://developer.mozilla.org/en-US/docs/Web/CSS/padding-block
+[`padding-inline`]: https://developer.mozilla.org/en-US/docs/Web/CSS/padding-inline
+[`srcset`]: /docs/Web/HTML/Element/img#term-srcset
+[`width`]: https://developer.mozilla.org/en-US/docs/Web/CSS/width
+[`word-break`]: https://developer.mozilla.org/en-US/docs/Web/CSS/word-break
+[`<span>`]: /docs/Web/HTML/Element/span
+[박스 모델]: https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Box_model

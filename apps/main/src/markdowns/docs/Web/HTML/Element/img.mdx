@@ -46,7 +46,6 @@ WebP와 AVIF는 정적 이미지와 애니메이션 시퀀스에 모두 PNG, JPE
 [전역 특성](/docs/Web/HTML/Global_attributes)을 포함합니다.
 
 - : `alt`
-
   - 이미지의 대체 텍스트 설명을 지정합니다.
 
     > [note] 브라우저가 항상 이미지를 표시할 수는 없습니다.
@@ -64,7 +63,6 @@ WebP와 AVIF는 정적 이미지와 애니메이션 시퀀스에 모두 PNG, JPE
     `alt`는 이미지를 복사해서 텍스트에 붙여 넣을 때나, 이미지를 즐겨찾기에 추가할 때 등 다른 용도로도 쓰입니다.
 
 - : `attributionsrc` <Experimental />
-
   - 브라우저가 이미지 요청 시 [`Attribution-Reporting-Eligible` 헤더](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Attribution-Reporting-Eligible)를 보내도록 합니다. 서버에서는 이 헤더를 확인 후 [`Attribution-Reporting-Register-Source`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Attribution-Reporting-Register-Source) 또는 [`Attribution-Reporting-Register-Trigger` 헤더](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Attribution-Reporting-Register-Trigger)를 응답에 포함하여 각각 [이미지 기반 기여 소스](https://developer.mozilla.org/en-US/docs/Web/API/Attribution_Reporting_API/Registering_sources#html-based_event_sources) 또는 [기여 트리거](https://developer.mozilla.org/en-US/docs/Web/API/Attribution_Reporting_API/Registering_triggers#html-based_attribution_triggers)를 등록할 수 있습니다.
 
     소스 혹은 트리거 이벤트는 브라우저가 이미지 파일 응답을 받는 시점에 발동합니다.
@@ -72,7 +70,6 @@ WebP와 AVIF는 정적 이미지와 애니메이션 시퀀스에 모두 PNG, JPE
     > [note] [Attribution Reporting API](https://developer.mozilla.org/en-US/docs/Web/API/Attribution_Reporting_API)에서 자세한 정보를 확인하세요.
 
     이 특성은 두 가지 종류의 값을 가질 수 있습니다.
-
     - 불리언, i.e. `attributionsrc` 특성 이름만. [`Attribution-Reporting-Eligible`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Attribution-Reporting-Eligible) 헤더를 `src` 특성이 가리키는 것과 같은 서버로 전송합니다. 기여 소스 등록을 같은 서버에서 처리할 때는 이렇게 지정해도 됩니다.
     - 한 개 이상의 URL을 포함한 문자열.
 
@@ -84,7 +81,6 @@ WebP와 AVIF는 정적 이미지와 애니메이션 시퀀스에 모두 PNG, JPE
       요청하는 리소스가 외부 서버거나, 기여 소스 등록을 다른 서버에서 처리하는 경우에 사용할 수 있습니다. 리소스 요청이 발생하면, 리소스 출처 외에도 지정한 URL들에도 `Attribution-Reporting-Eligible` 헤더를 전송합니다. 각 URL들에서는 [`Attribution-Reporting-Register-Source`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Attribution-Reporting-Register-Source) 또는 [`Attribution-Reporting-Register-Trigger`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Attribution-Reporting-Register-Trigger)로 응답해 등록을 마칠 수 있습니다.
 
 - : `crossorigin`
-
   - 이미지 파일을 가져올 때 CORS를 사용할지 나타내는 열거형 특성입니다. [CORS 활성화 리소스](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image)는 [`<canvas>`](./canvas) 요소에 사용해도 캔버스가 [오염](https://developer.mozilla.org/en-US/docs/Web/HTML/How_to/CORS_enabled_image#security_and_tainted_canvases)(taint)되지 않습니다.
 
     `crossorigin` 특성을 지정하지 않는 경우 비 CORS 요청([`Origin`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Origin) 헤더 없이)을 전송하고, 오염된 리소스로 취급하여 리소스 데이터 접근을 제한하므로 `<canvas>`에서 사용할 수 없습니다.
@@ -92,7 +88,6 @@ WebP와 AVIF는 정적 이미지와 애니메이션 시퀀스에 모두 PNG, JPE
     `crossorigin` 특성을 지정한 경우 CORS 요청([`Origin`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Origin) 헤더 포함)을 전송합니다. 하지만 서버가 리소스의 교차 출처 요청을 허용하지 않는다면 ([`Access-Control-Allow-Origin`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Access-Control-Allow-Origin) 헤더가 없거나, 그 값 중에 요청 사이트의 출처가 없다면) 브라우저가 리소스 로딩을 차단하고 개발자 도구 콘솔에 오류를 표시합니다.
 
     가능한 값은 다음과 같습니다.
-
     - : `anonymous`
       - 자격 증명을 제외하고 교차 출처 요청을 전송합니다. 즉 [쿠키](https://developer.mozilla.org/en-US/docs/Glossary/Cookie), [X.509 인증서](https://datatracker.ietf.org/doc/html/rfc5280), [`Authorization` 헤더](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Authorization)를 전송하지 않습니다.
     - : `user-credentials`
@@ -101,9 +96,7 @@ WebP와 AVIF는 정적 이미지와 애니메이션 시퀀스에 모두 PNG, JPE
     유효하지 않은 값을 지정한 경우 `anonymous`와 동일하게 동작합니다.
 
 - : `decoding`
-
   - 이미지 디코딩 방식에 대한 힌트를 브라우저에 제공합니다. 가능한 값은 다음과 같습니다.
-
     - : `sync`
       - 이미지 디코딩을 동기적으로 수행합니다.
     - : `async`
@@ -112,13 +105,10 @@ WebP와 AVIF는 정적 이미지와 애니메이션 시퀀스에 모두 PNG, JPE
       - 기본값입니다. 브라우저가 알아서 최적 값을 계산합니다.
 
 - : `elementtiming`
-
   - [`PerformanceElementTiming`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceElementTiming) API가 이미지를 관측하도록 합니다. 특성의 값이 관측된 이미지의 식별자로 쓰입니다. [`elementtiming` 특성 페이지](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/elementtiming)를 참고하세요.
 
 - : `fetchpriority`
-
   - 이미지를 가져올 때의 우선순위에 대한 힌트를 브라우저에 제공합니다. 가능한 값은 다음과 같습니다.
-
     - : `high`
       - 다른 이미지에 비해 높은 우선순위로 가져와야 함을 표시합니다.
     - : `low`
@@ -127,26 +117,21 @@ WebP와 AVIF는 정적 이미지와 애니메이션 시퀀스에 모두 PNG, JPE
       - 기본 값입니다. 브라우저가 우선순위를 자동으로 판단합니다.
 
 - : `height`
-  - 이미지의 내재된 높이를 직접 지정합니다. CSS 픽셀 단위이며, 단위 없는 정수 값을 지정해야 합니다.
+  - 이미지의 [내재된 높이][내재적 크기]를 직접 지정합니다. CSS 픽셀 단위이며, 단위 없는 정수 값을 지정해야 합니다.
 - : `ismap`
-
   - 이미지가 서버사이드 맵의 일부임을 나타내는 불리언 특성입니다. 참일 경우 사용자가 이미지를 클릭했을 때 그 좌표를 서버로 전송합니다.
 
     > [note] 이 특성은 `<img>` 요소가 유효한 [`href`](./a#term-href) 특성을 지정한 [`<a>`](./a) 요소의 자손이어야 사용할 수 있습니다.
 
 - : `loading`
-
   - 브라우저가 이미지를 불러오는 방식을 지정합니다.
-
     - `eager`: 이미지를 즉시 불러옵니다. 현재 뷰포트에서 이미지를 볼 수 있는지는 고려하지 않습니다. 기본 값입니다.
     - `lazy`: 뷰포트에서 브라우저가 계산한 특정 거리 내에 이미지가 들어오기 전까지 불러오기를 지연합니다. 이미지를 사용하지 않으면 불러오지 않아 네트워크 대역폭과 저장 용량을 절약하기 위한 값으로, 대부분의 상황에서 성능을 개선할 수 있습니다.
 
     > [note] 불러오기 지연은 JavaScript가 활성화된 경우에만 동작합니다. 이는 원치 않는 추적을 방지하기 위함으로, 스크립트가 비활성된 경우에도 이미지 불러오기를 지연할 경우 페이지의 마크업에 이미지를 전략적으로 배치하고, 어느 이미지까지 불러왔는지 확인하는 것으로 사용자의 대략적인 스크롤 위치를 추적할 수 있기 때문입니다.
 
 - : `referrerpolicy`
-
   - 리소스를 가져올 때 사용할 리퍼러(referrer)를 지정합니다. 다음 값을 사용해야 합니다.
-
     - `no-referrer`: [`Referer`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer) 헤더를 전송하지 않습니다.
     - `no-referrer-when-downgrade`: TLS(HTTPS) 지원을 하지 않는 출처에 대해서는 `Referer` 헤더를 전송하지 않습니다.
     - `origin`: `Referer` 헤더가 요청의 출처, 즉 [스킴](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_URL), [호스트](https://developer.mozilla.org/en-US/docs/Glossary/Host), [포트](https://developer.mozilla.org/en-US/docs/Glossary/Port)를 포함합니다.
@@ -157,9 +142,7 @@ WebP와 AVIF는 정적 이미지와 애니메이션 시퀀스에 모두 PNG, JPE
     - `unsafe-url`: 리퍼러가 항상 출처, 경로, 쿼리 문자열을 포함합니다. 프래그먼트, 비밀번호, 사용자 이름은 포함하지 않습니다. **안전하지 않은 값입니다.** TLS로 보호받는 리소스에서 보호 없는 출처로 정보가 누출될 수 있습니다.
 
 - : `sizes`
-
   - 미디어 조건에 따라 사용하길 원하는 소스 이미지의 크기를 나타냅니다. 소스 이미지는 너비(`w`) 서술자를 사용한 [`srcset`](#term-srcset) 특성으로 제공할 수 있습니다. `sizes`는 쉼표로 구분하는 리스트로, 각각의 항목은 다음의 두 구성 요소로 이루어집니다.
-
     1. 미디어 조건, `(max-width: 360px)` 등. 마지막 항목에서는 생략해야 합니다.
     2. 소스 크기, `360px` 등.
 
@@ -170,16 +153,12 @@ WebP와 AVIF는 정적 이미지와 애니메이션 시퀀스에 모두 PNG, JPE
     `srcset` 특성이 없거나, 값에 너비 서술자를 사용하지 않은 경우, `sizes` 특성은 아무 효과도 없습니다.
 
 - : `src`
-
   - 이미지의 URL을 지정합니다. 필수 특성입니다. `srcset`을 지원하는 브라우저에서는, `srcset`에 너비 서술자를 사용하지 않았고, `1x` 픽셀 밀도 서술자도 사용하지 않은 경우, `src`의 값을 픽셀 밀도 `1x`의 소스 후보로 사용합니다.
 
 - : `srcset`
-
   - 사용자 에이전트가 사용할 수 있는 이미지 소스의 후보를 지정합니다. 한 개 이상의 항목을 가지는 쉼표 구분 리스트로, 각각의 항목은 다음 두 구성 요소로 이루어집니다.
-
     1. 이미지의 URL.
     2. 선택 사항: 공백과 그 뒤를 잇는
-
     - 너비 서술자(양의 정수와 바로 뒤의 `w` 문자), `360w` 등. 너비 서술자의 값을 `sizes` 특성에 지정한 소스 크기로 나눠서 픽셀 밀도를 구합니다.
     - 픽셀 밀도 서술자(양의 실수와 바로 뒤의 `x` 문자), `2x` 등.
 
@@ -190,16 +169,15 @@ WebP와 AVIF는 정적 이미지와 애니메이션 시퀀스에 모두 PNG, JPE
     사용자 에이전트는 사용자 개인 설정과 화면의 픽셀 밀도, 네트워크 대역폭 등 여러가지 조건에 따라 소스 중 하나를 선택할 수 있습니다.
 
 - : `width`
-  - 이미지의 내재된 너비를 직접 설정합니다. CSS 픽셀 단위이며, 단위 없는 정수 값을 지정해야 합니다.
+  - 이미지의 [내재된 너비][내재적 크기]를 직접 설정합니다. CSS 픽셀 단위이며, 단위 없는 정수 값을 지정해야 합니다.
 - : `usemap`
-
   - 요소와 연결할 [이미지 맵](./map)을 가리키는 프래그먼트 식별자(`#`으로 시작)입니다.
 
     > [note] `<img>`가 [`<a>`](./a), [`<button>`](./button)의 자손일 땐 사용할 수 없습니다.
 
 # CSS 스타일링
 
-`<img>`는 [대체 요소](/docs/Web/CSS/Replaced_element)로, [`display`](/docs/Web/CSS/display)의 기본값은 `inline`이지만 삽입한 이미지의 내재된 높이와 너비에 따라 마치 `inline-block`을 지정한 것과 같이 요소의 크기가 결정됩니다. `<img>`에는 [`border`](https://developer.mozilla.org/en-US/docs/Web/CSS/border), [`border-radius`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius), [`margin`](/docs/Web/CSS/margin), [`padding`](/docs/Web/CSS/padding), [`width`](https://developer.mozilla.org/en-US/docs/Web/CSS/width), [`height`](https://developer.mozilla.org/en-US/docs/Web/CSS/height) 등의 속성을 적용할 수 있습니다.
+`<img>`는 [대체 요소](/docs/Web/CSS/Replaced_element)로, [`display`](/docs/Web/CSS/display)의 기본값은 `inline`이지만 삽입한 이미지의 [내재적 크기]에 따라 마치 `inline-block`을 지정한 것과 같이 요소의 크기가 결정됩니다. `<img>`에는 [`border`](https://developer.mozilla.org/en-US/docs/Web/CSS/border), [`border-radius`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius), [`margin`](/docs/Web/CSS/margin), [`padding`](/docs/Web/CSS/padding), [`width`](https://developer.mozilla.org/en-US/docs/Web/CSS/width), [`height`](https://developer.mozilla.org/en-US/docs/Web/CSS/height) 등의 속성을 적용할 수 있습니다.
 
 `<img>`는 기준선(baseline)을 갖지 않으므로 [`vertical-align: baseline`](https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align)이 적용된 인라인 서식 맥락 내에서는 이미지의 아래쪽 모서리를 텍스트 기준선에 배치합니다.
 
@@ -281,3 +259,4 @@ WebP와 AVIF는 정적 이미지와 애니메이션 시퀀스에 모두 PNG, JPE
 
 [`<a>`]: ./a
 [`<button>`]: ./button
+[내재적 크기]: /docs/Web/CSS/Intrinsic_size

@@ -1,0 +1,102 @@
+---
+title: 'CSS scale: 크기 변형'
+titleShort: 'scale'
+bcd: css.properties.scale
+description: 'CSS scale 속성은 transform 속성과 별개로 요소에 크기 변형을 적용합니다.'
+---
+
+CSS **`scale`** 속성은 [`transform` 속성][`transform`]과 별개로 요소에 크기 변형을 적용합니다. 이 속성은 일반적인 사용자 인터페이스 변형에 더 적합하고, `transform` 속성에서 변형 함수들이 적용되는 순서를 기억하지 않아도 되므로 편리합니다.
+
+```html hidden name=demo
+<div class="view">
+  <div class="square">Sqare</div>
+</div>
+```
+
+```css hidden name=demo
+.square {
+  scale: none;
+  /* scale: 1.5; */
+  /* scale: 1.2 2; */
+  /* scale: 50% 100% 200% */
+}
+```
+
+```css hidden name=demo filename=style
+.view {
+  perspective: 500px;
+}
+.square {
+  align-items: center;
+  background-color: cornflowerblue;
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  transform: rotateY(45deg) translateX(30px);
+  transform-style: preserve-3d;
+  width: 100px;
+}
+```
+
+<LiveExample height={200} lang="css" name="demo" />
+
+# 구문
+
+```css-prop
+/* 키워드 값 */
+scale: none;
+
+/* X, Y 동일 값 */
+scale: 2;
+scale: 50%;
+
+/* X, Y 별도 값 */
+scale: 2 0.5;
+
+/* X, Y, Z 값 */
+scale: 2 50% 1.5;
+
+/* 전역 값 */
+scale: inherit;
+scale: initial;
+scale: revert;
+scale: revert-layer;
+scale: unset;
+```
+
+`scale` 속성에는 키워드 `none` 또는 한 개에서 세 개까지의 값을 사용합니다. 각각의 값은 [`<number>`] 또는 [`<percentage>`]입니다.
+
+- 값을 **한 개** 지정하면 X축과 Y축에 모두 적용됩니다. [`scale()`] 함수에 한 개의 값을 지정하는 것과 동일합니다.
+- 값을 **두 개** 지정하면 첫 번째 값은 X축, 두 번째 값은 Y축에 적용됩니다. [`scale()`] 함수에 두 개의 값을 지정하는 것과 동일합니다.
+- 값을 **세 개** 지정하면 첫 번째 값은 X축, 두 번째 값은 Y축, 세 번째 값은 Z축에 적용됩니다. [`scale3d()`] 함수에 세 개의 값을 지정하는 것과 동일합니다.
+
+## 값
+
+- : [`<number>`]
+  - [-1, 1]을 벗어나는 값은 요소를 확대합니다. 범위 내의 값은 요소를 축소합니다. 음수 값의 경우 그 축의 방향으로 요소를 뒤집습니다.
+- : [`<percentage>`]
+  - [-100%, 100%]를 벗어나는 값은 요소를 확대합니다. 범위 내의 값은 요소를 축소합니다. 음수 값의 경우 그 축의 방향으로 요소를 뒤집습니다.
+- : `none`
+  - 크기 변형을 적용하지 않습니다.
+
+# 명세
+
+[CSS Transforms Module Level 2](https://drafts.csswg.org/css-transforms-2/#individual-transforms)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 종합 시각적 변형: [`transform`]
+- 이동 변형: [`translate`]
+- 회전 변형: [`rotate`]
+
+[`<number>`]: ./number
+[`<percentage>`]: ./percentage
+[`rotate`]: ./rotate
+[`transform`]: ./transform
+[`translate`]: ./translate
+[`translate()`]: https://developer.mozilla.org/ko/docs/Web/CSS/transform-function/translate
+[`translate3d()`]: https://developer.mozilla.org/ko/docs/Web/CSS/transform-function/translate3d

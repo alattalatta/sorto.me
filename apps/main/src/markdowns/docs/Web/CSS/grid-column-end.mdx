@@ -1,19 +1,19 @@
 ---
-title: 'CSS grid-column-start: 그리드 아이템 열 시작점 지정'
-titleShort: 'grid-column-start'
-bcd: css.properties.grid-column-start
+title: 'CSS grid-column-end: 그리드 아이템 열 끝점 지정'
+titleShort: 'grid-column-end'
+bcd: css.properties.grid-column-end
 ---
 
-CSS **`grid-column-start`** 속성은 그리드 아이템을 배치할 그리드 열 시작점 위치를 설정합니다. 한 열이나 여러 열(`span`)로 설정할 수 있고, 자동 배치(`auto`)를 할 수도 있습니다.
+CSS **`grid-column-end`** 속성은 그리드 아이템을 배치할 그리드 열 끝점 위치를 설정합니다. 한 열이나 여러 열(`span`)로 설정할 수 있고, 자동 배치(`auto`)를 할 수도 있습니다.
 
 ```css hidden name=demo
 .target {
-  grid-column-start: auto;
-  /* grid-column-start: 2; */
-  /* grid-column-start: -1; */
-  /* grid-column-start: lineA 1; */
-  /* grid-column-start: lineA 2; */
-  /* grid-column-start: span 2; */
+  grid-column-end: auto;
+  /* grid-column-end: 3; */
+  /* grid-column-end: -1; */
+  /* grid-column-end: lineA 1; */
+  /* grid-column-end: lineA 2; */
+  /* grid-column-end: span 2; */
 }
 ```
 
@@ -61,49 +61,49 @@ CSS **`grid-column-start`** 속성은 그리드 아이템을 배치할 그리드
 
 ```css-prop
 /* 키워드 값 */
-grid-column-start: auto;
+grid-column-end: auto;
 
 /* <custom-ident> 값 */
-grid-column-start: column-line-name;
+grid-column-end: column-line-name;
 
 /* <integer> && <custom-ident>? 값 */
-grid-column-start: 2;
-grid-column-start: column-line-name 4;
+grid-column-end: 2;
+grid-column-end: column-line-name 4;
 
 /* span && [ <integer> || <custom-ident> ] 값 */
-grid-column-start: span 3;
-grid-column-start: span column-line-name;
-grid-column-start: span column-line-name 5;
+grid-column-end: span 3;
+grid-column-end: span column-line-name;
+grid-column-end: span column-line-name 5;
 
 /* 전역 값 */
-grid-column-start: inherit;
-grid-column-start: initial;
-grid-column-start: revert;
-grid-column-start: revert-layer;
-grid-column-start: unset;
+grid-column-end: inherit;
+grid-column-end: initial;
+grid-column-end: revert;
+grid-column-end: revert-layer;
+grid-column-end: unset;
 ```
 
-`grid-column-start` 속성에는 한 개의 `<grid-line>` 값을 사용합니다. `<grid-line>` 값은 아래 형식 중 하나로 구성합니다.
+`grid-column-end` 속성에는 한 개의 `<grid-line>` 값을 사용합니다. `<grid-line>` 값은 아래 형식 중 하나로 구성합니다.
 
 ## 값
 
 - : `auto`
   - 그리드 아이템이 자동으로 배치되고 1열만 차지합니다.
 - : `<custom-ident>`
-  - 주어진 식별자와 같은 이름, 또는 `-start` 접미사가 붙은 이름의 열 분할선이 존재하면, 그리드 아이템의 시작점을 해당 분할선으로 설정합니다. 예를 들어, `grid-column-start: lineA`는 `lineA` 또는 `lineA-start` 분할선에 대응합니다.
+  - 주어진 식별자와 같은 이름, 또는 `-end` 접미사가 붙은 이름의 열 분할선이 존재하면, 그리드 아이템의 끝점을 해당 분할선으로 설정합니다. 예를 들어, `grid-column-end: lineA`는 `lineA` 또는 `lineA-end` 분할선에 대응합니다.
 
     > [note]
-    > [이름 있는 영역][`grid-template-areas`]을 지정한 경우, 각 영역 이름에 대응하는 분할선이 자동으로 생성됩니다. 예컨대 `foo`라는 이름의 그리드 영역은 `foo-start`와 `foo-end`라는 이름의 분할선을 자동으로 생성합니다. 따라서 `grid-column-start: foo`를 지정하면 `foo` 그리드 영역의 시작 모서리에 맞춰 배치할 수 있습니다.
+    > [이름 있는 영역][`grid-template-areas`]을 지정한 경우, 각 영역 이름에 대응하는 분할선이 자동으로 생성됩니다. 예컨대 `foo`라는 이름의 그리드 영역은 `foo-start`와 `foo-end`라는 이름의 분할선을 자동으로 생성합니다. 따라서 `grid-column-end: foo`를 지정하면 `foo` 그리드 영역의 끝 모서리에 맞춰 배치할 수 있습니다.
 
     일치하는 열 분할선이 존재하지 않으면 `<custom-ident> 1`처럼 동작합니다.
 
 - : `<integer> && <custom-ident>?`
-  - 그리드 아이템의 시작점을 n번째 열 분할선으로 설정합니다. 음수 값을 지정할 경우 명시적 그리드의 마지막 열 분할선에서부터 역순으로 셉니다. `0`은 유효하지 않습니다.
+  - 그리드 아이템의 끝점을 n번째 열 분할선으로 설정합니다. 음수 값을 지정할 경우 명시적 그리드의 마지막 열 분할선에서부터 역순으로 셉니다. `0`은 유효하지 않습니다.
 
     `<custom-ident>`를 지정한 경우 그 이름을 가진 열 분할선만 셉니다. 해당 이름의 열 분할선 개수가 주어진 정수 값보다 적으면, 열 탐색 방향과 같은 쪽에 생성된 암시적 열 분할선을 이름과 무관하게 포함하여 셉니다.
 
 - : `span && [ <integer> || <custom-ident> ]`
-  - 그리드 아이템의 시작점을 끝점에서 n개 분할선만큼 앞선 곳으로 설정합니다. [`<integer>`]에 `0`과 음수 값, [`<custom-ident>`]에 `span`과 `auto`는 유효하지 않습니다.
+  - 그리드 아이템의 끝점을 시작점에서 n개 분할선만큼 떨어진 곳으로 설정합니다. [`<integer>`]에 `0`과 음수 값, [`<custom-ident>`]에 `span`과 `auto`는 유효하지 않습니다.
 
     `<custom-ident>`를 지정한 경우 그 이름을 가진 열 분할선만 셉니다. 해당 이름의 열 분할선 개수가 주어진 정수 값보다 적으면, 열 탐색 방향과 같은 쪽에 생성된 암시적 열 분할선을 이름과 무관하게 포함하여 셉니다.
 
@@ -117,12 +117,12 @@ grid-column-start: unset;
 
 # 같이 보기
 
-- 그리드 아이템 열 시작점 지정: [`grid-column-end`]
+- 그리드 아이템 열 시작점 지정: [`grid-column-start`]
 - 그리드 영역 정의 및 명명: [`grid-template-areas`]
 - 그리드 열 정의 및 분할선 명명: [`grid-template-columns`]
 
 [`<custom-ident>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/custom-ident
 [`<integer>`]: ./integer
-[`grid-column-end`]: ./grid-column-end
+[`grid-column-start`]: ./grid-column-start
 [`grid-template-areas`]: ./grid-template-areas
 [`grid-template-columns`]: ./grid-template-columns

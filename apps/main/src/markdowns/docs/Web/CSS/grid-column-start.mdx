@@ -4,7 +4,7 @@ titleShort: 'grid-column-start'
 bcd: css.properties.grid-column-start
 ---
 
-CSS **`grid-column-start`** 속성은 그리드 아이템을 배치할 그리드 열 시작점 위치를 설정합니다. 한 열이나 여러 열(`span`)로 설정할 수 있고, 자동 배치(`auto`)를 할 수도 있습니다.
+CSS **`grid-column-start`** 속성은 그리드 아이템을 배치할 그리드 열 시작점 위치를 설정합니다. 여러 열에 걸치게 (`span`) 설정할 수도 있습니다.
 
 ```css hidden name=demo
 .target {
@@ -64,16 +64,16 @@ CSS **`grid-column-start`** 속성은 그리드 아이템을 배치할 그리드
 grid-column-start: auto;
 
 /* <custom-ident> 값 */
-grid-column-start: column-line-name;
+grid-column-start: line-or-area;
 
 /* <integer> && <custom-ident>? 값 */
 grid-column-start: 2;
-grid-column-start: column-line-name 4;
+grid-column-start: line-or-area 4;
 
 /* span && [ <integer> || <custom-ident> ] 값 */
 grid-column-start: span 3;
-grid-column-start: span column-line-name;
-grid-column-start: span column-line-name 5;
+grid-column-start: span line-or-area;
+grid-column-start: span line-or-area 5;
 
 /* 전역 값 */
 grid-column-start: inherit;
@@ -107,6 +107,8 @@ grid-column-start: unset;
 
     `<custom-ident>`를 지정한 경우 그 이름을 가진 열 분할선만 셉니다. 해당 이름의 열 분할선 개수가 주어진 정수 값보다 적으면, 열 탐색 방향과 같은 쪽에 생성된 암시적 열 분할선을 이름과 무관하게 포함하여 셉니다.
 
+    `grid-column-start`와 [`grid-column-end`]에 `span`을 함께 지정하면 `grid-column-end`의 값은 무시합니다.
+
 # 명세
 
 - [CSS Grid Layout Module Level 2](https://drafts.csswg.org/css-grid/#line-placement)
@@ -117,12 +119,14 @@ grid-column-start: unset;
 
 # 같이 보기
 
+- 그리드 아이템 열 배치 단축 속성: [`grid-column`]
 - 그리드 아이템 열 시작점 지정: [`grid-column-end`]
 - 그리드 영역 정의 및 명명: [`grid-template-areas`]
 - 그리드 열 정의 및 분할선 명명: [`grid-template-columns`]
 
 [`<custom-ident>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/custom-ident
 [`<integer>`]: ./integer
+[`grid-column`]: ./grid-column
 [`grid-column-end`]: ./grid-column-end
 [`grid-template-areas`]: ./grid-template-areas
 [`grid-template-columns`]: ./grid-template-columns

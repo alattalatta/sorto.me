@@ -1,0 +1,146 @@
+---
+title: 'CSS grid-column: 그리드 아이템 열 배치'
+titleShort: 'grid-column'
+bcd: css.properties.grid-column
+---
+
+CSS **`grid-column`** 단축 속성은 그리드 아이템의 인라인 방향 시작점과 끝점의 위치를 설정해서 열에서의 위치와 크기를 설정합니다. 여러 열에 걸치게 (`span`) 설정할 수도 있습니다.
+
+```css hidden name=demo
+.target {
+  grid-column: auto;
+  /* grid-column: 2; */
+  /* grid-column: 2 / 4; */
+  /* grid-column: 1 / span 3; */
+  /* grid-column: lineB 1 / lineB 2; */
+  /* grid-column: areaA; */
+}
+```
+
+```css hidden name=demo filename=style
+.grid {
+  border: 1px dashed #999;
+  color: #fff;
+  display: grid;
+  height: 200px;
+  gap: 5px;
+  grid-template: repeat(3, 1fr) / [lineA areaA-start] 1fr [lineB] 1fr [lineA areaA-end] 1fr [lineB];
+  margin: 1em;
+  position: relative;
+  width: 200px;
+}
+
+.item {
+  align-items: center;
+  background: #4011c5;
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 700;
+  justify-content: center;
+}
+
+.target {
+  background: #c50a4bff;
+}
+```
+
+```html hidden name=demo
+<div class="grid">
+  <div class="item target">1</div>
+  <div class="item">2</div>
+  <div class="item">3</div>
+  <div class="item">4</div>
+  <div class="item">5</div>
+  <div class="item">6</div>
+</div>
+```
+
+<LiveExample height={280} lang="css" name="demo" />
+
+# 구성 속성
+
+`grid-column`은 다음 두 속성의 단축 속성입니다.
+
+- [`grid-column-end`]
+- [`grid-column-start`]
+
+# 구문
+
+```css-prop
+/* 키워드 값 */
+grid-column: auto;
+grid-column: auto / auto;
+
+/* <custom-ident> 값 */
+grid-column: line-or-area;
+grid-column: line-or-area / another-line-or-area;
+
+/* <integer> && <custom-ident>? 값 */
+grid-column: 2;
+grid-column: line-or-area 3;
+grid-column: line-or-area 3 / another-line-or-area;
+
+/* span && [ <integer> || <custom-ident> ] 값 */
+grid-column: span 3;
+grid-column: 1 / span 3;
+grid-column: line-or-area / span 2;
+
+/* 전역 값 */
+grid-column: inherit;
+grid-column: initial;
+grid-column: revert;
+grid-column: revert-layer;
+grid-column: unset;
+```
+
+`grid-column` 속성에는 한 개 또는 두 개의 `<grid-line>` 값을 사용합니다. 두 개 값을 사용 시 `/`로 구분하며, [`grid-column-start`]에 해당하는 값을 앞에, [`grid-column-end`]에 해당하는 값을 뒤에 지정합니다.
+
+한 개 값만 사용 시, 지정한 값이 [`<custom-ident>` 형식](#term-custom-ident)이면 `grid-column-start`와 `grid-column-end`를 모두 그 값으로 설정합니다. 그 외의 값이면 `grid-column-start`만 그 값으로 설정하고, `grid-column-end`는 `auto`가 됩니다.
+
+`<grid-line>` 값은 아래 형식 중 하나로 구성합니다.
+
+## 값
+
+- : `auto`
+  - 그리드 아이템이 자동으로 배치되고 1열만 차지합니다.
+- : `<custom-ident>`
+  - 주어진 식별자와 같은 이름, 또는 `-start`/`-end` 접미사가 붙은 이름의 열 분할선이 존재하면, 그리드 아이템의 끝점을 해당 분할선으로 설정합니다. 예를 들어, `grid-column: areaA`는 `areaA`라는 이름의 분할선에서 1열, 또는 `areaA-start` 분할선에서 `areaA-end` 분할선까지의 그리드 영역에 대응합니다.
+
+    > [note]
+    > [이름 있는 영역][`grid-template-areas`]을 지정한 경우, 각 영역 이름에 대응하는 분할선이 자동으로 생성됩니다. 예컨대 `foo`라는 이름의 그리드 영역은 `foo-start`와 `foo-end`라는 이름의 분할선을 자동으로 생성합니다. 따라서 `grid-column: foo`를 지정하면 `foo` 그리드 영역에 맞춰 배치할 수 있습니다.
+
+    일치하는 열 분할선이 존재하지 않으면 `<custom-ident> 1`처럼 동작합니다.
+
+- : `<integer> && <custom-ident>?`
+  - 그리드 아이템의 시작/끝점을 n번째 열 분할선으로 설정합니다. 음수 값을 지정할 경우 명시적 그리드의 마지막 열 분할선에서부터 역순으로 셉니다. `0`은 유효하지 않습니다.
+
+    `<custom-ident>`를 지정한 경우 그 이름을 가진 열 분할선만 셉니다. 해당 이름의 열 분할선 개수가 주어진 정수 값보다 적으면, 열 탐색 방향과 같은 쪽에 생성된 암시적 열 분할선을 이름과 무관하게 포함하여 셉니다.
+
+- : `span && [ <integer> || <custom-ident> ]`
+  - 그리드 아이템의 시작/끝점을 끝/시작점에서 n개 분할선만큼 떨어진 곳으로 설정합니다. [`<integer>`]에 `0`과 음수 값, [`<custom-ident>`]에 `span`과 `auto`는 유효하지 않습니다.
+
+    `<custom-ident>`를 지정한 경우 그 이름을 가진 열 분할선만 셉니다. 해당 이름의 열 분할선 개수가 주어진 정수 값보다 적으면, 열 탐색 방향과 같은 쪽에 생성된 암시적 열 분할선을 이름과 무관하게 포함하여 셉니다.
+
+    [`grid-column-start`]와 [`grid-column-end`]에 `span`을 함께 지정하면 `grid-column-end`의 값은 무시합니다.
+
+# 명세
+
+- [CSS Grid Layout Module Level 2](https://drafts.csswg.org/css-grid/#line-placement)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 그리드 아이템 열 끝점 지정: [`grid-column-end`]
+- 그리드 아이템 열 시작점 지정: [`grid-column-start`]
+- 그리드 영역 정의 및 명명: [`grid-template-areas`]
+- 그리드 열 정의 및 분할선 명명: [`grid-template-columns`]
+
+[`<custom-ident>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/custom-ident
+[`<integer>`]: ./integer
+[`grid-column-end`]: ./grid-column-end
+[`grid-column-start`]: ./grid-column-start
+[`grid-template-areas`]: ./grid-template-areas
+[`grid-template-columns`]: ./grid-template-columns

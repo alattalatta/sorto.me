@@ -4,7 +4,7 @@ titleShort: 'grid-template'
 bcd: css.properties.grid-template
 ---
 
-CSS **`grid-template`** 속성은 [그리드 행][`grid-template-rows`], [그리드 열][`grid-template-columns`], [그리드 영역][`grid-template-areas`]을 정의합니다.
+CSS **`grid-template`** 단축 속성은 [그리드 행][`grid-template-rows`], [그리드 열][`grid-template-columns`], [그리드 영역][`grid-template-areas`]을 정의합니다.
 
 ```css hidden name=demo
 .grid {
@@ -108,7 +108,6 @@ grid-template: unset;
 - : `<'grid-template-rows'> / <'grid-template-columns'>`
   - [`grid-template-rows`]와 [`grid-template-columns`]를 각각 지정한 값으로 설정하고, [`grid-template-areas`]는 `none`으로 설정합니다.
 - : `[ <line-names>? <string> <track-size>? <line-names>? ]+ [ / <explicit-track-list> ]?`
-
   - 지정한 문자열(`<string>`)을 [`grid-template-areas`]의 값으로 설정합니다. 각 문자열의 뒤에 이어지는 트랙 크기(`<track-size>`)를 [`grid-template-rows`]에 설정합니다. 문자열과 트랙 크기 앞과 뒤에서 행 분할선 이름(`<line-names>`)도 추가할 수 있습니다. 마지막으로 `/` 뒤의 값을 [`grid-template-columns`]에 설정합니다. 슬래시가 없으면 `grid-template-columns`를 `none`으로 설정합니다.
 
     > [note] 이 구문에서는 [`repeat()`]을 사용할 수 없습니다. [`grid-template-areas`]를 정의하는 "ASCII 아트"와 행/열이 1:1로 대응되어야 하기 때문입니다.

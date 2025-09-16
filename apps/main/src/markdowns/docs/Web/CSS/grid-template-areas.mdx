@@ -66,7 +66,7 @@ CSS **`grid-template-areas`** 속성은 그리드 영역을 정의하는 동시�
 
 <LiveExample height={240} lang="css" name="demo" />
 
-`grid-template-areas`가 정의하는 영역은 그리드 아이템에 자동으로 연결되지 않습니다. 그리드 배치 속성인 [`grid-row-start`](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-start), [`grid-row-end`](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-end), [`grid-column-start`](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-start), [`grid-column-end`](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-end), 또는 이 속성들의 단축 속성인 [`grid-row`](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row), [`grid-column`](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column), [`grid-area`](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-area)를 사용해서 영역에 아이템을 배치하세요.
+`grid-template-areas`가 정의하는 영역은 그리드 아이템에 자동으로 연결되지 않습니다. 그리드 배치 속성인 [`grid-row-start`], [`grid-row-end`], [`grid-column-start`], [`grid-column-end`], 또는 이 속성들의 단축 속성인 [`grid-row`], [`grid-column`], [`grid-area`]를 사용해서 영역에 아이템을 배치하세요.
 
 # 구문
 
@@ -92,7 +92,6 @@ grid-template-areas: unset;
 - : `none`
   - 그리드 컨테이너가 이름 있는 영역을 하나도 정의하지 않습니다.
 - : [`<string>`+](https://developer.mozilla.org/en-US/docs/Web/CSS/string)
-
   - 지정한 문자열 각각이 그리드의 행을 정의하고, 문자열 내에서 공백으로 구분한 각각의 *칸*으로 그리드의 열을 정의합니다. 여러 행과 열에 같은 이름을 사용하면 해당 칸 모두를 차지하는 영역을 정의할 수 있습니다. 다만, 영역의 형태는 항상 직사각형이어야 합니다.
 
     그리드 내에서 이름을 지정하지 않고 비워둘 칸은 "널 셀 토큰"(_null cell token_)으로 표현할 수 있습니다. 널 셀 토큰은 한 개 이상의 연속된 `.` (U+002E FULL STOP) 문자로, 예를 들어 `.`, `..`, `...` 등으로 지정합니다.
@@ -156,6 +155,17 @@ footer {
 
 # 같이 보기
 
-- 그리드 정의 단축 속성: [`grid-template`](./grid-template)
-- 그리드 열 정의: [`grid-template-columns`](./grid-template-columns)
-- 그리드 행 정의: [`grid-template-rows`](./grid-template-rows)
+- 그리드 정의 단축 속성: [`grid-template`]
+- 그리드 열 정의: [`grid-template-columns`]
+- 그리드 행 정의: [`grid-template-rows`]
+
+[`grid-area`]: https://developer.mozilla.org/en-US/docs/Web/CSS/grid-area
+[`grid-column`]: ./grid-column
+[`grid-column-end`]: ./grid-column-end
+[`grid-column-start`]: ./grid-column-start
+[`grid-row`]: https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row
+[`grid-row-end`]: https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-end
+[`grid-row-start`]: https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-start
+[`grid-template`]: ./grid-template
+[`grid-template-columns`]: ./grid-template-columns
+[`grid-template-rows`]: ./grid-template-rows

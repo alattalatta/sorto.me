@@ -1,5 +1,5 @@
 ---
-title: 'CSS grid: 그리드 레이아웃 단축 속성'
+title: 'CSS grid: 그리드 컨테이너 단축 속성'
 titleShort: 'grid'
 bcd: css.properties.grid
 ---
@@ -114,11 +114,12 @@ grid: unset;
 - `<'grid-template-rows'> / [ auto-flow && dense? ] <'grid-auto-columns'>?`
   - 열 방향 자동 그리드를 설정합니다. [`grid-template-rows`] 속성으로 행 트랙을 명시하고, [`grid-auto-columns`] 속성으로 암시적 열 트랙의 크기를 설정합니다. [`grid-auto-flow`] 속성 또한 `column`으로 설정되며, `dense` 키워드를 명시하면 `dense`도 적용됩니다.
 
-     [`grid-template-columns`]는 `none`으로, [`grid-auto-rows`]는 `auto`로 설정됩니다. 기타 구성 속성들은 초기화됩니다.
+    [`grid-template-columns`]는 `none`으로, [`grid-auto-rows`]는 `auto`로 설정됩니다. 기타 구성 속성들은 초기화됩니다.
+
 - `[ auto-flow && dense? ] <'grid-auto-rows'>? / <'grid-template-columns'>`
   - 행 방향 자동 그리드를 설정합니다. [`grid-template-columns`] 속성으로 열 트랙을 명시하고, [`grid-auto-rows`] 속성으로 암시적 행 트랙의 크기를 설정합니다. [`grid-auto-flow`] 속성 또한 `row`으로 설정되며, `dense` 키워드를 명시하면 `dense`도 적용됩니다.
 
-     [`grid-template-rows`]는 `none`으로, [`grid-auto-columns`]는 `auto`로 설정됩니다. 기타 구성 속성들은 초기화됩니다.
+    [`grid-template-rows`]는 `none`으로, [`grid-auto-columns`]는 `auto`로 설정됩니다. 기타 구성 속성들은 초기화됩니다.
 
 # 명세
 

@@ -8,6 +8,6 @@
     "react-library.json"
   ],
   "dependencies": {
-    "@pnpm/find-workspace-dir": "^1000.1.2"
+    "@pnpm/find-workspace-dir": "^1000.1.3"
   }
 }

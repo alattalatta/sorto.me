@@ -1,0 +1,132 @@
+---
+title: 'CSS grid-row-end: 그리드 아이템 행 끝점 지정'
+titleShort: 'grid-row-end'
+bcd: css.properties.grid-row-end
+---
+
+CSS **`grid-row-end`** 속성은 그리드 아이템을 배치할 그리드 행 끝점 위치를 설정합니다. 여러 행에 걸치게 (`span`) 설정할 수도 있습니다.
+
+```css hidden name=demo
+.target {
+  grid-row-end: auto;
+  /* grid-row-end: 3; */
+  /* grid-row-end: -1; */
+  /* grid-row-end: lineA 1; */
+  /* grid-row-end: lineA 2; */
+  /* grid-row-end: span 2; */
+}
+```
+
+```css hidden name=demo filename=style
+.grid {
+  border: 1px dashed #999;
+  color: #fff;
+  display: grid;
+  height: 200px;
+  gap: 5px;
+  grid-template: [lineA] 1fr [lineB] 1fr [lineA] 1fr [lineB] / repeat(3, 1fr);
+  margin: 1em;
+  position: relative;
+  width: 200px;
+}
+
+.item {
+  align-items: center;
+  background: #4011c5;
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 700;
+  justify-content: center;
+}
+
+.target {
+  background: #c50a4bff;
+}
+```
+
+```html hidden name=demo
+<div class="grid">
+  <div class="item target">1</div>
+  <div class="item">2</div>
+  <div class="item">3</div>
+  <div class="item">4</div>
+  <div class="item">5</div>
+  <div class="item">6</div>
+</div>
+```
+
+<LiveExample height={280} lang="css" name="demo" />
+
+# 구문
+
+```css-prop
+/* 키워드 값 */
+grid-row-end: auto;
+
+/* <custom-ident> 값 */
+grid-row-end: line-or-area;
+
+/* <integer> && <custom-ident>? 값 */
+grid-row-end: 2;
+grid-row-end: line-or-area 4;
+
+/* span && [ <integer> || <custom-ident> ] 값 */
+grid-row-end: span 3;
+grid-row-end: span line-or-area;
+grid-row-end: span line-or-area 5;
+
+/* 전역 값 */
+grid-row-end: inherit;
+grid-row-end: initial;
+grid-row-end: revert;
+grid-row-end: revert-layer;
+grid-row-end: unset;
+```
+
+`grid-row-end` 속성에는 한 개의 `<grid-line>` 값을 사용합니다. `<grid-line>` 값은 아래 형식 중 하나로 구성합니다.
+
+## 값
+
+- : `auto`
+  - 그리드 아이템이 자동으로 배치되고 1행만 차지합니다.
+- : `<custom-ident>`
+  - 주어진 식별자와 같은 이름, 또는 `-end` 접미사가 붙은 이름의 행 분할선이 존재하면, 그리드 아이템의 끝점을 해당 분할선으로 설정합니다. 예를 들어, `grid-row-end: lineA`는 `lineA` 또는 `lineA-end` 분할선에 대응합니다.
+
+    > [note]
+    > [이름 있는 영역][`grid-template-areas`]을 지정한 경우, 각 영역 이름에 대응하는 분할선이 자동으로 생성됩니다. 예컨대 `foo`라는 이름의 그리드 영역은 `foo-start`와 `foo-end`라는 이름의 분할선을 자동으로 생성합니다. 따라서 `grid-row-end: foo`를 지정하면 `foo` 그리드 영역의 끝 모서리에 맞춰 배치할 수 있습니다.
+
+    일치하는 행 분할선이 존재하지 않으면 `<custom-ident> 1`처럼 동작합니다.
+
+- : `<integer> && <custom-ident>?`
+  - 그리드 아이템의 끝점을 n번째 행 분할선으로 설정합니다. 음수 값을 지정할 경우 명시적 그리드의 마지막 행 분할선에서부터 역순으로 셉니다. `0`은 유효하지 않습니다.
+
+    `<custom-ident>`를 지정한 경우 그 이름을 가진 행 분할선만 셉니다. 해당 이름의 행 분할선 개수가 주어진 정수 값보다 적으면, 행 탐색 방향과 같은 쪽에 생성된 암시적 행 분할선을 이름과 무관하게 포함하여 셉니다.
+
+- : `span && [ <integer> || <custom-ident> ]`
+  - 그리드 아이템의 끝점을 시작점에서 n개 분할선만큼 떨어진 곳으로 설정합니다. [`<integer>`]에 `0`과 음수 값, [`<custom-ident>`]에 `span`과 `auto`는 유효하지 않습니다.
+
+    `<custom-ident>`를 지정한 경우 그 이름을 가진 행 분할선만 셉니다. 해당 이름의 행 분할선 개수가 주어진 정수 값보다 적으면, 행 탐색 방향과 같은 쪽에 생성된 암시적 행 분할선을 이름과 무관하게 포함하여 셉니다.
+
+    [`grid-row-start`]와 `grid-row-end`에 `span`을 함께 지정하면 `grid-row-end`의 값은 무시합니다.
+
+# 명세
+
+- [CSS Grid Layout Module Level 2](https://drafts.csswg.org/css-grid/#line-placement)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+# 같이 보기
+
+- 그리드 아이템 행 배치 단축 속성: [`grid-row`]
+- 그리드 아이템 열 시작점 지정: [`grid-row-start`]
+- 그리드 영역 정의 및 명명: [`grid-template-areas`]
+- 그리드 행 정의 및 분할선 명명: [`grid-template-rows`]
+
+[`<custom-ident>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/custom-ident
+[`<integer>`]: ./integer
+[`grid-row`]: ./grid-row
+[`grid-row-start`]: ./grid-row-start
+[`grid-template-areas`]: ./grid-template-areas
+[`grid-template-rows`]: ./grid-template-rows

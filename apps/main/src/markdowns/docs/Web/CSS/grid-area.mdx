@@ -1,0 +1,143 @@
+---
+title: 'CSS grid-area: 그리드 아이템 배치'
+titleShort: 'grid-area'
+bcd: css.properties.grid-area
+---
+
+CSS **`grid-area`** 단축 속성은 그리드 아이템의 위치와 차지할 칸의 수를 설정합니다.
+
+```css hidden name=demo
+.target {
+  grid-area: a;
+  /* grid-area: b; */
+  /* grid-area: c; */
+  /* grid-area: c / a; */
+  /* grid-area: 2 / 2 / 3 / -1; */
+}
+```
+
+```css hidden name=demo filename=style
+.grid {
+  border: 1px dashed #999;
+  color: #fff;
+  display: grid;
+  height: 200px;
+  gap: 5px;
+  grid-template:
+    "a a a" 1fr
+    "b c c" 1fr
+    "b c c" 1fr / 1fr 1fr 1fr;
+  margin: 1em;
+  position: relative;
+  width: 200px;
+}
+
+.item {
+  align-items: center;
+  background: #4011c5;
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 700;
+  justify-content: center;
+}
+
+.target {
+  background: #c50a4bff;
+}
+```
+
+```html hidden name=demo
+<div class="grid">
+  <div class="item target"></div>
+</div>
+```
+
+<LiveExample height={280} lang="css" name="demo" />
+
+# 구성 속성
+
+`grid-area`은 다음 네 속성의 단축 속성입니다.
+
+- [`grid-column-end`]
+- [`grid-column-start`]
+- [`grid-row-end`]
+- [`grid-row-start`]
+
+# 구문
+
+```css-prop
+/* 키워드 값 */
+grid-area: auto;
+grid-area: auto / auto;
+grid-area: auto / auto / auto;
+grid-area: auto / auto / auto / auto;
+
+/* <custom-ident> 값 */
+grid-area: line-or-area;
+grid-area: line-or-area / another-line-or-area;
+
+/* <integer> && <custom-ident>? 값 */
+grid-area: 4 line-or-area;
+grid-area: 4 line-or-area / 2 another-line-or-area;
+
+/* span && [ <integer> || <custom-ident> ] 값 */
+grid-area: span 3;
+grid-area: span 3 / span line-or-area;
+grid-area: 2 span / another-line-or-area span;
+
+/* 전역 값 */
+grid-area: inherit;
+grid-area: initial;
+grid-area: revert;
+grid-area: revert-layer;
+grid-area: unset;
+```
+
+`grid-area` 속성에는 한 개에서 네 개까지의 `<grid-line>` 값을 사용합니다. 각각의 값은 `/`로 구분하며, 순서는 [`grid-row-start`], [`grid-column-start`], [`grid-row-end`], [`grid-column-end`]입니다.
+
+- `grid-column-end`를 생략했고, `grid-column-start`가 [`<custom-ident>` 형식](#term-custom-ident)이면, `grid-column-end`도 같은 값으로 설정합니다. 이외의 경우 `auto`로 설정합니다.
+- `grid-row-end`를 생략했고, `grid-row-start`가 `<custom-ident>` 형식이면, `grid-row-end`도 같은 값으로 설정합니다. 이외의 경우 `auto`로 설정합니다.
+- `grid-column-start`를 생략했고, `grid-row-start`가 `<custom-ident>` 형식이면, 모든 구성 속성을 같은 값으로 설정합니다. 이외의 경우 `grid-row-start`를 제외한 나머지를 `auto`로 설정합니다.
+
+`<grid-line>` 값은 아래 형식 중 하나로 구성합니다.
+
+## 값
+
+- : `auto`
+  - 그리드 아이템이 자동으로 배치되고 1행, 1열만 차지합니다.
+- : `<custom-ident>`
+  - 주어진 식별자와 같은 이름, 또는 `-start`/`-end` 접미사가 붙은 이름의 분할선이 존재하면, 그리드 아이템의 끝점을 해당 분할선으로 설정합니다. 예를 들어, `grid-area: areaA`는 `areaA`라는 이름의 분할선에서 1열과 1행, 또는 `areaA-start` 분할선에서 `areaA-end` 분할선까지의 그리드 영역에 대응합니다.
+
+    > [note]
+    > [이름 있는 영역][`grid-template-areas`]을 지정한 경우, 각 영역 이름에 대응하는 분할선이 자동으로 생성됩니다. 예컨대 `foo`라는 이름의 그리드 영역은 `foo-start`와 `foo-end`라는 이름의 분할선을 자동으로 생성합니다. 따라서 `grid-area: foo`를 지정하면 `foo` 그리드 영역에 맞춰 배치할 수 있습니다.
+
+    일치하는 행 분할선이 존재하지 않으면 `<custom-ident> 1`처럼 동작합니다.
+
+- : `<integer> && <custom-ident>?`
+  - 그리드 아이템의 시작/끝점을 n번째 분할선으로 설정합니다. 음수 값을 지정할 경우 명시적 그리드의 마지막 분할선에서부터 역순으로 셉니다. `0`은 유효하지 않습니다.
+
+    `<custom-ident>`를 지정한 경우 그 이름을 가진 분할선만 셉니다. 해당 이름의 분할선 개수가 주어진 정수 값보다 적으면, 행/열 탐색 방향과 같은 쪽에 생성된 암시적 분할선을 이름과 무관하게 포함하여 셉니다.
+
+- : `span && [ <integer> || <custom-ident> ]`
+  - 그리드 아이템의 시작/끝점을 끝/시작점에서 n개 분할선만큼 떨어진 곳으로 설정합니다. [`<integer>`]에 `0`과 음수 값, [`<custom-ident>`]에 `span`과 `auto`는 유효하지 않습니다.
+
+    `<custom-ident>`를 지정한 경우 그 이름을 가진 분할선만 셉니다. 해당 이름의 분할선 개수가 주어진 정수 값보다 적으면, 행/열 탐색 방향과 같은 쪽에 생성된 암시적 분할선을 이름과 무관하게 포함하여 셉니다.
+
+# 명세
+
+- [CSS Grid Layout Module Level 2](https://drafts.csswg.org/css-grid/#propdef-grid-area)
+
+# 브라우저 호환성
+
+<BrowserCompat data={props.bcd} />
+
+[`<custom-ident>`]: https://developer.mozilla.org/en-US/docs/Web/CSS/custom-ident
+[`<integer>`]: ./integer
+[`grid-column`]: ./grid-column
+[`grid-column-end`]: ./grid-column-end
+[`grid-row`]: ./grid-row
+[`grid-column-start`]: ./grid-column-start
+[`grid-row-end`]: ./grid-row-end
+[`grid-row-start`]: ./grid-row-start
+[`grid-template-areas`]: ./grid-template-areas
+[`grid-template-rows`]: ./grid-template-rows

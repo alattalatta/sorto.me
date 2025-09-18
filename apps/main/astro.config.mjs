@@ -1,13 +1,12 @@
 import { readFileSync } from 'node:fs'
 import path from 'node:path'
 
-import { defineConfig } from 'astro/config'
 import mdx from '@astrojs/mdx'
 import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
-import remarkDirective from 'remark-directive'
-
 import * as libmdx from '@lib/mdx'
+import { defineConfig } from 'astro/config'
+import remarkDirective from 'remark-directive'
 
 import cssProp from './css-prop.mjs'
 

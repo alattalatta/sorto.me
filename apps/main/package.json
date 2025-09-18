@@ -37,7 +37,7 @@
     "remark-directive": "^4.0.0",
     "sass": "^1.92.1",
     "satori": "^0.18.3",
-    "sharp": "0.34.3",
+    "sharp": "0.34.4",
     "shiki": "^3.12.2",
     "strip-markdown": "^6.0.0",
     "unist-util-select": "^5.1.0"

@@ -39,6 +39,6 @@
     "unified": "^11.0.5",
     "vite": "npm:rolldown-vite@latest",
     "vite-plugin-dts": "^4.5.4",
-    "vitest": "^3.2.4"
+    "vitest": "^5.0.0"
   }
 }
